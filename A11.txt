@@ -1,0 +1,698 @@
+================================================================================
+  STAGE 11: UNDERGRADUATE FINAL YEAR / HONOURS — QUESTIONS AND ANSWERS
+  Advanced electives
+================================================================================
+
+How to use this file (note for the parent / teacher)
+----------------------------------------------------
+- There are 18 topics (11.1 to 11.18, the same as in topic.txt), in five
+  strands: Analysis (11.1-11.3), Number theory and arithmetic geometry
+  (11.4, 11.5, 11.10), Geometry, algebra and topology (11.6-11.9, 11.11,
+  11.17), Applied and discrete mathematics (11.12-11.16) and the Research
+  project (11.18).
+  Each topic has:
+    * WHAT THE CHILD MUST LEARN   the checklist of definitions, theorems,
+                                  standard examples, counterexamples and
+                                  methods in that topic
+    * PART A — DESCRIPTIVE        12 questions (D1-D12): proofs,
+                                  explanations, derivations and worked
+                                  numerical problems, each with the answer
+                                  and "Teacher explains" (the method step
+                                  by step as a teacher shows it on the
+                                  board, common mistakes, and a "Now you
+                                  try" question)
+    * PART B — MATHEMATICAL ONLY  12 questions (M1-M12): pure drills with
+                                  answers. Most have many parts (a, b,
+                                  c ...) so that EVERY case of the topic is
+                                  practised again and again, from the
+                                  easiest to the hardest — many measures
+                                  and integrals, many norms and operators,
+                                  many number fields and curves, many
+                                  groups, rings and characters, many
+                                  chains, maps and graphs, many codes and
+                                  data sets — not just one example of each
+                                  idea.
+    * TEACHING TIPS               what to do if the student struggles, and
+                                  how to make it harder
+- In total: 216 descriptive + 216 mathematical questions, then a mixed
+  revision test (equal descriptive and mathematical parts, two questions
+  from every topic in each part) and a readiness checklist for Stage 12.
+- Level: final-year honours mathematics: Measure and Integration, Lp
+  spaces, Functional Analysis, Algebraic and Analytic Number Theory,
+  Manifolds, Lie Groups and Lie Algebras, Commutative Algebra,
+  Representation Theory, Elliptic Curves, Riemann Surfaces, Stochastic
+  Processes, Dynamical Systems and Chaos, Graph Theory and Algorithms,
+  Information Theory, Multivariate Statistics and Statistical Learning,
+  Differential Topology, and the Research Project.
+- What is new in Stage 11: DEPTH AND CHOICE. The student meets the
+  modern forms of the subjects of Stage 10 — the Lebesgue integral that
+  makes limits and integrals commute, spaces of functions treated as
+  geometric spaces, primes studied through rings and through complex
+  analysis, curved spaces that are locally Euclidean, groups studied
+  through matrices, randomness and chaos as mathematical objects — and
+  begins to read and write mathematics like a researcher.
+- Conventions: N = {1, 2, 3, ...} unless 0 is stated; log means ln unless
+  a base is written (log₂ in information theory); m or λ is Lebesgue
+  measure; a.e. = almost everywhere; ‖·‖ is a norm; ⟨·,·⟩ an inner
+  product (linear in the first slot); Zₙ = Z/nZ; Fₚ is the field with p
+  elements; ≅ means isomorphic; □ ends a proof; exact answers first,
+  decimals with ≈.
+- Method: for every theorem know its hypotheses and a counterexample when
+  one is dropped; for every computation know which theorem justifies it.
+  Use Python/SageMath/R to CHECK calculations and to explore, and write
+  every solution in LaTeX.
+- Stage 11 is a menu of electives: a typical honours student takes 6-10
+  of them in depth and meets the others at the level of the checklist and
+  Part B. Do 2-3 hours a day: 2 descriptive questions (write the full
+  proof or solution) and 2 drills per session, plus weekly mixed revision.
+  Topic 11.18 (the project) runs alongside everything else all year.
+- Revise Stage 10 (A10.txt) whenever the student finds something
+  difficult; especially 10.1-10.5 (analysis, metric spaces) before
+  11.1-11.3, 10.15-10.21 (groups, rings, fields, Galois) before 11.4,
+  11.8, 11.9, 11.10, 10.9-10.11 (complex analysis) before 11.5 and 11.11,
+  10.7-10.8 and 10.25-10.28 (inverse function theorem, forms, topology,
+  surfaces, π₁) before 11.6, 11.7 and 11.17, 10.33 (phase plane) before
+  11.13, 10.35-10.37 (probability, statistics) before 11.12 and 11.16, and
+  10.43-10.46 (combinatorics, computation, coding) before 11.14 and 11.15.
+
+
+================================================================================
+TOPIC 11.1 — MEASURE THEORY AND LEBESGUE INTEGRATION: SIGMA-ALGEBRAS,
+LEBESGUE MEASURE, MEASURABLE FUNCTIONS, MONOTONE AND DOMINATED CONVERGENCE,
+FUBINI
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - σ-ALGEBRA on X: a family 𝒜 of subsets with X ∈ 𝒜, closed under
+    complements and COUNTABLE unions (hence countable intersections,
+    differences, lim sup and lim inf of sets). (X, 𝒜) is a MEASURABLE
+    SPACE. The σ-algebra GENERATED by a family 𝒞, σ(𝒞), is the
+    intersection of all σ-algebras containing 𝒞. BOREL sets 𝔅(R) =
+    σ(open sets) = σ(intervals (a, b]) = σ(rays (−∞, a]).
+  - MEASURE: μ : 𝒜 → [0, ∞] with μ(∅) = 0 and COUNTABLE ADDITIVITY
+    μ(⋃Aₙ) = ∑μ(Aₙ) for disjoint Aₙ. Consequences: monotone, countably
+    SUBadditive, CONTINUITY FROM BELOW (Aₙ ↑ A ⇒ μ(Aₙ) ↑ μ(A)) and FROM
+    ABOVE (Aₙ ↓ A and μ(A₁) < ∞ ⇒ μ(Aₙ) ↓ μ(A); fails without μ(A₁) < ∞:
+    Aₙ = [n, ∞)). Examples: counting measure, Dirac measure δₓ, Lebesgue
+    measure, probability measures.
+  - LEBESGUE OUTER MEASURE m*(E) = inf{∑ ℓ(Iₖ) : E ⊆ ⋃Iₖ, Iₖ open
+    intervals}; m*(interval) = length; m* is translation invariant and
+    countably subadditive; countable sets have measure 0. CARATHÉODORY:
+    E is measurable iff m*(A) = m*(A ∩ E) + m*(A ∖ E) for every A; the
+    measurable sets form a σ-algebra ℒ ⊇ 𝔅 on which m is a complete
+    measure. REGULARITY: m(E) = inf{m(U) : U ⊇ E open} = sup{m(K) : K ⊆ E
+    compact}. The VITALI set shows not every subset of R is measurable.
+  - NULL SETS AND THE CANTOR SET: Q, any countable set, and the Cantor set C
+    (uncountable!) have measure 0; fat Cantor sets are nowhere dense with
+    positive measure. "Almost everywhere" (a.e.) = outside a null set.
+  - MEASURABLE FUNCTIONS: f : X → [−∞, ∞] with {f > a} ∈ 𝒜 for every a
+    (equivalently f⁻¹(B) ∈ 𝒜 for Borel B). Continuous and monotone
+    functions are Borel measurable; sums, products, max, min, sup, inf,
+    lim sup, lim inf and pointwise limits of measurable functions are
+    measurable. SIMPLE functions ∑ aₖ𝟙_{Aₖ}; every f ≥ 0 measurable is the
+    increasing limit of simple functions φₙ = min(n, 2⁻ⁿ⌊2ⁿf⌋).
+  - LEBESGUE INTEGRAL: ∫∑aₖ𝟙_{Aₖ} = ∑aₖμ(Aₖ) for simple φ ≥ 0; ∫f =
+    sup{∫φ : 0 ≤ φ ≤ f simple} for f ≥ 0; f is INTEGRABLE (f ∈ L¹) if
+    ∫|f| < ∞, and then ∫f = ∫f⁺ − ∫f⁻. Linear, monotone, |∫f| ≤ ∫|f|,
+    ∫|f| = 0 ⇔ f = 0 a.e. MARKOV/CHEBYSHEV: μ{|f| ≥ t} ≤ (1/t)∫|f|.
+  - RIEMANN VS LEBESGUE: a bounded f on [a, b] is Riemann integrable iff it
+    is continuous a.e. (Lebesgue's criterion), and then the two integrals
+    agree. The Dirichlet function 𝟙_Q is not Riemann integrable but ∫𝟙_Q
+    dm = 0. Absolutely convergent improper Riemann integrals are Lebesgue
+    integrals; ∫₀^∞ (sin x)/x dx converges only improperly (not in L¹).
+  - MONOTONE CONVERGENCE THEOREM (MCT): 0 ≤ f₁ ≤ f₂ ≤ ... measurable, fₙ →
+    f ⇒ ∫fₙ → ∫f. Corollary: ∫∑gₙ = ∑∫gₙ for gₙ ≥ 0. FATOU'S LEMMA: ∫lim
+    inf fₙ ≤ lim inf ∫fₙ for fₙ ≥ 0 (strict for moving bumps).
+  - DOMINATED CONVERGENCE THEOREM (DCT): fₙ → f a.e. and |fₙ| ≤ g with g ∈
+    L¹ ⇒ ∫|fₙ − f| → 0 and ∫fₙ → ∫f. Standard failures without a
+    dominating g: n𝟙_(0,1/n), 𝟙_[n,n+1], (1/n)𝟙_[0,n]. Uses: limits under
+    the integral, continuity and DIFFERENTIATION UNDER THE INTEGRAL SIGN
+    (|∂f/∂t| ≤ g ∈ L¹).
+  - MODES OF CONVERGENCE: a.e., in measure, in L¹. L¹ ⇒ in measure ⇒ a
+    subsequence a.e.; on a finite measure space a.e. ⇒ in measure
+    (EGOROFF: a.e. ⇒ uniform off a set of small measure). The "typewriter"
+    sequence converges in L¹ but nowhere pointwise.
+  - PRODUCT MEASURE AND FUBINI-TONELLI: on σ-finite spaces there is a unique
+    μ × ν with (μ × ν)(A × B) = μ(A)ν(B). TONELLI: for f ≥ 0 measurable the
+    iterated integrals (in either order) equal ∬ f d(μ × ν). FUBINI: the
+    same for f ∈ L¹(μ × ν). Check ∬|f| < ∞ first (by Tonelli), or the
+    orders may disagree: f = (x² − y²)/(x² + y²)² on (0, 1)² gives ±π/4.
+  - LEBESGUE-STIELTJES MEASURES AND DENSITIES: an increasing right-
+    continuous F gives μ_F(a, b] = F(b) − F(a). If g ≥ 0 then ν(A) = ∫_A g
+    dμ is a measure with ∫f dν = ∫fg dμ (Radon-Nikodym in reverse); change
+    of variables ∫_{T(A)} f = ∫_A (f ∘ T)|det DT|.
+  - CONTINUITY OF THE INTEGRAL: if f ∈ L¹ then for every ε > 0 there is δ >
+    0 with μ(A) < δ ⇒ ∫_A |f| < ε; F(x) = ∫₀ˣ f is (absolutely) continuous,
+    and F′ = f a.e. (Lebesgue differentiation theorem).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Let X = {1, 2, 3, 4}. (a) Find σ(𝒞) for 𝒞 = {{1}, {2}} and list its
+    elements. (b) Is the family {∅, X, {1}, {2, 3, 4}, {1, 2}, {3, 4}} a
+    σ-algebra? (c) Prove that an intersection of σ-algebras is a
+    σ-algebra but a union need not be.
+    Answer: (a) 8 sets: generated by the partition {1}, {2}, {3, 4}.
+    (b) No. (c) Proof below; union counterexample on X = {1, 2, 3}.
+    Teacher explains: A σ-algebra on a FINITE set is always generated by a
+    partition into "atoms": every set in it is a union of atoms, so it has
+    2^(number of atoms) elements. Here the atoms are the smallest non-empty
+    sets we can make from {1}, {2} and complements: {1}, {2}, and X ∖ {1, 2}
+    = {3, 4}. So σ(𝒞) consists of all unions of these three atoms:
+       ∅, {1}, {2}, {3,4}, {1,2}, {1,3,4}, {2,3,4}, X     (2³ = 8 sets).
+    (b) It contains {1} and {1, 2} but not {1}ᶜ ∩ {1, 2} = {2}; indeed
+    {2} = {1, 2} ∩ {2, 3, 4} must lie in any σ-algebra containing both, so
+    the family is not closed under intersections. (c) If each 𝒜ᵢ contains
+    X and is closed under complements and countable unions, so is
+    ⋂𝒜ᵢ: e.g. if Aₙ ∈ ⋂𝒜ᵢ then Aₙ ∈ 𝒜ᵢ for every i, so ⋃Aₙ ∈ 𝒜ᵢ for
+    every i. Union: on {1, 2, 3}, 𝒜₁ = {∅, X, {1}, {2, 3}} and
+    𝒜₂ = {∅, X, {2}, {1, 3}}; 𝒜₁ ∪ 𝒜₂ contains {1} and {2} but not
+    {1, 2}. Common mistakes: forgetting ∅ and X; listing only the given
+    sets and their complements (you must also take unions). Now you try:
+    how many sets are in σ({1, 2}, {2, 3}) on {1, 2, 3, 4}? (atoms {1}, {2},
+    {3}, {4}: 16)
+
+D2. Prove, from countable additivity, (a) monotonicity, (b) countable
+    subadditivity, (c) continuity from below and (d) continuity from above
+    when μ(A₁) < ∞. Show (d) fails for Aₙ = [n, ∞) in R.
+    Answer: proofs by "disjointification"; m([n, ∞)) = ∞ for all n but
+    ⋂[n, ∞) = ∅.
+    Teacher explains: (a) If A ⊆ B, B = A ∪ (B ∖ A) disjointly, so μ(B) =
+    μ(A) + μ(B ∖ A) ≥ μ(A). (b) Given A₁, A₂, ..., put B₁ = A₁ and Bₙ = Aₙ
+    ∖ (A₁ ∪ ... ∪ Aₙ₋₁). The Bₙ are disjoint, Bₙ ⊆ Aₙ and ⋃Bₙ = ⋃Aₙ, so
+    μ(⋃Aₙ) = ∑μ(Bₙ) ≤ ∑μ(Aₙ). (c) If A₁ ⊆ A₂ ⊆ ..., the rings Bₙ =
+    Aₙ ∖ Aₙ₋₁ (A₀ = ∅) are disjoint with A_N = B₁ ∪ ... ∪ B_N, so
+       μ(⋃Aₙ) = ∑_{n=1}^{∞} μ(Bₙ) = lim_N ∑_{n≤N} μ(Bₙ) = lim_N μ(A_N).
+    (d) If A₁ ⊇ A₂ ⊇ ... and μ(A₁) < ∞, apply (c) to A₁ ∖ Aₙ ↑ A₁ ∖ A:
+    μ(A₁) − μ(Aₙ) → μ(A₁) − μ(A); subtraction is legal because everything is
+    finite. Counterexample: m([n, ∞)) = ∞ for all n, but the intersection
+    is ∅ of measure 0. Common mistakes: writing μ(B ∖ A) = μ(B) − μ(A)
+    when μ(A) = ∞ (∞ − ∞ is meaningless). Now you try: in counting measure
+    on N, find decreasing sets with infinite measure and empty
+    intersection. ({n, n + 1, ...})
+
+D3. (a) Show that every countable set E ⊆ R has Lebesgue measure 0.
+    (b) Construct the Cantor set C, show m(C) = 0 and that C is
+    uncountable. (c) Build a "fat" Cantor set of measure 1/2.
+    Answer: (a) cover the k-th point by an interval of length ε/2ᵏ.
+    (b) removed length 1, C ↔ ternary expansions with digits 0, 2.
+    (c) at step n remove 2ⁿ⁻¹ middle intervals of length 1/4ⁿ.
+    Teacher explains: (a) Let E = {x₁, x₂, ...} and ε > 0. Iₖ = (xₖ −
+    ε/2ᵏ⁺¹, xₖ + ε/2ᵏ⁺¹) has length ε/2ᵏ, and the Iₖ cover E, so m*(E) ≤
+    ∑ε/2ᵏ = ε. As ε is arbitrary, m(E) = 0. In particular m(Q) = 0 and
+    m([0, 1] ∖ Q) = 1. (b) C₀ = [0, 1]; Cₙ₊₁ removes the open middle third
+    of each of the 2ⁿ intervals of Cₙ (each of length 3⁻ⁿ); C = ⋂Cₙ.
+    m(Cₙ) = (2/3)ⁿ → 0, so m(C) = 0 by continuity from above. Equivalently
+    the removed length is 1/3 + 2/9 + 4/27 + ... = (1/3)/(1 − 2/3) = 1.
+    C is exactly the set of x with a ternary expansion using only digits 0
+    and 2; the map 0.d₁d₂d₃...(base 3) ↦ 0.(d₁/2)(d₂/2)...(base 2) sends C
+    onto [0, 1], so C is uncountable. (c) At step n remove from the middle
+    of each of the 2ⁿ⁻¹ remaining intervals an open interval of length
+    4⁻ⁿ. The total removed is ∑_{n≥1} 2ⁿ⁻¹4⁻ⁿ = (1/4)∑(1/2)ⁿ⁻¹ = 1/2, so the
+    set left is closed, nowhere dense and has measure 1/2. Common mistakes:
+    "measure zero means countable" (C is a counterexample); "nowhere dense
+    means measure zero" (the fat Cantor set). Now you try: remove middle
+    fifths instead of thirds: the measure of what remains? (0: (4/5)ⁿ → 0)
+
+D4. Explain the construction of a non-measurable (Vitali) set and why no
+    translation-invariant, countably additive measure can measure every
+    subset of R with m([0, 1]) = 1.
+    Answer: choose one point from each coset of Q in [0, 1]; its rational
+    translates would give 1 ≤ ∑m(V) ≤ 3, impossible.
+    Teacher explains: Declare x ~ y if x − y ∈ Q. Each class meets [0, 1];
+    by the axiom of choice pick one point from each class, forming V ⊆
+    [0, 1]. Enumerate the rationals q₁, q₂, ... of [−1, 1] and put Vₖ =
+    V + qₖ. (i) The Vₖ are DISJOINT: if v + qₖ = w + qⱼ then v − w ∈ Q, so v
+    = w (one point per class) and qₖ = qⱼ. (ii) [0, 1] ⊆ ⋃Vₖ ⊆ [−1, 2]:
+    every x ∈ [0, 1] is equivalent to some v ∈ V with x − v ∈ [−1, 1] ∩ Q.
+    If V were measurable, translation invariance gives m(Vₖ) = m(V), and
+    countable additivity gives
+       1 ≤ ∑_{k=1}^{∞} m(V) ≤ 3.
+    If m(V) = 0 the sum is 0 < 1; if m(V) > 0 the sum is ∞ > 3. Both are
+    contradictions, so V is not measurable. This is why measure theory
+    works with a σ-algebra rather than all subsets. Common mistakes:
+    thinking V is "small" or "large" — it has outer measure > 0 but no
+    measure; forgetting that the proof needs choice (Solovay: without it,
+    all sets can be measurable). Now you try: why can we not use all reals
+    q (not just rationals) in the argument? (then the union is uncountable
+    and additivity says nothing)
+
+D5. Prove that the sum and the product of two measurable functions f, g :
+    X → R are measurable, and that sup fₙ and lim sup fₙ are measurable.
+    Answer: {f + g > a} = ⋃_{r∈Q} ({f > r} ∩ {g > a − r}); fg = ((f + g)² −
+    (f − g)²)/4; {sup fₙ > a} = ⋃{fₙ > a}.
+    Teacher explains: f + g > a ⇔ f > a − g ⇔ there is a rational r with f
+    > r > a − g (density of Q). So
+       {f + g > a} = ⋃_{r ∈ Q} ({f > r} ∩ {g > a − r}),
+    a COUNTABLE union of measurable sets. For squares: {f² > a} = X if a <
+    0 and {f > √a} ∪ {f < −√a} if a ≥ 0; −f and cf are clearly
+    measurable, so fg = ((f + g)² − (f − g)²)/4 is measurable. For
+    suprema: sup fₙ(x) > a ⇔ some fₙ(x) > a, so {sup fₙ > a} = ⋃ₙ{fₙ >
+    a}. Similarly inf fₙ = −sup(−fₙ), and lim sup fₙ = inf_k sup_{n≥k} fₙ,
+    so it is measurable; lim fₙ, where it exists, equals lim sup fₙ. The
+    key point: everything uses only COUNTABLE operations. Common mistakes:
+    writing {f + g > a} = {f > a/2} ∪ {g > a/2} (false: f = 3, g = −1,
+    a = 1); taking a supremum over uncountably many functions (not
+    measurable in general). Now you try: show max(f, g) is measurable.
+    ({max > a} = {f > a} ∪ {g > a})
+
+D6. State the monotone convergence theorem. Use it to (a) show that
+    ∫₀¹ (−ln x)/(1 − x) dx = ∑_{n≥1} ∫₀¹ xⁿ⁻¹(−ln x) dx and evaluate it;
+    (b) justify ∫₀^∞ x/(eˣ − 1) dx = π²/6.
+    Answer: both equal ∑1/n² = π²/6 ≈ 1.64493.
+    Teacher explains: MCT: if 0 ≤ f₁ ≤ f₂ ≤ ... and fₙ → f pointwise, then
+    ∫fₙ → ∫f (the value ∞ is allowed). Its corollary for series with
+    NON-NEGATIVE terms: ∫∑gₙ = ∑∫gₙ (apply MCT to the partial sums).
+    (a) On (0, 1), −ln x ≥ 0 and 1/(1 − x) = ∑_{n≥1} xⁿ⁻¹, so the integrand
+    is ∑ gₙ with gₙ = xⁿ⁻¹(−ln x) ≥ 0. By parts (or the substitution
+    x = e⁻ᵗ),
+       ∫₀¹ xⁿ⁻¹(−ln x) dx = ∫₀^∞ t e^(−nt) dt = 1/n².
+    Therefore ∫₀¹ (−ln x)/(1 − x) dx = ∑1/n² = π²/6. (b) For x > 0,
+    x/(eˣ − 1) = x e⁻ˣ/(1 − e⁻ˣ) = ∑_{n≥1} x e^(−nx), terms ≥ 0, and ∫₀^∞
+    x e^(−nx) dx = 1/n². So the integral is ∑1/n² = π²/6. Without MCT we
+    would need uniform convergence, which FAILS near x = 0 in (a). Common
+    mistakes: exchanging sum and integral for series with terms of both
+    signs without checking ∑∫|gₙ| < ∞. Now you try: ∫₀^∞ x²/(eˣ − 1) dx.
+    (2ζ(3) ≈ 2.40411)
+
+D7. State Fatou's lemma and prove it from the MCT. Show that the
+    inequality can be strict and that the hypothesis fₙ ≥ 0 cannot be
+    dropped.
+    Answer: ∫lim inf fₙ ≤ lim inf ∫fₙ; strict for fₙ = n𝟙_(0,1/n); fails for
+    fₙ = −n𝟙_(0,1/n).
+    Teacher explains: Put gₖ = inf_{n≥k} fₙ. Then 0 ≤ g₁ ≤ g₂ ≤ ... and gₖ ↑
+    lim inf fₙ, so by MCT ∫gₖ → ∫lim inf fₙ. But gₖ ≤ fₙ for every n ≥ k,
+    so ∫gₖ ≤ inf_{n≥k} ∫fₙ. Letting k → ∞,
+       ∫ lim inf fₙ = lim ∫gₖ ≤ lim inf ∫fₙ.  □
+    Strict: fₙ = n𝟙_(0,1/n) on [0, 1] has fₙ(x) → 0 for every x, so ∫lim
+    inf fₙ = 0, while ∫fₙ = 1 for all n. The mass "escapes" into a
+    spike. Negative functions: fₙ = −n𝟙_(0,1/n) has lim inf fₙ = 0 but
+    ∫fₙ = −1, and 0 ≤ −1 is false. Picture Fatou as "mass can only be lost
+    in the limit, never created". Common mistakes: using lim instead of
+    lim inf when the limit does not exist; forgetting that ∫gₖ ≤ ∫fₙ needs
+    n ≥ k. Now you try: fₙ = 𝟙_[n,n+1] on R. Compute both sides. (0 < 1)
+
+D8. State the dominated convergence theorem. Evaluate, with full
+    justification,
+    (a) lim_{n→∞} ∫₀^∞ (1 + x/n)⁻ⁿ sin(x/n) dx,
+    (b) lim_{n→∞} ∫₀^n (1 − x/n)ⁿ dx,
+    (c) lim_{n→∞} ∫₀¹ n x/(1 + n²x²) dx.
+    Answer: (a) 0; (b) 1; (c) 0 (but the integrals behave like
+    (ln(1 + n²))/(2n)).
+    Teacher explains: DCT: fₙ → f a.e., |fₙ| ≤ g with ∫g < ∞ ⇒ ∫fₙ → ∫f.
+    The whole art is finding g. (a) For n ≥ 2, (1 + x/n)ⁿ ≥ 1 + x +
+    (n(n − 1)/2)(x/n)² ≥ 1 + x²/4 (binomial theorem, (n − 1)/n ≥ 1/2), so
+    |fₙ| ≤ 1/(1 + x²/4) = g, with ∫₀^∞ g = π. Pointwise fₙ(x) → e⁻ˣ · 0 = 0.
+    So the limit is 0. (b) Write fₙ = (1 − x/n)ⁿ𝟙_[0,n](x). Since
+    1 − t ≤ e⁻ᵗ, 0 ≤ fₙ ≤ e⁻ˣ = g ∈ L¹, and fₙ(x) → e⁻ˣ. Limit ∫₀^∞ e⁻ˣ dx
+    = 1. (Check: ∫₀ⁿ(1 − x/n)ⁿ dx = n/(n + 1) → 1 ✓.) (c) fₙ(x) → 0 for
+    every x (at x = 0, fₙ = 0). Is there a dominating g? sup_n fₙ(x) = 1/2
+    (attained at n = 1/x), so g = 1/2 works on [0, 1]: limit 0. Directly:
+    ∫₀¹ nx/(1 + n²x²) dx = ln(1 + n²)/(2n) → 0 ✓. Common mistakes: using the
+    pointwise limit without a dominating function; choosing a g that
+    depends on n. Now you try: lim ∫₀^∞ n sin(x/n)/(x(1 + x²)) dx. (π/2:
+    |fₙ| ≤ 1/(1 + x²), fₙ → 1/(1 + x²))
+
+D9. Using DCT, justify differentiation under the integral sign and compute
+    F(t) = ∫₀^∞ e^(−x²) cos(tx) dx by solving an ODE for F.
+    Answer: F′(t) = −(t/2)F(t), F(0) = √π/2, so F(t) = (√π/2)e^(−t²/4).
+    Teacher explains: THEOREM: if f(·, t) ∈ L¹ for each t, ∂f/∂t exists
+    and |∂f/∂t(x, t)| ≤ g(x) ∈ L¹ for all t, then F′(t) = ∫∂f/∂t dx. Proof:
+    the difference quotient (f(x, t + h) − f(x, t))/h equals ∂f/∂t(x, ξ)
+    by the MVT, so it is bounded by g; let h → 0 along any sequence and
+    use DCT. Here ∂f/∂t = −x e^(−x²) sin(tx), bounded by x e^(−x²) ∈ L¹.
+    So
+       F′(t) = −∫₀^∞ x e^(−x²) sin(tx) dx.
+    Integrate by parts with u = sin(tx), dv = −x e^(−x²) dx, v = e^(−x²)/2:
+       F′(t) = [e^(−x²) sin(tx)/2]₀^∞ − (t/2)∫₀^∞ e^(−x²) cos(tx) dx
+             = −(t/2)F(t).
+    The ODE F′ = −(t/2)F gives F(t) = F(0)e^(−t²/4) with F(0) = ∫₀^∞ e^(−x²)
+    dx = √π/2. Check at t = 2: F(2) = (√π/2)e⁻¹ ≈ 0.32603. Common
+    mistakes: a bound g that depends on t; forgetting to check that the
+    boundary term vanishes. Now you try: G(t) = ∫₀^∞ e^(−tx) dx = 1/t;
+    differentiate twice to get ∫₀^∞ x² e^(−tx) dx. (2/t³)
+
+D10. State Tonelli's and Fubini's theorems. (a) Compute ∫₀^∞ ∫₀^∞
+     e^(−(x²+y²)) dx dy in polar coordinates and deduce ∫₀^∞ e^(−x²) dx.
+     (b) Show that for f(x, y) = (x² − y²)/(x² + y²)² on (0, 1)² the two
+     iterated integrals are π/4 and −π/4, and explain which hypothesis
+     fails.
+     Answer: (a) π/4, so ∫₀^∞ e^(−x²) dx = √π/2. (b) ∬|f| = ∞.
+     Teacher explains: TONELLI (f ≥ 0 measurable, σ-finite spaces): both
+     iterated integrals equal the double integral, finite or not. FUBINI:
+     the same if ∬|f| < ∞. (a) The integrand is positive, so Tonelli lets
+     us compute in any order or coordinates:
+        ∬_{first quadrant} e^(−r²) r dr dθ = (π/2)·(1/2) = π/4.
+     The left side is (∫₀^∞ e^(−x²) dx)², so the integral is √π/2.
+     (b) ∂/∂y (y/(x² + y²)) = (x² − y²)/(x² + y²)². Hence
+        ∫₀¹ f(x, y) dy = [y/(x² + y²)]₀¹ = 1/(1 + x²),
+     and ∫₀¹ dx/(1 + x²) = π/4. By the antisymmetry f(y, x) = −f(x, y), the
+     other order gives −π/4. Fubini does not apply: in polar coordinates
+     |f| = |cos 2θ|/r², and ∬|f| r dr dθ contains ∫₀ dr/r = ∞ near the
+     origin. Common mistakes: swapping the order without checking
+     integrability; thinking Fubini fails for positive functions (Tonelli
+     always works for f ≥ 0). Now you try: compute ∫₀¹∫₀¹ xy dx dy both
+     ways. (1/4)
+
+D11. Explain the four modes of convergence (uniform, a.e., in measure, in
+     L¹) with the "typewriter" sequence, the escaping bump 𝟙_[n,n+1] and the
+     spike n𝟙_(0,1/n). State Egoroff's theorem and apply it to xⁿ on [0, 1].
+     Answer: typewriter: L¹ and in measure, nowhere a.e.; escaping bump:
+     pointwise to 0, not in measure (infinite space) nor L¹; spike: a.e. and
+     in measure, not L¹.
+     Teacher explains: TYPEWRITER: list the intervals [0, 1], [0, ½], [½, 1],
+     [0, ⅓], [⅓, ⅔], [⅔, 1], ... and let fₙ be the indicator of the n-th.
+     ∫fₙ = length → 0, so fₙ → 0 in L¹ and in measure. But every x lies in
+     infinitely many and misses infinitely many intervals, so fₙ(x)
+     oscillates between 0 and 1 for every x: no pointwise limit. (A
+     subsequence — the intervals [0, 1/k] — does converge a.e., as the
+     theory predicts.) ESCAPING BUMP on R: fₙ(x) → 0 for every x, but
+     m{fₙ = 1} = 1 for all n: not in measure, ∫fₙ = 1 ↛ 0. Egoroff needs
+     finite measure. SPIKE n𝟙_(0,1/n) on [0, 1]: → 0 everywhere, m{fₙ > ε}
+     = 1/n → 0 (in measure), but ∫fₙ = 1: not L¹. EGOROFF: on a finite
+     measure space, fₙ → f a.e. ⇒ for every δ > 0 there is E with m(E) < δ
+     and fₙ → f uniformly off E. For xⁿ on [0, 1]: take E = (1 − δ, 1];
+     on [0, 1 − δ], sup xⁿ = (1 − δ)ⁿ → 0. Common mistakes: believing a.e.
+     convergence implies L¹ convergence. Now you try: does fₙ = 𝟙_[0,1/n]
+     converge a.e.? in L¹? (yes to 0 except at x = 0; yes)
+
+D12. Show that if f ∈ L¹(R) then (a) for every ε > 0 there is δ > 0 such
+     that m(A) < δ ⇒ ∫_A|f| < ε; (b) F(x) = ∫_{−∞}^x f is uniformly
+     continuous; (c) lim_{h→0} ∫|f(x + h) − f(x)| dx = 0 (continuity of
+     translation), first for f = 𝟙_[a,b], then in general.
+     Answer: (a) truncate f at level N; (b) |F(x) − F(y)| ≤ ∫_[x,y]|f|;
+     (c) ∫|𝟙_[a,b](x + h) − 𝟙_[a,b](x)| dx = 2|h| for |h| ≤ b − a, then
+     approximate.
+     Teacher explains: (a) Let fₙ = min(|f|, N). By MCT, ∫fₙ ↑ ∫|f|, so
+     choose N with ∫(|f| − min(|f|, N)) < ε/2. Then for m(A) < δ = ε/(2N),
+        ∫_A|f| ≤ ∫(|f| − min(|f|, N)) + ∫_A N < ε/2 + Nδ = ε.
+     (b) For x < y, |F(y) − F(x)| ≤ ∫_{[x,y]}|f| < ε whenever y − x < δ,
+     by (a). (c) For f = 𝟙_[a,b] and 0 < h ≤ b − a, f(x + h) − f(x) is ±1
+     exactly on [a − h, a) and [b − h, b), so the integral is 2h → 0. By
+     linearity the same holds for step functions. Step functions are
+     dense in L¹: given ε, pick a step s with ∫|f − s| < ε; then
+        ∫|f(x + h) − f(x)| ≤ ∫|f(x + h) − s(x + h)| + ∫|s(x + h) − s(x)|
+                             + ∫|s − f| < 3ε for small h.
+     This "ε/3 argument" is the model for many proofs in 11.2 and 11.3.
+     Common mistakes: using uniform continuity of f (f need not be
+     continuous). Now you try: compute ∫|𝟙_[0,1](x + h) − 𝟙_[0,1](x)| dx for
+     h = 3. (2: the intervals no longer overlap)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. σ-algebras on finite sets: give the number of sets in σ(𝒞) on X.
+    a) X = {1, 2, 3}, 𝒞 = {{1}}          b) X = {1, 2, 3}, 𝒞 = {{1}, {2}}
+    c) X = {1, ..., 4}, 𝒞 = {{1, 2}}      d) X = {1, ..., 4}, 𝒞 = {{1, 2}, {2, 3}}
+    e) X = {1, ..., 5}, 𝒞 = {{1, 2}, {3}} f) X = {1, ..., 6}, 𝒞 = {{1, 2, 3}, {3, 4}}
+    g) X = {1, ..., 6}, 𝒞 = {{1, 2}, {3, 4}, {5, 6}}
+    h) X = {1, ..., 8}, 𝒞 = {{1, ..., 4}, {1, 2, 5, 6}, {1, 3, 5, 7}}
+    i) X = {1, ..., 10}, 𝒞 = {{1, 2}, {2, 3}, {3, 4}}
+    j) X = N, 𝒞 = {{n} : n ∈ N}: which sets?
+    k) X = R, 𝒞 = {{x} : x ∈ R}: which sets?
+    l) X = R, 𝒞 = {[0, 1]}: list the sets
+    m) number of σ-algebras on a 3-element set
+    n) number of σ-algebras on a 4-element set
+    Answers:
+      a) 4         b) 8          c) 4           d) 16 (atoms {1}, {2}, {3}, {4})
+      e) 8         f) 16 (atoms {1,2}, {3}, {4}, {5,6})    g) 8
+      h) 256 (all singletons are atoms)      i) 32 (atoms {1}, {2}, {3}, {4},
+         {5, ..., 10})
+      j) all subsets of N (every set is a countable union of singletons)
+      k) the countable and co-countable subsets of R
+      l) ∅, R, [0, 1], R ∖ [0, 1]
+      m) 5 (Bell number B₃)                   n) 15 (Bell number B₄)
+
+M2. Find the Lebesgue measure.
+    a) [2, 7)                          b) {3}
+    c) Q ∩ [0, 5]                      d) [0, 5] ∖ Q
+    e) ⋃_{n≥1} (n, n + 2⁻ⁿ)            f) ⋃_{n≥1} [0, 1 − 1/n]
+    g) ⋂_{n≥1} (−1/n, 1 + 1/n)         h) ⋂_{n≥1} [n, ∞)
+    i) the Cantor set                  j) [0, 1] minus the Cantor set
+    k) {x ∈ [0, 1] : the decimal expansion of x has no digit 7}
+    l) {x ∈ [0, 1] : the ternary expansion of x has no digit 1 in the
+       first 4 places}
+    m) {(x, y) ∈ R² : x² + y² < 4}      n) {(x, y) : 0 ≤ y ≤ x², 0 ≤ x ≤ 3}
+    o) the graph {(x, sin x) : x ∈ R} in R²
+    p) {x ∈ R : sin x > 0} ∩ [0, 10π]
+    q) {x ∈ [0, 1] : x = p/q with q ≤ 100}   r) {x ∈ R : x² < 7}
+    s) ⋃_{k≥1} (qₖ − 2⁻ᵏ⁻², qₖ + 2⁻ᵏ⁻²), q₁, q₂, ... all rationals:
+       an upper bound for its measure (it is open and dense!)
+    t) {x ∈ [0, 1]: the binary digit in place 3 is 1}
+    Answers:
+      a) 5        b) 0        c) 0        d) 5        e) 1
+      f) 1 (the union is [0, 1))           g) 1         h) 0
+      i) 0        j) 1        k) 0 (measure (9/10)ⁿ → 0)
+      l) (2/3)⁴ = 16/81       m) 4π       n) 9
+      o) 0        p) 5π       q) 0        r) 2√7
+      s) 1/2 (sum of lengths ∑2⁻ᵏ⁻¹): an open dense set of small measure
+      t) 1/2
+
+M3. Let μ be a measure. Compute or say "cannot be determined" (c.b.d.).
+    a) μ(A) = 3, μ(B) = 4, A ⊆ B: μ(B ∖ A)
+    b) μ(A) = 3, μ(B) = 4, μ(A ∩ B) = 1: μ(A ∪ B)
+    c) μ(A) = 3, μ(B) = 4: μ(A ∪ B)
+    d) μ(A) = ∞, A ⊆ B: μ(B ∖ A)
+    e) Aₙ ↑ A, μ(Aₙ) = 5 − 1/n: μ(A)
+    f) Aₙ ↓ A, μ(Aₙ) = 1 + 1/n: μ(A)
+    g) Aₙ ↓ A, μ(Aₙ) = ∞ for all n: μ(A)
+    h) disjoint Aₙ with μ(Aₙ) = 2⁻ⁿ: μ(⋃Aₙ)
+    i) μ(Aₙ) = 3⁻ⁿ (not disjoint): an upper bound for μ(⋃Aₙ)
+    j) Borel-Cantelli: ∑μ(Aₙ) < ∞ ⇒ μ(lim sup Aₙ) = ?
+    k) Dirac δ₂ on R: δ₂([0, 3]), δ₂((2, 5)), δ₂(Q)
+    l) counting measure on N: μ({even numbers}), μ({1, 5, 9})
+    m) μ = δ₀ + 2δ₁ + 3δ₂: μ([0, 1]), μ((0, 2]), μ(R)
+    n) μ(A) = ∫_A e⁻ˣ dx on [0, ∞): μ([0, 1]), μ([1, ∞)), μ([0, ∞))
+    o) Lebesgue-Stieltjes with F(x) = x³: μ((1, 2])
+    p) F(x) = ⌊x⌋: μ((0, 3]), μ({2}), μ((0.5, 0.9))
+    q) F = 0 for x < 0, x for 0 ≤ x < 1, 2 for x ≥ 1: μ({1}), μ([0, 1]),
+       μ(R)
+    Answers:
+      a) 1       b) 6       c) c.b.d. (between 4 and 7)       d) c.b.d.
+      e) 5       f) 1       g) c.b.d. (e.g. [n, ∞) gives 0)   h) 1
+      i) 1/2     j) 0       k) 1, 0, 0         l) ∞, 3
+      m) 3, 5, 6            n) 1 − e⁻¹ ≈ 0.63212, e⁻¹ ≈ 0.36788, 1
+      o) 7       p) 3, 1, 0              q) 1, 2, 2
+
+M4. Measurable or not? (L = Lebesgue measurable, B = Borel, N = need not
+    be measurable). Assume f, g, fₙ are Lebesgue measurable R → R.
+    a) f + g                          b) fg
+    c) |f|                            d) f²
+    e) 𝟙_Q                            f) 𝟙_V (V a Vitali set)
+    g) sup_n fₙ                        h) lim sup fₙ
+    i) sup_{t ∈ R} f_t (uncountable family)
+    j) a monotone function R → R      k) a continuous function
+    l) f ∘ g (both Lebesgue measurable)
+    m) f ∘ g with f continuous         n) {x : fₙ(x) converges}
+    o) the Cantor function            p) 1/f (where f ≠ 0)
+    q) the derivative f′ of a differentiable f
+    r) max(f, 0)
+    Answers:
+      a) L      b) L      c) L      d) L      e) B (Q is Borel)
+      f) N (not measurable)            g) L     h) L
+      i) N (need not be)               j) B     k) B
+      l) N (need not be; composition of Lebesgue functions can fail)
+      m) L      n) L (defined by lim sup = lim inf)  o) B (continuous)
+      p) L      q) B (a pointwise limit of difference quotients)  r) L
+
+M5. Integrals of simple and non-negative functions (Lebesgue measure on
+    the given interval unless stated).
+    a) ∫(2𝟙_[0,3] + 5𝟙_[1,2])         b) ∫(𝟙_Q + 3𝟙_[0,1]) on [0, 2]
+    c) ∫⌊x⌋ dx on [0, 4]              d) ∫⌊x²⌋ dx on [0, 2]
+    e) ∫x dδ₃(x)                       f) ∫x² d(counting on {1, 2, 3})
+    g) ∫f dμ, f(n) = 2⁻ⁿ, μ counting on N
+    h) ∫f dμ, f(n) = 1/n, μ counting on N
+    i) the Cantor function's integral ∫₀¹ c(x) dx
+    j) ∫₀¹ f, f(x) = 1 on the Cantor set and x² elsewhere
+    k) ∫₀¹ f, f(x) = 0 on Q, x elsewhere
+    l) φ₂ = min(2, 2⁻²⌊2²f⌋) for f(x) = x on [0, 2]: ∫φ₂
+    m) ∫_R e^(−|x|) dx                  n) ∫_R dx/(1 + x²)
+    o) ∫₀¹ x^(−1/2) dx                  p) ∫₀¹ x⁻¹ dx
+    q) ∫_{[1,∞)} x⁻ᵖ dx for p = 2, 1, 1/2
+    r) ∫₀^∞ x⁻¹ sin x dx: is x⁻¹ sin x in L¹(0, ∞)?
+    Answers:
+      a) 11      b) 3       c) 6       d) 5 − √2 − √3 ≈ 1.85374
+      e) 3       f) 14      g) 1       h) ∞
+      i) 1/2 (symmetry c(1 − x) = 1 − c(x))      j) 1/3
+      k) 1/2     l) 7/4 (steps of width 1/4 at heights 0, 1/4, ..., 7/4)
+      m) 2       n) π       o) 2       p) ∞
+      q) 1, ∞, ∞            r) no (∫|sin x|/x = ∞); the improper
+         integral is π/2
+
+M6. Monotone convergence: compute, justifying by MCT or its series form.
+    a) lim ∫₀¹ x^(1/n) dx               b) lim ∫₀^n e⁻ˣ dx
+    c) lim ∫₀¹ (1 − xⁿ) dx               d) lim ∫₀^∞ (1 − e^(−nx)) e⁻ˣ dx
+    e) ∑_{n≥0} ∫₀¹ xⁿ(1 − x) dx          f) ∫₀¹ x⁻¹ ln(1/(1 − x)) dx
+    g) ∫₀^∞ x/(eˣ − 1) dx               h) ∫₀^∞ x³/(eˣ − 1) dx
+    i) ∫₀¹ (ln x)²/(1 − x) dx           j) ∫₀¹ ln(1 + x)/x dx (terms
+                                           alternate: use DCT instead)
+    k) lim ∫₀^n (1 + x/n)ⁿ e^(−2x) dx    l) lim ∫₀¹ n(x^(1/n) − 1) dx
+    m) ∫₀^∞ ∑_{n≥1} e^(−n²x) dx          n) ∫₀¹ ∑_{n≥1} xⁿ/n dx
+    Answers:
+      a) 1       b) 1       c) 1       d) 1
+      e) 1 (terms 1/((n + 1)(n + 2)))    f) π²/6 ≈ 1.64493
+      g) π²/6    h) π⁴/15 ≈ 6.49394     i) 2ζ(3) ≈ 2.40411
+      j) π²/12 ≈ 0.82247 (partial sums of the alternating series
+         ∑(−1)ⁿxⁿ/(n + 1) are bounded by 1; term by term ∑(−1)ⁿ/(n + 1)²)
+      k) 1 (integrand ↑ e⁻ˣ)
+      l) −1 (−n(x^(1/n) − 1) ≥ 0 increases to −ln x; MCT gives −∫₀¹ ln x
+         = 1; directly ∫ = −n/(n + 1) → −1)
+      m) π²/6 (∫₀^∞ e^(−n²x) dx = 1/n²)
+      n) 1 (∑1/(n(n + 1)))
+
+M7. Dominated convergence (or its failure): find lim_{n→∞}. Say where no
+    integrable dominating function exists.
+    a) ∫₀¹ xⁿ dx                         b) ∫₀¹ n xⁿ(1 − x) dx
+    c) ∫₀^∞ e⁻ˣ cos(x/n) dx               d) ∫₀¹ sin(nx)/(nx) dx
+    e) ∫_R e^(−x²) cos(x/n) dx            f) ∫₀^∞ n/(1 + n²x²) dx
+    g) ∫₀¹ (1 + nx²)/(1 + x²)ⁿ dx         h) ∫₀^∞ (1 + x/n)⁻ⁿ dx
+    i) ∫₀¹ n²x e^(−nx) dx                 j) ∫₀¹ n xⁿ⁻¹/(1 + x) dx
+    k) ∫₀^∞ dx/((1 + x²)(1 + xⁿ))         l) ∫₀¹ n^(3/2) x/(1 + n²x²) dx
+    m) ∫₀^∞ n ln(1 + x/n) e⁻ˣ dx          n) lim_{t→0⁺} ∫₀^∞ ((1 − e^(−tx))/t) e⁻ˣ dx
+    Answers:
+      a) 0         b) 0 (= n/((n + 1)(n + 2)))       c) 1 (= 1/(1 + 1/n²))
+      d) 0 (bound 1)                     e) √π (= √π e^(−1/(4n²)))
+      f) π/2 for every n, although the integrand → 0 for x > 0: no
+         dominating function
+      g) 0 (bound 1, since (1 + x²)ⁿ ≥ 1 + nx²)
+      h) 1 (bound (1 + x/2)⁻² for n ≥ 2; exactly n/(n − 1))
+      i) 1 (put t = nx: ∫₀ⁿ t e⁻ᵗ dt → 1): no dominating function
+      j) 1/2 (the mass n xⁿ⁻¹ dx piles up at x = 1)
+      k) π/4 (limit 1/(1 + x²) on [0, 1), 0 for x > 1)
+      l) 0 (= ln(1 + n²)/(2√n))
+      m) 1 (n ln(1 + x/n) ↑ x; MCT)       n) 1 ((1 − e^(−tx))/t ≤ x)
+
+M8. Fubini and Tonelli: evaluate (check the hypothesis you use).
+    a) ∫₀¹∫₀² xy² dy dx                 b) ∫₀¹∫ₓ¹ e^(y²) dy dx
+    c) ∫₀¹∫_y¹ (sin x)/x dx dy          d) ∫₀^∞∫₀^∞ e^(−(x+y)) dx dy
+    e) ∫₀^∞ (e⁻ˣ − e^(−3x))/x dx, via ∫₁³ e^(−xy) dy = (e⁻ˣ − e^(−3x))/x
+    f) ∬_{x²+y²≤1} (x² + y²) dA         g) ∫_R e^(−x²/2) dx
+    h) ∫₀¹∫₀¹ (x − y)/(x + y)³ dy dx, and the other order
+    i) ∫₀¹∫₀¹ dx dy/(1 − xy)            j) ∫₀^∞∫₀^∞ e^(−x(1 + y²)) dx dy, and
+                                          deduce ∫₀^∞ x^(−1/2) e⁻ˣ dx
+    k) the volume of the unit ball in R³ by slicing
+    l) ∫₀¹ (x − 1)/ln x dx, via ∫₀¹ xʸ dy
+    m) counting measure on N × N, aₘₙ = 1 if m = n, −1 if m = n + 1, 0
+       otherwise: ∑ₘ(∑ₙ aₘₙ) and ∑ₙ(∑ₘ aₘₙ)
+    n) ∫₀^∞ (sin x)/x dx, via 1/x = ∫₀^∞ e^(−xy) dy (as lim_{A→∞} ∫₀^A)
+    Answers:
+      a) 4/3       b) (e − 1)/2 ≈ 0.85914       c) 1 − cos 1 ≈ 0.45970
+      d) 1         e) ln 3 ≈ 1.09861           f) π/2
+      g) √(2π) ≈ 2.50663
+      h) 1/2 and −1/2 (inner integral 1/(1 + x)²; ∬|f| = ∞, Fubini fails)
+      i) π²/6 (expand ∑(xy)ⁿ, Tonelli)
+      j) π/2; the x-first order gives (√π/2)∫₀^∞ x^(−1/2)e⁻ˣ dx, so the
+         integral is √π
+      k) 4π/3 (∫₋₁¹ π(1 − z²) dz)       l) ln 2 ≈ 0.69315
+      m) 1 and 0 (∑|aₘₙ| = ∞, so Fubini does not apply)
+      n) π/2 (∫₀^∞ dy/(1 + y²))
+
+M9. Differentiation under the integral sign (justify with a dominating
+    function on a neighbourhood of the parameter).
+    a) from ∫₀^∞ e^(−tx) dx = 1/t: ∫₀^∞ x e^(−tx) dx
+    b) ∫₀^∞ x⁵ e⁻ˣ dx (differentiate ∫₀^∞ e^(−tx) dx five times, t = 1)
+    c) from ∫₀¹ xᵃ dx = 1/(a + 1): ∫₀¹ x² ln x dx
+    d) ∫₀¹ x²(ln x)² dx
+    e) F(t) = ∫₀^∞ e^(−x²) cos(tx) dx: F(1)
+    f) I(t) = ∫₀¹ (xᵗ − 1)/ln x dx: I′(t) and I(3)
+    g) ∫₀^∞ e⁻ˣ (sin tx)/x dx at t = 1
+    h) J(a) = ∫₀^π ln(1 − 2a cos x + a²) dx: J(1/2) and J(2)
+    i) from ∫₀^∞ e^(−ax²) dx = ½√(π/a): ∫₀^∞ x² e^(−x²) dx
+    j) ∫₀^∞ (e^(−2x) − e^(−5x))/x dx
+    k) Γ′(1) = ∫₀^∞ (ln x) e⁻ˣ dx
+    l) F(t) = ∫₀^t cos(tx) dx: F′(1) by the Leibniz rule
+    Answers:
+      a) 1/t²      b) 120       c) −1/9      d) 2/27
+      e) (√π/2)e^(−1/4) ≈ 0.69019        f) I′(t) = 1/(t + 1), I(3) = ln 4
+      g) π/4 (the integral is arctan t)
+      h) 0 and 2π ln 2 ≈ 4.35517         i) √π/4 ≈ 0.44311
+      j) ln(5/2) ≈ 0.91629                k) −γ ≈ −0.57722
+      l) 2cos 1 − sin 1 ≈ 0.23913 (F(t) = sin(t²)/t)
+
+M10. For each sequence give (a.e.? in measure? in L¹?) convergence to 0 —
+     answer Y or N three times. Lebesgue measure on the given space.
+     a) 𝟙_[0,1/n] on [0, 1]             b) n𝟙_[0,1/n] on [0, 1]
+     c) √n 𝟙_[0,1/n] on [0, 1]          d) 𝟙_[n,n+1] on R
+     e) (1/n)𝟙_[0,n] on R               f) the typewriter sequence on [0, 1]
+     g) xⁿ on [0, 1]                    h) n xⁿ on [0, 1]
+     i) sin(nx) on [0, 2π]              j) the constants (−1)ⁿ/n on [0, 1]
+     k) n²x e^(−nx) on [0, 1]           l) e^(−nx²) on R
+     Answers:
+       a) Y Y Y     b) Y Y N     c) Y Y Y     d) Y N N     e) Y Y N
+       f) N Y Y     g) Y Y Y     h) Y Y N     i) N N N (∫|sin nx| = 4)
+       j) Y Y Y     k) Y Y N (∫ → 1)           l) Y Y Y (∫ = √(π/n))
+
+M11. Is f Riemann integrable (R) or not (N) on [0, 1] (proper Riemann
+     integral, bounded f only)? Give its Lebesgue integral (∞ if f ≥ 0 is
+     not integrable, "not L¹" otherwise).
+     a) 𝟙_Q                             b) 𝟙_C (C the Cantor set)
+     c) Thomae's function (1/q at x = p/q in lowest terms, 0 at irrationals)
+     d) 𝟙_F, F a fat Cantor set of measure 1/2
+     e) sin(1/x), f(0) = 0              f) x^(−1/2), f(0) = 0
+     g) 1/x, f(0) = 0                   h) 1 at the points 1/n, 0 elsewhere
+     i) ⌊1/x⌋, f(0) = 0                 j) the fractional part {1/x}, f(0) = 0
+     k) x² on the irrationals, 0 on Q
+     l) f = (−1)ⁿ n on (1/(n + 1), 1/n]
+     Answers:
+       a) N, 0      b) R, 0      c) R, 0
+       d) N (discontinuous on F, of positive measure), 1/2
+       e) R (one discontinuity), sin 1 − Ci(1) ≈ 0.50407
+       f) N (unbounded), 2        g) N, ∞     h) R, 0
+       i) N (unbounded), ∞ (∑n(1/n − 1/(n + 1)) = ∑1/(n + 1))
+       j) R (countably many discontinuities), 1 − γ ≈ 0.42278
+       k) N, 1/3
+       l) N; not L¹ (∫|f| = ∑1/(n + 1) = ∞), although the improper limit
+          of ∫_ε¹ f exists and equals ln 2 − 1 ≈ −0.30685
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every subset of a Lebesgue null set is Lebesgue measurable.
+     b) Every Lebesgue measurable set is a Borel set.
+     c) A set of Lebesgue measure 0 is countable.
+     d) An open dense subset of [0, 1] has measure 1.
+     e) If ∫|f| = 0 then f = 0 everywhere.
+     f) If fₙ → f pointwise on [0, 1] then ∫fₙ → ∫f.
+     g) If fₙ ↓ f ≥ 0 pointwise then ∫fₙ → ∫f.
+     h) Convergence in L¹ implies convergence a.e.
+     i) On [0, 1], a.e. convergence implies convergence in measure.
+     j) The two iterated integrals agree for every measurable f on [0, 1]².
+     k) Tonelli's theorem holds for every measurable f ≥ 0 on a product of
+        σ-finite spaces.
+     l) A bounded f on [a, b] is Riemann integrable iff it is continuous
+        a.e.
+     m) If f ∈ L¹(R) then f(x) → 0 as x → ∞.
+     n) If f ∈ L¹(R) is uniformly continuous then f(x) → 0 as x → ±∞.
+     o) A continuous function maps null sets to null sets.
+     p) A Lipschitz function R → R maps null sets to null sets.
+     q) If m(E) > 0 then E − E = {x − y : x, y ∈ E} contains an interval
+        around 0.
+     r) Every Lebesgue measurable function is a.e. equal to a Borel function.
+     Answers:
+       a) T (completeness)
+       b) F: a non-Borel subset of the Cantor set (there are 2^𝔠 subsets of
+          C, all null, but only 𝔠 Borel sets)
+       c) F: the Cantor set          d) F: M2 s) (measure ≤ 1/2)
+       e) F: 𝟙_Q                     f) F: n𝟙_(0,1/n)
+       g) F: 𝟙_[n,∞) (true if ∫f₁ < ∞)
+       h) F: typewriter (a subsequence does converge a.e.)
+       i) T                          j) F: M8 h)
+       k) T                          l) T (Lebesgue's criterion)
+       m) F: a spike of height 1 and width 2⁻ⁿ at each integer n
+       n) T                          o) F: the Cantor function maps C onto
+                                        [0, 1]
+       p) T                          q) T (Steinhaus theorem)
+       r) T
+
+TEACHING TIPS
+  Struggling: start every convergence question by DRAWING fₙ for n = 1,
+  2, 5, 20 and asking "where does the area go?" — a spike (n𝟙_(0,1/n)),
+  a wanderer (𝟙_[n,n+1]) or a flattening (1/n)𝟙_[0,n]); these three
+  pictures explain every failure of "lim ∫ = ∫ lim". Insist on a written
+  line "0 ≤ fₙ ↑ f, so MCT" or "|fₙ| ≤ g with ∫g = ..., so DCT" before any
+  exchange of limit and integral, and "∬|f| < ∞ by Tonelli, so Fubini"
+  before any change of order. For σ-algebras on finite sets, always find
+  the atoms first. Harder: prove Carathéodory's theorem that the
+  measurable sets form a σ-algebra and m is countably additive on it;
+  prove that Lebesgue measure is the only translation-invariant Borel
+  measure with m[0, 1] = 1; construct the Cantor function and show it is
+  continuous, increasing, with derivative 0 a.e. yet c(0) = 0, c(1) = 1
+  (so the fundamental theorem of calculus fails without absolute
+  continuity); prove Egoroff and Lusin's theorems; prove the Lebesgue
+  differentiation theorem via the Vitali covering lemma; and show that
+  convergence in measure is metrisable but a.e. convergence is not.
