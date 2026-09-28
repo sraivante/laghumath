@@ -5,10 +5,14 @@
 
 How to use this file (note for the parent / teacher)
 ----------------------------------------------------
-- Each of the 17 topics from topic.txt (0.1 to 0.17) has 2 questions:
+- Each of the 17 topics from topic.txt (0.1 to 0.17) has 3 questions:
     Q1 = DESCRIPTIVE : builds the idea and the words for it.
     Q2 = NUMERICAL   : uses small numbers (1 to 5, sometimes up to 10).
-- Every question has:
+  and then quick-drill items:
+    Q3 = MATHEMATICAL ONLY : short questions with just dots, shapes and
+                             numbers, with the answer and a one-line reason.
+  A mixed revision test with an answer key is at the end of the file.
+- Every Q1 and Q2 has:
     * SET-UP          what to keep ready (use real objects, never worksheets
                       at this age)
     * ASK             the exact words to say to the child
@@ -75,6 +79,15 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   6 socks (3 pairs), or shoes: "Mummy's shoes, Papa's shoes, your shoes."
 
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  ▲   ▲   ●   ▲        Which one is different?
+      Answer: ● (the 3rd one). The others are all triangles.
+  b)  ●●     ●●●     ●●     Which two groups are the same?
+      Answer: the 1st and 3rd. Each has 2 dots. The middle has 3.
+  c)  ■  ■  ■  ▲  ■         How many are the same as ■?
+      Answer: 4. Count only the squares: 1, 2, 3, 4.
+
 
 ================================================================================
 TOPIC 0.2 — SORTING BY ONE ATTRIBUTE (colour, size, shape, type)
@@ -124,6 +137,15 @@ IF THE CHILD STRUGGLES:
   aloud yourself.
 TRY NEXT:
   Sort 5 fruits into apples and bananas and count each group.
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  ●  ▲  ●  ●  ▲        Sort by shape. How many ●? How many ▲?
+      Answer: ● = 3, ▲ = 2.
+  b)  ★  ■  ★  ★  ■  ■  ★   How many ★? How many ■? Which group is more?
+      Answer: ★ = 4, ■ = 3. Stars are more (4 is more than 3).
+  c)  ● ● ▲ ▲ ■              Make 3 groups. How many in each group?
+      Answer: ● group = 2, ▲ group = 2, ■ group = 1.
 
 
 ================================================================================
@@ -179,6 +201,22 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   4 cups of different sizes in order; or 3 pencils from short to long.
 
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  A: ━━━━━━━━
+      B: ━━━              Which line is longer?
+      Answer: A. Both start at the same place; A goes further.
+  b)  Tower A     Tower B
+                    ■
+                    ■
+        ■           ■
+        ■           ■
+        ■           ■      Which is taller? How many blocks taller?
+      Answer: B is taller. A = 3 blocks, B = 5 blocks. B is 2 blocks taller.
+  c)  X: ━━━━     Y: ━    Z: ━━━━━━━
+      Put them in order from shortest to longest.
+      Answer: Y, X, Z.
+
 
 ================================================================================
 TOPIC 0.4 — MORE / LESS / SAME (by looking, without counting)
@@ -229,6 +267,15 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   4 vs 2. Or start with the same number and ask, "I took one away. Which
   row has less now?"
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  ●●●●●   or   ●●          Which has more?
+      Answer: ●●●●● (5 is more than 2).
+  b)  ●●●     or   ●●●         More, less or same?
+      Answer: Same (3 and 3).
+  c)  ●       or   ●●●●        Which has less?
+      Answer: ● (1 is less than 4).
 
 
 ================================================================================
@@ -281,6 +328,16 @@ TRY NEXT:
   "Put 2 balls in. Is the basket empty? No! Is it full? Not yet — we can
   fit more."
 
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  Box: [          ]       How many balls are in the box?
+      Answer: 0 (zero). The box is empty.
+  b)  Box: [ ● ● ● ]  Take all the balls out. How many are left?
+      Answer: 0. 3 balls out, none left, the box is empty.
+  c)  A jug fills 3 cups.  ▢ ▢ ▢   How many cups full? How many empty?
+      Jug poured into: ▣ ▣ ▢        (▣ = full, ▢ = empty)
+      Answer: 2 cups full, 1 cup empty.
+
 
 ================================================================================
 TOPIC 0.6 — POSITION WORDS (in, on, under, over, beside, front, behind,
@@ -329,6 +386,19 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   "Put 2 blocks UNDER the chair and 1 block ON the chair. How many blocks
   altogether?" (Answer: 3.)
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  TOP     : ★
+      MIDDLE  : ★ ★
+      BOTTOM  : ★ ★ ★       How many ★ on TOP? On the BOTTOM?
+      Answer: TOP = 1, BOTTOM = 3. The bottom has the most.
+  b)  ●   ■   ▲             What is BESIDE ■?
+      Answer: ● and ▲ (one on each side).
+  c)       ●
+         ─────
+           ■                Is ● ON TOP of the line or UNDER it? And ■?
+      Answer: ● is on top (over), ■ is under.
 
 
 ================================================================================
@@ -381,6 +451,14 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   "Ten in the Bed" — counting back from 10.
 
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  1, 2, __, 4, 5         Answer: 3
+  b)  1, 2, 3, 4, __        Answer: 5
+  c)  5, 4, 3, __, 1        Answer: 2 (counting backwards)
+  d)  What comes after 6?   Answer: 7
+  e)  What comes before 10? Answer: 9
+
 
 ================================================================================
 TOPIC 0.8 — SUBITISING SMALL GROUPS (instantly seeing 1, 2, 3 items)
@@ -430,6 +508,16 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   Drop 1, then 2 more (1 and 2 make 3). Or roll a die with 1, 2, 3 and
   name the number without counting.
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  (Show each group for only 2 seconds.)
+  a)  ●                      Answer: 1
+  b)  ●  ●                   Answer: 2
+  c)    ●
+       ●  ●                  Answer: 3
+  d)  ●●  and  ●             Put them together. How many?
+      Answer: 3 (2 and 1 make 3).
 
 
 ================================================================================
@@ -481,6 +569,18 @@ TRY NEXT:
   5 blocks: tower, then row, then a circle. Ask before counting: "Do you
   think it is still 5?"
 
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  Row A:  ●●●
+      Row B:  ●     ●     ●     More, less or same?
+      Answer: Same. Both rows have 3. Row B is only spread out.
+  b)  Row A:  ■ ■ ■ ■
+      Row B:  ■ ■ ■ ■ ■ ■
+      Row C:  ■      ■      ■      ■
+      Do Row A and Row C have the same number?
+      Answer: Yes, 4 and 4. (Row B has 6, so it really IS more.)
+      Teacher's note: always COUNT to check, don't judge by length.
+
 
 ================================================================================
 TOPIC 0.10 — ONE-TO-ONE CORRESPONDENCE (one plate per person, one sock per
@@ -526,6 +626,18 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   Match children to chairs in a game ("musical chairs" style): how many
   are left standing?
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  Cups:    ▢  ▢  ▢
+      Saucers: ○  ○         One cup on each saucer. How many cups are left?
+      Answer: 1 cup is left. 3 cups, 2 saucers.
+  b)  Children: ☺ ☺ ☺ ☺
+      Chairs:   ▭ ▭ ▭ ▭     One child on each chair. Anyone left standing?
+      Answer: No. 4 children, 4 chairs, the same number.
+  c)  Dogs:  ◆ ◆ ◆
+      Bones: ─ ─ ─ ─ ─      One bone for each dog. How many bones left over?
+      Answer: 2 bones left over (5 bones, 3 dogs).
 
 
 ================================================================================
@@ -579,6 +691,16 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   Count the SIDES too: a triangle has 3 sides, a square has 4 sides.
 
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  ▲   Name it. How many corners?   Answer: triangle, 3 corners
+  b)  ■   Name it. How many corners?   Answer: square, 4 corners
+  c)  ●   Name it. How many corners?   Answer: circle, 0 corners
+  d)  ▲  ●  ▲  ■  ▲         How many triangles?
+      Answer: 3.
+  e)  ▲ and ■ together: how many corners altogether?
+      Answer: 7 (3 + 4). (A challenge: count all the corners one by one.)
+
 
 ================================================================================
 TOPIC 0.12 — SIMPLE REPEATING PATTERNS (red-blue-red-blue; clap-stomp-clap)
@@ -625,6 +747,14 @@ IF THE CHILD STRUGGLES:
   Do the pattern only twice (2 claps, 2 stomps).
 TRY NEXT:
   "Clap, clap, stomp" done twice: how many claps? (4) How many stomps? (2)
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  ●  ■  ●  ■  ●  __        Answer: ■
+  b)  1  2  1  2  1  __        Answer: 2
+  c)  ★  ★  ●  ★  ★  ●  ★  ★  __     Answer: ●   (pattern: ★ ★ ●)
+  d)  ▲  ●  ▲  ●  ▲  ●         How many ▲?  Answer: 3
+  e)  What repeats in  A B A B A B ?   Answer: "A B" (the core).
 
 
 ================================================================================
@@ -673,6 +803,17 @@ TRY NEXT:
   Two towers: one of 3 blocks, one of 5. "Which is taller? How many more
   blocks does the short tower need to be the same?" (2.)
 
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)   ■
+       ■
+       ■
+       ■                    How many blocks tall?   Answer: 4
+  b)  Take 1 block off the tower above. How many now?   Answer: 3
+  c)  Put 1 more block on the tower of 4. How many now? Answer: 5
+  d)  Cups sizes:  small ◦   medium ○   big ◯
+      Which one goes inside all the others?   Answer: small ◦
+
 
 ================================================================================
 TOPIC 0.14 — DAILY ROUTINE SEQUENCE: BEFORE / AFTER, FIRST / NEXT / LAST
@@ -719,6 +860,17 @@ IF THE CHILD STRUGGLES:
 TRY NEXT:
   4 in the line; 2 go down the slide. How many wait? (2.)
 
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  ●  ■  ▲   (● is at the front)
+      Which is FIRST?   Answer: ●
+      Which is LAST?    Answer: ▲
+      What comes AFTER ■?   Answer: ▲
+      What comes BEFORE ■?  Answer: ●
+  b)  Which comes first when we count: 3 or 2?   Answer: 2
+  c)  ☺ ☺ ☺  in a line. The first one leaves. How many are still in line?
+      Answer: 2.
+
 
 ================================================================================
 TOPIC 0.15 — SIMPLE PUZZLES (2-6 piece), SHAPE SORTERS
@@ -763,6 +915,15 @@ IF THE CHILD STRUGGLES:
   Use a 2-piece puzzle: 1 placed, 1 left.
 TRY NEXT:
   6-piece puzzle. "You have done 3. How many more?" (3.)
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  A puzzle has 4 pieces. 2 are done. How many are left?
+      Answer: 2.   (4 pieces: ✔ ✔ ▢ ▢)
+  b)  Hole: ▲.  Blocks: ●  ■  ▲.  Which block fits the hole?
+      Answer: ▲.
+  c)  A square picture is cut into 2 pieces: ▌▐   How many pieces?
+      Answer: 2. Put them back together and it is 1 whole square.
 
 
 ================================================================================
@@ -812,6 +973,15 @@ IF THE CHILD STRUGGLES:
   Only 3 stones; go back 1 jump (stone 2).
 TRY NEXT:
   "Start on stone 1, jump forward 2. Where are you?" (Stone 3.)
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  Number path:  [1] [2] [3] [4] [5]
+  a)  Frog on [1]. Jumps forward 2.   Where is it?   Answer: [3]
+  b)  Frog on [5]. Jumps back 1.      Where is it?   Answer: [4]
+  c)  Frog on [2]. Jumps forward 1.   Where is it?   Answer: [3]
+  d)  Frog on [4]. Jumps back 3.      Where is it?   Answer: [1]
+  Teacher's tip: move a coin on the path so the child SEES each jump.
 
 
 ================================================================================
@@ -868,6 +1038,49 @@ IF THE CHILD STRUGGLES:
   Count just 3 steps. Give 1 toy to teddy and 1 to dolly (total 2).
 TRY NEXT:
   "There are 4 apples. We eat 1. How many are left?" (3.)
+
+Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
+     with a number, a word, or by pointing.
+  a)  How many fingers on one hand?          Answer: 5
+  b)  1 nose and 2 eyes. How many altogether? Answer: 3
+  c)  3 steps. You climbed 1. How many more?  Answer: 2
+  d)  You are 2. How old on your next birthday? Answer: 3
+  e)  2 shoes, 2 socks. Which is more?        Answer: same (2 and 2)
+
+
+================================================================================
+MIXED REVISION TEST — STAGE 0 (mathematical only, answers at the bottom)
+================================================================================
+Adult reads each question and points to the pictures. 1 mark each. 15 marks.
+
+  1.  ●●●                            How many?
+  2.  ▲  ▲  ■  ▲                     Which one is different?
+  3.  ●●●●  or  ●                    Which has more?
+  4.  1, 2, 3, __, 5                 What is missing?
+  5.  ●  ■  ●  ■  ●  __              What comes next?
+  6.  ▲                              How many corners?
+  7.  ●                              How many corners?
+  8.  Box: [      ]                  How many things inside?
+  9.  Tower of 3 blocks, add 1.      How many blocks?
+ 10.  Tower of 3 blocks, take 1 off. How many blocks?
+ 11.  Cups ▢ ▢ ▢ ▢, saucers ○ ○ ○.   How many cups have no saucer?
+ 12.  ●●  and  ●●    spread as  ●   ●   ●   ●      Same or different number?
+ 13.  ☺ ☺ ☺  in a line.              Who is last? (point)  How many in line?
+ 14.  Frog on [2], jumps forward 2.  Where is it?
+ 15.  ★ ★ ● ★ ★ ● ★ ★ __             What comes next?
+
+ANSWER KEY
+  1. 3          2. ■            3. ●●●●         4. 4          5. ■
+  6. 3          7. 0            8. 0            9. 4         10. 2
+ 11. 1         12. same (4)    13. the one at the back; 3     14. [4]
+ 15. ●
+
+Scoring guide:
+  13-15  Ready for Stage 1.
+  9-12   Nearly there — replay the topics of the missed questions for a week.
+  0-8    Keep playing Stage 0 games; try the test again in 3-4 weeks.
+  Remember: at age 2-3 the test is a GAME. Stop if the child is tired.
+
 
 
 ================================================================================
