@@ -5,1075 +5,2547 @@
 
 How to use this file (note for the parent / teacher)
 ----------------------------------------------------
-- Each of the 16 topics from topic.txt (1.1 to 1.16) has 3 questions:
-    Q1 = DESCRIPTIVE : builds the idea and the words for it.
-    Q2 = NUMERICAL   : a hands-on problem with numbers up to 10.
-  and then quick-drill items:
-    Q3 = MATHEMATICAL ONLY : short questions with just dots, shapes and
-                             numerals, with the answer and a one-line reason.
-  A mixed revision test with an answer key is at the end of the file,
-  followed by a readiness checklist for Stage 2.
-- Every Q1 and Q2 has:
-    * SET-UP          what to keep ready (real objects first, pictures later)
-    * ASK             the exact words to say to the child
-    * EXPECTED ANSWER what a child who understands will say or do
-    * TEACHER'S EXPLANATION  how to explain it, step by step
-    * IF THE CHILD STRUGGLES  an easier version to try
-    * TRY NEXT        a slightly harder version for the next day
-- What changes from Stage 0: the child now COUNTS exactly (not just "a lot"
-  or "a little"), begins to READ the numerals 0-10, and starts to compare,
-  order, measure, sort and share using numbers.
-- Children aged 3-4 can now answer in short sentences. Ask "How do you
-  know?" often — explaining is part of learning.
-- Sessions of 10-15 minutes, playful, with praise for effort and for
-  checking ("You counted again to make sure — well done!").
+- There are 16 topics (1.1 to 1.16, the same as in topic.txt). Each topic
+  has:
+    * WHAT THE CHILD MUST LEARN   the checklist of skills in that topic
+    * PART A — DESCRIPTIVE        12 questions (D1-D12): stories, hands-on
+                                  tasks and word problems, each with the
+                                  answer and "Teacher explains" (how to
+                                  teach it, step by step, the way a teacher
+                                  would in class)
+    * PART B — MATHEMATICAL ONLY  12 questions (M1-M12): pure number, dot
+                                  and shape drills with answers. Most have
+                                  several parts (a, b, c ...) so that EVERY
+                                  number combination of this stage is
+                                  practised, not just one example.
+    * TEACHING TIPS               what to do if the child struggles, and
+                                  how to make it harder
+- In total: 192 descriptive + 192 mathematical questions, then a mixed
+  revision test and a readiness checklist for Stage 2.
+- Numbers in this stage go from 0 to 10. A child must meet EACH number
+  many times, in many forms (objects, dots, fingers, numerals, words), and
+  in many combinations (one more, one less, before, after, between, more
+  than, fewer than, shared by 2 ...). That is why the drills are long.
+- Use real objects first (buttons, blocks, fruit, toys), then pictures,
+  then the printed drills. Children aged 3-4 do NOT need to write the
+  answers: they can say them, point, or show with objects or fingers.
+- Do 10-15 minutes a day. Pick 2-3 descriptive questions and 2-3 drills
+  per session. Repeat each topic over several days with new objects.
+- Ask "How do you know?" often. Explaining is part of learning.
 - Revise Stage 0 (A0.txt) whenever the child finds something difficult.
 
 
 ================================================================================
 TOPIC 1.1 — COUNTING OBJECTS 1-10 WITH TOUCH-AND-COUNT
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Say the number words 1 to 10 in the correct order, forwards and
+    backwards.
+  - Say exactly ONE number for EACH object (touch-and-count).
+  - Keep track: move counted objects aside, or count in a line, so nothing
+    is missed or counted twice.
+  - Count objects in a line, in a circle, in a messy pile, in pictures,
+    and things that cannot be touched (claps, jumps, sounds).
+  - Know that the count is the same whichever object you start with.
+  - Start counting from any number (count on) and count back.
 
-Q1 (DESCRIPTIVE)
-SET-UP : 6 toy cars placed in a messy group on the table.
-ASK    : "Count the cars for me. How do you make sure you don't miss a car
-          or count one twice?"
-EXPECTED ANSWER:
-  Touches (or moves) each car once while saying one number word:
-  "1, 2, 3, 4, 5, 6." Explains: "I touch each one", "I move them to the
-  side after I count them."
-TEACHER'S EXPLANATION:
-  Good counting follows three rules:
-  1. SAY THE NUMBERS IN ORDER: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 — never skip.
-  2. ONE NUMBER FOR ONE THING: touch each object and say exactly one
-     number. (This is one-to-one correspondence from Stage 0.)
-  3. KEEP TRACK: move each counted object to a "counted" side, or count
-     in a line from left to right, so nothing is missed or counted twice.
-  Show a WRONG way on purpose (touch one car twice) and ask, "Did I count
-  right?" Children love catching the teacher's mistakes, and it teaches
-  them why the rules matter.
-IF THE CHILD STRUGGLES:
-  Count 3 objects in a straight line. Hold the child's finger and touch
-  each object together.
-TRY NEXT:
-  Count 10 objects in a messy pile, or count things that can't be moved
-  (pictures on a page, windows on a bus) — now the child must remember
-  which ones were already counted.
+PART A — DESCRIPTIVE
+--------------------
+D1. Riya has 6 toy cars in a messy pile. How should she count them so that
+    she does not miss a car or count one twice?
+    Answer: Touch each car, say one number, and push it to the side:
+    "1, 2, 3, 4, 5, 6". There are 6 cars.
+    Teacher explains: Good counting has three rules. (1) Say the numbers in
+    order, never skipping. (2) One number for one car. (3) Keep track:
+    move each counted car to a "counted" side. Show a WRONG count on
+    purpose (touch one car twice) and let the child catch your mistake.
 
-Q2 (NUMERICAL)
-SET-UP : A plate with 4 apples and 3 bananas.
-ASK    : "How many apples? How many bananas? Now count ALL the fruit. How
-          many pieces of fruit are there?"
-EXPECTED ANSWER:
-  - Apples = 4
-  - Bananas = 3
-  - All fruit = 7
-TEACHER'S EXPLANATION:
-  1. Count the apples, touching each: "1, 2, 3, 4" — 4 apples.
-  2. Count the bananas: "1, 2, 3" — 3 bananas.
-  3. To count ALL, start again from 1 and touch every fruit: "1, 2, 3, 4,
-     5, 6, 7" — 7 pieces of fruit.
-  4. Say it as a sentence: "4 apples and 3 bananas make 7 fruits."
-  (This is the child's first "4 and 3 make 7" — addition in real life.)
-IF THE CHILD STRUGGLES:
-  2 apples and 1 banana (total 3).
-TRY NEXT:
-  5 apples and 5 bananas (total 10). Later ask: "Can you count on from 4
-  instead of starting again?" ("4... 5, 6, 7")
+D2. How many fingers are on one of your hands? Count them.
+    Answer: 5 fingers.
+    Teacher explains: Use a finger of the other hand to touch each finger
+    once: thumb 1, pointer 2, middle 3, ring 4, little finger 5. Our hands
+    are a counting tool we always carry. Two hands have 10 fingers.
 
-Q3 (MATHEMATICAL ONLY) — quick drill: adult reads/points, child answers
-     with a number, a word, or by pointing.
-  a)  ● ● ● ● ●                      How many?   Answer: 5
-  b)  ★ ★ ★ ★ ★ ★ ★                  How many?   Answer: 7
-  c)  ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲            How many?   Answer: 10
-  d)  ■ ■ ■ ■  and  ■ ■              How many altogether?
-      Answer: 6 (count all: 1, 2, 3, 4, 5, 6).
-  e)  Count to 10 out loud, then count back from 10 to 1.
-      Answer: 1 2 3 4 5 6 7 8 9 10 ; 10 9 8 7 6 5 4 3 2 1
+D3. Aman counts 5 apples starting from the left. Meena counts the same
+    apples starting from the right. Who gets the bigger number?
+    Answer: Neither. Both get 5.
+    Teacher explains: Let the child count from the left, then from the
+    right, then from the middle. The answer is always 5. It does not
+    matter where we start, as long as we count each apple once.
+
+D4. The teacher counts 4 blocks but touches one block twice and says
+    "1, 2, 3, 4, 5". Is 5 right?
+    Answer: No. There are 4 blocks. One block was counted twice.
+    Teacher explains: Count again slowly, moving each block after
+    touching it. "1, 2, 3, 4". Moving the blocks stops us counting one
+    twice.
+
+D5. Close your eyes. I will clap. How many claps did you hear? (Clap 3
+    times.)
+    Answer: 3 claps.
+    Teacher explains: We can count things we cannot touch. Put up one
+    finger for each clap. Then count the fingers. Try also bell rings,
+    drum beats and knocks on the door.
+
+D6. Jump and count your jumps. Stop when you reach 7.
+    Answer: 7 jumps, with the counting "1, 2, 3, 4, 5, 6, 7".
+    Teacher explains: One number for each jump, said when the feet land.
+    The child must remember to STOP at 7. Counting actions builds rhythm
+    and the one-number-for-one-thing rule.
+
+D7. In this picture there are 8 birds. You cannot move them. How do you
+    count them without missing any?
+    Answer: 8 birds. Count row by row from left to right, or put a small
+    counter (a button) on each bird as you count it.
+    Teacher explains: When things cannot be moved, we need a plan: go in
+    order (left to right, top to bottom), or mark each counted one.
+
+D8. There are 3 red balloons and 2 blue balloons. How many balloons are
+    there altogether?
+    Answer: 5 balloons.
+    Teacher explains: Count the red ones (1, 2, 3), the blue ones (1, 2),
+    then count ALL of them from the start: 1, 2, 3, 4, 5. "3 and 2 make
+    5." This is the first idea of adding.
+
+D9. Count the wheels on a tricycle and on a bicycle. Which has more?
+    Answer: Tricycle 3 wheels, bicycle 2 wheels. The tricycle has more.
+    Teacher explains: Touch each wheel on a real bike or a picture. "Tri"
+    means three. 3 comes after 2 when we count, so 3 is more.
+
+D10. There are 9 steps up to the door. You climb up counting. How many
+     steps are there when you come down?
+     Answer: Still 9 steps. Going down we can count back: 9, 8, 7, 6, 5,
+     4, 3, 2, 1.
+     Teacher explains: The number of steps does not change when we walk
+     the other way. Counting up and counting back both end in the same
+     number of steps.
+
+D11. 10 ducks sit in a circle. Where do you start counting?
+     Answer: Anywhere! But mark the first duck (touch it, or put a counter
+     near it) so you know where to stop. There are 10 ducks.
+     Teacher explains: In a circle there is no first or last, so we must
+     make our own start. Without a mark, children often go round and
+     round and count too many.
+
+D12. Count backwards from 10 like a rocket, then say "Blast off!".
+     Answer: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, Blast off!
+     Teacher explains: Each number is ONE LESS than the number before.
+     Hold up 10 fingers and fold one down with each number. Counting
+     back is the start of "take away".
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. How many?
+    a) ● ● ●        b) ●        c) ● ● ● ● ●        d) ● ●        e) ● ● ● ●
+    Answers: a) 3   b) 1   c) 5   d) 2   e) 4
+
+M2. How many?
+    a) ★ ★ ★ ★ ★ ★
+    b) ★ ★ ★ ★ ★ ★ ★ ★
+    c) ★ ★ ★ ★ ★ ★ ★
+    d) ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+    e) ★ ★ ★ ★ ★ ★ ★ ★ ★
+    Answers: a) 6   b) 8   c) 7   d) 10   e) 9
+
+M3. How many altogether? (Count both groups.)
+    a) ■ ■ ■   and   ■ ■ ■
+    b) ■ ■ ■ ■ ■   and   ■ ■
+    c) ■ ■ ■ ■   and   ■ ■ ■ ■
+    d) ■   and   ■ ■ ■ ■ ■ ■ ■ ■
+    e) ■ ■ ■ ■ ■   and   ■ ■ ■ ■ ■
+    Answers: a) 6   b) 7   c) 8   d) 9   e) 10
+
+M4. Count forward. Fill in the missing numbers.
+    1, 2, 3, __, __, 6, __, 8, __, 10
+    Answers: 4, 5, 7, 9
+
+M5. Count back. Fill in the missing numbers.
+    10, 9, __, 7, __, __, 4, __, 2, __
+    Answers: 8, 6, 5, 3, 1
+
+M6. Count on from the first number to the second.
+    a) from 4 to 8     b) from 6 to 10     c) from 2 to 7     d) from 0 to 5
+    Answers: a) 4 5 6 7 8   b) 6 7 8 9 10   c) 2 3 4 5 6 7   d) 0 1 2 3 4 5
+
+M7. Count back from the first number to the second.
+    a) from 7 to 3     b) from 5 to 1     c) from 9 to 5     d) from 4 to 0
+    Answers: a) 7 6 5 4 3   b) 5 4 3 2 1   c) 9 8 7 6 5   d) 4 3 2 1 0
+
+M8. Count each shape.   ▲ ● ▲ ■ ▲ ● ▲ ■ ●
+    How many ▲?  How many ●?  How many ■?  How many shapes in all?
+    Answers: ▲ = 4, ● = 3, ■ = 2, all = 9
+
+M9. Count the sticks.
+    a) | | | |          b) | | | | | | | | |          c) | | | | | | |
+    d) | |              e) | | | | | |
+    Answers: a) 4   b) 9   c) 7   d) 2   e) 6
+
+M10. Is the counting right or wrong?
+     a) ● ● ●   counted "1, 2, 3"
+     b) ● ● ● ● ●   counted "1, 2, 3, 4"
+     c) ● ● ● ● ● ●   counted "1, 2, 3, 4, 5, 6"
+     d) ● ●   counted "1, 2, 3"
+     Answers: a) right   b) wrong, it is 5 (one was missed)
+              c) right   d) wrong, it is 2 (one was counted twice)
+
+M11. Draw this many dots.
+     a) 2     b) 5     c) 8     d) 10
+     Answers: a) ● ●
+              b) ● ● ● ● ●
+              c) ● ● ● ● ● ● ● ●
+              d) ● ● ● ● ● ● ● ● ● ●
+
+M12. How many altogether? (Three groups.)
+     a) ● ●   ● ●   ●
+     b) ● ● ●   ● ● ●   ● ● ●
+     c) ●   ● ● ● ●   ● ● ● ● ●
+     Answers: a) 5   b) 9   c) 10
+
+TEACHING TIPS
+  Struggling: count only 1-5, objects in a straight line, holding the
+  child's finger. Harder: count 10 things in a messy pile, or pictures
+  that cannot be moved, or count past 10 (11, 12 ...) for fun.
 
 
 ================================================================================
 TOPIC 1.2 — CARDINALITY: THE LAST NUMBER COUNTED TELLS "HOW MANY"
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - The LAST number said when counting tells how many there are in ALL.
+  - Answer "how many?" without counting again.
+  - "Give me 6" means count out 6 and STOP.
+  - Hiding, moving or stacking a group does not change how many.
+  - One more makes the NEXT number; one less makes the number BEFORE.
 
-Q1 (DESCRIPTIVE)
-SET-UP : 5 blocks in a row.
-ASK    : (After the child counts "1, 2, 3, 4, 5".) "So how many blocks are
-          there?" Then: "Why did you say 5?"
-EXPECTED ANSWER:
-  "5!" — WITHOUT counting again. Explains: "Because 5 was the last one",
-  "I counted and stopped at 5."
-TEACHER'S EXPLANATION:
-  1. When we count, each number is a step. The LAST number we say tells
-     us HOW MANY things there are altogether.
-  2. The number 5 does not belong to the last block only — it tells about
-     the WHOLE group. Sweep your hand around all the blocks: "ALL of these
-     are 5 blocks."
-  3. A child who counts again when asked "how many?" has not yet
-     understood this. Don't worry — model it: "1, 2, 3, 4, 5. FIVE. There
-     are FIVE blocks."
-  4. Another test: after counting, ask "Give me 5 blocks." A child who
-     understands gives the whole group, not just the last block.
-IF THE CHILD STRUGGLES:
-  Use 2 or 3 objects. Stress the last word loudly: "1, 2, THREE — three
-  blocks!"
-TRY NEXT:
-  Count a group, then hide it under a cloth: "How many are under the
-  cloth?" (The child must remember the last number counted.)
+PART A — DESCRIPTIVE
+--------------------
+D1. You counted the blocks: "1, 2, 3, 4, 5". So how many blocks are there?
+    Why?
+    Answer: 5 blocks, because 5 was the last number I said.
+    Teacher explains: The last number tells about the WHOLE group. Sweep
+    your hand around all the blocks: "ALL of these are 5 blocks." If the
+    child counts again, model it: "1, 2, 3, 4, 5. FIVE blocks."
 
-Q2 (NUMERICAL)
-SET-UP : A pile of 10 buttons and a small bowl.
-ASK    : "Please put 6 buttons in the bowl. How many are in the bowl? How
-          do you know?"
-EXPECTED ANSWER:
-  Counts out exactly 6 buttons into the bowl and STOPS at 6. Says: "6,
-  because I counted to 6 and stopped."
-TEACHER'S EXPLANATION:
-  1. "GIVING a number" is harder than counting what is there — the child
-     must remember the target number (6) and stop there.
-  2. Count each button as it drops: "1, 2, 3, 4, 5, 6 — STOP!"
-  3. Check by tipping out and counting again: "1, 2, 3, 4, 5, 6. Yes!"
-  4. "The last number we said was 6, so there are 6 buttons."
-IF THE CHILD STRUGGLES:
-  "Give me 3 buttons." Hold up 3 fingers as a reminder of the target.
-TRY NEXT:
-  "Give me 8 buttons", or two requests at once: "Put 4 in the red bowl
-  and 2 in the blue bowl."
+D2. Please give me 6 buttons from this pile. How do you know when to stop?
+    Answer: I count "1, 2, 3, 4, 5, 6" as I give them, and I stop at 6.
+    Teacher explains: Giving a number is harder than counting what is
+    there, because the child must remember the target. Hold up 6 fingers
+    as a reminder. Check together by counting again.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  I counted: 1, 2, 3, 4, 5, 6, 7.        How many things?
-      Answer: 7 (the last number said).
-  b)  ● ● ● ● ● ● ● ●     Count, then say how many without counting again.
-      Answer: 8
-  c)  Tom counted his cars: "1, 2, 3, 4". Then he found 1 more car. Now
-      how many?
-      Answer: 5 (one more than 4).
-  d)  Draw 4 circles.     Answer: ○ ○ ○ ○
+D3. Teddy counted his 4 balls. Then Mummy put a cloth over them. How many
+    balls are under the cloth?
+    Answer: 4 balls.
+    Teacher explains: Hiding does not change the number. Lift the cloth
+    and count to check: "1, 2, 3, 4. Still 4!"
+
+D4. Sara has 3 dolls. Grandma gives her 1 more doll. How many dolls does
+    Sara have now?
+    Answer: 4 dolls.
+    Teacher explains: One more is the NEXT counting number. 3, then 4.
+    Show it with fingers: 3 fingers, put up 1 more, count: 4.
+
+D5. Ravi has 5 sweets. He eats 1. How many sweets are left?
+    Answer: 4 sweets.
+    Teacher explains: One less is the number BEFORE. 5, back one step, 4.
+    Fold down one finger from 5 fingers and count what is left.
+
+D6. You counted 3 cups and said "three" when you touched the last cup.
+    Does "three" mean only that last cup?
+    Answer: No. Three means all the cups together.
+    Teacher explains: Ask "Give me the three cups." A child who
+    understands gives all of them, not only the last one.
+
+D7. Count 7 spoons. Now put them all into a jar. How many spoons are in
+    the jar?
+    Answer: 7 spoons.
+    Teacher explains: Moving things into a jar does not change how many.
+    Tip them out and count to check.
+
+D8. Show me 4 fingers. How many fingers are you showing?
+    Answer: 4 fingers.
+    Teacher explains: Try to show 4 at once without counting one by one.
+    Then count to check. Knowing small amounts quickly (like 4 fingers)
+    helps the child see "4" as one whole group.
+
+D9. A box has 2 red balls and 3 green balls. Mummy asks, "How many balls
+    are in the box?"
+    Answer: 5 balls.
+    Teacher explains: The question is about ALL the balls, not only one
+    colour. Count every ball from 1; the last number, 5, is the answer.
+
+D10. Asha and Raj count the same 6 leaves. Asha says 6. Raj says 7. Who is
+     right? How can we check?
+     Answer: Asha is right, 6. We check by counting again carefully,
+     moving each leaf as we count.
+     Teacher explains: If two counts disagree, count again slowly. Raj
+     probably counted one leaf twice.
+
+D11. Build a tower of 8 blocks. Now knock it down. How many blocks are on
+     the floor?
+     Answer: 8 blocks.
+     Teacher explains: A tower or a heap, the number is still 8. Nothing
+     was added and nothing was taken away.
+
+D12. I have 9 marbles. If I get 1 more, how many will I have?
+     Answer: 10 marbles.
+     Teacher explains: The number after 9 is 10. Show 9 fingers, add 1
+     more: all 10 fingers. 10 is a special number: two full hands.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. How many? (Say the last number.)
+    a) 1, 2, 3, 4                  b) 1, 2, 3, 4, 5, 6, 7
+    c) 1, 2                        d) 1, 2, 3, 4, 5, 6, 7, 8, 9
+    e) 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    Answers: a) 4   b) 7   c) 2   d) 9   e) 10
+
+M2. Count, then say how many without counting again.
+    a) ● ● ● ● ● ●
+    b) ● ● ● ● ● ● ● ●
+    c) ● ● ●
+    d) ● ● ● ● ● ● ● ● ● ●
+    Answers: a) 6   b) 8   c) 3   d) 10
+
+M3. Draw exactly this many.
+    a) 3     b) 6     c) 9     d) 1
+    Answers: a) ○ ○ ○   b) ○ ○ ○ ○ ○ ○   c) ○ ○ ○ ○ ○ ○ ○ ○ ○   d) ○
+
+M4. One MORE than:
+    a) 0 → __   b) 1 → __   c) 2 → __   d) 3 → __   e) 4 → __
+    f) 5 → __   g) 6 → __   h) 7 → __   i) 8 → __   j) 9 → __
+    Answers: a) 1  b) 2  c) 3  d) 4  e) 5  f) 6  g) 7  h) 8  i) 9  j) 10
+
+M5. One LESS than:
+    a) 10 → __   b) 9 → __   c) 8 → __   d) 7 → __   e) 6 → __
+    f) 5 → __    g) 4 → __   h) 3 → __   i) 2 → __   j) 1 → __
+    Answers: a) 9  b) 8  c) 7  d) 6  e) 5  f) 4  g) 3  h) 2  i) 1  j) 0
+
+M6. Same number or not?
+    a) ● ● ● ●    and    ●    ●    ●    ●
+    b) ● ● ●    and    ● ● ● ●
+    c) ● ● ● ● ●    and    ●  ●  ●  ●  ●
+    Answers: a) same (4 and 4)   b) not the same (3 and 4)
+             c) same (5 and 5)
+
+M7. Add one more and say how many.
+    a) ● ● ● + ●
+    b) ● ● ● ● ● ● + ●
+    c) ● ● ● ● ● ● ● ● ● + ●
+    d) ● + ●
+    Answers: a) 4   b) 7   c) 10   d) 2
+
+M8. Take one away and say how many.
+    a) ● ● ● ● ● take away 1     b) ● ● ● ● ● ● ● ● take away 1
+    c) ● take away 1     d) ● ● ● ● ● ● ● ● ● ● take away 1
+    Answers: a) 4   b) 7   c) 0   d) 9
+
+M9. Which group has exactly the number shown?
+    a) 5:   ● ● ● ●   |   ● ● ● ● ●   |   ● ● ● ● ● ●
+    b) 7:   ● ● ● ● ● ● ●   |   ● ● ● ● ● ● ● ●   |   ● ● ● ● ● ●
+    c) 2:   ● ● ●   |   ●   |   ● ●
+    Answers: a) the middle group   b) the first group   c) the last group
+
+M10. Fingers. Show:
+     a) 5     b) 10     c) 6     d) 7     e) 8     f) 9
+     Answers: a) one full hand   b) two full hands
+              c) one hand and 1 finger   d) one hand and 2 fingers
+              e) one hand and 3 fingers  f) one hand and 4 fingers
+
+M11. Two MORE than (count on two steps):
+     a) 3 → __   b) 6 → __   c) 8 → __   d) 0 → __   e) 5 → __
+     Answers: a) 5   b) 8   c) 10   d) 2   e) 7
+
+M12. Two LESS than (count back two steps):
+     a) 5 → __   b) 10 → __   c) 2 → __   d) 7 → __   e) 4 → __
+     Answers: a) 3   b) 8   c) 0   d) 5   e) 2
+
+TEACHING TIPS
+  Struggling: use 2 or 3 objects and say the last number loudly: "1, 2,
+  THREE. Three blocks!" Harder: count a group, hide it, add one more under
+  the cloth, and ask how many now.
 
 
 ================================================================================
 TOPIC 1.3 — RECOGNISING NUMERALS 0-10
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Know that a numeral is the written symbol for a number.
+  - Recognise and name every numeral 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+  - Put numerals in order, forwards and backwards.
+  - Find the numeral just before, just after and between.
+  - Tell apart numerals that look alike (6 and 9, 2 and 5, 1 and 7).
+  - Trace numerals with a finger (neat writing is NOT expected yet).
+  - Notice numerals in daily life.
 
-Q1 (DESCRIPTIVE)
-SET-UP : Large numeral cards 0-10. A tray of sand or rice.
-ASK    : "Which card says 3? What does the number 3 look like? Can you draw
-          3 in the sand with your finger?"
-EXPECTED ANSWER:
-  Picks the card "3". Describes it: "Two bumps", "Like half an 8". Traces
-  or draws a 3 in the sand (it may not be perfect).
-TEACHER'S EXPLANATION:
-  1. A NUMERAL is the WRITTEN SYMBOL for a number. The word "three", three
-     fingers, and the symbol 3 all mean the same amount.
-  2. Give each numeral a picture or rhyme to remember its shape:
-       0 — a round egg (and it means nothing is there)
-       1 — a straight stick
-       2 — a swan
-       3 — two bumps
-       4 — a chair turned upside down / a flag
-       5 — a man with a hat and a big belly
-       6 — a snail curling in
-       7 — a hockey stick / a cliff
-       8 — a snowman
-       9 — a balloon on a string
-       10 — a 1 and a 0 standing together (our first two-digit number)
-  3. Feel and trace numerals: sandpaper numbers, finger in sand, playdough
-     numbers. Writing numerals neatly is NOT expected yet.
-  4. Watch for mix-ups: 6 and 9 (turned over), 2 and 5, and backwards
-     numerals (Ɛ for 3). These are normal at this age.
-IF THE CHILD STRUGGLES:
-  Learn 1, 2, 3 first; add 2 new numerals a week.
-TRY NEXT:
-  Numeral hunt: find numerals on a clock, a calendar, the TV remote, a
-  lift, a car's number plate.
+PART A — DESCRIPTIVE
+--------------------
+D1. What is a numeral? Show me three ways to show the number four.
+    Answer: A numeral is the written sign for a number. Four can be shown
+    as the numeral 4, the word "four", and 4 things (●●●● or 4 fingers).
+    Teacher explains: All three mean the same amount. Put a card "4", a
+    card with the word, and 4 beads side by side and join them with a
+    ribbon.
 
-Q2 (NUMERICAL)
-SET-UP : Numeral cards 1 to 10 mixed up.
-ASK    : "Can you put the cards in order, from 1 to 10? Which number comes
-          just after 4? Which comes just before 9?"
-EXPECTED ANSWER:
-  - Order: 1 2 3 4 5 6 7 8 9 10
-  - After 4 comes 5.
-  - Before 9 comes 8.
-TEACHER'S EXPLANATION:
-  1. Find 1 first ("the stick"). Then look for the next number: "What
-     comes after 1? 2!" Continue, saying each number aloud.
-  2. Point to 4, move one step right: 5. "Just AFTER means one step
-     forward."
-  3. Point to 9, move one step left: 8. "Just BEFORE means one step
-     back."
-  4. Read the whole row forwards and backwards.
-IF THE CHILD STRUGGLES:
-  Order only 1 to 5.
-TRY NEXT:
-  Remove one card secretly: "Which number is missing?" (e.g. 1 2 3 _ 5 → 4)
+D2. What does the numeral 0 look like, and what does it mean?
+    Answer: 0 is round like an egg. It means none, nothing.
+    Teacher explains: Show an empty plate and the card 0 together.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  Point to 7 :   3   7   1   9          Answer: the second card, 7
-  b)  Which is 0 :   6   0   8               Answer: the middle one, 0
-  c)  1, 2, 3, __, 5, 6                      Answer: 4
-  d)  6, 7, __, 9, 10                        Answer: 8
-  e)  __, 2, 3                               Answer: 1
-  f)  10, 9, 8, __, 6                        Answer: 7
-  g)  Which two look alike when turned over: 6 or 3 ? and 9 ?
-      Answer: 6 and 9 (be careful which way up!)
+D3. How can we remember the shapes of 1, 2 and 3?
+    Answer: 1 is a straight stick. 2 is a swan. 3 has two bumps.
+    Teacher explains: Draw each numeral big in the air, in sand, or on the
+    child's back with a finger. Say the rhyme each time.
+
+D4. How can we remember the shapes of 4, 5 and 6?
+    Answer: 4 is like a flag (or a chair upside down). 5 is a man with a
+    hat and a big belly. 6 is a snail curling in.
+    Teacher explains: Make the numerals with playdough and say the rhyme.
+
+D5. How can we remember the shapes of 7, 8 and 9?
+    Answer: 7 is a hockey stick (or a cliff). 8 is a snowman. 9 is a
+    balloon on a string.
+    Teacher explains: Hide numeral cards around the room; the child finds
+    each one and names it.
+
+D6. Why does 10 have two numerals in it?
+    Answer: 10 is written with a 1 and a 0 standing together. It is our
+    first two-digit number.
+    Teacher explains: 10 means one full group of ten (two full hands) and
+    zero extra. The child only needs to recognise 10 now; place value
+    comes later.
+
+D7. 6 and 9 look alike. How do you tell them apart?
+    Answer: 6 has its round part at the BOTTOM. 9 has its round part at
+    the TOP.
+    Teacher explains: Put a line under numeral cards so the child knows
+    which way up to hold them. "6 is a snail on the ground; 9 is a balloon
+    up in the sky."
+
+D8. Mira wrote Ɛ for 3. Is it right?
+    Answer: It is 3 written backwards. The bumps of 3 face the RIGHT
+    side, towards the door on the right.
+    Teacher explains: Backwards numerals are normal at 3-5 years. Trace
+    the correct 3 together with a finger. Never scold.
+
+D9. Where can you see numerals at home?
+    Answer: On a clock, a calendar, the TV remote, a phone, the lift, a
+    house door, a car number plate, a birthday cake.
+    Teacher explains: Go on a numeral hunt. For each one ask, "What
+    number is it? What is it for?"
+
+D10. You are in a lift on floor 2. You want to go to floor 5. Do you go
+     up or down?
+     Answer: Up, because 5 comes after 2.
+     Teacher explains: Floors go up in counting order: 0 (ground), 1, 2,
+     3, 4, 5. Bigger numbers are higher up.
+
+D11. Here are the cards 1, 2, 3, 4, __, 6, 7, 8, 9, 10. Which card is
+     missing? How did you know?
+     Answer: 5 is missing, because after 4 comes 5.
+     Teacher explains: Read the row aloud and let the child say the
+     number that is missing. Play this game with a different card hidden
+     each time.
+
+D12. Asha lives at house number 7. Her friend lives next door at the
+     house after hers. What is her friend's house number?
+     Answer: 8, because 8 comes just after 7.
+     Teacher explains: House numbers go in counting order along the
+     street. Walk a real street and read the numbers.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Read each numeral aloud.
+    3   8   1   6   0   10   5   9   2   7   4
+    Answers: three, eight, one, six, zero, ten, five, nine, two, seven,
+    four
+
+M2. Point to the numeral.
+    a) Point to 5:   2   5   8        b) Point to 9:   6   9   3
+    c) Point to 1:   7   4   1        d) Point to 0:   0   8   6
+    e) Point to 10:  1   0   10       f) Point to 6:   9   6   5
+    Answers: a) the middle one   b) the middle one   c) the last one
+             d) the first one    e) the last one     f) the middle one
+
+M3. Fill in the missing numerals.
+    0, 1, __, 3, 4, __, 6, __, 8, 9, __
+    Answers: 2, 5, 7, 10
+
+M4. Which number is between?
+    a) 1 __ 3    b) 4 __ 6    c) 7 __ 9    d) 0 __ 2    e) 8 __ 10
+    f) 5 __ 7    g) 2 __ 4    h) 3 __ 5    i) 6 __ 8
+    Answers: a) 2  b) 5  c) 8  d) 1  e) 9  f) 6  g) 3  h) 4  i) 7
+
+M5. Which number comes just BEFORE?
+    a) __ 1    b) __ 2    c) __ 3    d) __ 4    e) __ 5
+    f) __ 6    g) __ 7    h) __ 8    i) __ 9    j) __ 10
+    Answers: a) 0  b) 1  c) 2  d) 3  e) 4  f) 5  g) 6  h) 7  i) 8  j) 9
+
+M6. Put in order, smallest first.
+    a) 5  2  4  1  3        b) 9  6  10  7  8        c) 3  0  2  1
+    Answers: a) 1 2 3 4 5   b) 6 7 8 9 10   c) 0 1 2 3
+
+M7. Put in order, biggest first.
+    a) 8  10  9  7  6       b) 2  4  1  3  5         c) 0  3  1  2
+    Answers: a) 10 9 8 7 6   b) 5 4 3 2 1   c) 3 2 1 0
+
+M8. Find the mistake.
+    a) 1  2  3  5  4  6        b) 6  7  9  8  10       c) 4  3  2  0  1
+    Answers: a) 5 and 4 are swapped (1 2 3 4 5 6)
+             b) 9 and 8 are swapped (6 7 8 9 10)
+             c) 0 and 1 are swapped (4 3 2 1 0)
+
+M9. Which numeral?
+    a) round part at the bottom: 6 or 9?
+    b) round part at the top: 6 or 9?
+    c) a straight stick: 1 or 7?
+    d) a swan: 2 or 5?
+    e) a snowman: 3 or 8?
+    Answers: a) 6   b) 9   c) 1   d) 2   e) 8
+
+M10. a) Which numeral means none?
+     b) Which numeral has two digits?
+     c) Which is the biggest numeral from 0 to 10?
+     d) Which is the smallest?
+     Answers: a) 0   b) 10   c) 10   d) 0
+
+M11. Number line:  0  1  2  3  4  5  6  7  8  9  10
+     a) Start at 3, move 1 step right.     b) Start at 7, move 1 step left.
+     c) Start at 0, move 3 steps right.    d) Start at 10, move 2 steps left.
+     e) Start at 5, move 4 steps right.    f) Start at 6, move 6 steps left.
+     Answers: a) 4   b) 6   c) 3   d) 8   e) 9   f) 0
+
+M12. Match the numeral to the word.
+     7   2   9   4   10   0   5   1   8   3   6
+     Answers: 7 seven, 2 two, 9 nine, 4 four, 10 ten, 0 zero, 5 five,
+              1 one, 8 eight, 3 three, 6 six
+
+TEACHING TIPS
+  Struggling: learn 1, 2, 3 first and add two new numerals a week. Use
+  sandpaper or playdough numerals the child can feel. Harder: flash a
+  numeral card for 1 second and ask for its name.
 
 
 ================================================================================
 TOPIC 1.4 — MATCHING NUMERALS TO QUANTITIES
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Join each numeral 0-10 to the right number of objects, and back again.
+  - Link numeral, number word, amount of objects and fingers.
+  - Recognise amounts in different arrangements (lines, dice patterns,
+    scattered).
+  - Fix a group so that it matches a numeral (add some or take some away).
+  - See the "staircase": each number is one more than the one before.
 
-Q1 (DESCRIPTIVE)
-SET-UP : Numeral cards 1-5 and five small plates. A bowl of beads.
-ASK    : "Each plate has a number card. Put the right number of beads on
-          each plate. How did you know how many beads to put on the plate
-          with 4?"
-EXPECTED ANSWER:
-  Puts 1 bead on plate "1", 2 beads on plate "2", ... 5 beads on plate "5".
-  Explains: "It says 4, so I counted 4."
-TEACHER'S EXPLANATION:
-  1. "The numeral tells us HOW MANY. The number 4 means four things."
-  2. Link the three ways of showing a number:
-       the symbol  4
-       the word    "four"
-       the amount  ● ● ● ●   (or 4 fingers)
-  3. Read the numeral, then count out that many, then check.
-  4. Point out that the plates now make a "staircase": each plate has ONE
-     MORE bead than the plate before. This is the pattern of the counting
-     numbers.
-IF THE CHILD STRUGGLES:
-  Use only 1, 2, 3. Put dots on the cards next to the numeral as a help.
-TRY NEXT:
-  Numbers 6-10. Or reverse it: show a group of beads and ask the child to
-  find the matching numeral card.
+PART A — DESCRIPTIVE
+--------------------
+D1. Show me the number 4 in as many ways as you can.
+    Answer: The numeral 4, the word "four", 4 beads ●●●●, 4 fingers,
+    4 claps.
+    Teacher explains: All of these mean the same amount. Numbers are
+    ideas; the numeral is just one way to write the idea down.
 
-Q2 (NUMERICAL)
-SET-UP : Three groups of toys: 2 cars, 5 animals, 3 balls. Numeral cards
-         1-6.
-ASK    : "Put the right number card next to each group."
-EXPECTED ANSWER:
-  - Cars → card 2
-  - Animals → card 5
-  - Balls → card 3
-  (Cards 1, 4 and 6 are not needed.)
-TEACHER'S EXPLANATION:
-  1. Count the cars: "1, 2." Find the card that says 2. Place it.
-  2. Count the animals: "1, 2, 3, 4, 5." Card 5.
-  3. Count the balls: "1, 2, 3." Card 3.
-  4. Ask, "Which cards did we not use? 1, 4 and 6 — no group has that
-     many."
-IF THE CHILD STRUGGLES:
-  Two groups only, and only the two correct cards to choose from.
-TRY NEXT:
-  "Which group has the biggest number card? Is it also the biggest
-  group?" (Yes: 5 animals.)
+D2. Here are 5 plates with the cards 1, 2, 3, 4, 5. Put the right number
+    of beads on each plate. What do you notice?
+    Answer: 1 bead, 2 beads, 3 beads, 4 beads, 5 beads. Each plate has ONE
+    MORE bead than the plate before, like a staircase.
+    Teacher explains: The staircase shows that the counting numbers grow
+    by one each time. Point along the plates: "one more, one more, one
+    more".
 
-Q3 (MATHEMATICAL ONLY)
-  a)  Match:   3   ●●●●●
-               5   ●●●
-      Answer: 3 goes with ●●● ; 5 goes with ●●●●●
-  b)  ★★★★★★    Which numeral?  4   6   8        Answer: 6
-  c)  Draw dots for 7.   Answer: ● ● ● ● ● ● ●
-  d)  ▲▲▲▲▲▲▲▲▲  Which numeral? 9  10  7          Answer: 9
-  e)  Show 10 with your fingers.   Answer: all 10 fingers (both hands).
+D3. Here are 2 cars, 5 animals and 3 balls, and the cards 1 to 6. Put the
+    right card next to each group. Which cards are not used?
+    Answer: Cars 2, animals 5, balls 3. Cards 1, 4 and 6 are not used.
+    Teacher explains: Count each group, then find its numeral. Talking
+    about unused cards makes the child think about every numeral.
+
+D4. Look at a dice. Which face shows 5? How is it easy to see?
+    Answer: The face with 4 dots in the corners and 1 dot in the middle.
+    Teacher explains: Dice dots are arranged in patterns, so we can see
+    the number without counting. Roll a dice many times and name each
+    number quickly.
+
+D5. The card says 7, but the plate has 6 beads. What must we do?
+    Answer: Add 1 bead. Then there are 7 beads.
+    Teacher explains: Count the beads: 6. We need 7. 7 is one more than
+    6, so we add one bead.
+
+D6. The card says 3, but the plate has 5 beads. What must we do?
+    Answer: Take away 2 beads. Then there are 3 beads.
+    Teacher explains: Count back from 5 to 3 while removing beads: "5 ...
+    take one, 4 ... take one, 3." We removed 2.
+
+D7. Show me 8 fingers. How did you do it?
+    Answer: One whole hand (5) and 3 more fingers.
+    Teacher explains: For numbers 6-10 we use one full hand of 5 and some
+    more. 6 = 5 and 1, 7 = 5 and 2, 8 = 5 and 3, 9 = 5 and 4, 10 = 5 and
+    5. This is the start of seeing numbers in parts.
+
+D8. One plate has the card 0. What do you put on it?
+    Answer: Nothing. 0 means none, so the plate stays empty.
+    Teacher explains: Zero is a number too. It has a numeral (0) and an
+    amount (nothing).
+
+D9. Mummy needs 6 eggs for a cake. The tray has 10 eggs. After she takes
+    out 6, how many eggs are left in the tray?
+    Answer: 4 eggs are left.
+    Teacher explains: Take out the eggs one by one counting to 6. Then
+    count the eggs still in the tray: 1, 2, 3, 4.
+
+D10. One row has 3 buttons close together; another row has 3 buttons far
+     apart. Which numeral goes with each row?
+     Answer: 3 for both rows.
+     Teacher explains: The numeral tells how many, not how long the row
+     is. Count both to check.
+
+D11. Play the memory game: cards with numerals and cards with dots are
+     face down. Turn over two cards. When do you keep them?
+     Answer: When the numeral matches the number of dots, for example
+     5 and ●●●●●.
+     Teacher explains: The game makes the child link numerals and
+     amounts again and again, which is exactly the practice needed.
+
+D12. There are 10 chairs in the class, one for each child. Today 1 child is
+     absent. How many children are in class? Which numeral card do we
+     show?
+     Answer: 9 children. We show the card 9.
+     Teacher explains: 10 chairs, 1 empty chair. One less than 10 is 9.
+     Count the children to check.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Which numeral? (1 to 5)
+    a) ● ● ●      b) ●      c) ● ● ● ● ●      d) ● ●      e) ● ● ● ●
+    Answers: a) 3   b) 1   c) 5   d) 2   e) 4
+
+M2. Which numeral? (6 to 10)
+    a) ● ● ● ● ● ● ●
+    b) ● ● ● ● ● ● ● ● ● ●
+    c) ● ● ● ● ● ●
+    d) ● ● ● ● ● ● ● ● ●
+    e) ● ● ● ● ● ● ● ●
+    Answers: a) 7   b) 10   c) 6   d) 9   e) 8
+
+M3. Draw dots to match.
+    a) 0     b) 4     c) 7     d) 10
+    Answers: a) (no dots)
+             b) ● ● ● ●
+             c) ● ● ● ● ● ● ●
+             d) ● ● ● ● ● ● ● ● ● ●
+
+M4. Dice faces. Which numeral?
+       a)          b)          c)          d)
+    ● . .       ● . ●       ● . ●       ● . ●
+    . ● .       . . .       . ● .       ● . ●
+    . . ●       ● . ●       ● . ●       ● . ●
+    Answers: a) 3   b) 4   c) 5   d) 6
+
+M5. Which group matches the numeral?
+    a) 6:   ● ● ● ● ●   |   ● ● ● ● ● ●   |   ● ● ● ● ● ● ●
+    b) 4:   ● ● ● ●   |   ● ● ●   |   ● ● ● ● ●
+    c) 9:   ● ● ● ● ● ● ● ●   |   ● ● ● ● ● ● ● ● ● ●   |   ● ● ● ● ● ● ● ● ●
+    Answers: a) the middle group   b) the first group   c) the last group
+
+M6. Show with fingers. (Say how you made it.)
+    a) 1   b) 2   c) 3   d) 4   e) 5   f) 6   g) 7   h) 8   i) 9   j) 10
+    Answers: a-e) 1 to 5 fingers on one hand
+             f) 5 and 1   g) 5 and 2   h) 5 and 3   i) 5 and 4
+             j) 5 and 5 (two whole hands)
+
+M7. Word to numeral.
+    a) three   b) eight   c) zero   d) ten   e) six   f) one   g) nine
+    Answers: a) 3   b) 8   c) 0   d) 10   e) 6   f) 1   g) 9
+
+M8. Numeral to word.
+    a) 5   b) 9   c) 1   d) 7   e) 4   f) 2   g) 10
+    Answers: a) five  b) nine  c) one  d) seven  e) four  f) two  g) ten
+
+M9. Fix the plate so it matches the card.
+    a) card 6, plate ● ● ● ●        b) card 3, plate ● ● ● ● ●
+    c) card 8, plate ● ● ● ● ● ● ● ●        d) card 2, plate (empty)
+    e) card 10, plate ● ● ● ● ● ● ● ● ●       f) card 0, plate ●
+    Answers: a) add 2   b) take away 2   c) already right   d) add 2
+             e) add 1   f) take away 1
+
+M10. Finish the staircase.
+     1: ●
+     2: ● ●
+     3: __
+     4: ● ● ● ●
+     5: __
+     6: ● ● ● ● ● ●
+     Answers: 3: ● ● ●    5: ● ● ● ● ●
+
+M11. Which numeral?
+     a) one more dot than ● ● ● ● ● ●
+     b) one fewer dot than ● ● ● ● ● ● ● ● ●
+     c) one more dot than an empty plate
+     d) one fewer dot than ●
+     Answers: a) 7   b) 8   c) 1   d) 0
+
+M12. Count and write the numeral.
+     a) ■ ■ ■ ■ ■ ■ ■
+     b) ▲ ▲
+     c) ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+     d) (empty box)
+     e) ● ● ● ● ●
+     Answers: a) 7   b) 2   c) 10   d) 0   e) 5
+
+TEACHING TIPS
+  Struggling: work with 1, 2, 3 only, and put dots on the numeral cards as
+  a helper. Harder: show a numeral and ask the child to make it in three
+  different ways (beads, fingers, claps).
 
 
 ================================================================================
 TOPIC 1.5 — ZERO AS "NONE"
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Zero means none, nothing. It is written 0.
+  - 0 comes just before 1 when counting: 0, 1, 2, 3 ...
+  - 0 is less than every other counting number.
+  - Taking ALL away leaves 0. Adding 0 or taking 0 away changes nothing.
+  - Zero appears in daily life (countdowns, scores, the lift, the numeral
+    10).
 
-Q1 (DESCRIPTIVE)
-SET-UP : 3 plates. Plate A: 2 grapes. Plate B: 1 grape. Plate C: empty.
-         Numeral cards 0, 1, 2.
-ASK    : "How many grapes are on the empty plate? Which card tells us that?
-          What does zero mean?"
-EXPECTED ANSWER:
-  "None" / "Zero". Picks card 0. Explains: "Zero means nothing", "No
-  grapes".
-TEACHER'S EXPLANATION:
-  1. "ZERO is the number for NONE. When there is nothing there, we say
-     zero and write 0."
-  2. Zero is a real number — it has its own place in counting, just
-     before 1: 0, 1, 2, 3...
-  3. Everyday zeros: an empty cup has 0 drops, an empty box has 0 toys,
-     at the end of "Five Little Monkeys" there are 0 monkeys.
-  4. Show how you GET to zero: eat the grapes one at a time from Plate A:
-     "2... 1... 0! None left."
-IF THE CHILD STRUGGLES:
-  Just one plate: put 1 grape, eat it, "none — zero".
-TRY NEXT:
-  "Which plate has MORE: 1 grape or 0 grapes?" (1 grape. Zero is less
-  than every counting number.)
+PART A — DESCRIPTIVE
+--------------------
+D1. Look at this empty plate. How many grapes are on it? What does zero
+    mean?
+    Answer: 0 grapes. Zero means none, nothing at all.
+    Teacher explains: Put the card 0 next to the empty plate. Then put
+    one grape: "Now it is 1." Take it away: "Back to 0."
 
-Q2 (NUMERICAL)
-SET-UP : 3 bowls, each with a different number of blocks: 3, 0, 1.
-ASK    : "Put the bowls in order from the one with the fewest blocks to the
-          one with the most. Which bowl comes first?"
-EXPECTED ANSWER:
-  Order: 0 blocks, 1 block, 3 blocks. The empty bowl (0) comes first.
-TEACHER'S EXPLANATION:
-  1. Count each bowl: 3 blocks, 0 blocks, 1 block.
-  2. "Fewest means the smallest number. Nothing is smaller than none, so
-     the empty bowl — 0 — comes first."
-  3. Then 1, then 3.
-  4. Match numeral cards: 0, 1, 3.
-IF THE CHILD STRUGGLES:
-  Only two bowls: 0 and 2.
-TRY NEXT:
-  "I have 2 sweets. I eat 2. How many are left?" (0.)
+D2. Where does zero come when we count?
+    Answer: Just before 1: 0, 1, 2, 3, 4 ...
+    Teacher explains: Show a number line or a ruler: 0 is at the very
+    start. In a countdown, 0 is where we end: 3, 2, 1, 0.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  [        ]    How many?                 Answer: 0
-  b)  0, 1, 2, __, 4                           Answer: 3
-  c)  __, 1, 2, 3                              Answer: 0
-  d)  Which is less:  0  or  1 ?               Answer: 0
-  e)  ●●● take away all 3. How many left?      Answer: 0
+D3. Sing "Five Little Monkeys". At the end, how many monkeys are jumping on
+    the bed?
+    Answer: No monkeys, 0.
+    Teacher explains: Fold one finger down for each monkey that falls:
+    5, 4, 3, 2, 1, 0. When all the fingers are down, that is zero.
+
+D4. Which is more: 0 sweets or 1 sweet?
+    Answer: 1 sweet. 0 is less than 1.
+    Teacher explains: Having nothing is less than having something. 0 is
+    less than 1, 2, 3 and every other counting number.
+
+D5. The toy box is empty. How many toys are in it? Write (or point to)
+    the numeral.
+    Answer: 0 toys. The numeral is 0.
+    Teacher explains: Look inside together, and turn the box upside down:
+    nothing falls out.
+
+D6. A bus has 3 people. At the last stop all 3 get off. How many people
+    are on the bus now?
+    Answer: 0 people.
+    Teacher explains: Act it out with 3 toys on a toy bus. Take them off
+    one at a time: 2, 1, 0.
+
+D7. I have 4 sweets. You give me 0 more sweets. How many do I have now?
+    Answer: Still 4.
+    Teacher explains: Giving zero means giving nothing, so nothing
+    changes. "4 and 0 more is 4."
+
+D8. I have 5 apples. I eat 0 apples. How many are left?
+    Answer: Still 5.
+    Teacher explains: Taking zero away takes nothing, so the number
+    stays the same.
+
+D9. Where can we see the numeral 0 around us?
+    Answer: On a phone, a TV remote, a clock, a calculator, a ruler, and
+    inside the number 10.
+    Teacher explains: Go on a zero hunt. Point out that 10 has a 0 in it.
+
+D10. In a football match, Team A scored 2 goals and Team B scored 0 goals.
+     Who won?
+     Answer: Team A, because 2 is more than 0.
+     Teacher explains: Team B scored none. Any number of goals is more
+     than 0.
+
+D11. 3 birds sit on a tree. 2 fly away. Then the last bird flies away too.
+     How many birds are on the tree?
+     Answer: 0 birds.
+     Teacher explains: Count back as the birds leave: 3, then 1 (2 flew),
+     then 0. Use fingers or toy birds.
+
+D12. Is the numeral 0 the same as the letter O?
+     Answer: They look alike, but 0 is a number (none) and O is a letter
+     (as in "orange").
+     Teacher explains: In numbers, 0 is usually a bit thinner. If it is
+     among numbers, it is zero.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. How many?
+    a) [      ]     b) [ ● ]     c) [      ]     d) [ ● ● ]     e) [ ● ● ● ]
+    Answers: a) 0   b) 1   c) 0   d) 2   e) 3
+
+M2. Fill in the missing number.
+    a) __, 1, 2, 3        b) 3, 2, 1, __        c) 0, 1, __, 3
+    d) 2, 1, __           e) __, 1
+    Answers: a) 0   b) 0   c) 2   d) 0   e) 0
+
+M3. Which is less?
+    a) 0 or 3     b) 1 or 0     c) 5 or 0     d) 0 or 10     e) 2 or 0
+    Answers: a) 0   b) 0   c) 0   d) 0   e) 0
+
+M4. Take ALL away. How many are left?
+    a) ● ●
+    b) ● ● ● ● ●
+    c) ● ● ● ● ● ● ● ● ●
+    d) ●
+    e) ● ● ● ● ● ● ● ● ● ●
+    Answers: 0 every time
+
+M5. Add nothing. How many?
+    a) 3 and 0     b) 0 and 6     c) 0 and 0     d) 8 and 0     e) 0 and 1
+    Answers: a) 3   b) 6   c) 0   d) 8   e) 1
+
+M6. Take nothing away. How many are left?
+    a) 4 take away 0     b) 7 take away 0     c) 10 take away 0
+    Answers: a) 4   b) 7   c) 10
+
+M7. Put in order, smallest first.
+    a) 2  0  1        b) 5  3  0  4        c) 1  0  9
+    Answers: a) 0 1 2   b) 0 3 4 5   c) 0 1 9
+
+M8. How many boxes are empty?
+    [ ● ]   [    ]   [ ● ● ]   [    ]   [ ● ]   [    ]
+    Answer: 3 boxes are empty.
+
+M9. a) Which number is just before 1?     b) Which number is just after 0?
+    c) Which number is one less than 1?   d) Which number is one more than 0?
+    Answers: a) 0   b) 1   c) 0   d) 1
+
+M10. Finish the countdown.
+     a) 3, 2, 1, __          b) 5, 4, 3, 2, 1, __
+     c) 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, __
+     Answers: 0 every time
+
+M11. How many of the shape asked?
+     a) How many ▲ in   ● ● ■ ●  ?
+     b) How many ● in   ▲ ▲  ?
+     c) How many ■ in   ● ■ ▲  ?
+     d) How many ★ in   ● ● ●  ?
+     Answers: a) 0   b) 0   c) 1   d) 0
+
+M12. Which numeral?
+     a) none     b) one     c) ten (it has a zero in it)
+     Answers: a) 0   b) 1   c) 10
+
+TEACHING TIPS
+  Struggling: use one plate: put a grape, eat it, say "none, zero".
+  Harder: "I have 2 sweets and eat 2. How many?" (0). "I have 0 and get 3.
+  How many?" (3).
 
 
 ================================================================================
 TOPIC 1.6 — COMPARING GROUPS: MORE, FEWER, EQUAL (by matching and counting)
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Use the words more, fewer (less), equal (the same).
+  - Compare two groups by MATCHING one-to-one.
+  - Compare two groups by COUNTING: the number that comes later is more.
+  - Find HOW MANY MORE (small differences up to about 5).
+  - Make two groups equal by adding or taking away.
+  - Not be fooled by how spread out a group is.
+  - Compare numerals 0-10 and find the biggest and smallest of three.
 
-Q1 (DESCRIPTIVE)
-SET-UP : Row A: 5 red counters. Row B: 3 blue counters.
-ASK    : "Which row has more? How can you be SURE? Show me two ways to
-          check."
-EXPECTED ANSWER:
-  Row A has more. Two ways:
-  1. Matching: put each blue counter next to a red one — 2 red counters
-     have no partner, so red has more.
-  2. Counting: red is 5, blue is 3, and 5 comes after 3 when we count.
-TEACHER'S EXPLANATION:
-  1. MORE means a group has extra. FEWER means a group has some missing.
-     EQUAL (the same) means both groups have exactly the same number.
-  2. Way 1 — MATCHING: line the counters up in pairs. Any counters with
-     no partner show which group has more.
-  3. Way 2 — COUNTING: count both groups. The number that comes LATER in
-     counting is more. (5 comes after 3, so 5 is more.)
-  4. Warning: don't judge by length! Spread 3 counters far apart and they
-     may LOOK like more. Always match or count. (Conservation of number,
-     from Stage 0.)
-  Words to use: more / fewer / less / equal / the same.
-IF THE CHILD STRUGGLES:
-  4 vs 1 — a very big difference.
-TRY NEXT:
-  4 vs 5 (a difference of just 1), with the 4 counters spread out longer.
+PART A — DESCRIPTIVE
+--------------------
+D1. Row A has 5 red counters and Row B has 3 blue counters. Which row has
+    more? Show two ways to check.
+    Answer: Row A. Way 1, matching: put the counters in pairs; 2 red ones
+    have no partner. Way 2, counting: 5 comes after 3, so 5 is more.
+    Teacher explains: MORE means a group has extra. FEWER means some are
+    missing. EQUAL means nothing is extra and nothing is missing.
 
-Q2 (NUMERICAL)
-SET-UP : 6 children's chairs and 4 dolls.
-ASK    : "Are there more chairs or more dolls? How many more? How many
-          more dolls do we need so there is one doll for every chair?"
-EXPECTED ANSWER:
-  - More chairs.
-  - 2 more chairs than dolls.
-  - We need 2 more dolls.
-TEACHER'S EXPLANATION:
-  1. Put one doll on each chair: 4 chairs get a doll.
-  2. Count the empty chairs: "1, 2." There are 2 chairs with no doll.
-  3. So chairs (6) are 2 more than dolls (4).
-  4. Add dolls one at a time: "5, 6." Now 6 dolls and 6 chairs —
-     EQUAL.
-  So: 4 and 2 more make 6.
-IF THE CHILD STRUGGLES:
-  3 chairs, 2 dolls (1 more).
-TRY NEXT:
-  7 pencils and 4 caps. "How many pencils have no cap?" (3.)
+D2. There are 6 chairs and 4 dolls. How many more dolls do we need so that
+    every chair has a doll?
+    Answer: 2 more dolls.
+    Teacher explains: Put one doll on each chair. Count the empty chairs:
+    2. So we need 2 more dolls. 4 and 2 more make 6.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  ●●●●●●   ●●●●       Which has more?          Answer: ●●●●●● (6 > 4)
-  b)  ▲▲▲    ▲▲▲▲▲▲▲      Which has fewer?         Answer: ▲▲▲ (3 < 7)
-  c)  ■■■■■   ■■■■■       More, fewer or equal?     Answer: equal (5 and 5)
-  d)  Which is more:  8  or  6 ?                    Answer: 8
-  e)  Which is fewer: 2  or  9 ?                    Answer: 2
-  f)  ●●●  and  ●●●●●    How many more in the second group?
-      Answer: 2 more (match 3 pairs; 2 left over).
+D3. Row A has 4 buttons spread far apart. Row B has 5 buttons close
+    together. Row A looks longer. Which row has more buttons?
+    Answer: Row B, with 5 buttons.
+    Teacher explains: Never judge by length. COUNT or MATCH. A long row
+    can have fewer things.
+
+D4. Asha has 3 ribbons. Neha has 3 ribbons. Who has more?
+    Answer: Neither. They have the same (equal) number: 3 and 3.
+    Teacher explains: Match them in pairs: every ribbon has a partner.
+    Nothing is left over, so they are equal.
+
+D5. Plate A has 7 grapes and plate B has 5 grapes. How can we make them
+    equal? Find two ways.
+    Answer: Add 2 grapes to plate B (both 7), or take 2 grapes from
+    plate A (both 5).
+    Teacher explains: Match the grapes: 2 on plate A have no partner.
+    Either give those 2 a partner, or take those 2 away.
+
+D6. On a number line, which is more: 8 or 6? How can you tell?
+    Answer: 8. It is further along the number line (it comes later).
+    Teacher explains: Walk along a floor number line. Numbers get bigger
+    as we walk forward.
+
+D7. There are 7 pencils and 4 caps. One cap goes on each pencil. How many
+    pencils have no cap?
+    Answer: 3 pencils have no cap.
+    Teacher explains: Put the caps on. Count the pencils left without a
+    cap: 1, 2, 3.
+
+D8. Two towers have 5 blocks each. I add 1 block to the first tower.
+    Which tower has more now?
+    Answer: The first tower. It has 6 and the other has 5.
+    Teacher explains: Equal groups stop being equal when we add to only
+    one of them.
+
+D9. A basket has 4 apples, 2 mangoes and 6 bananas. Which fruit is the
+    most? Which is the fewest?
+    Answer: Bananas are the most (6). Mangoes are the fewest (2).
+    Teacher explains: Count each kind. Put the numbers in order: 2, 4, 6.
+    The last is the most, the first is the fewest.
+
+D10. You and I each roll a dice. The bigger number wins. You roll 5 and I
+     roll 3. Who wins? What if we both roll 4?
+     Answer: You win (5 is more than 3). If both roll 4, it is a tie;
+     4 and 4 are equal.
+     Teacher explains: Play this game often. It gives quick practice in
+     comparing numbers 1-6.
+
+D11. In a class there are 6 girls and 5 boys. Are there more girls or more
+     boys? How many more?
+     Answer: More girls, 1 more.
+     Teacher explains: Stand the children in two lines and hold hands
+     across. One girl has no partner.
+
+D12. There are 10 children and 8 ice creams. Is there one ice cream for
+     every child?
+     Answer: No. 2 children would have no ice cream. We need 2 more.
+     Teacher explains: Match children and ice creams one by one. Count
+     the children left over.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Which group has more?
+    a) ● ● ● ● ● ●   or   ● ● ● ●
+    b) ● ●   or   ● ● ● ● ● ● ●
+    c) ● ● ● ● ●   or   ● ● ● ● ● ● ● ● ●
+    d) ● ● ● ● ● ● ● ●   or   ● ● ●
+    e) ● ● ● ● ● ● ● ● ● ●   or   ● ● ● ● ● ●
+    Answers: a) first (6)   b) second (7)   c) second (9)   d) first (8)
+             e) first (10)
+
+M2. Which group has fewer?
+    a) ● ● ●   or   ● ● ● ● ●
+    b) ● ● ● ● ● ● ● ● ●   or   ● ● ● ●
+    c) ●   or   ● ●
+    d) ● ● ● ● ● ● ●   or   ● ● ● ● ● ● ● ● ● ●
+    e) ● ● ● ● ● ●   or   (none)
+    Answers: a) first (3)   b) second (4)   c) first (1)   d) first (7)
+             e) second (0)
+
+M3. More, fewer or equal? (Compare the first group with the second.)
+    a) ● ● ● ●   and   ● ● ● ●
+    b) ● ● ● ● ●   and   ● ● ● ● ● ●
+    c) ● ● ● ● ● ● ● ●   and   ● ● ● ● ● ● ● ●
+    d) ● ● ● ● ● ● ● ● ●   and   ● ● ● ● ● ● ●
+    Answers: a) equal   b) fewer   c) equal   d) more
+
+M4. Which number is more?
+    a) 3 or 8    b) 6 or 2    c) 10 or 9    d) 0 or 4    e) 5 or 7
+    f) 1 or 2    g) 9 or 6    h) 4 or 3
+    Answers: a) 8  b) 6  c) 10  d) 4  e) 7  f) 2  g) 9  h) 4
+
+M5. Which number is less?
+    a) 4 or 1    b) 7 or 9    c) 10 or 5    d) 2 or 3    e) 6 or 8
+    f) 0 or 5    g) 8 or 7    h) 3 or 10
+    Answers: a) 1  b) 7  c) 5  d) 2  e) 6  f) 0  g) 7  h) 3
+
+M6. How many more in the second group? (Match them in pairs.)
+    a) ● ● ●   ● ● ● ● ●
+    b) ● ● ● ● ● ●   ● ● ● ● ● ● ●
+    c) ● ●   ● ● ● ● ● ●
+    d) ● ● ● ● ●   ● ● ● ● ● ● ● ●
+    e) ● ● ● ● ●   ● ● ● ● ● ● ● ● ● ●
+    Answers: a) 2   b) 1   c) 4   d) 3   e) 5
+
+M7. Make them equal by ADDING to the smaller group. How many do you add?
+    a) 4 and 6    b) 3 and 7    c) 8 and 9    d) 5 and 10    e) 0 and 2
+    Answers: a) add 2   b) add 4   c) add 1   d) add 5   e) add 2
+
+M8. Make them equal by TAKING AWAY from the bigger group. How many do you
+    take away?
+    a) 7 and 5    b) 9 and 6    c) 10 and 8    d) 4 and 1    e) 6 and 6
+    Answers: a) 2   b) 3   c) 2   d) 3   e) 0 (they are already equal)
+
+M9. Which is the biggest?
+    a) 3  7  5    b) 9  2  6    c) 4  10  8    d) 1  0  2
+    Answers: a) 7   b) 9   c) 10   d) 2
+
+M10. Which is the smallest?
+     a) 6  1  4    b) 8  5  9    c) 0  3  2    d) 10  7  9
+     Answers: a) 1   b) 5   c) 0   d) 7
+
+M11. Don't be tricked! Which row has more?
+     a) Row 1: ●     ●     ●     ●
+        Row 2: ● ● ● ● ●
+     b) Row 1: ● ● ● ● ● ●
+        Row 2: ●    ●    ●    ●    ●
+     Answers: a) Row 2 (5 is more than 4, even though Row 1 is longer)
+              b) Row 1 (6 is more than 5)
+
+M12. True or false?
+     a) 7 is more than 5          b) 2 is more than 4
+     c) 6 is equal to 6           d) 0 is more than 1
+     e) 9 is less than 10         f) 3 is less than 3
+     Answers: a) true   b) false   c) true   d) false   e) true
+              f) false (3 is equal to 3)
+
+TEACHING TIPS
+  Struggling: compare groups with a big difference (8 and 2) and match in
+  pairs. Harder: compare numbers that differ by 1 (6 and 7), and ask "how
+  many more?"
 
 
 ================================================================================
 TOPIC 1.7 — ORDERING OBJECTS BY SIZE (seriation: smallest to biggest)
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Put 3 to 5 objects in order: smallest to biggest, shortest to longest,
+    and the other way round.
+  - Line up the ends (a baseline) when comparing lengths.
+  - Understand "in-between": bigger than one, smaller than the next.
+  - Insert a new object into its correct place in a line.
+  - Link size order to number order (towers of 1, 2, 3, 4 ... blocks).
+  - Put numbers 0-10 in order and find the middle one.
 
-Q1 (DESCRIPTIVE)
-SET-UP : 5 straws (or sticks) cut to different lengths. Mix them up.
-ASK    : "Can you put the straws in a line from the shortest to the
-          longest? How did you decide which comes next?"
-EXPECTED ANSWER:
-  Lines them up correctly, like a staircase. Explains: "I found the
-  smallest first", "Then the next smallest", "I put their ends together to
-  check."
-TEACHER'S EXPLANATION:
-  1. Ordering by size is called SERIATION. It is making a "staircase".
-  2. A good method:
-     a) Find the SHORTEST of all. Put it first.
-     b) From the ones left, find the shortest again. Put it next.
-     c) Keep going until none are left.
-  3. Always line up the bottom ends (a "baseline") so you compare fairly.
-  4. The middle straws are special: each is LONGER than the one before
-     and SHORTER than the one after. This "in-between" idea is important
-     for numbers too: 3 is more than 2 and less than 4.
-IF THE CHILD STRUGGLES:
-  3 straws with big differences.
-TRY NEXT:
-  Order from LONGEST to shortest. Or give a 6th straw and ask where it
-  fits in the line.
+PART A — DESCRIPTIVE
+--------------------
+D1. Put these 5 straws in order from the shortest to the longest. How do
+    you decide which comes next?
+    Answer: Find the shortest and put it first. From the ones left, find
+    the shortest again. Keep going. The line looks like a staircase.
+    Teacher explains: Line up the bottom ends on the table edge so the
+    comparison is fair. This method works for any number of things.
 
-Q2 (NUMERICAL)
-SET-UP : Build 4 towers of blocks with 1, 2, 3 and 4 blocks. Mix them up.
-ASK    : "Put the towers in order from the smallest to the biggest. How
-          many blocks are in each tower? What do you notice?"
-EXPECTED ANSWER:
-  Order: 1 block, 2 blocks, 3 blocks, 4 blocks. Notices: "Each tower has
-  one more block", "It's a staircase", "It's 1, 2, 3, 4 like counting."
-TEACHER'S EXPLANATION:
-  1. Order the towers by height (lowest first).
-  2. Count the blocks in each: 1, 2, 3, 4.
-  3. "Look! Each tower is ONE MORE than the one before. The number
-     staircase goes up by 1 each time."
-  4. Put numeral cards 1, 2, 3, 4 under the towers.
-  This links SIZE ORDER with NUMBER ORDER.
-IF THE CHILD STRUGGLES:
-  Towers of 1, 2, 3 only.
-TRY NEXT:
-  Towers of 1 to 6. Hide one: "Which tower is missing?"
+D2. Make towers of 1, 2, 3 and 4 blocks and mix them up. Put them in order.
+    What do you notice?
+    Answer: 1, 2, 3, 4 blocks. Each tower has one more block than the one
+    before. It is like counting.
+    Teacher explains: Put numeral cards under the towers. Size order and
+    number order match.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  Order smallest to biggest:  3   1   2          Answer: 1, 2, 3
-  b)  Order smallest to biggest:  5   2   4   1      Answer: 1, 2, 4, 5
-  c)  Order biggest to smallest:  6   9   7          Answer: 9, 7, 6
-  d)  A: ━━━━   B: ━━   C: ━━━━━━
-      Order shortest to longest.                     Answer: B, A, C
-  e)  Which number is between 4 and 6?               Answer: 5
+D3. In a family there is a baby, a child, a mother and a father. Who is
+    tallest? Put them in order from shortest to tallest.
+    Answer: Baby, child, mother, father (father is tallest in this
+    family).
+    Teacher explains: Stand people back to back to compare. Answers can
+    be different in different families; the method is the same.
+
+D4. Here is a line of straws from shortest to longest. I give you one new
+    straw. Where does it go?
+    Answer: After the last straw that is shorter than it, and before the
+    first straw that is longer than it.
+    Teacher explains: Move the new straw along the line, comparing with
+    each one, until it fits.
+
+D5. Put 3 balls in order from biggest to smallest: a football, a tennis
+    ball and a marble.
+    Answer: Football, tennis ball, marble.
+    Teacher explains: "Biggest first" is ordering backwards. Practise both
+    directions.
+
+D6. We have a small, a medium and a big teddy. What can you say about the
+    medium teddy?
+    Answer: It is bigger than the small teddy and smaller than the big
+    teddy. It is in-between.
+    Teacher explains: In the same way, the number 3 is bigger than 2 and
+    smaller than 4.
+
+D7. Nest 5 cups inside each other. Which cup goes inside all the others?
+    Answer: The smallest cup.
+    Teacher explains: To nest, each cup must be smaller than the one it
+    goes into. Let the child try, make mistakes and fix them.
+
+D8. Why must we line up the ends when comparing two pencils?
+    Answer: Otherwise a short pencil pushed forward can look longer. With
+    the ends lined up, we see which one really goes further.
+    Teacher explains: Show an unfair comparison on purpose, then line up
+    the ends. The child sees the truth.
+
+D9. Three friends are 3, 5 and 4 years old. Put them in order from
+    youngest to oldest.
+    Answer: 3, 4, 5.
+    Teacher explains: Youngest has the smallest number of years. Ordering
+    numbers works just like ordering straws.
+
+D10. Four ribbons are 6, 2, 8 and 4 blocks long. Put them in order from
+     shortest to longest.
+     Answer: 2, 4, 6, 8 blocks.
+     Teacher explains: Measure each ribbon with blocks, write the number,
+     then order the numbers.
+
+D11. A staircase of towers has 1, 2, __, 4, 5 blocks. Which tower is
+     missing?
+     Answer: The tower with 3 blocks.
+     Teacher explains: Each step goes up by one block. After 2 comes 3.
+
+D12. Put a grape, an apple and a melon in order from lightest to
+     heaviest.
+     Answer: Grape, apple, melon.
+     Teacher explains: Hold two at a time in your hands, or use a balance,
+     to compare. Then order all three.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Order from smallest to biggest.
+    a) 3  1  2      b) 5  4  3      c) 2  6  4      d) 9  7  8      e) 10  0  5
+    Answers: a) 1 2 3   b) 3 4 5   c) 2 4 6   d) 7 8 9   e) 0 5 10
+
+M2. Order from biggest to smallest.
+    a) 1  3  2      b) 4  6  5      c) 7  10  8      d) 0  2  1      e) 3  9  6
+    Answers: a) 3 2 1   b) 6 5 4   c) 10 8 7   d) 2 1 0   e) 9 6 3
+
+M3. Order from shortest to longest.
+    A: ━━━━      B: ━━      C: ━━━━━━      D: ━
+    Answer: D, B, A, C
+
+M4. Order the towers from smallest to biggest.
+    A: ■ ■ ■ ■      B: ■      C: ■ ■ ■ ■ ■      D: ■ ■      E: ■ ■ ■
+    Answer: B (1), D (2), E (3), A (4), C (5)
+
+M5. Which number is in the middle (between)?
+    a) 2 __ 4    b) 6 __ 8    c) 0 __ 2    d) 8 __ 10    e) 4 __ 6
+    Answers: a) 3   b) 7   c) 1   d) 9   e) 5
+
+M6. What is out of order?
+    a) 1  2  4  3  5       b) 6  7  9  8  10       c) 5  4  2  3  1
+    Answers: a) 4 and 3 are swapped   b) 9 and 8 are swapped
+             c) 2 and 3 are swapped (5 4 3 2 1)
+
+M7. Where does the new number go?
+    a) 1  3  4  5    (put in 2)
+    b) 5  6  8  9    (put in 7)
+    c) 0  1  2  4    (put in 3)
+    Answers: a) between 1 and 3   b) between 6 and 8   c) between 2 and 4
+
+M8. Which is the smallest?
+    a) 8  3  6    b) 5  9  2    c) 7  4  10    d) 1  6  0
+    Answers: a) 3   b) 2   c) 4   d) 0
+
+M9. Which is the middle one (not biggest, not smallest)?
+    a) 3  1  2    b) 9  5  7    c) 4  6  5    d) 10  0  8
+    Answers: a) 2   b) 7   c) 5   d) 8
+
+M10. The staircase is missing a step. How many blocks should it have?
+     ■
+     ■ ■
+     ■ ■ ■
+     ???
+     ■ ■ ■ ■ ■
+     Answer: 4 blocks: ■ ■ ■ ■
+
+M11. Order from smallest to biggest.
+     a) 7  2  9  4  0          b) 10  6  1  8  3
+     Answers: a) 0 2 4 7 9   b) 1 3 6 8 10
+
+M12. Order from biggest to smallest.
+     a) 2  5  3  1  4          b) 8  10  6  9  7
+     Answers: a) 5 4 3 2 1   b) 10 9 8 7 6
+
+TEACHING TIPS
+  Struggling: order only 3 things with very big differences. Harder: order
+  6 things, or order by two ways (shortest to longest, then heaviest to
+  lightest) and see that the orders can be different.
 
 
 ================================================================================
 TOPIC 1.8 — SHAPES: CIRCLE, SQUARE, TRIANGLE, RECTANGLE, OVAL, STAR;
             SIDES AND CORNERS
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Name the circle, square, triangle, rectangle, oval and star.
+  - Count sides (straight edges) and corners (where two sides meet).
+  - Tell a square from a rectangle and a circle from an oval.
+  - A shape keeps its name when it is turned, made bigger or smaller, or
+    coloured differently.
+  - Find shapes in everyday objects and pictures.
+  - Count how many of each shape are in a picture.
 
-Q1 (DESCRIPTIVE)
-SET-UP : Cut-outs of a square and a rectangle (a long one), a circle and an
-         oval, a triangle and a star.
-ASK    : "The square and the rectangle both have 4 sides. How are they
-          different? How is an oval different from a circle?"
-EXPECTED ANSWER:
-  "The square's sides are all the same. The rectangle has two long sides
-  and two short sides." "The oval is long, like an egg. The circle is
-  round the same everywhere."
-TEACHER'S EXPLANATION:
-  Describe each shape by its SIDES (straight edges) and CORNERS (where two
-  sides meet):
-  - CIRCLE: 0 sides (one round curve), 0 corners. Round the same way
-    everywhere. (A plate, a coin.)
-  - OVAL: 0 straight sides, 0 corners, but stretched — like an egg or a
-    face. (An egg, a mirror.)
-  - TRIANGLE: 3 sides, 3 corners. (A pizza slice, a samosa, a roof.)
-  - SQUARE: 4 sides ALL THE SAME length, 4 corners. (A biscuit, a tile.)
-  - RECTANGLE: 4 sides, 4 corners — 2 long sides and 2 short sides.
-    (A door, a book, a phone.)
-  - STAR: many points. A usual star has 5 points (5 outside corners).
-  Key idea: a shape's NAME depends on its sides and corners, NOT on its
-  colour, size, or which way it is turned. A square turned on its corner
-  (◆) is still a square.
-IF THE CHILD STRUGGLES:
-  Compare only square vs rectangle, using a real biscuit and a real book.
-TRY NEXT:
-  Shape hunt in the kitchen: find 2 circles, 2 rectangles, 1 triangle.
+PART A — DESCRIPTIVE
+--------------------
+D1. A square and a rectangle both have 4 sides. How are they different?
+    Answer: A square has 4 sides that are all the same length. A rectangle
+    has 2 long sides and 2 short sides.
+    Teacher explains: Compare a square biscuit with a book. Measure the
+    sides with a string to see they are equal on the square.
 
-Q2 (NUMERICAL)
-SET-UP : Cut-outs of a triangle, a square and a rectangle. Stickers.
-ASK    : "Put a sticker on every corner. How many corners does each shape
-          have? How many sides? How many corners do the triangle and square
-          have altogether?"
-EXPECTED ANSWER:
-  - Triangle: 3 corners, 3 sides.
-  - Square: 4 corners, 4 sides.
-  - Rectangle: 4 corners, 4 sides.
-  - Triangle + square: 3 + 4 = 7 corners.
-TEACHER'S EXPLANATION:
-  1. Stick a sticker on each corner and count the stickers — the stickers
-     stop us counting a corner twice.
-  2. Run a finger along each side and count the sides.
-  3. "Look — the number of sides is always the SAME as the number of
-     corners for these shapes."
-  4. Count all the stickers on the triangle and square together: "1, 2,
-     3, 4, 5, 6, 7."
-IF THE CHILD STRUGGLES:
-  Only the triangle.
-TRY NEXT:
-  Count the points of a star (5). How many corners do 2 triangles have?
-  (6.)
+D2. How is an oval different from a circle?
+    Answer: A circle is round the same all the way. An oval is stretched,
+    like an egg.
+    Teacher explains: Show a coin and an egg. Neither has corners, but
+    the oval is longer one way.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  ▲   corners?          Answer: 3
-  b)  ■   corners?          Answer: 4
-  c)  ▬   (rectangle) sides?    Answer: 4
-  d)  ●   corners?          Answer: 0
-  e)  ★   points?           Answer: 5
-  f)  ▲ ■ ● ▬ ▲ ●    How many triangles? circles?
-      Answer: triangles = 2, circles = 2.
-  g)  Which has more corners: ▲ or ■ ?   Answer: ■ (4 is more than 3)
+D3. Describe a triangle. If I turn it upside down, is it still a triangle?
+    Answer: A triangle has 3 sides and 3 corners. Yes, it is still a
+    triangle when turned.
+    Teacher explains: Turn a cut-out triangle round and round. It is
+    always 3 sides and 3 corners, so always a triangle.
+
+D4. Is this shape ◆ a square?
+    Answer: Yes, if its 4 sides are equal. It is a square standing on a
+    corner.
+    Teacher explains: Turn a square card slowly onto its corner. It is the
+    same card, so it is the same shape.
+
+D5. Here is a big triangle and a small triangle. Are they both triangles?
+    Answer: Yes. Size does not change the name of a shape.
+    Teacher explains: Count sides and corners on both: 3 and 3.
+
+D6. Go on a shape hunt. Find something shaped like each shape.
+    Answer: Circle: plate, clock, coin. Square: tile, biscuit. Triangle:
+    pizza slice, samosa. Rectangle: door, book, phone. Oval: egg, mirror.
+    Star: a star sticker or decoration.
+    Teacher explains: Say the name and trace the edge of each object with
+    a finger.
+
+D7. How many points does a star usually have?
+    Answer: 5 points.
+    Teacher explains: Put a sticker on each point and count the stickers.
+
+D8. Why are wheels round circles and not squares?
+    Answer: A circle has no corners, so it rolls smoothly. A square has
+    corners, so it would bump.
+    Teacher explains: Try rolling a round lid and a square box.
+
+D9. How many corners do a triangle and a square have altogether?
+    Answer: 7 corners (3 and 4).
+    Teacher explains: Put a sticker on every corner of both shapes, then
+    count all the stickers.
+
+D10. How many sides does a rectangle have? How many are long?
+     Answer: 4 sides. 2 are long and 2 are short.
+     Teacher explains: Run a finger along each side of a book, saying
+     "long, short, long, short".
+
+D11. A house picture has a square wall, a triangle roof, a rectangle door
+     and 2 square windows. How many squares? How many shapes in all?
+     Answer: 3 squares (the wall and 2 windows). 5 shapes in all.
+     Teacher explains: Draw the house and colour each kind of shape a
+     different colour before counting.
+
+D12. Riddles: "I have 3 sides and 3 corners." "I am round and have no
+     corners." "I have 4 equal sides." "I have 4 sides, 2 long and 2
+     short." "I look like an egg." Who am I?
+     Answer: Triangle, circle, square, rectangle, oval.
+     Teacher explains: Let the child make riddles for you too.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Name the shape.
+    a) ●     b) ▲     c) ■     d) ▬     e) ★     f) ⬭ (like an egg)
+    Answers: a) circle  b) triangle  c) square  d) rectangle  e) star
+             f) oval
+
+M2. How many corners?
+    a) ▲     b) ■     c) ▬     d) ●     e) ⬭
+    Answers: a) 3   b) 4   c) 4   d) 0   e) 0
+
+M3. How many sides?
+    a) ▲     b) ■     c) ▬     d) ●  (straight sides)
+    Answers: a) 3   b) 4   c) 4   d) 0
+
+M4. How many triangles?
+    ▲  ●  ▲  ■  ▲  ●
+    Answer: 3
+
+M5. Count each shape.
+    ■  ●  ■  ▲  ●  ■  ★  ▲  ●
+    Answers: ■ = 3, ● = 3, ▲ = 2, ★ = 1
+
+M6. How many corners altogether?
+    a) ▲ ▲     b) ■ ■     c) ▲ ■     d) ● ▲     e) ● ●
+    Answers: a) 6   b) 8   c) 7   d) 3   e) 0
+
+M7. Which is the odd one out?
+    a) ▲  ▲  ■  ▲     b) ●  ●  ●  ▲     c) ■  ■  ★  ■
+    Answers: a) ■   b) ▲   c) ★
+
+M8. Which has more corners?
+    a) ▲ or ■      b) ● or ▲      c) ■ or ▬
+    Answers: a) ■ (4)   b) ▲ (3)   c) same (4 and 4)
+
+M9. Which shapes have 4 corners?    ●  ▲  ■  ▬  ★
+    Answer: ■ and ▬
+
+M10. Which shapes have no corners?    ●  ▲  ⬭  ■
+     Answer: ● and ⬭
+
+M11. What comes next?
+     a) ▲ ■ ▲ ■ ▲ __      b) ● ● ▲ ● ● ▲ ● ● __      c) ■ ▲ ● ■ ▲ __
+     Answers: a) ■   b) ▲   c) ●
+
+M12. Which shape am I?
+     a) 3 corners     b) 0 corners, round     c) 4 equal sides
+     d) 4 sides, 2 long and 2 short     e) 5 points
+     Answers: a) triangle   b) circle   c) square   d) rectangle   e) star
+
+TEACHING TIPS
+  Struggling: learn circle, square and triangle first; add one new shape
+  a week. Harder: show shapes turned and stretched ("Is a long thin
+  triangle still a triangle?" Yes!).
 
 
 ================================================================================
 TOPIC 1.9 — 3D OBJECTS IN DAILY LIFE: BALL (SPHERE), BOX (CUBE),
             CAN (CYLINDER)
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Name the solid shapes sphere, cube and cylinder (and meet the cone and
+    the cuboid).
+  - Find them in everyday objects.
+  - Know which ones roll, slide and stack, and why.
+  - Count flat faces: cube 6, cylinder 2, sphere 0.
+  - Know the flat faces: a cube's faces are squares, a cylinder's ends
+    are circles.
+  - Tell flat (2D) shapes from solid (3D) shapes.
 
-Q1 (DESCRIPTIVE)
-SET-UP : A ball, a dice or toy block (cube), and a can or a glass
-         (cylinder). A small ramp (a tilted book).
-ASK    : "Let's test them on the ramp. Which one rolls? Which one slides?
-          Which one can do both? Why?"
-EXPECTED ANSWER:
-  - The ball ROLLS (any way you put it).
-  - The cube SLIDES (it has flat faces; it does not roll).
-  - The can ROLLS when it lies on its side and SLIDES/STANDS when it is
-    on its flat end.
-  Why: "The ball is round all over", "The box has flat sides", "The can
-  has round sides and flat ends."
-TEACHER'S EXPLANATION:
-  Flat shapes (circle, square) can be drawn on paper. SOLID shapes (3D)
-  can be held — they have thickness.
-  - SPHERE: round everywhere, like a ball or an orange. It rolls in every
-    direction. It has no flat faces and no corners.
-  - CUBE: like a dice or a sugar cube. It has 6 flat square FACES, and
-    corners. It stacks well and slides, but does not roll.
-  - CYLINDER: like a can, a glass or a candle. It has 2 flat circle
-    faces at the ends and a curved side. It rolls on its side and stacks
-    on its ends.
-  Link 2D to 3D: trace around the end of the can — you get a circle.
-  Trace around a face of the cube — you get a square.
-IF THE CHILD STRUGGLES:
-  Only the ball and the cube: "rolls" or "doesn't roll".
-TRY NEXT:
-  Also show a cone (ice-cream cone or party hat) and a cuboid (a cereal
-  box): "What flat shapes can you find on these?"
+PART A — DESCRIPTIVE
+--------------------
+D1. Put a ball, a dice and a can on a ramp. Which rolls? Which slides?
+    Which can do both?
+    Answer: The ball rolls. The dice slides. The can rolls on its side
+    and slides or stands on its flat end.
+    Teacher explains: The ball (sphere) is round everywhere. The dice
+    (cube) has only flat faces. The can (cylinder) has a curved side and
+    two flat ends.
 
-Q2 (NUMERICAL)
-SET-UP : A dice (cube) and a can (cylinder).
-ASK    : "How many flat faces does the cube have? Let's count them. How
-          many flat faces does the can have? How many does the ball have?"
-EXPECTED ANSWER:
-  - Cube: 6 flat faces.
-  - Can (cylinder): 2 flat faces (top and bottom).
-  - Ball (sphere): 0 flat faces.
-TEACHER'S EXPLANATION:
-  1. Cube: put a small sticker on each face as you count so no face is
-     counted twice: top (1), bottom (2), front (3), back (4), left (5),
-     right (6). A dice shows it well — each face has a different number
-     of dots from 1 to 6.
-  2. Can: top (1) and bottom (2). The curved side is not flat.
-  3. Ball: no flat part anywhere — 0.
-IF THE CHILD STRUGGLES:
-  Count only the can's flat faces (2).
-TRY NEXT:
-  Count the stickers of 2 cubes: 6 + 6 = 12 (count on together).
+D2. Name three things shaped like a sphere.
+    Answer: A ball, an orange, a marble (also a globe, a laddu).
+    Teacher explains: A sphere is round in every direction and has no
+    flat part and no corners.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  Ball — which shape word?  sphere / cube / cylinder     Answer: sphere
-  b)  Dice — which shape word?  sphere / cube / cylinder     Answer: cube
-  c)  Can  — which shape word?  sphere / cube / cylinder     Answer: cylinder
-  d)  Flat faces on a cube?                                  Answer: 6
-  e)  Flat faces on a cylinder?                              Answer: 2
-  f)  Which one rolls in every direction?                    Answer: sphere
+D3. Name two things shaped like a cube. What shape is each face?
+    Answer: A dice and a sugar cube (or a toy block). Each face is a
+    square.
+    Teacher explains: Press a cube into playdough; it leaves a square
+    print.
+
+D4. Name three things shaped like a cylinder. What shape are its ends?
+    Answer: A can, a glass, a candle (also a drum, a pipe). Its ends are
+    circles.
+    Teacher explains: Stand a can on paper and trace round it: you get a
+    circle.
+
+D5. You want to build a tall, steady tower. Which shape is best: spheres,
+    cubes or cylinders lying on their side?
+    Answer: Cubes. Their flat faces sit firmly on each other.
+    Teacher explains: Try stacking all three. Balls roll off, cylinders on
+    their side roll away, cubes stay.
+
+D6. Trace around the end of a can and around one face of a dice. What
+    flat shapes do you get?
+    Answer: A circle from the can. A square from the dice.
+    Teacher explains: Solid shapes are made with flat shapes on their
+    faces. This links 3D and 2D shapes.
+
+D7. Can a ball stay still on a slope?
+    Answer: No, it rolls down, because it is round everywhere.
+    Teacher explains: A ball has no flat face to sit on.
+
+D8. Why are wheels made round (like a flat cylinder)?
+    Answer: Round things roll smoothly, so the car or cycle can move.
+    Teacher explains: Look at wheels on toys, cars and prams.
+
+D9. What is the difference between a circle and a sphere?
+    Answer: A circle is flat; we can draw it on paper. A sphere is solid;
+    we can hold it, like a ball.
+    Teacher explains: Hold up a paper circle and a ball. Flat = 2D. Solid
+    = 3D.
+
+D10. Look at an ice-cream cone or a party hat. What is special about it?
+     Answer: It is a cone. It has one flat circle face and a point at the
+     top.
+     Teacher explains: The cone is a new friend; the child only needs to
+     know its name and that it has a point.
+
+D11. Look at a cereal box. How is it like a cube? How is it different?
+     Answer: It has 6 flat faces like a cube, but the faces are rectangles,
+     not all squares. It is a cuboid.
+     Teacher explains: Many boxes are cuboids. The child only needs to
+     notice the flat faces for now.
+
+D12. Sort these into spheres, cubes and cylinders: an orange, a dice, a
+     glass, a tin, a sugar cube, a marble. How many in each group?
+     Answer: Spheres: orange, marble (2). Cubes: dice, sugar cube (2).
+     Cylinders: glass, tin (2).
+     Teacher explains: Sorting real objects is the best practice. Test
+     each one: does it roll? does it have flat faces?
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Sphere, cube or cylinder?
+    a) ball   b) dice   c) can   d) orange   e) sugar cube   f) candle
+    g) marble   h) drum
+    Answers: a) sphere   b) cube   c) cylinder   d) sphere   e) cube
+             f) cylinder   g) sphere   h) cylinder
+
+M2. How many flat faces?
+    a) cube   b) cylinder   c) sphere   d) cone   e) cuboid (box)
+    Answers: a) 6   b) 2   c) 0   d) 1   e) 6
+
+M3. Does it roll?
+    a) sphere   b) cube   c) cylinder (lying on its side)
+    Answers: a) yes   b) no   c) yes
+
+M4. Can it be stacked?
+    a) cube   b) sphere   c) cylinder (standing on its end)
+    Answers: a) yes   b) no   c) yes
+
+M5. What flat shape is it?
+    a) a face of a cube   b) an end of a cylinder   c) the bottom of a cone
+    Answers: a) square   b) circle   c) circle
+
+M6. Count each shape.
+    ball, dice, can, ball, dice, ball, can, ball
+    Answers: spheres (balls) 4, cubes (dice) 2, cylinders (cans) 2
+
+M7. How many flat faces altogether?
+    a) 2 cylinders   b) 3 cylinders   c) 1 cube and 1 cylinder
+    Answers: a) 4   b) 6   c) 8 (6 and 2)
+
+M8. Which is the odd one out?
+    a) ball, orange, dice, marble      b) can, glass, candle, ball
+    Answers: a) dice (not a sphere)   b) ball (not a cylinder)
+
+M9. Which has no flat face at all?    cube   sphere   cylinder
+    Answer: sphere
+
+M10. Which has the most flat faces?    cube   cylinder   sphere
+     Answer: cube (6)
+
+M11. Flat (2D) or solid (3D)?
+     a) circle   b) ball   c) square   d) dice   e) triangle   f) can
+     Answers: a) 2D   b) 3D   c) 2D   d) 3D   e) 2D   f) 3D
+
+M12. A cube has 6 flat faces and a cylinder has 2. How many more flat faces
+     does the cube have?
+     Answer: 4 more (match 2 and 2; 4 cube faces are left over).
+
+TEACHING TIPS
+  Struggling: use only a ball and a block: "rolls" or "does not roll".
+  Harder: a "feely bag" — the child feels a hidden solid and names it
+  without looking.
 
 
 ================================================================================
 TOPIC 1.10 — EXTENDING AND CREATING AB, AAB, ABC PATTERNS
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - A pattern repeats the same part (the core) again and again.
+  - Continue AB, AAB, ABB and ABC patterns with colours, shapes, sounds,
+    actions and numbers.
+  - Find the core of a pattern.
+  - Find a mistake or a missing piece in a pattern.
+  - Make up their own patterns and "translate" a pattern into another
+    form (colours into actions, shapes into letters).
+  - Count how many of each thing are in a pattern.
 
-Q1 (DESCRIPTIVE)
-SET-UP : Beads: RED, RED, BLUE, RED, RED, BLUE, RED, RED, ___
-ASK    : "What comes next? What is the part that repeats? Can you make
-          your own pattern and tell me its rule?"
-EXPECTED ANSWER:
-  "Blue!" The part that repeats is "red, red, blue". Makes a new pattern,
-  e.g. "yellow, green, yellow, green" and says "yellow then green, again
-  and again".
-TEACHER'S EXPLANATION:
-  1. A PATTERN repeats the same part (the CORE) again and again.
-  2. We can name pattern types with letters:
-       AB   : red, blue, red, blue ...           (core has 2 things)
-       AAB  : red, red, blue, red, red, blue ... (core has 3 things)
-       ABC  : red, blue, yellow, red, blue, yellow ... (3 different things)
-       ABB  : clap, stomp, stomp, clap, stomp, stomp ...
-  3. To find what comes next: find the core, then keep repeating it.
-     Read the pattern aloud with rhythm; the voice finds the core.
-  4. TRANSLATE a pattern: red-blue-red-blue can become clap-stomp-clap-
-     stomp or ▲●▲●. Different things, same AB pattern. This is the start
-     of algebra (the same structure in different clothes).
-IF THE CHILD STRUGGLES:
-  Go back to AB patterns with actions (clap, jump, clap, jump).
-TRY NEXT:
-  "Something is wrong in my pattern: ▲ ● ▲ ● ● ▲ ●. Can you find the
-  mistake?" (The 5th item should be ▲.)
+PART A — DESCRIPTIVE
+--------------------
+D1. Red, blue, red, blue, red, ... What comes next? Why?
+    Answer: Blue, because red and blue take turns.
+    Teacher explains: This is an AB pattern. The core is "red, blue".
+    Read it aloud with rhythm: "RED-blue, RED-blue".
 
-Q2 (NUMERICAL)
-SET-UP : A necklace pattern: ● ● ▲ ● ● ▲ ● ● ▲ (made with beads).
-ASK    : "How many times does the core ● ● ▲ repeat? How many ● beads?
-          How many ▲ beads? How many beads altogether?"
-EXPECTED ANSWER:
-  - The core repeats 3 times.
-  - ● beads = 6
-  - ▲ beads = 3
-  - All beads = 9
-TEACHER'S EXPLANATION:
-  1. Put a finger gap after each core: ● ● ▲ | ● ● ▲ | ● ● ▲. "1, 2, 3
-     cores."
-  2. Each core has 2 ●. Count all the ●: "1, 2, 3, 4, 5, 6."
-  3. Each core has 1 ▲. Count: "1, 2, 3."
-  4. Count every bead: "1, 2, ... 9." Also: 6 and 3 make 9.
-IF THE CHILD STRUGGLES:
-  An AB necklace of 6 beads: ● ▲ ● ▲ ● ▲ (3 ● and 3 ▲).
-TRY NEXT:
-  Number patterns: 1, 2, 1, 2, 1, __ and 1, 2, 3, 1, 2, 3, 1, __.
+D2. Red, red, blue, red, red, blue, red, red, ... What comes next?
+    Answer: Blue. The core is "red, red, blue" (AAB).
+    Teacher explains: Put a small gap after each core to see it:
+    red red blue | red red blue | red red ...
 
-Q3 (MATHEMATICAL ONLY)
-  a)  ● ▲ ● ▲ ● __                         Answer: ▲    (AB)
-  b)  ■ ■ ● ■ ■ ● ■ ■ __                   Answer: ●    (AAB)
-  c)  ▲ ● ■ ▲ ● ■ ▲ __                     Answer: ●    (ABC)
-  d)  1 2 1 2 1 __                          Answer: 2
-  e)  1 2 3 1 2 3 1 2 __                    Answer: 3
-  f)  5 5 0 5 5 0 5 __                      Answer: 5
-  g)  Find the mistake: ▲ ● ▲ ● ● ▲ ●
-      Answer: the 5th one; it should be ▲.
+D3. Clap, stomp, stomp, clap, stomp, stomp, ... What comes next?
+    Answer: Clap. The core is "clap, stomp, stomp" (ABB).
+    Teacher explains: Body patterns help the child FEEL the repeating
+    part.
+
+D4. Red, yellow, green, red, yellow, green, red, ... What comes next?
+    Answer: Yellow. The core is "red, yellow, green" (ABC).
+    Teacher explains: An ABC core has 3 different things.
+
+D5. How can you find the part that repeats in a pattern?
+    Answer: Say the pattern aloud and listen for when it starts again.
+    The part before it starts again is the core.
+    Teacher explains: Cut the pattern (or put a pencil) after each core.
+    If every piece is the same, you found the core.
+
+D6. Change the pattern ▲ ● ▲ ● ▲ ● into actions.
+    Answer: For example: jump, clap, jump, clap, jump, clap.
+    Teacher explains: Different things, same pattern. We can call both
+    "AB". Letters help us see that patterns are the same (the start of
+    algebra).
+
+D7. Is there a mistake in this pattern: ▲ ● ▲ ● ● ▲ ●?
+    Answer: Yes. The 5th one should be ▲, not ●.
+    Teacher explains: Point and read: "triangle, circle, triangle,
+    circle, CIRCLE?" The rhythm breaks where the mistake is.
+
+D8. Make your own pattern with blocks. Tell me its rule.
+    Answer: For example: "blue, blue, green, blue, blue, green — two blues
+    then a green".
+    Teacher explains: Making a pattern is harder than continuing one. Ask
+    the child to repeat the core at least 3 times.
+
+D9. Name a pattern in nature or in your day.
+    Answer: Day, night, day, night. Or: wake up, eat, play, sleep, every
+    day. Or stripes on a zebra.
+    Teacher explains: Patterns are everywhere; mathematics is the study
+    of patterns.
+
+D10. 1, 2, 1, 2, 1, 2, ... What comes next? And after 1, 2, 3, 1, 2, 3,
+     1, 2?
+     Answer: 1. Then 3.
+     Teacher explains: Numbers can make patterns too. The first is AB,
+     the second is ABC.
+
+D11. A necklace has the core ● ● ▲ repeated 3 times. How many ● and how
+     many ▲ are there? How many beads altogether?
+     Answer: ● = 6, ▲ = 3, all = 9.
+     Teacher explains: Each core has 2 ● and 1 ▲. Three cores: count all
+     the ● (6) and all the ▲ (3).
+
+D12. A pattern is ● ▲ ● __ ● ▲. What is missing?
+     Answer: ▲. The core is ● ▲.
+     Teacher explains: Missing pieces can be in the middle, not only at
+     the end. Read the pattern from the start.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. AB patterns. What comes next?
+    a) ● ▲ ● ▲ ● __       b) ■ ★ ■ ★ __       c) 1 2 1 2 1 __
+    d) 5 0 5 0 5 __       e) A B A B __
+    Answers: a) ▲   b) ■   c) 2   d) 0   e) A
+
+M2. AAB patterns. What comes next?
+    a) ■ ■ ● ■ ■ ● ■ ■ __       b) 1 1 2 1 1 2 1 __
+    c) ▲ ▲ ★ ▲ ▲ ★ __
+    Answers: a) ●   b) 1   c) ▲
+
+M3. ABB patterns. What comes next?
+    a) ● ■ ■ ● ■ ■ ● __       b) 3 7 7 3 7 7 3 7 __
+    c) ★ ▲ ▲ ★ ▲ __
+    Answers: a) ■   b) 7   c) ▲
+
+M4. ABC patterns. What comes next?
+    a) ▲ ● ■ ▲ ● ■ ▲ __       b) 1 2 3 1 2 3 1 2 __
+    c) ★ ● ▲ ★ ● __
+    Answers: a) ●   b) 3   c) ▲
+
+M5. What is the core (the part that repeats)?
+    a) ● ▲ ● ▲ ● ▲         b) ■ ■ ● ■ ■ ● ■ ■ ●       c) 1 2 3 1 2 3
+    Answers: a) ● ▲   b) ■ ■ ●   c) 1 2 3
+
+M6. What comes next? Give the next TWO.
+    a) ● ▲ ● ▲ __ __       b) 4 4 1 4 4 1 __ __       c) ▲ ■ ● ▲ __ __
+    Answers: a) ● ▲   b) 4 4   c) ■ ●
+
+M7. What is missing?
+    a) ● ▲ ● __ ● ▲          b) 1 2 3 1 __ 3          c) ■ ■ ● ■ __ ●
+    Answers: a) ▲   b) 2   c) ■
+
+M8. Find the mistake.
+    a) ▲ ● ▲ ● ● ▲ ●         b) 1 2 1 2 2 1 2         c) ■ ■ ● ■ ● ● ■ ■ ●
+    Answers: a) the 5th (should be ▲)   b) the 5th (should be 1)
+             c) the 5th (should be ■)
+
+M9. Write the pattern with letters (A, B, C).
+    a) ● ▲ ● ▲       b) ■ ■ ★ ■ ■ ★       c) ▲ ● ■ ▲ ● ■       d) 7 5 5 7 5 5
+    Answers: a) A B A B   b) A A B A A B   c) A B C A B C   d) A B B A B B
+
+M10. Count in the pattern.
+     a) ● ▲ ● ▲ ● ▲ ● ▲         How many ●? How many ▲?
+     b) ■ ■ ● ■ ■ ● ■ ■ ●       How many ■? How many ●?
+     Answers: a) ● = 4, ▲ = 4   b) ■ = 6, ● = 3
+
+M11. The core ▲ ● is repeated 5 times. How many ▲? How many things in all?
+     Answer: ▲ = 5, in all 10.  ( ▲ ● ▲ ● ▲ ● ▲ ● ▲ ● )
+
+M12. Which is NOT a repeating pattern?
+     a) ● ▲ ● ▲ ● ▲     b) ● ▲ ▲ ● ● ● ▲     c) 1 2 1 2 1 2
+     Answer: b)
+
+TEACHING TIPS
+  Struggling: go back to AB patterns with actions (clap, jump). Harder:
+  AABB patterns (● ● ▲ ▲ ● ● ▲ ▲) and patterns where the child must
+  find the next two or three items.
 
 
 ================================================================================
 TOPIC 1.11 — MEASUREMENT WORDS: LONGER/SHORTER, HEAVIER/LIGHTER,
              HOLDS MORE/LESS
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Compare LENGTH (long/longer/longest, short/shorter/shortest, tall,
+    taller) by lining up ends.
+  - Compare WEIGHT (heavy/heavier, light/lighter) with hands and a balance.
+  - Compare CAPACITY (holds more / holds less, full, empty) by pouring.
+  - Measure length with small units (paper clips, blocks, hand spans) with
+    no gaps and no overlaps, and count the units.
+  - Know that bigger is not always heavier and taller is not always
+    holding more.
+  - Compare three things and find the longest / heaviest / holds most.
 
-Q1 (DESCRIPTIVE)
-SET-UP : Two pencils of different length; a toy balance (or a hanger with
-         two bags); an apple and a grape; two cups of different sizes and
-         a jug of water.
-ASK    : "Which pencil is longer? Put the apple and the grape on the
-          balance. Which side goes down? Which cup holds more water — how
-          can we find out?"
-EXPECTED ANSWER:
-  - Lines up the pencils' ends and names the longer one.
-  - The apple side goes down, so the apple is HEAVIER.
-  - Fills one cup and pours it into the other: if it overflows, the first
-    cup holds MORE; if it doesn't fill the second cup, the first holds
-    LESS.
-TEACHER'S EXPLANATION:
-  We MEASURE three different things:
-  1. LENGTH — how long. Compare by putting the ENDS together at a
-     starting line. Words: long, longer, longest; short, shorter,
-     shortest; tall, taller, tallest.
-  2. WEIGHT (mass) — how heavy. The balance goes DOWN on the heavier
-     side and UP on the lighter side. If it stays level, they weigh the
-     same. Words: heavy, heavier; light, lighter.
-  3. CAPACITY — how much a container holds. Compare by pouring from one
-     into the other. Words: holds more, holds less, full, empty.
-  Surprise: a BIG thing is not always heavier (a big balloon is lighter
-  than a small stone), and a TALL glass does not always hold more than a
-  wide bowl. We must TEST, not guess.
-IF THE CHILD STRUGGLES:
-  Only length today; weight tomorrow; capacity the day after.
-TRY NEXT:
-  Compare three: "Which is the heaviest of the apple, the grape and the
-  potato?"
+PART A — DESCRIPTIVE
+--------------------
+D1. Which pencil is longer? How do you check fairly?
+    Answer: Put the pencils side by side with one end of each on the same
+    line. The one that goes further is longer.
+    Teacher explains: The lined-up ends (the baseline) make the
+    comparison fair.
 
-Q2 (NUMERICAL)
-SET-UP : Paper clips (all the same size), a pencil and a crayon.
-ASK    : "How many paper clips long is the pencil? How many paper clips
-          long is the crayon? Which is longer, and by how many clips?"
-EXPECTED ANSWER:
-  (Example with a real pencil and crayon.)
-  - Pencil = 6 paper clips long.
-  - Crayon = 4 paper clips long.
-  - The pencil is longer by 2 paper clips.
-TEACHER'S EXPLANATION:
-  1. Line up paper clips end to end along the pencil, with NO gaps and NO
-     overlaps, starting exactly at one end.
-  2. Count the clips: "1, 2, 3, 4, 5, 6."
-  3. Do the same for the crayon: "1, 2, 3, 4."
-  4. 6 is more than 4, so the pencil is longer. Match the two rows of
-     clips: 2 extra clips — longer by 2.
-  This is the child's first real MEASURING with units.
-IF THE CHILD STRUGGLES:
-  Measure with bigger units (blocks) and shorter objects (2-3 blocks).
-TRY NEXT:
-  Measure a table with hand spans. Measure the same table with the
-  parent's hand spans — why is the number different? (Bigger hands, fewer
-  spans.)
+D2. Put an apple on one side of a balance and a grape on the other. What
+    happens? Which is heavier?
+    Answer: The apple side goes DOWN. The apple is heavier; the grape is
+    lighter.
+    Teacher explains: On a balance, the heavier side goes down. If both
+    sides stay level, they weigh the same.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  A: ━━━━━━━   B: ━━━━          Which is longer?   Answer: A
-  b)  Pencil = 5 clips, crayon = 3 clips. Which is shorter?
-      Answer: crayon (3 is less than 5).
-  c)  Balance:   apple ▼      feather ▲    Which is heavier?
-      Answer: apple (its side goes down).
-  d)  Cup A fills 2 glasses, cup B fills 4 glasses. Which holds more?
-      Answer: cup B (4 is more than 2).
-  e)  Ribbon = 7 blocks long, string = 7 blocks long.
-      Answer: same length.
+D3. Which cup holds more water? How can we find out?
+    Answer: Fill one cup and pour it into the other. If the water spills
+    over, the first cup holds more. If the second cup is not full, the
+    first holds less.
+    Teacher explains: This is capacity — how much a container holds. Let
+    the child pour water or rice.
+
+D4. A big balloon and a small stone. Which is heavier?
+    Answer: The small stone.
+    Teacher explains: Big does not always mean heavy. We must test, not
+    guess. Let the child hold both.
+
+D5. A tall thin glass and a short wide bowl. Which holds more?
+    Answer: We must pour to find out. Often the wide bowl holds more even
+    though the glass is taller.
+    Teacher explains: Pour water from the glass into the bowl. Talk about
+    what happened.
+
+D6. How many paper clips long is this pencil? How do you measure?
+    Answer: For example, 6 paper clips. Lay clips end to end from one end
+    of the pencil to the other, with no gaps and no overlaps, and count
+    them.
+    Teacher explains: This is real measuring. The clips must all be the
+    same size.
+
+D7. The pencil is 6 clips long and the crayon is 4 clips long. Which is
+    longer? By how many clips?
+    Answer: The pencil, by 2 clips.
+    Teacher explains: Put the two rows of clips side by side and match
+    them: 2 extra clips.
+
+D8. Measure the table with your hand spans and with Papa's hand spans. Why
+    are the numbers different?
+    Answer: Papa's hand is bigger, so he needs fewer spans. My hand is
+    smaller, so I need more.
+    Teacher explains: Bigger units give smaller numbers. This is why we
+    later use the same units for everybody (centimetres).
+
+D9. Which is the heaviest: an apple, a grape or a potato bag?
+    Answer: The potato bag.
+    Teacher explains: Compare two at a time. Heaviest means heavier than
+    all the others.
+
+D10. Who is taller: you or your teddy? Who is tallest in your family?
+     Answer: I am taller than my teddy. (The tallest person depends on
+     the family.)
+     Teacher explains: Stand back to back on the same floor to compare.
+
+D11. A jug fills 3 cups. Another jug fills 5 cups. Which jug holds more?
+     Answer: The second jug, because 5 cups is more than 3 cups.
+     Teacher explains: We can measure capacity by counting how many cups
+     it fills.
+
+D12. Two ribbons are both 7 blocks long. What can you say?
+     Answer: They are the same length.
+     Teacher explains: Equal numbers of the same unit mean equal length.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Which is longer?
+    a) A: ━━━━━━━     B: ━━━━
+    b) A: ━━          B: ━━━━━
+    c) A: ━━━━━━      B: ━━━━━━
+    Answers: a) A   b) B   c) same length
+
+M2. Which is shorter?
+    a) A: ━━━━━━━━    B: ━━━
+    b) A: ━           B: ━━━━
+    Answers: a) B   b) A
+
+M3. How many blocks long?
+    a) ■ ■ ■     b) ■ ■ ■ ■ ■ ■ ■     c) ■ ■ ■ ■ ■ ■ ■ ■ ■ ■     d) ■ ■ ■ ■ ■
+    Answers: a) 3   b) 7   c) 10   d) 5
+
+M4. Which is longer? By how many blocks?
+    a) ■ ■ ■ ■ ■ ■   and   ■ ■ ■ ■
+    b) ■ ■ ■   and   ■ ■ ■ ■ ■ ■ ■ ■
+    c) ■ ■ ■ ■ ■   and   ■ ■ ■ ■ ■
+    Answers: a) the first, by 2   b) the second, by 5   c) same length
+
+M5. Order from shortest to longest.
+    A: ■ ■ ■ ■      B: ■ ■      C: ■ ■ ■ ■ ■ ■
+    Answer: B, A, C
+
+M6. Balance. Which is heavier?
+    a) apple ▼  |  feather ▲       b) ball ▲  |  book ▼
+    c) cup ═  |  cup ═ (level)
+    Answers: a) apple   b) book   c) they weigh the same
+
+M7. Which is lighter?
+    a) a leaf or a brick
+    b) a pencil or a chair
+    c) a coin or a bag of rice
+    Answers: a) leaf   b) pencil   c) coin
+
+M8. Which holds more?
+    a) Jug A fills 2 cups, Jug B fills 4 cups.
+    b) Bottle A fills 6 glasses, Bottle B fills 5 glasses.
+    c) Bucket fills 10 mugs, bowl fills 3 mugs.
+    Answers: a) Jug B   b) Bottle A   c) bucket
+
+M9. How many more cups does it hold?
+    a) 5 cups and 3 cups     b) 7 cups and 6 cups     c) 2 cups and 6 cups
+    Answers: a) 2 more   b) 1 more   c) 4 more (the second holds more)
+
+M10. Full or empty?
+     a) [●●●●●] (all the space used)     b) [      ]     c) [●●  ] (some)
+     Answers: a) full   b) empty   c) neither (some inside; not full)
+
+M11. Pencil = 5 clips, crayon = 3 clips, straw = 8 clips.
+     a) Which is the longest?     b) Which is the shortest?
+     Answers: a) straw (8)   b) crayon (3)
+
+M12. True or false?
+     a) 6 clips is longer than 4 clips.
+     b) 2 cups holds more than 5 cups.
+     c) 7 blocks and 7 blocks are the same length.
+     Answers: a) true   b) false   c) true
+
+TEACHING TIPS
+  Struggling: compare only length for a few days, then weight, then
+  capacity. Harder: measure the same thing with two different units
+  (clips and blocks) and talk about why the numbers differ.
 
 
 ================================================================================
 TOPIC 1.12 — TIME WORDS: MORNING, AFTERNOON, NIGHT; TODAY, YESTERDAY,
              TOMORROW
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Parts of the day in order: morning, afternoon, evening, night.
+  - What we usually do in each part of the day.
+  - Yesterday, today, tomorrow and their order.
+  - Before and after in time; first, next, last for events.
+  - Count "sleeps" to a special day (counting days).
+  - The days of the week (by song) and that a week has 7 days.
+  - Which takes longer / shorter (sense of how long things take).
 
-Q1 (DESCRIPTIVE)
-SET-UP : Three pictures: sun rising (morning), sun high with lunch
-         (afternoon), moon and stars (night).
-ASK    : "What do you do in the MORNING? In the AFTERNOON? At NIGHT? What
-          did you do YESTERDAY? What will you do TOMORROW?"
-EXPECTED ANSWER:
-  "Morning — wake up, brush teeth, school. Afternoon — lunch, nap, play.
-  Night — dinner, sleep." "Yesterday I went to the park." "Tomorrow is
-  grandma's visit."
-TEACHER'S EXPLANATION:
-  1. A DAY has parts that always come in the same order:
-       MORNING → AFTERNOON → EVENING → NIGHT → (then morning again)
-  2. The sky helps: sunrise in the morning, sun high at midday, sunset in
-     the evening, dark with the moon at night.
-  3. Days in order:
-       YESTERDAY = the day that has gone (before today)
-       TODAY     = this day, now
-       TOMORROW  = the day that is coming (after today)
-  4. Tomorrow becomes today, and today becomes yesterday — time keeps
-     moving forward. Mark each day on a family calendar with a sticker.
-  Young children often mix up yesterday and tomorrow; use them in
-  sentences every day.
-IF THE CHILD STRUGGLES:
-  Only "day" and "night" first; then morning and night.
-TRY NEXT:
-  "Which is longer: the time you sleep at night or your bath?" (sense of
-  duration). Names of the days of the week in a song.
+PART A — DESCRIPTIVE
+--------------------
+D1. What do you do in the morning, in the afternoon and at night?
+    Answer: Morning: wake up, brush teeth, eat breakfast. Afternoon: eat
+    lunch, rest, play. Night: eat dinner, sleep.
+    Teacher explains: Parts of the day always come in the same order:
+    morning, afternoon, evening, night, then morning again.
 
-Q2 (NUMERICAL)
-SET-UP : A simple chart with 3 boxes: YESTERDAY, TODAY, TOMORROW. Stickers.
-ASK    : "It rained yesterday. It is sunny today. How many sleeps until
-          tomorrow? If your birthday is in 3 sleeps, how many days must you
-          wait?"
-EXPECTED ANSWER:
-  - 1 sleep until tomorrow.
-  - Birthday in 3 sleeps → wait 3 days (3 nights of sleep).
-TEACHER'S EXPLANATION:
-  1. "Tomorrow comes after ONE sleep. So tomorrow is 1 day away."
-  2. For 3 sleeps, draw 3 moons ☾ ☾ ☾. Cross one off each morning:
-     "3 ... 2 ... 1 ... birthday!"
-  3. "Counting sleeps is counting days." This is the child's first
-     counting of TIME.
-IF THE CHILD STRUGGLES:
-  Only today and tomorrow (1 sleep).
-TRY NEXT:
-  A countdown calendar for a special day (e.g. 7 sleeps).
+D2. How does the sky help us know the time of day?
+    Answer: In the morning the sun comes up. In the afternoon the sun is
+    high. In the evening the sun goes down. At night it is dark and we
+    see the moon and stars.
+    Teacher explains: Look at the sky together at different times.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  Order: night, morning, afternoon.
-      Answer: morning, afternoon, night.
-  b)  Which comes first: today or tomorrow?        Answer: today
-  c)  Which comes before today?                    Answer: yesterday
-  d)  ☾ ☾ ☾ ☾   How many sleeps?                    Answer: 4
-  e)  2 sleeps have passed out of 5. How many more?  Answer: 3
+D3. What is yesterday, today and tomorrow?
+    Answer: Yesterday is the day that has gone. Today is now. Tomorrow is
+    the day that is coming.
+    Teacher explains: Use them every day: "Yesterday we went to the park.
+    Today we are at home. Tomorrow Grandma comes."
+
+D4. Tomorrow, which day will be "today"? And which day will be
+    "yesterday"?
+    Answer: Tomorrow becomes today, and today becomes yesterday.
+    Teacher explains: Time keeps moving forward. Mark each day on a
+    calendar with a sticker.
+
+D5. Your birthday is in 3 sleeps. How many days must you wait?
+    Answer: 3 days.
+    Teacher explains: Draw 3 moons. Cross one off each morning: 3, 2, 1,
+    birthday!
+
+D6. How many sleeps until tomorrow?
+    Answer: 1 sleep.
+    Teacher explains: Tomorrow comes after one night of sleep.
+
+D7. Do we eat breakfast before or after we wake up?
+    Answer: After we wake up.
+    Teacher explains: Use "before" and "after" for daily events: "Wash
+    hands BEFORE eating. Brush teeth AFTER breakfast."
+
+D8. Sing the days of the week. How many days are in a week?
+    Answer: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday,
+    Sunday. There are 7 days.
+    Teacher explains: The days repeat like a pattern: after Sunday comes
+    Monday again.
+
+D9. Which takes longer: brushing your teeth or sleeping at night?
+    Answer: Sleeping at night.
+    Teacher explains: Talk about "a long time" and "a short time". Use a
+    sand timer for short activities.
+
+D10. What do you do first, next and last when you get ready for bed?
+     Answer: First bath, next pyjamas, then story, last sleep. (Order may
+     vary by family.)
+     Teacher explains: Sequencing events is the base for understanding
+     time.
+
+D11. It rained yesterday and it is sunny today. Was the rainy day before
+     or after today?
+     Answer: Before today.
+     Teacher explains: Yesterday is always before today.
+
+D12. School is closed on Saturday and Sunday. How many days is school
+     closed? How many days is it open in a week?
+     Answer: Closed 2 days, open 5 days.
+     Teacher explains: 7 days in a week: 5 school days and 2 holidays. Count
+     on the calendar.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Put in order.
+    a) night, morning, afternoon      b) evening, morning, night, afternoon
+    Answers: a) morning, afternoon, night
+             b) morning, afternoon, evening, night
+
+M2. Which comes first?
+    a) today or tomorrow     b) yesterday or today     c) morning or night
+    Answers: a) today   b) yesterday   c) morning
+
+M3. Fill in the gap.
+    a) yesterday, __, tomorrow       b) morning, __, evening, night
+    Answers: a) today   b) afternoon
+
+M4. How many sleeps?
+    a) ☾ ☾ ☾ ☾        b) ☾ ☾        c) ☾ ☾ ☾ ☾ ☾ ☾ ☾
+    Answers: a) 4   b) 2   c) 7
+
+M5. How many more sleeps to wait?
+    a) 5 sleeps, 2 have passed     b) 3 sleeps, 1 has passed
+    c) 7 sleeps, 7 have passed     d) 4 sleeps, 0 have passed
+    Answers: a) 3   b) 2   c) 0 (today is the day!)   d) 4
+
+M6. Days of the week. What comes next?
+    a) Monday, Tuesday, __        b) Thursday, Friday, __
+    c) Saturday, Sunday, __
+    Answers: a) Wednesday   b) Saturday   c) Monday
+
+M7. What comes before?
+    a) __, Wednesday       b) __, Monday       c) __, Saturday
+    Answers: a) Tuesday   b) Sunday   c) Friday
+
+M8. How many days in a week?         Answer: 7
+
+M9. Which takes longer?
+    a) a blink or a nap       b) eating a biscuit or a whole day at school
+    Answers: a) a nap   b) a whole day at school
+
+M10. Before or after?
+     a) Wake up __ breakfast.      b) Dinner __ sleeping at night.
+     Answers: a) before   b) before
+
+M11. A week has 7 days. School is open 5 days. How many days is it closed?
+     Answer: 2 days
+
+M12. Put in order: 1st, 2nd, 3rd.
+     tomorrow, yesterday, today
+     Answer: 1st yesterday, 2nd today, 3rd tomorrow
+
+TEACHING TIPS
+  Struggling: use only day and night, then add morning. Use a picture
+  timetable of the child's day. Harder: a countdown calendar (7 sleeps to
+  a trip) that the child crosses off each morning.
 
 
 ================================================================================
 TOPIC 1.13 — EARLY SPATIAL SENSE: LEFT/RIGHT, NEAR/FAR, INSIDE/OUTSIDE
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Inside / outside a closed boundary (circle, box, fence).
+  - Near / far, and that it depends on where you are.
+  - Left / right on their own body (only a beginning at this age).
+  - Revise: on, under, above, below, in front of, behind, between, next to.
+  - Count objects inside and outside, and see that moving them does not
+    change the total.
+  - Follow and give simple position instructions.
 
-Q1 (DESCRIPTIVE)
-SET-UP : A rope circle on the floor ("house"), some toys, a mark on the
-         child's right hand (a sticker or a watch).
-ASK    : "Put the teddy INSIDE the circle and the car OUTSIDE. Which toy is
-          NEAR you? Which is FAR? Raise your RIGHT hand. What is on your
-          LEFT side?"
-EXPECTED ANSWER:
-  Places toys correctly. Points to the near and far toys. Raises the
-  hand with the sticker as "right". Names something on the left (maybe
-  with mistakes — normal at this age).
-TEACHER'S EXPLANATION:
-  1. INSIDE/OUTSIDE: a closed boundary (a circle, a box, a fence) has an
-     inside and an outside. Go inside the rope; step outside.
-  2. NEAR/FAR: near is close to you (you can touch it); far is a long
-     way from you. Near and far depend on where YOU are — move, and a far
-     toy becomes near!
-  3. LEFT/RIGHT: hard for 3-4-year-olds; this is just a start. Use a
-     helper: a sticker on the right hand, or "I write/eat with my right
-     hand." Stand BESIDE the child, facing the same way, when showing
-     left and right (not facing them — then your right is on their left).
-  Why it matters: describing where things are is the foundation of
-  geometry, maps and directions.
-IF THE CHILD STRUGGLES:
-  Only inside/outside, using a box and blocks.
-TRY NEXT:
-  "Put the ball on the LEFT of the box and the car on the RIGHT."
+PART A — DESCRIPTIVE
+--------------------
+D1. Put the teddy INSIDE the rope circle and the car OUTSIDE it. How do you
+    know which is inside?
+    Answer: Inside means within the circle's line; outside means beyond
+    the line.
+    Teacher explains: A closed line has an inside and an outside. Step in
+    and out of a hoop saying the words.
 
-Q2 (NUMERICAL)
-SET-UP : A hoop (or rope circle). 7 balls: put 4 inside the hoop and 3
-         outside.
-ASK    : "How many balls are inside? How many are outside? How many balls
-          altogether? Are there more inside or outside?"
-EXPECTED ANSWER:
-  - Inside = 4
-  - Outside = 3
-  - Altogether = 7
-  - More are inside (4 is more than 3).
-TEACHER'S EXPLANATION:
-  1. Count the balls inside the hoop: "1, 2, 3, 4."
-  2. Count those outside: "1, 2, 3."
-  3. Count all of them: "1, 2, 3, 4, 5, 6, 7."
-  4. Compare: 4 and 3 — pair them up; one inside ball has no partner. So
-     inside has 1 more.
-IF THE CHILD STRUGGLES:
-  2 inside, 1 outside.
-TRY NEXT:
-  "Move 1 ball from inside to outside. Now how many inside? (3) Outside?
-  (4) Altogether?" (Still 7 — moving doesn't change the total.)
+D2. Which toy is NEAR you and which is FAR away?
+    Answer: The toy I can touch is near; the one across the room is far.
+    Teacher explains: Now walk to the far toy. Is it near or far now?
+    Near and far depend on where YOU are.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  ( ● ● ● )  ●  ●          How many inside ( )? outside?
-      Answer: inside 3, outside 2.
-  b)  Same picture — how many altogether?          Answer: 5
-  c)  ▲   ■   ●        Which shape is on the LEFT end? the RIGHT end?
-      (Reading left to right.)   Answer: left ▲, right ●
-  d)  ☺ ─ ■ ────────── ●    Which is NEAR the child ☺? which is FAR?
-      Answer: ■ is near, ● is far.
+D3. Raise your RIGHT hand. What is on your LEFT side?
+    Answer: The child raises the right hand (with a sticker helper) and
+    names something on the left.
+    Teacher explains: Left and right are hard at 3-4 years. Stand BESIDE
+    the child, facing the same way. Use a helper: "I eat with my right
+    hand" or a sticker on the right hand.
+
+D4. Put the ball ON the box, then UNDER the table, then BETWEEN the two
+    chairs.
+    Answer: The child places the ball correctly each time.
+    Teacher explains: "Between" means in the middle of two things. Play
+    "Simon Says" with position words.
+
+D5. There are 4 balls inside the hoop and 3 outside. How many balls
+    altogether?
+    Answer: 7 balls.
+    Teacher explains: Count inside, count outside, then count all from 1.
+
+D6. Move 1 ball from inside the hoop to outside. Now how many inside?
+    How many outside? How many altogether?
+    Answer: 3 inside, 4 outside, still 7 altogether.
+    Teacher explains: Moving does not change the total; it only changes
+    where the balls are.
+
+D7. Stand in front of the chair. Now stand behind it. Where are you now?
+    Answer: Behind the chair.
+    Teacher explains: In front is the side you face; behind is the back.
+
+D8. Which is nearer to the door: the bed or the window? (Use a real room.)
+    Answer: Depends on the room; the child points to the one closer to
+    the door.
+    Teacher explains: Walk and count steps: the one with fewer steps is
+    nearer.
+
+D9. You are on the swing and your friend is on the slide far away. Your
+    mother stands next to you. Who is near you?
+    Answer: My mother.
+    Teacher explains: "Next to" means right beside, very near.
+
+D10. Hold a ball in your left hand and a block in your right hand. Which
+     hand has the block?
+     Answer: The right hand.
+     Teacher explains: Use songs like "Hokey Cokey" (put your right hand
+     in ...) to practise left and right.
+
+D11. Draw a house. Draw a cat inside the house and a tree outside the
+     house.
+     Answer: A drawing with the cat within the house lines and the tree
+     outside them.
+     Teacher explains: Drawing inside/outside checks that the child
+     understands boundaries.
+
+D12. A box has 2 toys inside and 5 toys are on the floor outside it. Are
+     there more toys inside or outside? How many more?
+     Answer: More outside, 3 more.
+     Teacher explains: Match inside toys with outside toys: 3 outside toys
+     have no partner.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. How many inside ( ) and how many outside?
+    a) ( ● ● ● )  ● ●          b) ( ● )  ● ● ● ●          c) ( ● ● ● ● ● )
+    Answers: a) inside 3, outside 2   b) inside 1, outside 4
+             c) inside 5, outside 0
+
+M2. How many altogether?
+    a) ( ● ● ● )  ● ●
+    b) ( ● )  ● ● ● ●
+    c) ( ● ● ● ● )  ● ● ● ● ●
+    Answers: a) 5   b) 5   c) 9
+
+M3. More inside or outside?
+    a) ( ● ● ● ● )  ●          b) ( ● ● )  ● ● ● ● ● ●     c) ( ● ● ● )  ● ● ●
+    Answers: a) inside   b) outside   c) same (3 and 3)
+
+M4. Move 1 from inside to outside. How many inside now? Outside?
+    a) ( ● ● ● )  ●            b) ( ● ● ● ● ● )  ● ●
+    Answers: a) inside 2, outside 2   b) inside 4, outside 3
+
+M5. Which shape is at the LEFT end? Which at the RIGHT end?
+    (Read from left to right.)
+    a) ▲  ■  ●       b) ★  ●  ■  ▲       c) ●  ●  ▲
+    Answers: a) left ▲, right ●   b) left ★, right ▲   c) left ●, right ▲
+
+M6. Which shape is BETWEEN?
+    a) ▲  ■  ●   (between ▲ and ●)       b) ★  ▲  ●  (between ★ and ●)
+    Answers: a) ■   b) ▲
+
+M7. Which is NEAR the child ☺ and which is FAR?
+    a) ☺ ■ ─────────── ●        b) ☺ ─────────── ▲ ★
+    Answers: a) ■ near, ● far   b) ▲ is nearer than ★ (both are far)
+
+M8. Top, middle or bottom?
+         ★
+         ●
+         ■
+    a) Which is on top?
+    b) Which is at the bottom?
+    c) Which is in the middle?
+    Answers: a) ★   b) ■   c) ●
+
+M9. Above or below the line?
+          ●   ▲
+        ─────────
+          ■   ★   ★
+    a) How many above?      b) How many below?      c) How many in all?
+    Answers: a) 2   b) 3   c) 5
+
+M10. How many are to the LEFT of ■?     ●  ●  ●  ■  ●  ●
+     How many are to the RIGHT of ■?
+     Answers: left 3, right 2
+
+M11. What is next to ▲ ?     ●  ▲  ■
+     Answer: ● and ■ (one on each side)
+
+M12. How many boxes have a ● inside?
+     [ ● ]   [   ]   [ ● ]   [ ● ]   [   ]
+     Answer: 3 boxes
+
+TEACHING TIPS
+  Struggling: use only inside/outside with a box and blocks for a week.
+  Harder: give two instructions at once ("Put the car inside the box and
+  the doll to the left of the box").
 
 
 ================================================================================
 TOPIC 1.14 — SORTING AND SIMPLE PICTURE GRAPHS ("How many like apples?")
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Sort objects by colour, shape, size or type, and say the sorting rule.
+  - Count each group after sorting and compare the groups.
+  - Make a picture graph: one picture for one thing, pictures in lines
+    from the same starting line.
+  - Read a picture graph: how many in each group, which is most, which is
+    least, how many more, how many altogether.
+  - Know that a graph answers a question.
 
-Q1 (DESCRIPTIVE)
-SET-UP : Ask 6 family members/classmates, "Which fruit do you like best:
-         apple or banana?" Give each person a picture card (an apple
-         picture or a banana picture) to place in a column on a large sheet.
-ASK    : "Look at our picture graph. Which fruit do more people like? How
-          can you tell just by looking?"
-EXPECTED ANSWER:
-  Names the fruit with the taller column. Explains: "The apple line is
-  taller", "It has more pictures."
-TEACHER'S EXPLANATION:
-  1. SORTING puts things into groups. A PICTURE GRAPH shows the groups
-     as columns of pictures, so we can compare them quickly.
-  2. Rules for a fair picture graph:
-     - ONE picture for ONE person (or one thing).
-     - Pictures start at the same bottom line.
-     - Pictures are the same size and evenly spaced.
-  3. Read the graph: the TALLEST column is the MOST; the shortest is the
-     LEAST. Equal heights mean the SAME.
-  4. A graph ANSWERS A QUESTION. Always say the question first: "Which
-     fruit do people like best?"
-  This is the start of DATA and statistics.
-IF THE CHILD STRUGGLES:
-  Sort real fruit into two rows on the table before using picture cards.
-TRY NEXT:
-  A graph with 3 choices (apple, banana, mango).
+PART A — DESCRIPTIVE
+--------------------
+D1. Sort these buttons into groups. What rule did you use?
+    Answer: For example: "By colour: red buttons here, blue buttons
+    there."
+    Teacher explains: Sorting means putting things that are the same in
+    some way together. Always ask the child to say the rule.
 
-Q2 (NUMERICAL)
-SET-UP : This picture graph (made from the survey):
+D2. Now sort the same buttons a different way.
+    Answer: For example: "By size: big buttons and small buttons."
+    Teacher explains: The same things can be sorted in more than one way.
 
-            Favourite fruit
-     APPLE  : ● ● ● ●
-     BANANA : ● ●
-     MANGO  : ● ● ● ● ●
+D3. Ask 6 people: "Do you like apples or bananas best?" Put one picture for
+    each answer in two lines. Which fruit do more people like?
+    Answer: The fruit with the longer line of pictures.
+    Teacher explains: A picture graph shows the groups as lines of
+    pictures so we can compare them quickly.
 
-ASK    : "How many people like apples? Bananas? Mangoes? Which fruit is
-          the favourite? How many more people like mango than banana? How
-          many people did we ask altogether?"
-EXPECTED ANSWER:
-  - Apple = 4, Banana = 2, Mango = 5
-  - Favourite: mango (the longest row).
-  - Mango than banana: 3 more.
-  - Altogether: 11 people.
-TEACHER'S EXPLANATION:
-  1. Count each row: apple 1, 2, 3, 4; banana 1, 2; mango 1, 2, 3, 4, 5.
-  2. The longest row (5) is the favourite: mango.
-  3. Match mango and banana dots: 2 pairs, then 3 mango dots with no
-     partner. So 3 more.
-  4. Count every dot: 4 and 2 and 5 → "1, 2, ... 11." 11 people.
-     (Counting past 10 is fine with help; 11 comes after 10.)
-IF THE CHILD STRUGGLES:
-  Use only apple and banana rows; ask only "which has more?"
-TRY NEXT:
-  Make a graph of the family's shoe colours or of weather each day for a
-  week (sunny/cloudy/rainy).
+D4. Why must all the pictures in a graph be the same size and start at the
+    same line?
+    Answer: So that a longer line really means more. Big pictures could
+    make a short line look long.
+    Teacher explains: Show an unfair graph with big pictures in one row.
+    Let the child see the trick.
 
-Q3 (MATHEMATICAL ONLY)
-  Graph:   CARS  : ■ ■ ■
-           BALLS : ■ ■ ■ ■ ■ ■
-           DOLLS : ■ ■
-  a)  How many cars?                          Answer: 3
-  b)  How many balls?                         Answer: 6
-  c)  Which is the most?                      Answer: balls
-  d)  Which is the least?                     Answer: dolls
-  e)  How many more cars than dolls?          Answer: 1
-  f)  Sort:  ● ▲ ● ● ▲ ■   How many of each?
-      Answer: ● = 3, ▲ = 2, ■ = 1.
+D5. The graph shows APPLE ●●●●, BANANA ●●, MANGO ●●●●●. Which is the
+    favourite fruit?
+    Answer: Mango, with 5.
+    Teacher explains: The longest line (the biggest number) is the
+    favourite.
+
+D6. In the same graph, how many more people like mango than banana?
+    Answer: 3 more.
+    Teacher explains: Match mango and banana dots: 2 pairs, then 3 mango
+    dots without partners.
+
+D7. In the same graph, how many people answered altogether?
+    Answer: 11 people.
+    Teacher explains: Count every dot: 4, then on 5, 6 for banana, then
+    7, 8, 9, 10, 11 for mango. Counting past 10 is fine with help.
+
+D8. Sort a basket of toys into cars, animals and balls. How many in each
+    group? Which group is biggest?
+    Answer: (Example) cars 3, animals 5, balls 2. Animals is the biggest
+    group.
+    Teacher explains: Count each group and put numeral cards next to them.
+
+D9. Make a weather graph for one week: sunny, cloudy, rainy. What was the
+    weather on most days?
+    Answer: (Example) sunny 4 days, cloudy 2 days, rainy 1 day. Most days
+    were sunny.
+    Teacher explains: Add one picture each day. At the end of the week,
+    the 7 pictures show the whole week.
+
+D10. Here are some shapes: ● ▲ ● ■ ▲ ●. Sort them and make a graph.
+     Answer:
+       ● : ● ● ●
+       ▲ : ▲ ▲
+       ■ : ■
+     Teacher explains: The graph makes it easy to see that ● is the most
+     and ■ is the least.
+
+D11. What question does this graph answer: CATS ■■■, DOGS ■■■■■,
+     FISH ■■?
+     Answer: "Which pet do the children have?" or "Which pet is most
+     common?"
+     Teacher explains: Every graph answers a question. Say the question
+     first, then read the graph.
+
+D12. Two groups on a graph have the same number of pictures. What does
+     that mean?
+     Answer: The two groups are equal; the same number of people chose
+     each.
+     Teacher explains: Lines of the same length mean equal numbers.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Sort by shape. How many of each?
+    ● ▲ ● ● ▲ ■ ● ■
+    Answers: ● = 4, ▲ = 2, ■ = 2
+
+M2. Sort and count.
+    ★ ★ ● ★ ● ★ ▲ ★
+    Answers: ★ = 5, ● = 2, ▲ = 1
+
+M3. Graph:  CARS  : ■ ■ ■
+            BALLS : ■ ■ ■ ■ ■ ■
+            DOLLS : ■ ■
+    a) How many cars?  b) balls?  c) dolls?
+    Answers: a) 3   b) 6   c) 2
+
+M4. Same graph. a) Which is the most?  b) Which is the least?
+    Answers: a) balls   b) dolls
+
+M5. Same graph. a) How many more balls than cars?
+                b) How many more cars than dolls?
+    Answers: a) 3   b) 1
+
+M6. Same graph. How many toys altogether?
+    Answer: 11 (3 + 6 + 2)
+
+M7. Graph:  RED   : ● ● ● ●
+            BLUE  : ● ● ● ●
+            GREEN : ● ●
+    a) Which two colours are equal?   b) Which colour is the least?
+    Answers: a) red and blue (4 each)   b) green
+
+M8. Make a graph from:  ▲ ● ▲ ▲ ● ▲
+    Answer:  ▲ : ▲ ▲ ▲ ▲
+             ● : ● ●
+
+M9. Graph:  SUNNY  : ☼ ☼ ☼ ☼ ☼
+            RAINY  : ☂ ☂
+    a) How many sunny days?   b) rainy?   c) days in all?
+    Answers: a) 5   b) 2   c) 7
+
+M10. Which is the odd one out (does not belong)?
+     a) ● ● ● ▲       b) 2 4 ■ 6       c) red, blue, apple, green
+     Answers: a) ▲   b) ■ (not a number)   c) apple (not a colour)
+
+M11. Sort the numbers into "less than 5" and "5 or more".
+     3   8   1   5   9   0   6   4
+     Answers: less than 5: 3, 1, 0, 4     5 or more: 8, 5, 9, 6
+
+M12. Graph:  APPLES  : ● ● ●
+             ORANGES : ● ● ● ● ● ● ●
+     How many more oranges than apples?
+     Answer: 4
+
+TEACHING TIPS
+  Struggling: sort real objects into two groups only (e.g. cars / not
+  cars). Harder: sort by two rules at once ("big AND red") and make a
+  graph with 3 or 4 rows.
 
 
 ================================================================================
 TOPIC 1.15 — SHARING FAIRLY (early idea of division)
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - Fair means everyone gets the same amount.
+  - Share by dealing: "one for you, one for you ..." until the things run
+    out.
+  - Check that a share is fair by counting each share.
+  - Share amounts up to 10 between 2, 3 or 4 people.
+  - Sometimes one or more is LEFT OVER and cannot be shared fairly.
+  - Share one whole thing into 2 equal halves.
 
-Q1 (DESCRIPTIVE)
-SET-UP : 6 biscuits and 2 plates for 2 teddies.
-ASK    : "Share the biscuits fairly between the two teddies. What does
-          FAIR mean? How do you know it is fair?"
-EXPECTED ANSWER:
-  Deals out biscuits one at a time: "one for you, one for you..." Each
-  teddy gets 3. Explains: "Fair means same", "Both have 3."
-TEACHER'S EXPLANATION:
-  1. FAIR SHARING means everyone gets the SAME amount and nothing is left
-     that could still be shared.
-  2. The DEALING method: give one to each person in turn — "one for
-     you, one for you" — again and again until they run out.
-  3. Check it is fair by COUNTING each share: 3 and 3 — the same.
-  4. Sometimes one is left over (share 7 biscuits between 2): each gets 3,
-     and 1 is left. We could break it in half — each gets a HALF more.
-     This leads to fractions later.
-  This is the beginning of DIVISION: 6 shared between 2 is 3 each.
-IF THE CHILD STRUGGLES:
-  4 biscuits, 2 plates (2 each).
-TRY NEXT:
-  6 biscuits between 3 teddies (2 each).
+PART A — DESCRIPTIVE
+--------------------
+D1. Share 6 biscuits fairly between 2 teddies. What does "fair" mean?
+    Answer: Each teddy gets 3. Fair means both get the same.
+    Teacher explains: Deal one at a time: "one for you, one for you".
+    Then count each plate to check: 3 and 3.
 
-Q2 (NUMERICAL)
-SET-UP : 9 grapes and 3 bowls for 3 friends.
-ASK    : "Share the grapes fairly. How many grapes does each friend get?
-          Are any left over? What if there were 10 grapes?"
-EXPECTED ANSWER:
-  - 9 grapes shared among 3: each gets 3, none left over.
-  - 10 grapes: each gets 3, and 1 is left over.
-TEACHER'S EXPLANATION:
-  1. Deal: bowl 1, bowl 2, bowl 3; bowl 1, bowl 2, bowl 3; bowl 1,
-     bowl 2, bowl 3. All 9 grapes are used.
-  2. Count each bowl: 3, 3, 3. Fair!
-  3. Check: count all the grapes in the 3 bowls: 1 ... 9. Still 9.
-  4. With 10: after dealing 9, one grape is left. It can't go to one
-     friend only (not fair!). It is the LEFTOVER (later called the
-     remainder).
-IF THE CHILD STRUGGLES:
-  6 grapes, 2 friends (3 each).
-TRY NEXT:
-  8 grapes among 4 friends (2 each). Or: "Share 1 roti between 2 people"
-  — fold and cut in half.
+D2. Share 9 grapes fairly among 3 friends. How many does each get?
+    Answer: 3 grapes each.
+    Teacher explains: Deal in turns: friend 1, friend 2, friend 3, again
+    and again. Check: 3, 3, 3.
 
-Q3 (MATHEMATICAL ONLY)
-  a)  ● ● ● ●  shared between 2.  Each gets?          Answer: 2
-  b)  ● ● ● ● ● ●  shared between 2.  Each gets?      Answer: 3
-  c)  ● ● ● ● ● ●  shared between 3.  Each gets?      Answer: 2
-  d)  ● ● ● ● ●  shared between 2.  Each gets? Left over?
-      Answer: 2 each, 1 left over.
-  e)  Is this fair?   Plate A: ●●●   Plate B: ●●
-      Answer: No. A has 3 and B has 2 (5 in all). Fair sharing of 5
-      gives 2 and 2 with 1 left over — or cut the last one in half so
-      each gets 2 and a half.
+D3. Share 7 sweets between 2 children. What happens?
+    Answer: Each gets 3 and 1 sweet is left over.
+    Teacher explains: The leftover sweet cannot go to only one child (not
+    fair). We keep it aside, or cut it in half.
+
+D4. Share 1 roti between 2 people fairly.
+    Answer: Fold and cut it into 2 equal parts. Each gets a half.
+    Teacher explains: A half is one of two EQUAL parts. If the parts are
+    not equal, it is not fair.
+
+D5. Share 8 crayons among 4 children.
+    Answer: 2 crayons each.
+    Teacher explains: Deal round and round: after 2 rounds all 8 crayons
+    are used.
+
+D6. Riya has 4 cars and Sam has 2 cars. Is that fair? How can we make it
+    fair?
+    Answer: Not fair. Riya gives 1 car to Sam; then each has 3.
+    Teacher explains: 6 cars in all; shared fairly between 2 is 3 each.
+
+D7. Share 10 blocks between 2 children. How many each?
+    Answer: 5 each.
+    Teacher explains: 10 is two hands of 5: one hand for each child.
+
+D8. Share 5 apples among 5 children.
+    Answer: 1 apple each.
+    Teacher explains: When the number of things and the number of people
+    are equal, each gets 1.
+
+D9. Share 2 bananas among 4 children. Can each get a whole banana?
+    Answer: No. Cut each banana in half. Each child gets half a banana.
+    Teacher explains: When there are fewer things than people, we must
+    cut them into equal parts.
+
+D10. Share 6 flowers among 3 vases. How many flowers in each vase?
+     Answer: 2 in each vase.
+     Teacher explains: Sharing works with things, not only people.
+
+D11. Mother shared 8 grapes between 2 children. One child got 5 and the
+     other got 3. Was it fair? What should each get?
+     Answer: Not fair. Each should get 4.
+     Teacher explains: Put all 8 back together and share again by
+     dealing.
+
+D12. Share 10 stickers among 3 children. How many each? Any left over?
+     Answer: 3 each, 1 left over.
+     Teacher explains: Deal: after 3 rounds, 9 stickers are given. 1 is
+     left, not enough for another round.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Share between 2. How many each? Any left over?
+    a) ● ●
+    b) ● ● ● ●
+    c) ● ● ● ● ● ●
+    d) ● ● ● ● ● ● ● ●
+    e) ● ● ● ● ● ● ● ● ● ●
+    Answers: a) 1 each   b) 2 each   c) 3 each   d) 4 each   e) 5 each
+             (none left over)
+
+M2. Share between 2. How many each? How many left over?
+    a) ● ● ●    b) ● ● ● ● ●    c) ● ● ● ● ● ● ●    d) ● ● ● ● ● ● ● ● ●    e) ●
+    Answers: a) 1 each, 1 left   b) 2 each, 1 left   c) 3 each, 1 left
+             d) 4 each, 1 left   e) 0 each, 1 left
+
+M3. Share among 3. How many each?
+    a) ● ● ●    b) ● ● ● ● ● ●    c) ● ● ● ● ● ● ● ● ●
+    Answers: a) 1 each   b) 2 each   c) 3 each
+
+M4. Share among 3. How many each? How many left over?
+    a) ● ● ● ●
+    b) ● ● ● ● ●
+    c) ● ● ● ● ● ● ●
+    d) ● ● ● ● ● ● ● ●
+    e) ● ● ● ● ● ● ● ● ● ●
+    Answers: a) 1 each, 1 left   b) 1 each, 2 left   c) 2 each, 1 left
+             d) 2 each, 2 left   e) 3 each, 1 left
+
+M5. Share among 4. How many each? Any left over?
+    a) ● ● ● ●    b) ● ● ● ● ● ● ● ●    c) ● ● ● ● ● ●    d) ● ● ● ● ● ● ● ● ●
+    Answers: a) 1 each   b) 2 each   c) 1 each, 2 left   d) 2 each, 1 left
+
+M6. Share among 5. How many each?
+    a) ● ● ● ● ●    b) ● ● ● ● ● ● ● ● ● ●
+    Answers: a) 1 each   b) 2 each
+
+M7. Is it fair?
+    a) Plate A: ● ● ●    Plate B: ● ● ●
+    b) Plate A: ● ● ● ●    Plate B: ● ●
+    c) Plate A: ● ●    Plate B: ● ●    Plate C: ● ●
+    d) Plate A: ●    Plate B: ● ● ●    Plate C: ● ●
+    Answers: a) fair   b) not fair (should be 3 and 3)   c) fair
+             d) not fair (should be 2, 2, 2)
+
+M8. Make it fair. Move how many?
+    a) Plate A: ● ● ● ● ●    Plate B: ●
+    b) Plate A: ● ● ● ●    Plate B: ● ● ● ● ● ●
+    Answers: a) move 2 from A to B (3 and 3)
+             b) move 1 from B to A (5 and 5)
+
+M9. Put back together and share again.
+    a) 3 and 5 between 2     b) 1 and 7 between 2     c) 2 and 2 and 5 among 3
+    Answers: a) 8 in all, 4 each   b) 8 in all, 4 each
+             c) 9 in all, 3 each
+
+M10. Halves. Is it cut into 2 equal parts?
+     a) [██|██]     b) [█|███]     c) [███|███]
+     Answers: a) yes   b) no   c) yes
+
+M11. How many people can get 2 each?
+     a) ● ● ● ●    b) ● ● ● ● ● ●    c) ● ● ● ● ● ● ● ● ● ●
+     Answers: a) 2 people   b) 3 people   c) 5 people
+
+M12. Which numbers from 1 to 10 can be shared between 2 with NONE left
+     over?
+     Answer: 2, 4, 6, 8, 10 (these are called even numbers — a word for
+     later)
+
+TEACHING TIPS
+  Struggling: share 4 things between 2 by dealing, holding the child's
+  hand. Harder: share among 3 or 4, and talk about what to do with the
+  leftovers.
 
 
 ================================================================================
-TOPIC 1.16 — ESTIMATING SMALL QUANTITIES ("about how many?") AND
-             CHECKING BY COUNTING
+TOPIC 1.16 — ESTIMATING SMALL QUANTITIES ("about how many?") AND CHECKING
+             BY COUNTING
 ================================================================================
+WHAT THE CHILD MUST LEARN
+  - An estimate is a clever guess that is CLOSE, made without counting
+    each one.
+  - Use known amounts as helpers: 5 (one hand) and 10 (two hands).
+  - Say whether a group is "about 3", "about 5", "about 10", "more than
+    10".
+  - Check the estimate by counting, and say how close it was.
+  - Estimate lengths (blocks, steps) and check by measuring.
+  - Know that a sensible guess matters more than being exact.
 
-Q1 (DESCRIPTIVE)
-SET-UP : A clear jar with 8 marbles.
-ASK    : "Don't count yet! Just look. About how many marbles do you think
-          are in the jar? Now let's count. Was your guess close?"
-EXPECTED ANSWER:
-  Makes a sensible guess, e.g. "about 7" or "about 10" (not "100" and not
-  "2"). Counts: 8. Says whether the guess was close.
-TEACHER'S EXPLANATION:
-  1. An ESTIMATE is a clever guess — a number that is CLOSE, found by
-     looking and thinking, without counting every one.
-  2. Good estimating tricks:
-     - Compare to a number you KNOW: "I can see it is more than 5
-       (one hand of fingers) but less than 10 (two hands)."
-     - See small groups: "There are about 3 here and 3 here and 2 more."
-  3. Then CHECK by counting. Being close is the goal, not being exact.
-     Praise "close" guesses: "Your guess was 7, and it's 8. Only 1 away —
-     very close!"
-  4. Estimating builds number sense: knowing roughly how big numbers are.
-IF THE CHILD STRUGGLES:
-  Use 3 or 4 objects and give choices: "Is it about 3 or about 10?"
-TRY NEXT:
-  Estimate bigger amounts (about 15-20) and check by counting in groups.
+PART A — DESCRIPTIVE
+--------------------
+D1. Look at the jar of marbles (8). Don't count. About how many marbles do
+    you think there are? Now count. Was your guess close?
+    Answer: A sensible guess like 7 or 10. The count is 8.
+    Teacher explains: Praise close guesses: "You said 7 and it is 8. Only
+    1 away!"
 
-Q2 (NUMERICAL)
-SET-UP : Three small piles of beans: Pile A = 3, Pile B = 6, Pile C = 10.
-ASK    : "Guess how many beans in each pile. Now count. Which guess was the
-          closest?"
-EXPECTED ANSWER:
-  (Example)
-     Pile   Guess   Count   How far?
-     A        3       3     0 away (exact!)
-     B        5       6     1 away
-     C        8      10     2 away
-  Closest: Pile A (exact), then Pile B.
-TEACHER'S EXPLANATION:
-  1. Record guesses first (draw or write them).
-  2. Count each pile by touching and moving each bean.
-  3. Find "how far away" by counting up from the guess to the real
-     number: 5 → 6 is 1 step; 8 → 9 → 10 is 2 steps.
-  4. Small piles are easy to guess (we can almost see them at once);
-     bigger piles are harder — so bigger piles have bigger misses. That's
-     normal.
-IF THE CHILD STRUGGLES:
-  Only piles of 2 and 5; ask "Which pile has about 5?"
-TRY NEXT:
-  "About how many steps to the door?" Guess, then walk and count.
+D2. What is an estimate?
+    Answer: A clever guess of about how many, found by looking and
+    thinking, not by counting each one.
+    Teacher explains: We estimate every day: "about how many biscuits are
+    left?", "about how far is the park?"
 
-Q3 (MATHEMATICAL ONLY)
-  a)  ●●●●●●●●●  (show for 3 seconds)  Is it about 3, about 9, or about 20?
-      Answer: about 9 (it is 9).
-  b)  Guess was 6, count was 7. How far away?          Answer: 1
-  c)  Guess was 10, count was 8. How far away?         Answer: 2
-  d)  Which is a sensible guess for the fingers on 2 hands: 3, 10 or 50?
-      Answer: 10
-  e)  ▲▲▲▲▲ ▲▲▲▲▲   About how many? Then count.
-      Answer: about 10; exactly 10.
+D3. How can your hands help you estimate?
+    Answer: One hand has 5 fingers and two hands have 10. I can say "more
+    than 5 but less than 10".
+    Teacher explains: 5 and 10 are benchmark numbers. Compare groups to
+    them.
+
+D4. Show 3 piles: 3, 6 and 10 beans. Guess each, then count. Which guess
+    was closest?
+    Answer: (Example) guesses 3, 5, 8 and counts 3, 6, 10. The first was
+    exact; the second was 1 away; the third was 2 away.
+    Teacher explains: Small groups are easier to guess; bigger groups
+    give bigger misses. That is normal.
+
+D5. Is it sensible to guess 100 for the number of fingers on your hands?
+    Answer: No. It is far too many. 10 is right.
+    Teacher explains: A sensible estimate is close to the real number.
+    Ask "Could that be right?"
+
+D6. About how many steps is it to the door? Guess, then walk and count.
+    Answer: (Example) Guess 8, count 9 steps. 1 away.
+    Teacher explains: Estimating lengths works like estimating groups.
+
+D7. About how many blocks long is this book? Guess, then measure.
+    Answer: (Example) Guess 5, measure 6 blocks.
+    Teacher explains: Line up blocks to check. Improve the next guess
+    using what you learned.
+
+D8. A group is spread out and looks big. Does it always have many things?
+    Answer: No. Spread-out groups can look like more. Count to check.
+    Teacher explains: This is why we check estimates by counting.
+
+D9. Which is a better guess for a group of 7 cars: 2, 6 or 20?
+    Answer: 6, because it is closest to 7.
+    Teacher explains: 6 is only 1 away; 2 is 5 away; 20 is very far.
+
+D10. Grab a handful of beads. About how many did you grab? Count them.
+     Answer: (Example) Guess 6, count 7.
+     Teacher explains: Handfuls are a fun, quick estimation game. Repeat
+     it many times; guesses get better with practice.
+
+D11. Two bowls: one with about 3 sweets, one with about 10. Without
+     counting, which bowl has more?
+     Answer: The bowl with about 10.
+     Teacher explains: Estimating also helps us compare quickly.
+
+D12. After a guess of 5, we count 5. What do we say?
+     Answer: The guess was exactly right, 0 away!
+     Teacher explains: Exact is great but not required. Close is the aim.
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. (Look for 3 seconds.) About 3, about 5, or about 10?
+    a) ● ● ●
+    b) ● ● ● ● ● ● ● ● ● ●
+    c) ● ● ● ● ●
+    d) ● ● ● ● ● ● ● ● ●
+    Answers: a) about 3 (it is 3)   b) about 10 (it is 10)
+             c) about 5 (it is 5)   d) about 10 (it is 9)
+
+M2. More than 5 or less than 5?
+    a) ● ● ● ● ● ● ● ●    b) ● ●    c) ● ● ● ● ● ● ●    d) ● ● ● ●
+    Answers: a) more   b) less   c) more   d) less
+
+M3. More than 10 or less than 10?
+    a) ● ● ● ● ● ●
+    b) ● ● ● ● ● ● ● ● ● ● ● ●
+    c) ● ● ● ● ● ● ● ● ●
+    Answers: a) less   b) more   c) less
+
+M4. How far was the guess?
+    a) guess 6, count 7      b) guess 10, count 8      c) guess 5, count 5
+    d) guess 3, count 6      e) guess 9, count 10      f) guess 4, count 1
+    Answers: a) 1   b) 2   c) 0   d) 3   e) 1   f) 3
+
+M5. Which guess is closest?
+    a) count 7:  guesses 2, 6, 20
+    b) count 4:  guesses 4, 9, 1
+    c) count 10: guesses 5, 9, 50
+    Answers: a) 6   b) 4   c) 9
+
+M6. Sensible or silly?
+    a) fingers on 2 hands: 10        b) wheels on a bicycle: 50
+    c) eyes on a face: 2             d) legs on a dog: 100
+    Answers: a) sensible   b) silly (2)   c) sensible   d) silly (4)
+
+M7. About how many? Then count.
+    a) ▲ ▲ ▲ ▲
+    b) ▲ ▲ ▲ ▲ ▲ ▲ ▲
+    c) ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲
+    Answers: a) about 4, exactly 4   b) about 7, exactly 7
+             c) about 10, exactly 10
+
+M8. Which group has about 5?
+    ● ●   |   ● ● ● ● ●   |   ● ● ● ● ● ● ● ● ●
+    Answer: the middle group
+
+M9. Which bowl has more? (Estimate, then check.)
+    a) ● ● ●   or   ● ● ● ● ● ● ● ● ●
+    b) ● ● ● ● ● ● ●   or   ● ●
+    Answers: a) the second   b) the first
+
+M10. Guess the length in blocks, then check.
+     a) ━━━━━━  is about how many ━ ?      b) ━━━  is about how many ━ ?
+     Answers: a) 6   b) 3
+
+M11. Is the guess too many, too few or exact?
+     a) guess 8, count 5       b) guess 3, count 6       c) guess 7, count 7
+     Answers: a) too many   b) too few   c) exact
+
+M12. Order the groups from fewest to most, by looking.
+     A: ● ● ● ● ● ● ● ● ●
+     B: ● ●
+     C: ● ● ● ● ●
+     Answer: B, C, A (2, 5, 9)
+
+TEACHING TIPS
+  Struggling: use very small groups (2-4) and offer two choices ("about
+  2 or about 10?"). Harder: estimate groups of 15-20 and check by counting
+  in 5s with help.
 
 
 ================================================================================
-MIXED REVISION TEST — STAGE 1 (mathematical only, answers at the bottom)
+MIXED REVISION TEST — STAGE 1
 ================================================================================
-Adult reads each question and points to the pictures. 1 mark each.
-20 marks.
+Two parts with the same number of questions: Part A is spoken (descriptive
+and hands-on), Part B is mathematical only. 1 mark each, 30 marks in all.
+Split it over two or three days; at this age the test is a GAME.
 
-  1.  ● ● ● ● ● ● ●                     How many?
-  2.  1, 2, 3, 4, __, 6                 What is missing?
-  3.  10, 9, 8, __, 6                   What is missing?
-  4.  ★ ★ ★ ★                           Which numeral?  3   4   5
-  5.  Draw dots for 6.
-  6.  [        ]                        How many? Which numeral?
-  7.  8  or  5                          Which is more?
-  8.  ●●●   ●●●●●●                      How many more in the second group?
-  9.  Order smallest to biggest:  4  1  3  2
- 10.  ▲                                 How many sides?
- 11.  ▬ (rectangle)                      How many corners?
- 12.  A dice is which shape: sphere, cube or cylinder?
- 13.  ■ ■ ● ■ ■ ● ■ ■ __                 What comes next?
- 14.  1 2 3 1 2 3 1 __                   What comes next?
- 15.  Pencil = 6 clips, crayon = 4 clips. Which is longer? By how many?
- 16.  Which comes after today?
- 17.  ( ● ● )  ● ● ●                    How many outside the ( )?
- 18.  Graph: CATS ■■■■  DOGS ■■         Which has more? How many more?
- 19.  ● ● ● ● ● ● ● ●  shared between 2.  Each gets?
- 20.  Guess was 5, count was 8. How far away?
+PART A — DESCRIPTIVE (oral / hands-on), 15 marks
+  1.  Count these 8 buttons and tell me how many. How do you know?
+  2.  Give me 6 blocks from the pile.
+  3.  What does the numeral 0 mean?
+  4.  Row A has 4 cars and Row B has 6 cars. Which row has more? How many
+      more?
+  5.  Put these 4 straws in order from shortest to longest. (Use real
+      straws.)
+  6.  How are a square and a rectangle different?
+  7.  Which rolls: a ball or a dice? Why?
+  8.  Make a pattern with red and blue blocks and tell me its rule.
+  9.  Which is heavier: a book or a feather? How can a balance show it?
+ 10.  What do you do in the morning? What do you do at night?
+ 11.  Put the teddy inside the box and the car outside the box.
+ 12.  Sort these toys into two groups. What rule did you use?
+ 13.  Share 8 grapes fairly between 2 friends. How many does each get?
+ 14.  About how many beads are in this jar (7)? Now count. Were you close?
+ 15.  What comes after today?
+
+PART B — MATHEMATICAL ONLY, 15 marks
+ 16.  ● ● ● ● ● ● ●            How many?
+ 17.  1, 2, 3, 4, __, 6, __, 8               What is missing?
+ 18.  10, 9, 8, __, 6                        What is missing?
+ 19.  One more than 6?   One less than 6?
+ 20.  ★ ★ ★ ★                  Which numeral: 3, 4 or 5?
+ 21.  [      ]                               How many?
+ 22.  8 or 5                                 Which is more?
+ 23.  ● ● ●   |   ● ● ● ● ● ●     How many more in the second group?
+ 24.  4  1  3  2                             Order smallest to biggest.
+ 25.  ▲   ■   ●                               Corners of each?
+ 26.  ■ ■ ● ■ ■ ● ■ ■ __                      What comes next?
+ 27.  Pencil = 6 clips, crayon = 4 clips.   Which is longer? By how many?
+ 28.  ( ● ● )  ● ● ●                         How many outside? How many in all?
+ 29.  ● ● ● ● ● ● ● ● ●  shared among 3.   How many each?
+ 30.  Guess 5, count 8.                      How far away?
 
 ANSWER KEY
-  1. 7                 2. 5                 3. 7
-  4. 4                 5. ● ● ● ● ● ●       6. 0 ; the numeral 0
-  7. 8                 8. 3                 9. 1, 2, 3, 4
- 10. 3                11. 4                12. cube
- 13. ●                14. 2                15. pencil, by 2 clips
- 16. tomorrow         17. 3                18. cats, 2 more
- 19. 4                20. 3
+  Part A (accept any correct way of showing the answer)
+   1. 8, "because 8 was the last number I said"
+   2. exactly 6 blocks, stopping at 6
+   3. none / nothing
+   4. Row B, 2 more
+   5. correct order, ends lined up
+   6. a square has 4 equal sides; a rectangle has 2 long and 2 short sides
+   7. the ball; it is round everywhere (the dice has flat faces)
+   8. any repeating pattern with a clear rule (e.g. red, blue, red, blue)
+   9. the book; its side of the balance goes down
+  10. e.g. morning: wake up, breakfast; night: dinner, sleep
+  11. placed correctly
+  12. any sensible rule (colour, type, size) said aloud
+  13. 4 each
+  14. a sensible guess (about 5 to 10); count 7
+  15. tomorrow
+  Part B
+  16. 7                  17. 5 and 7            18. 7
+  19. 7 and 5            20. 4                  21. 0
+  22. 8                  23. 3                  24. 1 2 3 4
+  25. ▲ 3, ■ 4, ● 0      26. ●                  27. pencil, by 2 clips
+  28. 3 outside, 5 in all                       29. 3 each
+  30. 3
 
-Scoring guide:
-  17-20  Ready for Stage 2.
-  12-16  Nearly there — replay the topics of the missed questions for a
-         week, then test again.
-  0-11   Keep playing Stage 1 games; revise Stage 0 if needed; try again
-         in 3-4 weeks.
-  Remember: at age 3-4 the test is a GAME. Split it over two days if the
-  child is tired.
+Scoring guide (out of 30):
+  25-30  Ready for Stage 2.
+  18-24  Nearly there — practise the topics of the missed questions for a
+         week, then try those questions again.
+  0-17   Keep playing Stage 1 games (and revise Stage 0 if needed); test
+         again in 3-4 weeks.
+  Look at Part A and Part B separately too: a child who scores well in B
+  but not in A needs more talking about maths; a child who scores well in
+  A but not in B needs more practice with numerals and drills.
 
 
 ================================================================================
@@ -1082,25 +2554,29 @@ END OF STAGE 1 — READINESS CHECKLIST FOR STAGE 2
 The child is ready for Stage 2 (Kindergarten / LKG-UKG) when they can
 usually:
   [ ] Count up to 10 objects accurately, touching each one once
+  [ ] Count forwards 1-10 and backwards 10-1, and count on from any number
   [ ] Answer "how many?" with the last number counted, without recounting
   [ ] Give a requested number of objects ("give me 6")
-  [ ] Recognise and name the numerals 0 to 10
-  [ ] Put numeral cards 1-10 in order and find a missing number
-  [ ] Match a numeral to a group of objects, and draw that many dots
+  [ ] Say one more and one less for every number 0-10
+  [ ] Recognise, name and order the numerals 0 to 10
+  [ ] Find the number before, after and between
+  [ ] Match a numeral to a group of objects, and make any number on fingers
   [ ] Understand zero as "none"
-  [ ] Compare two groups by matching and counting (more, fewer, equal)
-  [ ] Order 4-5 objects or numbers from smallest to biggest
-  [ ] Name circle, square, triangle, rectangle, oval, star and count
-      their sides and corners
-  [ ] Name sphere, cube and cylinder and say which ones roll
-  [ ] Continue and create AB, AAB and ABC patterns
-  [ ] Compare length, weight and capacity; measure with paper clips/blocks
-  [ ] Use morning/afternoon/night and yesterday/today/tomorrow
-  [ ] Use inside/outside and near/far (left/right still developing)
-  [ ] Read a simple picture graph and say which group has the most
-  [ ] Share up to 10 objects fairly between 2 or 3 people
+  [ ] Compare two groups by matching and counting (more, fewer, equal) and
+      say how many more
+  [ ] Order 4-5 objects or numbers from smallest to biggest and back
+  [ ] Name circle, square, triangle, rectangle, oval, star and count their
+      sides and corners
+  [ ] Name sphere, cube and cylinder and say which ones roll and stack
+  [ ] Continue, create and fix AB, AAB, ABB and ABC patterns
+  [ ] Compare length, weight and capacity; measure with clips or blocks
+  [ ] Use morning/afternoon/night, yesterday/today/tomorrow, and know the
+      7 days of the week
+  [ ] Use inside/outside, near/far, between (left/right still developing)
+  [ ] Sort objects by a rule and read a simple picture graph
+  [ ] Share up to 10 objects fairly among 2, 3 or 4, and spot leftovers
   [ ] Make a sensible estimate and check it by counting
 
-Left/right and counting past 10 are still developing at this age — they
-are practised again in Stage 2.
+Left/right and counting past 10 are still developing at this age. They are
+practised again in Stage 2.
 ================================================================================
