@@ -400,8 +400,10 @@ PART B — MATHEMATICAL ONLY
 --------------------------
 M1. σ-algebras on finite sets: give the number of sets in σ(𝒞) on X.
     a) X = {1, 2, 3}, 𝒞 = {{1}}          b) X = {1, 2, 3}, 𝒞 = {{1}, {2}}
-    c) X = {1, ..., 4}, 𝒞 = {{1, 2}}      d) X = {1, ..., 4}, 𝒞 = {{1, 2}, {2, 3}}
-    e) X = {1, ..., 5}, 𝒞 = {{1, 2}, {3}} f) X = {1, ..., 6}, 𝒞 = {{1, 2, 3}, {3, 4}}
+    c) X = {1, ..., 4}, 𝒞 = {{1, 2}}
+    d) X = {1, ..., 4}, 𝒞 = {{1, 2}, {2, 3}}
+    e) X = {1, ..., 5}, 𝒞 = {{1, 2}, {3}}
+    f) X = {1, ..., 6}, 𝒞 = {{1, 2, 3}, {3, 4}}
     g) X = {1, ..., 6}, 𝒞 = {{1, 2}, {3, 4}, {5, 6}}
     h) X = {1, ..., 8}, 𝒞 = {{1, ..., 4}, {1, 2, 5, 6}, {1, 3, 5, 7}}
     i) X = {1, ..., 10}, 𝒞 = {{1, 2}, {2, 3}, {3, 4}}
@@ -545,7 +547,8 @@ M7. Dominated convergence (or its failure): find lim_{n→∞}. Say where no
     g) ∫₀¹ (1 + nx²)/(1 + x²)ⁿ dx         h) ∫₀^∞ (1 + x/n)⁻ⁿ dx
     i) ∫₀¹ n²x e^(−nx) dx                 j) ∫₀¹ n xⁿ⁻¹/(1 + x) dx
     k) ∫₀^∞ dx/((1 + x²)(1 + xⁿ))         l) ∫₀¹ n^(3/2) x/(1 + n²x²) dx
-    m) ∫₀^∞ n ln(1 + x/n) e⁻ˣ dx          n) lim_{t→0⁺} ∫₀^∞ ((1 − e^(−tx))/t) e⁻ˣ dx
+    m) ∫₀^∞ n ln(1 + x/n) e⁻ˣ dx
+    n) lim_{t→0⁺} ∫₀^∞ ((1 − e^(−tx))/t) e⁻ˣ dx
     Answers:
       a) 0         b) 0 (= n/((n + 1)(n + 2)))       c) 1 (= 1/(1 + 1/n²))
       d) 0 (bound 1)                     e) √π (= √π e^(−1/(4n²)))
@@ -696,3 +699,1542 @@ TEACHING TIPS
   continuity); prove Egoroff and Lusin's theorems; prove the Lebesgue
   differentiation theorem via the Vitali covering lemma; and show that
   convergence in measure is metrisable but a.e. convergence is not.
+
+
+================================================================================
+TOPIC 11.2 — Lp SPACES
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - DEFINITION: for 1 ≤ p < ∞, Lᵖ(X, μ) is the set of measurable f with
+    ‖f‖ₚ = (∫|f|ᵖ dμ)^(1/p) < ∞, where functions EQUAL A.E. ARE IDENTIFIED
+    (so ‖f‖ₚ = 0 ⇔ f = 0 a.e. makes ‖·‖ₚ a norm, not just a seminorm). For
+    p = ∞: ‖f‖_∞ = ESS SUP |f| = inf{M : |f| ≤ M a.e.}; it ignores null
+    sets (‖x + 𝟙_Q‖_∞ = 1 on [0, 1] although the sup is 2). ℓᵖ = Lᵖ(N,
+    counting measure): ‖x‖ₚ = (∑|xₙ|ᵖ)^(1/p), ‖x‖_∞ = sup|xₙ|.
+  - CONJUGATE EXPONENTS: 1/p + 1/q = 1, q = p/(p − 1); pairs (1, ∞),
+    (2, 2), (3, 3/2), (4, 4/3). YOUNG'S INEQUALITY: ab ≤ aᵖ/p + b^q/q for
+    a, b ≥ 0, with equality iff aᵖ = b^q (proof: concavity of log).
+  - HÖLDER: ∫|fg| ≤ ‖f‖ₚ‖g‖_q (1 ≤ p ≤ ∞); equality (1 < p < ∞) iff |f|ᵖ
+    and |g|^q are proportional a.e. p = 2 is CAUCHY-SCHWARZ. Generalised:
+    ‖fg‖ᵣ ≤ ‖f‖ₚ‖g‖_q when 1/r = 1/p + 1/q. MINKOWSKI: ‖f + g‖ₚ ≤ ‖f‖ₚ +
+    ‖g‖ₚ (1 ≤ p ≤ ∞), proved from Hölder; it FAILS for 0 < p < 1.
+  - RIESZ-FISCHER: Lᵖ is COMPLETE (a Banach space) for 1 ≤ p ≤ ∞; every
+    Cauchy (or convergent) sequence in Lᵖ has a subsequence converging
+    a.e. — but the whole sequence need not converge a.e. (typewriter).
+  - POWERS: on (0, 1), xᵃ ∈ Lᵖ ⇔ ap > −1; on (1, ∞), xᵃ ∈ Lᵖ ⇔ ap < −1;
+    on (0, ∞) no power xᵃ (a ≠ 0) is in any Lᵖ. Local singularities are
+    tamed by SMALL p, slow decay at infinity by LARGE p.
+  - INCLUSIONS: if μ(X) < ∞ and p < q then L^q ⊆ Lᵖ with ‖f‖ₚ ≤
+    μ(X)^(1/p − 1/q)‖f‖_q (on a probability space ‖f‖ₚ increases with p).
+    For sequences the inclusion REVERSES: ℓᵖ ⊆ ℓ^q, ‖x‖_q ≤ ‖x‖ₚ. On R
+    there is no inclusion either way (x^(−1/2)𝟙_(0,1) ∈ L¹ ∖ L²,
+    (1 + |x|)⁻¹ ∈ L² ∖ L¹), but Lᵖ ∩ L^q ⊆ Lʳ for p < r < q.
+  - INTERPOLATION (LYAPUNOV): if 1/r = θ/p + (1 − θ)/q then ‖f‖ᵣ ≤
+    ‖f‖ₚ^θ‖f‖_q^(1−θ) (log-convexity of p ↦ ‖f‖ₚ in 1/p). On a finite
+    measure space ‖f‖ₚ → ‖f‖_∞ as p → ∞.
+  - DENSITY AND SEPARABILITY: for 1 ≤ p < ∞ the simple functions, the step
+    functions and C_c(R) are dense in Lᵖ(R), and Lᵖ is SEPARABLE (rational
+    step functions). For p = ∞ all three fail: C[0, 1] is not dense in
+    L^∞[0, 1] and L^∞ is not separable ({𝟙_[0,t]} are 1 apart).
+  - DUALITY: for 1 ≤ p < ∞ (σ-finite if p = 1), (Lᵖ)* ≅ L^q via
+    φ_g(f) = ∫fg, with ‖φ_g‖ = ‖g‖_q (extremal f = |g|^(q−1) sgn g).
+    (ℓ¹)* = ℓ^∞, c₀* = ℓ¹, but (L^∞)* and (ℓ^∞)* are STRICTLY bigger than
+    L¹ and ℓ¹. Lᵖ is REFLEXIVE exactly for 1 < p < ∞; L² is a HILBERT
+    space with ⟨f, g⟩ = ∫f ḡ (the only Lᵖ whose norm satisfies the
+    parallelogram law).
+  - CONVOLUTION: (f ∗ g)(x) = ∫f(x − y)g(y) dy. ‖f ∗ g‖₁ ≤ ‖f‖₁‖g‖₁,
+    ‖f ∗ g‖ₚ ≤ ‖f‖₁‖g‖ₚ, ‖f ∗ g‖_∞ ≤ ‖f‖ₚ‖g‖_q; YOUNG: ‖f ∗ g‖ᵣ ≤
+    ‖f‖ₚ‖g‖_q when 1 + 1/r = 1/p + 1/q. APPROXIMATE IDENTITIES φ_ε(x) =
+    ε⁻¹φ(x/ε) (φ ≥ 0, ∫φ = 1): f ∗ φ_ε → f in Lᵖ for p < ∞, and smooth φ
+    (MOLLIFIERS) give C^∞ approximants.
+  - CONVERGENCE: CHEBYSHEV μ{|f| ≥ t} ≤ ‖f‖ₚᵖ/tᵖ, so Lᵖ convergence ⇒
+    convergence in measure. DCT in Lᵖ: fₙ → f a.e., |fₙ| ≤ g ∈ Lᵖ ⇒ fₙ → f
+    in Lᵖ. RIESZ (BREZIS-LIEB): fₙ → f a.e. and ‖fₙ‖ₚ → ‖f‖ₚ (p < ∞) ⇒
+    ‖fₙ − f‖ₚ → 0. Standard examples: spikes n^a𝟙_(0,1/n) (‖·‖ₚ =
+    n^(a − 1/p)), escaping bumps 𝟙_[n,n+1], flattening n^(−1/2)𝟙_[0,n].
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Define Lᵖ[0, 1] for 1 ≤ p ≤ ∞ and explain why functions equal a.e.
+    must be identified. For f(x) = x compute ‖f‖ₚ for p = 1, 2, 3, 4 and
+    ‖f‖_∞, and find lim_{p→∞} ‖f‖ₚ. Find ‖g‖_∞ for g = x + 𝟙_Q.
+    Answer: ‖x‖ₚ = (p + 1)^(−1/p): 1/2, 1/√3 ≈ 0.57735, 4^(−1/3) ≈ 0.62996,
+    5^(−1/4) ≈ 0.66874; ‖x‖_∞ = 1 = lim ‖x‖ₚ; ‖g‖_∞ = 1.
+    Teacher explains: ‖f‖ₚ = (∫|f|ᵖ)^(1/p) is positive-homogeneous and (by
+    Minkowski, D4) satisfies the triangle inequality, but ‖f‖ₚ = 0 only
+    gives ∫|f|ᵖ = 0, i.e. f = 0 a.e. (11.1). The function 𝟙_Q is not the
+    zero function yet has norm 0. So an element of Lᵖ is an EQUIVALENCE
+    CLASS [f] = {g : g = f a.e.}; on classes ‖·‖ₚ is a genuine norm. For
+    p = ∞, ‖f‖_∞ = inf{M : |f| ≤ M a.e.}, the smallest bound after
+    throwing away a null set. For f(x) = x:
+       ∫₀¹ xᵖ dx = 1/(p + 1),   so  ‖x‖ₚ = (p + 1)^(−1/p)
+       p = 1: 1/2   p = 2: 1/√3 ≈ 0.57735   p = 3: 4^(−1/3) ≈ 0.62996
+       p = 4: 5^(−1/4) ≈ 0.66874           p = 10: 11^(−1/10) ≈ 0.78679
+    and (p + 1)^(−1/p) = exp(−ln(p + 1)/p) → e⁰ = 1 = ‖x‖_∞. The norms
+    INCREASE with p (true on any probability space, D6). For g = x + 𝟙_Q:
+    g = x a.e., so ‖g‖_∞ = ‖x‖_∞ = 1, although sup g = g(1) = 2. Common
+    mistakes: writing ‖f‖_∞ = sup|f| without the "ess"; forgetting the
+    p-th root at the end. Now you try: f = 𝟙_[0,1] + 2𝟙_(1,3] on [0, 3];
+    find ‖f‖₁, ‖f‖₂, ‖f‖_∞. (5; √(1 + 8) = 3; 2)
+
+D2. State and prove Young's inequality ab ≤ aᵖ/p + b^q/q (a, b ≥ 0,
+    1 < p < ∞, 1/p + 1/q = 1) with its equality case. Check it for a = 2,
+    b = 3, p = 3 and for a = 2, b = 4, p = 3, and derive the "ε-version"
+    ab ≤ εa²/2 + b²/(2ε).
+    Answer: 6 ≤ 8/3 + 2√3 ≈ 6.13077; 8 = 8/3 + 16/3 (equality, since
+    aᵖ = 8 = b^q); ε-version from p = q = 2 applied to (√ε a)(b/√ε).
+    Teacher explains: If a = 0 or b = 0 there is nothing to prove. Else
+    log is CONCAVE, so for weights 1/p + 1/q = 1,
+       log(aᵖ/p + b^q/q) ≥ (1/p) log aᵖ + (1/q) log b^q = log a + log b
+    and exponentiating gives ab ≤ aᵖ/p + b^q/q. Strict concavity gives
+    equality iff aᵖ = b^q. (Picture: the area under y = x^(p−1) from 0 to
+    a plus the area to the left of it from 0 to b covers the rectangle
+    ab.) Here q = p/(p − 1) = 3/2.
+       a = 2, b = 3:  aᵖ/p = 8/3,  b^q/q = 3^(3/2)/(3/2) = 2√3 ≈ 3.46410,
+                      sum ≈ 6.13077 ≥ 6 ✓ (strict: 8 ≠ 3√3)
+       a = 2, b = 4:  aᵖ = 8, b^q = 4^(3/2) = 8: equality,
+                      8/3 + 8/(3/2) = 8/3 + 16/3 = 8 = ab ✓
+    ε-version: with p = q = 2, ab = (√ε a)(b/√ε) ≤ εa²/2 + b²/(2ε). This
+    trades a small constant on one factor for a large one on the other,
+    a standard trick in PDE estimates. Common mistakes: using q = p − 1
+    instead of p/(p − 1); forgetting the 1/p and 1/q weights. Now you try:
+    with a = 2 and p = 4, which b gives equality? Check it. (b^(4/3) = 16,
+    b = 8; ab = 16 = 16/4 + 16/(4/3) = 4 + 12)
+
+D3. Prove Hölder's inequality ∫|fg| ≤ ‖f‖ₚ‖g‖_q and state when equality
+    holds. For x = (1, 2, 3), y = (4, 5, 6) compare |∑xₖyₖ| with the
+    Hölder bounds for p = 1, 2, 3, ∞.
+    Answer: ∑xₖyₖ = 32; bounds 36 (p = 1), √1078 ≈ 32.83291 (p = 2),
+    ≈ 34.57057 (p = 3), 45 (p = ∞).
+    Teacher explains: The cases p = 1 or ∞ are immediate: |fg| ≤
+    |f|·‖g‖_∞ a.e. For 1 < p < ∞: if ‖f‖ₚ = 0 or ‖g‖_q = 0 then fg = 0 a.e.
+    Otherwise NORMALISE: F = |f|/‖f‖ₚ, G = |g|/‖g‖_q, so ‖F‖ₚ = ‖G‖_q = 1.
+    Young pointwise and integrate:
+       ∫FG ≤ ∫Fᵖ/p + ∫G^q/q = 1/p + 1/q = 1,
+    i.e. ∫|fg| ≤ ‖f‖ₚ‖g‖_q. Equality forces equality in Young a.e.:
+    Fᵖ = G^q a.e., i.e. |f|ᵖ and |g|^q proportional. Numbers:
+       p = 1:   ‖x‖₁‖y‖_∞ = 6·6 = 36
+       p = 2:   ‖x‖₂‖y‖₂ = √14·√77 = √1078 ≈ 32.83291
+       p = 3:   ‖x‖₃ = 36^(1/3) ≈ 3.30193,
+                ‖y‖_{3/2} = (8 + 5√5 + 6√6)^(2/3) ≈ 10.46982,
+                product ≈ 34.57057
+       p = ∞:   ‖x‖_∞‖y‖₁ = 3·15 = 45
+    All are ≥ 32 ✓. p = 2 is closest because x and y point in similar
+    directions, and Cauchy-Schwarz is sharp for parallel vectors. Common
+    mistakes: pairing ‖x‖₃ with ‖y‖₃ (the exponents must be conjugate);
+    forgetting the absolute values. Now you try: for x = (1, 2, 3) and
+    p = 3, which y gives equality? (y proportional to |x|^(p−1) = (1, 4, 9))
+
+D4. Prove Minkowski's inequality ‖f + g‖ₚ ≤ ‖f‖ₚ + ‖g‖ₚ for 1 ≤ p < ∞.
+    Check it in ℓ³ for x = (1, 2, 3), y = (4, 5, 6). Show that for
+    p = 1/2 the "norm" (∫|f|^(1/2))² violates the triangle inequality.
+    Answer: ‖x + y‖₃ ≈ 10.61772 ≤ 3.30193 + 7.39864 = 10.70057; for
+    p = 1/2 with f = 𝟙_[0,1/2], g = 𝟙_(1/2,1]: 1 > 1/4 + 1/4.
+    Teacher explains: p = 1 is the pointwise triangle inequality. For
+    p > 1: first f + g ∈ Lᵖ, because |f + g|ᵖ ≤ (2 max(|f|, |g|))ᵖ ≤
+    2ᵖ(|f|ᵖ + |g|ᵖ). Then write
+       |f + g|ᵖ ≤ |f|·|f + g|^(p−1) + |g|·|f + g|^(p−1)
+    and apply Hölder with q = p/(p − 1), noting (p − 1)q = p:
+       ∫|f + g|ᵖ ≤ (‖f‖ₚ + ‖g‖ₚ)(∫|f + g|ᵖ)^(1/q).
+    If ∫|f + g|ᵖ > 0 divide by (∫|f + g|ᵖ)^(1/q); since 1 − 1/q = 1/p this
+    is ‖f + g‖ₚ ≤ ‖f‖ₚ + ‖g‖ₚ. Numbers: x + y = (5, 7, 9),
+       ‖x + y‖₃ = (125 + 343 + 729)^(1/3) = 1197^(1/3) ≈ 10.61772
+       ‖x‖₃ + ‖y‖₃ = 36^(1/3) + 405^(1/3) ≈ 3.30193 + 7.39864 = 10.70057 ✓
+    For p = 1/2 on [0, 1]: N(f) = (∫|f|^(1/2))² gives N(f) = (1/2)² = 1/4,
+    N(g) = 1/4, N(f + g) = N(1) = 1 > 1/2. The unit ball of such an Lᵖ is
+    not convex (only N(f + g) ≤ 2^(1/p − 1)(N(f) + N(g)) holds). Common
+    mistakes: dividing by ‖f + g‖ₚ before knowing it is finite; applying
+    Minkowski for p < 1. Now you try: show that for p = 1/2 in R² the
+    vectors (1, 0), (0, 1) break the triangle inequality. ((1 + 1)² = 4 >
+    1 + 1 = 2)
+
+D5. Determine exactly for which p ∈ [1, ∞] the function x^(−a) (a > 0)
+    lies in Lᵖ(0, 1), in Lᵖ(1, ∞) and in Lᵖ(0, ∞). Deduce that neither of
+    L¹(0, ∞), L²(0, ∞) contains the other. Compute ‖x^(−1/3)‖₂ on (0, 1).
+    Answer: Lᵖ(0, 1) ⇔ ap < 1 (and L^∞ never); Lᵖ(1, ∞) ⇔ ap > 1 (and
+    L^∞ always); Lᵖ(0, ∞) never. ‖x^(−1/3)‖_{L²(0,1)} = √3.
+    Teacher explains: |x^(−a)|ᵖ = x^(−ap), and the model integrals are
+       ∫₀¹ x^(−s) dx = 1/(1 − s) < ∞  ⇔  s < 1
+       ∫₁^∞ x^(−s) dx = 1/(s − 1) < ∞  ⇔  s > 1
+    with s = ap. At 0 the singularity is harmless only if ap < 1, i.e.
+    p < 1/a: SMALL p. At ∞ the decay is fast enough only if p > 1/a:
+    LARGE p. On (0, ∞) we need both, impossible (at s = 1 both diverge).
+    For p = ∞: x^(−a) is unbounded near 0 (not in L^∞(0, 1)) and ≤ 1 on
+    (1, ∞). Non-inclusion on (0, ∞):
+       f = x^(−1/2)𝟙_(0,1):  ∫f = 2,  ∫f² = ∫₀¹ dx/x = ∞:  L¹ ∖ L²
+       g = x⁻¹𝟙_(1,∞):       ∫g = ∞,  ∫g² = 1:            L² ∖ L¹
+    Finally ∫₀¹ x^(−2/3) dx = 1/(1/3) = 3, so ‖x^(−1/3)‖₂ = √3. Common
+    mistakes: getting the direction of the inequality wrong at ∞ versus
+    at 0; forgetting that the borderline case s = 1 (1/x) diverges at
+    BOTH ends. Now you try: for which p is x^(−2/3) in Lᵖ(0, 1)? in
+    Lᵖ(1, ∞)? (p < 3/2; p > 3/2, including p = ∞)
+
+D6. Prove that on a finite measure space ‖f‖ₚ ≤ μ(X)^(1/p − 1/q)‖f‖_q for
+    1 ≤ p < q ≤ ∞, and that for sequences ‖x‖_q ≤ ‖x‖ₚ. Check the first
+    for f(x) = x on [0, 2] with p = 1, q = 2, and give sequences in ℓ²∖ℓ¹
+    and ℓ³∖ℓ².
+    Answer: 2 ≤ √2·√(8/3) = 4/√3 ≈ 2.30940 ✓; (1/n) ∈ ℓ² ∖ ℓ¹;
+    (n^(−1/2)) ∈ ℓ³ ∖ ℓ².
+    Teacher explains: Apply Hölder to |f|ᵖ·1 with exponents r = q/p > 1
+    and r′ = q/(q − p):
+       ∫|f|ᵖ ≤ (∫|f|^q)^(p/q) (∫1)^(1 − p/q) = ‖f‖_q^p μ(X)^(1 − p/q),
+    and take p-th roots: ‖f‖ₚ ≤ μ(X)^(1/p − 1/q)‖f‖_q. (For q = ∞ simply
+    ∫|f|ᵖ ≤ ‖f‖_∞ᵖ μ(X).) So L^q ⊆ Lᵖ: on a finite space, BIGGER exponent
+    means SMALLER space. For sequences, scale so that ‖x‖ₚ = 1; then every
+    |xₙ| ≤ 1, hence |xₙ|^q ≤ |xₙ|ᵖ, ∑|xₙ|^q ≤ 1 and ‖x‖_q ≤ 1: now ℓᵖ ⊆ ℓ^q,
+    the OPPOSITE direction (the danger for sequences is at infinity, not
+    at a point). Check: ‖x‖₁ on [0, 2] = 2, ‖x‖₂ = (∫₀² x²)^(1/2) =
+    √(8/3) ≈ 1.63299, and μ(X)^(1 − 1/2) = √2:
+       2 ≤ √2·√(8/3) = √(16/3) = 4/√3 ≈ 2.30940 ✓
+    Sequences: ∑1/n = ∞ but ∑1/n² = π²/6, so (1/n) ∈ ℓ² ∖ ℓ¹; ∑1/n = ∞
+    but ∑n^(−3/2) < ∞, so (n^(−1/2)) ∈ ℓ³ ∖ ℓ². Common mistakes: stating
+    L^q ⊆ Lᵖ on R (false: the constant 1 is in L^∞ only); reversing the
+    inclusion for ℓᵖ. Now you try: the best C with ‖f‖₂ ≤ C‖f‖₄ on
+    [0, 16]. (16^(1/2 − 1/4) = 2, equality for constants)
+
+D7. Prove the Riesz-Fischer theorem: Lᵖ (1 ≤ p < ∞) is complete, and
+    every Cauchy sequence has an a.e. convergent subsequence. Illustrate
+    with the truncations x⁽ⁿ⁾ = (1, 1/2, ..., 1/n, 0, 0, ...) in ℓ².
+    Answer: fast Cauchy subsequence + Minkowski + MCT + Fatou;
+    ‖x⁽ᵐ⁾ − x⁽ⁿ⁾‖₂² = ∑_{n<k≤m} 1/k² < 1/n, and x⁽ⁿ⁾ → (1/k) in ℓ².
+    Teacher explains: Let (fₙ) be Cauchy. STEP 1: choose n₁ < n₂ < ...
+    with ‖f_{n_{k+1}} − f_{n_k}‖ₚ < 2⁻ᵏ. STEP 2: put
+       g = |f_{n₁}| + ∑_{k≥1} |f_{n_{k+1}} − f_{n_k}|.
+    By Minkowski each partial sum has norm ≤ ‖f_{n₁}‖ₚ + 1, and by MCT
+    ‖g‖ₚ ≤ ‖f_{n₁}‖ₚ + 1 < ∞, so g < ∞ a.e. STEP 3: where g < ∞ the
+    telescoping series f_{n₁} + ∑(f_{n_{k+1}} − f_{n_k}) converges
+    absolutely; call the limit f (put f = 0 elsewhere). So f_{n_k} → f
+    a.e., and |f| ≤ g gives f ∈ Lᵖ. STEP 4: by Fatou,
+       ‖f − f_{n_k}‖ₚᵖ ≤ lim inf_j ∫|f_{n_j} − f_{n_k}|ᵖ ≤ (2^(1−k))ᵖ → 0.
+    STEP 5: a Cauchy sequence with a convergent subsequence converges.
+    (For p = ∞: off a null set the fₙ are uniformly Cauchy.) Example: for
+    m > n, ‖x⁽ᵐ⁾ − x⁽ⁿ⁾‖₂² = ∑_{k=n+1}^{m} 1/k² < ∑_{k>n} 1/(k(k − 1)) =
+    1/n, so the truncations are Cauchy and converge to (1/k) ∈ ℓ². The
+    SAME truncations are Cauchy in ℓ¹ only if ∑1/k < ∞, which fails: they
+    do not converge in ℓ¹. Common mistakes: forgetting to prove the limit
+    lies in Lᵖ; believing the whole sequence converges a.e. (the
+    typewriter of 11.1 D11 converges to 0 in every Lᵖ, p < ∞, but at no
+    point). Now you try: in L¹[0, 1] is fₙ = 𝟙_[0,1/n] Cauchy, and what is
+    its limit? (‖fₙ − fₘ‖₁ = |1/n − 1/m|: Cauchy, limit 0)
+
+D8. (a) Prove that on a finite measure space ‖f‖ₚ → ‖f‖_∞ as p → ∞.
+    (b) Prove the interpolation inequality ‖f‖ᵣ ≤ ‖f‖ₚ^θ‖f‖_q^(1−θ) for
+    1/r = θ/p + (1 − θ)/q, 0 < θ < 1. (c) Find θ for p = 1, q = 3, r = 2
+    and check it for f(x) = x on [0, 1].
+    Answer: (c) θ = 1/4; 1/√3 ≈ 0.57735 ≤ (1/2)^(1/4)(1/4)^(1/4) =
+    8^(−1/4) ≈ 0.59460.
+    Teacher explains: (a) Upper bound: |f| ≤ ‖f‖_∞ a.e., so ‖f‖ₚ ≤
+    μ(X)^(1/p)‖f‖_∞ → ‖f‖_∞. Lower bound: for M < ‖f‖_∞ the set
+    E = {|f| > M} has μ(E) > 0, so ‖f‖ₚ ≥ (Mᵖμ(E))^(1/p) = Mμ(E)^(1/p) → M.
+    Hence lim inf ‖f‖ₚ ≥ M for every M < ‖f‖_∞, and the limit is ‖f‖_∞
+    (also when ‖f‖_∞ = ∞). (b) Split |f|ʳ = |f|^(θr)·|f|^((1−θ)r) and apply
+    Hölder with exponents p/(θr) and q/((1 − θ)r); these are conjugate
+    because θr/p + (1 − θ)r/q = r(1/r) = 1. So
+       ∫|f|ʳ ≤ (∫|f|ᵖ)^(θr/p)(∫|f|^q)^((1−θ)r/q) = ‖f‖ₚ^(θr)‖f‖_q^((1−θ)r).
+    Take r-th roots. (c) 1/2 = θ + (1 − θ)/3 ⇒ 3/2 = 3θ + 1 − θ ⇒ θ = 1/4.
+    With ‖x‖₁ = 1/2, ‖x‖₃ = (1/4)^(1/3):
+       RHS = (1/2)^(1/4)·((1/4)^(1/3))^(3/4) = (1/2)^(1/4)(1/4)^(1/4)
+           = 8^(−1/4) ≈ 0.59460 ≥ ‖x‖₂ = 0.57735 ✓
+    Common mistakes: in (a) forgetting the factor μ(X)^(1/p) (on R the
+    constant 1 has ‖1‖ₚ = ∞ for all p < ∞); solving for θ with p and q
+    instead of 1/p and 1/q. Now you try: lim_{p→∞} ‖(1, 2, 3)‖ₚ and
+    ‖(1, 2, 3)‖₁₀. (3; 60074^(1/10) ≈ 3.00517)
+
+D9. Show that for 1 ≤ p < ∞ the continuous functions are dense in
+    Lᵖ[0, 1] and Lᵖ[0, 1] is separable, while in L^∞[0, 1] the function
+    𝟙_[0,1/2] has distance at least 1/2 from C[0, 1], and L^∞[0, 1] is not
+    separable. For the continuous ramp gₙ equal to 1 on [0, 1/2 − 1/n],
+    0 on [1/2, 1] and linear between, compute ‖𝟙_[0,1/2] − gₙ‖ₚ.
+    Answer: ‖𝟙_[0,1/2] − gₙ‖ₚ = (1/(n(p + 1)))^(1/p) → 0 for p < ∞, but
+    ‖𝟙_[0,1/2] − gₙ‖_∞ = 1 for every n.
+    Teacher explains: DENSITY (p < ∞): (i) simple functions are dense:
+    for f ≥ 0 take the standard simple φₖ ↑ f; |f − φₖ|ᵖ ≤ |f|ᵖ ∈ L¹, so by
+    DCT ‖f − φₖ‖ₚ → 0. (ii) Each 𝟙_A (A measurable) is approximated by 𝟙_U
+    (U open ⊇ A, m(U ∖ A) small; 11.1 regularity), then by finite unions
+    of intervals, i.e. step functions. (iii) Each 𝟙_[a,b] is approximated
+    by a continuous trapezoid, exactly as in the ramp. Ramp: 𝟙_[0,1/2] −
+    gₙ vanishes except on [1/2 − 1/n, 1/2], where it rises linearly from 0
+    to 1; with t the rescaled variable,
+       ∫|𝟙 − gₙ|ᵖ = (1/n)∫₀¹ tᵖ dt = 1/(n(p + 1)),
+    so the distance is (n(p + 1))^(−1/p) → 0. SEPARABILITY: step functions
+    with rational heights and rational endpoints form a countable dense
+    set. p = ∞: if g is continuous and ‖𝟙_[0,1/2] − g‖_∞ = δ < 1/2, then
+    g ≥ 1 − δ a.e. on [0, 1/2] and g ≤ δ a.e. on (1/2, 1], so by
+    continuity g(1/2) ≥ 1 − δ > δ ≥ g(1/2): impossible. Non-separable:
+    ‖𝟙_[0,s] − 𝟙_[0,t]‖_∞ = 1 for s ≠ t, so the uncountably many balls
+    B(𝟙_[0,t], 1/2) are disjoint and a countable set cannot meet them all.
+    Common mistakes: claiming continuous functions are dense in L^∞
+    "because they are dense in every Lᵖ"; confusing sup with ess sup in the
+    ramp (the difference approaches 1 on sets of positive measure). Now
+    you try: ‖𝟙_[0,1/2] − gₙ‖₁ for n = 10. (1/20)
+
+D10. State the Riesz representation theorem for (Lᵖ)*, 1 ≤ p < ∞, and
+     prove that φ_g(f) = ∫fg has norm ‖g‖_q. For g(x) = x on [0, 1] find
+     ‖φ_g‖ on L³, L¹ and L^∞ and an extremal f where one exists. Explain
+     why (L^∞)* is bigger than L¹.
+     Answer: on L³: ‖x‖_{3/2} = (2/5)^(2/3) ≈ 0.54288, f = x^(1/2); on L¹:
+     ‖x‖_∞ = 1, not attained; on L^∞: ‖x‖₁ = 1/2, f = 1.
+     Teacher explains: THEOREM: for 1 ≤ p < ∞ (μ σ-finite when p = 1)
+     every bounded linear functional on Lᵖ is φ_g for a unique g ∈ L^q, and
+     ‖φ_g‖ = ‖g‖_q; so (Lᵖ)* ≅ L^q isometrically (proof via Radon-Nikodym:
+     ν(A) = φ(𝟙_A) is a measure ≪ μ, g = dν/dμ). NORM: Hölder gives
+     |φ_g(f)| ≤ ‖g‖_q‖f‖ₚ. For 1 < p < ∞ test f = |g|^(q−1) sgn g:
+        φ_g(f) = ∫|g|^q,   ‖f‖ₚ = (∫|g|^((q−1)p))^(1/p) = ‖g‖_q^(q/p)
+     since (q − 1)p = q; the ratio is ‖g‖_q^(q − q/p) = ‖g‖_q. For g = x:
+        L³ (q = 3/2): ‖x‖_{3/2} = (∫x^(3/2))^(2/3) = (2/5)^(2/3) ≈ 0.54288,
+                      attained at f = x^(1/2)
+        L¹ (q = ∞):   ‖x‖_∞ = 1; with f = n𝟙_[1−1/n,1] (‖f‖₁ = 1),
+                      φ(f) = 1 − 1/(2n) → 1, but no f attains it
+        L^∞ (q = 1):  ‖x‖₁ = 1/2, attained at f = 1
+     (L^∞)*: on the subspace C[−1, 1] ⊆ L^∞[−1, 1] the functional
+     Λ(f) = f(0) has norm 1; extend it by Hahn-Banach (11.3). If Λ = φ_g
+     with g ∈ L¹, take continuous fₙ with 0 ≤ fₙ ≤ 1, fₙ(0) = 1, support in
+     [−1/n, 1/n]: then 1 = Λ(fₙ) = ∫fₙg → 0 by DCT, a contradiction. So
+     not every functional on L^∞ comes from L¹. Common mistakes: assuming
+     the sup is always attained (it fails for p = 1); writing (L^∞)* = L¹.
+     Now you try: the norm of f ↦ ∫₀¹ x f(x) dx on L²[0, 1] and the
+     extremal f of norm 1. (1/√3; f = √3 x)
+
+D11. Define convolution and prove ‖f ∗ g‖₁ ≤ ‖f‖₁‖g‖₁ and ‖f ∗ g‖_∞ ≤
+     ‖f‖ₚ‖g‖_q. Compute h = 𝟙_[0,1] ∗ 𝟙_[0,1] and its L¹, L², L^∞ norms.
+     State Young's convolution inequality and check one case. For the box
+     kernel φ_ε = (2ε)⁻¹𝟙_[−ε,ε] (0 < ε < 1/2) compute ‖f − f ∗ φ_ε‖₁ for
+     f = 𝟙_[0,1].
+     Answer: h(x) = x on [0, 1], 2 − x on [1, 2], 0 elsewhere (a tent);
+     ‖h‖₁ = 1, ‖h‖₂ = √(2/3) ≈ 0.81650, ‖h‖_∞ = 1; ‖f − f ∗ φ_ε‖₁ = ε.
+     Teacher explains: (f ∗ g)(x) = ∫f(x − y)g(y) dy. By Tonelli and
+     translation invariance,
+        ∫|f ∗ g| ≤ ∫∫|f(x − y)||g(y)| dx dy = ∫|g(y)|(∫|f|) dy = ‖f‖₁‖g‖₁,
+     so f ∗ g is defined a.e. and in L¹. By Hölder in y for fixed x,
+     |f ∗ g(x)| ≤ ‖f(x − ·)‖ₚ‖g‖_q = ‖f‖ₚ‖g‖_q. YOUNG: ‖f ∗ g‖ᵣ ≤
+     ‖f‖ₚ‖g‖_q when 1 + 1/r = 1/p + 1/q (r = p when q = 1). The tent:
+     h(x) = m([0, 1] ∩ [x − 1, x]) = length of overlap, which grows as x
+     on [0, 1] and falls as 2 − x on [1, 2]. So ‖h‖_∞ = 1, ‖h‖₁ = 1 = ‖f‖₁²
+     (equality for f, g ≥ 0), ‖h‖₂² = 2∫₀¹x² = 2/3. Young with p = 1, q = 2,
+     r = 2: √(2/3) ≤ 1·1 ✓; with p = q = 2, r = ∞: 1 ≤ 1·1 (equality). BOX
+     SMOOTHING: f ∗ φ_ε(x) is the average of f over [x − ε, x + ε]: 0 for
+     x ≤ −ε, rising linearly to 1 at x = ε, 1 up to 1 − ε, falling
+     linearly to 0 at 1 + ε. On [−ε, ε] |f − f ∗ φ_ε| forms two triangles
+     of area ε/4 each; the same at 1: total ε → 0, as the approximate
+     identity theorem predicts. Common mistakes: forgetting the reflection
+     x − y; computing ‖h‖₂ as √(∫h) instead of √(∫h²). Now you try:
+     𝟙_[0,1] ∗ 𝟙_[0,2] and its L¹, L², L^∞ norms. (x on [0, 1], 1 on [1, 2],
+     3 − x on [2, 3]; 2, √(5/3) ≈ 1.29099, 1)
+
+D12. Prove Chebyshev's inequality m{|f| ≥ t} ≤ ‖f‖ₚᵖ/tᵖ and use it on
+     f(x) = x, [0, 1], t = 0.9 with p = 1, 2, 4, 10. For the spikes
+     fₙ = n^(1/2)𝟙_(0,1/n) decide convergence to 0 in L¹, L², L³. Prove:
+     if fₙ → f a.e. and ‖fₙ‖ₚ → ‖f‖ₚ (1 ≤ p < ∞) then fₙ → f in Lᵖ.
+     Answer: exact 0.1; bounds 0.55556, 0.41152, 0.30483, 0.26072; spikes:
+     ‖fₙ‖ₚ = n^(1/2 − 1/p): → 0 in L¹, = 1 in L², → ∞ in L³.
+     Teacher explains: CHEBYSHEV: tᵖ𝟙_{|f|≥t} ≤ |f|ᵖ; integrate. Hence Lᵖ
+     convergence implies convergence in measure. For f = x the bound is
+     (1/(p + 1))/0.9ᵖ:
+        p = 1: 0.5/0.9 ≈ 0.55556      p = 2: (1/3)/0.81 ≈ 0.41152
+        p = 4: 0.2/0.6561 ≈ 0.30483   p = 10: (1/11)/0.9¹⁰ ≈ 0.26072
+     against the true value m{x ≥ 0.9} = 0.1: higher moments give better
+     tail bounds. Spikes: ‖fₙ‖ₚᵖ = n^(p/2)·(1/n), so ‖fₙ‖ₚ = n^(1/2 − 1/p):
+     n^(−1/2) → 0 (p = 1), 1 (p = 2), n^(1/6) → ∞ (p = 3). fₙ → 0 a.e. in
+     all cases: a.e. convergence alone gives nothing. THEOREM (Riesz):
+     by convexity |a − b|ᵖ ≤ 2^(p−1)(|a|ᵖ + |b|ᵖ), so
+        hₙ = 2^(p−1)(|fₙ|ᵖ + |f|ᵖ) − |fₙ − f|ᵖ ≥ 0,   hₙ → 2ᵖ|f|ᵖ a.e.
+     Fatou: 2ᵖ∫|f|ᵖ ≤ lim inf ∫hₙ = 2ᵖ∫|f|ᵖ − lim sup ∫|fₙ − f|ᵖ (here we
+     used ∫|fₙ|ᵖ → ∫|f|ᵖ). Hence lim sup ‖fₙ − f‖ₚ = 0. The spikes in L²
+     show the hypothesis ‖fₙ‖ₚ → ‖f‖ₚ cannot be dropped (1 ↛ 0). Common
+     mistakes: thinking Chebyshev gives the exact measure; forgetting the
+     norm condition. Now you try: ‖f‖₂ = 3 on some space; bound
+     μ{|f| ≥ 6}. (9/36 = 1/4)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. p-norms of vectors: give ‖x‖₁, ‖x‖₂, ‖x‖₄, ‖x‖_∞.
+    a) (3, 4)                          b) (1, 1)
+    c) (1, −2, 2)                      d) (1, 1, 1, 1)
+    e) (2, −1, 0, 2)                   f) (−5, 12)
+    g) (1, 2, 3)                       h) (0, 0, −7)
+    i) (1, −1, 1, −1, 1)               j) (6, −2, 3)
+    k) (1, 2, 4, 8)                    l) (2, 2, −1, 4)
+    m) (1, 1, ..., 1) (nine ones)      n) (3, −4, 12)
+    o) (1 + i, 1 − i) in C²            p) (1, 1, ..., 1) (n ones)
+    Answers (‖·‖₁, ‖·‖₂, ‖·‖₄, ‖·‖_∞):
+      a) 7, 5, 337^(1/4) ≈ 4.28457, 4
+      b) 2, √2 ≈ 1.41421, 2^(1/4) ≈ 1.18921, 1
+      c) 5, 3, 33^(1/4) ≈ 2.39678, 2
+      d) 4, 2, √2 ≈ 1.41421, 1
+      e) 5, 3, 33^(1/4) ≈ 2.39678, 2
+      f) 17, 13, 21361^(1/4) ≈ 12.08942, 12
+      g) 6, √14 ≈ 3.74166, 98^(1/4) ≈ 3.14635, 3
+      h) 7, 7, 7, 7
+      i) 5, √5 ≈ 2.23607, 5^(1/4) ≈ 1.49535, 1
+      j) 11, 7, 1393^(1/4) ≈ 6.10925, 6
+      k) 15, √85 ≈ 9.21954, 4369^(1/4) ≈ 8.13009, 8
+      l) 9, 5, √17 ≈ 4.12311, 4
+      m) 9, 3, √3 ≈ 1.73205, 1
+      n) 19, 13, 21073^(1/4) ≈ 12.04846, 12
+      o) 2√2 ≈ 2.82843, 2, 8^(1/4) ≈ 1.68179, √2 ≈ 1.41421
+      p) n, √n, n^(1/4), 1
+
+M2. Lᵖ norms of functions (Lebesgue measure on the stated set).
+    a) x on [0, 1]: p = 1, 2, ∞        b) x² on [0, 1]: p = 2
+    c) 1 on [0, 3]: p = 1, 2, ∞        d) sin x on [0, π]: p = 1, 2, ∞
+    e) eˣ on [0, 1]: p = 2             f) e⁻ˣ on (0, ∞): p = 1, 2, 3
+    g) 1/(1 + x²) on R: p = 1, 2       h) x^(−1/4) on (0, 1): p = 2, 4
+    i) ln x on (0, 1): p = 1, 2, ∞     j) 2𝟙_[0,1] − 3𝟙_(1,2]: p = 1, 2, ∞
+    k) e^(−|x|) on R: p = 1, 2         l) x(1 − x) on [0, 1]: p = 1, 2, ∞
+    m) cos x on [0, 2π]: p = 2, 4      n) e^(−x²) on R: p = 1, 2
+    o) xⁿ on [0, 1]: general p         p) x + 5𝟙_C (C Cantor) on [0, 1]:
+                                          p = 1, ∞
+    q) 𝟙_Q on R: every p               r) x^(−1/2) on (0, 4): p = 1, 2
+    Answers:
+      a) 1/2, 1/√3 ≈ 0.57735, 1        b) 1/√5 ≈ 0.44721
+      c) 3, √3 ≈ 1.73205, 1            d) 2, √(π/2) ≈ 1.25331, 1
+      e) √((e² − 1)/2) ≈ 1.78732
+      f) 1, 1/√2 ≈ 0.70711, 3^(−1/3) ≈ 0.69336   (‖·‖ₚ = p^(−1/p))
+      g) π, √(π/2) ≈ 1.25331           h) √2 ≈ 1.41421, ∞
+      i) 1, √2, ∞                      j) 5, √13 ≈ 3.60555, 3
+      k) 2, 1                          l) 1/6, 1/√30 ≈ 0.18257, 1/4
+      m) √π ≈ 1.77245, (3π/4)^(1/4) ≈ 1.23895
+      n) √π ≈ 1.77245, (π/2)^(1/4) ≈ 1.11952
+      o) (np + 1)^(−1/p)               p) 1/2, 1 (the Cantor set is null)
+      q) 0 (𝟙_Q = 0 a.e.)              r) 4, ∞
+
+M3. For which p ∈ [1, ∞] does f lie in Lᵖ of the given set?
+    a) x^(−1/2) on (0, 1)              b) x^(−1/2) on (1, ∞)
+    c) x^(−1/2) on (0, ∞)              d) x⁻² on (1, ∞)
+    e) x⁻² on (0, 1)                   f) x^(−1/3) on (0, 1)
+    g) x^(1/2) on (0, 1)               h) x^(1/2) on (1, ∞)
+    i) x⁻¹ on (1, ∞)                   j) ln x on (0, 1)
+    k) 1/(1 + x) on (0, ∞)             l) 1/√(x(1 + x)) on (0, ∞)
+    m) x^(−1/2)/(1 + x) on (0, ∞)      n) (sin x)/x on (0, ∞)
+    o) eˣ on (0, ∞)                    p) 1/(x ln² x) on (0, 1/2)
+    q) |x|^(−1/2) e^(−|x|) on R
+    r) f = n on (n, n + n⁻³) for each n ∈ N, 0 elsewhere, on (0, ∞)
+    s) xᵃ on (0, 1) (a ∈ R)            t) xᵃ e⁻ˣ on (0, ∞) (a ∈ R)
+    Answers:
+      a) 1 ≤ p < 2       b) 2 < p ≤ ∞       c) none
+      d) all p ∈ [1, ∞]  e) none            f) 1 ≤ p < 3
+      g) all p ∈ [1, ∞]  h) none            i) 1 < p ≤ ∞
+      j) 1 ≤ p < ∞ (not L^∞)                k) 1 < p ≤ ∞
+      l) 1 < p < 2 (x^(−1/2) at 0, x⁻¹ at ∞)
+      m) 1 ≤ p < 2 (x^(−3/2) at ∞ is always fine)
+      n) 1 < p ≤ ∞ (|sin x|ᵖ/xᵖ; for p = 1 it diverges like ∑1/k)
+      o) none            p) p = 1 only (∫ du/u² = 1/ln 2 with u = ln x)
+      q) 1 ≤ p < 2       r) 1 ≤ p < 2 (∫|f|ᵖ = ∑ n^(p−3))
+      s) ap > −1 (all p ∈ [1, ∞] if a ≥ 0; p = ∞ iff a ≥ 0)
+      t) ap > −1, as in s) (the factor e⁻ˣ kills infinity)
+
+M4. Conjugate exponents, Young's inequality and exponent bookkeeping.
+    Conjugate q of p:
+    a) p = 2                           b) p = 3
+    c) p = 4                           d) p = 3/2
+    e) p = 1                           f) p = 5/4
+    g) p = 1.1                         h) p = 10
+    i) p = 6                           j) p such that q = 2p
+    k) p such that q = p
+    l) r with 1/r = 1/2 + 1/3 (generalised Hölder ‖fg‖ᵣ ≤ ‖f‖₂‖g‖₃)
+    m) s such that f ∈ L², g ∈ L⁴, h ∈ Lˢ guarantees fgh ∈ L¹
+    n) Young convolution: r for p = q = 4/3
+    Young's inequality ab ≤ aᵖ/p + b^q/q:
+    o) a = 2, b = 3, p = 2: both sides
+    p) a = 1, b = 8, p = 4: both sides
+    q) the b giving equality when a = 3, p = 2
+    r) the b giving equality when a = 2, p = 4
+    s) a = 4, p = 3/2: the b giving equality, and check
+    t) ab ≤ εa²/2 + b²/(2ε) with a = 1, b = 4: the best ε and the bound
+    Answers:
+      a) 2      b) 3/2    c) 4/3    d) 3      e) ∞      f) 5
+      g) 11     h) 10/9   i) 6/5    j) 3/2 (q = 3)      k) 2
+      l) 6/5    m) 4      n) 2 (1 + 1/r = 3/4 + 3/4)
+      o) 6 ≤ 2 + 9/2 = 13/2            p) 8 ≤ 1/4 + 12 = 49/4
+      q) 3 (b² = a²)                   r) 8 (b^(4/3) = 16)
+      s) q = 3, b³ = 4^(3/2) = 8, b = 2: ab = 8 = 16/3 + 8/3
+      t) ε = b/a = 4: bound 2 + 2 = 4 = ab (equality)
+
+M5. Hölder, Cauchy-Schwarz and Minkowski in numbers. x = (1, 2, 3),
+    y = (4, 5, 6).
+    a) ∑xₖyₖ and ‖x‖₂‖y‖₂             b) ‖x‖₃‖y‖_{3/2}
+    c) ‖x‖₁‖y‖_∞                       d) ‖x‖_∞‖y‖₁
+    e) ‖x + y‖₂ and ‖x‖₂ + ‖y‖₂       f) ‖x + y‖₃ and ‖x‖₃ + ‖y‖₃
+    g) ∫₀¹ x·x² dx and ‖x‖₂‖x²‖₂ on [0, 1]
+    h) ∫₀¹ x dx and the Hölder bound ‖x‖₂‖1‖₂
+    i) max ∫₀¹ x f(x) dx over ‖f‖₂ = 1, and the maximiser
+    j) max ∫₀¹ x f(x) dx over ‖f‖_∞ ≤ 1
+    k) max ∫₀¹ f over ‖f‖₃ ≤ 1
+    l) max ∑ xₖ/k over ‖x‖_{ℓ²} ≤ 1
+    m) max ∑ xₖ2⁻ᵏ over ‖x‖₁ ≤ 1, and over ‖x‖_∞ ≤ 1
+    n) ∫₀¹ eˣ dx · ∫₀¹ e⁻ˣ dx (Cauchy-Schwarz says ≥ 1)
+    o) (∫₀¹ x dx)² and ∫₀¹ x² dx
+    p) f = g = x^(−1/4) on (0, 1): ∫fg and ‖f‖₂‖g‖₂
+    q) f = x, g = 1 − x on [0, 1]: ‖f + g‖₁ and ‖f‖₁ + ‖g‖₁
+    r) p = 1/2, f = 𝟙_[0,1/2], g = 𝟙_(1/2,1]: (∫|f + g|^(1/2))² versus
+       (∫|f|^(1/2))² + (∫|g|^(1/2))²
+    Answers:
+      a) 32, √1078 ≈ 32.83291          b) ≈ 3.30193 × 10.46982 ≈ 34.57057
+      c) 36                            d) 45
+      e) √155 ≈ 12.44990 ≤ √14 + √77 ≈ 12.51662
+      f) 1197^(1/3) ≈ 10.61772 ≤ 36^(1/3) + 405^(1/3) ≈ 10.70057
+      g) 1/4 ≤ 1/√15 ≈ 0.25820         h) 1/2 ≤ 1/√3 ≈ 0.57735
+      i) 1/√3, f = √3 x                j) 1/2 (f = 1)
+      k) 1 (f = 1)                     l) π/√6 ≈ 1.28255
+      m) 1/2 (x = e₁); 1 (x = (1, 1, 1, ...))
+      n) (e − 1)²/e ≈ 1.08616          o) 1/4 ≤ 1/3
+      p) 2 = √2·√2 (equality: f = g)   q) 1 = 1/2 + 1/2 (equality)
+      r) 1 > 1/4 + 1/4 = 1/2: the triangle inequality fails for p < 1
+
+M6. Inclusions: best constants and membership.
+    a) best C with ‖f‖₁ ≤ C‖f‖₂ on [0, 1]
+    b) the same on [0, 4]
+    c) best C with ‖f‖₂ ≤ C‖f‖₄ on [0, 8]
+    d) best C with ‖f‖ₚ ≤ C‖f‖_∞ on [0, 2]
+    e) best C with ‖f‖₁ ≤ C‖f‖₃ on [0, 27]
+    f) best C with ‖x‖_q ≤ C‖x‖ₚ in ℓ (p < q)
+    g) best C with ‖x‖₁ ≤ C‖x‖₂ on Rⁿ
+    For which p ∈ [1, ∞] is the sequence in ℓᵖ?
+    h) (1/n)                           i) (1/√n)
+    j) (1/(n ln n))_{n≥2}              k) (1/ln(n + 1))
+    l) (n^(−a)), a > 0                 m) (2⁻ⁿ)
+    n) ((−1)ⁿ)                         o) (n)
+    p) an f ∈ L¹(R) ∖ L²(R) and a g ∈ L²(R) ∖ L¹(R)
+    q) if f ∈ L¹(R) ∩ L^∞(R), is f ∈ L²(R)?
+    r) check ‖f‖₁ ≤ √2‖f‖₂ on [0, 2] for f = x
+    Answers:
+      a) 1       b) 2       c) 8^(1/4) ≈ 1.68179       d) 2^(1/p)
+      e) 27^(2/3) = 9       f) 1       g) √n
+      h) 1 < p ≤ ∞          i) 2 < p ≤ ∞          j) 1 < p ≤ ∞
+      k) p = ∞ only         l) 1/a < p ≤ ∞        m) all p
+      n) p = ∞ only         o) none
+      p) f = x^(−1/2)𝟙_(0,1); g = 1/(1 + |x|)
+      q) yes: ∫|f|² ≤ ‖f‖_∞∫|f|
+      r) 2 ≤ √2·√(8/3) = 4/√3 ≈ 2.30940
+
+M7. ℓᵖ norms of sequences (n ≥ 1 unless stated).
+    a) (2⁻ⁿ): ‖·‖₁, ‖·‖₂, ‖·‖_∞       b) (1/n): ‖·‖₂
+    c) (1/n): ‖·‖₃                     d) (1/n): ‖·‖₄
+    e) (1/(n(n + 1))): ‖·‖₁            f) (3⁻ⁿ)_{n≥0}: ‖·‖₂
+    g) (1/n!)_{n≥0}: ‖·‖₁              h) ((−1/2)ⁿ)_{n≥0}: ‖·‖₁, ‖·‖₂
+    i) e₁ + e₂: ‖·‖ₚ                   j) ‖eₘ − eₙ‖ₚ (m ≠ n) and ‖·‖_∞
+    k) (1/(2n − 1)): ‖·‖₂              l) (1/√(n(n + 1))): ‖·‖₂
+    m) (n/2ⁿ): ‖·‖₁                    n) (1/n²): ‖·‖₁
+    o) ((−1)ⁿ⁺¹/n): ‖·‖_∞              p) (rⁿ)_{n≥0}, |r| < 1: ‖·‖ₚ
+    q) why does (eₙ) have no convergent subsequence in ℓᵖ?
+    Answers:
+      a) 1, 1/√3 ≈ 0.57735, 1/2        b) π/√6 ≈ 1.28255
+      c) ζ(3)^(1/3) ≈ 1.06327          d) (π⁴/90)^(1/4) ≈ 1.01997
+      e) 1 (telescoping)               f) 3/(2√2) ≈ 1.06066
+      g) e ≈ 2.71828                   h) 2, 2/√3 ≈ 1.15470
+      i) 2^(1/p)                       j) 2^(1/p); 1
+      k) π/(2√2) ≈ 1.11072 (∑ 1/(2n − 1)² = π²/8)
+      l) 1 (∑(1/n − 1/(n + 1)))        m) 2
+      n) π²/6 ≈ 1.64493                o) 1
+      p) (1 − |r|ᵖ)^(−1/p)
+      q) its terms are 2^(1/p) apart: no subsequence is Cauchy (the unit
+         ball of ℓᵖ is not compact)
+
+M8. Essential suprema, limits of norms and interpolation.
+    a) ‖𝟙_Q‖_∞ on R
+    b) ‖f‖_∞, f = x on [0, 1] except f(1/2) = 100
+    c) ‖e⁻ˣ‖_∞ on (0, ∞)               d) ‖sin x‖_∞ on [0, 2π]
+    e) ‖f‖_∞, f = n on (n, n + 2⁻ⁿ), 0 elsewhere
+    f) ‖f‖_∞, f = x on the irrationals, 5 on the rationals of [0, 1]
+    g) ‖x e⁻ˣ‖_∞ on (0, ∞)             h) ‖1/x‖_∞ on (0, 1)
+    i) lim_{p→∞} ‖x‖_{Lᵖ(0,1)}         j) lim_{p→∞} ‖x‖_{Lᵖ(0,2)}
+    k) lim_{p→∞} ‖(1, 2, 3)‖ₚ          l) ‖(1, 2, 3)‖₁₀
+    m) lim_{p→∞} ‖1‖_{Lᵖ(0,3)}         n) lim_{p→0⁺} ‖x‖_{Lᵖ(0,1)}
+    o) θ in ‖f‖₂ ≤ ‖f‖₁^θ‖f‖₄^(1−θ)    p) θ in ‖f‖₃ ≤ ‖f‖₂^θ‖f‖_∞^(1−θ)
+    q) θ in ‖f‖₄ ≤ ‖f‖₂^θ‖f‖₈^(1−θ)
+    r) check o) for f = x on [0, 1]
+    Answers:
+      a) 0       b) 1       c) 1       d) 1       e) ∞       f) 1
+      g) 1/e ≈ 0.36788      h) ∞       i) 1       j) 2       k) 3
+      l) 60074^(1/10) ≈ 3.00517        m) 1 (3^(1/p) → 1)
+      n) 1/e ≈ 0.36788 ((p + 1)^(−1/p) → e⁻¹, the geometric mean
+         exp(∫ln x))
+      o) 1/3     p) 2/3     q) 1/3
+      r) 1/√3 ≈ 0.57735 ≤ (1/2)^(1/3)(1/5)^(1/6) ≈ 0.60696
+
+M9. Dual spaces and norms of functionals.
+    Identify the dual space:
+    a) ℓ¹                              b) ℓ²
+    c) ℓ³                              d) c₀
+    e) ℓ^∞                             f) L⁴[0, 1]
+    g) L¹(R)                           h) L^(3/2)(R)
+    Norm of φ(f) = ∫₀¹ x f(x) dx on:
+    i) L¹[0, 1]                        j) L²[0, 1]
+    k) L³[0, 1]                        l) L⁴[0, 1]
+    m) L^∞[0, 1]
+    n) φ(x) = ∑ xₙ2⁻ⁿ on ℓ¹, ℓ², ℓ^∞, c₀ (and is it attained on c₀?)
+    o) φ(x) = x₁ − x₂ on ℓ¹, ℓ², ℓ^∞
+    p) φ(f) = ∫₀¹ eˣ f(x) dx on L²[0, 1]
+    q) φ(f) = ∫₀^∞ e⁻ˣ f(x) dx on L²(0, ∞)
+    r) the extremal f of norm 1 for φ(f) = ∫₀¹ x² f(x) dx on L²[0, 1]
+    s) which are reflexive: ℓ¹, ℓ², ℓ⁷, c₀, L¹, L^(3/2), L^∞?
+    Answers:
+      a) ℓ^∞     b) ℓ²      c) ℓ^(3/2)             d) ℓ¹
+      e) strictly larger than ℓ¹ (finitely additive measures; Banach
+         limits are not in ℓ¹)
+      f) L^(4/3)[0, 1]      g) L^∞(R)              h) L³(R)
+      i) 1 (not attained)   j) 1/√3 ≈ 0.57735
+      k) (2/5)^(2/3) ≈ 0.54288         l) (3/7)^(3/4) ≈ 0.52968
+      m) 1/2
+      n) 1/2; 1/√3 ≈ 0.57735; 1; 1, not attained on c₀
+      o) 1; √2; 2              p) √((e² − 1)/2) ≈ 1.78732
+      q) 1/√2 ≈ 0.70711        r) f = √5 x²
+      s) ℓ², ℓ⁷, L^(3/2) (the Lᵖ with 1 < p < ∞)
+
+M10. Convolutions (on R unless stated; 𝟙 = indicator).
+     a) 𝟙_[0,1] ∗ 𝟙_[0,1]
+     b) ‖·‖₁, ‖·‖₂, ‖·‖_∞ of a)
+     c) 𝟙_[0,1] ∗ 𝟙_[0,2] and its ‖·‖₁, ‖·‖₂, ‖·‖_∞
+     d) e⁻ˣ𝟙_(x>0) ∗ e⁻ˣ𝟙_(x>0) and its ‖·‖₁
+     e) e^(−|x|) ∗ e^(−|x|), its value at 0 and its ‖·‖₁
+     f) (standard normal density) ∗ (standard normal density)
+     g) 𝟙_[−1,1] ∗ 𝟙_[−1,1] at x = 0, 1, 3
+     h) 𝟙_[0,1] ∗ x²
+     i) e^(−|x|) ∗ 1
+     j) Young check ‖f ∗ g‖_∞ ≤ ‖f‖₂‖g‖₂ for f = 𝟙_[0,1], g = 𝟙_[0,2]
+     k) Young check ‖f ∗ g‖₂ ≤ ‖f‖₁‖g‖₂ for the same f, g
+     l) the r in ‖f ∗ g‖ᵣ ≤ ‖f‖ₚ‖g‖_q for (p, q) = (1, 2), (2, 2),
+        (4/3, 4/3), (3/2, 3/2), (1, 1), (6/5, 3/2)
+     m) sequences: (1, 1) ∗ (1, 1), (1, 2) ∗ (1, −1), (1, 1, 1) ∗ (1, 1, 1)
+     n) check ‖a ∗ b‖₁ ≤ ‖a‖₁‖b‖₁ for the first two in m)
+     o) f = 𝟙_[0,1], φ_ε = (2ε)⁻¹𝟙_[−ε,ε] (ε < 1/2): (f ∗ φ_ε)(0), (f ∗ φ_ε)(ε),
+        (f ∗ φ_ε)(−ε)
+     p) ‖f − f ∗ φ_ε‖₁ for o)
+     Answers:
+       a) the tent: x on [0, 1], 2 − x on [1, 2], 0 elsewhere
+       b) 1, √(2/3) ≈ 0.81650, 1
+       c) x on [0, 1], 1 on [1, 2], 3 − x on [2, 3]; 2, √(5/3) ≈ 1.29099, 1
+       d) x e⁻ˣ𝟙_(x>0); 1
+       e) (1 + |x|)e^(−|x|); 1; 4 (= 2·2)
+       f) the N(0, 2) density e^(−x²/4)/(2√π)
+       g) 2, 1, 0
+       h) ∫₀¹(x − y)² dy = x² − x + 1/3
+       i) the constant 2 (= ∫e^(−|y|) dy)
+       j) 1 ≤ 1·√2                     k) √(5/3) ≈ 1.29099 ≤ √2 ≈ 1.41421
+       l) 2; ∞; 2; 3; 1; 2
+       m) (1, 2, 1); (1, 1, −2); (1, 2, 3, 2, 1)
+       n) 4 ≤ 2·2 = 4 (equality: non-negative); 4 ≤ 3·2 = 6
+       o) 1/2, 1, 0                    p) ε
+
+M11. Convergence in Lᵖ and Chebyshev. Say to which limit, and in which
+     Lᵖ (1 ≤ p ≤ ∞), the sequence converges; give ‖fₙ‖ₚ where asked.
+     a) fₙ = n𝟙_(0,1/n) on (0, 1): L¹?
+     b) fₙ = n^(1/2)𝟙_(0,1/n): L¹? L²?
+     c) fₙ = n^(1/3)𝟙_(0,1/n): L²? L³? L⁴?
+     d) fₙ = 𝟙_[n,n+1] on R: ‖fₙ‖ₚ, pointwise limit
+     e) fₙ = n^(−1/2)𝟙_[0,n] on R: ‖fₙ‖ₚ; for which p does fₙ → 0?
+     f) fₙ = xⁿ on [0, 1]: ‖fₙ‖ₚ; limit in Lᵖ and in L^∞?
+     g) the typewriter sequence on [0, 1]
+     h) fₙ = e^(−nx) on (0, ∞): ‖fₙ‖ₚ
+     i) fₙ = 1/(1 + nx²) on R: ‖fₙ‖₁, ‖fₙ‖₂, ‖fₙ‖_∞
+     j) fₙ = sin(nx) on [0, 2π]: ‖fₙ‖₂; does fₙ → 0 in L²?
+     k) fₙ = (1 + 1/n)𝟙_[0,1]: ‖fₙ − 𝟙_[0,1]‖ₚ
+     l) fₙ = n𝟙_[0,1/n²] on [0, 1]: L¹? L²?
+     m) Chebyshev: ‖f‖₂ = 3, bound μ{|f| ≥ 6}
+     n) ‖f‖₁ = 2, bound μ{|f| ≥ 10}
+     o) ‖f‖₃ = 2, bound μ{|f| ≥ 4}
+     p) f = x on [0, 1], t = 0.9: the bounds for p = 1, 2, 4, 10 and the
+        exact value
+     q) fₙ → f a.e. and ‖fₙ‖₂ → ‖f‖₂: does fₙ → f in L²?
+     Answers:
+       a) ‖fₙ‖₁ = 1: no (→ 0 a.e. only)
+       b) ‖fₙ‖₁ = n^(−1/2) → 0: yes; ‖fₙ‖₂ = 1: no
+       c) n^(−1/6) → 0: yes; 1: no; n^(1/12) → ∞: no
+       d) 1 for every p; → 0 pointwise, not in any Lᵖ
+       e) ‖fₙ‖ₚ = n^(1/p − 1/2): → 0 for 2 < p ≤ ∞; = 1 for p = 2; → ∞ for
+          p < 2
+       f) (np + 1)^(−1/p) → 0 in every Lᵖ, p < ∞; ‖fₙ‖_∞ = 1: not in L^∞
+       g) → 0 in every Lᵖ, p < ∞ (‖fₙ‖ₚ = length^(1/p)); not a.e., not in
+          L^∞
+       h) (np)^(−1/p) → 0 (p < ∞); ‖fₙ‖_∞ = 1
+       i) π/√n; (π/(2√n))^(1/2); 1: → 0 in Lᵖ for p < ∞ only
+       j) √π ≈ 1.77245: no (but ∫fₙg → 0 for every g ∈ L²: weakly)
+       k) 1/n for every p (including ∞): → 𝟙_[0,1] in all Lᵖ
+       l) ‖fₙ‖₁ = 1/n → 0: yes; ‖fₙ‖₂ = 1: no
+       m) 9/36 = 1/4      n) 2/10 = 1/5      o) 8/64 = 1/8
+       p) 0.55556, 0.41152, 0.30483, 0.26072; exact 0.1
+       q) yes (Riesz / Brezis-Lieb)
+
+M12. True (T) or false (F)? Give a counterexample or reason.
+     a) ‖·‖ₚ is a norm on Lᵖ for 0 < p < 1.
+     b) Lᵖ(X, μ) is complete for every 1 ≤ p ≤ ∞.
+     c) fₙ → f in L¹ ⇒ fₙ → f a.e.
+     d) fₙ → f in L¹ ⇒ a subsequence converges a.e.
+     e) fₙ → f a.e. and |fₙ| ≤ g ∈ Lᵖ (p < ∞) ⇒ fₙ → f in Lᵖ.
+     f) L²[0, 1] ⊆ L¹[0, 1].
+     g) L²(R) ⊆ L¹(R).
+     h) ℓ¹ ⊆ ℓ².
+     i) ℓ² ⊆ ℓ¹.
+     j) C_c(R) is dense in L^∞(R).
+     k) C_c(R) is dense in Lᵖ(R) for 1 ≤ p < ∞.
+     l) L^∞[0, 1] is separable.
+     m) Lᵖ[0, 1] is separable for 1 ≤ p < ∞.
+     n) (L¹[0, 1])* ≅ L^∞[0, 1].
+     o) (L^∞[0, 1])* ≅ L¹[0, 1].
+     p) L¹[0, 1] is reflexive.
+     q) Among the Lᵖ[0, 1], 1 ≤ p ≤ ∞, only L² is a Hilbert space.
+     r) f ∈ L¹ ∩ L³ ⇒ f ∈ L².
+     s) f, g ∈ L¹(R) ⇒ f ∗ g ∈ L¹(R).
+     t) f ∈ Lᵖ(R), g ∈ L^q(R) conjugate (1 < p < ∞) ⇒ f ∗ g is uniformly
+        continuous and bounded.
+     Answers:
+       a) F (Minkowski fails: M5 r)    b) T (Riesz-Fischer)
+       c) F (typewriter)               d) T
+       e) T (DCT applied to |fₙ − f|ᵖ ≤ 2ᵖgᵖ)
+       f) T (finite measure)           g) F (1/(1 + |x|))
+       h) T                            i) F ((1/n))
+       j) F (distance from 𝟙_[0,1] is ≥ 1/2)                  k) T
+       l) F ({𝟙_[0,t]} are 1 apart)    m) T
+       n) T                            o) F (Hahn-Banach extension of
+                                          f ↦ f(0))
+       p) F                            q) T (parallelogram law)
+       r) T (interpolation)            s) T (‖f ∗ g‖₁ ≤ ‖f‖₁‖g‖₁)
+       t) T (Hölder + continuity of translation in Lᵖ)
+
+TEACHING TIPS
+  Struggling: keep one picture in mind — the family x^(−a) on (0, 1) and
+  on (1, ∞) — and make the student predict membership BEFORE computing:
+  "a spike needs small p, a slow tail needs large p". Always write the
+  conjugate exponent next to p (3 ↔ 3/2) and check 1/p + 1/q = 1 before
+  applying Hölder. For Minkowski, walk through the three moves: split
+  |f + g|ᵖ, apply Hölder with (p − 1)q = p, divide. Tabulate ‖fₙ‖ₚ =
+  n^(a − 1/p) for the spikes so that convergence in different Lᵖ is a
+  matter of the sign of one exponent. Use Python to plot p ↦ ‖f‖ₚ and to
+  test inequalities on random vectors. Harder: prove Hanner's or
+  Clarkson's inequalities and deduce uniform convexity (hence
+  reflexivity) of Lᵖ, 1 < p < ∞; prove the Riesz-Thorin theorem and
+  derive Young's convolution inequality and Hausdorff-Young
+  ‖f̂‖_q ≤ ‖f‖ₚ; study weak Lᵖ and the Marcinkiewicz interpolation
+  theorem; prove that (L^∞)* is the space of bounded finitely additive
+  measures; show that ℓᵖ and ℓ^q are not isomorphic for p ≠ q (Pitt's
+  theorem); and write out the Radon-Nikodym proof of (Lᵖ)* ≅ L^q in
+  full, including the σ-finite reduction for p = 1.
+
+
+================================================================================
+TOPIC 11.3 — FUNCTIONAL ANALYSIS I: NORMED AND BANACH SPACES, HILBERT SPACES,
+BOUNDED OPERATORS, HAHN-BANACH, OPEN MAPPING, CLOSED GRAPH, UNIFORM
+BOUNDEDNESS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - NORMED SPACE: ‖x‖ ≥ 0 with ‖x‖ = 0 ⇔ x = 0, ‖λx‖ = |λ|‖x‖, ‖x + y‖ ≤
+    ‖x‖ + ‖y‖; metric d(x, y) = ‖x − y‖. BANACH space = complete normed
+    space. Test: X is Banach ⇔ every absolutely convergent series ∑xₙ
+    (∑‖xₙ‖ < ∞) converges. Banach: Rⁿ, ℓᵖ, c₀, Lᵖ, (C[0, 1], ‖·‖_∞),
+    (C¹[0, 1], ‖f‖_∞ + ‖f′‖_∞), B(X, Y) when Y is Banach, every dual X*.
+    Not Banach: (C[0, 1], ‖·‖₁), c₀₀ (finite sequences), polynomials, C¹
+    with the sup norm. Closed subspaces of Banach spaces are Banach.
+  - EQUIVALENT NORMS: c‖x‖_a ≤ ‖x‖_b ≤ C‖x‖_a. In FINITE dimension all
+    norms are equivalent (compactness of the unit sphere), so finite-
+    dimensional subspaces are closed and all linear maps on them are
+    bounded; on Rⁿ, ‖x‖_∞ ≤ ‖x‖₂ ≤ ‖x‖₁ ≤ √n‖x‖₂ ≤ n‖x‖_∞. In infinite
+    dimension they need not be (‖xⁿ‖₁ = 1/(n + 1), ‖xⁿ‖_∞ = 1 on C[0, 1]).
+    RIESZ LEMMA: the closed unit ball is compact ⇔ dim X < ∞.
+  - BOUNDED OPERATORS: T linear is continuous ⇔ continuous at 0 ⇔ BOUNDED
+    (‖Tx‖ ≤ M‖x‖). ‖T‖ = sup_{‖x‖≤1} ‖Tx‖; ‖ST‖ ≤ ‖S‖‖T‖. Matrices: ‖A‖₁ =
+    max column sum, ‖A‖_∞ = max row sum, ‖A‖₂ = largest singular value
+    √λ_max(AᵀA). Integral operators: sup-norm bound sup_x ∫|k(x, y)| dy,
+    L² bound (∬|k|²)^(1/2) (Hilbert-Schmidt). Shifts (norm 1), diagonal and
+    multiplication operators (‖M_φ‖ = ‖φ‖_∞). Differentiation is UNBOUNDED
+    on (C¹, ‖·‖_∞). Dual X* = B(X, K).
+  - INNER PRODUCT AND HILBERT SPACES: ⟨·,·⟩ linear in the first slot,
+    conjugate symmetric, positive definite; CAUCHY-SCHWARZ |⟨x, y⟩| ≤
+    ‖x‖‖y‖; PARALLELOGRAM LAW ‖x + y‖² + ‖x − y‖² = 2‖x‖² + 2‖y‖², which
+    CHARACTERISES norms from inner products (Jordan-von Neumann), with
+    POLARISATION ⟨x, y⟩ = ¼∑ₖ iᵏ‖x + iᵏy‖² (real case ¼(‖x + y‖² −
+    ‖x − y‖²)). Hilbert: complete inner product space (ℓ², L², Cⁿ); ℓᵖ
+    (p ≠ 2) and C[0, 1] are not.
+  - PROJECTION THEOREM: a closed convex set in a Hilbert space has a unique
+    nearest point to each x; for a closed subspace M, H = M ⊕ M^⊥, the
+    projection P is characterised by x − Px ⊥ M, P = P² = P*, ‖P‖ = 1
+    (P ≠ 0). GRAM-SCHMIDT: vₖ = xₖ − ∑_{j<k} ⟨xₖ, eⱼ⟩eⱼ, eₖ = vₖ/‖vₖ‖;
+    on [−1, 1] it gives the Legendre polynomials; Px = ∑⟨x, eₖ⟩eₖ.
+  - ORTHONORMAL BASES: BESSEL ∑|⟨x, eₖ⟩|² ≤ ‖x‖²; for a complete ON system
+    PARSEVAL ∑|⟨x, eₖ⟩|² = ‖x‖² and x = ∑⟨x, eₖ⟩eₖ. Every separable
+    infinite-dimensional Hilbert space is isometrically isomorphic to ℓ²
+    (RIESZ-FISCHER). Fourier series in L²(−π, π) give ζ(2) = π²/6,
+    ζ(4) = π⁴/90.
+  - RIESZ REPRESENTATION: every φ ∈ H* is φ(x) = ⟨x, g⟩ for a unique
+    g ∈ H, and ‖φ‖ = ‖g‖. ADJOINT: ⟨Tx, y⟩ = ⟨x, T*y⟩; ‖T*‖ = ‖T‖,
+    ‖T*T‖ = ‖T‖² (C*-identity), ker T* = (ran T)^⊥, and the closure of
+    ran T is (ker T*)^⊥. Self-adjoint (T = T*), unitary (T*T = TT* = I),
+    normal (T*T = TT*). Shift S* = left shift; kernel k(x, y) ↦ k̄(y, x).
+  - SPECTRUM: σ(T) = {λ : T − λI not invertible in B(X)}; compact, non-
+    empty (complex scalars), inside |λ| ≤ ‖T‖ (NEUMANN SERIES (I − T)⁻¹ =
+    ∑Tⁿ for ‖T‖ < 1); SPECTRAL RADIUS r(T) = lim ‖Tⁿ‖^(1/n) ≤ ‖T‖.
+    Eigenvalues are only part of σ: M_x on L²[0, 1] has σ = [0, 1] and no
+    eigenvalues; right shift: σ = closed unit disc, no eigenvalues; left
+    shift: every |λ| < 1 is an eigenvalue; Volterra: σ = {0}.
+    Self-adjoint ⇒ σ ⊆ R; unitary ⇒ σ ⊆ unit circle.
+  - HAHN-BANACH: a linear functional dominated by a sublinear p on a
+    subspace extends to the whole space, still dominated by p. Normed
+    form: every φ on a subspace extends with the SAME norm (not uniquely
+    in general). Corollaries: for x ≠ 0 there is f ∈ X* with ‖f‖ = 1,
+    f(x) = ‖x‖; X* separates points; dist(x, M) = max{|f(x)| : ‖f‖ ≤ 1,
+    f = 0 on M}; geometric form: disjoint convex sets (one open) are
+    separated by a hyperplane. Consequences: Banach limits, (ℓ^∞)* ≠ ℓ¹.
+  - BAIRE CATEGORY THEOREM: a complete metric space is not a countable
+    union of nowhere dense sets. UNIFORM BOUNDEDNESS (BANACH-STEINHAUS):
+    a family of bounded operators on a BANACH space that is pointwise
+    bounded is uniformly bounded; pointwise limits of bounded operators
+    are bounded; weakly convergent sequences are bounded; there is a
+    continuous function whose Fourier series diverges at 0.
+  - OPEN MAPPING THEOREM: a bounded linear SURJECTION between Banach spaces
+    maps open sets to open sets; BOUNDED INVERSE: a bounded bijection has a
+    bounded inverse; two comparable complete norms are equivalent. CLOSED
+    GRAPH THEOREM: a linear map between Banach spaces with closed graph is
+    bounded; HELLINGER-TOEPLITZ: a symmetric operator defined on all of a
+    Hilbert space is bounded. Completeness is essential: d/dx on
+    C¹ ⊂ C[0, 1] has closed graph but is unbounded.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Prove that (C[0, 1], ‖·‖_∞) is a Banach space. Show that C[0, 1] with
+    ‖f‖₁ = ∫₀¹|f| is not complete, using fₙ = 0 on [0, 1/2], n(x − 1/2) on
+    [1/2, 1/2 + 1/n], 1 on [1/2 + 1/n, 1]; compute ‖fₙ − fₘ‖₁.
+    Answer: sup-norm Cauchy ⇒ uniformly convergent ⇒ continuous limit;
+    ‖fₙ − fₘ‖₁ = |1/(2m) − 1/(2n)|, and the L¹ limit 𝟙_(1/2,1] is not
+    (a.e. equal to) a continuous function.
+    Teacher explains: Let (fₙ) be Cauchy in ‖·‖_∞. For each x, |fₙ(x) −
+    fₘ(x)| ≤ ‖fₙ − fₘ‖_∞, so (fₙ(x)) is Cauchy in R and converges to some
+    f(x). Given ε, choose N with ‖fₙ − fₘ‖_∞ < ε for m, n ≥ N; let m → ∞:
+    |fₙ(x) − f(x)| ≤ ε for all x, n ≥ N. So fₙ → f UNIFORMLY, and a uniform
+    limit of continuous functions is continuous (ε/3 argument: |f(x) −
+    f(y)| ≤ |f − f_N|(x) + |f_N(x) − f_N(y)| + |f_N − f|(y)). Hence f ∈ C[0, 1]
+    and ‖fₙ − f‖_∞ → 0. The L¹ norm: the fₙ are ramps getting steeper;
+    ∫₀¹ fₙ = 1/2 − 1/(2n) (area 1/2 minus a triangle of area 1/(2n)), and
+    for n > m, fₙ ≥ fₘ, so
+       ‖fₙ − fₘ‖₁ = ∫(fₙ − fₘ) = 1/(2m) − 1/(2n) → 0:   Cauchy.
+    But fₙ → g = 𝟙_(1/2,1] in L¹ (‖fₙ − g‖₁ = 1/(2n)). If some continuous
+    f had ‖fₙ − f‖₁ → 0, then ‖f − g‖₁ = 0, f = g a.e., impossible for a
+    continuous f (it would be 0 just left of 1/2 and 1 just right). So
+    the space is not complete; its completion is L¹[0, 1]. Common mistakes:
+    proving only pointwise convergence and forgetting to show the limit is
+    in the space; thinking completeness is a property of the set rather
+    than of the norm. Now you try: show c₀₀ (finitely supported sequences)
+    with ‖·‖_∞ is not complete. (x⁽ⁿ⁾ = (1, 1/2, ..., 1/n, 0, ...) is
+    Cauchy; its limit (1/k) is not finitely supported)
+
+D2. Prove that all norms on a finite-dimensional space are equivalent.
+    Find the best constants between ‖·‖₁, ‖·‖₂, ‖·‖_∞ on R³ with extremal
+    vectors, and show that ‖·‖₁ and ‖·‖_∞ are not equivalent on C[0, 1].
+    Answer: ‖x‖_∞ ≤ ‖x‖₂ ≤ √3‖x‖_∞, ‖x‖₂ ≤ ‖x‖₁ ≤ √3‖x‖₂, ‖x‖_∞ ≤ ‖x‖₁ ≤
+    3‖x‖_∞ (lower bounds attained at e₁, upper at (1, 1, 1)); on C[0, 1]
+    ‖xⁿ‖_∞/‖xⁿ‖₁ = n + 1 → ∞.
+    Teacher explains: Fix a basis e₁, ..., eₙ and compare any norm ‖·‖ with
+    |x|₂ = (∑|xᵢ|²)^(1/2) for x = ∑xᵢeᵢ. Upper: by the triangle inequality
+    and Cauchy-Schwarz,
+       ‖x‖ ≤ ∑|xᵢ|‖eᵢ‖ ≤ (∑‖eᵢ‖²)^(1/2)|x|₂ = C|x|₂.
+    So ‖·‖ is continuous for |·|₂. The unit sphere S = {|x|₂ = 1} is
+    compact (Heine-Borel), so ‖·‖ attains a minimum c on S, and c > 0
+    because x ≠ 0 on S. By homogeneity c|x|₂ ≤ ‖x‖ ≤ C|x|₂. Equivalence is
+    transitive, so any two norms are equivalent. On R³:
+       ‖x‖_∞ ≤ ‖x‖₂: max|xᵢ|² ≤ ∑xᵢ²;   ‖x‖₂ ≤ √3‖x‖_∞: ∑xᵢ² ≤ 3 max xᵢ²
+       ‖x‖₂ ≤ ‖x‖₁: square the right side; ‖x‖₁ ≤ √3‖x‖₂: Cauchy-Schwarz
+       with (1, 1, 1)
+       ‖x‖_∞ ≤ ‖x‖₁ ≤ 3‖x‖_∞
+    e₁ gives equality in each left inequality (all norms 1), and (1, 1, 1)
+    in each right one (norms 3, √3, 1). On C[0, 1]: ‖xⁿ‖_∞ = 1 while
+    ‖xⁿ‖₁ = 1/(n + 1), so no C has ‖f‖_∞ ≤ C‖f‖₁. The proof breaks because
+    the unit sphere of an infinite-dimensional space is NOT compact.
+    Common mistakes: using compactness of the sphere of ‖·‖ itself
+    (circular); claiming "all norms are equivalent" without "finite
+    dimensional". Now you try: best c, C with cN(x) ≤ ‖x‖₂ ≤ CN(x) for
+    N(x) = max(|x₁|, 2|x₂|) on R². (c = 1/2 at (0, 1/2); C = √5/2 at
+    (1, 1/2))
+
+D3. Prove that a linear map between normed spaces is continuous iff it is
+    bounded. Define ‖T‖, prove ‖A‖₁ = max column sum and ‖A‖_∞ = max row
+    sum, and compute ‖A‖₁, ‖A‖₂, ‖A‖_∞ for A = [[1, 2], [3, 4]] with vectors
+    attaining them.
+    Answer: ‖A‖₁ = 6 (x = e₂), ‖A‖_∞ = 7 (x = (1, 1)), ‖A‖₂ = √(15 + √221)
+    ≈ 5.46499 (top right singular vector).
+    Teacher explains: If ‖Tx‖ ≤ M‖x‖ then ‖Tx − Ty‖ ≤ M‖x − y‖: Lipschitz,
+    so continuous. Conversely if T is continuous at 0, there is δ > 0 with
+    ‖x‖ ≤ δ ⇒ ‖Tx‖ ≤ 1; for x ≠ 0 apply this to δx/‖x‖: ‖Tx‖ ≤ ‖x‖/δ.
+    Define ‖T‖ = sup{‖Tx‖ : ‖x‖ ≤ 1}, the smallest M. For matrices with
+    columns aⱼ:
+       ‖Ax‖₁ = ‖∑xⱼaⱼ‖₁ ≤ ∑|xⱼ|‖aⱼ‖₁ ≤ (maxⱼ‖aⱼ‖₁)‖x‖₁,
+    with equality at x = eⱼ for the best column. For ∞: |(Ax)ᵢ| ≤
+    ∑ⱼ|aᵢⱼ||xⱼ| ≤ (∑ⱼ|aᵢⱼ|)‖x‖_∞, with equality at xⱼ = sgn aᵢⱼ for the best
+    row. For ‖·‖₂: ‖Ax‖₂² = ⟨AᵀAx, x⟩ ≤ λ_max‖x‖². For A = [[1, 2], [3, 4]]:
+       columns: |1| + |3| = 4, |2| + |4| = 6   ⇒ ‖A‖₁ = 6 (x = e₂)
+       rows:    |1| + |2| = 3, |3| + |4| = 7   ⇒ ‖A‖_∞ = 7 (x = (1, 1))
+       AᵀA = [[10, 14], [14, 20]], λ² − 30λ + 4 = 0, λ = 15 ± √221
+       ⇒ ‖A‖₂ = √(15 + √221) ≈ 5.46499
+    Note the spectral radius (5 + √33)/2 ≈ 5.37228 is smaller than every
+    norm, as it must be. Common mistakes: swapping rows and columns;
+    taking ‖A‖₂ as the largest |eigenvalue| of A (true only for normal
+    matrices). Now you try: ‖A‖₁, ‖A‖₂, ‖A‖_∞ for [[3, 0], [4, 5]].
+    (7; AᵀA = [[25, 20], [20, 25]], λ_max = 45, 3√5 ≈ 6.70820; 9)
+
+D4. Let Vf(x) = ∫₀ˣ f(t) dt (the Volterra operator). Find ‖V‖ on
+    (C[0, 1], ‖·‖_∞), on L¹[0, 1] and on L²[0, 1]. Show that
+    differentiation D = d/dx is unbounded on (C¹[0, 1], ‖·‖_∞).
+    Answer: 1 (attained at f = 1); 1 (not attained); 2/π ≈ 0.63662
+    (eigenfunction cos(πx/2) of V*V); ‖Dxⁿ‖_∞ = n while ‖xⁿ‖_∞ = 1.
+    Teacher explains: SUP NORM: |Vf(x)| ≤ ∫₀ˣ|f| ≤ x‖f‖_∞ ≤ ‖f‖_∞, and f = 1
+    gives Vf = x with sup 1: ‖V‖ = 1. L¹: by Tonelli
+       ‖Vf‖₁ ≤ ∫₀¹∫₀ˣ|f(t)| dt dx = ∫₀¹|f(t)|(1 − t) dt ≤ ‖f‖₁,
+    and f = n𝟙_[0,1/n] gives ‖Vf‖₁ = 1 − 1/(2n) → 1: ‖V‖ = 1, not
+    attained. L²: ‖V‖² = ‖V*V‖ = largest eigenvalue of the compact
+    self-adjoint V*V, where V*g(x) = ∫ₓ¹ g. If V*Vf = λf then u = λf
+    satisfies u(1) = 0, u′ = −Vf so u′(0) = 0, u″ = −f; hence λf″ = −f with
+    f(1) = 0, f′(0) = 0: f = cos((k + ½)πx), λ = 1/((k + ½)π)². The largest
+    is λ = 4/π², so ‖V‖ = 2/π ≈ 0.63662 (a numerical check with a 300 × 300
+    matrix gives 0.63662). The crude Hilbert-Schmidt bound (∬_{t<x} 1)^(1/2)
+    = 1/√2 ≈ 0.70711 is larger, as it should be. DIFFERENTIATION:
+    fₙ = xⁿ has ‖fₙ‖_∞ = 1 and ‖fₙ′‖_∞ = n, so no bound ‖Df‖ ≤ M‖f‖ exists
+    (also sin(n²x)/n → 0 uniformly while its derivative n cos(n²x) does
+    not). Common mistakes: assuming the operator norm is the same on every
+    space; forgetting that the sup in ‖T‖ need not be attained. Now you
+    try: the norm of Tf(x) = ∫₀¹ (x + y)f(y) dy on (C[0, 1], ‖·‖_∞).
+    (sup_x ∫₀¹ (x + y) dy = 3/2, attained at f = 1)
+
+D5. Prove the parallelogram law in an inner product space and the real
+    polarisation identity. Show that ℓᵖ (p ≠ 2) and (C[0, 1], ‖·‖_∞) are not
+    inner product spaces. If ‖x + y‖ = 5 and ‖x − y‖ = 3 (real space), find
+    ⟨x, y⟩.
+    Answer: ‖x + y‖² + ‖x − y‖² = 2‖x‖² + 2‖y‖²; in ℓᵖ with e₁, e₂:
+    2·2^(2/p) = 4 only for p = 2; in C[0, 1] with 1, x: 5 ≠ 4; ⟨x, y⟩ = 4.
+    Teacher explains: Expand: ‖x ± y‖² = ‖x‖² ± 2 Re⟨x, y⟩ + ‖y‖². Adding
+    gives the PARALLELOGRAM LAW; subtracting gives, in a real space,
+       ⟨x, y⟩ = (‖x + y‖² − ‖x − y‖²)/4    (POLARISATION).
+    Jordan-von Neumann: if a norm satisfies the parallelogram law, the
+    polarisation formula DEFINES an inner product giving that norm. So the
+    law is the test. In ℓᵖ take x = e₁, y = e₂:
+       ‖x + y‖ₚ² + ‖x − y‖ₚ² = 2·(2^(1/p))² = 2^(1 + 2/p),
+       2‖x‖² + 2‖y‖² = 4,
+    equal iff 2/p = 1, p = 2 (for p = ∞: 1 + 1 = 2 ≠ 4). In C[0, 1] with
+    f = 1, g = x: ‖1 + x‖_∞ = 2, ‖1 − x‖_∞ = 1, so 4 + 1 = 5 ≠ 2 + 2 = 4.
+    Numbers: ⟨x, y⟩ = (25 − 9)/4 = 4, and then ‖x‖² + ‖y‖² = (25 + 9)/2 =
+    17. In a complex space ⟨x, y⟩ = ¼∑_{k=0}^{3} iᵏ‖x + iᵏy‖². Common
+    mistakes: testing the law with one pair that happens to satisfy it
+    (e.g. x = y) and concluding it holds; forgetting the imaginary terms
+    in complex polarisation. Now you try: test L¹[0, 1] with f = 𝟙_[0,1/2],
+    g = 𝟙_(1/2,1]. (‖f ± g‖₁ = 1: LHS 2, RHS 2(1/4 + 1/4) = 1: not an inner
+    product norm)
+
+D6. State and prove the projection theorem for a closed subspace M of a
+    Hilbert space. Apply Gram-Schmidt to 1, x, x² in L²[0, 1] and find the
+    best approximation to x² by a + bx and the error.
+    Answer: e₀ = 1, e₁ = √12(x − 1/2), e₂ = √180(x² − x + 1/6); best
+    approximation x − 1/6, error ‖x² − x + 1/6‖₂ = 1/(6√5) ≈ 0.07454.
+    Teacher explains: Let d = inf{‖x − m‖ : m ∈ M} and mₙ ∈ M with
+    ‖x − mₙ‖ → d. The parallelogram law applied to x − mₙ and x − mₖ gives
+       ‖mₙ − mₖ‖² = 2‖x − mₙ‖² + 2‖x − mₖ‖² − 4‖x − (mₙ + mₖ)/2‖²
+                  ≤ 2‖x − mₙ‖² + 2‖x − mₖ‖² − 4d² → 0,
+    so (mₙ) is Cauchy, converges (completeness, M closed) to m₀ with
+    ‖x − m₀‖ = d; uniqueness by the same identity. Varying m₀ + tm shows
+    x − m₀ ⊥ M; so x = m₀ + (x − m₀) ∈ M ⊕ M^⊥. GRAM-SCHMIDT on [0, 1]:
+       v₀ = 1,  ‖v₀‖² = 1
+       v₁ = x − ⟨x, 1⟩ = x − 1/2,  ‖v₁‖² = 1/12
+       v₂ = x² − ⟨x², 1⟩ − (⟨x², v₁⟩/‖v₁‖²)v₁ = x² − 1/3 − (1/12)/(1/12)·
+            (x − 1/2) = x² − x + 1/6,  ‖v₂‖² = 1/180
+    The projection of x² onto span{1, x} = span{v₀, v₁} is
+    1/3 + (x − 1/2) = x − 1/6, and the error is x² − (x − 1/6) = v₂, with
+    norm 1/√180 = 1/(6√5) ≈ 0.07454. Check by Pythagoras: ‖x²‖² = 1/5 and
+    1/5 − (1/3)² − (1/12)²·12 = 1/5 − 1/9 − 1/12 = 1/180 ✓. Common
+    mistakes: forgetting to divide by ‖vₖ‖² when the vₖ are not normalised;
+    projecting onto non-orthogonal vectors one at a time. Now you try: the
+    projection of x³ onto span{1, x} in L²[−1, 1]. ((⟨x³, x⟩/⟨x, x⟩)x =
+    (2/5)/(2/3)·x = (3/5)x)
+
+D7. State Bessel's inequality and Parseval's identity. For f(x) = x on
+    (−π, π) find the Fourier sine coefficients, check Bessel with three
+    terms, compute the squared L² error of the best approximation by
+    b₁ sin x, and deduce ∑1/n² from Parseval.
+    Answer: bₙ = 2(−1)ⁿ⁺¹/n; 4 + 1 + 4/9 = 49/9 ≈ 5.44444 ≤ 2π²/3 ≈
+    6.57974; error² = 2π³/3 − 4π ≈ 8.10448; ∑1/n² = π²/6.
+    Teacher explains: For an ON system (eₖ): ‖x − ∑_{k≤N}⟨x, eₖ⟩eₖ‖² =
+    ‖x‖² − ∑_{k≤N}|⟨x, eₖ⟩|² ≥ 0 gives BESSEL; the partial sum is the best
+    approximation from span{e₁, ..., e_N}. If the system is COMPLETE
+    (only 0 is orthogonal to all eₖ), the error tends to 0: PARSEVAL. With
+    the trigonometric system on (−π, π) in the usual normalisation
+       (1/π)∫f² = a₀²/2 + ∑(aₙ² + bₙ²),  bₙ = (1/π)∫f(x) sin nx dx.
+    For f = x (odd, so aₙ = 0), integrating by parts,
+       bₙ = (1/π)[−x cos nx/n]_{−π}^{π} + 0 = −2cos(nπ)/n = 2(−1)ⁿ⁺¹/n.
+    (1/π)∫x² = (1/π)(2π³/3) = 2π²/3 ≈ 6.57974. Bessel with n ≤ 3:
+    b₁² + b₂² + b₃² = 4 + 1 + 4/9 = 49/9 ≈ 5.44444 ≤ 6.57974 ✓. The best
+    multiple of sin x is 2 sin x, and the error² is ∫x² − π·b₁² = 2π³/3 −
+    4π ≈ 8.10448. Parseval: 2π²/3 = ∑4/n², so ∑1/n² = π²/6. Common
+    mistakes: mixing the normalisations (ON basis sin(nx)/√π versus
+    coefficient bₙ with factor 1/π); applying Parseval with an incomplete
+    system (only sines for a non-odd function). Now you try: for the
+    square wave sgn x, bₙ = 4/(πn) for odd n; deduce a series.
+    (2 = ∑_{n odd} 16/(π²n²): ∑_{n odd} 1/n² = π²/8)
+
+D8. Prove the Riesz representation theorem for H*. On the space P₁ of
+    polynomials of degree ≤ 1 with the L²[0, 1] inner product, find g with
+    p(1) = ⟨p, g⟩ for all p, and ‖φ‖ for φ(p) = p(1). Find the adjoints
+    of the right shift on ℓ² and of Vf = ∫₀ˣ f on L²[0, 1], and verify
+    ker S* = (ran S)^⊥.
+    Answer: g = 6x − 2, ‖φ‖ = ‖g‖₂ = 2; S* = L (left shift);
+    V*f(x) = ∫ₓ¹ f(t) dt; ker S* = span{e₁} = (ran S)^⊥.
+    Teacher explains: RIESZ: if φ = 0 take g = 0. Otherwise N = ker φ is
+    a closed proper subspace; pick z ⊥ N with z ≠ 0 (projection theorem).
+    For any x, x − (φ(x)/φ(z))z ∈ N, so it is ⊥ z:
+       ⟨x, z⟩ = (φ(x)/φ(z))‖z‖²,  i.e. φ(x) = ⟨x, g⟩ with g = (conj φ(z)/‖z‖²)z.
+    Cauchy-Schwarz gives ‖φ‖ ≤ ‖g‖ and x = g gives equality. Numbers: put
+    g = a + bx and require ⟨1, g⟩ = 1 and ⟨x, g⟩ = 1 (the values of p(1)
+    for p = 1 and p = x):
+       a + b/2 = 1,   a/2 + b/3 = 1   ⇒   b = 6, a = −2.
+    ‖g‖₂² = ∫₀¹(6x − 2)² = 12 − 12 + 4 = 4, so ‖φ‖ = 2: on this space
+    |p(1)| ≤ 2‖p‖₂, with equality for p = 6x − 2. ADJOINTS: ⟨Sx, y⟩ =
+    ∑_{n≥1} xₙyₙ₊₁ = ⟨x, (y₂, y₃, ...)⟩, so S* = L. For V, by Fubini,
+       ⟨Vf, g⟩ = ∫₀¹∫₀ˣ f(t) dt g(x) dx = ∫₀¹ f(t)(∫ₜ¹ g(x) dx) dt,
+    so V*g(t) = ∫ₜ¹ g. ran S = {y : y₁ = 0}, whose orthogonal complement
+    is span{e₁} = ker L ✓. Common mistakes: forgetting the complex
+    conjugate in g; representing p ↦ p(1) by a "delta function" (not in
+    L²; on all of L² this functional is unbounded). Now you try: the
+    representer of p ↦ p′(0) on P₂ with the L²[−1, 1] inner product, and
+    its norm. (g = (3/2)x; ‖g‖₂ = √(3/2) ≈ 1.22474)
+
+D9. Define the spectrum and prove σ(T) ⊆ {|λ| ≤ ‖T‖} using the Neumann
+    series. Find σ(T) and the eigenvalues for: the right shift S and left
+    shift L on ℓ²; M_x f(x) = xf(x) on L²[0, 1]; the Volterra operator;
+    A = [[0, 1], [0, 0]] (compare ‖A‖ and r(A)).
+    Answer: σ(S) = σ(L) = closed unit disc, S has no eigenvalues, L has
+    all |λ| < 1; σ(M_x) = [0, 1], no eigenvalues; σ(V) = {0}, no
+    eigenvalues; σ(A) = {0}, ‖A‖ = 1 > r(A) = 0.
+    Teacher explains: If ‖T‖ < 1 the series ∑Tⁿ converges in the Banach
+    space B(X) and (I − T)∑Tⁿ = I; so for |λ| > ‖T‖, T − λI = −λ(I − T/λ)
+    is invertible. Hence σ(T) lies in the disc of radius ‖T‖ (in fact of
+    radius r(T) = lim ‖Tⁿ‖^(1/n)). SHIFTS: ‖Sⁿ‖ = ‖Lⁿ‖ = 1, so both spectra
+    lie in the closed unit disc. Lx = λx means xₙ₊₁ = λxₙ, x = x₁(1, λ,
+    λ², ...), in ℓ² iff |λ| < 1: every point of the open disc is an
+    eigenvalue of L; the spectrum is closed, so σ(L) = closed disc. Since
+    S = L*, σ(S) = {λ̄ : λ ∈ σ(L)} = closed disc too, but Sx = λx forces
+    λx₁ = 0, λx₂ = x₁, ...: x = 0, so NO eigenvalues. M_x: for λ ∉ [0, 1],
+    (M_x − λ)⁻¹ = M_{1/(x − λ)} is bounded; for λ ∈ [0, 1], 1/(x − λ) is
+    unbounded, so no bounded inverse; (x − λ)f = 0 a.e. forces f = 0, so
+    no eigenvalues. VOLTERRA: ‖Vⁿ‖_∞ ≤ 1/n! (Vⁿf(x) = ∫₀ˣ (x − t)ⁿ⁻¹f(t)
+    dt/(n − 1)!), so r(V) = 0 and σ(V) = {0}; Vf = 0 ⇒ f = 0, so 0 is not
+    an eigenvalue (V is not surjective: Vf(0) = 0). A: A² = 0 so r(A) = 0,
+    yet ‖A‖ = 1. Common mistakes: "the spectrum is the set of
+    eigenvalues" (true only in finite dimension); forgetting that σ(T*) is
+    the complex conjugate of σ(T). Now you try: σ and eigenvalues of
+    D = diag(1, 1/2, 1/3, ...) on ℓ². (σ = {1/n} ∪ {0}; eigenvalues 1/n
+    only; D is injective, 0 ∈ σ because the range is not all of ℓ²)
+
+D10. State the Hahn-Banach theorem (real, sublinear form) and outline the
+     proof. Deduce that for x ≠ 0 there is f ∈ X* with ‖f‖ = 1, f(x) =
+     ‖x‖. Find all norm-preserving extensions of φ(t, 0) = t from the
+     x-axis to (R², ‖·‖₁), (R², ‖·‖₂), (R², ‖·‖_∞). Compute the distance
+     from (1, 2, 3) to the plane M = {x + y + z = 0} in the ℓ¹, ℓ², ℓ^∞
+     norms by the duality formula.
+     Answer: (x, y) ↦ x + cy with |c| ≤ 1 (infinitely many); c = 0 only;
+     c = 0 only. Distances 6, 2√3 ≈ 3.46410, 2.
+     Teacher explains: THEOREM: p sublinear (p(x + y) ≤ p(x) + p(y),
+     p(tx) = tp(x) for t ≥ 0), f linear on a subspace M with f ≤ p there ⇒
+     there is linear F on X, F = f on M, F ≤ p. PROOF: (1) one extra
+     dimension: to extend to M + Rz we must choose c = F(z) with
+        f(m) + tc ≤ p(m + tz) for all m ∈ M, t ∈ R;
+     this is possible iff sup_m (f(m) − p(m − z)) ≤ inf_m (p(m + z) − f(m)),
+     which follows from f(m) + f(m′) ≤ p(m + m′) ≤ p(m − z) + p(m′ + z).
+     (2) Zorn's lemma on partial extensions. NORMED FORM: p = ‖f‖‖·‖.
+     Norming functional: define f(tx) = t‖x‖ on span{x} (norm 1) and
+     extend. EXAMPLE: an extension is F(x, y) = x + cy; its dual norm is:
+        for ‖·‖₁: max(1, |c|) ≤ 1 ⇔ |c| ≤ 1   (a whole interval)
+        for ‖·‖₂: √(1 + c²) ≤ 1 ⇔ c = 0
+        for ‖·‖_∞: 1 + |c| ≤ 1 ⇔ c = 0
+     Non-uniqueness happens when the dual unit ball has flat faces.
+     DISTANCE: dist(x, M) = |f(x)|/‖f‖_* for M = ker f; here f = (1, 1, 1),
+     f(x) = 6, and ‖f‖_* is the dual norm: ∞-norm 1 (for ℓ¹), 2-norm √3,
+     1-norm 3 (for ℓ^∞). So 6, 6/√3 = 2√3, 2. Check ℓ^∞: x − (−1, 0, 1) =
+     (2, 2, 2) ✓. Common mistakes: expecting uniqueness of the extension;
+     using the same norm for f instead of the DUAL norm. Now you try:
+     extend φ(t, t) = t from the diagonal to (R², ‖·‖_∞) with norm 1.
+     (ax + by with a + b = 1, a, b ≥ 0: many extensions)
+
+D11. State the Baire category theorem and prove the uniform boundedness
+     principle from it. Apply it to show there is a continuous 2π-periodic
+     f whose Fourier series diverges at 0, using the Lebesgue constants
+     Lₙ = (1/2π)∫_{−π}^{π}|Dₙ(t)| dt, Dₙ(t) = sin((n + ½)t)/sin(t/2).
+     Show by an example that completeness cannot be dropped.
+     Answer: L₀ = 1, L₁ ≈ 1.43599, L₁₀ ≈ 2.22335, L₁₀₀ ≈ 3.13868, Lₙ ~
+     (4/π²) ln n → ∞; on c₀₀, Tₙx = nxₙ is pointwise bounded but ‖Tₙ‖ = n.
+     Teacher explains: BAIRE: in a complete metric space, a countable
+     intersection of dense open sets is dense; equivalently the space is
+     not a countable union of closed sets with empty interior (proof:
+     choose nested closed balls avoiding each set in turn, radii → 0; the
+     centres are Cauchy). UBP: let {T_α} ⊆ B(X, Y), X Banach, with
+     sup_α ‖T_α x‖ < ∞ for every x. The sets
+        Eₙ = {x : ‖T_α x‖ ≤ n for all α}
+     are closed and cover X, so some Eₙ contains a ball B(x₀, r). For
+     ‖u‖ < r, ‖T_α u‖ ≤ ‖T_α(x₀ + u)‖ + ‖T_α x₀‖ ≤ 2n, so ‖T_α‖ ≤ 2n/r for
+     all α. FOURIER: Λₙf = Sₙf(0) = (1/2π)∫f(t)Dₙ(t) dt is a functional on
+     (C(T), ‖·‖_∞) of norm exactly Lₙ (approximate sgn Dₙ by continuous
+     functions). Numerically
+        L₀ = 1, L₁ = 1/3 + 2√3/π ≈ 1.43599, L₂ ≈ 1.64219,
+        L₁₀ ≈ 2.22335, L₁₀₀ ≈ 3.13868,
+     growing like (4/π²) ln n. If every f had sup_n |Sₙf(0)| < ∞, UBP would
+     give sup Lₙ < ∞: contradiction. So some continuous f has unbounded
+     partial sums at 0. (In fact such f form a dense Gδ set.) Without
+     completeness: on c₀₀ with ‖·‖_∞, Tₙx = nxₙ; for fixed x, Tₙx = 0 once n
+     passes the support, so sup_n |Tₙx| < ∞, yet ‖Tₙ‖ = n (x = eₙ). Common
+     mistakes: applying UBP on a non-complete space; confusing pointwise
+     bounded with uniformly bounded. Now you try: prove that a weakly
+     convergent sequence in a normed space is bounded. (view xₙ as
+     functionals on the Banach space X*; sup|f(xₙ)| < ∞ for each f, so
+     sup‖xₙ‖ = sup‖x̂ₙ‖ < ∞ by UBP and Hahn-Banach)
+
+D12. State the open mapping, bounded inverse and closed graph theorems.
+     (a) Show that if a space is complete under two norms with ‖x‖_a ≤
+     C‖x‖_b, the norms are equivalent. (b) Explain why the identity
+     (C[0, 1], ‖·‖_∞) → (C[0, 1], ‖·‖₁) has an unbounded inverse and why this
+     does not contradict (a). (c) Show that D = d/dx : C¹[0, 1] ⊂ C[0, 1] →
+     C[0, 1] (sup norms) has closed graph but is unbounded. (d) Prove the
+     Hellinger-Toeplitz theorem.
+     Answer: (a) bounded inverse theorem; (b) ‖xⁿ‖_∞/‖xⁿ‖₁ = n + 1 → ∞, but
+     ‖·‖₁ is not complete; (c) uniform limits commute with d/dx when both
+     sequences converge, yet ‖Dxⁿ‖ = n; the domain is not complete;
+     (d) closed graph theorem.
+     Teacher explains: OPEN MAPPING: T ∈ B(X, Y) onto, X and Y Banach ⇒
+     T(open) is open (proof: by Baire some T(B(0, n)) is dense in a ball,
+     then a successive approximation argument removes the closure).
+     BOUNDED INVERSE: if T is also injective, T⁻¹ is continuous. CLOSED
+     GRAPH: T : X → Y linear, X, Y Banach, graph {(x, Tx)} closed in X × Y
+     ⇒ T bounded (apply bounded inverse to the projection graph → X).
+     (a) The identity (X, ‖·‖_b) → (X, ‖·‖_a) is a bounded bijection
+     between Banach spaces, so its inverse is bounded: ‖x‖_b ≤ C′‖x‖_a.
+     (b) ‖f‖₁ ≤ ‖f‖_∞ so the identity is bounded, but ‖xⁿ‖_∞ = 1 and
+     ‖xⁿ‖₁ = 1/(n + 1): ratio n + 1 → ∞. No contradiction: (C[0, 1], ‖·‖₁)
+     is not Banach (D1). (c) If fₙ → f and fₙ′ → g uniformly, then
+     fₙ(x) − fₙ(0) = ∫₀ˣ fₙ′ → ∫₀ˣ g, so f(x) = f(0) + ∫₀ˣ g, f ∈ C¹, f′ = g:
+     the graph is closed. But D is unbounded (D4). The closed graph theorem
+     fails because (C¹, ‖·‖_∞) is not complete. (d) Let T : H → H be linear
+     with ⟨Tx, y⟩ = ⟨x, Ty⟩. If xₙ → x and Txₙ → y then for every z,
+        ⟨y, z⟩ = lim⟨Txₙ, z⟩ = lim⟨xₙ, Tz⟩ = ⟨x, Tz⟩ = ⟨Tx, z⟩,
+     so y = Tx: the graph is closed and T is bounded. (Unbounded symmetric
+     operators such as −d²/dx² in quantum mechanics can therefore only be
+     defined on dense subspaces.) Common mistakes: forgetting surjectivity
+     in the open mapping theorem; checking "xₙ → x ⇒ Txₙ → Tx" when proving
+     a closed graph (that is continuity itself; closedness only needs:
+     IF Txₙ converges, its limit is Tx). Now you try: T(x) = (xₙ/n) on ℓ¹
+     is bounded and injective; why does it not have a bounded inverse on
+     its range? (the range is not closed — (1/n²) is not in it — so it is
+     not a Banach space; ‖T eₙ‖ = 1/n → 0)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Is it a norm on the given space? (Y/N, with the failing axiom)
+    a) |x₁| + |x₂| on R²               b) |x₁| on R²
+    c) (|x₁|^(1/2) + |x₂|^(1/2))² on R²
+    d) max(|x₁|, 2|x₂|) on R²
+    e) √(x₁² + x₁x₂ + x₂²) on R²       f) √(x₁² + 3x₁x₂ + x₂²) on R²
+    g) sup|f| on C[0, 1]               h) sup|f′| on C¹[0, 1]
+    i) |f(0)| + sup|f′| on C¹[0, 1]    j) ∫₀¹|f| on C[0, 1]
+    k) ∫₀¹|f| on the Riemann integrable functions on [0, 1]
+    l) ∫₀^(1/2)|f| on C[0, 1]
+    m) ∑|xₙ|2⁻ⁿ on ℓ^∞                 n) ∑|xₙ|/n on ℓ^∞
+    o) |a₀| + |a₁| + ... + |aₙ| on polynomials ∑aₖxᵏ
+    p) max_{x∈{0,1,2}} |p(x)| on polynomials of degree ≤ 2
+    q) the same on polynomials of degree ≤ 3
+    r) ‖Ax‖₂ on R², A = [[1, 2], [2, 4]]
+    Answers:
+      a) Y       b) N (|x₁| = 0 for x = (0, 1): a seminorm)
+      c) N (triangle: (1, 0) + (0, 1) gives 4 > 1 + 1)
+      d) Y       e) Y (the form has eigenvalues 1/2, 3/2 > 0)
+      f) N (indefinite: (1, −1) gives √(−1))       g) Y
+      h) N (constants have norm 0)                  i) Y
+      j) Y (a continuous f ≥ 0 with ∫ = 0 is 0)
+      k) N (𝟙_{0} ≠ 0 has ∫ = 0)                    l) N (vanishes on
+         functions supported in [1/2, 1])
+      m) Y (but not equivalent to ‖·‖_∞)
+      n) N (not finite: x = (1, 1, 1, ...) gives ∑1/n = ∞)
+      o) Y       p) Y (a quadratic vanishing at 3 points is 0)
+      q) N (x(x − 1)(x − 2))
+      r) N (A is singular: x = (2, −1) gives 0)
+
+M2. Equivalence of norms: best constants c, C (c‖x‖_a ≤ ‖x‖_b ≤ C‖x‖_a),
+    or show that none exist.
+    a) R³: a = ∞, b = 2                b) R³: a = 2, b = 1
+    c) R⁴: a = ∞, b = 1                d) Rⁿ: a = 1, b = 2
+    e) Rⁿ: a = ∞, b = p                f) R²: a = 3, b = 2
+    g) R²: a = 2, b = N, N(x) = max(|x₁|, 2|x₂|)
+    h) R²: a = 2, b = N, N(x) = √(x₁² + x₁x₂ + x₂²)
+    i) R²: a = ∞, b = N, N(x) = |x₁ + x₂| + |x₁ − x₂|
+    j) C[0, 1]: a = ∞, b = 1 (and the ratio ‖xⁿ‖_∞/‖xⁿ‖₁)
+    k) C[0, 1]: a = ∞, b = 2 (and the ratio ‖xⁿ‖_∞/‖xⁿ‖₂)
+    l) c₀₀: a = ∞, b = 1 (ratio for n ones)
+    m) C¹[0, 1]: a = ∞, b = C¹-norm ‖f‖_∞ + ‖f′‖_∞ (ratio for sin(nπx))
+    n) ℓ¹: a = 2, b = 1 (are the norms equivalent on ℓ¹?)
+    Answers:
+      a) 1, √3 ≈ 1.73205             b) 1, √3
+      c) 1, 4                        d) 1/√n, 1
+      e) 1, n^(1/p)                  f) 1, 2^(1/6) ≈ 1.12246
+      g) 2/√5 ≈ 0.89443, 2 (from (1/2)N ≤ ‖x‖₂ ≤ (√5/2)N)
+      h) 1/√2 ≈ 0.70711, √(3/2) ≈ 1.22474
+      i) 2, 2 (N = 2‖x‖_∞ exactly)
+      j) C = 1, no c > 0 (‖f‖₁ ≤ ‖f‖_∞ only); ratio n + 1 → ∞
+      k) C = 1, no c > 0; ratio √(2n + 1) → ∞
+      l) c = 1, no C (‖x‖_∞ ≤ ‖x‖₁ only); ratio n → ∞
+      m) c = 1, no C; ratio 1 + nπ → ∞
+      n) c = 1, no C: not equivalent (n ones: ratio √n)
+
+M3. Banach (B) or not (N)? For N give a Cauchy sequence without limit.
+    a) Rⁿ with any norm                b) (C[0, 1], ‖·‖_∞)
+    c) (C[0, 1], ‖·‖₁)                  d) (C¹[0, 1], ‖·‖_∞)
+    e) (C¹[0, 1], ‖f‖_∞ + ‖f′‖_∞)        f) (c₀₀, ‖·‖_∞)
+    g) (c₀, ‖·‖_∞)                      h) ℓᵖ, 1 ≤ p ≤ ∞
+    i) polynomials on [0, 1], ‖·‖_∞     j) {f ∈ C[0, 1] : f(0) = 0}, ‖·‖_∞
+    k) {f ∈ C[0, 1] : ∫₀¹ f = 0}, ‖·‖_∞  l) Lipschitz functions, ‖·‖_∞
+    m) bounded functions on a set S, ‖·‖_∞
+    n) C_c(R), ‖·‖_∞                     o) C[0, 1] with the L² norm
+    p) B(X, Y), Y Banach               q) (ℓ¹, ‖·‖₂)
+    r) X* for any normed space X       s) (c₀₀, ‖·‖₁)
+    Answers:
+      a) B       b) B       c) N (the ramps of D1)
+      d) N (√((x − 1/2)² + 1/n) → |x − 1/2| uniformly; the limit is not
+         C¹)
+      e) B       f) N ((1, 1/2, ..., 1/n, 0, ...))      g) B
+      h) B       i) N (Taylor polynomials of eˣ → eˣ)
+      j) B (closed subspace)
+      k) B (closed: the kernel of a bounded functional)
+      l) N (√(x + 1/n) → √x uniformly; √x is not Lipschitz)
+      m) B
+      n) N (e^(−x²)χₙ with continuous cut-offs χₙ = 1 on [−n, n], 0
+         outside [−n − 1, n + 1]; the limit e^(−x²) has no compact support)
+      o) N (the ramps of D1 again)
+      p) B       q) N (truncations of (1/n))          r) B
+      s) N (truncations of (1/n²) → (1/n²) ∉ c₀₀)
+
+M4. Operator norms of matrices: give ‖A‖₁, ‖A‖₂, ‖A‖_∞ and (square A) the
+    spectral radius ρ(A).
+    a) [[1, 0], [0, −3]]               b) [[1, 2], [3, 4]]
+    c) [[2, 1], [1, 2]]                d) [[0, 1], [0, 0]]
+    e) [[1, 1], [0, 1]]                f) [[1, 1], [1, 1]]
+    g) [[3, 0], [4, 5]]                h) [[1, −2], [2, 1]]
+    i) [[1, 2, 3]] (1 × 3)             j) [[1], [2], [2]] (3 × 1)
+    k) the 3 × 3 matrix of ones        l) [[2, −1, 0], [−1, 2, −1],
+                                          [0, −1, 2]]
+    m) rotation by π/4                 n) [[4, 0], [3, 0]]
+    o) [[0, 2], [−1, 0]]               p) [[1, 2], [2, −2]]
+    q) [[1, −1], [1, 1]]               r) [[2, 0, 0], [0, 0, 1], [0, −4, 0]]
+    Answers (‖A‖₁, ‖A‖₂, ‖A‖_∞; ρ):
+      a) 3, 3, 3; 3
+      b) 6, √(15 + √221) ≈ 5.46499, 7; (5 + √33)/2 ≈ 5.37228
+      c) 3, 3, 3; 3
+      d) 1, 1, 1; 0
+      e) 2, (1 + √5)/2 ≈ 1.61803, 2; 1
+      f) 2, 2, 2; 2
+      g) 7, 3√5 ≈ 6.70820, 9; 5
+      h) 3, √5 ≈ 2.23607, 3; √5
+      i) 3, √14 ≈ 3.74166, 6
+      j) 5, 3, 2
+      k) 3, 3, 3; 3
+      l) 4, 2 + √2 ≈ 3.41421, 4; 2 + √2
+      m) √2 ≈ 1.41421, 1, √2; 1
+      n) 7, 5, 4; 4
+      o) 2, 2, 2; √2 ≈ 1.41421
+      p) 4, 3, 4; 3 (eigenvalues 2, −3)
+      q) 2, √2, 2; √2
+      r) 4, 4, 4; 2 (eigenvalues 2, ±2i)
+
+M5. Norms of operators and functionals in infinite dimensions (say
+    whether the norm is attained).
+    a) diag(1/n) on ℓ²                  b) diag(1 − 1/n) on ℓ²
+    c) right shift S on ℓᵖ             d) left shift L on ℓ²
+    e) M_x on L²[0, 1]                  f) M_{eˣ} on L²[0, 2]
+    g) M_φ on Lᵖ                        h) Volterra V on (C[0, 1], ‖·‖_∞)
+    i) V on L¹[0, 1]                    j) V on L²[0, 1]
+    k) Tf(x) = ∫₀¹ xy f(y) dy on L²[0, 1]
+    l) Pf = ∫₀¹ f (as a constant function) on L²[0, 1] and on C[0, 1]
+    m) Tf(x) = ∫₀¹ (x + y)f(y) dy on (C[0, 1], ‖·‖_∞)
+    n) the same T on L²[0, 1] (and its Hilbert-Schmidt bound)
+    o) f ↦ ∫₀¹ f − f(1/2) on (C[0, 1], ‖·‖_∞)
+    p) f ↦ f(0) on (C[0, 1], ‖·‖₁)
+    q) D = d/dx : (C¹[0, 1], ‖·‖_∞) → (C[0, 1], ‖·‖_∞)
+    r) D : (C¹[0, 1], ‖f‖_∞ + ‖f′‖_∞) → (C[0, 1], ‖·‖_∞)
+    s) (Tx)ₙ = xₙ₊₁ − xₙ on ℓ²
+    t) the Cesàro means (x₁ + ... + xₙ)/n on ℓ²
+    Answers:
+      a) 1 (attained at e₁)             b) 1 (not attained)
+      c) 1 (an isometry)                d) 1 (attained at e₂)
+      e) 1 (not attained)               f) e² ≈ 7.38906 (not attained)
+      g) ‖φ‖_∞                          h) 1 (f = 1)
+      i) 1 (not attained)               j) 2/π ≈ 0.63662 (f = cos(πx/2))
+      k) 1/3 (rank one: ‖x‖₂²; f = x)   l) 1; 1 (f = 1)
+      m) 3/2 (f = 1)
+      n) 1/2 + 1/√3 ≈ 1.07735 (eigenvalues 1/2 ± 1/√3); HS bound
+         √(7/6) ≈ 1.08012
+      o) 2 (not attained)               p) unbounded
+      q) unbounded (xⁿ ↦ nxⁿ⁻¹)         r) 1 (not attained)
+      s) 2 (not attained; x = (1, −1, 1, −1, ...) truncated)
+      t) 2 (Hardy's inequality; not attained)
+
+M6. Inner products and the parallelogram law.
+    a) ⟨(1, 2, 3), (4, −5, 6)⟩ in R³
+    b) the angle between (1, 0, 1) and (0, 1, 1)
+    c) ⟨x, x²⟩ in L²[0, 1] and the angle between x and x²
+    d) ⟨sin x, cos x⟩ in L²[0, π]
+    e) ⟨1, x⟩ in L²[−1, 1] and in L²[0, 1]
+    f) ⟨eˣ, e⁻ˣ⟩ in L²[0, 1]
+    g) ⟨(1, i), (i, 1)⟩ in C²
+    h) ⟨e^(2ix), e^(2ix)⟩ in L²[0, 2π]
+    Parallelogram test with the given x, y: LHS ‖x + y‖² + ‖x − y‖², RHS
+    2‖x‖² + 2‖y‖².
+    i) ℓ¹, x = e₁, y = e₂              j) ℓ^∞, x = e₁, y = e₂
+    k) ℓᵖ, x = e₁, y = e₂              l) C[0, 1] sup norm, x = 1, y = t
+    Polarisation and Cauchy-Schwarz:
+    m) real space, ‖x + y‖ = 5, ‖x − y‖ = 3: ⟨x, y⟩
+    n) ‖x‖ = 3, ‖y‖ = 4, ⟨x, y⟩ = 2 (real): ‖x + y‖
+    o) ‖x‖ = 3, ‖y‖ = 4: the largest possible |⟨x, y⟩|
+    p) complex space, ‖x + y‖² = 10, ‖x − y‖² = 2, ‖x + iy‖² = 7,
+       ‖x − iy‖² = 5: ⟨x, y⟩
+    Is it an inner product?
+    q) ⟨f, g⟩ = ∫₀¹ f g x dx on C[0, 1]
+    r) ⟨f, g⟩ = f(0)g(0) + ∫₀¹ f′g′ on C¹[0, 1]
+    s) ⟨x, y⟩ = x₁y₁ − x₂y₂ on R²
+    t) ⟨x, y⟩ = 2x₁y₁ + x₁y₂ + x₂y₁ + x₂y₂ on R²
+    Answers:
+      a) 12      b) π/3 (cos = 1/2)
+      c) 1/4; arccos(√15/4) ≈ 0.25268 rad
+      d) 0       e) 0; 1/2   f) 1       g) 0       h) 2π
+      i) 8 vs 4: fails         j) 2 vs 4: fails
+      k) 2^(1 + 2/p) vs 4: holds only for p = 2
+      l) 5 vs 4: fails         m) 4       n) √29 ≈ 5.38516
+      o) 12 (when x, y are parallel)
+      p) 2 + i/2 (⟨x, y⟩ = ¼∑ iᵏ‖x + iᵏy‖²)
+      q) Y (weight x > 0 a.e.)            r) Y
+      s) N (⟨e₂, e₂⟩ = −1)                t) Y (matrix [[2, 1], [1, 1]] is
+         positive definite: det 1, trace 3)
+
+M7. Gram-Schmidt and orthogonal projections.
+    a) Gram-Schmidt (monic, unnormalised) on 1, x, x², x³ in L²[−1, 1]
+    b) the squared norms of the polynomials in a)
+    c) the same as a) in L²[0, 1]
+    d) the squared norms of the polynomials in c)
+    e) Legendre P₂, P₃ and ‖P₂‖², ‖P₃‖²
+    f) the projection of x² onto span{1, x} in L²[0, 1] and the distance
+    g) the projection of x³ onto span{1, x} in L²[−1, 1]
+    h) the best a + bx approximating eˣ in L²[−1, 1] and the error
+    i) the projection of |x| onto span{1, x, x²} in L²[−1, 1] and the
+       error
+    j) the projection of x² onto the orthogonal complement of the
+       constants in L²[0, 1]
+    k) the distance from 1 to span{x} in L²[0, 1]
+    l) the projection of (1, 2, 3) onto the plane x + y + z = 0
+    m) the projection of (1, 2, 3) onto span{(1, 1, 0)}
+    n) the distance from (1, 2, 3) to span{(1, 0, 1), (0, 1, 0)}
+    o) Gram-Schmidt on (1, 1, 0), (1, 0, 1), (0, 1, 1) in R³
+    p) the orthogonal complement of {x ∈ R³ : x₁ = x₂}
+    Answers:
+      a) 1, x, x² − 1/3, x³ − (3/5)x
+      b) 2, 2/3, 8/45, 8/175
+      c) 1, x − 1/2, x² − x + 1/6, x³ − (3/2)x² + (3/5)x − 1/20
+      d) 1, 1/12, 1/180, 1/2800
+      e) (3x² − 1)/2, (5x³ − 3x)/2; 2/5, 2/7
+      f) x − 1/6; 1/(6√5) = √5/30 ≈ 0.07454
+      g) (3/5)x
+      h) sinh 1 + (3/e)x ≈ 1.17520 + 1.10364x; error ≈ 0.22946
+      i) (15x² + 3)/16; error √6/24 ≈ 0.10206
+      j) x² − 1/3            k) 1/2 (projection (3/2)x)
+      l) (−1, 0, 1)          m) (3/2, 3/2, 0)
+      n) √2 (projection (2, 2, 2), residual (−1, 0, 1))
+      o) (1, 1, 0)/√2, (1, −1, 2)/√6, (−1, 1, 1)/√3
+      p) span{(1, −1, 0)}
+
+M8. Fourier coefficients, Bessel and Parseval. On (−π, π): f ~ a₀/2 +
+    ∑(aₙ cos nx + bₙ sin nx), and Parseval reads (1/π)∫f² = a₀²/2 +
+    ∑(aₙ² + bₙ²).
+    a) f = x: bₙ, and the sum ∑1/n² from Parseval
+    b) f = |x|: a₀, aₙ, and ∑_{n odd} 1/n⁴
+    c) f = x²: a₀, aₙ, and ∑1/n⁴
+    d) f = sgn x: bₙ, and ∑_{n odd} 1/n²
+    e) f = 𝟙_[0,π]: a₀, aₙ (n ≥ 1), bₙ, and check Parseval
+    f) f = cos² x: all coefficients
+    g) f = sin³ x: all coefficients, and ∫_{−π}^{π} sin⁶ x dx
+    h) f = x: Bessel's sum b₁² + b₂² + b₃² against (1/π)∫x²
+    i) f = x: the squared L² error ∫(x − b₁ sin x)² dx
+    j) f = x on (0, 1) with the ON basis e^(2πinx): c₀, cₙ, and Parseval
+    k) is there f ∈ L²(−π, π) with bₙ = 1/n (all other coefficients 0)?
+       with bₙ = 1/√n?
+    l) x = ∑2⁻ⁿeₙ (eₙ orthonormal): ‖x‖²
+    m) (1/π)∫_{−π}^{π} x sgn x dx directly, and by the polarised Parseval
+       identity (1/π)∫fg = ∑bₙ(f)bₙ(g)
+    Answers:
+      a) 2(−1)ⁿ⁺¹/n; π²/6 ≈ 1.64493
+      b) a₀ = π, aₙ = −4/(πn²) (n odd), 0 (n even); π⁴/96
+      c) a₀ = 2π²/3, aₙ = 4(−1)ⁿ/n²; π⁴/90 ≈ 1.08232
+      d) 4/(πn) (n odd), 0 (n even); π²/8
+      e) a₀ = 1, aₙ = 0, bₙ = 2/(πn) (n odd), 0 (n even); 1 = 1/2 +
+         (4/π²)(π²/8) ✓
+      f) a₀ = 1, a₂ = 1/2, all others 0 (cos² x = 1/2 + (1/2)cos 2x)
+      g) b₁ = 3/4, b₃ = −1/4, all others 0; π(9/16 + 1/16) = 5π/8
+      h) 49/9 ≈ 5.44444 ≤ 2π²/3 ≈ 6.57974
+      i) 2π³/3 − 4π ≈ 8.10448
+      j) 1/2, i/(2πn) (n ≠ 0); 1/3 = 1/4 + 2∑1/(4π²n²) = 1/4 + 1/12
+      k) yes (∑1/n² < ∞); no (∑1/n = ∞)
+      l) 1/3
+      m) (1/π)·π² = π; ∑_{n odd} (2/n)(4/(πn)) = (8/π)(π²/8) = π ✓
+
+M9. Adjoints, kernels, ranges and Riesz representers.
+    a) A* for A = [[1, 2], [3, 4]] on R²
+    b) A* for A = [[1, i], [2, 3i]] on C²
+    c) S* for the right shift S on ℓ²
+    d) D* for D = diag(λₙ) on ℓ² (λ bounded)
+    e) M_φ* on L²
+    f) V* for Vf(x) = ∫₀ˣ f on L²[0, 1]
+    g) T* for Tf(x) = ∫₀¹ k(x, y)f(y) dy
+    h) ker S, ran S, ker S* (check ker S* = (ran S)^⊥)
+    i) ker and ran of diag(1/n) on ℓ²: closed? is (1/n) in the range?
+    j) ker and ran of M_x on L²[0, 1]
+    k) ker and ran of [[1, 2], [2, 4]]
+    l) the representer and norm of φ(x) = x₁ + 2x₂ − x₃ on R³
+    m) the representer and norm of φ(f) = ∫₀¹ x f on L²[0, 1]
+    n) φ(p) = p(1) on P₁ with the L²[0, 1] inner product
+    o) φ(p) = p(0) on P₁ with the L²[−1, 1] inner product
+    p) φ(p) = p′(0) on P₂ with the L²[−1, 1] inner product
+    q) self-adjoint, unitary or normal: [[2, i], [−i, 3]], [[0, 1], [1, 0]],
+       [[0, −1], [1, 0]], [[1, 1], [0, 1]]
+    r) for an orthogonal projection P ≠ 0: P*, P², ‖P‖
+    Answers:
+      a) [[1, 3], [2, 4]]               b) [[1, 2], [−i, −3i]]
+      c) the left shift L               d) diag(λ̄ₙ)
+      e) M_φ̄                            f) V*g(x) = ∫ₓ¹ g(t) dt
+      g) kernel k*(x, y) = k̄(y, x)
+      h) {0}; {y : y₁ = 0} (closed); span{e₁} = (ran S)^⊥ ✓
+      i) {0}; dense, not closed; no ((1/n) = D(1, 1, 1, ...) ∉ ℓ²)
+      j) {0}; dense, not closed (1 ∉ ran M_x since 1/x ∉ L²)
+      k) span{(2, −1)}; span{(1, 2)}
+      l) (1, 2, −1); √6 ≈ 2.44949       m) g = x; 1/√3 ≈ 0.57735
+      n) g = 6x − 2; 2                  o) g = 1/2; 1/√2 ≈ 0.70711
+      p) g = (3/2)x; √(3/2) ≈ 1.22474
+      q) self-adjoint (eigenvalues (5 ± √5)/2); self-adjoint and unitary;
+         unitary (normal, not self-adjoint); none of the three
+      r) P* = P, P² = P, ‖P‖ = 1
+
+M10. Spectra, eigenvalues and spectral radius.
+     a) [[2, 1], [0, 3]]                b) [[0, 1], [0, 0]]: σ, ‖A‖, r(A)
+     c) [[0, −1], [1, 0]] over C        d) [[1, 2], [3, 4]]
+     e) M_x on L²[0, 1]                 f) M_φ, φ = 𝟙_[0,1/2], on L²[0, 1]
+     g) diag(1/n) on ℓ²                 h) right shift S on ℓ²
+     i) left shift L on ℓ²              j) Volterra V on L²[0, 1]
+     k) [[1, 1], [0, 1]]: r and ‖·‖₂    l) a unitary U; a self-adjoint T
+     m) an orthogonal projection P ≠ 0, I
+     n) (I − A)⁻¹ by the Neumann series, A = [[0, 1/2], [0, 0]]
+     o) (M_x − 2I)⁻¹ on L²[0, 1] and its norm
+     p) σ(T²) if σ(T) = [−1, 1]
+     q) diag(qₙ), (qₙ) an enumeration of Q ∩ [0, 1]
+     r) M_{x²} on L²[−1, 2]
+     Answers:
+       a) {2, 3}                        b) {0}; 1; 0
+       c) {i, −i}                       d) (5 ± √33)/2 ≈ 5.37228, −0.37228
+       e) [0, 1]; no eigenvalues        f) {0, 1}; both eigenvalues
+          (infinite multiplicity)
+       g) {1/n : n ∈ N} ∪ {0}; eigenvalues 1/n (0 is not one)
+       h) closed unit disc; no eigenvalues
+       i) closed unit disc; eigenvalues: the open disc |λ| < 1
+       j) {0}; no eigenvalues (r(V) = 0 although ‖V‖ = 2/π)
+       k) 1; (1 + √5)/2 ≈ 1.61803
+       l) σ(U) ⊆ unit circle; σ(T) ⊆ [−‖T‖, ‖T‖] ⊂ R
+       m) {0, 1}
+       n) I + A = [[1, 1/2], [0, 1]] (A² = 0)
+       o) M_{1/(x−2)}; sup_{[0,1]} 1/|x − 2| = 1
+       p) [0, 1] (spectral mapping)
+       q) [0, 1] (closure of the diagonal; each qₙ an eigenvalue)
+       r) [0, 4] (essential range of x² on [−1, 2]); no eigenvalues
+
+M11. Hahn-Banach, norming functionals and duality.
+     a) a norming functional for x = (3, 4) in (R², ‖·‖₂)
+     b) the same in (R², ‖·‖₁); is it unique?
+     c) the same in (R², ‖·‖_∞); is it unique?
+     d) all norming functionals for x = (1, 1) in (R², ‖·‖_∞)
+     e) norm-1 extensions of φ(t, 0) = t to (R², ‖·‖₁)
+     f) the same for (R², ‖·‖₂)          g) the same for (R², ‖·‖_∞)
+     h) φ(t, t) = t on the diagonal of (R², ‖·‖_∞): ‖φ‖ and all
+        norm-preserving extensions
+     i) the same φ in (R², ‖·‖₁)        j) the same φ in (R², ‖·‖₂)
+     k) dist((1, 2, 3), {x + y + z = 0}) in ℓ²
+     l) the same in ℓ^∞                 m) the same in ℓ¹
+     n) the distance from f(x) = x to {g ∈ C[0, 1] : ∫₀¹ g = 0} in ‖·‖_∞
+     o) the value of any Banach limit on (1, 0, 1, 0, ...)
+     p) the dual of (R², ‖·‖₁) and of (R³, ‖·‖_∞)
+     q) T/F: X* separates the points of X
+     r) T/F: norm-preserving extensions are unique in a Hilbert space
+     s) T/F: every closed subspace of a Banach space has a closed
+        complement
+     Answers:
+       a) f = (3/5, 4/5), f(x) = 5
+       b) f = (1, 1), f(x) = 7; unique (both coordinates non-zero)
+       c) f = (0, 1), f(x) = 4; unique
+       d) f = (t, 1 − t), 0 ≤ t ≤ 1
+       e) x + cy, |c| ≤ 1                f) x only (c = 0)
+       g) x only (c = 0)
+       h) ‖φ‖ = 1; ax + by with a + b = 1, a, b ≥ 0
+       i) ‖φ‖ = 1/2; only (x + y)/2      j) ‖φ‖ = 1/√2; only (x + y)/2
+       k) 2√3 ≈ 3.46410   l) 2          m) 6
+       n) 1/2 (= |∫x dx|/‖∫·‖, and ‖f ↦ ∫f‖ = 1)
+       o) 1/2 (shift invariance: L(x) = L(Sx) and x + Sx = 1)
+       p) (R², ‖·‖_∞); (R³, ‖·‖₁)
+       q) T (Hahn-Banach)
+       r) T (the only one is x ↦ ⟨x, g⟩, g the representer in the closure
+          of the subspace; any other extension has larger norm)
+       s) F (c₀ in ℓ^∞)
+
+M12. True (T) or false (F)? Give the theorem or a counterexample.
+     a) C[0, 1] is not a countable union of nowhere dense sets.
+     b) Q with |·| is a countable union of nowhere dense sets.
+     c) An infinite-dimensional Banach space can have a countable Hamel
+        basis.
+     d) A pointwise bounded family of bounded operators on a Banach space
+        is uniformly bounded.
+     e) The same on (c₀₀, ‖·‖_∞).
+     f) A pointwise limit of bounded operators on a Banach space is
+        bounded.
+     g) There is a continuous 2π-periodic f whose Fourier series diverges
+        at 0.
+     h) Every weakly convergent sequence is bounded.
+     i) A bounded linear surjection between Banach spaces is open.
+     j) A bounded linear bijection between Banach spaces has a bounded
+        inverse.
+     k) The identity (C[0, 1], ‖·‖_∞) → (C[0, 1], ‖·‖₁) has a bounded
+        inverse.
+     l) Two complete norms with ‖·‖_a ≤ C‖·‖_b are equivalent.
+     m) A linear map between Banach spaces with closed graph is bounded.
+     n) d/dx : C¹[0, 1] → C[0, 1] (sup norms) has closed graph and is
+        bounded.
+     o) A symmetric operator defined on all of a Hilbert space is bounded.
+     p) Every linear functional on an infinite-dimensional Banach space is
+        continuous.
+     q) The range of a bounded operator is always closed.
+     r) An open linear map is surjective.
+     s) If T ∈ B(X, Y) is a bijection, X Banach and Y only normed, T⁻¹
+        can be unbounded.
+     t) If Tₙ ∈ B(X, Y), X Banach, and Tₙx converges for every x, then
+        sup‖Tₙ‖ < ∞.
+     Answers:
+       a) T (Baire)        b) T (its points)      c) F (Baire)
+       d) T (UBP)          e) F (Tₙx = nxₙ)       f) T (Banach-Steinhaus)
+       g) T (Lₙ → ∞)       h) T (UBP on X*)       i) T (open mapping)
+       j) T (bounded inverse)                     k) F (‖xⁿ‖_∞/‖xⁿ‖₁ = n + 1)
+       l) T                m) T (closed graph)
+       n) F (closed graph but unbounded; domain not complete)
+       o) T (Hellinger-Toeplitz)
+       p) F (extend a Hamel basis with unbounded values; needs choice)
+       q) F (diag(1/n))    r) T (the image contains a ball around 0)
+       s) T (identity from (C[0, 1], ‖·‖_∞) to (C[0, 1], ‖·‖₁))
+       t) T (UBP)
+
+TEACHING TIPS
+  Struggling: draw the unit balls of ‖·‖₁, ‖·‖₂, ‖·‖_∞ in R² and read off
+  equivalence constants, operator norms (the image of the ball) and dual
+  norms (the ball of ‖·‖₁ is dual to the square of ‖·‖_∞, which is why
+  Hahn-Banach extensions stop being unique on flat faces). For every
+  operator norm, first find an upper bound, then a vector (or a sequence
+  of vectors) that nearly attains it — insist on writing both halves. Keep
+  a short "zoo": right and left shifts, diag(1/n), M_x, the Volterra
+  operator, d/dx, and use it to test every claim about spectra, ranges and
+  the big theorems. Before quoting UBP, open mapping or closed graph, make
+  the student check "Banach?" aloud for each space. Harder: prove the open
+  mapping theorem in full and deduce the closed graph theorem; show that
+  a Hilbert space is reflexive and that ℓ¹ is not; prove the spectral
+  radius formula with Gelfand's theorem that σ(T) ≠ ∅; show that the set
+  of continuous functions whose Fourier series diverge at 0 is a dense Gδ;
+  prove that every separable Hilbert space has a countable orthonormal
+  basis and is isometric to ℓ²; prove Banach-Alaoglu and discuss weak-*
+  compactness; and begin compact operators: show that the Volterra
+  operator is compact and that the spectrum of a compact operator is
+  countable with 0 as the only possible accumulation point.
