@@ -26,12 +26,15 @@ STAGE 0: PRE-NURSERY (Age ~2-3)  —  Sensing quantity, shape and pattern
 0.6   Position words: in, on, under, over, beside, front, behind, top, bottom
 0.7   Rote counting songs and rhymes (1 to 5, then 1 to 10)
 0.8   Subitising small groups (instantly seeing 1, 2, 3 items)
-0.9   One-to-one correspondence (one plate per person, one sock per foot)
-0.10  Basic shapes by name: circle, square, triangle
-0.11  Simple repeating patterns (red-blue-red-blue; clap-stomp-clap)
-0.12  Stacking and nesting (blocks, cups) — early sense of size order
-0.13  Daily routine sequence: before / after, first / next / last
-0.14  Simple puzzles (2-6 piece), shape sorters
+0.9   Conservation of number (spreading items out does not change how many)
+0.10  One-to-one correspondence (one plate per person, one sock per foot)
+0.11  Basic shapes by name: circle, square, triangle
+0.12  Simple repeating patterns (red-blue-red-blue; clap-stomp-clap)
+0.13  Stacking and nesting (blocks, cups) — early sense of size order
+0.14  Daily routine sequence: before / after, first / next / last
+0.15  Simple puzzles (2-6 piece), shape sorters
+0.16  Mazes and following simple directions (spatial reasoning)
+0.17  Everyday maths talk: counting stairs, grouping toys, noticing numbers around
 
 
 ================================================================================
@@ -52,6 +55,7 @@ STAGE 1: NURSERY / PRE-K (Age ~3-4)  —  Number sense begins
 1.13  Early spatial sense: left/right, near/far, inside/outside
 1.14  Sorting and simple picture graphs ("How many like apples?")
 1.15  Sharing fairly (early idea of division)
+1.16  Estimating small quantities ("about how many?") and checking by counting
 
 
 ================================================================================
@@ -83,6 +87,8 @@ STAGE 2: KINDERGARTEN / LKG-UKG (Age ~4-6)  —  Numbers to 20 and beyond
 2.24  Time: days of the week, months; reading o'clock
 2.25  Data: tally marks, pictographs, reading simple charts
 2.26  Halves and quarters of shapes and objects (sharing a roti/pizza)
+2.27  Board games with dice and tracks (counting on, number sense)
+2.28  Simple if-then reasoning and "odd one out" puzzles
 
 
 ================================================================================
@@ -98,24 +104,28 @@ STAGE 3: EARLY PRIMARY — GRADES 1-2 (Age ~6-8)  —  Place value & operations
 3.8   Subtraction facts to 20; relationship between + and -
 3.9   Fact families and missing-number problems (3 + ? = 8)
 3.10  Commutative and associative properties of addition (informally)
-3.11  Two-digit addition and subtraction without regrouping
-3.12  Two- and three-digit addition and subtraction with regrouping
-3.13  Mental math strategies (adding 10, compensation, bridging through 10)
-3.14  Estimation and rounding to nearest 10
-3.15  Word problems: one-step and two-step
-3.16  Multiplication as repeated addition, equal groups, arrays
-3.17  Division as equal sharing and equal grouping
-3.18  Times tables 2, 5, 10, then 3, 4
-3.19  Unit fractions: 1/2, 1/3, 1/4 of shapes and sets
-3.20  Length in cm, m (and inches, feet); using a ruler
-3.21  Mass (g, kg) and capacity (mL, L)
-3.22  Time: half past, quarter past/to, 5-minute intervals; calendar
-3.23  Money: counting, making change, simple addition with money
-3.24  2D/3D shape properties: faces, edges, vertices
-3.25  Lines: straight, curved; open and closed figures
-3.26  Patterns in numbers (+2, +5, +10 sequences); hundred chart patterns
-3.27  Data: bar graphs and pictographs, asking and answering questions
-3.28  Simple logical puzzles and reasoning games
+3.11  Doubling and halving; adding and multiplying with 0 and 1
+3.12  Two-digit addition and subtraction without regrouping
+3.13  Two- and three-digit addition and subtraction with regrouping
+3.14  Mental math strategies (adding 10, compensation, bridging through 10)
+3.15  Estimation and rounding to nearest 10
+3.16  Word problems: one-step and two-step
+3.17  Multiplication as repeated addition, equal groups, arrays
+3.18  Division as equal sharing and equal grouping
+3.19  Times tables 2, 5, 10, then 3, 4
+3.20  Unit fractions: 1/2, 1/3, 1/4 of shapes and sets
+3.21  Fractions of a length on a strip (fair shares that are not whole)
+3.22  Length in cm, m (and inches, feet); using a ruler
+3.23  Mass (g, kg) and capacity (mL, L)
+3.24  Time: half past, quarter past/to, 5-minute intervals; calendar
+3.25  Money: counting, making change, simple addition with money
+3.26  2D/3D shape properties: faces, edges, vertices
+3.27  Angles as turns: quarter, half, three-quarter, full turn; clockwise/anticlockwise
+3.28  Lines: straight, curved; open and closed figures
+3.29  Patterns in numbers (+2, +5, +10 sequences); hundred chart patterns
+3.30  Data: bar graphs and pictographs, asking and answering questions
+3.31  Simple logical puzzles and reasoning games
+3.32  Abacus / mental arithmetic practice (optional, builds calculation fluency)
 
 
 ================================================================================
@@ -131,30 +141,38 @@ STAGE 4: MIDDLE PRIMARY — GRADES 3-4 (Age ~8-10)  —  Multiplication & fracti
 4.8   Division facts; division with remainders
 4.9   Long division (1-digit divisor, then 2-digit)
 4.10  Relationship between multiplication and division
-4.11  Order of operations (simple)
-4.12  Factors and multiples
-4.13  Prime and composite numbers
-4.14  Divisibility rules (2, 3, 4, 5, 6, 9, 10)
-4.15  Fractions as parts of a whole, parts of a set, points on a number line
-4.16  Equivalent fractions
-4.17  Comparing and ordering fractions
-4.18  Mixed numbers and improper fractions
-4.19  Adding and subtracting fractions with like denominators
-4.20  Multiplying a fraction by a whole number
-4.21  Decimals: tenths and hundredths; link to fractions and money
-4.22  Comparing decimals
-4.23  Roman numerals
-4.24  Perimeter of polygons
-4.25  Area by counting squares; area of rectangle = length x breadth
-4.26  Angles: right, acute, obtuse; measuring with a protractor
-4.27  Lines: parallel, perpendicular, intersecting; rays and line segments
-4.28  Classifying triangles and quadrilaterals
-4.29  Line symmetry; reflections
-4.30  Measurement conversions (km-m-cm-mm, kg-g, L-mL, hr-min-s)
-4.31  Elapsed time; 24-hour clock
-4.32  Data: line plots, bar graphs, interpreting tables
-4.33  Input-output tables and number patterns (early functions)
-4.34  Simple unknowns in equations (boxes/symbols for numbers)
+4.11  Multiplication as scaling ("3 times as long") and comparison word problems
+4.12  Order of operations (simple)
+4.13  Factors and multiples
+4.14  Prime and composite numbers
+4.15  Divisibility rules (2, 3, 4, 5, 6, 9, 10)
+4.16  Square numbers and triangular numbers (dot patterns)
+4.17  Sieve of Eratosthenes
+4.18  Fractions as parts of a whole, parts of a set, points on a number line
+4.19  Equivalent fractions
+4.20  Comparing and ordering fractions
+4.21  Benchmark fractions (0, 1/2, 1) for estimating
+4.22  Mixed numbers and improper fractions
+4.23  Adding and subtracting fractions with like denominators
+4.24  Multiplying a fraction by a whole number
+4.25  Decimals: tenths and hundredths; link to fractions and money
+4.26  Comparing decimals
+4.27  Roman numerals
+4.28  Perimeter of polygons
+4.29  Area by counting squares; area of rectangle = length x breadth
+4.30  Area vs perimeter: same area different perimeter and vice versa
+4.31  Area of composite (L-shaped) figures
+4.32  Angles: right, acute, obtuse; measuring with a protractor
+4.33  Lines: parallel, perpendicular, intersecting; rays and line segments
+4.34  Classifying triangles and quadrilaterals
+4.35  Line symmetry; reflections
+4.36  Measurement conversions (km-m-cm-mm, kg-g, L-mL, hr-min-s)
+4.37  Elapsed time; 24-hour clock
+4.38  Data: line plots, bar graphs, interpreting tables
+4.39  Input-output tables and number patterns (early functions)
+4.40  Simple unknowns in equations (boxes/symbols for numbers)
+4.41  Estimation and checking reasonableness of answers
+4.42  Multi-step word problems with bar models (tape diagrams)
 
 
 ================================================================================
@@ -162,33 +180,40 @@ STAGE 5: UPPER PRIMARY — GRADES 5-6 (Age ~10-12)  —  Fractions, decimals, ra
 ================================================================================
 5.1   Large numbers (lakhs/crores and millions/billions systems)
 5.2   Powers of 10 and exponent notation
-5.3   HCF/GCD and LCM (listing, prime factorisation, Euclid's method)
-5.4   Adding and subtracting fractions with unlike denominators
-5.5   Multiplying fractions (area model); fraction of a fraction
-5.6   Dividing fractions (meaning, then reciprocal method)
-5.7   Decimals: thousandths; four operations with decimals
-5.8   Converting fractions <-> decimals; terminating vs repeating decimals
-5.9   Percentages: meaning, fraction/decimal/percent conversion
-5.10  Ratio and rate; equivalent ratios; unit rate
-5.11  Unitary method
-5.12  Integers: negative numbers, number line, comparing
-5.13  Operations with integers
-5.14  Introduction to variables and algebraic expressions
-5.15  Writing and evaluating expressions; simple formulas
-5.16  Solving one-step and simple two-step equations
-5.17  Coordinate plane (first quadrant, then all four quadrants)
-5.18  Geometry: points, lines, planes, angles (vertical, supplementary, complementary)
-5.19  Constructions with ruler and compass (bisectors, 60°, 90°)
-5.20  Circle: centre, radius, diameter, chord
-5.21  Area of triangles, parallelograms, trapezoids
-5.22  Volume of cubes and cuboids; surface area using nets
-5.23  3D shapes and their nets
-5.24  Mean, median, mode, range
-5.25  Introduction to probability (likely, unlikely, simple fractions)
-5.26  Profit, loss, discount (simple commercial math)
-5.27  Speed-distance-time
-5.28  Problem-solving strategies (draw a picture, work backwards, guess-and-check,
+5.3   Multiplying and dividing decimals by 10, 100, 1000
+5.4   HCF/GCD and LCM (listing, prime factorisation, Euclid's method)
+5.5   Adding and subtracting fractions with unlike denominators
+5.6   Multiplying fractions (area model); fraction of a fraction
+5.7   Dividing fractions (meaning, then reciprocal method)
+5.8   Decimals: thousandths; four operations with decimals
+5.9   Converting fractions <-> decimals; terminating vs repeating decimals
+5.10  Percentages: meaning, fraction/decimal/percent conversion
+5.11  Ratio and rate; equivalent ratios; unit rate
+5.12  Ratio tables and double number lines; sharing in a given ratio
+5.13  Unitary method
+5.14  Integers: negative numbers, number line, comparing
+5.15  Operations with integers
+5.16  Introduction to variables and algebraic expressions
+5.17  Writing and evaluating expressions; simple formulas
+5.18  Solving one-step and simple two-step equations
+5.19  Generalising patterns with algebra ("the nth term" of a simple sequence)
+5.20  Coordinate plane (first quadrant, then all four quadrants)
+5.21  Geometry: points, lines, planes, angles (vertical, supplementary, complementary)
+5.22  Angle sum of a triangle (180°) and of a quadrilateral (360°), by tearing and measuring
+5.23  Constructions with ruler and compass (bisectors, 60°, 90°)
+5.24  Circle: centre, radius, diameter, chord
+5.25  Area of triangles, parallelograms, trapezoids
+5.26  Volume of cubes and cuboids; surface area using nets
+5.27  3D shapes and their nets
+5.28  Mean, median, mode, range
+5.29  Introduction to probability (likely, unlikely, simple fractions)
+5.30  Profit, loss, discount (simple commercial math)
+5.31  Speed-distance-time
+5.32  Financial literacy: budgeting, saving, reading bills and receipts
+5.33  Problem-solving strategies (draw a picture, work backwards, guess-and-check,
       make a table, find a pattern)
+5.34  Recreational puzzles: Sudoku, KenKen, magic squares, number riddles
+5.35  Number bases: binary and other bases (place value revisited)
 
 
 ================================================================================
@@ -202,27 +227,36 @@ STAGE 6: MIDDLE SCHOOL — GRADES 7-8 (Age ~12-14)  —  Pre-algebra & algebra b
 6.6   Algebraic expressions: like terms, simplification
 6.7   Algebraic identities: (a+b)², (a-b)², (a+b)(a-b), (x+a)(x+b)
 6.8   Factorisation of algebraic expressions
-6.9   Linear equations in one variable (multi-step, variables on both sides)
-6.10  Linear inequalities in one variable
-6.11  Proportional relationships; direct and inverse proportion
-6.12  Percent applications: simple interest, compound interest, percent change, tax
-6.13  Linear relationships and graphs; slope as rate of change
-6.14  Introduction to functions: input/output, tables, graphs
-6.15  Systems of two linear equations (graphing, substitution, elimination)
-6.16  Lines and angles: transversals, angles with parallel lines
-6.17  Triangles: angle sum, exterior angle, congruence criteria (SSS, SAS, ASA, RHS)
-6.18  Pythagoras theorem (proofs and applications) and its converse
-6.19  Quadrilaterals and polygons: properties, interior/exterior angle sums
-6.20  Circles: circumference, area, π
-6.21  Surface area and volume: prisms, cylinders, cones, spheres, pyramids
-6.22  Transformations: translation, rotation, reflection, dilation
-6.23  Similarity and scale drawings
-6.24  Visualising solid shapes; Euler's formula V - E + F = 2
-6.25  Data handling: frequency tables, histograms, pie charts
-6.26  Scatter plots and trend lines
-6.27  Probability: sample space, experimental vs theoretical probability
-6.28  Counting principle (simple)
-6.29  Introduction to logical reasoning and simple proofs
+6.9   Algebraic fractions: simplifying, adding, subtracting
+6.10  Linear equations in one variable (multi-step, variables on both sides)
+6.11  Linear inequalities in one variable
+6.12  Representing inequalities on the number line
+6.13  Proportional relationships; direct and inverse proportion
+6.14  Percent applications: simple interest, compound interest, percent change, tax
+6.15  Linear relationships and graphs; slope as rate of change
+6.16  Introduction to functions: input/output, tables, graphs
+6.17  Sequences: arithmetic and simple geometric patterns, nth term rules
+6.18  Systems of two linear equations (graphing, substitution, elimination)
+6.19  Lines and angles: transversals, angles with parallel lines
+6.20  Triangles: angle sum, exterior angle, congruence criteria (SSS, SAS, ASA, RHS)
+6.21  Pythagoras theorem (proofs and applications) and its converse
+6.22  Quadrilaterals and polygons: properties, interior/exterior angle sums
+6.23  Circles: circumference, area, π
+6.24  Surface area and volume: prisms, cylinders, cones, spheres, pyramids
+6.25  Transformations: translation, rotation, reflection, dilation
+6.26  Similarity and scale drawings
+6.27  Visualising solid shapes; Euler's formula V - E + F = 2
+6.28  Loci and bearings; scale maps
+6.29  Data handling: frequency tables, histograms, pie charts
+6.30  Scatter plots and trend lines
+6.31  Quartiles, box plots, interquartile range; comparing data sets
+6.32  Sampling, bias and misleading graphs (statistical thinking)
+6.33  Probability: sample space, experimental vs theoretical probability
+6.34  Compound events: tree diagrams, two-way tables, independent events
+6.35  Counting principle (simple)
+6.36  Introduction to logical reasoning and simple proofs
+6.37  Clock (modular) arithmetic; parity arguments (enrichment)
+6.38  Using digital tools: spreadsheets, GeoGebra, Desmos
 
 
 ================================================================================
@@ -237,43 +271,51 @@ Algebra
 7.4   Polynomials: degree, zeros, remainder theorem, factor theorem
 7.5   Polynomial division; relationship between zeros and coefficients
 7.6   Linear equations in two variables; graphs
-7.7   Pair of linear equations: consistency, algebraic methods
-7.8   Quadratic equations: factorisation, completing the square, quadratic formula
-7.9   Nature of roots and discriminant
-7.10  Arithmetic progressions: nth term, sum of n terms
-7.11  Functions: domain, range, function notation, types of functions
-7.12  Absolute value equations and inequalities
-7.13  Exponential growth and decay (introduction)
+7.7   Coordinate geometry of lines: slope, midpoint, y = mx + c, parallel/perpendicular lines
+7.8   Pair of linear equations: consistency, algebraic methods
+7.9   Quadratic equations: factorisation, completing the square, quadratic formula
+7.10  Nature of roots and discriminant
+7.11  Quadratic functions and parabolas: vertex form, axis of symmetry, max/min
+7.12  Arithmetic progressions: nth term, sum of n terms
+7.13  Functions: domain, range, function notation, types of functions
+7.14  Transformations of graphs: shifts, stretches, reflections
+7.15  Systems of linear inequalities; graphing regions
+7.16  Absolute value equations and inequalities
+7.17  Exponential growth and decay (introduction)
+7.18  Geometric sequences (introduction)
 
 Geometry
-7.14  Euclid's axioms and postulates; the idea of proof
-7.15  Lines and angles theorems (formal proofs)
-7.16  Triangle theorems: congruence, inequalities in a triangle
-7.17  Quadrilaterals: parallelogram theorems, mid-point theorem
-7.18  Areas of parallelograms and triangles on same base
-7.19  Circle theorems: chords, arcs, angles subtended, cyclic quadrilaterals
-7.20  Tangents to a circle; number of tangents from a point
-7.21  Similar triangles: Basic Proportionality (Thales) Theorem, AA/SSS/SAS similarity
-7.22  Areas of similar triangles; Pythagoras via similarity
-7.23  Constructions: dividing a segment, tangents, similar triangles
-7.24  Coordinate geometry: distance formula, section formula, area of triangle
-7.25  Heron's formula
-7.26  Mensuration: combinations of solids, frustum, areas of sectors and segments
+7.19  Euclid's axioms and postulates; the idea of proof
+7.20  Lines and angles theorems (formal proofs)
+7.21  Triangle theorems: congruence, inequalities in a triangle
+7.22  Quadrilaterals: parallelogram theorems, mid-point theorem
+7.23  Areas of parallelograms and triangles on same base
+7.24  Circle theorems: chords, arcs, angles subtended, cyclic quadrilaterals
+7.25  Tangents to a circle; number of tangents from a point
+7.26  Similar triangles: Basic Proportionality (Thales) Theorem, AA/SSS/SAS similarity
+7.27  Areas of similar triangles; Pythagoras via similarity
+7.28  Constructions: dividing a segment, tangents, similar triangles
+7.29  Coordinate geometry: distance formula, section formula, area of triangle
+7.30  Heron's formula
+7.31  Mensuration: combinations of solids, frustum, areas of sectors and segments
 
 Trigonometry
-7.27  Trigonometric ratios in right triangles
-7.28  Trigonometric ratios of standard angles (0°, 30°, 45°, 60°, 90°)
-7.29  Trigonometric identities (sin² + cos² = 1 etc.)
-7.30  Heights and distances
+7.32  Trigonometric ratios in right triangles
+7.33  Trigonometric ratios of standard angles (0°, 30°, 45°, 60°, 90°)
+7.34  Trigonometric identities (sin² + cos² = 1 etc.)
+7.35  Heights and distances
+7.36  Vectors in 2D (introduction): magnitude, direction, addition
 
 Statistics & probability
-7.31  Mean, median, mode of grouped data; ogives
-7.32  Measures of dispersion: range, variance, standard deviation (introduction)
-7.33  Classical probability; complementary events
+7.37  Mean, median, mode of grouped data; ogives
+7.38  Measures of dispersion: range, variance, standard deviation (introduction)
+7.39  Classical probability; complementary events
+7.40  Bivariate data: correlation, line of best fit (introduction)
 
 Reasoning
-7.34  Mathematical statements, converse, contrapositive, counterexample
-7.35  Proof techniques: direct proof, proof by contradiction (√2 irrational)
+7.41  Mathematical statements, converse, contrapositive, counterexample
+7.42  Proof techniques: direct proof, proof by contradiction (√2 irrational)
+7.43  Introduction to programming (Python/Scratch) to explore patterns and simulate probability
 
 
 ================================================================================
@@ -282,76 +324,85 @@ STAGE 8: SENIOR SECONDARY — GRADES 11-12 (Age ~16-18)  —  Pre-calculus & cal
 Foundations
 8.1   Sets: notation, operations, Venn diagrams, power set
 8.2   Relations and functions: types, composition, inverse functions
-8.3   Mathematical logic: propositions, connectives, quantifiers, truth tables
-8.4   Principle of mathematical induction
-
-Algebra
-8.5   Complex numbers: algebra, Argand plane, modulus-argument form
-8.6   De Moivre's theorem; roots of unity
-8.7   Quadratic equations with complex roots
-8.8   Linear inequalities (two variables) and graphical solution
-8.9   Permutations and combinations
-8.10  Binomial theorem (positive integer index; general term; Pascal's triangle)
-8.11  Sequences and series: GP, AGP, harmonic progression; sums of special series
-8.12  Exponential and logarithmic functions; laws of logarithms
-8.13  Matrices: types, operations, transpose, symmetric/skew-symmetric
-8.14  Determinants: properties, minors, cofactors, area of triangle
-8.15  Inverse of a matrix; solving linear systems (Cramer's rule, matrix method)
+8.3   Special functions: modulus, greatest integer (floor), signum, piecewise functions
+8.4   Rational functions: asymptotes, graph sketching
+8.5   Mathematical logic: propositions, connectives, quantifiers, truth tables
+8.6   Principle of mathematical induction
 
 Trigonometry
-8.16  Radian measure; trigonometric functions of any angle; unit circle
-8.17  Graphs of trigonometric functions; periodicity
-8.18  Compound, multiple and sub-multiple angle formulas
-8.19  Trigonometric equations
-8.20  Inverse trigonometric functions
-8.21  Sine rule, cosine rule; solution of triangles
+8.7   Radian measure; trigonometric functions of any angle; unit circle
+8.8   Graphs of trigonometric functions; periodicity
+8.9   Compound, multiple and sub-multiple angle formulas
+8.10  Trigonometric equations
+8.11  Inverse trigonometric functions
+8.12  Sine rule, cosine rule; solution of triangles
+
+Algebra
+8.13  Complex numbers: algebra, Argand plane, modulus-argument form
+8.14  De Moivre's theorem; roots of unity
+8.15  Quadratic equations with complex roots
+8.16  Linear inequalities (two variables) and graphical solution
+8.17  Permutations and combinations
+8.18  Binomial theorem (positive integer index; general term; Pascal's triangle)
+8.19  Sequences and series: GP, AGP, harmonic progression; sums of special series
+8.20  Exponential and logarithmic functions; laws of logarithms
+8.21  Matrices: types, operations, transpose, symmetric/skew-symmetric
+8.22  Determinants: properties, minors, cofactors, area of triangle
+8.23  Inverse of a matrix; solving linear systems (Cramer's rule, matrix method)
 
 Coordinate geometry
-8.22  Straight lines: forms of equations, angle between lines, distance
-8.23  Conic sections: circle, parabola, ellipse, hyperbola
-8.24  Introduction to 3D coordinate geometry
-8.25  Polar coordinates and parametric equations
+8.24  Straight lines: forms of equations, angle between lines, distance
+8.25  Conic sections: circle, parabola, ellipse, hyperbola
+8.26  Introduction to 3D coordinate geometry
+8.27  Polar coordinates and parametric equations
 
 Vectors & 3D geometry
-8.26  Vectors: addition, scalar multiple, components, position vectors
-8.27  Dot product and cross product; scalar triple product
-8.28  Lines and planes in 3D; angles and distances
+8.28  Vectors: addition, scalar multiple, components, position vectors
+8.29  Dot product and cross product; scalar triple product
+8.30  Lines and planes in 3D; angles and distances
 
 Calculus
-8.29  Limits: intuition, algebra of limits, standard limits (sin x / x)
-8.30  Continuity
-8.31  Derivative: definition from first principles; geometric meaning
-8.32  Differentiation rules: product, quotient, chain rule
-8.33  Derivatives of trigonometric, exponential, logarithmic, inverse trig functions
-8.34  Implicit and parametric differentiation; logarithmic differentiation
-8.35  Higher-order derivatives
-8.36  Rolle's theorem and Mean Value Theorem
-8.37  Applications: rate of change, tangents and normals, increasing/decreasing
-8.38  Maxima and minima; optimisation problems
-8.39  Curve sketching
-8.40  Indefinite integrals; integration by substitution, by parts, partial fractions
-8.41  Definite integrals as limit of a sum; Fundamental Theorem of Calculus
-8.42  Properties of definite integrals
-8.43  Area under and between curves
-8.44  Differential equations: order, degree, variable separable, homogeneous, linear
+8.31  Limits: intuition, algebra of limits, standard limits (sin x / x)
+8.32  Continuity
+8.33  Derivative: definition from first principles; geometric meaning
+8.34  Differentiation rules: product, quotient, chain rule
+8.35  Derivatives of trigonometric, exponential, logarithmic, inverse trig functions
+8.36  Implicit and parametric differentiation; logarithmic differentiation
+8.37  Higher-order derivatives
+8.38  L'Hopital's rule; indeterminate forms
+8.39  Approximations using differentials; Newton-Raphson method
+8.40  Rolle's theorem and Mean Value Theorem
+8.41  Applications: rate of change, tangents and normals, increasing/decreasing
+8.42  Maxima and minima; optimisation problems
+8.43  Curve sketching
+8.44  Indefinite integrals; integration by substitution, by parts, partial fractions
+8.45  Definite integrals as limit of a sum; Fundamental Theorem of Calculus
+8.46  Properties of definite integrals
+8.47  Area under and between curves
+8.48  Volumes of solids of revolution; arc length
+8.49  Taylor polynomials and convergence of series (introduction)
+8.50  Differential equations: order, degree, variable separable, homogeneous, linear
       first order
 
 Statistics & probability
-8.45  Statistics: variance, standard deviation, coefficient of variation
-8.46  Conditional probability; multiplication rule; independence
-8.47  Total probability and Bayes' theorem
-8.48  Random variables; probability distributions; mean and variance
-8.49  Binomial distribution; introduction to normal distribution
-8.50  Linear programming (graphical method)
+8.51  Statistics: variance, standard deviation, coefficient of variation
+8.52  Correlation and linear regression
+8.53  Conditional probability; multiplication rule; independence
+8.54  Total probability and Bayes' theorem
+8.55  Random variables; probability distributions; mean and variance
+8.56  Binomial distribution; introduction to normal distribution
+8.57  Poisson distribution; sampling distributions (introduction)
+8.58  Linear programming (graphical method)
 
 Enrichment (olympiad-level track, run in parallel from Stage 6 onward)
-8.51  Olympiad number theory: modular arithmetic, Fermat's little theorem,
+8.59  Olympiad number theory: modular arithmetic, Fermat's little theorem,
       Diophantine equations
-8.52  Olympiad combinatorics: pigeonhole principle, invariants, extremal principle,
+8.60  Olympiad combinatorics: pigeonhole principle, invariants, extremal principle,
       double counting, graph-theory puzzles
-8.53  Olympiad inequalities: AM-GM, Cauchy-Schwarz, rearrangement, Jensen
-8.54  Olympiad geometry: Ceva, Menelaus, power of a point, homothety, inversion
-8.55  Functional equations; polynomials (Vieta's formulas)
+8.61  Olympiad inequalities: AM-GM, Cauchy-Schwarz, rearrangement, Jensen
+8.62  Olympiad geometry: Ceva, Menelaus, power of a point, homothety, inversion
+8.63  Functional equations; polynomials (Vieta's formulas)
+8.64  Olympiad algebra: sequences, recurrences, generating functions (introduction)
 
 
 ================================================================================
@@ -369,20 +420,22 @@ STAGE 9: UNDERGRADUATE — YEAR 1 (Bachelor's)  —  Rigour and foundations
 9.10  Multiple integrals; change of variables; Jacobians
 9.11  Vector calculus: line integrals, surface integrals, divergence, curl
 9.12  Green's, Stokes' and Gauss (divergence) theorems
-9.13  Linear algebra I: vector spaces, subspaces, basis, dimension
-9.14  Linear transformations, kernel and image, rank-nullity theorem
-9.15  Matrices of linear maps; change of basis
-9.16  Determinants (axiomatic); eigenvalues and eigenvectors; diagonalisation
-9.17  Inner product spaces; Gram-Schmidt; orthogonal projections
-9.18  Ordinary differential equations: first order, second-order linear, systems,
+9.13  Systems of linear equations: Gaussian elimination, row-reduced echelon form
+9.14  Linear algebra I: vector spaces, subspaces, basis, dimension
+9.15  Linear transformations, kernel and image, rank-nullity theorem
+9.16  Matrices of linear maps; change of basis
+9.17  Determinants (axiomatic); eigenvalues and eigenvectors; diagonalisation
+9.18  Inner product spaces; Gram-Schmidt; orthogonal projections
+9.19  Ordinary differential equations: first order, second-order linear, systems,
       Laplace transform methods
-9.19  Discrete mathematics: logic, counting, recurrence relations, generating functions
-9.20  Elementary graph theory: paths, trees, Euler and Hamilton cycles, planarity,
+9.20  Discrete mathematics: logic, counting, recurrence relations, generating functions
+9.21  Elementary graph theory: paths, trees, Euler and Hamilton cycles, planarity,
       colouring
-9.21  Elementary number theory: divisibility, congruences, Chinese Remainder Theorem,
+9.22  Elementary number theory: divisibility, congruences, Chinese Remainder Theorem,
       Euler's totient, quadratic residues
-9.22  Probability theory I: axioms, random variables, expectation, common distributions
-9.23  Introduction to programming for mathematics (Python / SageMath / MATLAB)
+9.23  Probability theory I: axioms, random variables, expectation, common distributions
+9.24  Introduction to programming for mathematics (Python / SageMath / MATLAB)
+9.25  Mathematical typesetting with LaTeX (start early)
 
 
 ================================================================================
@@ -401,46 +454,57 @@ Analysis
 10.10 Cauchy's theorem and integral formula; Taylor and Laurent series
 10.11 Residue theorem; evaluation of real integrals; conformal mappings
 10.12 Fourier series and Fourier transform
+10.13 Sturm-Liouville theory; special functions (Gamma, Beta, Legendre, Bessel)
+10.14 Integral transforms (Laplace, Fourier, Z-transform) and integral equations
 
 Algebra
-10.13 Group theory: groups, subgroups, cyclic groups, Lagrange's theorem
-10.14 Normal subgroups, quotient groups, homomorphism and isomorphism theorems
-10.15 Permutation groups; group actions; Sylow theorems
-10.16 Rings, ideals, quotient rings; integral domains, PIDs, UFDs, Euclidean domains
-10.17 Polynomial rings; irreducibility criteria (Eisenstein)
-10.18 Fields and field extensions; finite fields
-10.19 Galois theory; insolvability of the quintic; ruler-and-compass constructions
-10.20 Linear algebra II: dual spaces, Jordan canonical form, minimal polynomial,
+10.15 Group theory: groups, subgroups, cyclic groups, Lagrange's theorem
+10.16 Normal subgroups, quotient groups, homomorphism and isomorphism theorems
+10.17 Permutation groups; group actions; Sylow theorems
+10.18 Rings, ideals, quotient rings; integral domains, PIDs, UFDs, Euclidean domains
+10.19 Polynomial rings; irreducibility criteria (Eisenstein)
+10.20 Fields and field extensions; finite fields
+10.21 Galois theory; insolvability of the quintic; ruler-and-compass constructions
+10.22 Linear algebra II: dual spaces, Jordan canonical form, minimal polynomial,
       spectral theorem, bilinear and quadratic forms, tensor products
-10.21 Modules over a PID (structure theorem)
+10.23 Modules over a PID (structure theorem)
+10.24 Matrix decompositions: LU, QR, SVD; applications (least squares, PCA)
 
 Geometry & topology
-10.22 Point-set topology: topological spaces, continuity, bases, product and quotient
+10.25 Point-set topology: topological spaces, continuity, bases, product and quotient
       topologies
-10.23 Compactness, connectedness, separation axioms, Urysohn, Tychonoff
-10.24 Differential geometry of curves and surfaces: curvature, torsion, Frenet-Serret,
+10.26 Compactness, connectedness, separation axioms, Urysohn, Tychonoff
+10.27 Differential geometry of curves and surfaces: curvature, torsion, Frenet-Serret,
       first and second fundamental forms, Gauss's Theorema Egregium, Gauss-Bonnet
-10.25 Introduction to algebraic topology: homotopy, fundamental group, covering spaces
-10.26 Projective and non-Euclidean geometry
+10.28 Introduction to algebraic topology: homotopy, fundamental group, covering spaces
+10.29 Projective and non-Euclidean geometry
+10.30 Tensor analysis and index notation
+10.31 Fractals and dimension (introduction)
 
 Applied & computational
-10.27 Partial differential equations: heat, wave, Laplace equations; separation of
+10.32 Partial differential equations: heat, wave, Laplace equations; separation of
       variables; method of characteristics
-10.28 Numerical analysis: root finding, interpolation, numerical integration,
+10.33 Qualitative theory of ODEs: phase plane, stability, bifurcations
+10.34 Numerical analysis: root finding, interpolation, numerical integration,
       numerical ODE solvers, error analysis, numerical linear algebra
-10.29 Probability theory II: joint distributions, moment generating functions,
+10.35 Probability theory II: joint distributions, moment generating functions,
       law of large numbers, central limit theorem
-10.30 Mathematical statistics: estimation, maximum likelihood, hypothesis testing,
+10.36 Mathematical statistics: estimation, maximum likelihood, hypothesis testing,
       confidence intervals, regression
-10.31 Optimisation: linear programming (simplex, duality), convex optimisation basics
-10.32 Classical mechanics / mathematical physics (Lagrangian & Hamiltonian mechanics)
-10.33 Calculus of variations
-10.34 Combinatorics: inclusion-exclusion, Polya counting, designs, Ramsey theory
-10.35 Mathematical logic: propositional & predicate logic, completeness,
+10.37 Bayesian statistics; regression and linear models; time series (introduction)
+10.38 Optimisation: linear programming (simplex, duality), convex optimisation basics
+10.39 Operations research: transportation, assignment, network flows, queueing
+10.40 Game theory: strategic games, Nash equilibrium, zero-sum games
+10.41 Classical mechanics / mathematical physics (Lagrangian & Hamiltonian mechanics)
+10.42 Calculus of variations
+10.43 Combinatorics: inclusion-exclusion, Polya counting, designs, Ramsey theory
+10.44 Mathematical logic: propositional & predicate logic, completeness,
       Godel's incompleteness theorems (overview)
-10.36 Theory of computation: automata, computability, complexity (P vs NP)
-10.37 Cryptography and coding theory (applications of number theory and algebra)
-10.38 History and philosophy of mathematics
+10.45 Theory of computation: automata, computability, complexity (P vs NP)
+10.46 Cryptography and coding theory (applications of number theory and algebra)
+10.47 Mathematical modelling: population, epidemics, finance, physics (projects)
+10.48 Financial and actuarial mathematics (introduction)
+10.49 History and philosophy of mathematics
 
 
 ================================================================================
@@ -457,10 +521,15 @@ STAGE 11: UNDERGRADUATE FINAL YEAR / HONOURS  —  Advanced electives
 11.7  Introduction to Lie groups and Lie algebras
 11.8  Commutative algebra (introduction): Noetherian rings, localisation
 11.9  Representation theory of finite groups; characters
-11.10 Stochastic processes: Markov chains, Poisson processes, random walks
-11.11 Dynamical systems and chaos
-11.12 Graph theory (advanced) and algorithms
-11.13 Undergraduate research project / thesis; reading classic papers
+11.10 Elliptic curves (introduction): group law, rational points
+11.11 Algebraic curves and Riemann surfaces (introduction)
+11.12 Stochastic processes: Markov chains, Poisson processes, random walks
+11.13 Dynamical systems and chaos
+11.14 Graph theory (advanced) and algorithms
+11.15 Information theory: entropy, coding theorems
+11.16 Multivariate statistics and statistical learning (introduction)
+11.17 Differential topology: transversality, degree theory, Sard's theorem
+11.18 Undergraduate research project / thesis; reading classic papers
 
 
 ================================================================================
@@ -474,46 +543,52 @@ Core graduate sequence (typical qualifying-exam material)
 12.3  Complex analysis (graduate): Riemann mapping theorem, harmonic functions,
       entire and meromorphic functions, Weierstrass & Mittag-Leffler, analytic
       continuation, Riemann surfaces (introduction), elliptic functions
-12.4  Abstract algebra (graduate): advanced group theory (solvable/nilpotent groups),
+12.4  Several complex variables (introduction)
+12.5  Abstract algebra (graduate): advanced group theory (solvable/nilpotent groups),
       modules, tensor products, exact sequences, category theory basics,
       homological algebra introduction
-12.5  Commutative algebra: Noetherian/Artinian rings, primary decomposition,
+12.6  Homological algebra: Ext, Tor, derived functors, derived categories (introduction)
+12.7  Sheaf theory
+12.8  Commutative algebra: Noetherian/Artinian rings, primary decomposition,
       integral extensions, Nullstellensatz, dimension theory, completions
-12.6  Algebraic topology: singular homology, cellular homology, cohomology,
+12.9  Algebraic topology: singular homology, cellular homology, cohomology,
       cup products, Poincare duality, higher homotopy groups
-12.7  Differential topology & geometry: manifolds, vector bundles, differential forms,
+12.10 Differential topology & geometry: manifolds, vector bundles, differential forms,
       de Rham cohomology, Riemannian metrics, connections, curvature, geodesics
-12.8  Lie groups and Lie algebras: structure, root systems, classification of
+12.11 Lie groups and Lie algebras: structure, root systems, classification of
       semisimple Lie algebras, representations
-12.9  Probability (measure-theoretic): conditional expectation, martingales,
+12.12 Probability (measure-theoretic): conditional expectation, martingales,
       Brownian motion, weak convergence, characteristic functions
-12.10 Partial differential equations (graduate): Sobolev spaces, elliptic regularity,
+12.13 Partial differential equations (graduate): Sobolev spaces, elliptic regularity,
       weak solutions, parabolic and hyperbolic equations, variational methods
 
 Specialisation foundations (choose based on intended research area)
-12.11 Algebraic geometry: varieties, schemes, sheaves, sheaf cohomology,
+12.14 Algebraic geometry: varieties, schemes, sheaves, sheaf cohomology,
       curves and surfaces, Riemann-Roch
-12.12 Algebraic number theory: Dedekind domains, ramification, class groups,
+12.15 Algebraic number theory: Dedekind domains, ramification, class groups,
       Dirichlet unit theorem, local fields, p-adic numbers, adeles and ideles
-12.13 Analytic number theory: Riemann zeta function, L-functions, sieve methods,
+12.16 Analytic number theory: Riemann zeta function, L-functions, sieve methods,
       circle method
-12.14 Representation theory: of Lie groups, algebraic groups, quantum groups
-12.15 Harmonic analysis: Fourier analysis on groups, singular integrals,
+12.17 Representation theory: of Lie groups, algebraic groups, quantum groups
+12.18 Harmonic analysis: Fourier analysis on groups, singular integrals,
       Calderon-Zygmund theory
-12.16 Stochastic calculus: Ito integral, SDEs, applications to finance and physics
-12.17 Ergodic theory
-12.18 Mathematical logic: model theory, set theory (ZFC, forcing, large cardinals),
+12.19 Stochastic calculus: Ito integral, SDEs, applications to finance and physics
+12.20 Ergodic theory
+12.21 Mathematical logic: model theory, set theory (ZFC, forcing, large cardinals),
       recursion theory, proof theory
-12.19 Category theory: functors, natural transformations, adjunctions, limits,
+12.22 Category theory: functors, natural transformations, adjunctions, limits,
       abelian categories, derived functors
-12.20 Combinatorics (graduate): probabilistic method, extremal combinatorics,
+12.23 Combinatorics (graduate): probabilistic method, extremal combinatorics,
       algebraic combinatorics
-12.21 Numerical analysis (graduate): finite element methods, spectral methods,
+12.24 Numerical analysis (graduate): finite element methods, spectral methods,
       numerical PDEs, iterative methods
-12.22 Optimisation and control theory; convex analysis
-12.23 Mathematical statistics & statistical learning theory
-12.24 Mathematical physics: quantum mechanics formalism, general relativity,
+12.25 Optimisation and control theory; convex analysis
+12.26 Mathematical statistics & statistical learning theory
+12.27 Mathematical physics: quantum mechanics formalism, general relativity,
       gauge theory, symplectic geometry
+12.28 Mathematical finance: arbitrage pricing, Black-Scholes, stochastic control
+12.29 Inverse problems and uncertainty quantification
+12.30 Algorithms and computational complexity (graduate)
 
 
 ================================================================================
@@ -524,36 +599,45 @@ Advanced research-level topics (depth in one or two, awareness of others)
       intersection theory, derived algebraic geometry
 13.2  Arithmetic geometry: elliptic curves, abelian varieties, modular forms,
       Galois representations, the Langlands program
-13.3  Algebraic topology (advanced): spectral sequences, K-theory, stable homotopy
+13.3  Automorphic forms and representations; p-adic Hodge theory; motives
+13.4  Algebraic topology (advanced): spectral sequences, K-theory, stable homotopy
       theory, characteristic classes, cobordism
-13.4  Geometric topology: low-dimensional topology, knot theory, 3- and 4-manifolds,
+13.5  Geometric topology: low-dimensional topology, knot theory, 3- and 4-manifolds,
       Floer theory
-13.5  Differential geometry (advanced): Riemannian geometry, comparison theorems,
+13.6  Quantum topology and topological quantum field theory (TQFT)
+13.7  Mirror symmetry and enumerative geometry
+13.8  Differential geometry (advanced): Riemannian geometry, comparison theorems,
       Ricci flow, geometric analysis, Kahler geometry, symplectic topology
-13.6  Index theory: Atiyah-Singer index theorem
-13.7  Operator algebras: C*-algebras, von Neumann algebras, noncommutative geometry
-13.8  Nonlinear PDE and geometric analysis; fluid dynamics (Navier-Stokes)
-13.9  Dynamical systems: hyperbolic dynamics, complex dynamics, KAM theory
-13.10 Probability (advanced): random matrices, percolation, SLE, stochastic PDEs,
+13.9  Index theory: Atiyah-Singer index theorem
+13.10 Operator algebras: C*-algebras, von Neumann algebras, noncommutative geometry
+13.11 Nonlinear PDE and geometric analysis; fluid dynamics (Navier-Stokes)
+13.12 Dynamical systems: hyperbolic dynamics, complex dynamics, KAM theory
+13.13 Probability (advanced): random matrices, percolation, SLE, stochastic PDEs,
       large deviations
-13.11 Higher category theory and homotopy type theory
-13.12 Additive combinatorics and analytic number theory frontiers
-13.13 Geometric group theory
-13.14 Mathematical foundations of machine learning, information theory,
+13.14 Optimal transport and its applications
+13.15 Topological data analysis (persistent homology)
+13.16 Higher category theory and homotopy type theory
+13.17 Additive combinatorics and analytic number theory frontiers
+13.18 Geometric group theory
+13.19 Mathematical foundations of machine learning, information theory,
       high-dimensional probability
-13.15 Computational mathematics: proof assistants and formal verification
+13.20 Computational mathematics: proof assistants and formal verification
       (Lean, Coq, Isabelle), computer algebra
+13.21 Mathematics of quantum computing and quantum information
+13.22 Awareness of great open problems (Hilbert's problems, Millennium Prize Problems,
+      Riemann Hypothesis) and how they shaped mathematics
 
 Research skills (essential for completing a PhD)
-13.16 Reading research papers and monographs critically
-13.17 Literature review; using arXiv, MathSciNet, zbMATH
-13.18 Choosing and refining a research problem with an advisor
-13.19 Working through examples, special cases and counterexamples
-13.20 Writing mathematics: LaTeX, structuring proofs, clarity and precision
-13.21 Presenting at seminars and conferences
-13.22 Collaboration, peer review, and research ethics
-13.23 Teaching mathematics (tutoring, TA work) — to deepen one's own understanding
-13.24 Writing and defending the doctoral thesis (original contribution to knowledge)
+13.23 Reading research papers and monographs critically
+13.24 Literature review; using arXiv, MathSciNet, zbMATH
+13.25 Choosing and refining a research problem with an advisor
+13.26 Working through examples, special cases and counterexamples
+13.27 Writing mathematics: LaTeX, structuring proofs, clarity and precision
+13.28 Presenting at seminars and conferences
+13.29 Collaboration, peer review, and research ethics
+13.30 Teaching mathematics (tutoring, TA work) — to deepen one's own understanding
+13.31 Writing and defending the doctoral thesis (original contribution to knowledge)
+13.32 Beyond the PhD: postdoctoral positions, grant writing, mentoring, lifelong learning
 
 
 ================================================================================
