@@ -1,0 +1,61 @@
+================================================================================
+  STAGE 12: MASTER'S / FIRST-YEAR GRADUATE — QUESTIONS AND ANSWERS
+  PhD coursework and qualifying exams
+================================================================================
+
+How to use this file (note for the parent / teacher)
+----------------------------------------------------
+- There are 30 topics (12.1 to 12.30, the same as in topic.txt), in two
+  groups: the Core graduate sequence (12.1-12.13: real, functional and
+  complex analysis, several complex variables, graduate algebra,
+  homological algebra, sheaves, commutative algebra, algebraic topology,
+  differential geometry, Lie theory, measure-theoretic probability and
+  PDE) and the Specialisation foundations (12.14-12.30: algebraic
+  geometry, algebraic and analytic number theory, representation theory,
+  harmonic analysis, stochastic calculus, ergodic theory, logic, category
+  theory, combinatorics, numerical analysis, optimisation, statistics,
+  mathematical physics, mathematical finance, inverse problems and
+  algorithms).
+  Each topic has:
+    * WHAT THE CHILD MUST LEARN   the checklist of definitions, theorems,
+                                  standard examples, counterexamples and
+                                  methods in that topic
+    * PART A — DESCRIPTIVE        12 questions (D1-D12): proofs,
+                                  explanations, derivations and worked
+                                  numerical problems, each with the answer
+                                  and "Teacher explains" (the method step
+                                  by step as a teacher shows it on the
+                                  board, common mistakes, and a "Now you
+                                  try" question)
+    * PART B — MATHEMATICAL ONLY  12 questions (M1-M12): pure drills with
+                                  answers. Most have many parts (a, b,
+                                  c ...) so that EVERY case of the topic is
+                                  practised again and again, from the
+                                  easiest to the hardest — not just one
+                                  example of each idea.
+    * TEACHING TIPS               what to do if the student struggles, and
+                                  how to make it harder
+- In total: 360 descriptive + 360 mathematical questions.
+- Level: first-year graduate / qualifying-exam mathematics. The core
+  sequence (12.1-12.13) is what a typical PhD qualifying exam covers; the
+  specialisation foundations are chosen by research area.
+- What is new in Stage 12: SYNTHESIS AND ABSTRACTION. Theorems of Stage 11
+  become tools; the student learns to recognise the same structure
+  (a functor, a spectral decomposition, a cohomology theory, a
+  martingale, a variational principle) in many guises, and to solve
+  qualifying-exam problems quickly and completely.
+- Conventions: as in A11.txt. N = {1, 2, 3, ...}; log = ln unless a base is
+  written; m or λ is Lebesgue measure; a.e. = almost everywhere; ≅ means
+  isomorphic; □ ends a proof; exact answers first, decimals with ≈.
+- Method: for every theorem know its hypotheses and a counterexample when
+  one is dropped; for every computation know which theorem justifies it.
+  Use Python/SageMath/Macaulay2/R to CHECK calculations; write every
+  solution in LaTeX. Practise past qualifying exams under time limits.
+- Do 3 hours a day: 2 descriptive questions (full written proof) and
+  2-3 drills per session, plus a weekly timed mixed paper.
+- Revise Stage 11 (A11.txt) whenever the student finds something
+  difficult: 11.1-11.3 before 12.1, 12.2, 12.12, 12.13, 12.18; 11.4-11.5
+  before 12.15-12.16; 11.6-11.7, 11.17 before 12.9-12.11; 11.8-11.9 before
+  12.5-12.8, 12.14, 12.17; 11.12-11.13 before 12.12, 12.19, 12.20;
+  11.14-11.16 before 12.23-12.30.
+
