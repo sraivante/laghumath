@@ -36,7 +36,10 @@ How to use this file (note for the parent / teacher)
                                   example of each idea.
     * TEACHING TIPS               what to do if the student struggles, and
                                   how to make it harder
-- In total: 384 descriptive + 384 mathematical questions.
+- In total: 384 descriptive + 384 mathematical questions, then a mixed
+  revision test (equal descriptive and mathematical parts, two questions
+  from every topic in each part) and the final checklist of the whole
+  programme.
 - Level: PhD research. The expectation (topic.txt) is DEPTH IN ONE OR TWO
   of 13.1-13.22 and working AWARENESS of the others: a student should be
   able to do every "Part B" drill in every topic, and every "Part A"
@@ -31324,3 +31327,800 @@ TEACHING TIPS
   ≈ n/e is optimal; and prove UCB1's O(log T) regret bound using
   Hoeffding's inequality.
 
+
+================================================================================
+MIXED REVISION TEST — STAGE 13
+================================================================================
+Two parts with the same number of questions: Part A is descriptive
+(proofs, explanations and worked problems, written with full working),
+Part B is mathematical only. Two questions from every topic in each part,
+in topic order (13.1, 13.1, 13.2, 13.2, ...). 1 mark each, 128 marks in
+all. Use it as four timed papers of 32 questions, like a qualifying exam;
+the research-skill questions (13.23-13.32) are marked on the mathematics,
+not on the advice.
+
+PART A — DESCRIPTIVE, 64 marks
+  1.  Describe the morphism Spec ℤ[√−2] → Spec ℤ: for the primes (0), (2),
+      (3) and (5) find the fibre (number of points, residue fields, reduced
+      or not) by factoring x² + 2, and say which primes ramify, split or
+      stay inert.
+  2.  State Riemann-Roch for a smooth projective curve and the adjunction
+      formula. Find the genus of a smooth plane quartic and of a smooth
+      complete intersection of type (2, 3) in P³, and show that on a smooth
+      plane cubic E with a point P one has h⁰(O_E(3P)) = 3.
+  3.  For E : y² = x³ − x over ℚ compute Δ and j, find E(ℚ)_tors with
+      Nagell-Lutz, count #E(F₃) and #E(F₅), check Hasse's bound, and
+      explain why a₃ = 0.
+  4.  Explain how the modularity theorem, the Frey curve and Ribet's level
+      lowering prove Fermat's Last Theorem, and verify with the genus
+      formula that S₂(Γ₀(2)) = 0.
+  5.  For Δ = ∑τ(n)qⁿ at p = 2 (τ(2) = −24), find the sum and product of the
+      Satake parameters α₂, β₂, show that they are complex conjugates of
+      modulus 1 (Ramanujan-Deligne), and find τ(4) from the Hecke
+      recursion.
+  6.  Describe the hierarchy crystalline ⊂ semistable ⊂ de Rham ⊂
+      Hodge-Tate, with an example showing that each inclusion is strict.
+      For E : y² = x³ + 1 (good reduction at 5 and 7) give the
+      characteristic polynomial of φ on D_crys(V_pE) for p = 5 and p = 7,
+      and decide whether E is ordinary or supersingular there.
+  7.  Use the Serre spectral sequence of the fibration S¹ → S⁵ → CP² to
+      compute H*(CP²; ℤ) as a ring, explaining the role of d₂ and of
+      multiplicativity.
+  8.  Compute the total Stiefel-Whitney class w(RP⁴) and the dual class
+      w̄(RP⁴), and deduce that RP⁴ does not immerse in ℝ⁶ and does not
+      embed in ℝ⁷.
+  9.  The figure-eight knot has Seifert matrix V = [[−1, 1], [0, 1]].
+      Compute Δ(t), det K and σ(K), and use Fox-Milnor to show that it is
+      not slice.
+ 10.  Do surgery on the Hopf link with framings −2 and −3: find H₁ from the
+      linking matrix, identify the manifold as a lens space L(p, q) by the
+      continued fraction of the linear plumbing, and explain why L(5, 3) ≅
+      L(5, 2).
+ 11.  Compute the Kauffman bracket of the standard 2-crossing diagram of
+      the positive Hopf link H₊, derive V(H₊), and check the value V_L(1) =
+      (−2)^(c−1).
+ 12.  For the Dijkgraaf-Witten theory with G = S₃ in dimension 2, use the
+      Frobenius-Mednykh formula to find Z(Σ_g) for g = 0, 1, 2, and check
+      g = 1 against |Hom(ℤ², S₃)|/|S₃|.
+ 13.  Show that a smooth complete intersection X of two cubics in P⁵ is a
+      Calabi-Yau threefold, compute c(X) and χ(X), deduce h^{1,1} and
+      h^{2,1} (Lefschetz), and give the Hodge numbers of its mirror.
+ 14.  Use Kontsevich's recursion (with N₁ = N₂ = 1) to compute N₃, and
+      confirm N₃ = 12 with the pencil of cubics through 8 general points
+      of P².
+ 15.  For g = dr² + f(r)²dθ² derive K = −f″/f and apply it to f = sin r,
+      r, sinh r. State Bonnet-Myers, and explain why the paraboloid z = x²
+      + y² (K > 0 everywhere) is not a counterexample.
+ 16.  Solve the Ricci flow ∂g/∂t = −2Ric on the round sphere Sⁿ(r₀), find
+      the extinction time, evaluate it for S³ of radius 2, and compare with
+      the maximum-principle bound T ≤ n/(2R_min(0)).
+ 17.  Define a Fredholm operator and its index, show that the unilateral
+      shift has index −1, and use ind T_f = −wind(f) to compute the index
+      of the Toeplitz operators with symbols z³, z̄² and (z − ½)(z − 3)/z.
+ 18.  State Hirzebruch-Riemann-Roch. Using Td(CP²) compute χ(CP², O(k));
+      verify Noether's formula χ(O) = (c₁² + c₂)/12 for CP² and for a
+      quartic (K3) surface, and find σ(K3).
+ 19.  Let φ(a) = tr(ρa) on M₂(ℂ) with ρ = diag(1/3, 2/3). Find dim H_φ of
+      the GNS representation, decide whether φ is pure, and compute the
+      modular group σ_t(e₁₂) and the spectrum of the modular operator Δ.
+ 20.  State Jones' index theorem, compute [M : N] for R ⊆ R ⋊ S₃ (outer
+      action) and for N ⊆ M₃(N), and explain why no subfactor has index
+      2.5.
+ 21.  For Burgers' equation uₜ + uuₓ = 0 find the breaking time for u₀(x) =
+      1/(1 + x²). Solve the Riemann problems (u_L, u_R) = (2, 0) (shock
+      speed, Lax condition) and (0, 2) (rarefaction).
+ 22.  State the Pohozaev identity and use it to show that −Δu = u⁵, u > 0
+      in a ball B ⊂ ℝ³ with u = 0 on ∂B has no solution; explain why the
+      mountain pass theorem does give solutions for 1 < p < 5.
+ 23.  For the cat map A = [[2, 1], [1, 1]] on T² find the eigenvalues, the
+      topological entropy, #Fix(Aⁿ) for n = 1, ..., 4, and the number of
+      prime periodic orbits of least period 2, 3 and 4.
+ 24.  For f_c(z) = z² + c show that the 2-cycle has multiplier 4(c + 1),
+      deduce the period-2 disc |c + 1| < ¼, and explain what happens at
+      c = −1 and at c = ¼.
+ 25.  Compute the moments m₂, m₄, m₆ of the semicircle density
+      (1/2π)√(4 − x²), interpret them as non-crossing pairings, and check
+      E tr H⁴ = 2N³ + N for the GUE at N = 1.
+ 26.  State Cramér's theorem. Find the rate function for Bernoulli(½) and
+      use the Chernoff bound to estimate P(S₁₀₀ ≥ 70) for 100 fair coin
+      tosses; compare with the true value ≈ 3.9 × 10⁻⁵.
+ 27.  Compute W₂(N(0, diag(1, 4)), N((3, 4), diag(9, 1))) and the Brenier
+      map; then compute W₁ and W₂ between the uniform laws on [0, 1] and
+      on [2, 4], with the optimal map.
+ 28.  Solve the entropic transport problem with a = b = (½, ½), cost C =
+      [[0, 1], [1, 0]] and ε = 1 (Sinkhorn form P = diag(u)K diag(v)),
+      find its cost, and describe the limits ε → 0 and ε → ∞.
+ 29.  For the four corners of the unit square compute the Vietoris-Rips
+      barcodes (diameter convention) and the Čech barcodes (radius
+      convention) in degrees 0 and 1, and explain the difference.
+ 30.  Compute the bottleneck distance between D = {(0, 4), (1, 2)} and D′ =
+      {(0, 3.5), (2, 2.5)}, and state the stability theorem that such a
+      computation is used with.
+ 31.  Define Kan complexes and quasi-categories. Show that the nerve of a
+      category fills inner horns uniquely, and that N([1]) (the poset
+      0 < 1) is not a Kan complex by exhibiting a horn Λ⁰[2] with no
+      filler.
+ 32.  Outline the encode-decode proof that Ω(S¹, base) ≃ ℤ in HoTT, and use
+      univalence to show that (Fin 3 = Fin 3) has 6 elements and that the
+      universe U is not a set.
+ 33.  State Cauchy-Davenport, show it is sharp for arithmetic progressions,
+      compute A + A for A = {0, 1, 3} ⊂ ℤ/7, and show it fails in ℤ/6.
+ 34.  Define an admissible tuple. Decide whether {0, 2, 4} and {0, 2, 6}
+      are admissible, explain the value H(3) = 6, and summarise what GPY,
+      Zhang and Maynard-Tao proved about gaps between primes.
+ 35.  Use Stallings folds to find the core graph of H = ⟨a², b, aba⁻¹⟩ ≤
+      F(a, b); deduce [F : H], rank H (check Nielsen-Schreier), and a
+      simple membership test for H.
+ 36.  Compute the ball sizes β(3) in F₂ and in ℤ² (standard generators),
+      and the growth series and growth rate of ℤ/2 ∗ ℤ/3 with generators a,
+      b^{±1}.
+ 37.  Show that axis-parallel rectangles in ℝ² have VC dimension 4, apply
+      Sauer-Shelah for m = 10, and find the realizable sample size for a
+      finite class with |H| = 2²⁰, ε = 0.01, δ = 0.05.
+ 38.  Construct a Huffman code for probabilities (0.4, 0.3, 0.2, 0.1),
+      compare its expected length with the entropy, and compute the
+      capacity of the binary symmetric channel BSC(0.11).
+ 39.  Compute the reduced lex (x > y) Gröbner basis of I = ⟨x² − y, xy − 1⟩
+      by Buchberger's algorithm, and use it to solve the system over ℂ.
+ 40.  Compute Disc(x³ − 3x + 1) and deduce the nature of its roots and its
+      Galois group; find them explicitly. Then compute the minimal
+      polynomial of √2 + √3 as a resultant.
+ 41.  For |ψ⟩ = (|00⟩ + |01⟩ + |10⟩)/√3 find ρ_A, the Schmidt coefficients,
+      the entanglement entropy and the concurrence.
+ 42.  For Grover search with N = 8 and one marked item find θ and the
+      success probabilities after 1 and 2 iterations; state the optimality
+      theorem.
+ 43.  Define the Dehn invariant and prove that a cube and a regular
+      tetrahedron of the same volume are not equidecomposable (Hilbert's
+      third problem), including the proof that arccos(1/3) ∉ ℚπ.
+ 44.  State the Riemann hypothesis and two equivalent forms. Check Robin's
+      inequality σ(n) < e^γ n log log n at n = 5040 and explain why Robin's
+      theorem says n > 5040.
+ 45.  A manuscript claims: "if fₙ → f pointwise on [0, 1] and each fₙ is
+      continuous, then ∫fₙ → ∫f". Give a counterexample, classify the flaw
+      (typo / fixable gap / fatal) and state a correct version.
+ 46.  Check three numerical claims from a draft: "200! ends in 40 zeros",
+      "π(1000) = 170", "2^(2⁵) + 1 is prime"; give the correct values with
+      the method.
+ 47.  Count lattice paths with steps U, D, F from (0, 0) to (n, 0) never
+      below the axis for n = 0, ..., 7, identify the sequence, and prove its
+      recurrence.
+ 48.  For E : y² + y = x³ − x compute b₂, b₄, b₆, b₈, Δ, c₄ and j, and
+      explain why the conductor is 37 and how you would confirm the
+      identification in the LMFDB.
+ 49.  List the primitive Pythagorean triples with c ≤ 50, check the rule
+      for which c occur, and turn the theorem into three precise questions
+      using the "eight moves".
+ 50.  Compute the Frobenius number g(5, 8) and the number of
+      non-representable integers, check g(6, 9, 20) = 43, and give the
+      success probability of a plan with three serial steps (p = 0.8, 0.7,
+      0.5) and with a parallel fall-back for the last step (p = 0.5).
+ 51.  Prove with Korselt's criterion that 1105 is a Carmichael number, and
+      show that 341 is a Fermat pseudoprime to base 2 but not to base 3.
+ 52.  Explain why the Borwein integrals ∫₀^∞ ∏_{k≤n} sinc(x/(2k + 1)) dx equal
+      π/2 exactly for n ≤ 6 and not for n = 7. Give, for each hypothesis of
+      the extreme value theorem, an example showing that it is needed.
+ 53.  Write a complete ε-δ proof that x³ → 8 as x → 2 with an explicit δ,
+      and write the negation of "fₙ → f uniformly on S" with quantifiers.
+ 54.  Prove 2ⁿ > n² for n ≥ 5 by induction, saying where the step is valid;
+      then repair the false statements "f′ = 0 ⇒ f constant" and "V − E +
+      F = 2 for every plane graph".
+ 55.  Plan a 20-minute contributed talk (speaking time, words, slides); a
+      rehearsal took 25 minutes for a 17-minute budget — what fraction must
+      be cut? Work Pick's theorem on the triangle (0, 0), (5, 0), (0, 4).
+ 56.  Use Burnside to count necklaces of 6 beads in 3 colours up to
+      rotation and bracelets up to rotation and reflection; check the cube
+      face count 57 for 3 colours.
+ 57.  Prove that 2730 divides n¹³ − n for every integer n, as a joint proof
+      with a clean interface, and show that 11 does not divide 2¹³ − 2.
+ 58.  For 10 independent tests at α = 0.05 find the family-wise error rate,
+      and the Bonferroni and Šidák levels. Solve x³ − 6x − 9 = 0 by
+      Cardano's formula.
+ 59.  By residues compute ∫_ℝ dx/(x² + 1)² and ∫_ℝ dx/(x² + 2x + 2),
+      showing that the arc contributions vanish (ML estimate).
+ 60.  With prevalence 2%, sensitivity 95% and false-positive rate 10%, find
+      P(disease | positive). Design an integer 2×2 matrix with eigenvalues
+      1 and 6, and show that a row operation changes its eigenvalues.
+ 61.  Verify r₂(n) = 4(d₁(n) − d₃(n)) for n = 25, 65 and 21 by direct
+      counting, and explain the sharp bound r₂(n) ≤ 4d(n).
+ 62.  Show that cos is a contraction of [0, 1] and use Banach's a priori
+      bound to find how many iterations from x₀ = 0 guarantee error
+      ≤ 10⁻⁶; show by examples that each hypothesis of Banach's theorem is
+      needed.
+ 63.  A grant has 2 months of summer salary on a 9-month salary of 90000,
+      fringe 30%, travel 5000, one equipment item 6000, and indirect 50% on
+      MTDC. Compute the total. With 30 applications at p = 0.08 each, find
+      P(at least one offer).
+ 64.  Prove J(2ᵐ + L) = 2L + 1 for the Josephus problem (every 2nd person
+      eliminated), compute J(100) and J(64), and find the sandpile group
+      of K₄ with its order.
+
+PART B — MATHEMATICAL ONLY, 64 marks
+ 65.  h⁰(P², O(4)) = __ ; h²(P², O(−5)) = __ ; Hilbert polynomial of the
+      twisted cubic = __
+ 66.  genus of a smooth plane quintic = __ ; dim M₄ = __ ; ∫σ₁⁴ on G(2, 4)
+      = __ ; lines on a general quintic threefold = __ ; I₀(y − x², y) = __
+ 67.  y² = x³ + 1: Δ = __ , j = __ , E(ℚ)_tors = __ (list its points)
+ 68.  dim M₂₄(SL₂(ℤ)) = __ ; dim S₂₄ = __ ; [SL₂(ℤ) : Γ₀(11)] = __ ;
+      g(X₀(11)) = __
+ 69.  τ(3) = __ ; τ(6) = __ ; τ(9) = __ ; sign of the functional equation
+      of L(Δ, s) = __
+ 70.  ᴸSL₃ = __ ; ᴸSp₄ = __ ; ᴸSO₅ = __ ; Chow motive h(P³) = __ ;
+      #P³(F_q) = __ ; dim St^{K₁(p³)} (a(St) = 1) = __
+ 71.  π₃ˢ, π₇ˢ, π₁₁ˢ = __ ; K̃⁰(RP⁴) = __ ; KO⁻⁴(pt) = __ ; Sq²(x³) in
+      H*(RP^∞; F₂) = __
+ 72.  σ(CP² × CP²) = __ ; Â(K3) = __ ; p(CP³) = __ ; maximal number of
+      independent vector fields on S¹⁵ = __ ; Ω₄^{SO} = __
+ 73.  V(left-handed trefoil) = __ ; det(5₁) = __ ; g(T(3, 5)) = __ ;
+      ∇(5₂) = __
+ 74.  |H₁(L(7, 2))| = __ ; L(7, 1) ≅ L(7, 2)? __ ; homotopy equivalent? __ ;
+      K3: b₂ = __ , σ = __ ; degree-5 surface in CP³: χ = __ , σ = __
+ 75.  SU(2)₃: dim V(T²) = __ ; SU(2)₂: dim V(Σ₂) = __ ; Fibonacci:
+      dim V(Σ₃) = __ ; [3] at q = e^{πi/5} = __
+ 76.  dim TL₄ = __ ; V(T(2, 5)) = __ ; Kh(unknot) as a Poincaré
+      polynomial = __ ; s(T(3, 4)) = __
+ 77.  (2, 4) complete intersection in P⁵: χ = __ , h^{2,1} = __ ; mirror
+      quintic h^{1,1} = __ ; conifold point z = __ ; coefficient of z² in
+      ϖ₀ = __
+ 78.  QH*(P²): H∘H∘H = __ ; N₄ = __ ; vdim M̄_{0,n}(P², d) = __ ; smooth
+      toric surface with 6 rays: χ = __ , K² = __
+ 79.  S³(1): λ₁ = __ , multiplicity __ ; Lichnerowicz bound on a closed
+      3-manifold with Ric ≥ 2 = __ ; vol(CP², ω_FS) = __ ; independent
+      components of R_{ijkl} in dimension 4 = __
+ 80.  Ricci flow extinction time of S²(1) = __ ; K of dr² + sinh²(2r)dθ²
+      = __ ; Ricci form of ω_FS on CP³ = __ ω_FS ; Arnold lower bound for
+      fixed points of a non-degenerate Hamiltonian map of T⁴ = __
+ 81.  Â(CP²) = __ ; σ(CP² # CP² # CP̄²) = __ ; ind T_f for f = z⁻³ = __ ;
+      constant term of Tr e^{−tΔ} on the unit S² = __
+ 82.  χ(O) of CP¹ × CP¹ = __ ; area of a hyperbolic surface of genus 3 =
+      __ ; η(0) of −i d/dθ + ¼ on S¹ = __ ; dim of the SU(2) instanton
+      moduli space on S⁴ with k = 2 = __
+ 83.  unilateral shift S: σ(S*S) = __ , σ(SS*) = __ ; K₀(O₅) = __ ;
+      K₀(CAR) = __ ; closed ideals of B(ℓ²) = __
+ 84.  4cos²(π/5) = __ ; 4cos²(π/6) = __ ; L(F₃)_{1/2} ≅ __ ; Connes
+      distance for A = ℂ², D = (0 2; 2 0) = __ ; Tr_ω(|D|⁻¹) on S¹ = __
+ 85.  2* in ℝ⁴ = __ ; Morrey exponent of W^{1,6}(ℝ³) = __ ; Fujita
+      exponent in ℝ² = __ ; blow-up time of u′ = u³, u(0) = 2 = __
+ 86.  Hagen-Poiseuille Q for G = 8, R = 1, μ = 1: __ ; Stokes drag for
+      μ = a = U = 1: __ ; MCF extinction of S²(3) ⊂ ℝ³ = __ ; KdV soliton
+      amplitude for c = 4 = __ ; Kolmogorov exponent of E(k) = __
+ 87.  logistic map: multiplier of the fixed point 1 − 1/r = __ ; r where
+      the 2-cycle loses stability = __ ; Feigenbaum δ ≈ __ ; solutions of
+      E⁵(x) = x for the doubling map = __
+ 88.  centres of exact period 5 in M = __ ; multiplier at ∞ of the Newton
+      map of z³ − 1 = __ ; SFT with A = [[1, 1], [1, 0]]: h_top = __ ,
+      #Fix(σ⁵) = __
+ 89.  semicircle m₈ = __ ; Marchenko-Pastur support for λ = ¼ = __ ; BBP
+      with θ = 2: λ_max → __ , |⟨u, v⟩|² → __
+ 90.  binary tree (b = 2): p_c = __ , θ(¾) = __ ; p_c(ℤ², bond) = __ ;
+      dimension of the SLE₆ trace = __ ; central charge for κ = 8/3 = __ ;
+      Var u(π, x) for the additive SHE on ℝ = __
+ 91.  W₁(Bern(0.2), Bern(0.7)) = __ , W₂ = __ ; W₂(N(1, 4), N(−2, 1)) = __ ;
+      W₁((δ₀ + δ₁ + δ₅)/3, (δ₂ + δ₃ + δ₄)/3) = __
+ 92.  Talagrand: W₂²(ν, γ) ≤ __ H(ν|γ) ; unit S³ is CD(K, N) with K = __ ,
+      N = __ ; Bonnet-Myers diameter bound from CD(2, 3) = __ ; E W₁(μₙ, μ)
+      in dimension 5 ≍ __
+ 93.  Klein bottle Betti numbers over F₂ = __ , over ℚ = __ ; MEB radius of
+      the 3-4-5 triangle = __ ; of the unit equilateral triangle = __
+ 94.  VR H₀ death times for {0, 1, 3, 7} ⊂ ℝ = __ ; landscape λ₁(2) for
+      the bar [0, 6) = __ ; d_I(I[0, 4), I[1, 3)) = __ ; Jung factor in ℝ²
+      = __
+ 95.  Δ[3]: 2-simplices = __ , non-degenerate = __ ; N(ℤ/3): 2-simplices =
+      __ , non-degenerate = __ ; top simplices of Δ[1] × Δ[2] = __
+ 96.  hocolim(∗ ← S² → ∗) = __ ; χ(hocolim(∗ ← S¹ ∨ S¹ → ∗)) = __ ;
+      groupoid cardinality of BΣ₃ = __ ; 3-simplices of K(ℤ/2, 2) = __ ;
+      cofib(ℤ →3 ℤ) in D(ℤ) = __
+ 97.  A = {1, 2, 5, 7}: |A + A| = __ , |A − A| = __ , E(A) = __ ;
+      E({1, ..., 5}) = __
+ 98.  ζ(−3) = __ ; ζ(4) = __ ; L(1, χ₋₄) = __ ; h(−23) = __ ; γ₁ ≈ __ ;
+      W(3, 2) = __
+ 99.  F₃: σ(2) = __ , growth rate = __ ; index-2 subgroups of F₃ = __ ;
+      rank of an index-5 subgroup of F₃ = __
+100.  χ(SL(2, ℤ)) = __ ; growth degree of H₃(ℤ) = __ , of U₄(ℤ) = __ ; Dehn
+      function of BS(1, 2) = __ ; ends of ℤ/2 ∗ ℤ/2 = __ ; spectral radius
+      of simple random walk on F₂ = __
+101.  D(N(0, 1)‖N(1, 4)) (nats) = __ ; I(X; X) for a fair bit = __ ;
+      C(BEC(0.3)) = __ ; AWGN capacity with P/N = 15 = __
+102.  Hoeffding bound for P(|X̄ − μ| ≥ 0.1), 100 variables in [0, 1] = __ ;
+      Rademacher bound BR/√m with B = 2, R = 3, m = 36 = __ ; GD contraction
+      (κ − 1)/(κ + 1) for κ = 9 = __ ; R(D) for N(0, 1), D = ¼ = __ bits
+103.  Lean 4: (3 : ℕ) − 5 = __ ; (−9 : ℤ) / 4 = __ ; (−9 : ℤ) % 4 = __ ;
+      (9 : ℕ) / 0 = __
+104.  Disc(x² + x + 1) = __ ; [1, 2]·[−3, 1] = __ ; [0, 1] − [0, 1] = __ ;
+      IEEE double ε_mach = __ ; Boolean Pythagorean triples threshold = __
+105.  ρ = ½(I + 0.6Z): Tr ρ² = __ ; |0⟩ vs |+⟩: fidelity F = __ , trace
+      distance = __ ; depolarizing p = 0.2 shrinks the Bloch vector by __
+106.  QFT on 5 qubits: controlled-phase gates = __ ; Shor, N = 15, a = 7:
+      r = __ , factors = __ ; Steane code parameters = __ ; CHSH quantum
+      winning probability = __
+107.  Millennium problems solved = __ ; Hilbert's 10th: answer and prover
+      = __ ; e^π transcendental? __ ; kissing number in dimension 8 = __ ;
+      E₈ packing density = __
+108.  (T/2π)log(T/2πe) + 7/8 at T = 100 = __ ; ζ(−5) = __ ; abc quality
+      of 1 + 8 = 9 = __ ; minimum of the Motzkin polynomial = __
+109.  zeros at the end of 125! = __ ; digits of 50! = __ ; ∫₀¹ 9x e^{−3x}
+      dx = __ ; 40² + 40 + 41 = __
+110.  lim_m lim_n m/(m + n) = __ ; lim_n lim_m m/(m + n) = __ ; ∑_{d|36}
+      φ(d) = __ ; solutions of x² ≡ 1 (mod 15) = __ ; unitary Fourier
+      transform of e^{−πx²} = __
+111.  D₇ = __ ; p(15) = __ ; B₆ = __ ; M₈ (Motzkin) = __
+112.  disc ℚ(√−7) = __ , disc ℚ(√3) = __ ; h(−47) = __ ; LMFDB label of
+      ℚ(√−3) = __ ; arXiv prefix for March 2016 = __ ; h-index of
+      citations (10, 8, 5, 4, 3) = __
+113.  R(3, 4) = __ ; happy ending N(5) = __ ; g(7, 10) = __ ; σ(945) = __ ;
+      length forcing a monotone subsequence of length 5 = __
+114.  17 = x² + 2y² with (x, y) = __ ; r₂(25) = __ ; length of the 3n + 5
+      cycle through 5 = __ ; Dedekind number M(4) = __ ; least s with −1 a
+      sum of s squares in ℚ₇ = __
+115.  chord regions for n = 7 = __ ; groups of order 12 = __ ; least prime
+      factor of F₅ = __ ; coefficient of x⁷ in Φ₁₀₅ = __ ; x³ + y³ + z³ =
+      13 solvable in ℤ? __
+116.  Heawood number for genus 2 = __ ; f = xy(x² − y²)/(x² + y²):
+      ∂_y(∂_x f)(0, 0) = __ , ∂_x(∂_y f)(0, 0) = __ ; prime factors of F₅
+      are ≡ 1 (mod __ ) ; 3³⁴⁰ mod 341 = __
+117.  least n₀ with n! > 3ⁿ for n ≥ n₀ = __ ; with 2ⁿ > n³ = __ ; 30031 =
+      __ ; δ for x² → 9 at x = 3 with the cap δ ≤ 1 = __
+118.  LaTeX x^10 prints __ ; with \newtheorem{lemma}[theorem]{Lemma}, the
+      lemma after Theorem 2.3 is numbered __ ; V − E + F for a plane graph
+      with 3 components = __ ; ∑_{k≤4} 1/k² = __ (≤ 2 − ¼)
+119.  p(12) = __ ; next generalized pentagonal number after 26 = __ ;
+      cot²(π/5) + cot²(2π/5) = __ ; lattice points with x² + y² ≤ 100 = __
+120.  e ≤ 3v − 6 at v = 8: __ ; K₃,₃: e = __ vs 2v − 4 = __ ; area of A0
+      ≈ __ m² ; words in 17 minutes at 110 wpm = __ ; Gauss's μ for
+      (3/7) = __ , so (3/7) = __
+121.  harmonic credit of the first of 4 authors = __ ; Jaccard of {a, b,
+      c, d} and {c, d, e} = __ ; checks to bisect 100 versions = __ ;
+      2¹¹ − 1 = __
+122.  least squares line for (0, 1), (1, 3), (2, 4): b = __ , a = __ ;
+      ∛(2 + 11i) (Bombelli) = __ ; 4195835/3145727 = __
+123.  P(at least one six in 6 rolls) = __ ; ∫_ℝ dx/(x⁴ + 1) = __ ;
+      d/dx xˣ at x = 1 = __ ; ∑(−1)ⁿ⁺¹/n = __
+124.  Res_{z=1} eᶻ/(z − 1)² = __ ; Res_{z=i} 1/(z² + 1) = __ ; rescaling
+      [40, 80] → [50, 100]: 60 ↦ __ ; ∂r/∂x at (3, 4) = __
+125.  P(C₅, 3) = __ ; P(W₄, 3) (hub + C₄) = __ ; r₄(4) = __ ; r₄(3) = __ ;
+      p(30) = __
+126.  orders of chains of lengths 2, 2, 1 after a root = __ ; #{x² + y² = 1}
+      in F₇² = __ ; χ(Petersen) = __ , P(Petersen, 3) = __
+127.  citations (25, 8, 5, 3, 3, 1): h = __ , g = __ ; doubling time at 6%
+      = __ years ; PERT (2, 4, 12): mean = __ , s.d. = __
+128.  3 × 8 domino tilings = __ ; π(P₅) = __ ; |sandpile group of K₅| = __ ;
+      secretary n = 4 success = __ ; gcd(F₁₂, F₁₈) = __
+
+ANSWER KEY
+  Part A (accept any clear, correct method and reasoning)
+   1. fibre over p = Spec F_p[x]/(x² + 2); (0): one point, κ = ℚ(√−2);
+      (2): x² + 2 ≡ x², one point with a nilpotent, κ = F₂, non-reduced:
+      RAMIFIED (2 = −(√−2)²); (3): x² + 2 ≡ (x − 1)(x + 1), two points,
+      κ = F₃, reduced: SPLIT; (5): −2 ≡ 3 is not a square mod 5, x² + 2
+      irreducible, one point, κ = F₂₅: INERT
+   2. h⁰(D) − h⁰(K − D) = deg D + 1 − g, deg K = 2g − 2; ω_X = O_X(∑dᵢ −
+      n − 1); quartic: ω = O(1), 2g − 2 = 4, g = 3; (2, 3) in P³: ω =
+      O(1), deg X = 6, 2g − 2 = 6, g = 4; cubic: g = 1, K = 0, deg 3P =
+      3 > 0 so h⁰(K − 3P) = 0 and h⁰(3P) = 3 + 1 − 1 = 3 (the embedding
+      by x, y, z)
+   3. Δ = −16(4(−1)³) = 64, j = 1728; torsion points have y = 0 or y² | 4:
+      x³ − x = 1 or 4 has no integer root, so E(ℚ)_tors = {O, (0, 0),
+      (±1, 0)} ≅ ℤ/2 × ℤ/2; #E(F₃) = 4 (a₃ = 0), #E(F₅) = 8 (a₅ = −2,
+      |a₅| ≤ 2√5 ≈ 4.47); both divisible by 4, consistent; CM by ℤ[i]
+      ((x, y) ↦ (−x, iy)) makes E supersingular at p ≡ 3 (mod 4)
+   4. aᵖ + bᵖ = cᵖ (p ≥ 5) gives the semistable Frey curve y² = x(x −
+      aᵖ)(x + bᵖ); modularity puts ρ̄_{E,p} in S₂(Γ₀(N)); Ribet removes the
+      odd primes of N (ρ̄ is unramified/finite there) to reach level 2;
+      Γ₀(2): μ = 3, ν₂ = 1, ν₃ = 0, 2 cusps, g = 1 + 3/12 − 1/4 − 0 − 1
+      = 0, so S₂(Γ₀(2)) = 0: contradiction
+   5. α + β = τ(2)/2^{11/2} ≈ −0.5303, αβ = 1; (α + β)² − 4 ≈ −3.72 < 0,
+      so α, β are complex conjugates, |α|² = αβ = 1 (equivalently |τ(2)| =
+      24 ≤ 2·2^{5.5} ≈ 90.5); τ(4) = τ(2)² − 2¹¹ = 576 − 2048 = −1472
+   6. Tate curve V_pE: semistable, not crystalline (N ≠ 0); a ramified
+      finite-order character: de Rham, not semistable (only potentially);
+      a non-split extension 0 → ℚ_p(−1) → V → ℚ_p → 0: HT, not de Rham;
+      #E(F₅) = 6, a₅ = 0: X² + 5, SUPERSINGULAR (slopes ½, ½); #E(F₇) =
+      12, a₇ = −4: X² + 4X + 7, 7 ∤ 4, ORDINARY (slopes 0, 1)
+   7. E₂^{p,q} = H^p(CP²) ⊗ H^q(S¹), q = 0, 1, converging to H*(S⁵),
+      which vanishes in degrees 1-4; so d₂ : E₂^{0,1} → E₂^{2,0} and
+      E₂^{2,1} → E₂^{4,0} are isomorphisms; with y ∈ E^{0,1}, x = d₂y
+      generates H²; d₂(xy) = x d₂y = x² (derivation) generates H⁴; H¹ = H³ =
+      0; H*(CP²) = ℤ[x]/(x³), |x| = 2
+   8. w(RP⁴) = (1 + a)⁵ = 1 + a + a⁴ (mod 2, a⁵ = 0); w̄ = (1 + a)⁻⁵ =
+      (1 + a)³ (as (1 + a)⁸ = 1) = 1 + a + a² + a³; an immersion in ℝ^{4+k}
+      needs w̄ᵢ = 0 for i > k, but w̄₃ ≠ 0, so k ≥ 3: no immersion in ℝ⁶;
+      an embedding in ℝ⁷ (k = 3) needs w̄₃ = 0: none
+   9. V − tVᵀ = [[t − 1, 1], [−t, 1 − t]], Δ = −t² + 3t − 1 ≐ t² − 3t + 1;
+      det = |Δ(−1)| = 5; V + Vᵀ = [[−2, 1], [1, 2]] has eigenvalues ±√5,
+      σ = 0; slice ⇒ Δ = f(t)f(t⁻¹) ⇒ det = f(−1)² a square; 5 is not
+  10. linking matrix [[−2, 1], [1, −3]], det = 5, H₁ = ℤ/5; plumbing
+      with framings −2, −3: p/q = 2 − 1/3 = 5/3, so L(5, 3); L(p, q) ≅
+      L(p, q′) iff q′ ≡ ±q^{±1} (mod p), and 3·2 = 6 ≡ 1 (mod 5)
+  11. states: AA and BB give 2 circles, AB and BA give 1: ⟨H⟩ = A²d +
+      A⁻²d + 2 = −A⁴ − A⁻⁴ (d = −A² − A⁻²); w = +2: X = (−A³)⁻²⟨H⟩ =
+      −A⁻² − A⁻¹⁰; A = t^{−1/4}: V(H₊) = −t^{1/2} − t^{5/2}; V(1) = −2 =
+      (−2)^{2−1}
+  12. irreps of S₃ have dims 1, 1, 2: Z(Σ_g) = ∑(6/dim ρ)^{2g−2}; g = 0:
+      (1 + 1 + 4)/36 = 1/6 (= 1/|G|); g = 1: 3; g = 2: 36 + 36 + 9 = 81;
+      commuting pairs in S₃: ∑|C(g)| = 6 + 3·2 + 2·3 = 18, 18/6 = 3
+  13. ω_X = O_X(3 + 3 − 5 − 1) = O_X, and h^{1,0} = h^{2,0} = 0 by
+      Lefschetz; c(X) = (1 + H)⁶/(1 + 3H)² = 1 + 6H² − 16H³, ∫_X H³ = 9,
+      χ = −144; h^{1,1} = 1, h^{2,1} = 1 − χ/2 = 73; mirror: h^{1,1} = 73,
+      h^{2,1} = 1, χ = 144
+  14. d = 3: (d_A, d_B) = (1, 2): 1·1·1·2[2·C(5, 1) − 1·C(5, 2)] = 0;
+      (2, 1): 1·1·4·1[1·C(5, 4) − 2·C(5, 5)] = 12; N₃ = 12; cubics
+      through 8 points form a pencil with a 9th base point, Bl₉P² → P¹,
+      χ = 3 + 9 = 12, smooth fibres have χ = 0 and each nodal fibre adds
+      1: 12 nodal (rational) cubics
+  15. Γʳ_θθ = −ff′, Γ^θ_rθ = f′/f; in geodesic polar coordinates with
+      √G = f, Gauss's formula K = −(√G)_rr/√G gives −f″/f: 1, 0, −1; Ric ≥
+      (n − 1)k > 0 and complete ⇒ diam ≤ π/√k, compact, π₁ finite; the
+      paraboloid has K = 1/(1 + 4r²)² → 0, no uniform positive bound
+  16. g(t) = (1 − 2λt)g₀ with Ric = λg₀ = ((n − 1)/r₀²)g₀: r(t)² = r₀² −
+      2(n − 1)t, T = r₀²/(2(n − 1)); S³(2): T = 4/4 = 1; R = n(n − 1)/r₀²,
+      so n/(2R_min) = r₀²/(2(n − 1)): the bound is attained on spheres
+  17. dim ker, dim coker finite, range closed; ind = dim ker − dim coker;
+      S is injective, ran S = e₀^⊥: ind S = 0 − 1 = −1; wind z³ = 3 ⇒
+      ind −3; z̄² = z⁻² on S¹, wind −2 ⇒ ind +2; (z − ½)(z − 3)/z has
+      one zero inside, one pole inside: wind 0 ⇒ ind 0
+  18. χ(X, E) = ∫ch(E)Td(X); c(CP²) = 1 + 3h + 3h², Td = 1 + 3h/2 + h²,
+      ch O(k) = 1 + kh + k²h²/2: χ = k²/2 + 3k/2 + 1 = (k + 1)(k + 2)/2;
+      Noether: CP² (9 + 3)/12 = 1; K3 (c₁ = 0, c₂ = 24): 24/12 = 2 =
+      1 − 0 + 1; σ = (c₁² − 2c₂)/3 = −16
+  19. dim H_φ = n·rank ρ = 2·2 = 4 (φ is faithful, H_φ = M₂ with
+      ⟨a, b⟩ = tr(ρb*a)); rank ρ = 2, so φ is mixed, not pure; σ_t(e₁₂) =
+      ρ^{it}e₁₂ρ^{−it} = (1/3)^{it}(2/3)^{−it}e₁₂ = 2^{−it}e₁₂; Sp Δ =
+      {λᵢ/λⱼ} = {1, ½, 2}
+  20. [M : N] ∈ {4cos²(π/n) : n ≥ 3} ∪ [4, ∞]; R ⊆ R ⋊ S₃: 6; N ⊆ M₃(N):
+      3² = 9; below 4 the allowed values are 1, 2, 2.618..., 3, 3.247...,
+      increasing to 4, and 2.5 lies strictly between 2 and 4cos²(π/5)
+  21. T* = −1/min u₀′; u₀′ = −2x/(1 + x²)², minimal at x = 1/√3, value
+      −3√3/8; T* = 8/(3√3) ≈ 1.5396; (2, 0): shock, s = (2 − 0)/2 = 1
+      (Rankine-Hugoniot with f = u²/2), Lax 2 > 1 > 0; (0, 2): u = 0 for
+      x < 0, x/t for 0 ≤ x ≤ 2t, 2 for x > 2t
+  22. −Δu = f(u) in Ω, u = 0 on ∂Ω: n∫F(u) − ((n − 2)/2)∫|∇u|² =
+      ½∫_{∂Ω}(x·ν)(∂_νu)²; here F = u⁶/6 and ∫|∇u|² = ∫u⁶, so the left
+      side is ½∫u⁶ − ½∫u⁶ = 0; x·ν = R > 0 forces ∂_νu ≡ 0, contradicting
+      the Hopf lemma; for p < 5 = 2* − 1 Rellich compactness gives
+      Palais-Smale, and J(u) = ½∫|∇u|² − ∫|u|^{p+1}/(p + 1) has the
+      mountain-pass geometry
+  23. λ = (3 ± √5)/2, h = log((3 + √5)/2) ≈ 0.9624; #Fix(Aⁿ) = tr Aⁿ − 2
+      = 1, 5, 16, 45; prime orbits: (5 − 1)/2 = 2, (16 − 1)/3 = 5, (45 −
+      5)/4 = 10
+  24. the 2-cycle solves z² + z + c + 1 = 0, multiplier f′(z₁)f′(z₂) =
+      4z₁z₂ = 4(c + 1); attracting iff |c + 1| < ¼; c = −1: 0 → −1 → 0 is
+      a superattracting 2-cycle (basilica); c = ¼: double fixed point ½
+      with multiplier 1, parabolic, the cusp of the main cardioid
+  25. m₂ₖ = Cₖ: m₂ = 1, m₄ = 2, m₆ = 5 (odd moments 0); the moment
+      method counts closed walks, and the leading ones are non-crossing
+      pairings of 2k points; N = 1: H ~ N(0, 1), E H⁴ = 3 = 2 + 1
+  26. P(Sₙ/n ∈ ·) has rate Λ*(a) = sup(θa − Λ(θ)); Bernoulli(½): a log 2a
+      + (1 − a) log 2(1 − a); Λ*(0.7) ≈ 0.0823, bound e^{−8.23} ≈ 2.7 ×
+      10⁻⁴; the true value ≈ 3.9 × 10⁻⁵ differs by the polynomial
+      prefactor, as expected at exponential scale
+  27. commuting covariances: W₂² = |m|² + ‖Σ₁^{1/2} − Σ₂^{1/2}‖²_F = 25 +
+      (1 − 3)² + (2 − 1)² = 30, W₂ = √30 ≈ 5.477, T(x) = (3, 4) + diag(3,
+      ½)x; quantiles u and 2 + 2u: T(x) = 2 + 2x, W₁ = ∫₀¹(2 + u)du = 5/2,
+      W₂² = ∫₀¹(2 + u)²du = 19/3, W₂ ≈ 2.517
+  28. K = [[1, e⁻¹], [e⁻¹, 1]]; by symmetry u = v = c and c²(1 + e⁻¹) = ½:
+      P = [[p, q], [q, p]], p = e/(2(e + 1)) ≈ 0.3655, q = 1/(2(e + 1))
+      ≈ 0.1345; cost 2q = 1/(1 + e) ≈ 0.2689; ε → 0: P → diag(½, ½), cost
+      0 (the optimal plan); ε → ∞: P → a ⊗ b = ¼ everywhere, cost ½
+  29. VR: sides enter at 1, diagonals and all triangles at √2; H₀ bars
+      [0, 1) three times and [0, ∞); H₁ [1, √2) (the 4-cycle); Čech:
+      edges at r = ½, triangles and the whole square at r = √2/2 (MEB of a
+      right triangle = half the hypotenuse); H₀ three [0, ½), one [0, ∞);
+      H₁ [½, √2/2); Čech ≃ union of balls (nerve theorem), VR only
+      satisfies Č_r ⊆ VR_{2r} ⊆ Č_{2r}
+  30. (0, 4) ↔ (0, 3.5) costs 0.5; (1, 2) and (2, 2.5) to the diagonal
+      cost 0.5 and 0.25 (matching them to each other costs 1); every other
+      matching is worse, so d_B = 0.5; stability: d_B(Dgm f, Dgm g) ≤
+      ‖f − g‖_∞ (and ≤ d_H for Čech, ≤ 2d_GH for Rips)
+  31. Kan: every horn Λᵏ[n] → X extends; quasi-category: every inner
+      horn (0 < k < n) extends; in N(C) an inner horn Λᵏ[n] (n ≥ 2)
+      contains the spine, and the missing faces are forced composites,
+      so the filler exists and is unique; in N([1]) send 01 ↦ (0 → 1),
+      02 ↦ id₀: a filler needs an edge 12 : 1 → 0, which does not exist
+  32. code : S¹ → U, code(base) = ℤ, transport along loop = succ (ua);
+      encode(p) = transport^code(p, 0), decode(n) = loopⁿ; decode∘encode =
+      id by path induction, encode∘decode = id by induction on ℤ; so
+      Ω(S¹) ≃ ℤ; (Fin 3 = Fin 3) ≃ (Fin 3 ≃ Fin 3) has 3! = 6 elements;
+      (Bool = Bool) ≃ Bool has two different paths (refl, ua(not)), so
+      U is not a set
+  33. |A + B| ≥ min(p, |A| + |B| − 1); A = {0, ..., a − 1}, B = {0, ...,
+      b − 1} give exactly a + b − 1; {0, 1, 3} + {0, 1, 3} = {0, 1, 2, 3,
+      4, 6}, 6 ≥ 5; in ℤ/6, A = {0, 2, 4} has |A + A| = 3 < 5 (a subgroup)
+  34. H is admissible if for every prime p it misses a class mod p;
+      {0, 2, 4} covers all classes mod 3 (so one of n, n + 2, n + 4 is 3);
+      {0, 2, 6} misses 1 mod 2 and 1 mod 3: admissible; diameter 4 needs
+      {0, 2, 4}: not admissible, so H(3) = 6; GPY: small gaps relative to
+      log p; Zhang: gaps < 7·10⁷ infinitely often; Maynard-Tao: m + 1
+      primes in bounded windows, gap ≤ 246 (Polymath)
+  35. folding gives vertices v₀ (base), v₁ with a : v₀ → v₁, a : v₁ → v₀
+      and b-loops at both; it is a 2-sheeted covering of the rose, so
+      [F : H] = 2, rank = E − V + 1 = 4 − 2 + 1 = 3 = 1 + 2(2 − 1); w ∈ H
+      iff the exponent sum of a in w is even
+  36. F₂: β(n) = 2·3ⁿ − 1, β(3) = 53; ℤ²: 2n² + 2n + 1 = 25; 1/W = 1/(1 +
+      x) + 1/(1 + 2x) − 1, W = (1 + x)(1 + 2x)/(1 − 2x²) = 1 + 3x + 4x² +
+      6x³ + 8x⁴ + ..., growth rate √2
+  37. four points (±1, 0), (0, ±1) are shattered; among 5 points take the
+      extreme ones in the four directions: the smallest rectangle
+      containing them contains the fifth, so that labelling fails;
+      Π(10) ≤ ∑_{i≤4} C(10, i) = 386; m ≥ (20 ln 2 + ln 20)/0.01 ≈ 1685.9,
+      so m = 1686
+  38. merge 0.1 + 0.2, then 0.3 + 0.3, then 0.4 + 0.6: lengths 1, 2, 3, 3,
+      L = 1.9 bits; H ≈ 1.846 ≤ L < H + 1; C = 1 − h(0.11) ≈ 1 − 0.4999 ≈
+      0.500 bits per use
+  39. S(g₁, g₂) = y(x² − y) − x(xy − 1) = x − y² =: g₃; reducing, x² − y →
+      y⁴ − y and xy − 1 → y³ − 1 = g₄, and y⁴ − y = y·g₄; reduced basis
+      {x − y², y³ − 1}; solutions y = ω, x = ω² for ω³ = 1: (1, 1),
+      (ω², ω), (ω, ω²)
+  40. Disc = −4p³ − 27q² = 108 − 27 = 81 = 9² > 0: three real roots, Galois
+      group A₃ (cyclic); with x = 2cos θ, x³ − 3x = 2cos 3θ = −1: roots
+      2cos(2π/9), 2cos(4π/9), 2cos(8π/9); Res_y(y² − 2, (x − y)² − 3) =
+      x⁴ − 10x² + 1
+  41. C = (1/√3)[[1, 1], [1, 0]], ρ_A = CC† = (1/3)[[2, 1], [1, 1]],
+      eigenvalues (3 ± √5)/6 ≈ 0.8727, 0.1273 = λᵢ², Schmidt coefficients
+      ≈ 0.9342, 0.3568; E ≈ 0.550 ebit; concurrence 2|0 − 1/3| = 2/3
+  42. sin θ = 1/√8, θ ≈ 0.3614; P₁ = sin²3θ = 25/32 = 0.78125, P₂ = sin²5θ
+      = 121/128 ≈ 0.9453 (then it falls); any quantum search needs Ω(√N)
+      queries (BBBV), and Grover is optimal
+  43. D(P) = ∑ℓ(e) ⊗ θ(e) ∈ ℝ ⊗_ℤ ℝ/πℤ is additive under cutting, so
+      equidecomposable polyhedra have equal D; cube: θ = π/2 ≡ 0, D = 0;
+      tetrahedron: θ = arccos(1/3), D = 6ℓ ⊗ θ ≠ 0 if θ ∉ ℚπ; with
+      cos θ = 1/3, cos nθ = aₙ/3ⁿ with a₀ = a₁ = 1, aₙ₊₁ = 2aₙ − 9aₙ₋₁,
+      so aₙ₊₁ ≡ 2aₙ ≢ 0 (mod 3) and cos nθ ≠ ±1 for n ≥ 1
+  44. every non-trivial zero has Re s = ½; equivalently π(x) = li(x) +
+      O(√x log x), or M(x) = O(x^{½+ε}); σ(5040) = 19344, 5040 log log
+      5040 ≈ 10801, ratio ≈ 1.7910 > e^γ ≈ 1.7811: the inequality fails at
+      5040, so RH ⇔ it holds for all n > 5040
+  45. fₙ(x) = n²x e^{−nx} → 0 pointwise but ∫₀¹fₙ = 1 − (n + 1)e^{−n} → 1;
+      FATAL as stated (a counterexample to the claim); correct version:
+      add |fₙ| ≤ g ∈ L¹ (dominated convergence) or uniform convergence
+  46. 200/5 + 200/25 + 200/125 = 40 + 8 + 1 = 49 zeros; π(1000) = 168;
+      2^(2⁵) + 1 = 4294967297 = 641 · 6700417 (Euler; prime factors are
+      ≡ 1 mod 2⁷); each by an independent method (Legendre, sieve,
+      trial division by 128k + 1)
+  47. 1, 1, 2, 4, 9, 21, 51, 127: Motzkin A001006; first return: the
+      path is F then a path of length n, or U (path of length k) D (path
+      of length n − 1 − k): M_{n+1} = Mₙ + ∑_{k=0}^{n−1} M_k M_{n−1−k}
+  48. b₂ = 0, b₄ = −2, b₆ = 1, b₈ = −1, Δ = −8(−2)³ − 27 = 37, c₄ = 48,
+      j = 48³/37 = 110592/37; Δ = 37 is squarefree, so the model is
+      minimal, reduction at 37 multiplicative, N = 37; confirm with a_p
+      for a few p (a₂ = −2, a₃ = −3) and rank 1 against 37.a1 in the LMFDB
+  49. (3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25), (20, 21, 29),
+      (12, 35, 37), (9, 40, 41): 7 triples; every prime factor of c is ≡ 1
+      mod 4 (25 = 5², 5 ≡ 1); e.g. "count primitive triples with c ≤ N
+      (~ N/2π)", "which c are hypotenuses in ℤ[i]", "can a² + b² = c² and
+      a² + c² = d² hold together (Euler bricks)?"
+  50. g(5, 8) = 40 − 5 − 8 = 27, (5 − 1)(8 − 1)/2 = 14 gaps; 43 = 6a +
+      9b + 20c has no solution, and 44-49 are representable (4·6 + 20,
+      5·9, 6 + 2·20, 3·9 + 20, 8·6, 9 + 2·20), six consecutive values, so
+      all larger are (add 6s); serial 0.8·0.7·0.5 =
+      0.28; with a parallel fall-back the last step succeeds with 1 −
+      0.5² = 0.75: 0.8·0.7·0.75 = 0.42
+  51. 1105 = 5·13·17 is squarefree and 4, 12, 16 all divide 1104: Korselt
+      ⇒ Carmichael; 2¹⁰ = 1024 = 3·341 + 1, so 2³⁴⁰ = (2¹⁰)³⁴ ≡ 1 (mod
+      341), but 3³⁴⁰ ≡ 56 (mod 341)
+  52. the integral is π/2 times the value at 0 of a convolution of boxes
+      of half-widths 1, 1/3, 1/5, ...; it stays 1 while 1/3 + ... +
+      1/(2n + 1) < 1: 0.955 for n = 6, 1.022 for n = 7; EVT: x on (0, 1]
+      (not compact, no minimum), 1/x on (0, 1] (unbounded), a function
+      with a jump (x on [0, 1), 0 at 1: no maximum)
+  53. |x³ − 8| = |x − 2||x² + 2x + 4| < 19|x − 2| for |x − 2| < 1; let
+      ε > 0, δ = min(1, ε/19); then 0 < |x − 2| < δ ⇒ |x³ − 8| < ε;
+      negation: ∃ε > 0 ∀N ∃n ≥ N ∃x ∈ S: |fₙ(x) − f(x)| ≥ ε
+  54. P(5): 32 > 25; if 2ⁿ > n² then 2ⁿ⁺¹ > 2n² ≥ (n + 1)², the last step
+      needs n² ≥ 2n + 1, i.e. n ≥ 3; n = 2, 3, 4 fail, so the base is 5;
+      f′ = 0 on an INTERVAL ⇒ f constant (sign function on ℝ ∖ {0} shows
+      the need); V − E + F = 1 + c for c components (two disjoint edges:
+      4 − 2 + 1 = 3)
+  55. 16-17 minutes of speech + 3-4 of questions; 17 × 110 ≈ 1870 words,
+      ≈ 11 slides at 1.5 min; over by 8/17 ≈ 47%, cut 8/25 = 32%; B =
+      gcd(5, 0) + gcd(5, 4) + gcd(0, 4) = 10, A = 10, I = A − B/2 + 1 =
+      6 (check: 4x + 5y < 20 with x, y ≥ 1 gives (1, 1), (1, 2), (1, 3),
+      (2, 1), (2, 2), (3, 1))
+  56. (1/n)∑_{d|n} φ(d)k^{n/d} = (3⁶ + 3³ + 2·3² + 2·3)/6 = (729 + 27 +
+      18 + 6)/6 = 130 necklaces; reflections: 3 through vertices fix 3⁴,
+      3 through edges fix 3³:
+      (780 + 243 + 81)/12 = 92 bracelets; cube: (3⁶ + 3·3⁴ + 12·3³ +
+      8·3²)/24 = 1368/24 = 57
+  57. Fermat: p − 1 | 12 ⇒ n¹³ ≡ n (mod p) for all n; the primes with
+      p − 1 | 12 are 2, 3, 5, 7, 13; interface: distinct primes each
+      dividing N ⇒ their product 2730 divides N; for 11, 10 ∤ 12 and 2¹³ −
+      2 = 8190 = 2·3²·5·7·13, not divisible by 11
+  58. FWER = 1 − 0.95¹⁰ ≈ 0.401; Bonferroni 0.005; Šidák 1 − 0.95^{0.1} ≈
+      0.00512; p = −6, q = −9: D = q²/4 + p³/27 = 81/4 − 8 = 49/4, u³ =
+      9/2 + 7/2 = 8, v³ = 1, x = 2 + 1 = 3 (27 − 18 − 9 = 0); the other
+      roots solve x² + 3x + 3 = 0 (complex, D > 0)
+  59. 1/(z² + 1)² has a double pole at i, Res = d/dz (z + i)⁻² at i =
+      −2/(2i)³ = 1/(4i): 2πi/(4i) = π/2; z² + 2z + 2 has roots −1 ± i,
+      Res at −1 + i = 1/(2i): integral π; on |z| = R the arcs are ≤ πR/
+      (R² − 1)² and πR/(R² − 2R − 2) → 0
+  60. P = 0.02·0.95/(0.02·0.95 + 0.98·0.10) = 0.019/0.117 ≈ 0.162;
+      trace 7, det 6: [[4, 2], [3, 3]]; R₂ − ¾R₁ gives [[4, 2], [0, 1.5]]
+      with eigenvalues 4, 1.5 (det 6 is kept, eigenvalues are not)
+  61. 25: divisors 1, 5, 25 all ≡ 1: r₂ = 12 = (±3, ±4), (±4, ±3), (±5,
+      0), (0, ±5); 65: divisors 1, 5, 13, 65: 16 = (±1, ±8), (±8, ±1),
+      (±4, ±7), (±7, ±4); 21: 1, 21 vs 3, 7: 0, and 21 = 3·7 is not a sum
+      of two squares; d₁ − d₃ ≤ d, equality iff no divisor ≡ 3 (mod 4),
+      i.e. all prime factors ≡ 1 (mod 4)
+  62. cos maps [0, 1] into [cos 1, 1] ⊂ [0, 1] and |cos x − cos y| ≤ sin 1
+      |x − y|, q = sin 1 ≈ 0.8415; d(x₀, x₁) = 1, need qⁿ/(1 − q) ≤ 10⁻⁶:
+      n ≥ 91; examples: x/2 on (0, 1] (not complete), x + 1/x on [1, ∞)
+      (no q < 1), x + 1 on ℝ (q = 1)
+  63. summer 20000, fringe 6000, travel 5000, equipment 6000: direct
+      37000; MTDC 31000, indirect 15500; total 52500; P = 1 − 0.92³⁰ ≈
+      0.918
+  64. J(2n) = 2J(n) − 1, J(2n + 1) = 2J(n) + 1 with J(1) = 1; induction on
+      m (L even or odd) gives J(2ᵐ + L) = 2L + 1; J(100) = 2·36 + 1 = 73,
+      J(64) = 1; K₄: (ℤ/4)², order 16 = 4^{4−2} spanning trees
+  Part B
+  65. 15 ; 6 ; 3t + 1
+  66. 6 ; 9 ; 2 ; 2875 ; 2
+  67. −432 ; 0 ; ℤ/6: O, (−1, 0), (0, ±1), (2, ±3)
+  68. 3 ; 2 ; 12 ; 1
+  69. 252 ; −6048 ; −113643 ; +1
+  70. PGL₃(ℂ) ; SO₅(ℂ) ; Sp₄(ℂ) ; 𝟙 ⊕ 𝕃 ⊕ 𝕃² ⊕ 𝕃³ ; q³ + q² + q + 1 ; 3
+  71. ℤ/24, ℤ/240, ℤ/504 ; ℤ/4 ; ℤ ; x⁵
+  72. 1 ; 2 ; 1 + 4x² ; 8 ; ℤ
+  73. t⁻¹ + t⁻³ − t⁻⁴ ; 5 ; 4 ; 1 + 2z²
+  74. 7 ; no ; yes (2 ≡ 3² mod 7) ; 22, −16 ; 55, −35
+  75. 4 ; 10 ; 15 ; φ = (1 + √5)/2 ≈ 1.618
+  76. 14 ; t² + t⁴ − t⁵ + t⁶ − t⁷ ; q + q⁻¹ ; 6
+  77. −176 ; 89 ; 101 ; 5⁻⁵ = 1/3125 ; 113400
+  78. q ; 620 ; 3d − 1 + n ; 6 ; 6
+  79. 3 ; 4 ; λ₁ ≥ 3 ; 2π² ; 20
+  80. ½ ; −4 ; 4 ; 2⁴ = 16
+  81. −1/8 ; 1 ; 3 ; 1/3
+  82. 1 ; 8π ; ½ ; 13
+  83. {1} ; {0, 1} ; ℤ/4 ; ℤ[½] ; 0, K(ℓ²), B(ℓ²)
+  84. φ² ≈ 2.618 ; 3 ; L(F₉) ; ½ ; 2
+  85. 4 ; ½ ; 2 ; 1/8
+  86. π ; 6π ; 9/4 ; 2 ; −5/3
+  87. 2 − r ; 1 + √6 ≈ 3.449 ; 4.6692 ; 31
+  88. 15 ; 3/2 ; log φ ≈ 0.4812 ; 11
+  89. 14 ; [¼, 9/4] ; 5/2 ; ¾
+  90. ½ ; 8/9 ; ½ ; 7/4 ; 0 ; 1
+  91. 0.5 ; √0.5 ≈ 0.7071 ; √10 ≈ 3.162 ; 5/3
+  92. 2 ; 2 ; 3 ; π ; n^{−1/5}
+  93. (1, 2, 1) ; (1, 1, 0) ; 5/2 ; 1/√3 ≈ 0.5774
+  94. 1, 2, 4 ; 2 ; 1 ; 2/√3
+  95. 20 ; 4 ; 9 ; 4 ; 3
+  96. S³ ; 3 ; 1/6 ; 8 ; ℤ/3
+  97. 10 ; 13 ; 28 ; 85
+  98. 1/120 ; π⁴/90 ; π/4 ; 3 ; 14.1347 ; 9
+  99. 30 ; 5 ; 7 ; 11
+ 100. −1/12 ; 4 ; 10 ; 2ⁿ ; 2 ; √3/2 ≈ 0.866
+ 101. ln 2 − ¼ ≈ 0.4431 ; 1 bit ; 0.7 ; 2 bits per use
+ 102. 2e⁻² ≈ 0.2707 ; 1 ; 0.8 ; 1
+ 103. 0 ; −3 ; 3 ; 0
+ 104. −3 ; [−6, 2] ; [−1, 1] ; 2⁻⁵² ≈ 2.22 × 10⁻¹⁶ ; 7825
+ 105. 0.68 ; 1/√2 ≈ 0.7071 ; 1/√2 ≈ 0.7071 ; 0.8
+ 106. 10 ; 4 ; 3 and 5 (gcd(48, 15), gcd(50, 15)) ; [[7, 1, 3]] ;
+      cos²(π/8) ≈ 0.854
+ 107. 1 (Poincaré) ; no, Matiyasevich (MRDP, 1970) ; yes
+      (Gelfond-Schneider) ; 240 ; π⁴/384 ≈ 0.2537
+ 108. ≈ 29.0 (indeed N(100) = 29) ; −1/252 ; log 9/log 6 ≈ 1.2263 ; 0
+ 109. 31 ; 65 ; 1 − 4e⁻³ ≈ 0.8009 ; 1681 = 41²
+ 110. 0 ; 1 ; 36 ; 4 (1, 4, 11, 14) ; e^{−πξ²}
+ 111. 1854 ; 176 ; 203 ; 323
+ 112. −7 ; 12 ; 5 ; 2.0.3.1 ; 1603 ; 4
+ 113. 9 ; 9 ; 53 ; 1920 ; 17
+ 114. (3, 2) ; 12 ; 3 (5 → 20 → 10 → 5) ; 168 ; 2
+ 115. 57 ; 5 ; 641 ; −2 ; no (13 ≡ 4 mod 9)
+ 116. 8 ; −1 ; 1 ; 128 ; 56
+ 117. 7 ; 10 ; 59 · 509 ; min(1, ε/7)
+ 118. x¹0 ; Lemma 2.4 ; 4 ; ≈ 1.4236
+ 119. 77 ; 35 ; 2 ; 317
+ 120. 18 ; 9, 8 ; ≈ 1 (0.841 × 1.189) ; 1870 ; 1 ; −1
+ 121. 12/25 ; 2/5 ; 7 ; 2047 = 23 · 89
+ 122. 3/2 ; 7/6 ; 2 + i ; 1.3338204...
+ 123. 1 − (5/6)⁶ ≈ 0.6651 ; π/√2 ; 1 ; ln 2
+ 124. e ; 1/(2i) = −i/2 ; 75 ; 3/5
+ 125. 30 ; 6 ; 24 ; 32 ; 5604
+ 126. 5!/(2! 2! 1!) = 30 ; 8 ; 3 ; 120
+ 127. 3 ; 6 ; ≈ 11.9 (rule of 72: 12) ; 5 ; 5/3
+ 128. 153 ; 16 ; 125 ; 11/24 ; F₆ = 8
+
+Scoring guide (out of 128):
+  111-128 Ready to work as an independent research mathematician: the
+          programme is complete.
+  82-110  Nearly there — revise the topics of the missed questions for
+          three or four weeks, then try those questions again.
+  0-81    Keep working through Stage 13 (revise Stage 12 if needed); test
+          again in a month.
+  Compare the two parts: strong in B but weak in A means the student needs
+  more practice writing complete proofs and explanations, as in a thesis
+  defence; strong in A but weak in B means more drill practice for speed
+  and accuracy. Weakness concentrated in Questions 45-64 and 109-128 means
+  the research habits (checking, writing, presenting, planning) need the
+  same deliberate practice as the mathematics.
+
+
+================================================================================
+END OF STAGE 13 — FINAL CHECKLIST: THE INDEPENDENT RESEARCH MATHEMATICIAN
+================================================================================
+Stage 13 is the last stage of the programme. The student has become an
+independent research mathematician when they can usually:
+  Algebraic and arithmetic geometry
+  [ ] Work with schemes, sheaves, morphisms and coherent cohomology,
+      Riemann-Roch on curves and surfaces, and explain étale cohomology,
+      moduli spaces, intersection theory and derived intersections
+  [ ] Compute with elliptic curves (reduction, torsion, descent, a_p),
+      modular forms and Hecke operators, and explain Galois
+      representations, modularity and the Langlands program
+  [ ] Pass between modular forms and automorphic representations,
+      recognise local types and Satake parameters, place a p-adic
+      representation in the crystalline/semistable/de Rham hierarchy, and
+      compute with Chow motives
+  [ ] Handle Calabi-Yau Hodge numbers, Gromov-Witten invariants, quantum
+      cohomology, periods and the statements of mirror symmetry
+  Topology and geometry
+  [ ] Run spectral sequences, compute K-theory, stable stems in low
+      degrees, characteristic classes and cobordism groups
+  [ ] Compute knot invariants (Alexander, signature, Jones), work with
+      surgery, Kirby calculus, intersection forms and lens spaces, and
+      know what Floer and Seiberg-Witten theories detect
+  [ ] Compute Kauffman brackets, quantum-group data, Verlinde dimensions
+      and simple TQFT partition functions
+  [ ] Use comparison theorems, Ricci flow, Kähler and symplectic geometry
+  [ ] State and apply the Atiyah-Singer index theorem in its classical
+      cases (Gauss-Bonnet, signature, Riemann-Roch, Dirac)
+  [ ] Use Cayley graphs, quasi-isometries, growth, hyperbolicity, Dehn
+      functions, Stallings folds and Bass-Serre theory
+  Analysis and dynamics
+  [ ] Work with C*- and von Neumann algebras: spectra, GNS, K-theory,
+      factors, Jones index, modular theory and spectral triples
+  [ ] Handle Sobolev spaces, variational and mountain-pass methods,
+      maximum principles, conservation laws and Navier-Stokes basics
+  [ ] Analyse hyperbolic, one-dimensional and complex dynamics and state
+      KAM theory
+  [ ] Compute with additive combinatorics, sieves, zeta and L-functions
+  Probability and data
+  [ ] Use random matrices, percolation, SLE, stochastic PDEs and large
+      deviations
+  [ ] Solve optimal transport problems (Kantorovich duality, Brenier,
+      Wasserstein distances, entropic regularisation, gradient flows)
+  [ ] Compute persistent homology, barcodes and bottleneck distances, and
+      state the stability theorem
+  [ ] Use PAC learning, VC dimension, information theory, concentration
+      of measure and compressed sensing
+  Foundations and computation
+  [ ] Explain simplicial sets, quasi-categories, model categories, stable
+      ∞-categories and homotopy type theory with univalence
+  [ ] Formalise simple proofs in a proof assistant, compute Gröbner bases
+      and resultants, and use exact and interval arithmetic
+  [ ] Compute with qubits, density matrices, entanglement, circuits,
+      quantum algorithms and error-correcting codes
+  [ ] State the great open problems (Hilbert's problems, the Millennium
+      problems, the Riemann hypothesis) with their exact status
+  Research skills
+  [ ] Read papers and monographs critically: reconstruct definitions,
+      check hypotheses and numbers, and classify errors
+  [ ] Search arXiv, MathSciNet, zbMATH, the OEIS and the LMFDB, identify
+      sequences and objects, and keep an annotated bibliography
+  [ ] Turn known theorems into precise, feasible questions with an
+      advisor, backed by small-case data and a risk-aware plan
+  [ ] Start from examples, small and degenerate cases, and build
+      counterexamples that show every hypothesis is needed
+  [ ] Write precise mathematics in LaTeX, with clear statements and
+      well-structured proofs
+  [ ] Give 20- and 50-minute talks built around one key example, and
+      answer questions with mathematics
+  [ ] Collaborate, referee fairly and specifically, keep versions, give
+      credit, and report computations and statistics honestly
+  [ ] Teach recitations, diagnose errors, write rubrics and graded
+      exercise sequences, and learn from teaching
+  [ ] Write and defend a thesis with an original contribution, stated
+      precisely and sharply
+  [ ] Plan a postdoctoral career: research statements, budgets,
+      timelines, bibliometrics used with care, and mentoring students
+
+The programme ends here, but mathematics does not. Every stage has
+trained the same habits: compute the small case first, draw the picture,
+state the definition with all its quantifiers, check every number twice,
+look for the counterexample, explain the idea in one sentence, write it
+so that someone else can check it, and ask the next question. An
+independent research mathematician keeps these habits for life: reading
+a little every day, keeping a notebook of questions and examples,
+learning a new field every few years, collaborating and refereeing
+generously, teaching and mentoring the next generation, and leaving
+every proof clearer than it was found. The questions that remain open —
+many of them met in this stage — are the invitation to begin.
+================================================================================
