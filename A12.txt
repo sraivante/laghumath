@@ -59,3 +59,3280 @@ How to use this file (note for the parent / teacher)
   12.5-12.8, 12.14, 12.17; 11.12-11.13 before 12.12, 12.19, 12.20;
   11.14-11.16 before 12.23-12.30.
 
+================================================================================
+TOPIC 12.1 — REAL ANALYSIS (GRADUATE): ABSTRACT MEASURE THEORY,
+RADON-NIKODYM, DIFFERENTIATION OF MEASURES, RIESZ REPRESENTATION THEOREM
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - OUTER MEASURE on X: μ* : 𝒫(X) → [0, ∞] with μ*(∅) = 0, monotone and
+    COUNTABLY SUBADDITIVE. CARATHÉODORY: E is μ*-measurable iff μ*(A) =
+    μ*(A ∩ E) + μ*(A ∖ E) for every A ⊆ X (only "≥" needs checking). The
+    measurable sets form a σ-algebra 𝓜 and μ*|𝓜 is a COMPLETE measure
+    (every subset of a null set is measurable).
+  - ALGEBRAS AND PREMEASURES: a premeasure ρ on an algebra 𝒜 is countably
+    additive whenever the union happens to lie in 𝒜. CARATHÉODORY-HAHN
+    EXTENSION: μ*(E) = inf{∑ρ(Aₙ) : E ⊆ ⋃Aₙ, Aₙ ∈ 𝒜} is an outer measure
+    whose restriction to σ(𝒜) extends ρ; the extension is UNIQUE if ρ is
+    σ-finite. Example: F increasing right-continuous gives μ_F(a, b] =
+    F(b) − F(a) (Lebesgue-Stieltjes measures).
+  - DYNKIN'S π-λ THEOREM: a π-system (closed under finite intersections)
+    𝒫 lies in a λ-system 𝓛 (contains X, closed under complements/proper
+    differences and countable DISJOINT unions) ⇒ σ(𝒫) ⊆ 𝓛. Consequence:
+    two measures agreeing on a generating π-system and σ-finite on it
+    (or finite with equal total mass) are equal. Fails otherwise: μ =
+    #(· ∩ Q), ν = 2#(· ∩ Q) agree on all intervals (a, b].
+  - COMPLETION: 𝓜̄ = {E ∪ N : E ∈ 𝓜, N ⊆ null set}. Lebesgue ℒ is the
+    completion of Borel 𝔅; #𝔅 = 𝔠 < 2^𝔠 = #ℒ, so ℒ ≠ 𝔅.
+  - RADON MEASURES on a locally compact Hausdorff (LCH) space: Borel,
+    finite on compacts, outer regular on Borel sets, inner regular (by
+    compacts) on open sets. On Rⁿ (or any σ-compact metric space) EVERY
+    Borel measure finite on compacts is Radon and regular. LUSIN: a
+    measurable f equals a continuous function off a set of small measure;
+    C_c is dense in Lᵖ(μ), 1 ≤ p < ∞.
+  - SIGNED AND COMPLEX MEASURES: ν countably additive with values in
+    (−∞, ∞] (or C). HAHN: X = P ⊔ N with P positive, N negative (unique up
+    to |ν|-null sets). JORDAN: ν = ν⁺ − ν⁻ with ν⁺ ⊥ ν⁻, ν⁺(E) = ν(E ∩ P),
+    minimal among all such splittings. TOTAL VARIATION |ν| = ν⁺ + ν⁻,
+    |ν|(E) = sup ∑|ν(Eⱼ)| over partitions; if dν = f dμ then d|ν| = |f|dμ.
+    POLAR FORM dν = h d|ν| with |h| = 1.
+  - ABSOLUTE CONTINUITY ν ≪ μ: μ(E) = 0 ⇒ ν(E) = 0. For FINITE ν this is
+    equivalent to the ε-δ condition μ(E) < δ ⇒ |ν|(E) < ε (false for
+    infinite ν: dν = dx/x on (0, 1)). MUTUAL SINGULARITY ν ⊥ μ: they live
+    on disjoint sets (δ₀ ⊥ m, Cantor measure ⊥ m).
+  - RADON-NIKODYM: μ σ-finite, ν σ-finite signed (or complex) with ν ≪ μ
+    ⇒ there is a unique (μ-a.e.) f with ν(E) = ∫_E f dμ; f = dν/dμ.
+    CHAIN RULE dλ/dμ = (dλ/dν)(dν/dμ); dμ/dν = 1/(dν/dμ) if μ ~ ν.
+    FAILS without σ-finiteness: m ≪ counting measure on [0, 1], no density.
+    Proof by von Neumann's L² trick or by Hahn decompositions.
+  - LEBESGUE DECOMPOSITION: ν = ν_ac + ν_s uniquely, ν_ac ≪ μ, ν_s ⊥ μ.
+    On R relative to m: ν = ac + pure point (atoms) + SINGULAR CONTINUOUS
+    (e.g. Cantor measure, or ∑εₙ2⁻ⁿ with P(εₙ = 1) = p ≠ ½).
+  - APPLICATIONS OF R-N: (Lᵖ)* = L^q (1/p + 1/q = 1) for 1 < p < ∞, and for
+    p = 1 when μ is σ-finite; (L^∞)* ⊋ L¹. Conditional expectation E[f|𝒢]
+    = d(f μ)|𝒢 / dμ|𝒢. Densities of distributions, pushforward measures.
+  - VITALI COVERING LEMMA: from finitely many balls pick disjoint Bⱼ with
+    ⋃B ⊆ ⋃3Bⱼ. HARDY-LITTLEWOOD MAXIMAL FUNCTION Mf(x) = sup_r (1/|B(x,
+    r)|)∫_{B(x,r)}|f|: WEAK (1,1) m{Mf > t} ≤ (3ⁿ/t)‖f‖₁; strong (p, p) for
+    1 < p ≤ ∞; Mf ∉ L¹(Rⁿ) unless f = 0 a.e.
+  - LEBESGUE DIFFERENTIATION THEOREM: f ∈ L¹_loc(Rⁿ) ⇒ for a.e. x,
+    (1/|B(x, r)|)∫_{B(x,r)}|f(y) − f(x)| dy → 0 (x is a LEBESGUE POINT);
+    also for families "shrinking nicely". DENSITY: for measurable E, the
+    density lim m(E ∩ B(x, r))/m(B(x, r)) is 1 a.e. on E, 0 a.e. off E.
+  - DIFFERENTIATION OF MEASURES: for a Radon ν on Rⁿ with dν = f dm + ν_s,
+    ν(B(x, r))/m(B(x, r)) → f(x) m-a.e.; the singular part has derivative
+    0 m-a.e. (and ∞ at ν_s-a.e. point, e.g. at atoms).
+  - BOUNDED VARIATION: T_F[a, b] = sup ∑|F(xⱼ) − F(xⱼ₋₁)|; F ∈ BV ⇔ F =
+    difference of increasing functions (Jordan). LEBESGUE: monotone (hence
+    BV) functions are differentiable a.e., ∫ₐᵇ F′ ≤ F(b) − F(a).
+  - ABSOLUTE CONTINUITY OF FUNCTIONS: ∀ε ∃δ: ∑(bⱼ − aⱼ) < δ ⇒ ∑|F(bⱼ) −
+    F(aⱼ)| < ε. FTC FOR LEBESGUE: F is AC on [a, b] ⇔ F(x) = F(a) + ∫ₐˣ
+    F′ with F′ ∈ L¹; then T_F = ∫|F′|. Lipschitz ⇒ AC ⇒ BV ∩ C; the
+    CANTOR FUNCTION is continuous BV with F′ = 0 a.e. but not AC. For
+    increasing right-continuous F: F AC ⇔ μ_F ≪ m, and dμ_F/dm = F′.
+  - RIESZ REPRESENTATION (RIESZ-MARKOV-KAKUTANI): X LCH, Λ a POSITIVE
+    linear functional on C_c(X) ⇒ there is a unique Radon μ with Λf = ∫f
+    dμ; μ(U) = sup{Λf : 0 ≤ f ≤ 1, supp f ⊆ U} for open U. DUAL FORM:
+    C₀(X)* ≅ M(X), the regular complex Borel measures, with ‖Λ‖ = |μ|(X).
+    Examples: point evaluation ↔ δₓ, Riemann integral ↔ m, Stieltjes
+    integral ↔ μ_F.
+  - WEAK-* (VAGUE) CONVERGENCE: μₙ → μ iff ∫f dμₙ → ∫f dμ for all f ∈
+    C₀(X). Bounded sets of M(X) are weak-* sequentially compact (X
+    separable metric; Banach-Alaoglu, Helly selection). Mass can escape
+    (δₙ → 0); with tightness the limit of probability measures is a
+    probability measure (narrow convergence).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Let μ* be an outer measure on X. (a) Prove that the μ*-measurable
+    sets form a σ-algebra 𝓜 and that μ*|𝓜 is a complete measure. (b) On
+    X = {1, 2, 3} let μ*(A) = [A ∩ {1, 2} ≠ ∅] + [3 ∈ A] ([·] = 1 if true,
+    0 if false). Find 𝓜 and μ on 𝓜.
+    Answer: (a) proof below. (b) 𝓜 = {∅, {3}, {1, 2}, X} with measures
+    0, 1, 1, 2.
+    Teacher explains: (a) The condition μ*(A) = μ*(A ∩ E) + μ*(A ∩ Eᶜ) is
+    symmetric in E and Eᶜ, so 𝓜 is closed under complements, and "≤" is
+    automatic by subadditivity. FINITE UNIONS: for E, F ∈ 𝓜 and any A,
+       μ*(A) = μ*(A ∩ E) + μ*(A ∩ Eᶜ ∩ F) + μ*(A ∩ Eᶜ ∩ Fᶜ)
+             ≥ μ*(A ∩ (E ∪ F)) + μ*(A ∩ (E ∪ F)ᶜ),
+    since A ∩ (E ∪ F) = (A ∩ E) ∪ (A ∩ Eᶜ ∩ F). COUNTABLE DISJOINT UNIONS:
+    let Eⱼ ∈ 𝓜 be disjoint, Bₙ = E₁ ∪ ... ∪ Eₙ, B = ⋃Eⱼ. Testing Eₙ on A ∩
+    Bₙ gives μ*(A ∩ Bₙ) = μ*(A ∩ Eₙ) + μ*(A ∩ Bₙ₋₁), so by induction
+    μ*(A ∩ Bₙ) = ∑_{j≤n} μ*(A ∩ Eⱼ). Since Bₙ ∈ 𝓜 and Bᶜ ⊆ Bₙᶜ,
+       μ*(A) ≥ ∑_{j≤n} μ*(A ∩ Eⱼ) + μ*(A ∩ Bᶜ).
+    Let n → ∞ and use countable subadditivity:
+       μ*(A) ≥ ∑_j μ*(A ∩ Eⱼ) + μ*(A ∩ Bᶜ) ≥ μ*(A ∩ B) + μ*(A ∩ Bᶜ).
+    So B ∈ 𝓜 (an algebra closed under countable disjoint unions is a
+    σ-algebra), and A = B turns the first inequality into countable
+    additivity. COMPLETENESS: if μ*(N) = 0 then μ*(A ∩ N) + μ*(A ∖ N) ≤ 0 +
+    μ*(A). (b) μ* is the sum of two outer measures, each "is the set
+    touched?". Test {3}: μ*(A ∩ {3}) + μ*(A ∖ {3}) = [3 ∈ A] + [A meets
+    {1, 2}] = μ*(A) for all A, so {3} ∈ 𝓜 and hence {1, 2} ∈ 𝓜. Test {1}
+    with A = {1, 2}: μ*({1}) + μ*({2}) = 2 ≠ 1 = μ*({1, 2}); so {1} ∉ 𝓜,
+    and likewise {2}, {1, 3}, {2, 3}. Common mistakes: checking the
+    splitting condition only for A = X (it must hold for EVERY test set
+    A); forgetting that μ* may be defined on all subsets while only 𝓜
+    carries a measure. Now you try: on an uncountable X, μ*(A) = 0 for A
+    countable, 1 otherwise. Find 𝓜. (countable and co-countable sets)
+
+D2. (a) State the Carathéodory-Hahn extension theorem. (b) Prove, using
+    the π-λ theorem, that two measures on σ(𝒫) that agree on a π-system
+    𝒫 and are finite on sets Pₙ ∈ 𝒫 with Pₙ ↑ X are equal. (c) Show that
+    uniqueness fails without the finiteness hypothesis.
+    Answer: (a) a premeasure on an algebra extends to σ(𝒜), uniquely if
+    σ-finite. (b) The "good sets" form a λ-system. (c) #(· ∩ Q) and
+    2#(· ∩ Q) on 𝔅(R).
+    Teacher explains: (a) If ρ is a premeasure on an algebra 𝒜 (ρ(∅) = 0,
+    ρ(⊔Aₙ) = ∑ρ(Aₙ) whenever ⊔Aₙ ∈ 𝒜), then μ*(E) = inf{∑ρ(Aₙ) : E ⊆ ⋃Aₙ}
+    is an outer measure, every set of 𝒜 is μ*-measurable, μ* = ρ on 𝒜,
+    so μ = μ*|σ(𝒜) extends ρ. If ρ is σ-finite the extension is unique.
+    (b) Fix P ∈ 𝒫 with μ(P) = ν(P) < ∞ and let 𝓛 = {A ∈ σ(𝒫) : μ(A ∩ P)
+    = ν(A ∩ P)}. Then X ∈ 𝓛; if A ⊆ B are in 𝓛 then μ((B ∖ A) ∩ P) =
+    μ(B ∩ P) − μ(A ∩ P) (legal: finite numbers) = ν((B ∖ A) ∩ P); and 𝓛 is
+    closed under increasing unions by continuity from below. So 𝓛 is a
+    λ-system; it contains the π-system 𝒫 (as 𝒫 ∩ P ⊆ 𝒫). By Dynkin,
+    σ(𝒫) ⊆ 𝓛. Now for any A: μ(A ∩ Pₙ) = ν(A ∩ Pₙ) and let n → ∞. The
+    finiteness is used exactly in the subtraction step. (c) Let μ(A) =
+    #(A ∩ Q) and ν(A) = 2#(A ∩ Q). The half-open intervals (a, b] (plus
+    ∅) form a π-system generating 𝔅(R), and every non-empty (a, b]
+    contains infinitely many rationals, so μ = ν = ∞ there. But μ({0}) =
+    1 ≠ 2 = ν({0}). No sequence Pₙ of finite measure exists. Common
+    mistakes: forgetting that 𝒫 must be closed under intersection (see
+    M2 e); applying the result to finite measures with different total
+    mass. Now you try: two probability measures on R with the same
+    distribution function F(a) = μ(−∞, a] — are they equal? (yes: the
+    rays form a π-system and the total masses are both 1)
+
+D3. (a) Show that the Lebesgue σ-algebra ℒ is strictly larger than the
+    Borel σ-algebra 𝔅. (b) Let μ be a finite Borel measure on a metric
+    space X. Prove that for every Borel E and ε > 0 there are F closed and
+    U open with F ⊆ E ⊆ U and μ(U ∖ F) < ε. (c) For μ = δ₀ + m|[0,1] find
+    μ(Q ∩ [0, 1]) and an open U ⊇ Q ∩ [0, 1] with μ(U) < 1.01.
+    Answer: (a) cardinality 𝔠 versus 2^𝔠. (b) the "good sets" form a
+    σ-algebra containing the closed sets. (c) 1; U = (−δ, δ) ∪ ⋃ small
+    intervals around the other rationals of total length < 0.01.
+    Teacher explains: (a) 𝔅 is generated by the countable family of
+    rational intervals; building σ-algebras by transfinite recursion
+    over ω₁ stages shows #𝔅 = 𝔠. The Cantor set C has m(C) = 0 and #C =
+    𝔠, and ℒ is complete, so EVERY subset of C is in ℒ: #ℒ ≥ 2^𝔠 > 𝔠.
+    Hence some null set is not Borel (ℒ is the completion of 𝔅). (b) Call
+    E good if the statement holds. If E is good so is Eᶜ (swap F ↔ Uᶜ).
+    If Eₖ are good with Fₖ ⊆ Eₖ ⊆ Uₖ, μ(Uₖ ∖ Fₖ) < ε2⁻ᵏ, put U = ⋃Uₖ and
+    choose N with μ(⋃Fₖ ∖ ⋃_{k≤N}Fₖ) < ε (continuity, μ finite); F =
+    ⋃_{k≤N}Fₖ is closed and μ(U ∖ F) < 2ε. So good sets form a σ-algebra.
+    Every closed F is good: Uₙ = {x : d(x, F) < 1/n} is open and Uₙ ↓ F,
+    so μ(Uₙ ∖ F) → 0. Closed sets generate 𝔅: all Borel sets are good.
+    On Rⁿ closed sets are countable unions of compacts, so μ is Radon.
+    (c) 0 ∈ Q, so μ(Q ∩ [0, 1]) = δ₀({0}) + m(Q ∩ [0,1]) = 1 + 0 = 1.
+    Enumerate the other rationals q₁, q₂, ... of [0, 1] and let U = (−δ,
+    δ) ∪ ⋃(qₖ − 0.0025·2⁻ᵏ, qₖ + 0.0025·2⁻ᵏ) with δ = 0.0025: μ(U) ≤ 1 +
+    δ + 0.005 = 1.0075 < 1.01 (only (0, δ) of (−δ, δ) lies in [0, 1]).
+    Common mistakes: thinking regularity needs local compactness (for
+    finite measures, metric suffices); forgetting the atom at 0.
+    Now you try: is every σ-finite Borel measure on R regular?
+    (no: counting measure on Q is σ-finite but μ(U) = ∞ for every open
+    U ≠ ∅, while μ({0}) = 1; it is not finite on compacts)
+
+D4. (a) Prove the Hahn decomposition theorem for a finite signed measure
+    ν. (b) For ν(A) = ∫_{A∩[−2,2]} (x² − 1) dx + δ₀(A) find a Hahn
+    decomposition, ν⁺, ν⁻, |ν| and ν(R).
+    Answer: (b) P = {1 ≤ |x| ≤ 2} ∪ {0}; ν⁺(R) = 11/3, ν⁻(R) = 4/3,
+    |ν|(R) = 5, ν(R) = 7/3.
+    Teacher explains: (a) LEMMA: if ν(E) > 0 then E contains a POSITIVE
+    set A with ν(A) ≥ ν(E). (Remove greedily: let n₁ be the least n such
+    that E has a subset of measure ≤ −1/n₁, remove such a subset, and
+    repeat; what remains is positive, and removing negative pieces only
+    increased ν.) Now let s = sup{ν(P) : P positive} ≤ ν(X)⁺ < ∞, pick
+    positive Pₙ with ν(Pₙ) → s; P = ⋃Pₙ is positive (a countable union of
+    positive sets is positive) and ν(P) = s. N = Pᶜ is negative: if E ⊆ N
+    had ν(E) > 0, the lemma gives a positive A ⊆ E with ν(A) > 0, and P ∪
+    A is positive with ν(P ∪ A) > s, a contradiction. Then ν⁺(E) = ν(E ∩
+    P), ν⁻(E) = −ν(E ∩ N) is the JORDAN decomposition. (b) The density
+    x² − 1 is ≥ 0 exactly where |x| ≥ 1, and the atom at 0 is positive,
+    so P = [−2, −1] ∪ [1, 2] ∪ {0} and N = (−1, 0) ∪ (0, 1) (up to null
+    sets, endpoints may go either way). Then
+       ν⁺(R) = 2∫₁² (x² − 1) dx + 1 = 2(7/3 − 1) + 1 = 8/3 + 1 = 11/3,
+       ν⁻(R) = ∫₋₁¹ (1 − x²) dx = 2 − 2/3 = 4/3,
+    |ν|(R) = 11/3 + 4/3 = 5 and ν(R) = 11/3 − 4/3 = 7/3. Check: ∫₋₂²(x² −
+    1) dx = 16/3 − 4 = 4/3, plus 1 is 7/3 ✓. Common mistakes: "P = {x :
+    density > 0}" ignoring atoms; thinking the Hahn decomposition is
+    unique (it is unique only up to |ν|-null sets); writing |ν| = |ν(·)|
+    (|ν|(R) = 5, but |ν(R)| = 7/3). Now you try: ν = m|[0,2] − m|[1,3].
+    Find ν⁺ and ν⁻. (ν⁺ = m|[0,1], ν⁻ = m|[2,3]: the overlap cancels)
+
+D5. (a) Let ν be a FINITE measure and μ a measure on the same σ-algebra.
+    Prove that ν ≪ μ iff for every ε > 0 there is δ > 0 with μ(E) < δ ⇒
+    ν(E) < ε. (b) Show that "⇒" fails for dν = dx/x on (0, 1), μ = m.
+    (c) Give the Lebesgue decomposition of ν = δ_{1/2} + 3m|[0,1] + μ_c
+    (μ_c the Cantor measure) with respect to m.
+    Answer: (a) ⇐ is immediate; ⇒ by Borel-Cantelli. (b) ν ≪ m but
+    ν(0, δ) = ∞ for every δ. (c) ν_ac = 3m|[0,1], ν_s = δ_{1/2} + μ_c.
+    Teacher explains: (a) ⇐: if μ(E) = 0 then μ(E) < δ for every δ, so
+    ν(E) < ε for every ε, i.e. ν(E) = 0. ⇒ by contradiction: suppose some
+    ε > 0 fails for every δ; choose Eₙ with μ(Eₙ) < 2⁻ⁿ but ν(Eₙ) ≥ ε.
+    Let F = lim sup Eₙ = ⋂_k ⋃_{n≥k} Eₙ. Then μ(F) ≤ ∑_{n≥k} 2⁻ⁿ = 2¹⁻ᵏ for
+    all k, so μ(F) = 0. But ν(⋃_{n≥k} Eₙ) ≥ ε for every k and these sets
+    DECREASE, so continuity from above (ν FINITE!) gives ν(F) ≥ ε > 0,
+    contradicting ν ≪ μ. (b) ν(E) = ∫_E dx/x is zero whenever m(E) = 0,
+    so ν ≪ m, yet m((0, δ)) = δ and ν((0, δ)) = ∫₀^δ dx/x = ∞. The proof
+    of (a) breaks exactly at continuity from above. (c) The density part
+    3𝟙_[0,1] dx is ≪ m. The atom δ_{1/2} lives on {1/2} (m-null); μ_c
+    lives on the Cantor set C (m-null). Both are ⊥ m, and so is their sum
+    (it lives on C ∪ {1/2}). Hence ν_ac = 3m|[0,1] and ν_s = δ_{1/2} + μ_c;
+    further ν_s = pure point δ_{1/2} + singular continuous μ_c. Total
+    masses: ν(R) = 1 + 3 + 1 = 5. Common mistakes: applying the ε-δ
+    criterion to infinite ν; thinking μ_c ≪ m because μ_c has no atoms
+    (continuous ≠ absolutely continuous). Now you try: for f ∈ L¹(μ), show
+    ν(E) = ∫_E|f| dμ satisfies the ε-δ condition. (ν is finite and ν ≪ μ;
+    or truncate f as in 11.1 D12)
+
+D6. State the Radon-Nikodym theorem and prove it for finite measures μ,
+    ν ≥ 0 by von Neumann's Hilbert-space method, obtaining the Lebesgue
+    decomposition at the same time.
+    Answer: if μ, ν are σ-finite and ν ≪ μ, then ν = f dμ with f ≥ 0
+    unique μ-a.e.; proof: represent f ↦ ∫f dν on L²(μ + ν).
+    Teacher explains: Let ρ = μ + ν (finite). The map T(φ) = ∫φ dν is
+    well defined and bounded on L²(ρ):
+       |∫φ dν| ≤ ∫|φ| dρ ≤ ρ(X)^(1/2) ‖φ‖_{L²(ρ)}   (Cauchy-Schwarz).
+    By the Riesz representation of Hilbert-space functionals there is g ∈
+    L²(ρ) with ∫φ dν = ∫φ g dρ, i.e.
+       ∫φ(1 − g) dν = ∫φ g dμ   for all φ ∈ L²(ρ).          (∗)
+    Taking φ = 𝟙_E gives ν(E) = ∫_E g dρ, so 0 ≤ g ≤ 1 ρ-a.e. (test E =
+    {g < 0} and E = {g > 1}). Let S = {g = 1}. With φ = 𝟙_S, (∗) gives
+    0 = ∫_S g dμ = μ(S), so ν_s := ν|_S is ⊥ μ. Off S, put φ = (1 + g +
+    ... + gⁿ)𝟙_{E∖S} in (∗):
+       ∫_{E∖S} (1 − gⁿ⁺¹) dν = ∫_{E∖S} g(1 + g + ... + gⁿ) dμ.
+    As n → ∞, gⁿ⁺¹ → 0 on Sᶜ and the right-hand integrand increases, so by
+    MCT ν(E ∖ S) = ∫_E h dμ with h = g/(1 − g) on Sᶜ, h = 0 on S. Thus
+    ν = h dμ + ν_s (LEBESGUE DECOMPOSITION). If ν ≪ μ then ν(S) = 0 (as
+    μ(S) = 0), so ν = h dμ. UNIQUENESS: if ∫_E h dμ = ∫_E h′ dμ for all E,
+    take E = {h > h′} ∩ {h ≤ n}. σ-FINITE case: split X into countably
+    many pieces of finite μ and ν measure and glue the densities; signed
+    ν: apply to ν⁺ and ν⁻. Common mistakes: forgetting that h may be
+    infinite-valued / non-integrable when ν is only σ-finite; claiming the
+    theorem for non-σ-finite μ (see D7). Now you try: if ν ≤ μ (ν(E) ≤
+    μ(E) for all E), what can you say about dν/dμ? (0 ≤ dν/dμ ≤ 1 a.e.)
+
+D7. Compute the Radon-Nikodym derivatives, and explain the failure in
+    (e): (a) dν/dm on [0, 2] for ν(A) = ∫_A 3x² dx; (b) dm/dμ on [0, ∞)
+    for dμ = e⁻ˣ dx; (c) dν/dμ for μ = δ₀ + δ₁ + 2δ₂, ν = 3δ₀ + δ₂;
+    (d) the density of the pushforward T₊m of m on (0, 1) under T(x) = x²;
+    (e) m ≪ c, c = counting measure on [0, 1]: is there dm/dc?
+    Answer: (a) 3x²; (b) eˣ; (c) 3 at 0, 0 at 1, 1/2 at 2; (d) 1/(2√y);
+    (e) no.
+    Teacher explains: The recipe: find h with ν(E) = ∫_E h dμ for all E.
+    (a) Read it off: h = 3x². (b) μ and m are EQUIVALENT (each ≪ the
+    other, e⁻ˣ > 0), and dm/dμ = 1/(dμ/dm) = 1/e⁻ˣ = eˣ. Check: ∫_E eˣ dμ =
+    ∫_E eˣe⁻ˣ dx = m(E) ✓. (c) On atoms, h(x) = ν({x})/μ({x}): h(0) = 3/1,
+    h(1) = 0/1 = 0, h(2) = 1/2. (Values off {0, 1, 2} are irrelevant: a
+    μ-null set.) (d) T₊m(E) = m(T⁻¹E). For E = (0, t]: m{x : x² ≤ t} = √t,
+    so the distribution function is √y and the density is d√y/dy =
+    1/(2√y). General CHANGE-OF-VARIABLES rule: for T a C¹ bijection, the
+    density of T₊(f dx) is f(T⁻¹y)|(T⁻¹)′(y)|. (e) c(E) = 0 only for E =
+    ∅, so trivially m ≪ c. If m(E) = ∑_{x∈E} h(x) for all E, then E = {x}
+    gives h(x) = m({x}) = 0 for every x, so m([0, 1]) = 0: contradiction.
+    The hypothesis that fails is σ-FINITENESS of c on the uncountable
+    [0, 1]. Common mistakes: dividing densities the wrong way round;
+    forgetting the Jacobian factor |(T⁻¹)′| in (d). Now you try: the chain
+    rule: dλ/dν = 2x and dν/dm = 3x² on (0, 1). Find dλ/dm. (6x³)
+
+D8. Use the Radon-Nikodym theorem to identify the dual of Lᵖ. (a) Sketch
+    the proof that every bounded linear Λ on Lᵖ(μ), 1 ≤ p < ∞, μ finite,
+    has the form Λf = ∫fg dμ with g ∈ L^q and ‖Λ‖ = ‖g‖_q. (b) Compute
+    ‖Λ‖ for Λf = ∫₀¹ x f(x) dx on L³[0, 1] and find an extremal f.
+    (c) Explain why (L^∞[0, 1])* ≠ L¹[0, 1].
+    Answer: (b) ‖Λ‖ = (2/5)^(2/3) ≈ 0.54288, attained at f = √x.
+    (c) a Hahn-Banach extension of f ↦ f(0) from C[0, 1] is not given by
+    any g ∈ L¹.
+    Teacher explains: (a) Define ν(E) = Λ(𝟙_E). It is finitely additive by
+    linearity; if Eₙ ↓ ∅ then ‖𝟙_{Eₙ}‖ₚ = μ(Eₙ)^(1/p) → 0 (here p < ∞ is
+    ESSENTIAL), so ν(Eₙ) → 0: ν is a (signed or complex) measure. If μ(E)
+    = 0 then 𝟙_E = 0 in Lᵖ, so ν(E) = 0: ν ≪ μ. Let g = dν/dμ. Then Λf =
+    ∫fg for simple f by linearity. To show g ∈ L^q (1 < p), test Λ on
+    fₙ = |g|^(q−1) sgn(ḡ)𝟙_{|g|≤n}: ∫_{|g|≤n}|g|^q ≤ ‖Λ‖(∫_{|g|≤n}|g|^q)^(1/p),
+    so (∫_{|g|≤n}|g|^q)^(1/q) ≤ ‖Λ‖; let n → ∞ (MCT). (For p = 1 show |g| ≤
+    ‖Λ‖ a.e.) Simple functions are dense in Lᵖ, so Λf = ∫fg everywhere,
+    and Hölder gives ‖Λ‖ = ‖g‖_q. (b) p = 3, q = 3/2, g(x) = x:
+       ‖Λ‖ = (∫₀¹ x^(3/2) dx)^(2/3) = (2/5)^(2/3) ≈ 0.54288.
+    Equality in Hölder needs |f|ᵖ ∝ |g|^q, i.e. f = g^(q−1) = x^(1/2):
+    Λ(√x) = ∫x^(3/2) = 2/5 and ‖√x‖₃ = (2/5)^(1/3), ratio (2/5)^(2/3) ✓.
+    (c) ℓ(f) = f(0) is bounded on C[0, 1] ⊆ L^∞ with norm 1; extend it by
+    Hahn-Banach to L^∞. If ℓ(f) = ∫fg with g ∈ L¹, take continuous fₙ
+    with fₙ(0) = 1, 0 ≤ fₙ ≤ 1, supported in [0, 1/n]: ∫fₙg → 0 by DCT,
+    but ℓ(fₙ) = 1. Common mistakes: forgetting where p < ∞ is used; for p
+    = 1 dropping σ-finiteness (M12 q). Now you try: ‖Λ‖ for Λf = ∫₀¹ f
+    on L²[0, 1]. (1: g = 1, ‖g‖₂ = 1)
+
+D9. (a) Prove the finite Vitali covering lemma: from finitely many balls
+    B₁, ..., B_N in Rⁿ one can pick disjoint B_{j₁}, ..., B_{j_k} with ⋃Bᵢ
+    ⊆ ⋃3B_{j_l}. (b) Deduce the weak (1,1) inequality m{Mf > t} ≤
+    (3ⁿ/t)‖f‖₁. (c) For f = 𝟙_[0,1] on R compute the centred maximal
+    function Mf and m{Mf > t}, and show Mf ∉ L¹.
+    Answer: (c) Mf = 1 on (0, 1), 1/2 at 0 and 1, 1/(2x) for x ≥ 1,
+    1/(2(1 − x)) for x ≤ 0; m{Mf > t} = 1/t − 1 for 0 < t < 1/2, 1 for
+    1/2 ≤ t < 1, 0 for t ≥ 1.
+    Teacher explains: (a) GREEDY: take the largest ball B_{j₁}; discard
+    all balls meeting it; from the rest take the largest, and so on. If a
+    discarded B meets a chosen B′ of radius r′ ≥ r(B), then B ⊆ 3B′ (any
+    point of B is within 2r + r′ ≤ 3r′ of the centre of B′). (b) Let K ⊆
+    {Mf > t} be compact. Each x ∈ K has a ball Bₓ with ∫_{Bₓ}|f| > t m(Bₓ);
+    finitely many cover K; apply (a):
+       m(K) ≤ ∑ m(3B_{j_l}) = 3ⁿ∑ m(B_{j_l}) < (3ⁿ/t)∑∫_{B_{j_l}}|f|
+            ≤ (3ⁿ/t)‖f‖₁ (the chosen balls are disjoint).
+    Inner regularity of m (sup over K) gives the claim. (c) Mf(x) =
+    sup_r m([x − r, x + r] ∩ [0, 1])/(2r). For 0 < x < 1, small r gives
+    ratio 1, and ratio ≤ 1 always: Mf = 1. At x = 0 the overlap is r for r
+    ≤ 1: ratio 1/2, and 1/(2r) after: Mf(0) = 1/2. For x > 1 and x − 1 ≤ r
+    ≤ x the ratio is (r + 1 − x)/(2r) = 1/2 + (1 − x)/(2r), increasing in
+    r; for r ≥ x it is 1/(2r), decreasing. The maximum is at r = x:
+    Mf(x) = 1/(2x). By symmetry Mf(x) = 1/(2(1 − x)) for x < 0. For t <
+    1/2: Mf > t on (1 − 1/(2t), 1/(2t)), which has length 1/t − 1. Since
+    ∫₁^∞ dx/(2x) = ∞, Mf ∉ L¹ — typical: Mf(x) ≥ c/|x| for large |x|
+    whenever f ≠ 0. The weak bound 3‖f‖₁/t = 3/t is indeed ≥ 1/t − 1.
+    Common mistakes: confusing centred and uncentred maximal functions;
+    expecting a strong (1,1) bound. Now you try: the uncentred maximal
+    function (sup over all intervals containing x) at x = 3. (1/3, from
+    the interval [0, 3])
+
+D10. (a) State the Lebesgue differentiation theorem and sketch its proof
+     from the maximal inequality. (b) Is 0 a Lebesgue point of f =
+     𝟙_[0,∞)? of f(x) = sin(1/x), f(0) = 0? (c) Find the density at the
+     origin of E = {(x, y) : |y| < x} ⊆ R² and of E′ = {(x, y) : y > x²}.
+     Answer: (b) no; no (the averages of |f| tend to 2/π). (c) 1/4; 1/2.
+     Teacher explains: (a) THEOREM: for f ∈ L¹_loc(Rⁿ), a.e. x satisfies
+        lim_{r→0} (1/m(B(x, r))) ∫_{B(x,r)} |f(y) − f(x)| dy = 0.
+     SKETCH: the claim is local, so let f ∈ L¹. Put Ωf(x) = lim sup of
+     the averages of |f(y) − f(x)|. For continuous g, Ωg = 0. Given ε, pick
+     g ∈ C_c with ‖f − g‖₁ < ε and write h = f − g. Then Ωf ≤ Ωh ≤ Mh +
+     |h|, so
+        m{Ωf > 2t} ≤ m{Mh > t} + m{|h| > t} ≤ (3ⁿ/t)ε + (1/t)ε.
+     As ε is arbitrary, m{Ωf > 2t} = 0 for each t > 0; take t = 1/k. The
+     same holds for families E_r shrinking nicely (E_r ⊆ B(x, r), m(E_r) ≥
+     c m(B(x, r))), e.g. one-sided intervals: F(x) = ∫₀ˣ f has F′ = f a.e.
+     (b) For 𝟙_[0,∞) the averages over [−r, r] equal 1/2 for every r, but
+     (1/2r)∫|f − c| = (|1 − c| + |c|)/2 ≥ 1/2 for every c: 0 is not a
+     Lebesgue point for any value (a jump). For sin(1/x): the average of f
+     is 0 (f is odd), but (1/2r)∫_{−r}^{r}|sin(1/x)| dx → (1/2π)∫₀^{2π}|sin θ|
+     dθ = 2/π ≠ 0, because near 0 the function runs through many full
+     periods; similarly no value c works. (c) E is a sector of angle π/2
+     (between the lines y = ±x, x > 0), so m(E ∩ B(0, r)) = (π/2)r²/2 and
+     the ratio is (πr²/4)/(πr²) = 1/4. For E′: the parabola is tangent to
+     the x-axis, so E′ ∩ B(0, r) differs from the upper half-disc by a set
+     of area O(r³); the density is 1/2. Common mistakes: "average → f(x)"
+     is weaker than the Lebesgue point condition (sin(1/x)); a density can
+     fail to exist (M8). Now you try: the density at 0 of {|y| < x²}.
+     (0: its area in B(0, r) is O(r³))
+
+D11. (a) Compute the total variation of F(x) = x³ − 3x on [−2, 2] in two
+     ways. (b) Show x sin(1/x) is not BV on [0, 1] while x² sin(1/x) is AC.
+     (c) Show that the Cantor function c is continuous, of bounded
+     variation, with c′ = 0 a.e., but is not AC, and relate this to μ_c.
+     Answer: (a) 12. (b) partial sums ∑ 2/((k + ½)π) diverge; |F′| ≤ 3.
+     (c) c(1) − c(0) = 1 ≠ 0 = ∫c′; μ_c ⊥ m.
+     Teacher explains: (a) PIECEWISE MONOTONE: F′ = 3x² − 3 vanishes at
+     ±1; F(−2) = −2, F(−1) = 2, F(1) = −2, F(2) = 2. On each monotone piece
+     the variation is the change: T = 4 + 4 + 4 = 12. FTC FORM: F is C¹,
+     hence AC, so T = ∫₋₂²|3x² − 3| dx = 2(∫₀¹(3 − 3x²) + ∫₁²(3x² − 3)) = 2(2
+     + 4) = 12 ✓. JORDAN: F = P − N with P(x) = positive variation on
+     [−2, x], both increasing. (b) At xₖ = 1/((k + ½)π), x sin(1/x) = ±xₖ
+     with alternating signs, so the partition through these points gives
+     ∑(xₖ + xₖ₊₁) ≥ ∑ 2/((k + 3/2)π) = ∞. For G = x² sin(1/x) (G(0) = 0):
+     G′(x) = 2x sin(1/x) − cos(1/x) for x ≠ 0 and G′(0) = 0, so |G′| ≤ 3;
+     by the MVT G is 3-Lipschitz, hence AC: given ε take δ = ε/3. (c) c is
+     increasing, so BV with T = c(1) − c(0) = 1; it is continuous (no
+     jumps, since its range is all of [0, 1]); it is constant on every
+     removed interval, whose union has measure 1, so c′ = 0 a.e. If c were
+     AC, the FTC would give c(1) − c(0) = ∫₀¹ c′ = 0 ≠ 1. Directly: C is
+     covered by 2ⁿ intervals of total length (2/3)ⁿ < δ on which c
+     increases by 1 in total. Its Stieltjes measure μ_c lives on C (m-null)
+     and has no atoms: μ_c ⊥ m, singular continuous. Common mistakes:
+     "continuous + differentiable a.e. ⇒ AC"; "BV ⇒ continuous". Now you
+     try: T of x e⁻ˣ on [0, ∞). (2/e ≈ 0.73576: up to 1/e at x = 1, then
+     back down to 0)
+
+D12. (a) State the Riesz representation theorem for positive functionals
+     on C_c(X) and its dual form for C₀(X). (b) For Λf = ∫₀¹ f(x) dx +
+     f(1/2) on C_c(R) find μ and compute μ([0, 1/2]), μ((1/2, 1]),
+     μ((0, 1)). (c) On C[0, 1] let Λf = f(0) − 2f(1) + ∫₀¹ x f(x) dx.
+     Find the representing measure and ‖Λ‖; is the norm attained?
+     Answer: (b) μ = m|[0,1] + δ_{1/2}; 3/2, 1/2, 2. (c) μ = δ₀ − 2δ₁ + x
+     dx; ‖Λ‖ = |μ|([0, 1]) = 7/2, not attained.
+     Teacher explains: (a) X locally compact Hausdorff, Λ : C_c(X) → R
+     linear with Λf ≥ 0 when f ≥ 0. Then there is a UNIQUE Radon measure μ
+     with Λf = ∫f dμ. CONSTRUCTION: for open U, μ(U) = sup{Λf : f ≺ U}
+     (0 ≤ f ≤ 1, supp f ⊆ U compact); for any E, μ*(E) = inf{μ(U) : U ⊇
+     E}. Urysohn's lemma produces the test functions, one checks that
+     μ* is an outer measure whose Carathéodory sets contain the Borel
+     sets, and that μ(K) = inf{Λf : f ≥ 𝟙_K}. DUAL FORM: every bounded
+     linear Λ on C₀(X) is Λf = ∫f dμ for a unique regular complex Borel
+     μ, and ‖Λ‖ = |μ|(X). (b) The integral part gives m|[0,1] and the
+     evaluation gives δ_{1/2}, so μ = m|[0,1] + δ_{1/2}. Then μ([0, 1/2]) =
+     1/2 + 1 = 3/2, μ((1/2, 1]) = 1/2 + 0 = 1/2, μ((0, 1)) = 1 + 1 = 2;
+     check via the construction: bumps f ≺ (0, 1) with f(1/2) = 1 give
+     Λf ↑ 2. (c) μ = δ₀ − 2δ₁ + x dx; the three pieces live on disjoint
+     sets {0}, {1}, (0, 1), so |μ| = δ₀ + 2δ₁ + x dx and
+        ‖Λ‖ = 1 + 2 + ∫₀¹ x dx = 7/2.
+     "≤": |Λf| ≤ ‖f‖_∞|μ|([0, 1]). "≥": take continuous fₙ with ‖fₙ‖ = 1,
+     fₙ(0) = 1, fₙ = −1 at 1 and fₙ = 1 on [0, 1 − 1/n]: Λfₙ → 1 + 2 + 1/2.
+     Not attained: Λf = 7/2 with ‖f‖ ≤ 1 would force f = 1 on (0, 1) and
+     f(1) = −1, impossible for continuous f. Common mistakes: forgetting
+     that C[0, 1]* norms are TOTAL VARIATIONS (not |μ([0, 1])| = |1 − 2 +
+     1/2| = 1/2); forgetting positivity in the first form.
+     Now you try: the weak-* limit of μₙ = (1/n)∑_{k=1}^{n} δ_{k/n}.
+     (m|[0,1]: Riemann sums ∫f dμₙ → ∫₀¹ f for every continuous f)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Outer measures: decide whether μ* is an outer measure; if so, find
+    the Carathéodory σ-algebra 𝓜 ([P] = 1 if P is true, 0 otherwise).
+    a) X = {1, 2}, μ*(∅) = 0, μ*(A) = 1 for A ≠ ∅
+    b) X = {1, 2, 3}, μ*(A) = #A
+    c) X = {1, 2, 3}, μ*(A) = min(#A, 2)
+    d) X = {1, 2, 3}, μ*(A) = [A ∩ {1, 2} ≠ ∅] + [3 ∈ A]
+    e) X = {1, 2, 3, 4}, μ*(A) = [A ∩ {1, 2} ≠ ∅] + [A ∩ {3, 4} ≠ ∅]
+    f) X = N, μ*(A) = 0 if A is finite, 1 if A is infinite
+    g) X = N, μ*(A) = 0 if A = ∅, 1 otherwise
+    h) X uncountable, μ*(A) = 0 if A is countable, 1 otherwise
+    i) X = [0, 1], μ*(A) = (m*(A))²
+    j) X = [0, 1], μ*(A) = √(m*(A))
+    k) X = R, μ* = m* + δ₀ (δ₀ defined on all subsets)
+    l) X = {1, 2, 3}, ρ a premeasure on the algebra {∅, {1}, {2, 3}, X}
+       with ρ{1} = 1, ρ{2, 3} = 2: the induced μ*({2}) and μ*({1, 2})
+    m) X = R, Lebesgue m*: m*(Q ∩ [0, 1]) and m*([0, 1] ∖ Q)
+    n) X = R, μ*(A) = m*(A ∩ [0, 1]): is [5, 6] ∪ V (V ⊆ [2, 3] a Vitali
+       set translated there) in 𝓜?
+    Answers:
+      a) 𝓜 = {∅, X}        b) all subsets         c) 𝓜 = {∅, X}
+      d) {∅, {3}, {1, 2}, X}                      e) {∅, {1,2}, {3,4}, X}
+      f) not an outer measure (N = ⋃{n}: 1 ≰ 0)   g) {∅, N}
+      h) the countable and co-countable sets
+      i) not an outer measure: [0, 1] = [0, ½] ∪ [½, 1] gives 1 ≰ ¼ + ¼
+      j) outer measure; 𝓜 = {E : m*(E) = 0 or m*([0, 1] ∖ E) = 0}
+      k) 𝓜 = ℒ (δ₀ splits every set additively)
+      l) 2 and 3            m) 0 and 1
+      n) yes: it is μ*-null (every set outside [0, 1] is measurable)
+
+M2. π-systems, λ-systems, uniqueness and extension.
+    a) Is {(−∞, a] : a ∈ R} a π-system?    b) Is {[a, a + 1] : a ∈ R}?
+    c) Is {∅} ∪ {open intervals} a π-system?
+    d) On {1, 2, 3, 4}: is {∅, X, {1,2}, {3,4}, {1,3}, {2,4}} a λ-system?
+       a σ-algebra?
+    e) Must probability measures on {1, 2, 3, 4} agreeing on {1, 2} and
+       {1, 3} be equal?
+    f) Same, if they also agree on {1} and {4}?
+    g) μ_F for F(x) = x³: μ((0, 2]) and μ((−1, 1] ∪ (2, 3])
+    h) F(x) = arctan x: μ(R) and μ((0, ∞))
+    i) F(x) = x + ⌊x⌋: μ((0, 2]), μ({1}), μ((0, 1))
+    j) F(x) = eˣ: μ((−∞, 0])            k) F = 𝟙_[0,∞): which measure?
+    l) Is counting measure on R σ-finite? on Z?
+    m) μ = #(· ∩ Q), ν = 2#(· ∩ Q) on 𝔅(R): do they agree on all (a, b]?
+       Are they equal?
+    n) How many measures μ on 𝒫(N) have μ({n}) = 2⁻ⁿ for all n?
+    o) Finite/cofinite algebra on N, ρ(A) = 0 (finite), 1 (cofinite): is
+       ρ a premeasure?
+    p) Is Lebesgue measure the unique translation-invariant Borel measure
+       on R with m([0, 1]) = 1?
+    Answers:
+      a) yes      b) no ([0,1] ∩ [1,2] = {1})      c) yes
+      d) λ-system yes; not a σ-algebra ({1,2} ∩ {1,3} = {1} missing)
+      e) no: uniform vs ½(δ₁ + δ₄)        f) yes (they agree on every atom)
+      g) 8 and 2 + 19 = 21                 h) π and π/2
+      i) 4, 1, 1                           j) 1
+      k) δ₀                                l) no; yes
+      m) yes (both ∞ on non-empty intervals); no (μ{0} = 1, ν{0} = 2)
+      n) exactly one: μ(A) = ∑_{n∈A} 2⁻ⁿ
+      o) no: N = ⋃{n} disjoint, but 1 ≠ ∑0
+      p) yes (among measures finite on compacts)
+
+M3. Signed and complex measures: give a positive set P of a Hahn
+    decomposition, ν⁺(X), ν⁻(X), |ν|(X).
+    a) ν = 2δ₀ − 3δ₁ + δ₂               b) dν = x dx on [−1, 2]
+    c) dν = sin x dx on [0, 2π]          d) dν = (x² − 1) dx on [−2, 2]
+    e) dν = cos x dx on [0, 3π/2]        f) dν = (x − 1)e⁻ˣ dx on [0, ∞)
+    g) dν = x e^(−x²) dx on R            h) ν = m|[0,1] − δ_{1/2}
+    i) ν = m|[0,2] − m|[1,3]
+    j) ν = ∑_{n≥1} (−1)ⁿ2⁻ⁿ δₙ on N (also give ν(N))
+    k) dν = (x − ½) dx on [0, 1]
+    l) ν = δ₀ − δ₁ on [0, 1]: all possible P
+    m) complex dν = e^(ix) dx on [0, 2π]: |ν|(X) and ν(X)
+    n) complex ν = (1 + i)δ₀ + 3iδ₁: |ν|(X)
+    o) Is ν(A) = ∑_{n∈A} (−1)ⁿ/n on 𝒫(N) a signed measure?
+    Answers:
+      a) {0, 2}; 3, 3, 6               b) [0, 2]; 2, 1/2, 5/2
+      c) [0, π]; 2, 2, 4               d) {|x| ≥ 1}; 8/3, 4/3, 4
+      e) [0, π/2]; 1, 2, 3             f) [1, ∞); 1/e, 1/e, 2/e ≈ 0.73576
+      g) [0, ∞); 1/2, 1/2, 1           h) [0, 1] ∖ {1/2}; 1, 1, 2
+      i) [0, 1); 1, 1, 2 (Jordan is minimal: not 2, 2, 4)
+      j) evens; 1/3, 2/3, 1; ν(N) = −1/3
+      k) [1/2, 1]; 1/8, 1/8, 1/4
+      l) any P with 0 ∈ P, 1 ∉ P (Hahn is unique only up to |ν|-null
+         sets)
+      m) 2π and 0                      n) √2 + 3 ≈ 4.41421
+      o) no: ν(evens) = +∞ and ν(odds) = −∞
+
+M4. For each pair write ν ≪ μ only, μ ≪ ν only, EQUIVALENT (both), ⊥, or
+    NEITHER (m = Lebesgue measure).
+    a) ν = e^(−x²) dx, μ = m on R        b) ν = δ₀, μ = m
+    c) ν = m|[0,1], μ = m|[0,2]          d) ν = m|[0,1], μ = m|[1,2]
+    e) ν = m|[0,2], μ = m|[1,3]          f) ν = Cantor measure, μ = m|[0,1]
+    g) ν = ∑2⁻ⁿδ_{qₙ} (qₙ all rationals), μ = m
+    h) ν = counting on Z, μ = ∑_{n∈Z} 2^(−|n|)δₙ
+    i) ν = m, μ = counting measure on R
+    j) ν = N(0, 1), μ = Cauchy           k) ν = N(0, 1), μ = N(5, 4)
+    l) ν = uniform[0, 1], μ = Exp(1)     m) ν = δ₀ + m|[0,1], μ = m|[0,1]
+    n) ν = m² on [0, 1]², μ = length on the diagonal
+    o) ν = law of U², μ = law of U (U uniform on [0, 1])
+    p) ν = Bin(3, ½), μ = Poisson(1)
+    Answers:
+      a) equivalent        b) ⊥             c) ν ≪ μ only
+      d) ⊥ (they share only {1}, a null set for both)
+      e) neither           f) ⊥             g) ⊥
+      h) equivalent        i) ν ≪ μ only (no density: μ not σ-finite)
+      j) equivalent        k) equivalent    l) ν ≪ μ only
+      m) μ ≪ ν only        n) ⊥             o) equivalent
+      p) ν ≪ μ only (Poisson charges {4, 5, ...})
+
+M5. Radon-Nikodym derivatives: find dν/dμ (or say none exists).
+    a) μ = m on [0, 1], ν(A) = ∫_A 5x⁴ dx
+    b) μ = m on R, ν = N(0, 1)          c) μ = N(0, 1), ν = m
+    d) μ = N(0, 1), ν = N(1, 1)         e) μ = e⁻ˣdx, ν = 2e^(−2x)dx on
+                                           [0, ∞)
+    f) μ = ∑_{n≥1} 2⁻ⁿδₙ, ν = ∑_{n≥1} 3⁻ⁿδₙ
+    g) μ = δ₀ + δ₁ + 2δ₂, ν = 3δ₀ + δ₂
+    h) μ = m on (0, 1), ν = law of x² under m on (0, 1)
+    i) μ = m on (0, ∞), ν = law of −ln U (U uniform on (0, 1))
+    j) μ = m on [0, 1], ν = μ_F with F(x) = x² + x
+    k) μ = m, ν = μ_F with F = arctan
+    l) dλ/dν = 2x, dν/dμ = 3x²: dλ/dμ
+    m) dν/dμ = 1 + x²: dμ/dν
+    n) μ = m² on [0, 1]², ν = 2m²|_{x<y}
+    o) μ = Poisson(1), ν = Poisson(λ) on {0, 1, 2, ...}
+    p) μ = Bin(2, ½), ν = Bin(2, p) on {0, 1, 2}
+    q) μ = m on [0, 1], ν = δ_{1/2}
+    Answers:
+      a) 5x⁴            b) e^(−x²/2)/√(2π)     c) √(2π) e^(x²/2)
+      d) e^(x − 1/2)    e) 2e⁻ˣ                f) (2/3)ⁿ at n
+      g) 3 at 0, 0 at 1, 1/2 at 2               h) 1/(2√y)
+      i) e^(−y) on (0, ∞) (Exp(1))              j) 2x + 1
+      k) 1/(1 + x²)     l) 6x³                 m) 1/(1 + x²)
+      n) 2𝟙_{x<y}       o) λᵏe^(1−λ) at k
+      p) 4(1 − p)², 4p(1 − p), 4p² at 0, 1, 2
+      q) none: ν({1/2}) = 1 but m({1/2}) = 0
+
+M6. Lebesgue decomposition relative to m on R: give the absolutely
+    continuous part (as a density), the pure point part and the singular
+    continuous part (write 0 if absent).
+    a) μ_F, F(x) = max(0, min(x, 1))    b) μ_F, F = 𝟙_[0,∞)
+    c) μ_F, F(x) = ⌊x⌋                   d) μ_F, F(x) = x + ⌊x⌋
+    e) μ_F, F = Cantor function (0 on (−∞, 0], 1 on [1, ∞))
+    f) μ_F, F = Cantor function + max(0, min(x, 1))
+    g) μ_F, F(x) = x² for x ≥ 0, 0 for x < 0, plus 3·𝟙_[1,∞)(x)
+    h) law of max(U, 1/2), U uniform on [0, 1]
+    i) law of U·B, U uniform[0, 1], B independent, P(B = 0) = P(B = 1) = ½
+    j) ½N(0, 1) + ½δ₀
+    k) law of ∑ εₙ2⁻ⁿ, εₙ independent fair bits
+    l) law of ∑ 2εₙ3⁻ⁿ, εₙ independent fair bits
+    m) law of ∑ εₙ2⁻ⁿ, P(εₙ = 1) = 1/3
+    n) sin²x dx + δ_π
+    o) law of U + ⌊2U⌋ (U uniform on [0, 1])
+    p) (in R²) m² + arc length on the unit circle: which part is singular?
+    Answers:
+      a) 𝟙_[0,1]; 0; 0                  b) 0; δ₀; 0
+      c) 0; ∑_{n∈Z} δₙ; 0              d) 1; ∑_{n∈Z} δₙ; 0
+      e) 0; 0; μ_c                      f) 𝟙_[0,1]; 0; μ_c
+      g) 2x𝟙_{x≥0}; 3δ₁; 0              h) 𝟙_(1/2,1]; ½δ_{1/2}; 0
+      i) ½𝟙_[0,1]; ½δ₀; 0               j) ½ e^(−x²/2)/√(2π); ½δ₀; 0
+      k) 𝟙_[0,1] (uniform); 0; 0        l) 0; 0; Cantor measure
+      m) 0; 0; singular continuous (lives on the numbers whose binary
+         digits have frequency 1/3 of ones — a null set by the SLLN)
+      n) sin²x; δ_π; 0
+      o) 𝟙_[0,1/2) + 𝟙_[3/2,2); 0; 0 (a jump in the map, not in the law)
+      p) arc length (⊥ m², no atoms)
+
+M7. Hardy-Littlewood maximal functions on R: Mf(x) = sup_{r>0} (1/2r)
+    ∫_{x−r}^{x+r}|f| (centred) unless stated; f = 𝟙_[0,1] unless stated.
+    a) Mf(3)          b) Mf(1/2)        c) Mf(0)          d) Mf(−1)
+    e) m{Mf > 1/4}    f) m{Mf > 3/4}    g) m{Mf > 1/10}
+    h) the uncentred M̃f(3) (sup over all intervals containing 3)
+    i) f = 𝟙_[−1,1]: Mf(3)
+    j) f = |x|^(−1/2)𝟙_{|x|≤1}: Mf(0)
+    k) f ≡ c (constant): Mf            l) f(x) = x: Mf
+    m) ‖Mf‖₂² (compare ‖f‖₂² = 1)
+    n) sup_{t>0} t·m{Mf > t} (the weak-L¹ size of Mf)
+    o) the dyadic maximal function of 𝟙_[0,1) at x = 3
+    p) Is Mf ∈ L¹(R) for some non-zero f ∈ L¹(R)?
+    q) Is {Mf > t} always open?        r) Is Mf ≥ |f| a.e.?
+    Answers:
+      a) 1/6       b) 1         c) 1/2       d) 1/4
+      e) 3 (the interval (−1, 2))       f) 1     g) 9
+      h) 1/3 (interval [0, 3])          i) 1/4 (in general a/(|x| + a))
+      j) ∞ (averages 2/√r)              k) |c|   l) ≡ ∞
+      m) 1 + 2∫₁^∞ dx/(4x²) = 3/2       n) 1 (= ‖f‖₁; not attained)
+      o) 1/4 (the interval [0, 4))      p) no (Mf ≥ c/|x| at infinity)
+      q) yes (Mf is lower semicontinuous)
+      r) yes (Lebesgue differentiation theorem)
+
+M8. Lebesgue points, densities and derivatives of measures (limits as
+    r → 0⁺; balls/intervals centred at the given point).
+    a) (1/2r)∫_{−r}^{r} cos x dx      b) (1/2r)∫_{−r}^{r} 𝟙_[0,∞)
+    c) Is 0 a Lebesgue point of 𝟙_[0,∞)?
+    d) Is 0 a Lebesgue point of 𝟙_Q (value 1 at 0)? of the function 0?
+    e) density of [0, 1] at 0; at 1/2
+    f) density of {|y| < x} ⊆ R² at the origin
+    g) density of {y > x²} at the origin   h) density of {|y| < x²}
+    i) density of the Cantor set at a point of the Cantor set
+    j) density of a fat Cantor set F at a.e. point of F
+    k) ν = δ₀ + m: ν(x − r, x + r)/(2r) at x = 0; at x = 1
+    l) Cantor measure μ_c: μ_c([x − r, x + r])/(2r) at x = 1/2; at x = 0
+       along r = 3⁻ᵏ
+    m) (1/πr²)∬_{B(0,r)} e^(x+y) dA
+    n) (1/h)∫₁^{1+h} 𝟙_[0,1] as h → 0⁺; (1/h)∫_{1−h}^{1} 𝟙_[0,1] as h → 0⁺
+    o) (1/2r)∫_{−r}^{r} |sin(1/x)| dx
+    p) E = ⋃_{k≥0} (2^(−2k−1), 2^(−2k)]: the ratio m(E ∩ (0, r))/r at
+       r = 4⁻ᵏ and at r = 2·4⁻ᵏ⁻¹; does the density at 0 exist?
+    q) ν = x² dx + δ₁: the derivative Dν(x) = lim ν(B(x, r))/(2r)
+    Answers:
+      a) 1         b) 1/2       c) no (a jump)
+      d) no (averages of |f − 1| are 1); yes — Lebesgue points depend on
+         the representative
+      e) 1/2; 1    f) 1/4       g) 1/2       h) 0
+      i) 0 (m(C) = 0)           j) 1 (though F contains no interval)
+      k) ∞; 1      l) 0; (3/2)ᵏ/2 → ∞        m) 1
+      n) 0; 1      o) 2/π ≈ 0.63662
+      p) 2/3 and 1/3: the density does not exist
+      q) x² for x ≠ 1, ∞ at x = 1
+
+M9. Total variation T_F on the given interval; then classify: AC
+    (absolutely continuous), BV but not AC, or not BV.
+    a) x² on [−1, 2]                  b) sin x on [0, 2π]
+    c) x³ − 3x on [−2, 2]              d) ⌊x⌋ on [0, 3.5]
+    e) the Cantor function on [0, 1]   f) √x on [0, 1]
+    g) x sin(1/x) on [0, 1]            h) x² sin(1/x) on [0, 1]
+    i) x² sin(1/x²) on [0, 1]          j) 𝟙_Q on [0, 1]
+    k) |x| on [−1, 1]                  l) x e⁻ˣ on [0, ∞)
+    m) cos(πx) on [0, 3]               n) x^(1/3) on [−1, 1]
+    o) ∫₀ˣ sgn(sin(1/t)) dt on [0, 1]
+    p) F(x) = ∑_{qₙ<x} 2⁻ⁿ on [0, 1] (qₙ an enumeration of Q ∩ (0, 1))
+    q) the positive and negative variations of sin x on [0, 2π]
+    Answers:
+      a) 5, AC          b) 4, AC           c) 12, AC
+      d) 3, BV not AC (jumps)              e) 1, BV not AC (continuous!)
+      f) 1, AC (not Lipschitz)             g) not BV (∑1/k diverges)
+      h) finite, AC (|F′| ≤ 3: Lipschitz)
+      i) not BV (differentiable everywhere, but ∫|F′| = ∞)
+      j) not BV         k) 2, AC           l) 2/e ≈ 0.73576, AC
+      m) 6, AC          n) 2, AC           o) 1, AC (|F′| = 1 a.e.)
+      p) 1, BV not AC (increasing, discontinuous at every rational,
+         F′ = 0 a.e.)
+      q) 2 and 2
+
+M10. Riesz representation: find the (signed/complex) measure μ with Λf =
+     ∫f dμ and the requested quantities (m = Lebesgue measure).
+     a) Λf = f(2) on C_c(R)
+     b) Λf = ∫₀¹ f dx + f(1/2): μ([0, 1/2])
+     c) Λf = ∑_{n≥1} 2⁻ⁿf(1/n) on C[0, 1]: μ({1}), μ([0, 1/3])
+     d) Λf = ∫₀¹ f(x²) dx on C[0, 1]: the density; μ([0, 1/4])
+     e) Λf = ∫₀¹ f(c(x)) dx, c the Cantor function: μ({1/2}), μ({1/4})
+     f) Λf = ∫_R f(x) e^(−x²) dx: μ(R)
+     g) Λf = f(0)² on C_c(R)            h) Λf = f′(0) on C_c¹(R)
+     i) Λf = ∫₀¹ f dx − f(1) on C[0, 1]: ‖Λ‖
+     j) Λf = f(0) − 2f(1) + ∫₀¹ x f(x) dx: ‖Λ‖
+     k) Λf = ∫₀¹ f(x) sin(2πx) dx: ‖Λ‖
+     l) Λf = ∫₀^{2π} f(x) e^(ix) dx (complex): ‖Λ‖
+     m) Λf = (f(0) + f(1))/2 − f(1/2): ‖Λ‖
+     n) Λf = ∫₀¹ f dF (Riemann-Stieltjes), F(x) = x + 𝟙_[1/2,1](x): μ,
+        ‖Λ‖
+     o) Λf = ∫_R f dx: μ((0, 1)) = sup{Λf : f ≺ (0, 1)} and μ([0, 1]) =
+        inf{Λf : f ≥ 𝟙_[0,1]}
+     Answers:
+       a) δ₂              b) m|[0,1] + δ_{1/2}; 3/2
+       c) ∑2⁻ⁿδ_{1/n}; 1/2, 1/4
+       d) 1/(2√y) on (0, 1]; 1/2
+       e) purely atomic (the plateaus of c): 1/3, 1/9
+       f) e^(−x²) dx; √π ≈ 1.77245
+       g) none (not linear)
+       h) none (not bounded in the sup norm; a distribution of order 1)
+       i) m − δ₁; 2       j) δ₀ − 2δ₁ + x dx; 7/2
+       k) 2/π ≈ 0.63662   l) 2π              m) 2
+       n) m|[0,1] + δ_{1/2}; 2                o) 1 and 1
+
+M11. Weak-* convergence of measures on R (test functions f ∈ C₀(R)):
+     find the limit of μₙ, or the requested limit.
+     a) δ_{1/n}                          b) δₙ
+     c) (1/n)∑_{k=1}^{n} δ_{k/n}         d) n𝟙_[0,1/n] dx
+     e) (1/2n)𝟙_[−n,n] dx                f) N(0, 1/n)
+     g) (1 + sin nx)𝟙_[0,2π] dx          h) n xⁿ⁻¹𝟙_[0,1] dx
+     i) ½(δ_{−1/n} + δ_{1/n})            j) n(δ_{1/n} − δ₀)
+     k) normalised Lebesgue measure on the n-th Cantor stage Cₙ
+     l) Bin(n, λ/n)
+     m) lim ∫x² dμₙ for μₙ as in c)
+     n) lim ∫cos x dμₙ for μₙ = N(0, 1/n)
+     o) μₙ = (1 − 1/n)δ₀ + (1/n)δₙ: the limit, and lim ∫x dμₙ
+     p) μₙ = law of sin(nU), U uniform on [0, 2π]
+     q) Does every sequence of probability measures on [0, 1] have a
+        weak-* convergent subsequence? Is the limit a probability
+        measure?
+     Answers:
+       a) δ₀        b) 0 (mass escapes to ∞)     c) m|[0,1]
+       d) δ₀        e) 0                         f) δ₀
+       g) 𝟙_[0,2π] dx (Riemann-Lebesgue)          h) δ₁
+       i) δ₀
+       j) no limit measure (‖μₙ‖ = 2n); ∫f dμₙ → f′(0) for f ∈ C¹ — the
+          distribution −δ₀′
+       k) the Cantor measure μ_c          l) Poisson(λ)
+       m) 1/3       n) 1 (= lim e^(−1/(2n)))
+       o) δ₀ (even narrowly); ∫x dμₙ = 1 for all n but ∫x dδ₀ = 0
+       p) the arcsine law dy/(π√(1 − y²)) on (−1, 1) for every n
+       q) yes (Helly, or Banach-Alaoglu with C[0, 1]* = M[0, 1]); yes,
+          because [0, 1] is compact (f ≡ 1 is a test function)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) The Carathéodory measure of an outer measure is complete.
+     b) Two measures on σ(𝒫) agreeing on a π-system 𝒫 are equal.
+     c) Two finite measures agreeing on a π-system 𝒫 ∋ X are equal on
+        σ(𝒫).
+     d) If ν ≪ μ then ν = f dμ for some measurable f ≥ 0.
+     e) If ν ≪ μ, both σ-finite, dν/dμ is unique μ-a.e.
+     f) ν ≪ μ ⇔ the ε-δ condition, for every measure ν.
+     g) A measure without atoms is absolutely continuous w.r.t. m.
+     h) Every finite Borel measure on R is regular.
+     i) If f ∈ L¹(R) then Mf ∈ L¹(R).
+     j) A continuous increasing F with F′ = 0 a.e. is constant.
+     k) Every everywhere-differentiable F on [0, 1] is AC.
+     l) If F is differentiable everywhere on [a, b] and F′ ∈ L¹, then
+        F(b) − F(a) = ∫ₐᵇ F′.
+     m) Every Lipschitz function is AC.
+     n) Every AC function on [0, 1] is Lipschitz.
+     o) The composition of two AC functions on [0, 1] is AC.
+     p) (L^∞[0, 1])* = L¹[0, 1].
+     q) (L¹(μ))* = L^∞(μ) for every measure μ.
+     r) C₀(R)* is isometric to the finite signed Radon measures with the
+        total variation norm.
+     s) A weak-* limit in C₀(R)* of probability measures is a
+        probability measure.
+     t) Every λ-system is a σ-algebra.
+     u) At a.e. point of R a measurable set E has density 0 or 1.
+     v) If μ is finite Borel and μ ⊥ m, then μ(x − r, x + r)/(2r) → 0 for
+        m-a.e. x.
+     Answers:
+       a) T
+       b) F: #(· ∩ Q) and 2#(· ∩ Q) on the intervals (a, b]
+       c) T
+       d) F: m ≪ counting measure on [0, 1] (not σ-finite)
+       e) T         f) F: dν = dx/x on (0, 1)
+       g) F: the Cantor measure         h) T
+       i) F: 𝟙_[0,1] (Mf ~ 1/(2|x|))   j) F: the Cantor function
+       k) F: x² sin(1/x²) (not BV)
+       l) T (a theorem; the hard case of the FTC)
+       m) T         n) F: √x
+       o) F: √x ∘ x² sin²(1/x) = |x sin(1/x)|, not BV
+       p) F: a Hahn-Banach extension of f ↦ f(0) (D8)
+       q) F: X = {a}, μ{a} = ∞: L¹ = {0} but L^∞ = R
+       r) T (Riesz)  s) F: δₙ → 0     t) F: M2 d)
+       u) T (Lebesgue density theorem)
+       v) T (singular parts have derivative 0 a.e.)
+
+TEACHING TIPS
+  Struggling: keep three pictures on the board — a DENSITY (a smooth hill,
+  ≪ m), an ATOM (a spike δₓ) and the CANTOR "devil's staircase" (a
+  continuous measure living on a null set) — and classify every measure
+  into these three pieces before computing anything; most Radon-Nikodym
+  and Lebesgue-decomposition questions are then just "read off the
+  density, list the atoms, look for a Cantor-like remainder". Insist on
+  checking σ-finiteness before quoting uniqueness or Radon-Nikodym, and
+  finiteness before quoting ε-δ or continuity from above. For total
+  variations, split into monotone pieces or use ∫|F′| only after checking
+  AC. For Riesz, always ask "which points are evaluated, which parts are
+  integrated?" and remember that dual norms are total variations. Harder:
+  prove the Hahn decomposition via the lemma in D4 in full detail; prove
+  Riesz-Markov-Kakutani from Urysohn's lemma and partitions of unity;
+  prove the Besicovitch or Vitali covering theorem for Radon measures and
+  deduce differentiation of arbitrary Radon measures on Rⁿ; show that a
+  function F is AC iff it is continuous, BV and maps null sets to null
+  sets (Banach-Zarecki); prove (Lᵖ)* = L^q without R-N via uniform
+  convexity; and show that M(X) is the dual of C₀(X) but C₀(X) is not
+  reflexive unless X is finite.
+
+
+================================================================================
+TOPIC 12.2 — FUNCTIONAL ANALYSIS II: WEAK TOPOLOGIES, COMPACT OPERATORS,
+SPECTRAL THEORY, BANACH ALGEBRAS, DISTRIBUTIONS AND SOBOLEV SPACES
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - WEAK TOPOLOGY σ(X, X*): the weakest topology making every f ∈ X*
+    continuous; xₙ ⇀ x ⇔ f(xₙ) → f(x) for all f ∈ X*. Weakly convergent
+    sequences are BOUNDED (uniform boundedness) and ‖x‖ ≤ lim inf ‖xₙ‖
+    (weak lower semicontinuity of the norm). Standard examples: eₙ ⇀ 0 in
+    ℓᵖ (1 < p < ∞) and c₀ but not in norm; sin(nx) ⇀ 0 in L²(0, 2π)
+    (Riemann-Lebesgue); in a Hilbert space xₙ ⇀ x and ‖xₙ‖ → ‖x‖ ⇒
+    xₙ → x. SCHUR: in ℓ¹ weak and norm convergence of SEQUENCES coincide.
+    In infinite dimension the weak topology is not metrisable and the
+    weak closure of the unit sphere is the closed unit ball.
+  - MAZUR: a convex set is norm-closed iff weakly closed; hence a weak
+    limit is a norm limit of CONVEX COMBINATIONS (e.g. (e₁ + ... + eₙ)/n
+    → 0 in ℓ², norm 1/√n). Weakly lower semicontinuous convex functionals
+    attain their minimum on weakly compact sets (direct method).
+  - WEAK* TOPOLOGY σ(X*, X): fₙ →* f ⇔ fₙ(x) → f(x) for every x ∈ X.
+    BANACH-ALAOGLU: the closed unit ball of X* is weak* compact (weak*
+    SEQUENTIALLY compact if X is separable). δ_{1/n} →* δ₀ in C[0, 1]* but
+    ‖δ_{1/n} − δ₀‖ = 2. Duals: c₀* = ℓ¹, (ℓ¹)* = ℓ^∞, (ℓᵖ)* = ℓ^q, (L¹)* =
+    L^∞, C(K)* = M(K) (Riesz), (ℓ^∞)* ⊋ ℓ¹.
+  - REFLEXIVITY: J : X → X** onto. X is reflexive ⇔ its closed unit ball
+    is weakly compact (Kakutani) ⇔ every bounded sequence has a weakly
+    convergent subsequence (Eberlein-Šmulian). Reflexive: Hilbert spaces,
+    ℓᵖ, Lᵖ, W^{k,p} (1 < p < ∞), finite-dimensional spaces. Not: c₀, ℓ¹,
+    ℓ^∞, C[0, 1], L¹, L^∞. GOLDSTINE: J(B_X) is weak* dense in B_{X**}.
+  - COMPACT OPERATORS: T ∈ K(X, Y) if T maps bounded sets to relatively
+    compact sets (⇔ every bounded (xₙ) has (Txₙ) with a convergent
+    subsequence). K(X) is a closed two-sided ideal in B(X); finite-rank
+    operators and their norm limits are compact (on a Hilbert space these
+    are ALL the compact operators); SCHAUDER: T compact ⇔ T* compact.
+    Compact operators map weakly convergent sequences to norm convergent
+    ones. diag(dₙ) on ℓ² is compact ⇔ dₙ → 0; I is compact ⇔ dim < ∞.
+  - HILBERT-SCHMIDT OPERATORS: ∑‖Teₖ‖² < ∞; an integral operator with
+    kernel k ∈ L²(Ω × Ω) is Hilbert-Schmidt with ‖T‖ ≤ ‖T‖_HS =
+    ‖k‖_{L²}, hence compact. Volterra Vf(x) = ∫₀ˣ f: compact, ‖V‖ = 2/π,
+    ‖V‖_HS = 1/√2, σ(V) = {0}, no eigenvalues (quasinilpotent).
+  - RIESZ-SCHAUDER THEORY: for T compact on a Banach space and λ ≠ 0,
+    ker(T − λ) is finite-dimensional, ran(T − λ) is closed, and
+    FREDHOLM ALTERNATIVE: T − λ is injective ⇔ surjective; the equation
+    (λ − T)f = g is solvable ⇔ g ⊥ ker(λ̄ − T*). σ(T) ∖ {0} consists of
+    eigenvalues of finite multiplicity accumulating at most at 0; 0 ∈ σ(T)
+    if dim X = ∞. FREDHOLM OPERATORS: dim ker, codim ran finite; index
+    ind(A) = dim ker A − codim ran A is stable under compact perturbation
+    (ind(I − K) = 0, ind(right shift) = −1).
+  - SPECTRUM, FINER: σ(T) = σ_p (T − λ not injective) ∪ σ_c (injective,
+    range dense but not all of X) ∪ σ_r (injective, range not dense).
+    Right shift S on ℓ²: σ = D̄, σ_p = ∅, σ_r = open disc D, σ_c = unit
+    circle; left shift: σ_p = D; M_x on L²[0, 1]: σ = σ_c = [0, 1]. For
+    normal T: r(T) = ‖T‖, σ_r = ∅, and ‖(T − λ)⁻¹‖ = 1/dist(λ, σ(T)).
+  - SPECTRAL THEOREM (COMPACT SELF-ADJOINT): H has an orthonormal basis of
+    eigenvectors, T = ∑λₖ⟨·, eₖ⟩eₖ with real λₖ → 0, ‖T‖ = max|λₖ|
+    (min-max / Rayleigh quotient); for a continuous positive kernel,
+    MERCER: k(x, y) = ∑λₖeₖ(x)eₖ(y) and ∑λₖ = ∫k(x, x) dx. Example
+    min(x, y) on [0, 1]: λₖ = 1/((k − ½)²π²), eₖ = √2 sin((k − ½)πx).
+  - SPECTRAL THEOREM (BOUNDED SELF-ADJOINT / NORMAL): T is unitarily
+    equivalent to a multiplication operator M_φ on some L²(μ); equivalently
+    T = ∫λ dE(λ) for a projection-valued measure E on σ(T). CONTINUOUS
+    FUNCTIONAL CALCULUS f ↦ f(T), an isometric *-homomorphism C(σ(T)) →
+    B(H) with ‖f(T)‖ = sup_{σ(T)}|f|; SPECTRAL MAPPING σ(f(T)) = f(σ(T)).
+    Positive square root, |T| = (T*T)^(1/2), polar decomposition T = U|T|.
+    Unbounded self-adjoint operators (−d²/dx² on L²(R): σ = [0, ∞)) have
+    real spectrum; −i d/dx on L²(0, 2π) periodic: σ = Z.
+  - BANACH ALGEBRAS: complex algebra with ‖ab‖ ≤ ‖a‖‖b‖, unit ‖1‖ = 1.
+    The invertibles G(A) are open (1 − a invertible if ‖a‖ < 1, Neumann
+    series); σ(a) is compact and NON-EMPTY (Liouville applied to the
+    resolvent); SPECTRAL RADIUS FORMULA r(a) = lim ‖aⁿ‖^(1/n) =
+    inf ‖aⁿ‖^(1/n). GELFAND-MAZUR: a complex Banach division algebra is C
+    (real: R, C, H). The spectrum depends on the algebra: z has spectrum
+    D̄ in the disc algebra A(D) but the circle T in C(T).
+  - GELFAND THEORY (commutative, unital): characters φ : A → C ↔ maximal
+    ideals ker φ; the maximal ideal space Δ is weak* compact; the GELFAND
+    TRANSFORM â(φ) = φ(a) satisfies σ(a) = â(Δ), ‖â‖_∞ = r(a). Examples:
+    C(K): Δ = K; ℓ¹(Z) (convolution): Δ = T, â = ∑aₙzⁿ; ℓ¹(N₀): Δ = D̄;
+    L¹(R) (no unit): Δ = R, â = Fourier transform. WIENER'S LEMMA: a
+    non-vanishing absolutely convergent Fourier series has an absolutely
+    convergent reciprocal.
+  - C*-ALGEBRAS: Banach *-algebra with ‖a*a‖ = ‖a‖². r(a) = ‖a‖ for normal
+    a; spectrum does not depend on the C*-subalgebra (spectral
+    permanence). GELFAND-NAIMARK: a commutative unital C*-algebra is
+    isometrically *-isomorphic to C(Δ); every C*-algebra is a closed
+    *-subalgebra of some B(H). ℓ¹(Z) is a Banach *-algebra but not C*.
+  - DISTRIBUTIONS: test functions D(Ω) = C_c^∞(Ω) with the inductive-limit
+    topology; T ∈ D′(Ω) is linear with |T(φ)| ≤ C_K ∑_{|α|≤N}‖∂^αφ‖_∞ on
+    each compact K (ORDER ≤ N). Regular distributions T_f (f ∈ L¹_loc),
+    δ (order 0), δ′ (order 1), p.v. 1/x (order 1). DERIVATIVE ⟨∂^αT, φ⟩ =
+    (−1)^{|α|}⟨T, ∂^αφ⟩, always defined: H′ = δ, |x|″ = 2δ,
+    (log|x|)′ = p.v. 1/x. Multiplication by C^∞ functions: xδ = 0,
+    xδ′ = −δ, x · p.v. 1/x = 1; products of two distributions are not
+    defined in general. SUPPORT; distributions supported at {0} are
+    ∑_{finite} cₖδ^(k); compactly supported ones have finite order.
+    Convergence in D′ is pointwise on test functions: n𝟙_[0,1/n] → δ,
+    sin(nx) → 0, sin(nx)/(πx) → δ.
+  - TEMPERED DISTRIBUTIONS AND FOURIER: S(Rⁿ) Schwartz space, S′ its dual;
+    f̂(ξ) = ∫f(x)e^(−ix·ξ) dx extends to S′ by ⟨T̂, φ⟩ = ⟨T, φ̂⟩: δ̂ = 1,
+    1̂ = 2πδ, (∂T)^ = iξT̂, (xT)^ = i∂_ξT̂, (sign x)^ = −2i p.v. 1/ξ,
+    (e^(−|x|))^ = 2/(1 + ξ²). PLANCHEREL ‖f̂‖₂² = 2π‖f‖₂² (n = 1).
+    FUNDAMENTAL SOLUTIONS PE = δ: d/dx: H; d²/dx²: |x|/2; −d²/dx² + k²:
+    e^(−k|x|)/(2k); Δ in R³: −1/(4π|x|); Δ in R²: (1/2π) log|x|; then
+    u = E * f solves Pu = f. MALGRANGE-EHRENPREIS: every constant-
+    coefficient P ≠ 0 has one.
+  - SOBOLEV SPACES: W^{k,p}(Ω) = {u ∈ Lᵖ : ∂^αu ∈ Lᵖ (weak derivatives)
+    for |α| ≤ k}, a Banach space (Hilbert for p = 2, H^k = W^{k,2});
+    H^s(Rⁿ) = {u : (1 + |ξ|²)^(s/2)û ∈ L²} for real s; W^{k,p}_0 = closure
+    of C_c^∞. |x|^α ∈ W^{1,p}(B₁ ⊂ Rⁿ) ⇔ α > 1 − n/p (or α = 0). Meyers-
+    Serrin: C^∞ ∩ W^{k,p} is dense. In 1D, W^{1,p}(a, b) functions are
+    absolutely continuous; the Heaviside function is not in W^{1,1}.
+  - SOBOLEV INEQUALITIES: GAGLIARDO-NIRENBERG-SOBOLEV W^{1,p}(Rⁿ) ⊂ L^{p*},
+    1/p* = 1/p − 1/n (p < n); MORREY W^{1,p} ⊂ C^{0,1−n/p} (p > n);
+    H^s(Rⁿ) ⊂ C₀ for s > n/2; the borderline p = n fails
+    (log log(e/|x|) ∈ H¹(B₁ ⊂ R²) is unbounded). RELLICH-KONDRACHOV:
+    H¹₀(Ω) ⊂ L²(Ω) is COMPACT for bounded Ω (false on R: translates).
+    POINCARÉ: ‖u‖₂ ≤ C‖∇u‖₂ on H¹₀(Ω), best C = λ₁^(−1/2) (L/π on
+    (0, L)). TRACE: H¹(Ω) → H^(1/2)(∂Ω) ⊂ L²(∂Ω). With LAX-MILGRAM these
+    give weak solutions of −Δu = f, u ∈ H¹₀ (see 12.13).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Show that the unit vectors eₙ converge weakly to 0 in ℓ² but not
+    in norm, and that they do not converge weakly in ℓ¹. (b) Show that
+    sin(nx) ⇀ 0 and sin²(nx) ⇀ 1/2 in L²(0, 2π). (c) Prove that
+    ‖x‖ ≤ lim inf ‖xₙ‖ when xₙ ⇀ x, and that in a Hilbert space xₙ ⇀ x
+    together with ‖xₙ‖ → ‖x‖ implies xₙ → x. (d) Illustrate Mazur's lemma
+    with eₙ.
+    Answer: (a) ⟨eₙ, y⟩ = yₙ → 0, ‖eₙ − eₘ‖ = √2; in ℓ¹ test with
+    (1, 1, 1, ...) ∈ ℓ^∞. (b) Riemann-Lebesgue. (c) Hahn-Banach and
+    ‖xₙ − x‖² = ‖xₙ‖² − 2Re⟨xₙ, x⟩ + ‖x‖² → 0. (d) ‖(e₁ + ... + eₙ)/n‖₂ =
+    1/√n → 0.
+    Teacher explains: (a) (ℓ²)* = ℓ² by Riesz, so eₙ ⇀ 0 means ⟨eₙ, y⟩ =
+    yₙ → 0 for every y ∈ ℓ², which holds because ∑|yₙ|² < ∞. But
+    ‖eₙ‖ = 1 ↛ 0, and ‖eₙ − eₘ‖ = √2 shows no subsequence is even Cauchy.
+    In ℓ¹ the dual is ℓ^∞; the functional f(x) = ∑xₖ, given by (1, 1, ...),
+    has f(eₙ) = 1, so the only possible weak limit is not 0; but testing
+    against the coordinate functionals forces the limit to be 0. So no
+    weak limit exists (Schur: in ℓ¹ weak convergence of a sequence is
+    norm convergence, and eₙ is not norm Cauchy). (b) For g ∈ L²(0, 2π) ⊂
+    L¹, ∫g(x) sin(nx) dx → 0 by the Riemann-Lebesgue lemma (or Bessel's
+    inequality: these are Fourier coefficients of g). Note ‖sin nx‖₂ = √π:
+    no norm convergence. sin²(nx) = ½ − ½cos(2nx) ⇀ ½. The weak limit of
+    a square is NOT the square of the weak limit (0² ≠ ½): weak limits
+    average out oscillations. (c) By Hahn-Banach choose f ∈ X* with
+    ‖f‖ = 1, f(x) = ‖x‖. Then ‖x‖ = lim f(xₙ) ≤ lim inf ‖xₙ‖. In a
+    Hilbert space, ‖xₙ − x‖² = ‖xₙ‖² − 2Re⟨xₙ, x⟩ + ‖x‖² → ‖x‖² − 2‖x‖² +
+    ‖x‖² = 0. (d) Mazur: a closed convex set is weakly closed, so 0 (a
+    weak limit of eₙ) lies in the norm closure of conv{eₙ, eₙ₊₁, ...};
+    concretely ‖(e₁ + ... + eₙ)/n‖₂ = √n/n = 1/√n → 0.
+    Common mistakes: thinking weak convergence preserves products or
+    norms; forgetting that in ℓ¹ one must use the dual ℓ^∞, not ℓ¹.
+    Now you try: find the weak limit of |sin(nx)| in L²(0, π). (the
+    average (1/π)∫₀^π |sin x| dx = 2/π)
+
+D2. (a) State the Banach-Alaoglu theorem. (b) Show δ_{1/n} →* δ₀ in
+    C[0, 1]* but not in norm. (c) Show that eₙ →* 0 in ℓ¹ = c₀*. (d) Use
+    the sequence sₙ = e₁ + ... + eₙ to prove that c₀ is not reflexive.
+    Answer: (a) B_{X*} is weak* compact. (b) f(1/n) → f(0) for f ∈ C[0, 1],
+    ‖δ_{1/n} − δ₀‖ = 2. (c) ⟨eₙ, x⟩ = xₙ → 0 for x ∈ c₀. (d) (sₙ) is
+    bounded but has no weakly convergent subsequence in c₀.
+    Teacher explains: (a) BANACH-ALAOGLU: for any normed X, the closed
+    unit ball of X* is compact in the weak* topology. Proof idea: B_{X*}
+    embeds in the product ∏_{x∈X} [−‖x‖, ‖x‖] (Tychonoff) as a closed
+    set. If X is separable, the ball is weak* metrisable, so every
+    bounded sequence in X* has a weak* convergent subsequence.
+    (b) C[0, 1]* = M[0, 1] (Riesz). For f ∈ C[0, 1], ⟨δ_{1/n}, f⟩ = f(1/n) →
+    f(0) by continuity: weak* convergence. In norm, ‖δ_a − δ_b‖ = |δ_a −
+    δ_b|([0, 1]) = 2 for a ≠ b (take f continuous, |f| ≤ 1, f(a) = 1,
+    f(b) = −1). (c) Here the predual is c₀, so we only test against x ∈
+    c₀: ⟨eₙ, x⟩ = xₙ → 0. So eₙ →* 0 in ℓ¹, although (D1) not weakly —
+    weak* is genuinely weaker than weak. (d) ‖sₙ‖_∞ = 1. For a ∈ ℓ¹ =
+    c₀*, ⟨a, sₙ⟩ = a₁ + ... + aₙ → ∑aₖ, so (sₙ) is weakly Cauchy and a
+    weak limit s would have coordinates sₖ = lim ⟨eₖ*, sₙ⟩ = 1, i.e.
+    s = (1, 1, ...) ∉ c₀. Every subsequence behaves the same way, so no
+    subsequence converges weakly in c₀. By Eberlein-Šmulian, c₀ is not
+    reflexive (and c₀** = ℓ^∞ ∋ (1, 1, ...)). Common mistakes: confusing
+    the weak topology of X* (tested against X**) with the weak* topology
+    (tested against X); claiming Alaoglu gives SEQUENTIAL compactness for
+    non-separable X (it fails in (ℓ^∞)*). Now you try: in ℓ^∞ = (ℓ¹)*,
+    what is the weak* limit of sₙ? ((1, 1, 1, ...))
+
+D3. Let dₙ be bounded scalars and T = diag(dₙ) on ℓ², Teₙ = dₙeₙ.
+    (a) Prove T is compact ⇔ dₙ → 0, computing ‖T − Tₙ‖ where Tₙ is the
+    truncation to the first n coordinates. (b) Prove that the compact
+    operators form a closed subspace of B(X, Y) (Y Banach). (c) For
+    dₙ = 1/n find σ(T) and classify its points.
+    Answer: (a) ‖T − Tₙ‖ = sup_{k>n}|dₖ|. (b) diagonal argument / ε-nets.
+    (c) σ(T) = {0} ∪ {1/n}: each 1/n an eigenvalue, 0 in σ_c.
+    Teacher explains: (a) (⇐) Tₙ has finite rank, hence is compact, and
+    (T − Tₙ)x = (0, ..., 0, dₙ₊₁xₙ₊₁, ...) so ‖T − Tₙ‖ = sup_{k>n}|dₖ| → 0.
+    By (b) T is compact. (⇒) If dₙ ↛ 0 there are ε > 0 and n₁ < n₂ < ...
+    with |d_{nⱼ}| ≥ ε. The bounded sequence e_{nⱼ} is mapped to d_{nⱼ}e_{nⱼ}
+    with ‖Te_{nⱼ} − Te_{nₖ}‖ ≥ ε√2: no convergent subsequence. (b) Let
+    Tₙ → T in norm, Tₙ compact, B the unit ball. Given ε, pick n with
+    ‖T − Tₙ‖ < ε/3 and a finite ε/3-net {Tₙx₁, ..., Tₙx_m} of Tₙ(B)
+    (totally bounded). For x ∈ B choose i with ‖Tₙx − Tₙxᵢ‖ < ε/3; then
+    ‖Tx − Txᵢ‖ < ε. So T(B) is totally bounded, and relatively compact
+    because Y is complete. (c) T − λ is diagonal with entries 1/k − λ; if
+    λ ∉ {0} ∪ {1/k} these are bounded away from 0 and the inverse is
+    bounded. Each 1/k is an eigenvalue (eigenvector eₖ) of multiplicity 1.
+    At λ = 0: T is injective, its range contains every finite sequence
+    (dense) but not (1/k) ∈ ℓ² (the preimage would be (1, 1, ...)), so
+    0 ∈ σ_c. This matches RIESZ-SCHAUDER: nonzero spectrum = eigenvalues
+    of finite multiplicity accumulating only at 0. Common mistakes: "T is
+    compact because Teₙ → 0" — this is NECESSARY (eₙ ⇀ 0 and compact maps
+    send weak to norm limits) but not sufficient for non-diagonal T,
+    because compactness concerns the whole unit ball; forgetting that
+    0 ∈ σ(T) for every compact T on an infinite-dimensional space. Now you
+    try: is diag(1/log(n + 1)) compact? (yes, 1/log(n + 1) → 0)
+
+D4. The Volterra operator on L²[0, 1] is Vf(x) = ∫₀ˣ f(y) dy.
+    (a) Show V is Hilbert-Schmidt and compute ‖V‖_HS. (b) Show σ(V) = {0}
+    and that V has no eigenvalues. (c) Compute ‖V‖ exactly.
+    Answer: (a) ‖V‖_HS = 1/√2 ≈ 0.70711. (b) ‖Vⁿ‖ ≤ 1/(n − 1)!, so
+    r(V) = 0; Vf = λf forces f = 0. (c) ‖V‖ = 2/π ≈ 0.63662.
+    Teacher explains: (a) V has kernel k(x, y) = 𝟙_{y<x}, and ∬k² =
+    area of the triangle = 1/2, so ‖V‖_HS = 1/√2 and V is compact.
+    (b) Vⁿ has kernel (x − y)^{n−1}/(n − 1)! on y < x, so by Cauchy-Schwarz
+    |Vⁿf(x)| ≤ ‖f‖₂/(n − 1)! and ‖Vⁿ‖ ≤ 1/(n − 1)!. Hence r(V) =
+    lim ‖Vⁿ‖^(1/n) = 0 and σ(V) = {0} (non-empty!). If Vf = λf with λ ≠ 0
+    then f = λ⁻¹Vf is continuous, then C¹, with f′ = f/λ and f(0) = 0, so
+    f = 0; if Vf = 0 then differentiating gives f = 0 a.e. So σ_p = ∅; the
+    range of V ⊇ C_c^∞(0, 1) is dense, so 0 ∈ σ_c. (c) ‖V‖² = ‖V*V‖, the
+    largest eigenvalue of the compact positive operator V*V, where
+    V*g(x) = ∫ₓ¹ g. Suppose V*Vf = μf, μ > 0, and put g = Vf, h = V*g.
+    Then h(1) = 0, h′ = −g, g(0) = 0, g′ = f. From μf = h: μf(1) = 0,
+    μf′ = −g so f′(0) = 0, and μf″ = −f. Thus f = cos(ωx), ω = μ^(−1/2),
+    with cos ω = 0: ω = (k − ½)π and μₖ = 1/((k − ½)²π²). The largest is
+    μ₁ = 4/π², so ‖V‖ = 2/π. Check: ∑μₖ = (4/π²)∑1/(2k − 1)² = (4/π²)(π²/8)
+    = 1/2 = ‖V‖_HS² ✓. Common mistakes: equating ‖V‖ with ‖V‖_HS (only
+    ‖V‖ ≤ ‖V‖_HS); concluding from r(V) = 0 that V = 0 (V is not normal).
+    Now you try: the norm of V on L¹[0, 1]. (sup_y ∫_y¹ dx = 1)
+
+D5. State the Fredholm alternative and use it to solve
+       f(x) − λ∫₀¹ xy f(y) dy = g(x)   on L²[0, 1].
+    (a) Solve for λ ≠ 3. (b) Solve for g ≡ 1, λ = 1. (c) Treat λ = 3.
+    Answer: (a) f = g + λx(∫₀¹ yg)/(1 − λ/3). (b) f = 1 + 3x/4. (c) solvable
+    ⇔ ∫₀¹ yg(y) dy = 0; then f = g + cx, c arbitrary.
+    Teacher explains: FREDHOLM ALTERNATIVE: for K compact and μ ≠ 0,
+    either (μ − K)f = g has a unique solution for every g, or (μ − K)f = 0
+    has non-trivial solutions; then the solutions of the homogeneous
+    adjoint equation form a space of the same finite dimension, and
+    (μ − K)f = g is solvable ⇔ g ⊥ ker(μ̄ − K*). Here K = rank one:
+    Kf = x⟨f, x⟩, whose only nonzero eigenvalue is ⟨x, x⟩ = 1/3 (eigen-
+    function x). The equation f − λKf = g means f = g + λcx with
+    c = ∫₀¹ yf(y) dy. Multiply by x and integrate: c = ∫yg + λc/3, so
+    (a) c = (∫₀¹ yg)/(1 − λ/3) for λ ≠ 3. (b) ∫y·1 dy = 1/2, c = (1/2)/(2/3)
+    = 3/4, f = 1 + 3x/4. Check: ∫₀¹ y(1 + 3y/4) dy = 1/2 + 1/4 = 3/4, and
+    f − x·(3/4) = 1 ✓. (c) For λ = 3 the equation for c reads c = ∫yg + c,
+    solvable iff ∫yg = 0 (g ⊥ x = kernel of the self-adjoint I − 3K), and
+    then c is free. Example g = 1 − 3x/2: f = 1 − 3x/2 + cx. Common
+    mistakes: dividing by 1 − λ/3 without checking; forgetting that
+    uniqueness fails exactly when solvability becomes conditional. Now you
+    try: solve f(x) − ½∫₀¹ f(y) dy = x. (f = x + 1/2)
+
+D6. Let T be the integral operator on L²[0, 1] with kernel k(x, y) =
+    min(x, y). (a) Show u = Tf solves −u″ = f, u(0) = 0, u′(1) = 0.
+    (b) Find all eigenvalues and eigenfunctions and write the spectral
+    decomposition of T. (c) Use Mercer's theorem to evaluate ∑1/(2k − 1)².
+    Answer: (a) differentiate twice. (b) λₖ = 1/((k − ½)²π²), eₖ(x) =
+    √2 sin((k − ½)πx), k ≥ 1; T = ∑λₖ⟨·, eₖ⟩eₖ, ‖T‖ = 4/π². (c) π²/8.
+    Teacher explains: (a) u(x) = ∫₀ˣ yf(y) dy + x∫ₓ¹ f(y) dy. Then u′(x) =
+    xf(x) + ∫ₓ¹ f − xf(x) = ∫ₓ¹ f, so u′(1) = 0, u(0) = 0, u″ = −f. So T is
+    the inverse of −d²/dx² with these boundary conditions (T is its
+    GREEN'S OPERATOR). (b) T is compact (continuous kernel, Hilbert-
+    Schmidt) and self-adjoint (symmetric real kernel), so the SPECTRAL
+    THEOREM gives an orthonormal eigenbasis with real eigenvalues → 0.
+    Tu = λu with λ ≠ 0 means u = λ⁻¹Tu is smooth, u(0) = 0, u′(1) = 0 and
+    −λu″ = u. So u = sin(ωx), ω = λ^(−1/2), cos ω = 0, ω = (k − ½)π. Also
+    ker T = 0 (Tf = 0 ⇒ f = −(Tf)″ = 0). Normalising, ∫₀¹ 2 sin² = 1. The
+    eigenvalues are 4/π², 4/(9π²), 4/(25π²), ... ≈ 0.40528, 0.04503, ...;
+    ‖T‖ = λ₁ = 4/π². (c) MERCER: a continuous symmetric kernel of a
+    POSITIVE operator has k(x, y) = ∑λₖeₖ(x)eₖ(y) uniformly and trace
+    ∑λₖ = ∫₀¹ k(x, x) dx = ∫₀¹ x dx = 1/2. Thus (4/π²)∑1/(2k − 1)² = 1/2
+    and ∑1/(2k − 1)² = π²/8, whence ζ(2) = (4/3)(π²/8) = π²/6. Also
+    ‖T‖_HS² = ∬min(x, y)² = 1/6 = ∑λₖ², giving ∑1/(2k − 1)⁴ = π⁴/96.
+    Common mistakes: forgetting to check that 0 is not an eigenvalue
+    before claiming the eigenvectors are a basis of all of L²; using
+    Mercer for kernels that are not positive. Now you try: the kernel
+    min(x, y) − xy (Dirichlet Green's function): eigenvalues and trace?
+    (1/(k²π²), k ≥ 1; trace ∫(x − x²) = 1/6, so ζ(2) = π²/6)
+
+D7. Let S be the right shift on ℓ²(N), S(x₁, x₂, ...) = (0, x₁, x₂, ...),
+    and L = S* the left shift. Find σ(S) and σ(L) and split each into
+    point, continuous and residual spectrum.
+    Answer: σ(S) = σ(L) = D̄ (closed unit disc). S: σ_p = ∅, σ_r = D (open
+    disc), σ_c = T (unit circle). L: σ_p = D, σ_c = T, σ_r = ∅.
+    Teacher explains: ‖S‖ = ‖L‖ = 1, so both spectra lie in D̄.
+    EIGENVALUES OF L: Lx = λx means x_{n+1} = λxₙ, so x = x₁(1, λ, λ², ...),
+    which lies in ℓ² iff |λ| < 1. So σ_p(L) = D. EIGENVALUES OF S: Sx = λx
+    gives 0 = λx₁ and xₙ = λx_{n+1}; for λ = 0, Sx = 0 ⇒ x = 0; for λ ≠ 0,
+    x₁ = 0 and then all xₙ = 0. So σ_p(S) = ∅. RESIDUAL PART OF S: for
+    |λ| < 1 put v = (1, λ̄, λ̄², ...) ∈ ℓ², so (L − λ̄)v = 0 and
+    ⟨(S − λ)x, v⟩ = ⟨x, (L − λ̄)v⟩ = 0 for all x: the range of S − λ is
+    orthogonal to v ≠ 0, not dense. As S − λ is injective, λ ∈ σ_r(S).
+    THE CIRCLE: the spectrum is closed, so T ⊆ σ(S). For |λ| = 1, S − λ is
+    injective, and its range is dense because (L − λ̄)v = 0 has no ℓ²
+    solution (|λ̄| = 1); so λ ∈ σ_c(S). For L: if |λ| < 1, λ ∈ σ_p(L); for
+    |λ| = 1, L − λ is injective and its range is dense since S − λ̄ is
+    injective (ran(L − λ)^⊥ = ker(S − λ̄) = 0): continuous spectrum. Here
+    σ_r(L) = ∅ matches the rule λ ∈ σ_r(T) ⇒ λ̄ ∈ σ_p(T*). Common mistakes:
+    believing an operator's spectrum is its set of eigenvalues (S has
+    none!); forgetting the conjugate λ̄ when passing to the adjoint. Now you
+    try: the spectrum of M_x on L²[0, 2] and its type. ([0, 2], all
+    continuous spectrum, no eigenvalues)
+
+D8. State the continuous functional calculus for a self-adjoint operator.
+    For A = [[2, 1], [1, 2]] compute the spectral projections, √A and e^A.
+    Prove that for normal T, ‖(T − λ)⁻¹‖ = 1/dist(λ, σ(T)), and evaluate it
+    for T = M_x on L²[0, 1] at λ = 2 and at λ = ½ + i/2.
+    Answer: P₃ = ½[[1, 1], [1, 1]], P₁ = ½[[1, −1], [−1, 1]];
+    √A = ½[[√3 + 1, √3 − 1], [√3 − 1, √3 + 1]] ≈ [[1.36603, 0.36603],
+    [0.36603, 1.36603]]; e^A = ½[[e³ + e, e³ − e], [e³ − e, e³ + e]];
+    resolvent norms 1 and 2.
+    Teacher explains: For T normal (e.g. self-adjoint) there is a unique
+    isometric *-homomorphism C(σ(T)) → B(H), f ↦ f(T), with 1 ↦ I and
+    t ↦ T; it satisfies ‖f(T)‖ = sup_{σ(T)}|f| and σ(f(T)) = f(σ(T)). For
+    a matrix, f(A) = ∑f(λ)P_λ over the eigenvalues. Here det(A − λ) =
+    (2 − λ)² − 1, so σ(A) = {1, 3}, eigenvectors (1, 1)/√2 for 3 and
+    (1, −1)/√2 for 1; P₃, P₁ as above, A = 3P₃ + P₁. Hence
+    √A = √3P₃ + P₁ and e^A = e³P₃ + eP₁, as stated; check (√A)² =
+    3P₃ + P₁ = A since P₃P₁ = 0. For the resolvent, f(t) = 1/(t − λ) is
+    continuous on σ(T) when λ ∉ σ(T), and f(T)(T − λ) = I, so
+    ‖(T − λ)⁻¹‖ = sup_{t∈σ(T)} 1/|t − λ| = 1/dist(λ, σ(T)). For M_x,
+    σ = [0, 1]: dist(2, [0, 1]) = 1 gives 1; dist(½ + i/2, [0, 1]) = ½
+    gives 2. For NON-normal operators only ≥ holds (the Volterra operator
+    has σ = {0}, yet ‖(V − λ)⁻¹‖ grows like e^(1/λ)/λ, not like 1/λ, as
+    λ ↓ 0). Common mistakes: taking square roots entrywise (√2 on the
+    diagonal is WRONG); forgetting that √ needs A ≥ 0 (σ ⊆ [0, ∞)). Now
+    you try: √[[5, 4], [4, 5]]. ([[2, 1], [1, 2]])
+
+D9. Let A be a complex unital Banach algebra. (a) Prove that σ(a) is
+    non-empty and deduce the Gelfand-Mazur theorem. (b) Verify the
+    spectral radius formula for a = [[1, 1], [0, 1]] ∈ M₂(C) with the
+    operator 2-norm. (c) Show that the spectrum of z is the closed disc in
+    the disc algebra A(D) but the circle in C(T).
+    Answer: (a) Liouville applied to λ ↦ f((a − λ)⁻¹), f ∈ A*.
+    (b) ‖aⁿ‖^(1/n) → 1 = r(a), although ‖a‖ = (1 + √5)/2 ≈ 1.61803.
+    (c) 1/(z − λ) ∈ A(D) ⇔ |λ| > 1; in C(T) ⇔ |λ| ≠ 1.
+    Teacher explains: (a) G(A) is open: if ‖1 − b‖ < 1 then b = 1 −
+    (1 − b) is invertible by the Neumann series; the resolvent R(λ) =
+    (a − λ)⁻¹ is analytic on the open set C ∖ σ(a), and for |λ| > ‖a‖,
+    ‖R(λ)‖ ≤ 1/(|λ| − ‖a‖) → 0. If σ(a) = ∅, then for each f ∈ A* the
+    function λ ↦ f(R(λ)) is entire and tends to 0, hence ≡ 0 (Liouville);
+    by Hahn-Banach R(λ) = 0, impossible for an invertible element. So
+    σ(a) ≠ ∅. GELFAND-MAZUR: if every non-zero element is invertible, pick
+    λ ∈ σ(a); a − λ is not invertible, so a − λ = 0, a = λ·1: A = C.
+    (Over R this fails: the quaternions H.) (b) aⁿ = [[1, n], [0, 1]], so
+    ‖aⁿ‖ ≥ n and ‖aⁿ‖ ≤ n + 1 (bounded by 1 + n); hence ‖aⁿ‖^(1/n) → 1 =
+    r(a) = max|eigenvalue|. ‖a‖² = largest eigenvalue of aᵀa =
+    [[1, 1], [1, 2]], i.e. (3 + √5)/2, so ‖a‖ = (1 + √5)/2: r(a) < ‖a‖
+    for this non-normal element. (c) z − λ is invertible in A(D) iff
+    1/(z − λ) is holomorphic in D and continuous on D̄ iff |λ| > 1; so σ =
+    D̄. In C(T) we only need z − λ ≠ 0 on |z| = 1: σ = T. In general if
+    A ⊂ B then σ_B(a) ⊆ σ_A(a) and ∂σ_A(a) ⊆ σ_B(a): passing to a
+    subalgebra can only "fill in holes". Common mistakes: writing r(a) =
+    ‖a‖ for all a; assuming spectrum is intrinsic to the element (it is,
+    for C*-subalgebras). Now you try: r of a = [[0, 2], [8, 0]]. (4:
+    a² = 16I, eigenvalues ±4)
+
+D10. (a) Determine the characters of ℓ¹(Z) (convolution) and its Gelfand
+     transform. (b) State Wiener's lemma. (c) Show a = 5δ₀ + 2δ₁ + 2δ₋₁ is
+     invertible in ℓ¹(Z), find σ(a), r(a) and a⁻¹. (d) With the involution
+     (a*)ₙ = conj(a₋ₙ), show ℓ¹(Z) is not a C*-algebra.
+     Answer: (a) φ_z(a) = ∑aₙzⁿ, |z| = 1; â is a Fourier series.
+     (b) non-vanishing absolutely convergent Fourier series ⇒ 1/f also.
+     (c) σ(a) = [1, 9], r(a) = 9 = ‖a‖, (a⁻¹)ₙ = (1/3)(−1/2)^|n|.
+     (d) a = δ₀ + δ₁ − δ₂: ‖a*a‖₁ = 5 ≠ 9 = ‖a‖₁².
+     Teacher explains: (a) A character φ is determined by z = φ(δ₁), since
+     δₙ = δ₁^{*n}. Characters have norm ≤ 1, so |z| ≤ ‖δ₁‖ = 1 and
+     |1/z| = |φ(δ₋₁)| ≤ 1: |z| = 1. Conversely each z ∈ T gives φ_z(a) =
+     ∑aₙzⁿ (multiplicative because it turns convolution into products).
+     So Δ = T and â(e^{iθ}) = ∑aₙe^{inθ}. (b) By Gelfand theory, a is
+     invertible ⇔ â never vanishes on Δ. If f(θ) = ∑aₙe^{inθ} with
+     ∑|aₙ| < ∞ has no zero, then a⁻¹ ∈ ℓ¹(Z) and 1/f = ∑(a⁻¹)ₙe^{inθ}:
+     WIENER'S LEMMA, proved without any estimate! (c) â(θ) = 5 + 4cos θ ∈
+     [1, 9], never 0: invertible, σ(a) = â(T) = [1, 9], r(a) = ‖â‖_∞ = 9 =
+     ‖a‖₁. For the inverse, 5 + 2z + 2/z = (2z + 1)(z + 2)/z, and
+        z/((2z + 1)(z + 2)) = (2/3)/(z + 2) − (1/3)/(2z + 1).
+     On |z| = 1 expand (2/3)/(z + 2) = (1/3)∑_{m≥0}(−z/2)ᵐ and
+     −(1/3)/(2z + 1) = −(1/(6z))∑_{k≥0}(−1/(2z))ᵏ = (1/3)∑_{k≥1}(−1/2)ᵏz⁻ᵏ.
+     So bₙ = (1/3)(−1/2)^|n|. Check n = 0: 5/3 + 2(−1/6) + 2(−1/6) = 1 ✓;
+     n = 1: 5(−1/6) + 2(1/3) + 2(1/12) = 0 ✓. ‖a⁻¹‖₁ = (1/3)(1 + 2) = 1.
+     (d) a*a has entries (a*a)ₙ = ∑ₖ aₖaₖ₊ₙ: 3 at n = 0, 0 at n = ±1, −1 at
+     n = ±2, so ‖a*a‖ = 5 while ‖a‖² = 9. By contrast the Gelfand transform
+     maps ℓ¹(Z) into the C*-algebra C(T) (GELFAND-NAIMARK: every commutative
+     unital C*-algebra IS some C(Δ)), injectively but not isometrically.
+     Common mistakes: using the unit disc (that is ℓ¹(N₀), where only
+     n ≥ 0 occur); expanding 1/(2z + 1) in powers of z on |z| = 1 (that
+     series diverges there). Now you try: invert δ₀ − ½δ₁ in ℓ¹(Z).
+     (∑_{n≥0} 2⁻ⁿδₙ)
+
+D11. Working in D′(R): (a) compute the first two distributional
+     derivatives of |x| and of e^(−|x|); (b) prove (log|x|)′ = p.v. 1/x;
+     (c) show xδ′ = −δ and x·p.v.(1/x) = 1; (d) show δ is not a regular
+     distribution; (e) using the Fourier transform, find a fundamental
+     solution of −u″ + u and solve −u″ + u = f.
+     Answer: (a) |x|′ = sign x, |x|″ = 2δ; (e^(−|x|))″ = e^(−|x|) − 2δ.
+     (b) integrate by parts on |x| > ε. (c) test against φ. (d) a
+     shrinking-support argument. (e) E = ½e^(−|x|), u = E * f.
+     Teacher explains: (a) ⟨|x|′, φ⟩ = −∫|x|φ′ = −∫₀^∞ xφ′ + ∫_{−∞}^0 xφ′
+     = ∫₀^∞ φ − ∫_{−∞}^0 φ = ⟨sign, φ⟩ (boundary terms vanish because
+     x = 0 at 0). Then ⟨sign′, φ⟩ = −∫₀^∞ φ′ + ∫_{−∞}^0 φ′ = 2φ(0): |x|″ =
+     2δ. RULE: a jump of size J at a in f produces J δ_a in f′. For
+     e^(−|x|): derivative −sign(x)e^(−|x|) (continuous function has no
+     jump), which jumps by −2 at 0, so (e^(−|x|))″ = e^(−|x|) − 2δ.
+     (b) −∫_{|x|>ε} log|x|φ′ = log ε(φ(ε) − φ(−ε)) + ∫_{|x|>ε} φ(x)/x dx
+     by parts; φ(ε) − φ(−ε) = O(ε) and ε log ε → 0, so letting ε → 0,
+     ⟨(log|x|)′, φ⟩ = lim ∫_{|x|>ε} φ/x = ⟨p.v. 1/x, φ⟩. (c) ⟨xδ′, φ⟩ =
+     ⟨δ′, xφ⟩ = −(xφ)′(0) = −φ(0); ⟨x·p.v.1/x, φ⟩ = lim∫_{|x|>ε} xφ/x = ∫φ.
+     (d) If ∫fφ = φ(0) for all φ with f ∈ L¹_loc, take φₙ(x) = φ(nx) with
+     φ(0) = 1, 0 ≤ φ ≤ 1, supp φ ⊆ [−1, 1]: 1 = ∫fφₙ ≤ ∫_{|x|≤1/n}|f| → 0 by
+     dominated convergence, contradiction. (e) With f̂(ξ) = ∫f e^(−ixξ),
+     (−u″ + u)^ = (1 + ξ²)û, so Ê = 1/(1 + ξ²). Since (e^(−|x|))^ =
+     ∫e^(−|x|−ixξ) dx = 1/(1 + iξ) + 1/(1 − iξ) = 2/(1 + ξ²), E = ½e^(−|x|);
+     by (a), −E″ + E = −½(e^(−|x|) − 2δ) + ½e^(−|x|) = δ ✓. Then
+     u(x) = ½∫e^(−|x−y|)f(y) dy. Common mistakes: forgetting the δ terms
+     from jumps; writing δ(x) = "∞ at 0" and multiplying two δ's (δ² is
+     undefined). Now you try: the derivative of ⌊x⌋. (∑_{n∈Z} δₙ)
+
+D12. (a) Let u(x) = |x|^α on the unit ball B ⊂ Rⁿ. Show u ∈ W^{1,p}(B)
+     iff α > 1 − n/p (α ≠ 0) and deduce that H¹(B) ⊄ L^∞ when n ≥ 2; give
+     a bounded-domain example in R² with only a log log singularity.
+     (b) Prove H^s(R) ⊂ C₀(R) for s > 1/2 with ‖u‖_∞ ≤ C_s‖u‖_{H^s}.
+     (c) Prove the Poincaré inequality ‖u‖₂ ≤ (1/π)‖u′‖₂ on H¹₀(0, 1),
+     with equality for sin πx, and state Rellich's theorem.
+     Answer: (a) |∇u| = |α||x|^{α−1} ∈ Lᵖ ⇔ (α − 1)p + n > 0; n = 3,
+     p = 2: |x|^(−1/4) ∈ H¹ unbounded; log log(e/|x|) ∈ H¹(B ⊂ R²).
+     (b) |u(x)| ≤ (1/2π)∫|û| and Cauchy-Schwarz. (c) Fourier sine series.
+     Teacher explains: (a) Away from 0, ∇u = α|x|^{α−2}x, |∇u| = |α|r^{α−1}.
+     In polar coordinates ∫_B r^{βp} dx = c∫₀¹ r^{βp+n−1} dr < ∞ ⇔ βp + n >
+     0. So u ∈ Lᵖ ⇔ αp + n > 0 and |∇u| ∈ Lᵖ ⇔ (α − 1)p + n > 0, which
+     implies the former. The pointwise gradient is the WEAK gradient: for
+     φ ∈ C_c^∞(B), integrate by parts on B ∖ B_ε; the boundary term is
+     ≤ Cε^α·ε^{n−1}‖φ‖_∞ → 0 since α + n − 1 > 0 (as α > 1 − n/p ≥
+     1 − n). For n = 3, p = 2 the condition is α > −1/2, so |x|^(−1/4) is
+     an unbounded H¹ function. For n = 2, p = 2 no power works (α > 0), but
+     u = log log(e/|x|) has |∇u| = 1/(r log(e/r)) and ∫_B|∇u|² =
+     2π∫₀¹ dr/(r log²(e/r)) = 2π∫₁^∞ dt/t² = 2π (t = log(e/r)): u ∈ H¹, yet
+     u → ∞ at 0. (b) For u ∈ S, u(x) = (1/2π)∫û(ξ)e^{ixξ} dξ, so
+        |u(x)| ≤ (1/2π)(∫(1 + ξ²)^(−s) dξ)^(1/2)(∫(1 + ξ²)^s|û|²)^(1/2),
+     and ∫(1 + ξ²)^(−s) < ∞ iff 2s > 1. Since û ∈ L¹, u is continuous and
+     → 0 at ∞ (Riemann-Lebesgue); extend by density. In Rⁿ the condition
+     is s > n/2. (c) Write u = ∑bₖ√2 sin(kπx) (complete in L²(0, 1)); for
+     u ∈ H¹₀, u′ = ∑bₖkπ√2 cos(kπx), so ‖u′‖₂² = ∑k²π²bₖ² ≥ π²∑bₖ² =
+     π²‖u‖₂², with equality iff bₖ = 0 for k ≥ 2. The best constant is
+     λ₁^(−1/2), λ₁ = π² the first Dirichlet eigenvalue of −d²/dx².
+     RELLICH-KONDRACHOV: for bounded Ω, the inclusion H¹₀(Ω) ⊂ L²(Ω) is
+     compact (on (0, 1): ‖u − P_Nu‖₂ ≤ ‖u′‖₂/((N + 1)π), a limit of finite-
+     rank maps). It fails on R: translates u(x − n) are bounded in H¹ with
+     no L²-convergent subsequence. Common mistakes: requiring only u ∈ Lᵖ
+     and forgetting ∇u; treating a function with a jump as W^{1,p} (its
+     derivative contains δ). Now you try: for which p is 1/|x| in
+     W^{1,p}(B ⊂ R³)? (−1 > 1 − 3/p ⇔ p < 3/2)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Weak and norm convergence. For each sequence say whether it converges
+    in norm (N), only weakly (W, give the limit), only weak* (W*, give the
+    limit), or not at all (—).
+    a) eₙ in ℓ²                         b) eₙ in ℓ¹
+    c) eₙ in c₀                         d) eₙ/n in ℓ¹
+    e) e₁ + eₙ in ℓ³                    f) sₙ = e₁ + ... + eₙ in c₀
+    g) sₙ/n in ℓ²                       h) sₙ/√n in ℓ²
+    i) sin(nx) in L²(0, 2π)             j) sin²(nx) in L²(0, 2π)
+    k) |sin(nx)| in L²(0, π)            l) √n 𝟙_[0,1/n] in L²(0, 1)
+    m) n𝟙_[0,1/n] in L¹(0, 1) (and viewed in C[0, 1]* = M[0, 1])
+    n) 𝟙_[n,n+1] in L²(R), and in L¹(R)
+    o) n^(1/3)𝟙_[0,1/n] in L²(0, 1)       p) e^(inx) in L²(−π, π)
+    q) xⁿ in L²(0, 1)                   r) δ_{1/n} in C[0, 1]*
+    s) eₙ in ℓ¹ viewed as c₀*           t) sₙ in ℓ^∞ viewed as (ℓ¹)*
+    Answers:
+      a) W, 0      b) — (Schur; test with (1, 1, ...) ∈ ℓ^∞)     c) W, 0
+      d) N, 0      e) W, e₁      f) — (weakly Cauchy, no weak limit)
+      g) N, 0 (norm 1/√n)        h) W, 0 (norm 1)       i) W, 0
+      j) W, 1/2    k) W, 2/π     l) W, 0 (norm 1)
+      m) — in L¹ (not uniformly integrable); W* to δ₀ in M[0, 1]
+      n) W, 0 in L²; — in L¹ (test with 1 ∈ L^∞)
+      o) N, 0 (norm n^(−1/6))    p) W, 0      q) N, 0 (norm (2n + 1)^(−1/2))
+      r) W*, δ₀ (not weakly: test with μ ↦ μ({0}) ∈ M**; ‖δ_{1/n} − δ₀‖ = 2)
+      s) W*, 0     t) W*, (1, 1, 1, ...)
+
+M2. For each space give its dual, and say whether it is reflexive (R)
+    and separable (S).
+    a) ℓ³               b) c₀              c) ℓ¹              d) ℓ^∞
+    e) C[0, 1]          f) L¹(0, 1)        g) L^∞(0, 1)       h) L⁴(R)
+    i) H¹(0, 1)         j) W^{1,3}(0, 1)   k) M[0, 1] (measures, total
+                                             variation norm)
+    l) c (convergent sequences)             m) a closed subspace of ℓ²
+    n) Is the weak topology of ℓ² metrisable? Is it metrisable on the
+       closed unit ball?
+    o) The weak closure of the unit sphere of ℓ².
+    p) Is c₀ weakly sequentially complete? Is ℓ¹?
+    q) The weak* closure of c₀ inside ℓ^∞ = (ℓ¹)*.
+    r) Does J(B_X) equal B_{X**} for X = c₀?
+    Answers:
+      a) ℓ^(3/2); R, S          b) ℓ¹; not R, S       c) ℓ^∞; not R, S
+      d) ba(N) (finitely additive measures) ⊋ ℓ¹; not R, not S
+      e) M[0, 1] (regular signed Borel measures); not R, S
+      f) L^∞(0, 1); not R, S   g) ⊋ L¹ (finitely additive); not R, not S
+      h) L^(4/3)(R); R, S      i) itself (Hilbert); R, S
+      j) reflexive (closed subspace of L³ × L³); R, S
+      k) not R, not S (‖δₓ − δ_y‖ = 2 for x ≠ y, uncountably many)
+      l) ℓ¹ (isomorphically); not R, S        m) itself; R, S
+      n) no; yes (the dual ℓ² is separable)  o) the closed unit ball
+      p) c₀ no (sₙ in M1 f); ℓ¹ yes         q) all of ℓ^∞
+      r) no: J(B_{c₀}) is only weak* dense in B_{ℓ^∞} (Goldstine)
+
+M3. Compact (C) or not (N)?
+    a) diag(1/n) on ℓ²                 b) diag(1 + 1/n) on ℓ²
+    c) diag(sin n) on ℓ²               d) the right shift S on ℓ²
+    e) the weighted shift Teₙ = eₙ₊₁/n  f) x ↦ ⟨x, u⟩v on a Hilbert space
+    g) Volterra V on L²[0, 1]           h) Volterra V on C[0, 1]
+    i) M_x on L²[0, 1]                  j) kernel e^(−|x−y|) on L²[0, 1]
+    k) kernel e^(−|x−y|) on L²(R)       l) Fourier transform on L²(R)
+    m) inclusion C¹[0, 1] → C[0, 1]      n) inclusion H¹(0, 1) → L²(0, 1)
+    o) inclusion H¹(R) → L²(R)          p) inclusion ℓ¹ → ℓ²
+    q) projection onto span{e₂, e₄, e₆, ...}
+    r) KB with K compact, B bounded     s) d/dx : H¹(0, 1) → L²(0, 1)
+    t) any bounded operator ℓ² → ℓ¹
+    u) the Hilbert matrix aₘₙ = 1/(m + n − 1) on ℓ²
+    v) the matrix aₘₙ = 1/(m + n)² on ℓ²
+    Answers:
+      a) C   b) N   c) N (sin n ↛ 0)   d) N   e) C (limit of finite rank)
+      f) C (rank 1)  g) C (Hilbert-Schmidt)   h) C (Arzelà-Ascoli)
+      i) N   j) C (L² kernel on a bounded square)
+      k) N (convolution: unitarily a multiplication by 2/(1 + ξ²))
+      l) N (unitary up to √(2π))   m) C (Arzelà-Ascoli)   n) C (Rellich)
+      o) N (translates)   p) N (eₙ has no ℓ²-convergent subsequence)
+      q) N (infinite rank projection)   r) C (ideal)
+      s) N (sin(nπx)/(nπ) bounded in H¹, images cos(nπx) orthogonal)
+      t) C (Pitt's theorem)   u) N (bounded, norm π, spectrum [0, π])
+      v) C (Hilbert-Schmidt: ∑1/(m + n)⁴ < ∞)
+
+M4. Give the operator norm, the Hilbert-Schmidt norm and the non-zero
+    eigenvalues (integral operators on L²[0, 1] unless stated).
+    a) diag(1/n) on ℓ²                 b) diag(1/√n) on ℓ²
+    c) kernel xy                       d) kernel 1
+    e) kernel x + y                    f) kernel x − y
+    g) kernel e^(x+y)                  h) kernel cos(x − y) on [0, 2π]
+    i) kernel sin x sin y on [0, π]    j) kernel min(x, y)
+    k) kernel min(x, y) − xy           l) Volterra kernel 𝟙_{y<x}
+    m) matrix [[1, 2], [2, 1]]         n) matrix [[0, 1], [0, 0]]
+    Answers:
+      a) 1; π/√6 ≈ 1.28255; 1/n       b) 1; ∞ (compact, not HS); 1/√n
+      c) 1/3; 1/3; 1/3 (eigenfunction x)          d) 1; 1; 1
+      e) 1/2 + 1/√3 ≈ 1.07735; √(7/6) ≈ 1.08012; 1/2 ± 1/√3
+      f) 1/(2√3) ≈ 0.28868; 1/√6 ≈ 0.40825; ±i/(2√3) (skew-adjoint)
+      g) (e² − 1)/2 ≈ 3.19453 (all three)
+      h) π; π√2; π (multiplicity 2: cos x, sin x)   i) π/2 (all three)
+      j) 4/π² ≈ 0.40528; 1/√6 ≈ 0.40825; 1/((k − ½)²π²)
+      k) 1/π² ≈ 0.10132; 1/√90 ≈ 0.10541; 1/(k²π²)
+      l) 2/π ≈ 0.63662; 1/√2 ≈ 0.70711; none (σ = {0})
+      m) 3; √10 ≈ 3.16228; 3, −1       n) 1; 1; none (nilpotent)
+
+M5. Find σ(T) and classify its points (p = point, c = continuous,
+    r = residual).
+    a) diag(1/n) on ℓ²                b) right shift S on ℓ²(N)
+    c) left shift L on ℓ²(N)          d) bilateral shift on ℓ²(Z)
+    e) M_x on L²[0, 1]                f) M_φ, φ = 𝟙_[0,1/2], on L²[0, 1]
+    g) M_{x²} on L²[−1, 1]             h) Volterra V on L²[0, 1]
+    i) weighted shift Teₙ = eₙ₊₁/n     j) an orthogonal projection P ≠ 0, I
+    k) −d²/dx² on L²(0, π), u(0) = u(π) = 0
+    l) −i d/dx on L²(0, 2π), periodic   m) −d²/dx² on L²(R)
+    n) the unitary Fourier transform (2π)^(−1/2)∫f e^(−ixξ) dx on L²(R)
+    o) d/dx on L²(0, 1) with domain {u ∈ H¹ : u(0) = 0}
+    p) the rotation [[0, −1], [1, 0]] on C²
+    q) diag(dₙ), dₙ an enumeration of Q ∩ [0, 1]
+    Answers:
+      a) {0} ∪ {1/n}: 1/n p, 0 c     b) D̄: D r, T c     c) D̄: D p, T c
+      d) T, all c (unitary)          e) [0, 1], all c
+      f) {0, 1}, both p (infinite multiplicity)          g) [0, 1], all c
+      h) {0}, c                      i) {0}, r (range ⊆ e₁^⊥)
+      j) {0, 1}, both p              k) {1, 4, 9, ...}, all p
+      l) Z, all p (eⁱⁿˣ)            m) [0, ∞), all c
+      n) {1, −i, −1, i}, all p (Hermite functions)
+      o) ∅ (the inverse is the Volterra operator: compact, quasinilpotent)
+      p) {i, −i}, p                  q) [0, 1]: rationals p, irrationals c
+
+M6. Fredholm and Volterra integral equations on [0, 1] (unless stated).
+    Solve, or give the condition for solvability.
+    a) f(x) − λ∫₀¹ f(y) dy = 1, λ ≠ 1
+    b) f(x) − ∫₀¹ xy f(y) dy = x
+    c) f(x) − 2∫₀¹ xy f(y) dy = x²
+    d) f(x) − ½∫₀¹ f(y) dy = x
+    e) f(x) − ∫₀¹ f(y) dy = g(x): when solvable? solve for g = x − 1/2
+    f) the characteristic values λ (f = λKf) for the kernel x + y
+    g) the characteristic value of the kernel x²y²
+    h) f(x) − (1/2π)∫₀^{2π} cos(x − y)f(y) dy = cos x on [0, 2π]
+    i) f(x) − (1/π)∫₀^π sin(x + y)f(y) dy = 1 on [0, π]
+    j) the characteristic values of sin(x + y) on [0, π]
+    k) f(x) − ∫₀ˣ f(y) dy = 1           l) f(x) − λ∫₀ˣ f(y) dy = 1
+    m) f(x) = x + ∫₀ˣ (x − y)f(y) dy
+    n) the Fredholm index of I − K (K compact), of S, of L, of Sᵏ
+    Answers:
+      a) f = 1/(1 − λ)                  b) f = 3x/2
+      c) f = x² + 3x/2                  d) f = x + 1/2
+      e) iff ∫₀¹ g = 0; f = x − 1/2 + C, C arbitrary
+      f) 4√3 − 6 ≈ 0.92820 and −4√3 − 6 ≈ −12.92820 (reciprocals of
+         1/2 ± 1/√3)
+      g) 5 (eigenvalue ∫y⁴ = 1/5)       h) f = 2cos x
+      i) f = 1 + (4/(3π))(sin x + 2cos x)
+      j) ±2/π (eigenvalues ±π/2, eigenfunctions sin x ± cos x)
+      k) f = eˣ (Volterra: unique for every λ)       l) f = e^(λx)
+      m) f = sinh x (f″ = f, f(0) = 0, f′(0) = 1)
+      n) 0; −1; +1; −k
+
+M7. Spectral radius and functional calculus.
+    a) r and ‖·‖₂ of [[0, 1], [0, 0]]     b) r of [[1, 10], [0, 1/2]]
+    c) r of [[2, 3], [0, −4]]           d) r of [[0, 2], [8, 0]]
+    e) r(V), V Volterra                 f) r(S), S the right shift
+    g) r of the weighted shift with weights (5, 1, 1, 1, ...)
+    h) σ(T² + T) if T = T* and σ(T) = [−1, 1]
+    i) σ(T⁻¹) if σ(T) = {1, 2} ∪ [3, 4]
+    j) σ(e^A) if A = A* and σ(A) = [0, ln 2]
+    k) √A for A = [[5, 4], [4, 5]]       l) √A for A = [[2, 1], [1, 2]]
+    m) e^A for A = [[0, −t], [t, 0]]      n) the spectral projection of
+                                           [[2, 1], [1, 2]] for λ = 3
+    o) ‖(M_x − λ)⁻¹‖ on L²[0, 1] for λ = 2, i, ½ + i/2, −3
+    p) |A| and the polar decomposition of A = [[0, 2], [0, 0]]
+    q) |S| and |L| for the shifts on ℓ²
+    r) ‖f(T)‖ for T = diag(1/n) and f(t) = t(1 − t)
+    Answers:
+      a) 0 and 1           b) 1              c) 4             d) 4
+      e) 0 (‖Vⁿ‖ ≤ 1/(n − 1)!)       f) 1          g) 1 (‖Tⁿ‖ = 5 for n ≥ 1)
+      h) [−1/4, 2] (t² + t on [−1, 1])            i) {1, 1/2} ∪ [1/4, 1/3]
+      j) [1, 2]            k) [[2, 1], [1, 2]]
+      l) ½[[√3 + 1, √3 − 1], [√3 − 1, √3 + 1]] ≈ [[1.36603, 0.36603],
+         [0.36603, 1.36603]]
+      m) [[cos t, −sin t], [sin t, cos t]]       n) ½[[1, 1], [1, 1]]
+      o) 1, 1, 2, 1/3
+      p) |A| = [[0, 0], [0, 2]], A = U|A| with U = [[0, 1], [0, 0]] (a
+         partial isometry)
+      q) |S| = I (S*S = I); |L| = I − P, P the projection onto span{e₁}
+      r) 1/4 (sup of t(1 − t) on {0} ∪ {1/n}, attained at t = 1/2)
+
+M8. Banach algebras and Gelfand theory.
+    a) σ(f) in C[0, 1] for f(x) = x² − x; for f(x) = eˣ
+    b) the maximal ideals of C[0, 1]
+    c) the maximal ideal space of ℓ¹(Z); of ℓ¹(N₀); of L¹(R); of c₀ ⊕ C1
+       (convergent sequences c)
+    d) σ(δ₁) in ℓ¹(Z) and in ℓ¹(N₀)
+    e) σ(δ₁ + δ₋₁) in ℓ¹(Z), and its spectral radius
+    f) ‖a‖ and r(a) for a = δ₀ + ½δ₁ in ℓ¹(Z)
+    g) the inverse of δ₀ − ½δ₁ in ℓ¹(Z) and its norm
+    h) the inverse of 5δ₀ + 2δ₁ + 2δ₋₁ in ℓ¹(Z)
+    i) is δ₀ + δ₁ invertible in ℓ¹(Z)?
+    j) is 2δ₀ + δ₁ invertible in ℓ¹(N₀)? inverse?
+    k) is δ₀ + 2δ₁ invertible in ℓ¹(N₀)? in ℓ¹(Z)? inverse?
+    l) σ(z) in the disc algebra A(D) and in C(T)
+    m) the real Banach division algebras
+    n) ‖a*a‖ versus ‖a‖² for a = δ₀ + δ₁ − δ₂ in ℓ¹(Z)
+    o) ‖a‖ and r(a) for a = [[1, 1], [0, 1]] in M₂(C)
+    p) the Gelfand transform of f ∈ L¹(R) and why it vanishes at ±∞
+    q) is the group of invertible elements of C[0, 1] connected?
+    Answers:
+      a) [−1/4, 0]; [1, e]           b) Mₓ = {f : f(x) = 0}, x ∈ [0, 1]
+      c) T; D̄; R (Fourier transform); N ∪ {∞} (one-point
+         compactification)
+      d) T; D̄                        e) [−2, 2]; 2 (= ‖a‖)
+      f) 3/2 and 3/2                  g) ∑_{n≥0} 2⁻ⁿδₙ; norm 2
+      h) ∑(1/3)(−1/2)^|n| δₙ (norm 1)
+      i) no: â(−1) = 1 − 1 = 0
+      j) yes (2 + z ≠ 0 on D̄); ∑_{n≥0} ½(−½)ⁿδₙ
+      k) no in ℓ¹(N₀) (1 + 2z = 0 at z = −½ ∈ D̄); yes in ℓ¹(Z), inverse
+         ∑_{k≥1} (−1)^(k−1)2⁻ᵏδ₋ₖ
+      l) D̄; T                        m) R, C, H (Frobenius-Mazur)
+      n) 5 ≠ 9: ℓ¹(Z) is not a C*-algebra
+      o) (1 + √5)/2 ≈ 1.61803 and 1 (not normal)
+      p) f̂(ξ) = ∫f e^(−ixξ) dx; Gelfand transforms of a non-unital algebra
+         lie in C₀(Δ) (Riemann-Lebesgue lemma)
+      q) yes: every non-vanishing f ∈ C([0, 1], C) is f = e^g (continuous
+         logarithm), joined to 1 by e^(tg); for REAL C[0, 1] no (two
+         components f > 0 and f < 0)
+
+M9. Distributions on R: compute (δ_a = Dirac mass at a).
+    a) H′                  b) (sign x)′         c) |x|′ and |x|″
+    d) (x₊)″, x₊ = max(x, 0)                      e) (𝟙_[0,1])′
+    f) ⌊x⌋′                g) (e^(−|x|))″       h) (H(x)sin x)″ + H(x)sin x
+    i) (H(x)e^(ax))′ − aH(x)e^(ax)               j) xδ, xδ′, x²δ″
+    k) (sin x)δ′, (cos x)δ′, eˣδ′                 l) δ(2x), δ(x² − 1)
+    m) (log|x|)′            n) x · p.v.(1/x)
+    o) the limits in D′ as n → ∞ of: n𝟙_[0,1/n], n/(π(1 + n²x²)),
+       sin(nx), n sin(nx), sin(nx)/(πx), n(δ_{1/n} − δ₀), n²(δ_{1/n} − δ₀)
+    p) the order of δ, δ′, p.v.(1/x), ∑_{n≥1} δₙ^(n)
+    q) supp δ″, supp p.v.(1/x), supp(H′)
+    r) which are tempered: eˣ, e^(x²), eˣcos(eˣ), log|x|, ∑_{n∈Z} δₙ
+    Answers:
+      a) δ         b) 2δ         c) sign x; 2δ        d) δ
+      e) δ₀ − δ₁   f) ∑_{n∈Z} δₙ    g) e^(−|x|) − 2δ     h) δ
+      i) δ         j) 0; −δ; 2δ
+      k) −δ; δ′; δ′ − δ (rule: gδ′ = g(0)δ′ − g′(0)δ)
+      l) ½δ; ½(δ₁ + δ₋₁)           m) p.v.(1/x)         n) 1
+      o) δ; δ; 0; 0 (= ∫cos(nx)φ′ → 0); δ; −δ′; no limit (diverges
+         like nφ′(0) whenever φ′(0) ≠ 0)
+      p) 0; 1; 1; infinite (locally finite, but no global bound)
+      q) {0}; R; {0}
+      r) eˣ no; e^(x²) no; eˣcos(eˣ) yes (the derivative of sin(eˣ));
+         log|x| yes; ∑δₙ yes
+
+M10. Fourier transforms in S′(R) (f̂(ξ) = ∫f(x)e^(−ixξ) dx) and
+     fundamental solutions.
+     a) δ           b) δ_a          c) 1            d) δ′
+     e) x           f) x²           g) e^(iax)      h) cos(ax)
+     i) sin(ax)     j) sign x       k) H(x)         l) p.v.(1/x)
+     m) e^(−|x|)    n) 1/(1 + x²)   o) 𝟙_[−1,1]      p) e^(−x²/2)
+     q) x e^(−x²/2)
+     r) ∫_R (sin x/x)² dx and ∫_R dx/(1 + x²)² via Plancherel
+     s) fundamental solutions of: d/dx, d/dx − a, d²/dx², d²/dx² + 1,
+        −d²/dx² + k² (k > 0), Δ in R³, Δ in R², ∂_t − ∂²_x, ∂²_t − ∂²_x
+     t) solve u″ − u = δ in S′
+     Answers:
+       a) 1          b) e^(−iaξ)      c) 2πδ          d) iξ
+       e) 2πiδ′      f) −2πδ″         g) 2πδ_a        h) π(δ_a + δ₋ₐ)
+       i) −iπ(δ_a − δ₋ₐ)              j) −2i p.v.(1/ξ)
+       k) πδ − i p.v.(1/ξ)             l) −iπ sign ξ
+       m) 2/(1 + ξ²)                   n) πe^(−|ξ|)
+       o) 2 sin ξ/ξ                    p) √(2π) e^(−ξ²/2)
+       q) −i√(2π) ξ e^(−ξ²/2)
+       r) π; π/2 (‖f̂‖₂² = 2π‖f‖₂² with f = 𝟙_[−1,1], resp. e^(−|x|))
+       s) H(x); H(x)e^(ax); |x|/2; H(x)sin x; e^(−k|x|)/(2k);
+          −1/(4π|x|); (1/2π)log|x|; H(t)(4πt)^(−1/2)e^(−x²/(4t));
+          ½H(t − |x|)
+       t) u = −½e^(−|x|) (the only tempered solution)
+
+M11. Sobolev spaces. Decide membership, or compute.
+     a) |x|^(1/2) on (−1, 1): for which p in W^{1,p}?
+     b) |x| on (−1, 1): in W^{1,∞}? in W^{2,p}?
+     c) H(x) on (−1, 1): in W^{1,1}?
+     d) x^α on (0, 1): in H¹ for which α?
+     e) |x|^α on B₁ ⊂ R³: in H¹ for which α?
+     f) 1/|x| on B₁ ⊂ R³: in W^{1,p} for which p?
+     g) log|x| on B₁ ⊂ R²: in W^{1,p} for which p?
+     h) log log(e/|x|) on B₁ ⊂ R²: in H¹? bounded?
+     i) 𝟙_[−1,1] ∈ H^s(R) for which s?   j) e^(−|x|) ∈ H^s(R)?
+     k) (1 − |x|)₊ ∈ H^s(R)?             l) δ ∈ H^s(R)? in H^s(R³)?
+     m) e^(−x²) ∈ H^s(R)?
+     n) p* for W^{1,p}(Rⁿ) ⊂ L^{p*}: (n, p) = (3, 2), (4, 2), (2, 1),
+        (5, 3)
+     o) the Hölder exponent in Morrey's embedding for (n, p) = (1, 2),
+        (2, 4), (3, 6), (3, 4)
+     p) is H^s(Rⁿ) ⊂ C₀ for: H²(R³), H¹(R²), H^(3/4)(R), H²(R⁴)?
+     q) q with W^{2,2}(R⁵) ⊂ L^q (1/q = 1/p − k/n)
+     r) the best Poincaré constants on H¹₀(0, L) and H¹₀((0, π)²)
+     s) compact or not: H¹(0, 1) ⊂ L²(0, 1); H¹(R) ⊂ L²(R);
+        H¹(0, 1) ⊂ C[0, 1]; H¹₀(Ω) ⊂ L⁶(Ω) (Ω ⊂ R³ bounded)
+     t) is the constant 1 in H¹₀(0, 1)?
+     Answers:
+       a) 1 ≤ p < 2    b) yes; no for every p (u″ = 2δ)
+       c) no (H′ = δ is not a function)       d) α > 1/2 or α = 0
+       e) α > −1/2     f) p < 3/2             g) p < 2
+       h) yes (∫|∇u|² = 2π); no, unbounded at 0
+       i) s < 1/2      j) s < 3/2             k) s < 3/2
+       l) s < −1/2; s < −3/2                  m) all s
+       n) 6; 4; 2; 15/2                       o) 1/2; 1/2; 1/2; 1/4
+       p) yes; no; yes; no (need s > n/2)     q) 10
+       r) L/π; 1/√2 (λ₁ = 1² + 1² = 2)
+       s) compact; not compact; compact (C^{0,1/2} + Arzelà-Ascoli); not
+          compact (6 = 2* is the critical exponent)
+       t) no (its trace at 0 and 1 is 1 ≠ 0; H¹₀ ⊊ H¹)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every weakly convergent sequence is bounded.
+     b) In ℓ² weak convergence implies norm convergence.
+     c) In ℓ¹ weakly convergent sequences converge in norm.
+     d) The closed unit ball of every Banach space is weakly compact.
+     e) The closed unit ball of X* is weak* compact.
+     f) A norm-closed convex set is weakly closed.
+     g) A norm-closed subspace of a dual space X* is weak* closed.
+     h) Every compact operator on an infinite-dimensional space has an
+        eigenvalue.
+     i) On a Hilbert space every compact operator is a norm limit of
+        finite-rank operators.
+     j) The same holds on every Banach space.
+     k) For compact K and λ ≠ 0, K − λ injective ⇒ K − λ surjective.
+     l) The spectrum of a self-adjoint operator consists of eigenvalues.
+     m) r(T) = ‖T‖ for every bounded T.
+     n) The spectrum of an element depends on the ambient Banach algebra.
+     o) Every commutative unital C*-algebra is *-isomorphic to some C(K).
+     p) Every distribution is a locally integrable function.
+     q) The product of distributions is associative when defined.
+     r) Every compactly supported distribution has finite order.
+     s) W^{1,1}(0, 1) ⊂ C[0, 1].
+     t) H¹(R²) ⊂ L^∞(R²).
+     u) If u ∈ H¹(Ω), Ω connected, and ∇u = 0 a.e., u is constant.
+     v) The inclusion H¹₀(Ω) ⊂ L²(Ω) is compact for every open Ω.
+     Answers:
+       a) T (uniform boundedness)          b) F: eₙ
+       c) T (Schur)                        d) F: c₀ (sₙ), ℓ¹, C[0, 1]
+       e) T (Banach-Alaoglu)               f) T (Mazur)
+       g) F: c₀ ⊂ ℓ^∞ = (ℓ¹)* is weak* dense
+       h) F: Volterra operator             i) T
+       j) F: Enflo's space without the approximation property
+       k) T (Fredholm alternative)         l) F: M_x on L²[0, 1]
+       m) F: [[0, 1], [0, 0]] (T for normal T)
+       n) T: z in A(D) versus C(T)         o) T (Gelfand-Naimark)
+       p) F: δ
+       q) F: (δ·x)·p.v.(1/x) = 0 but δ·(x·p.v.(1/x)) = δ
+       r) T                                s) T (absolutely continuous
+                                              representative)
+       t) F: log log(e/|x|) cut off smoothly   u) T
+       v) F: Ω = R (translates of a bump)
+
+TEACHING TIPS
+  Struggling: keep three "zoo" examples on the board and test every
+  statement against them: the unit vectors eₙ (weak but not norm
+  convergence), the right and left shifts (spectrum ≠ eigenvalues,
+  residual versus point spectrum, index ±1), and the Volterra operator
+  (compact, quasinilpotent, no eigenvalues, ‖V‖ = 2/π). For compact self-
+  adjoint integral operators always convert Tu = λu into an ODE with
+  boundary conditions by differentiating the kernel twice. In Banach
+  algebras, compute spectra through the Gelfand transform (a Fourier
+  series for ℓ¹(Z)). For distributions insist on the ritual "pair with φ,
+  move the derivative, integrate by parts, read off the δ's from the
+  jumps", and for Sobolev membership always use polar coordinates:
+  ∫_{B₁} r^β dx < ∞ ⇔ β + n > 0. Harder: prove Banach-Alaoglu via
+  Tychonoff and Eberlein-Šmulian for separable spaces; prove the spectral
+  theorem for bounded self-adjoint operators via the Riesz representation
+  of the functional f ↦ ⟨f(T)x, x⟩; prove Atkinson's theorem (Fredholm ⇔
+  invertible modulo compacts) and compute the index of Toeplitz
+  operators T_φ = −winding number of φ; prove the Gelfand-Naimark theorem
+  using Stone-Weierstrass; show that every distribution supported at 0
+  is a finite combination of derivatives of δ; prove the Gagliardo-
+  Nirenberg-Sobolev inequality for p = 1 and deduce the general case;
+  prove Rellich-Kondrachov via Fréchet-Kolmogorov; and use Lax-Milgram
+  plus Rellich to prove that the Dirichlet Laplacian on a bounded domain
+  has a discrete spectrum 0 < λ₁ ≤ λ₂ ≤ ... → ∞ with an orthonormal
+  eigenbasis of L²(Ω).
+
+
+================================================================================
+TOPIC 12.3 — COMPLEX ANALYSIS (GRADUATE): RIEMANN MAPPING THEOREM, HARMONIC
+FUNCTIONS, ENTIRE AND MEROMORPHIC FUNCTIONS, WEIERSTRASS AND MITTAG-LEFFLER,
+ANALYTIC CONTINUATION, RIEMANN SURFACES (INTRODUCTION), ELLIPTIC FUNCTIONS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - HARMONIC FUNCTIONS: u ∈ C² with Δu = u_xx + u_yy = 0. Real parts of
+    holomorphic functions are harmonic; on a SIMPLY CONNECTED domain every
+    harmonic u has a HARMONIC CONJUGATE v (u + iv holomorphic), unique up
+    to a constant; on C ∖ {0}, u = ln|z| has none. MEAN VALUE PROPERTY
+    u(a) = (1/2π)∫u(a + re^{iθ}) dθ, MAXIMUM PRINCIPLE, and conversely a
+    continuous function with the mean value property is harmonic.
+  - POISSON INTEGRAL: for g continuous on ∂D, u(re^{iφ}) =
+    (1/2π)∫P_r(φ − θ)g(θ) dθ, P_r(θ) = (1 − r²)/(1 − 2r cos θ + r²) =
+    ∑r^|n| e^{inθ}, solves the DIRICHLET PROBLEM on D (u = g on ∂D).
+    HARNACK: u ≥ 0 harmonic on D ⇒ ((1 − r)/(1 + r))u(0) ≤ u(z) ≤
+    ((1 + r)/(1 − r))u(0), |z| = r. Liouville: a harmonic function on R²
+    bounded below is constant. Uniform limits of harmonic functions are
+    harmonic.
+  - SCHWARZ LEMMA: f : D → D holomorphic, f(0) = 0 ⇒ |f(z)| ≤ |z|,
+    |f′(0)| ≤ 1, equality (at one z ≠ 0 or for f′(0)) iff f(z) = e^{iθ}z.
+    Aut(D) = {e^{iθ}φ_a}, φ_a(z) = (z − a)/(1 − āz), |a| < 1. SCHWARZ-PICK:
+    |f′(z)| ≤ (1 − |f(z)|²)/(1 − |z|²); holomorphic self-maps of D do not
+    increase the pseudo-hyperbolic distance |z − w|/|1 − w̄z|.
+  - NORMAL FAMILIES: MONTEL — a locally uniformly bounded family of
+    holomorphic functions is normal (every sequence has a locally uniformly
+    convergent subsequence). HURWITZ — a locally uniform limit of
+    zero-free (resp. injective) holomorphic functions on a domain is
+    zero-free (injective) or constant.
+  - RIEMANN MAPPING THEOREM: every simply connected domain Ω ⊊ C is
+    conformally equivalent to D; for z₀ ∈ Ω there is a UNIQUE conformal
+    f : Ω → D with f(z₀) = 0, f′(z₀) > 0. Fails for Ω = C (Liouville).
+    Proof: √ trick gives an injective map into D; Montel + Hurwitz give an
+    extremal map maximising |f′(z₀)|; the √ trick again shows it is onto.
+    Non-simply connected domains have moduli: 1 < |z| < R₁ and
+    1 < |z| < R₂ are equivalent iff R₁ = R₂.
+  - STANDARD CONFORMAL MAPS: Möbius maps; Cayley C(z) = (z − i)/(z + i)
+    (upper half-plane H → D); z ↦ z^α (sectors); e^z (strip 0 < Im z < π
+    → H); (1 + z)/(1 − z) (D → right half-plane); Joukowski z + 1/z; sin z
+    (half-strip → H). Aut(H) = PSL₂(R).
+  - ENTIRE FUNCTIONS: M(r) = max_{|z|=r}|f|; ORDER ρ = lim sup
+    ln ln M(r)/ln r; for f = ∑aₙzⁿ, ρ = lim sup n ln n/ln(1/|aₙ|). e^z,
+    sin z have order 1, e^{z²} order 2, cos √z order 1/2, e^{e^z} order
+    ∞. Liouville; |f(z)| ≤ A + B|z|ᴺ ⇒ f is a polynomial of degree ≤ N.
+    LITTLE PICARD: a non-constant entire function omits at most one value.
+  - JENSEN'S FORMULA: f holomorphic on |z| ≤ R, f(0) ≠ 0, zeros a₁, ...,
+    aₙ in |z| < R: ln|f(0)| = ∑ln(|aₖ|/R) + (1/2π)∫ln|f(Re^{iθ})| dθ.
+    Consequence: n(r) = O(r^{ρ+ε}); EXPONENT OF CONVERGENCE of the zeros
+    ≤ ρ.
+  - INFINITE PRODUCTS: ∏(1 + aₙ) converges absolutely iff ∑|aₙ| < ∞ (a
+    convergent product is non-zero unless a factor is 0). WEIERSTRASS
+    ELEMENTARY FACTORS E₀(z) = 1 − z, E_p(z) = (1 − z)exp(z + z²/2 + ... +
+    z^p/p), |1 − E_p(z)| ≤ |z|^{p+1} for |z| ≤ 1.
+  - WEIERSTRASS FACTORIZATION: for any sequence aₙ → ∞ (with multiplicity)
+    there is an entire function with exactly these zeros, f(z) =
+    z^m e^{g(z)}∏E_{pₙ}(z/aₙ), where ∑(r/|aₙ|)^{pₙ+1} < ∞ for all r.
+    HADAMARD: if ρ < ∞, pₙ = p = genus of the zeros and g is a polynomial
+    of degree ≤ ρ. Key products: sin πz = πz∏(1 − z²/n²); 1/Γ(z) =
+    z e^{γz}∏(1 + z/n)e^{−z/n}.
+  - MEROMORPHIC FUNCTIONS: holomorphic except for isolated poles. Every
+    meromorphic function on C is a quotient of two entire functions;
+    meromorphic functions on Ĉ are exactly the rational functions.
+    MITTAG-LEFFLER: poles bₙ → ∞ with any prescribed principal parts Pₙ
+    are realised by ∑(Pₙ(z) − Qₙ(z)), Qₙ a Taylor polynomial of Pₙ at 0.
+    Key: π cot πz = 1/z + ∑_{n≥1}2z/(z² − n²); π²/sin²πz = ∑1/(z − n)².
+  - GAMMA FUNCTION: Γ(z) = ∫₀^∞ t^{z−1}e^{−t} dt (Re z > 0) continues via
+    Γ(z) = Γ(z + n)/(z(z + 1)...(z + n − 1)) to a meromorphic function with
+    simple poles at −n, residue (−1)ⁿ/n!, and no zeros; Γ(z)Γ(1 − z) =
+    π/sin πz; Γ(1/2) = √π.
+  - ANALYTIC CONTINUATION: identity theorem ⇒ continuations are unique;
+    function elements (f, D), continuation along curves (power-series
+    chains); MONODROMY THEOREM: continuation along homotopic curves gives
+    the same result, so on a simply connected domain unrestricted
+    continuation gives a single-valued function. The radius of a Taylor
+    series is the distance to the nearest singularity. NATURAL BOUNDARY:
+    ∑z^{2ⁿ}, ∑z^{n!} (gap series). SCHWARZ REFLECTION: f real on a real
+    segment extends by f(z̄) = conj f(z).
+  - RIEMANN SURFACES: a connected Hausdorff space with holomorphically
+    compatible charts. Examples: Ĉ, domains, tori C/Λ, the surfaces of √z
+    and log z, compact curves y² = p(z). On a COMPACT Riemann surface
+    every holomorphic function is constant; a non-constant holomorphic map
+    between compact surfaces has a DEGREE. RIEMANN-HURWITZ: 2g_X − 2 =
+    d(2g_Y − 2) + ∑(e_P − 1). y² = p(z), p of degree n with distinct
+    roots, has genus ⌈n/2⌉ − 1.
+  - ELLIPTIC FUNCTIONS: meromorphic f with f(z + ω) = f(z) for all ω in a
+    lattice Λ = Zω₁ + Zω₂. LIOUVILLE'S THEOREMS: an entire elliptic
+    function is constant; the residues in a period parallelogram sum to 0
+    (so no elliptic function of order 1); #zeros = #poles = order;
+    ∑zeros − ∑poles ∈ Λ (ABEL).
+  - WEIERSTRASS ℘: ℘(z) = 1/z² + ∑'(1/(z − ω)² − 1/ω²), even, order 2,
+    ℘ = z⁻² + 3G₄z² + 5G₆z⁴ + ..., G_{2k} = ∑'ω^{−2k};
+    (℘′)² = 4℘³ − g₂℘ − g₃, g₂ = 60G₄, g₃ = 140G₆ = 4e₁e₂e₃, eᵢ = ℘(ωᵢ/2)
+    distinct; Δ = g₂³ − 27g₃² ≠ 0, j = 1728g₂³/Δ. Every elliptic
+    function lies in C(℘, ℘′); even ones in C(℘). z ↦ (℘(z), ℘′(z))
+    identifies C/Λ with the cubic curve y² = 4x³ − g₂x − g₃.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Show u = x³ − 3xy² + y is harmonic on R², find a harmonic
+    conjugate v and write u + iv as a function of z. (b) Prove the mean
+    value property for harmonic functions and deduce the maximum
+    principle. (c) Show ln|z| is harmonic on C ∖ {0} but has no harmonic
+    conjugate there.
+    Answer: (a) v = 3x²y − y³ − x + C, u + iv = z³ − iz + iC. (b) from
+    Cauchy's formula. (c) a conjugate would be a continuous arg z.
+    Teacher explains: (a) u_xx = 6x, u_yy = −6x, so Δu = 0. Solve the
+    Cauchy-Riemann equations v_y = u_x = 3x² − 3y² and v_x = −u_y =
+    6xy − 1. Integrating the first in y: v = 3x²y − y³ + h(x); then v_x =
+    6xy + h′(x) = 6xy − 1 gives h(x) = −x + C. Check against z³ = x³ −
+    3xy² + i(3x²y − y³) and −iz = y − ix: u + iv = z³ − iz (+ iC). A fast
+    method: f′ = u_x − iu_y; set y = 0 to get f′(z) = 3z² − i, so f = z³ −
+    iz + const. (b) On a disc D(a, R) inside the domain, u = Re f (the
+    disc is simply connected). Cauchy: f(a) = (1/2πi)∮f(ζ)/(ζ − a) dζ =
+    (1/2π)∫₀^{2π} f(a + re^{iθ}) dθ; take real parts. MAXIMUM PRINCIPLE: if
+    u attains its max M at an interior point a, the average of u on each
+    small circle is M while u ≤ M, so u ≡ M near a; the set {u = M} is
+    open and closed, hence everything (connected domain). (c) Δ ln r =
+    (1/r)(r · (1/r))′ = 0. If v were a conjugate, f = ln|z| + iv would
+    satisfy f′ = 1/z (compute f′ = u_x − iu_y = (x − iy)/|z|² = 1/z), so
+    ∮_{|z|=1} f′ dz = 0 (f′ has a primitive); but ∮dz/z = 2πi. Common
+    mistakes: forgetting the integration "constant" h(x); claiming every
+    harmonic function has a conjugate (only on simply connected domains).
+    Now you try: the average of u = x³ − 3xy² + y over the circle
+    |z − 1| = 2. (u(1, 0) = 1)
+
+D2. (a) Solve the Dirichlet problem on the unit disc with boundary values
+    g(θ) = cos²θ, and with g = 1 on the upper semicircle, 0 on the lower.
+    (b) Prove Harnack's inequality from the Poisson kernel and deduce that
+    a positive harmonic function on R² is constant.
+    Answer: (a) u = 1/2 + (x² − y²)/2; u = 1/2 + (1/π)arctan(2y/(1 − x² −
+    y²)), e.g. u(i/2) ≈ 0.79517. (b) (1 − r)/(1 + r) ≤ P_r ≤ (1 + r)/(1 − r).
+    Teacher explains: for z = re^{iφ}, P_r(φ − θ) = Re((e^{iθ} + z)/
+    (e^{iθ} − z)) = ∑r^|n|e^{in(φ−θ)}. Hence a boundary Fourier mode e^{inθ} is
+    carried to r^|n|e^{inφ}, i.e. to zⁿ or z̄ⁿ. (a) cos²θ = 1/2 +
+    (1/2)cos 2θ, and cos 2θ extends as Re z² = x² − y², so u = 1/2 +
+    (x² − y²)/2; check: u(0) = 1/2 = average of cos². For the arc data use
+    conformal invariance: w = i(1 + z)/(1 − z) maps D onto H, the upper arc
+    onto (−∞, 0) and the lower arc onto (0, ∞). On H the harmonic function
+    with these values is arg w/π. So u(z) = (1/π)arg(i(1 + z)/(1 − z)),
+    which simplifies to 1/2 + (1/π)arctan(2y/(1 − |z|²)). At z = i/2:
+    1/2 + arctan(4/3)/π ≈ 0.79517 (check by numerical Poisson integration).
+    (b) For |z| = r: 1 − 2r cos t + r² lies between (1 − r)² and (1 + r)²,
+    so (1 − r)/(1 + r) ≤ P_r ≤ (1 + r)/(1 − r). If u ≥ 0, multiply by u ≥ 0
+    on the circle of radius ρ < 1, average, use u(0) = mean, and let ρ →
+    1 (or rescale): Harnack. For u > 0 harmonic on R², apply it on
+    D(0, R): u(z) ≤ ((R + |z|)/(R − |z|))u(0) → u(0) as R → ∞; likewise
+    u(z) ≥ u(0). So u ≡ u(0). Common mistakes: applying Harnack to
+    functions of both signs; forgetting the Poisson kernel is centred at
+    φ. Now you try: u > 0 harmonic on D, u(0) = 5: bounds for u(1/3).
+    (5/2 ≤ u ≤ 10)
+
+D3. (a) Prove the Schwarz lemma. (b) Show every automorphism of D is
+    e^{iθ}(z − a)/(1 − āz). (c) If f : D → D is holomorphic with f(0) =
+    1/2, find the largest possible |f′(0)| and an extremal f.
+    Answer: (c) 3/4, attained by f(z) = (z + 1/2)/(1 + z/2).
+    Teacher explains: (a) g(z) = f(z)/z (g(0) = f′(0)) is holomorphic. On
+    |z| = r < 1, |g| ≤ 1/r; by the maximum principle |g| ≤ 1/r on |z| ≤ r;
+    let r → 1: |g| ≤ 1, i.e. |f(z)| ≤ |z| and |f′(0)| ≤ 1. If equality holds
+    at an interior point, |g| attains its max, so g ≡ e^{iθ}. (b) φ_a(z) =
+    (z − a)/(1 − āz) maps ∂D to ∂D (|e^{iθ} − a| = |1 − āe^{iθ}|), maps a
+    to 0 and has inverse φ_{−a}, so it is an automorphism. Given any
+    automorphism F with F(a) = 0, G = F ∘ φ_{−a} fixes 0; Schwarz on G and
+    G⁻¹ gives |G′(0)| ≤ 1 and |1/G′(0)| ≤ 1, so G is a rotation and F =
+    e^{iθ}φ_a. (c) Let h = φ_{1/2} ∘ f: then h(0) = 0, so |h′(0)| ≤ 1. Chain
+    rule: h′(0) = φ′_{1/2}(1/2)f′(0) = f′(0)/(1 − 1/4). So |f′(0)| ≤ 3/4
+    (Schwarz-Pick: 1 − |f(0)|²). Equality iff h is a rotation, e.g. f =
+    φ_{−1/2}(z) = (z + 1/2)/(1 + z/2), f′(0) = 1 − 1/4 = 3/4. Common mistakes:
+    applying the Schwarz lemma when f(0) ≠ 0; forgetting the conjugate ā.
+    Now you try: f : D → D, f(1/2) = 0. Largest |f(0)|? (1/2, since
+    Pick gives ρ(f(0), f(1/2)) ≤ ρ(0, 1/2) = 1/2)
+
+D4. State the Riemann mapping theorem and prove it, using Montel's
+    theorem and Hurwitz's theorem. Prove uniqueness of the normalised map.
+    Answer: see the four steps below.
+    Teacher explains: THEOREM: Ω ⊊ C simply connected, z₀ ∈ Ω ⇒ there is
+    a unique biholomorphic f : Ω → D, f(z₀) = 0, f′(z₀) > 0. STEP 1 (a map
+    exists): pick a ∉ Ω. z − a has no zeros on the simply connected Ω, so
+    it has a holomorphic square root s(z), injective, and s(Ω) ∩ (−s(Ω)) =
+    ∅. s(Ω) contains a disc D(w, δ), so s misses D(−w, δ) and
+    δ/(s(z) + w) maps Ω injectively into D. Compose with an automorphism
+    to send z₀ to 0. So the family ℱ = {f : Ω → D injective, f(z₀) = 0} is
+    non-empty. STEP 2 (extremal map): ℱ is bounded by 1, so by MONTEL it
+    is normal. Take fₙ ∈ ℱ with |fₙ′(z₀)| → sup = S > 0 and a subsequence
+    fₙ → f locally uniformly. Then |f′(z₀)| = S > 0, so f is non-constant,
+    hence INJECTIVE by HURWITZ; |f| ≤ 1 and the open mapping theorem give
+    f(Ω) ⊆ D. So f ∈ ℱ. STEP 3 (f is onto): if w₀ ∈ D ∖ f(Ω), φ_{w₀} ∘ f
+    has no zeros, so it has a square root g; put h = φ_{g(z₀)} ∘ g ∈ ℱ.
+    Then f = Φ ∘ h with Φ = φ_{−w₀} ∘ (sq) ∘ φ_{−g(z₀)} a self-map of D
+    fixing 0 that is NOT injective (it contains squaring), so |Φ′(0)| < 1
+    by Schwarz, and |h′(z₀)| = |f′(z₀)|/|Φ′(0)| > S. Contradiction. Rotate
+    to make f′(z₀) > 0. STEP 4 (uniqueness): if f, g are two such maps,
+    f ∘ g⁻¹ is an automorphism of D fixing 0 with positive derivative, so
+    it is the identity. Why the hypotheses: Ω = C fails since a bounded
+    entire map is constant; an annulus fails since D is simply connected.
+    Common mistakes: forgetting to show the limit f is injective and lands
+    in the OPEN disc. Now you try: in Step 3 one computes |h′(z₀)| =
+    |f′(z₀)|(1 + |w₀|)/(2√|w₀|). Evaluate the gain factor for w₀ = 1/4.
+    (5/4)
+
+D5. Find explicitly (a) a conformal map of the upper half-disc U = {|z| <
+    1, Im z > 0} onto D, and the point sent to 0; (b) a conformal map of
+    the strip S = {0 < Im z < π} onto D; (c) explain why the annulus
+    A = {1 < |z| < 2} is not conformally equivalent to D, and why C is not.
+    Answer: (a) f(z) = (w − i)/(w + i), w = ((1 + z)/(1 − z))²; f(i(√2 − 1))
+    = 0. (b) (eᶻ − i)/(eᶻ + i). (c) topology; Liouville.
+    Teacher explains: Build maps from a few "Lego bricks", tracking the
+    boundary. (a) T(z) = (1 + z)/(1 − z) is Möbius, sends −1 ↦ 0, 1 ↦ ∞,
+    0 ↦ 1. It maps the segment (−1, 1) onto (0, ∞), and the unit circle
+    (through −1 and 1) onto a line through 0, namely the imaginary axis:
+    T(e^{iθ}) = i cot(θ/2). The upper semicircle goes to the positive
+    imaginary axis, so U ↦ first quadrant Q (test: T(i/2) = (3 + 4i)/5 ∈ Q).
+    Squaring opens the quadrant (angle π/2) to the upper half-plane H, and
+    the Cayley map C(w) = (w − i)/(w + i) takes H onto D. So f = C ∘ sq ∘ T.
+    f(z) = 0 ⇔ T(z)² = i ⇔ T(z) = e^{iπ/4} ⇔ z = (e^{iπ/4} − 1)/(e^{iπ/4} +
+    1) = i tan(π/8) = i(√2 − 1) ≈ 0.41421i. (b) eᶻ maps the horizontal line
+    Im z = t onto the ray arg w = t, so S ↦ H bijectively; then Cayley.
+    (c) A conformal map is a homeomorphism; D is simply connected and A is
+    not (the circle |z| = 3/2 is not contractible in A). For C: a conformal
+    f : C → D would be a bounded entire function, hence constant by
+    Liouville. Common mistakes: using z² on a region containing 0 in its
+    interior or symmetric points (not injective); forgetting that a Möbius
+    map sends circles through a pole to lines. Now you try: map the sector
+    0 < arg z < π/4 onto D. ((z⁴ − i)/(z⁴ + i))
+
+D6. (a) Compute the orders of cos √z, e^{z²}, sin z · e^{z³} and ∑zⁿ/(n!)².
+    (b) Prove: if f is entire and |f(z)| ≤ A + B|z|ᴺ, then f is a
+    polynomial of degree ≤ N. (c) State Jensen's formula and use it to
+    compute (1/2π)∫₀^{2π} ln|f(Re^{iθ})| dθ for f(z) = z² − 5z + 6 and R =
+    5/2. (d) State Hadamard's theorem and show that an entire function of
+    order ρ < 1 with no zeros is constant.
+    Answer: (a) 1/2, 2, 3, 1/2. (b) Cauchy estimates. (c) ln(15/2) ≈
+    2.01490. (d) f = e^{g}, deg g ≤ ρ < 1.
+    Teacher explains: (a) cos √z = ∑(−1)ⁿzⁿ/(2n)! is entire (even in √z).
+    M(r) = cosh √r (attained at z = −r), so ln M(r) ≈ √r and
+    ln ln M(r)/ln r → 1/2: ρ = 1/2. |e^{z²}| = e^{Re z²} ≤ e^{r²}, with
+    equality on the real axis: ρ = 2. For sin z · e^{z³} the factor e^{z³}
+    dominates: ρ = 3. For ∑zⁿ/(n!)² use ρ = lim sup n ln n/ln(1/|aₙ|) =
+    lim n ln n/(2 ln n!) = 1/2 (Stirling: ln n! ≈ n ln n). (b) Cauchy's
+    estimate on |z| = r gives |aₖ| ≤ M(r)/rᵏ ≤ (A + Brᴺ)/rᵏ → 0 as r → ∞
+    when k > N. (c) JENSEN:
+       ln|f(0)| = ∑_{|aₖ|<R} ln(|aₖ|/R) + (1/2π)∫ln|f(Re^{iθ})| dθ.
+    Here f(0) = 6, the zeros are 2 (inside |z| < 5/2) and 3 (outside). So
+    the mean is ln 6 − ln(2/(5/2)) = ln 6 + ln(5/4) = ln(15/2) ≈ 2.01490.
+    Check: the mean of ln|z − a| over |z| = R is ln max(R, |a|): ln(5/2) +
+    ln 3 = ln(15/2) ✓. (d) HADAMARD: if f has finite order ρ and zeros aₙ
+    (≠ 0), then f(z) = z^m e^{g(z)}∏E_p(z/aₙ) with p = genus ≤ ρ and g a
+    polynomial of degree ≤ ρ. If there are no zeros, f = e^{g} with deg g
+    ≤ ρ < 1, so g is constant. Consequently an entire function of finite
+    NON-INTEGER order has infinitely many zeros (cos √z vanishes at z =
+    ((k + 1/2)π)²). Common mistakes: using the minimum of |f| on the circle
+    instead of the maximum; forgetting that Jensen counts only zeros
+    INSIDE the circle. Now you try: order of ∑zⁿ/nⁿ. (1)
+
+D7. (a) Prove |1 − E_p(z)| ≤ |z|^{p+1} for |z| ≤ 1. (b) Construct entire
+    functions with simple zeros exactly at (i) the positive integers and
+    (ii) the points √n, n ≥ 1. (c) Use Hadamard's theorem to prove sin πz
+    = πz∏(1 − z²/n²), and deduce ∑1/n² = π²/6 and ∑1/n⁴ = π⁴/90.
+    Answer: (b) ∏(1 − z/n)e^{z/n}; ∏E₂(z/√n). (c) compare the z² and z⁴
+    coefficients.
+    Teacher explains: (a) Write E_p = (1 − z)e^{Q}, Q = z + ... + z^p/p.
+    Then Q′ = (1 − z^p)/(1 − z), so E_p′ = −e^{Q} + (1 − z^p)e^{Q} = −z^p e^Q.
+    Hence −E_p′ has non-negative Taylor coefficients and a zero of order p
+    at 0, so 1 − E_p(z) = z^{p+1}φ(z) with φ having non-negative
+    coefficients and φ(1) = 1 − E_p(1) = 1. For |z| ≤ 1: |φ(z)| ≤ φ(|z|) ≤
+    φ(1) = 1. (b) The product ∏E_{p}(z/aₙ) converges locally uniformly iff
+    ∑(r/|aₙ|)^{p+1} < ∞ for all r, by (a) and the test ∑|1 − factor| < ∞.
+    (i) aₙ = n: ∑1/n diverges, ∑1/n² converges: p = 1, f(z) =
+    ∏(1 − z/n)e^{z/n}. (ii) aₙ = √n: need ∑n^{−(p+1)/2} < ∞, i.e. p = 2:
+    f(z) = ∏(1 − z/√n)exp(z/√n + z²/(2n)). (c) sin πz has order 1 and
+    simple zeros at Z; the genus of the zeros is 1. Hadamard: sin πz =
+    z e^{a+bz}∏_{n≠0}(1 − z/n)e^{z/n} = z e^{a+bz}∏_{n≥1}(1 − z²/n²)
+    (pair n with −n). Both sin πz/z and the product are even, so e^{bz} is
+    even: b = 0; letting z → 0 gives e^a = π. Now expand:
+       sin πz/(πz) = 1 − π²z²/6 + π⁴z⁴/120 − ...
+       ∏(1 − z²/n²) = 1 − (∑1/n²)z² + (∑_{m<n}1/(m²n²))z⁴ − ...
+    So ∑1/n² = π²/6 and ∑_{m<n}1/(m²n²) = ((∑1/n²)² − ∑1/n⁴)/2 = π⁴/120,
+    giving ∑1/n⁴ = π⁴/36 − π⁴/60 = π⁴/90. At z = 1/2 we get WALLIS:
+    2/π = ∏(1 − 1/(4n²)). Common mistakes: writing ∏(1 − z/n) without
+    convergence factors (it diverges for z ≠ 0); forgetting the factor
+    e^{g}. Now you try: put z = i in the sine product to find ∏(1 + 1/n²).
+    (sinh π/π ≈ 3.67608)
+
+D8. (a) State the Mittag-Leffler theorem. (b) Prove π cot πz = 1/z +
+    ∑_{n≥1}2z/(z² − n²). (c) Deduce ∑_{n≥1}1/(n² + 1). (d) Prove that every
+    meromorphic function on C is a quotient of two entire functions.
+    Answer: (c) (π coth π − 1)/2 ≈ 1.07667. (d) multiply by a Weierstrass
+    product that vanishes at the poles.
+    Teacher explains: (a) Given bₙ → ∞ (distinct) and polynomials Pₙ
+    without constant term, there is a meromorphic h whose poles are
+    exactly the bₙ with principal parts Pₙ(1/(z − bₙ)); h = ∑(Pₙ(1/(z −
+    bₙ)) − Qₙ(z)) with Qₙ a Taylor polynomial at 0 chosen so that
+    |Pₙ − Qₙ| < 2⁻ⁿ on |z| ≤ |bₙ|/2. (b) The residue of π cot πz at each
+    integer n is π cos(πn)/(π cos(πn)) = 1, and 1/(z − n) + 1/(z + n) =
+    2z/(z² − n²) is O(1/n²) locally uniformly, so the series converges and
+    g(z) = π cot πz − 1/z − ∑2z/(z² − n²) is ENTIRE. g has period 1 (the
+    symmetric partial sums ∑_{|n|≤N}1/(z − n) change by 1/(z + 1 + N) −
+    1/(z − N) → 0 under z ↦ z + 1). On the strip 0 ≤ Re z ≤ 1, cot πz is
+    bounded for |Im z| ≥ 1 and the series is bounded there too (compare
+    with ∫2|y|dt/(y² + t²) = 2π); on the compact part g is continuous. So
+    g is a bounded entire function, a constant, and odd, hence 0. (c) Put
+    z = i: π cot(πi) = −iπ coth π, 1/i = −i, 2i/(−1 − n²) = −2i/(n² + 1):
+       −iπ coth π = −i − 2i∑1/(n² + 1) ⇒ ∑1/(n² + 1) = (π coth π − 1)/2,
+    ≈ 1.07667 (numerical check: the first 1000 terms give 1.07567 plus a
+    tail ≈ 1/1000). (d) Let h be meromorphic with poles bₙ of orders mₙ.
+    By Weierstrass there is an entire g with zeros exactly at bₙ of order
+    mₙ. Then gh has only removable singularities, so F = gh is entire and
+    h = F/g. Common mistakes: summing ∑1/(z − n) without symmetric
+    grouping or convergence terms (it diverges); forgetting that
+    Mittag-Leffler controls only the poles — adding any entire function
+    gives another solution. Now you try: use π/sin πz = 1/z +
+    ∑(−1)ⁿ2z/(z² − n²) to find ∑_{n≥1}(−1)ⁿ/(n² + 1). ((π/sinh π − 1)/2 ≈
+    −0.36399)
+
+D9. (a) Let f(z) = ∑_{n≥1}zⁿ/n on D. Re-expand f about a = −1/2, find
+    the radius of the new series and explain how this continues f beyond
+    D. What happens when f is continued once around z = 1? (b) Continue
+    √z along the unit circle starting from √1 = 1, and state the monodromy
+    theorem. (c) Prove that |z| = 1 is a natural boundary for g(z) =
+    ∑_{n≥0}z^{2ⁿ}.
+    Answer: (a) f = −ln(3/2) + ∑_{k≥1}(2/3)ᵏ(z + 1/2)ᵏ/k, radius 3/2; one
+    loop around 1 adds −2πi. (b) returns as −1. (c) g(rζ) → ∞ at every
+    2ᵏ-th root of unity ζ.
+    Teacher explains: (a) f = −log(1 − z) on D. Near a = −1/2, 1 − z =
+    (3/2)(1 − (z + 1/2)/(3/2)), so
+       f(z) = −ln(3/2) + ∑_{k≥1} (2/3)ᵏ (z + 1/2)ᵏ / k,
+    a series with radius 3/2 = distance from −1/2 to the singularity 1.
+    The disc |z + 1/2| < 3/2 sticks out of D (it contains −1.9), and on the
+    overlap the two series agree (both equal −log(1 − z)); by the identity
+    theorem this defines the unique continuation there. Chains of such
+    discs continue f along every path in C ∖ {1}. Going once
+    counterclockwise around 1, 1 − z winds once around 0, so log(1 − z)
+    gains 2πi and f gains −2πi: f is not single-valued on C ∖ {1}.
+    (b) Along z = e^{it}, the continuation is e^{it/2} (it is holomorphic
+    in a neighbourhood of each point of the path and starts at 1). At t
+    = 2π it equals e^{iπ} = −1. MONODROMY THEOREM: if a function element
+    can be continued along every curve in a domain Ω, then continuations
+    along two curves that are homotopic in Ω (fixed endpoints) end with
+    the same element; hence on a SIMPLY CONNECTED Ω one gets a single-
+    valued holomorphic function. For √z on C ∖ {0} the unit circle is not
+    null-homotopic, so there is no contradiction. (c) Let ζ be a 2ᵏ-th root
+    of unity. For n ≥ k, ζ^{2ⁿ} = 1, so for 0 < r < 1
+       g(rζ) = ∑_{n<k}(rζ)^{2ⁿ} + ∑_{n≥k} r^{2ⁿ} → ∞ as r → 1⁻.
+    Thus g cannot be continued to a neighbourhood of ζ. Such ζ are dense in
+    the circle, so no arc of |z| = 1 admits a continuation: natural
+    boundary. (HADAMARD GAP THEOREM: n_{k+1}/nₖ ≥ λ > 1 always gives a
+    natural boundary.) Common mistakes: thinking the radius of a Taylor
+    series is determined by the nearest point where f "looks bad" on the
+    real line (1/(1 + x²) has radius 1 at 0 because of ±i); assuming that
+    continuation along a closed path must return the same value. Now you
+    try: Γ extends to C via Γ(z) = Γ(z + 3)/(z(z + 1)(z + 2)). Find the
+    residue at z = −2. (Γ(1)/((−2)(−1)) = 1/2)
+
+D10. (a) Define a Riemann surface and give an atlas for Ĉ. (b) Construct
+     the compact Riemann surface X of y² = z(z − 1)(z − λ) (λ ≠ 0, 1),
+     describe its charts at branch points, and compute its genus by the
+     Riemann-Hurwitz formula. (c) Prove every holomorphic function on a
+     compact Riemann surface is constant. (d) Genus of y² = z⁵ − 1?
+     Answer: (b) a double cover of Ĉ branched at 0, 1, λ, ∞: g = 1, a
+     torus. (c) maximum principle + compactness. (d) 2.
+     Teacher explains: (a) A Riemann surface is a connected Hausdorff
+     (second countable) space X with charts φ_α : U_α → C, homeomorphisms
+     onto open sets, whose transition maps φ_β ∘ φ_α⁻¹ are holomorphic. Ĉ:
+     U₀ = C with φ₀(z) = z, U₁ = Ĉ ∖ {0} with φ₁(z) = 1/z; the transition
+     z ↦ 1/z is holomorphic on C ∖ {0}. (b) Over each z ∉ {0, 1, λ, ∞}
+     there are two values ±y, so X is two sheets. Going once around 0
+     alone, y = √(z(z − 1)(z − λ)) changes sign; the same around 1 and λ;
+     around a huge circle y ~ z^{3/2} also changes sign, so ∞ is a branch
+     point too. Cut-and-paste: cut two copies of Ĉ along [0, 1] and
+     [λ, ∞] and glue crosswise: each slit becomes a tube, two spheres
+     joined by two tubes = a torus. Charts: at a smooth point, z itself;
+     at a branch point (a, 0) use t = y (≈ c√(z − a)); at ∞ use
+     t = 1/√z-type coordinate, e.g. t = z/y. RIEMANN-HURWITZ for the degree
+     2 map (z, y) ↦ z to Ĉ (genus 0): 2g − 2 = 2(0 − 2) + ∑(e_P − 1) =
+     −4 + 4·1 = 0, so g = 1. (c) X compact, f holomorphic ⇒ |f| attains a
+     maximum at some P; in a chart at P the ordinary maximum principle
+     makes f constant near P; the set of points near which f ≡ f(P) is
+     open and closed, so f is constant on the connected X. Hence the
+     interesting objects on compact surfaces are MEROMORPHIC functions
+     (like z and y above) and differentials. (d) z⁵ − 1 has 5 simple roots
+     and odd degree, so ∞ is also a branch point: 6 branch points,
+     2g − 2 = −4 + 6 = 2, g = 2. In general y² = p(z), deg p = n distinct
+     roots, has genus ⌈n/2⌉ − 1. Common mistakes: forgetting ∞ as a
+     branch point when n is odd; confusing the number of sheets with the
+     genus. Now you try: genus of the Fermat cubic x³ + y³ = 1 (project
+     to x: y³ = 1 − x³ branches with e = 3 at the three cube roots of 1,
+     not at ∞). (2g − 2 = 3(−2) + 3·2 = 0: g = 1)
+
+D11. Let f be a non-constant elliptic function for the lattice Λ, and P a
+     period parallelogram whose boundary avoids zeros and poles of f.
+     Prove LIOUVILLE'S THEOREMS: (i) f has a pole in P; (ii) the residues
+     in P sum to 0; (iii) f has as many zeros as poles in P (with
+     multiplicity); (iv) ∑zeros − ∑poles ∈ Λ. Deduce that f has order ≥ 2.
+     For Λ = Z + iZ, decide whether there is an elliptic function with
+     simple zeros at 1/4 and 3/4 and a double pole at 0 (only).
+     Answer: contour integrals over ∂P; yes: ℘(z) − ℘(1/4).
+     Teacher explains: (i) If f had no poles it would be continuous on the
+     compact closure of P, hence bounded on C (every z is congruent to a
+     point of P̄), so constant by Liouville. (ii) ∑Res = (1/2πi)∮_{∂P} f dz;
+     opposite sides are translates by ω₁ or ω₂ traversed in opposite
+     directions, and f takes the same values on them, so the integrals
+     cancel: sum = 0. (iii) f′/f is elliptic with residues = (order of zero)
+     at zeros and −(order of pole) at poles; apply (ii). (iv) (1/2πi)∮ z
+     f′(z)/f(z) dz = ∑zeros − ∑poles. Pair the side [a, a + ω₁] with its
+     translate by ω₂ (opposite direction): their total is
+        (1/2πi)∫_a^{a+ω₁} (z − (z + ω₂)) f′/f dz = −ω₂ · (1/2πi)∫_a^{a+ω₁} f′/f,
+     and the last integral is 2πik (f(a + ω₁) = f(a), so it is a change
+     of log f: an integer multiple of 2πi). Similarly for the other pair.
+     So the sum lies in Zω₁ + Zω₂ = Λ. ORDER: if f had only one simple pole,
+     its residue would be the whole sum, 0: impossible. Application: zeros
+     1/4 + 3/4 − (0 + 0) = 1 ∈ Λ, so Abel's condition holds. Indeed ℘(z) −
+     ℘(1/4) has a double pole at 0 and vanishes at ±1/4, and −1/4 ≡ 3/4;
+     1/4 ≢ −1/4 (not a half-period), so both zeros are simple. Common
+     mistakes: counting zeros in a parallelogram whose boundary passes
+     through a zero; forgetting that zeros/poles are counted modulo Λ.
+     Now you try: same lattice, simple zeros at 1/4, 1/2 and a double pole
+     at 0 only? (No: 3/4 ∉ Λ)
+
+D12. (a) Show ∑_{ω∈Λ∖0}|ω|^{−s} converges iff s > 2, and deduce that ℘
+     converges locally uniformly away from Λ. (b) Prove ℘ is even and
+     elliptic. (c) Derive the Laurent series and the differential equation
+     (℘′)² = 4℘³ − g₂℘ − g₃. (d) Show e₁, e₂, e₃ are distinct. (e) If
+     e₁, e₂, e₃ = 2, −1/2, −3/2, find g₂, g₃, Δ, and ℘′(z)² where ℘(z) = 3.
+     Answer: (e) g₂ = 13, g₃ = 6, Δ = 1225, ℘′² = 63.
+     Teacher explains: (a) The lattice points with max(|m|, |n|) = k
+     (ω = mω₁ + nω₂) number 8k and have |ω| between c₁k and c₂k. So the sum
+     is comparable to ∑8k · k^{−s}, finite iff s − 1 > 1. For |z| ≤ R and
+     |ω| ≥ 2R: |1/(z − ω)² − 1/ω²| = |z(2ω − z)|/|ω²(z − ω)²| ≤ 10R/|ω|³, a
+     convergent (s = 3) majorant. (b) Replacing ω by −ω permutes Λ, so
+     ℘(−z) = ℘(z). ℘′(z) = −2∑_{ω∈Λ}1/(z − ω)³ is obviously Λ-periodic.
+     Hence ℘(z + ω₁) − ℘(z) = c is constant; at z = −ω₁/2 evenness gives
+     c = ℘(ω₁/2) − ℘(−ω₁/2) = 0. (c) For |z| < min|ω|, 1/(z − ω)² − 1/ω² =
+     ∑_{k≥1}(k + 1)zᵏ/ω^{k+2}; summing over ω the odd k cancel (Λ = −Λ):
+        ℘ = z⁻² + 3G₄z² + 5G₆z⁴ + O(z⁶),  ℘′ = −2z⁻³ + 6G₄z + 20G₆z³ + ...
+        ℘′² = 4z⁻⁶ − 24G₄z⁻² − 80G₆ + O(z²),
+        4℘³ = 4z⁻⁶ + 36G₄z⁻² + 60G₆ + O(z²).
+     So F = ℘′² − 4℘³ + 60G₄℘ + 140G₆ is elliptic, has no pole (all
+     negative powers cancel) and F(0) = 0; by Liouville F ≡ 0. With g₂ =
+     60G₄, g₃ = 140G₆: (℘′)² = 4℘³ − g₂℘ − g₃. (d) ℘′ is odd and periodic,
+     so ℘′(ω/2) = −℘′(−ω/2) = −℘′(ω/2) = 0 at the three half-periods ω₁/2,
+     ω₂/2, (ω₁ + ω₂)/2. ℘′ has order 3, so these are its only zeros, all
+     simple. ℘ − e₁ has a DOUBLE zero at ω₁/2 and order 2, so no other
+     zeros: e₂, e₃ ≠ e₁. Thus 4x³ − g₂x − g₃ = 4(x − e₁)(x − e₂)(x − e₃)
+     with distinct roots, Δ = 16∏(eᵢ − eⱼ)² ≠ 0. (e) Vieta: e₁ + e₂ + e₃ = 0
+     ✓; g₂ = −4(e₁e₂ + e₂e₃ + e₃e₁) = −4(−1 + 3/4 − 3) = 13; g₃ = 4e₁e₂e₃ =
+     4 · (3/2) = 6. Check: 4x³ − 13x − 6 = (x − 2)(2x + 1)(2x + 3). Δ = 13³ −
+     27 · 36 = 2197 − 972 = 1225 = 16(5/2)²(1)²(7/2)². At ℘ = 3: ℘′² = 108 −
+     39 − 6 = 63. Common mistakes: g₃ = 4e₁e₂e₃, not −4e₁e₂e₃ (4x³ − g₂x −
+     g₃ has constant term −g₃ = −4e₁e₂e₃); forgetting that ℘ alone is not
+     obviously periodic (the constant c must be shown to vanish). Now you
+     try: find ℘″ in terms of ℘. (℘″ = 6℘² − g₂/2)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Is u harmonic (on its natural domain)? If so, give a harmonic
+    conjugate v (up to a constant) or say why none exists.
+    a) x² − y²                        b) xy
+    c) x² + y²                        d) eˣ cos y
+    e) eˣ sin y                       f) x³ − 3xy² + 2x
+    g) sin x cosh y                   h) x/(x² + y²)
+    i) ln(x² + y²) on C ∖ {0}          j) e^{2x} cos 3y
+    k) e^{x²−y²} cos 2xy               l) x³ + axy²: for which a?
+    m) θ = arg z on C ∖ (−∞, 0]         n) x⁴ − 6x²y² + y⁴
+    o) y/((x − 1)² + y²)
+    p) ax³ + bx²y + 3xy² − y³: for which a, b?
+    q) r² cos θ (polar)               r) rⁿ cos nθ (polar)
+    Answers:
+      a) 2xy          b) (y² − x²)/2     c) not harmonic (Δu = 4)
+      d) eˣ sin y      e) −eˣ cos y       f) 3x²y − y³ + 2y
+      g) cos x sinh y  h) −y/(x² + y²)
+      i) harmonic, no conjugate on C ∖ {0} (would be 2 arg z); on the
+         slit plane v = 2 Arg z
+      j) not harmonic (Δu = −5e^{2x}cos 3y)
+      k) e^{x²−y²} sin 2xy (u = Re e^{z²})          l) a = −3
+      m) −ln|z| (θ − i ln r = −i Log z)             n) 4x³y − 4xy³
+      o) (x − 1)/((x − 1)² + y²) (u = Re(i/(z − 1)))
+      p) a = −1, b = 3                q) no (Δu = 3cos θ)
+      r) yes, v = rⁿ sin nθ
+
+M2. Dirichlet problems, mean values and Harnack. D is the unit disc.
+    a) u on D with u = cos θ on ∂D     b) u = cos 2θ on ∂D
+    c) u = cos²θ on ∂D                 d) u = sin³θ on ∂D
+    e) u = cos θ + sin 2θ on ∂D
+    f) u = 1 on the upper arc, 0 on the lower: u(0) and u(i/2)
+    g) u = e^{cos θ}cos(sin θ) on ∂D: u(z) and u(0)
+    h) u harmonic on |z| < 3, = x² − y² + 7 on |z| = 3: u(0)
+    i) the Poisson kernel P_r(θ) for r = 1/2 at θ = 0 and θ = π
+    j) (1/2π)∫₀^{2π} P_r(θ) dθ
+    k) u > 0 harmonic on D, u(0) = 5: best bounds for u(1/3)
+    l) u > 0 harmonic on |z| < 2, u(0) = 1: bounds on |z| = 1
+    m) on H, u = 1 on (0, ∞), 0 on (−∞, 0): formula; u(i), u(1 + i),
+       u(−1 + √3 i)
+    n) on H, u = 1 on (−1, 1), 0 elsewhere on R: u(i), u(2i)
+    o) on 1 < |z| < 2, u = 0 on |z| = 1, u = 1 on |z| = 2: formula, u(1.5)
+    p) max and min of x² − y² on the closed unit disc
+    Answers:
+      a) x             b) x² − y²          c) 1/2 + (x² − y²)/2
+      d) (3y − 3x²y + y³)/4                e) x + 2xy
+      f) 1/2; 1/2 + arctan(4/3)/π ≈ 0.79517
+      g) eˣ cos y (= Re eᶻ); 1               h) 7
+      i) 3 and 1/3      j) 1                k) 5/2 ≤ u(1/3) ≤ 10
+      l) 1/3 ≤ u ≤ 3 ((R − r)/(R + r) = 1/3)
+      m) 1 − arg z/π; 1/2, 3/4, 1/3
+      n) (arg(z − 1) − arg(z + 1))/π; 1/2, 1 − 2arctan(2)/π ≈ 0.29517
+      o) ln|z|/ln 2; ln 1.5/ln 2 ≈ 0.58496
+      p) 1 (at ±1) and −1 (at ±i), on the boundary
+
+M3. Automorphisms, Möbius maps and the Schwarz lemma.
+    a) the automorphism f of D with f(1/2) = 0, f′(1/2) > 0; f′(1/2)
+    b) the automorphism f of D with f(0) = i/2, f′(0) > 0; f′(0)
+    c) f : D → D holomorphic, f(0) = 1/2: max |f′(0)|
+    d) f : D → D, f(0) = 0: max |f(1/2)|, max |f′(0)|
+    e) f : D → D, f(0) = 0, f′(0) = 1: f = ?
+    f) f : D → D, f(1/2) = 0: max |f(0)|
+    g) pseudo-hyperbolic ρ(z, w) = |z − w|/|1 − w̄z|: ρ(1/2, −1/2),
+       ρ(i/2, 1/2)
+    h) hyperbolic distance ln((1 + ρ)/(1 − ρ)) from 0 to 1/2
+    i) f : D → D, f(1/2) = 1/2: max |f′(1/2)|
+    j) f : H → D, f(i) = 0: max |f′(i)|
+    k) fixed points and type of T(z) = (z + 1/2)/(1 + z/2) on D
+    l) check Schwarz-Pick for f(z) = z² at z = 1/2
+    m) automorphisms of D fixing both 0 and 1/2
+    n) is z ↦ (2z + 1)/(z + 1) an automorphism of H? z ↦ (z + 1)/(2z − 1)?
+    o) the Blaschke product B(z) = z(z − 1/2)/(1 − z/2): zeros, |B| on
+       ∂D, B′(0)
+    p) the Möbius T with T(0) = 1, T(1) = i, T(∞) = −1; T(H) = ?
+    Answers:
+      a) (z − 1/2)/(1 − z/2) = (2z − 1)/(2 − z); 4/3
+      b) (z + i/2)/(1 − iz/2); 3/4       c) 3/4        d) 1/2; 1
+      e) the identity                   f) 1/2
+      g) 4/5; 2√2/√17 ≈ 0.68599          h) ln 3 ≈ 1.09861
+      i) 1 ((1 − |f|²)/(1 − |z|²) = 1)    j) 1/2 (Cayley has |C′(i)| = 1/2)
+      k) ±1, both on ∂D: hyperbolic     l) |f′| = 1 ≤ (15/16)/(3/4) = 5/4
+      m) only the identity              n) yes (det 1 > 0); no (det −3 < 0)
+      o) 0 and 1/2; 1; −1/2             p) (i − z)/(i + z); D
+
+M4. Conformal maps: find the image, or a map with the stated property.
+    a) z² on the first quadrant        b) eᶻ on 0 < Im z < π
+    c) eᶻ on 0 < Im z < π/2            d) (z − i)/(z + i) on H; image of
+                                          the positive imaginary axis
+    e) (1 + z)/(1 − z) on D, and on the upper half-disc
+    f) a map of the sector 0 < arg z < π/3 onto H
+    g) 1/z on {|z| > 1}                 h) a map of C ∖ (−∞, 0] onto D
+    i) z + 1/z on the upper half-disc; on D ∖ {0}
+    j) the map H → D with f(2i) = 0, f′(2i) > 0; f′(2i)
+    k) a map of the strip |Im z| < π/2 onto D
+    l) sin z on {−π/2 < Re z < π/2, Im z > 0}
+    m) a map of H ∖ [0, i] onto H
+    n) the Koebe function z/(1 − z)² on D
+    o) are 1 < |z| < 2 and 2 < |z| < 4 conformally equivalent? 1 < |z| < 2
+       and 1 < |z| < 3? D and C?
+    p) a map of the upper half-disc onto D sending i(√2 − 1) to 0
+    Answers:
+      a) H             b) H              c) the first quadrant
+      d) D; the segment (−1, 1) (it ↦ (t − 1)/(t + 1))
+      e) Re w > 0; the first quadrant    f) z³
+      g) D ∖ {0}        h) (√z − 1)/(√z + 1), principal √
+      i) the lower half-plane; Ĉ ∖ [−2, 2]
+      j) i(z − 2i)/(z + 2i); 1/4          k) tanh(z/2) = (eᶻ − 1)/(eᶻ + 1)
+      l) H              m) √(z² + 1) (branch with values in H)
+      n) C ∖ (−∞, −1/4]                 o) yes (z ↦ 2z); no; no
+      p) (w − i)/(w + i), w = ((1 + z)/(1 − z))²
+
+M5. Order ρ of entire functions, zeros and Jensen.
+    a) 7z⁵ + 1                         b) e^{5z} (also the type)
+    c) e^{z²}                          d) cos √z
+    e) sin z/z                         f) e^{eᶻ}
+    g) sin z · e^{z³}                   h) ∑zⁿ/(n!)²
+    i) ∑zⁿ/nⁿ                          j) ∑zⁿ/√(n!)
+    k) 1/Γ(z)                          l) ∏_{n≥1}(1 − z/n²)
+    m) ∏_{n≥1}(1 − z/2ⁿ)                n) ∑zⁿ/Γ(n/3 + 1)
+    o) cos z + e^{z²}                   p) eᶻ + z
+    q) exponent of convergence of the zeros of sin z; of cos √z; of
+       ∏(1 − z/2ⁿ)
+    r) genus of the zero sets {n}, {n²}, {√n}, {2ⁿ}
+    s) (1/2π)∫ln|e^{iθ} − 3| dθ; the same over |z| = 5
+    t) (1/2π)∫ln|f(Re^{iθ})| dθ, f = z² − 5z + 6, R = 5/2
+    u) (1/2π)∫ln|f(e^{iθ})| dθ, f = (z − 1/2)(z + 1/3)
+    v) must an entire f of order 1/2 have infinitely many zeros? order 2?
+    Answers:
+      a) 0            b) 1 (type 5)      c) 2           d) 1/2
+      e) 1            f) ∞               g) 3           h) 1/2
+      i) 1            j) 2               k) 1           l) 1/2
+      m) 0            n) 3 (ρ = 1/α for ∑zⁿ/Γ(αn + 1))
+      o) 2            p) 1
+      q) 1; 1/2; 0    r) 1; 0; 2; 0
+      s) ln 3 ≈ 1.09861; ln 5 ≈ 1.60944 (mean of ln|z − a| is ln max(R, |a|))
+      t) ln(15/2) ≈ 2.01490             u) 0 (ln(1/6) − ln(1/2) − ln(1/3))
+      v) yes (non-integer order); no (e^{z²})
+
+M6. Infinite products and Weierstrass factors.
+    a) ∏_{n≥2}(1 − 1/n²)               b) ∏_{n≥1}(1 + 1/n²)
+    c) ∏_{n≥1}(1 − 1/(4n²))            d) ∏_{n≥1}(1 − 1/(9n²))
+    e) ∏_{n≥2}(n³ − 1)/(n³ + 1)         f) ∏_{n≥1}(1 + 1/n)
+    g) ∏_{n≥1}(1 + (−1)^{n+1}/n)        h) ∏_{n≥1}(1 + 1/n)e^{−1/n}
+    i) ∏_{n≥0}(1 + z^{2ⁿ}) for |z| < 1; its value at z = 1/2
+    j) Wallis: ∏_{n≥1}(2n)²/((2n − 1)(2n + 1))
+    k) ∏_{n≥1}(1 + 1/n³) (use 1 + x³ = (1 + x)(1 + ωx)(1 + ω̄x))
+    l) E₁(1/2), and check |1 − E₁(1/2)| ≤ (1/2)²
+    m) smallest fixed p making ∏E_p(z/aₙ) converge for aₙ = n; n²; √n;
+       n ln²n (n ≥ 2)
+    n) an entire function with simple zeros exactly at −1, −2, −3, ...
+    o) an entire function with zeros exactly at the Gaussian integers
+       m + ni ≠ 0 (and at 0)
+    p) does ∏(1 + (−1)ⁿ/√n) (n ≥ 2) converge to a non-zero limit?
+    Answers:
+      a) 1/2 (telescopes: (n − 1)(n + 1)/n²)
+      b) sinh π/π ≈ 3.67608            c) 2/π ≈ 0.63662
+      d) 3√3/(2π) ≈ 0.82699 (sin(π/3)/(π/3))
+      e) 2/3            f) diverges (partial products n + 1 → ∞)
+      g) 1 (partial products 2, 1, 4/3, 1, 6/5, 1, ...), although
+         ∑1/n = ∞: only conditional convergence
+      h) e^{−γ} ≈ 0.56146 (1/Γ(z) product at z = 1)
+      i) 1/(1 − z) (binary expansion); 2
+      j) π/2            k) cosh(π√3/2)/π ≈ 2.42819
+      l) (1/2)e^{1/2} ≈ 0.82436; 0.17564 ≤ 0.25 ✓
+      m) 1; 0; 2; 0
+      n) ∏(1 + z/n)e^{−z/n}, e.g. 1/Γ(z + 1) = e^{γz}∏(1 + z/n)e^{−z/n}
+      o) z∏'E₂(z/ω) (∑'|ω|⁻³ < ∞; this is the Weierstrass σ-function)
+      p) no: ∑ln(1 + aₙ) ≈ ∑(aₙ − aₙ²/2) and ∑1/(2n) = ∞, so the product
+         tends to 0
+
+M7. Mittag-Leffler and partial-fraction series.
+    a) the Mittag-Leffler expansion of π cot πz
+    b) of π²/sin²πz                    c) of π/sin πz
+    d) ∑_{n≥1}1/n² and ∑_{n≥1}1/n⁴ from the Laurent series of π cot πz
+    e) ∑_{n≥1}1/n⁶                     f) ∑_{n≥1}1/(n² + 1)
+    g) ∑_{n≥1}(−1)ⁿ/(n² + 1)            h) ∑_{n≥1}1/(n² + 4)
+    i) ∑_{n∈Z}1/(n + 1/3)²             j) ∑_{n∈Z}1/(n + 1/2)²; deduce
+                                          ∑_{k≥0}1/(2k + 1)²
+    k) ∑_{n≥1}1/(n² − 1/4)             l) ∑_{n≥1}1/(n² − a²), a ∉ Z
+    m) the expansion of π tan πz; check at z = 0.3
+    n) the correction terms needed for poles at √n with residue 1
+    o) a meromorphic function on C with simple poles at n² (n ≥ 1),
+       residue 1
+    p) the rational function on Ĉ with simple poles at 0, 1, residues 1,
+       −1, vanishing at ∞
+    q) the principal part of Γ at z = −2
+    Answers:
+      a) 1/z + ∑_{n≥1}2z/(z² − n²)
+      b) ∑_{n∈Z}1/(z − n)²
+      c) 1/z + ∑_{n≥1}(−1)ⁿ2z/(z² − n²)
+      d) π cot πz = 1/z − 2∑ζ(2k)z^{2k−1}: π²/6 ≈ 1.64493, π⁴/90 ≈ 1.08232
+      e) π⁶/945 ≈ 1.01734
+      f) (π coth π − 1)/2 ≈ 1.07667
+      g) (π/sinh π − 1)/2 ≈ −0.36399
+      h) (2π coth 2π − 1)/8 ≈ 0.66040 (general (πa coth πa − 1)/(2a²))
+      i) π²/sin²(π/3) = 4π²/3 ≈ 13.15947
+      j) π²; π²/8 ≈ 1.23370
+      k) 2 (telescoping check: 4/((2n − 1)(2n + 1)))
+      l) (1 − πa cot πa)/(2a²)
+      m) ∑_{n≥0}2z/((n + 1/2)² − z²); both sides ≈ 4.32403 at z = 0.3
+      n) 1/(z − √n) + 1/√n + z/n (∑n^{−3/2} < ∞)
+      o) ∑_{n≥1}1/(z − n²) (no correction: ∑1/n² < ∞)
+      p) 1/z − 1/(z − 1) = −1/(z(z − 1))
+      q) 1/(2(z + 2)) (residue (−1)²/2! = 1/2)
+
+M8. The Gamma function and analytic continuation.
+    a) Γ(−1/2)                          b) Γ(−3/2)
+    c) Res_{z=−3}Γ                      d) Res_{z=−4}Γ
+    e) Γ(1/3)Γ(2/3)                     f) |Γ(1/2 + i)|²
+    g) |Γ(i)|²                          h) radius of the Taylor series of
+                                           1/(1 + z²) about 0, 1, 3
+    i) radius of the Taylor series of Log z about −1 + i
+    j) radius of the Taylor series of tan z and z/(eᶻ − 1) about 0
+    k) √z continued once (twice) counterclockwise around |z| = 1 from
+       √1 = 1
+    l) Log continued three times counterclockwise around 0 from ln 1 = 0
+    m) z^{1/3} continued once counterclockwise around 0 from the value 2
+       at z = 8
+    n) √(z² − 1) (value √3 at z = 2) continued once around |z| = 2; once
+       around |z − 1| = 1
+    o) natural boundary on |z| = 1? ∑zⁿ; ∑z^{n!}; ∑zⁿ/n²; ∑2⁻ⁿz^{2ⁿ}
+    p) the continuation of ∫₀^∞ e^{−zt} dt (Re z > 0)
+    q) ζ(0) and ζ(−1) (continuation of ∑n^{−s})
+    r) f holomorphic on the upper half-disc, real on (−1, 1), f(i/2) =
+       1 + 2i: the reflected value f(−i/2)
+    Answers:
+      a) −2√π ≈ −3.54491               b) 4√π/3 ≈ 2.36327
+      c) −1/6          d) 1/24          e) 2π/√3 ≈ 3.62760
+      f) π/cosh π ≈ 0.27101            g) π/sinh π ≈ 0.27203
+      h) 1, √2, √10 (distance to ±i)
+      i) √2 (the series crosses the cut; beyond it, it gives a different
+         branch than Log)
+      j) π/2; 2π
+      k) −1; 1          l) 6πi          m) 2e^{2πi/3} = −1 + i√3
+      n) √3 (both branch points enclosed); −√3 (only z = 1 enclosed)
+      o) no (1/(1 − z)); yes; no (only z = 1 is singular); yes (Hadamard
+         gaps, although the series converges uniformly on |z| ≤ 1)
+      p) 1/z on C ∖ {0}                 q) −1/2; −1/12
+      r) 1 − 2i (f(z̄) = conj f(z))
+
+M9. Riemann surfaces: genus g (by Riemann-Hurwitz 2g_X − 2 = d(2g_Y − 2)
+    + ∑(e_P − 1)), degrees and branch points.
+    a) y² = z³ − z                     b) y² = z⁴ − 1
+    c) y² = z⁵ − z                     d) y² = z⁶ − 1
+    e) y² = z⁷ − 1                     f) y² = p(z), deg p = 2g + 1 or
+                                          2g + 2, distinct roots
+    g) y³ = 1 − z³ (Fermat cubic)      h) x⁴ + y⁴ = 1
+    i) a smooth plane curve of degree 5 ((d − 1)(d − 2)/2)
+    j) y³ = z(z − 1)                   k) yⁿ = z
+    l) z ↦ z³ on Ĉ: ramification points and the R-H check
+    m) number of branch points of ℘ : C/Λ → Ĉ, and its degree
+    n) total ramification ∑(e_P − 1) of a rational map of degree 4
+    o) Euler characteristic of a compact surface of genus 3
+    p) how many sheets has the Riemann surface of √z? of log z? what is
+       the surface of log z biholomorphic to?
+    q) ramification of an unbranched map of degree d between tori
+    r) a non-constant holomorphic map Ĉ → C/Λ? genus 2 → genus 3?
+    s) the degree of (z³ + 1)/(z² − 4) as a map Ĉ → Ĉ
+    t) the simply connected Riemann surfaces (uniformization)
+    Answers:
+      a) 1 (branch points 0, ±1, ∞)    b) 1 (±1, ±i; ∞ unbranched)
+      c) 2 (0, ±1, ±i, ∞)              d) 2          e) 3
+      f) g                             g) 1 (2g − 2 = 3(−2) + 3·2)
+      h) 3 (2g − 2 = 4(−2) + 4·3)      i) 6
+      j) 1 (e = 3 at 0, 1, ∞: 2g − 2 = 3(−2) + 6)
+      k) 0              l) 0 and ∞ with e = 3: −2 = 3(−2) + 2 + 2 ✓
+      m) 4 (over e₁, e₂, e₃, ∞); 2      n) 2d − 2 = 6
+      o) 2 − 2g = −4    p) 2; infinitely many; C (via exp)
+      q) R = 0 (0 = d · 0 + R)
+      r) no (−2 = d · 0 + R ≥ 0 impossible); no (2 = 4d + R forces d < 1)
+      s) 3              t) Ĉ, C, D
+
+M10. Elliptic functions: basic facts (Λ = Zω₁ + Zω₂, P a period
+     parallelogram; in g)–i) Λ = Z + iZ).
+     a) the orders of ℘, ℘′, ℘², (℘′)², 1/℘, ℘℘′, ℘(2z)
+     b) the number of zeros of ℘′ in P, and where they are
+     c) the number of solutions of ℘(z) = c in P (c ≠ e₁, e₂, e₃); of
+        ℘(z) = e₁
+     d) an elliptic function of order 1?
+     e) the sum of the residues of any elliptic function in P
+     f) parity of ℘, ℘′, ℘℘′, ℘″
+     g) simple zeros at 1/4, 3/4, double pole at 0: exists?
+     h) simple zeros at 1/4, 1/2, double pole at 0: exists?
+     i) simple poles at 0 and 1/2 with residues 1, −1? with residues 1, 1?
+     j) the number of z ∈ C/Λ with 2z ≡ 0; with nz ≡ 0
+     k) Weierstrass ζ: ζ′ = ?, Res_{0}ζ, is ζ elliptic? Legendre relation
+     l) are sin z, tan z elliptic?
+     m) write the even elliptic function ℘′² and the odd function ℘′³ in
+        terms of ℘, ℘′
+     n) the number of zeros of ℘′ − 1 in P
+     o) ℘(z) = ℘(w) ⇔ ?
+     Answers:
+       a) 2, 3, 4, 6, 2, 5, 8 (double poles at the 4 points with 2z ∈ Λ)
+       b) 3, simple, at ω₁/2, ω₂/2, (ω₁ + ω₂)/2
+       c) 2 (z₀ and −z₀); 1 point, a double solution
+       d) none (a lone simple pole would have residue 0)
+       e) 0             f) even, odd, odd, even
+       g) yes: ℘(z) − ℘(1/4) (1/4 + 3/4 − 0 = 1 ∈ Λ)
+       h) no (3/4 ∉ Λ)
+       i) yes: ζ(z) − ζ(z − 1/2) + c; no (residue sum 2 ≠ 0)
+       j) 4 (0 and three half-periods); n²
+       k) −℘; 1; no (ζ(z + ωᵢ) = ζ(z) + ηᵢ); η₁ω₂ − η₂ω₁ = 2πi
+          (Im(ω₂/ω₁) > 0)
+       l) no (one period only; a doubly periodic entire function is
+          constant)
+       m) 4℘³ − g₂℘ − g₃; ℘′(4℘³ − g₂℘ − g₃)
+       n) 3 (order of ℘′)             o) z ≡ ±w (mod Λ)
+
+M11. Computations with ℘ (℘ = z⁻² + c₁z² + c₂z⁴ + c₃z⁶ + ...).
+     a) c₁, c₂, c₃ in terms of g₂, g₃
+     b) G₈ in terms of G₄
+     c) ℘″ and ℘‴ in terms of ℘, ℘′
+     d) ℘⁽⁴⁾ as a polynomial in ℘
+     e) g₂ = 4, g₃ = 0: e₁, e₂, e₃, Δ, j
+     f) g₂ = 0, g₃ = 4: eᵢ, Δ, j
+     g) g₂ = 13, g₃ = 6: eᵢ, Δ, j
+     h) g₂ = 12, g₃ = 8: is there a lattice?
+     i) how g₂, g₃, j change when Λ is replaced by 2Λ
+     j) Λ = Z[i]: g₃, j, ℘((1 + i)/2)
+     k) Λ = Z[i]: G₄, g₂, e₁ = ℘(1/2) numerically
+     l) Λ = Z + e^{2πi/3}Z: g₂, j
+     m) g₂ = 4, g₃ = 0, at a point with ℘(z) = 2: ℘′(z)², ℘″(z), and
+        ℘(2z) from ℘(2z) = (1/4)(℘″/℘′)² − 2℘
+     n) the addition formula for ℘(z + w)
+     o) the points of order 2 on y² = 4x³ − 13x − 6
+     Answers:
+       a) g₂/20, g₃/28, g₂²/1200         b) 3G₄²/7
+       c) 6℘² − g₂/2; 12℘℘′              d) 120℘³ − 18g₂℘ − 12g₃
+       e) 0, ±1; 64; 1728                f) 1, ω, ω² (ω = e^{2πi/3}); −432; 0
+       g) 2, −1/2, −3/2; 1225; 1728 · 2197/1225 ≈ 3099.12
+       h) no: Δ = 1728 − 1728 = 0 (4x³ − 12x − 8 = 4(x − 2)(x + 1)²)
+       i) g₂/16, g₃/64, j unchanged
+       j) 0 (℘(iz) = −℘(z) forces G₆ = 0); 1728; 0
+       k) ≈ 3.15121 (= Γ(1/4)⁸/(960π²)); ≈ 189.07; √g₂/2 ≈ 6.87519
+       l) 0; 0
+       m) 24; 22; 25/24
+       n) ℘(z + w) = (1/4)((℘′(z) − ℘′(w))/(℘(z) − ℘(w)))² − ℘(z) − ℘(w)
+       o) (2, 0), (−1/2, 0), (−3/2, 0) = (℘(ωᵢ/2), 0)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every simply connected open U ⊊ C is conformally equivalent to D.
+     b) C is conformally equivalent to D.
+     c) 1 < |z| < 2 and 1 < |z| < 3 are conformally equivalent.
+     d) Every harmonic function on C ∖ {0} has a harmonic conjugate.
+     e) A harmonic function on R² that is bounded below is constant.
+     f) A uniform limit of harmonic functions is harmonic.
+     g) f : D → D holomorphic with two distinct fixed points is the
+        identity.
+     h) An entire f with |f(z)| ≤ 1 + |z|^{3/2} is a polynomial of degree
+        ≤ 1.
+     i) An entire function without zeros has the form e^{g}, g entire.
+     j) Any sequence with no finite accumulation point is the zero set of
+        an entire function.
+     k) ∏(1 + aₙ) converges to a non-zero limit whenever ∑aₙ converges.
+     l) Every meromorphic function on C is a quotient of entire
+        functions.
+     m) Every meromorphic function on Ĉ is rational.
+     n) Every power series with radius 1 extends past some point of
+        |z| = 1.
+     o) A locally uniform limit of injective holomorphic functions on a
+        domain is injective.
+     p) A compact Riemann surface carries a non-constant holomorphic
+        function.
+     q) There is an elliptic function with a single simple pole in P.
+     r) Two tori C/Λ, C/Λ′ are biholomorphic iff Λ′ = λΛ for some λ ≠ 0.
+     s) Continuation of a function element along two curves with the same
+        endpoints always gives the same result.
+     t) Every non-constant entire function takes every complex value.
+     Answers:
+       a) T (Riemann mapping theorem)    b) F: Liouville
+       c) F: the modulus R is a conformal invariant
+       d) F: ln|z|                       e) T (Harnack)
+       f) T (mean value property passes to the limit)
+       g) T (move one fixed point to 0, apply Schwarz)
+       h) T (Cauchy estimates)          i) T (log on the simply connected C)
+       j) T (Weierstrass)               k) F: aₙ = (−1)ⁿ/√n (product → 0)
+       l) T                             m) T
+       n) F: ∑z^{n!}                    o) F: zₙ(z) = z/n → 0 (constant);
+                                           true if the limit is non-constant
+       p) F: only constants              q) F: residue sum would be ≠ 0
+       r) T (equivalently equal j-invariants)
+       s) F: √z along the upper and lower halves of |z| = 1 (true for
+          homotopic curves: monodromy)
+       t) F: eᶻ omits 0 (Picard: at most one value is omitted)
+
+TEACHING TIPS
+  Struggling: keep a "dictionary" page — harmonic u ↔ Re f, Poisson ↔
+  Fourier series with r^|n|, disc ↔ half-plane via Cayley — and always
+  reduce a Dirichlet or Schwarz problem to the disc centred at 0 by an
+  automorphism first. For conformal maps, track three boundary points and
+  one interior point through every brick. For products and partial
+  fractions, first ask "how fast do the zeros (poles) go to ∞?" to
+  choose the convergence factors, then fix the leftover entire function
+  by growth (Hadamard or Liouville) and parity. For elliptic functions,
+  draw the period parallelogram and count zeros and poles before
+  computing anything; for Riemann surfaces, list branch points including
+  ∞ and apply Riemann-Hurwitz. Harder: prove Montel's theorem via
+  Arzelà-Ascoli, Carathéodory's boundary extension theorem and the
+  Schwarz-Christoffel formula; prove Picard's little theorem via the
+  modular function λ or Bloch's theorem; prove Hadamard's factorisation
+  theorem via Jensen and Borel-Carathéodory; show every compact Riemann
+  surface of genus 1 is C/Λ and that j : H → C induces a bijection
+  SL₂(Z)∖H ↔ C; construct the Riemann surface of an algebraic function
+  as a sheaf of germs; and derive the Legendre relation and the
+  σ-function product formula.
+
+
+================================================================================
+TOPIC 12.4 — SEVERAL COMPLEX VARIABLES (INTRODUCTION): HOLOMORPHIC FUNCTIONS
+OF SEVERAL VARIABLES, CAUCHY INTEGRAL FORMULA ON POLYDISCS, HARTOGS
+PHENOMENON, DOMAINS OF HOLOMORPHY, PSEUDOCONVEXITY, PLURISUBHARMONIC
+FUNCTIONS, WEIERSTRASS PREPARATION THEOREM, THE ∂̄-PROBLEM
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - HOLOMORPHY: on an open Ω ⊆ Cⁿ, zⱼ = xⱼ + iyⱼ, WIRTINGER operators
+    ∂/∂zⱼ = ½(∂/∂xⱼ − i∂/∂yⱼ), ∂/∂z̄ⱼ = ½(∂/∂xⱼ + i∂/∂yⱼ). A C¹ function f
+    is HOLOMORPHIC iff ∂f/∂z̄ⱼ = 0 for all j (Cauchy-Riemann in each
+    variable), iff f is locally a convergent power series ∑ c_α z^α
+    (multi-indices α = (α₁, ..., αₙ), z^α = z₁^α₁···zₙ^αₙ). OSGOOD:
+    continuous + holomorphic in each variable separately ⇒ holomorphic.
+    HARTOGS' THEOREM ON SEPARATE ANALYTICITY: continuity is not needed.
+  - POLYDISC Δ(a; r) = {|zⱼ − aⱼ| < rⱼ for all j}; its DISTINGUISHED
+    BOUNDARY is the torus T = {|zⱼ − aⱼ| = rⱼ} (real dimension n, much
+    smaller than the topological boundary). CAUCHY INTEGRAL FORMULA: if f
+    is holomorphic near the closed polydisc then, for z ∈ Δ,
+       f(z) = (2πi)⁻ⁿ ∫_T f(ζ) dζ₁···dζₙ / ((ζ₁ − z₁)···(ζₙ − zₙ)),
+       ∂^α f(z) = α!(2πi)⁻ⁿ ∫_T f(ζ) dζ / (ζ − z)^(α+1).
+    CAUCHY ESTIMATES: |∂^α f(a)| ≤ α! M / r^α, M = max_T |f|.
+  - CONSEQUENCES as in one variable: holomorphic ⇒ C^∞, Taylor series
+    converges on every polydisc inside Ω; IDENTITY THEOREM (vanishing on
+    a non-empty open set, or all derivatives vanishing at one point, of a
+    connected Ω ⇒ f ≡ 0); MAXIMUM PRINCIPLE; LIOUVILLE; Weierstrass and
+    Montel theorems. log|f| and |f|ᵖ are plurisubharmonic.
+  - NEW PHENOMENA for n ≥ 2: zeros are NEVER isolated (the zero set of f
+    ≢ 0 is a complex hypersurface of complex dimension n − 1); isolated
+    singularities do not exist; the ball and the bidisc are NOT
+    biholomorphic (Poincaré), so there is no Riemann mapping theorem;
+    power series converge on LOGARITHMICALLY CONVEX COMPLETE REINHARDT
+    domains, e.g. {|z₁z₂| < 1} or {|z₁| + |z₂| < 1}, not only polydiscs.
+  - REINHARDT DOMAINS: invariant under (z₁, ..., zₙ) ↦ (e^(iθ₁)z₁, ...);
+    COMPLETE if also invariant under |zⱼ| ↦ tⱼ|zⱼ|, 0 ≤ tⱼ ≤ 1. Log image
+    log Ω = {(log|z₁|, ..., log|zₙ|)}. ABEL'S LEMMA: if the terms c_α w^α
+    are bounded, the series converges on the polydisc {|zⱼ| < |wⱼ|}.
+  - HARTOGS EXTENSION THEOREM: n ≥ 2, Ω ⊆ Cⁿ a domain, K ⊂ Ω compact
+    with Ω ∖ K connected ⇒ every f holomorphic on Ω ∖ K extends
+    holomorphically to Ω. False for n = 1 (1/z on D ∖ {0}). HARTOGS
+    FIGURE: H = {|z| < 1, |w| < 1, (|z| < a or |w| > b)} ⊂ D²; every f ∈
+    𝒪(H) extends to D² (Cauchy integral in w on the circle |w| = r > b).
+  - DOMAIN OF HOLOMORPHY: Ω such that there are no Ω₁, Ω₂ open, Ω₂
+    connected, ∅ ≠ Ω₁ ⊆ Ω ∩ Ω₂, Ω₂ ⊄ Ω, with every f ∈ 𝒪(Ω) agreeing on
+    Ω₁ with some F ∈ 𝒪(Ω₂) (i.e. no f "extends past the boundary" as a
+    whole family). Every domain in C is one; convex domains, polydiscs,
+    products, and Ω ∖ {g = 0} (Ω a domain of holomorphy) are; C² ∖ {0},
+    spherical shells and Hartogs figures are NOT.
+  - HOLOMORPHIC HULL K̂_Ω = {z ∈ Ω : |f(z)| ≤ max_K |f| for all f ∈
+    𝒪(Ω)}; Ω is HOLOMORPHICALLY CONVEX if K ⊂⊂ Ω ⇒ K̂_Ω ⊂⊂ Ω.
+    CARTAN-THULLEN: Ω is a domain of holomorphy ⇔ Ω is holomorphically
+    convex ⇔ some f ∈ 𝒪(Ω) cannot be extended past any boundary point.
+    Convex hull ⊇ K̂ (use e^(ℓ(z)), ℓ complex linear).
+  - PLURISUBHARMONIC (psh) FUNCTIONS: φ : Ω → [−∞, ∞) upper semicontinuous
+    and subharmonic on every complex line: λ ↦ φ(a + λb) subharmonic.
+    For φ ∈ C²: psh ⇔ the COMPLEX HESSIAN (LEVI MATRIX) (∂²φ/∂zⱼ∂z̄ₖ) is
+    positive semidefinite everywhere. Examples: log|f|, |f|² (f
+    holomorphic), |z|², log(1 + |z|²), −log(1 − |z|²) on the ball, convex
+    functions, max(φ₁, φ₂), sums, φ ∘ F for F holomorphic. Pluriharmonic
+    (Hessian 0) = locally Re of a holomorphic function. Psh is invariant
+    under biholomorphisms; convexity is not.
+  - PSEUDOCONVEXITY: Ω is PSEUDOCONVEX if it has a continuous psh
+    EXHAUSTION φ ({φ < c} ⊂⊂ Ω for all c), equivalently −log dist(z, ∂Ω)
+    is psh. For C² boundary with defining function ρ (Ω = {ρ < 0}, dρ ≠
+    0 on ∂Ω): LEVI PSEUDOCONVEX iff the LEVI FORM ∑ ρ_{jk̄}(p)tⱼt̄ₖ ≥ 0 for
+    all complex tangent vectors t (∑ ∂ρ/∂zⱼ(p) tⱼ = 0), p ∈ ∂Ω; STRICTLY
+    pseudoconvex if > 0 for t ≠ 0. Convex ⇒ pseudoconvex; strictly
+    pseudoconvex domains are locally biholomorphic to strictly convex
+    ones (Narasimhan's lemma).
+  - LEVI PROBLEM (Oka 1942/53, Bremermann, Norguet 1954): pseudoconvex ⇔
+    domain of holomorphy ⇔ holomorphically convex. A complete Reinhardt
+    domain is a domain of holomorphy ⇔ log Ω is convex; a Hartogs domain
+    {z ∈ D, |w| < e^(−φ(z))} is one ⇔ φ is subharmonic.
+  - WEIERSTRASS PREPARATION THEOREM: f holomorphic near 0 ∈ C^(n−1) × C,
+    f(0) = 0, f(0, ..., 0, w) ≢ 0 with a zero of order k at w = 0
+    ("w-regular of order k"). Then near 0, f = u·P uniquely, u(0) ≠ 0 a
+    unit, P(z′, w) = wᵏ + a_(k−1)(z′)w^(k−1) + ... + a₀(z′) a WEIERSTRASS
+    POLYNOMIAL (aⱼ(0) = 0). For fixed small z′ the k roots of P are the
+    zeros of f with |w| < δ. After a linear change of coordinates every f
+    ≢ 0 is w-regular.
+  - WEIERSTRASS DIVISION THEOREM: g = qP + r with r a polynomial in w of
+    degree < k, q and r unique. Consequences: the ring 𝒪ₙ of germs at 0
+    is a NOETHERIAN, local UNIQUE FACTORISATION DOMAIN (induction on n),
+    not a PID for n ≥ 2 ((z, w) is not principal); zero sets are locally
+    branched coverings of C^(n−1).
+  - THE ∂̄-PROBLEM: given a (0,1)-form f = ∑ fⱼ dz̄ⱼ find u with ∂̄u =
+    ∑ (∂u/∂z̄ⱼ) dz̄ⱼ = f. Necessary: ∂̄f = 0, i.e. ∂fⱼ/∂z̄ₖ = ∂fₖ/∂z̄ⱼ.
+    In C: u(z) = (1/π)∫ f(ζ)/(z − ζ) dA(ζ) (CAUCHY-GREEN, f ∈ C_c¹); the
+    general CAUCHY-POMPEIU formula u(z) = (2πi)⁻¹∮ u/(ζ − z) dζ − π⁻¹∬
+    (∂u/∂ζ̄)/(ζ − z) dA. In Cⁿ, n ≥ 2, a compactly supported ∂̄-closed f
+    has a COMPACTLY SUPPORTED solution (⇒ Hartogs). HÖRMANDER: on a
+    pseudoconvex Ω, ∂̄u = f is solvable with L² estimates; this solves
+    the Levi problem.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Using Wirtinger derivatives decide which are holomorphic on C²:
+    f = e^(z₁z₂), g = z₁z̄₂ + z₂, h = Re(z₁)·z₂. (b) Prove that the real
+    part of a holomorphic function is PLURIHARMONIC (∂²u/∂zⱼ∂z̄ₖ = 0 for
+    all j, k). (c) Show that u = x₁y₂ is harmonic on R⁴ = C² but is not
+    the real part of any holomorphic function.
+    Answer: (a) only f. (b) ∂f/∂z̄ₖ = 0 and ∂f̄/∂zⱼ = 0. (c) Δu = 0 but
+    ∂²u/∂z₁∂z̄₂ = i/4 ≠ 0.
+    Teacher explains: Treat zⱼ and z̄ⱼ as independent variables:
+    ∂zⱼ/∂z̄ₖ = 0, ∂z̄ⱼ/∂z̄ₖ = δⱼₖ, and f is holomorphic iff every
+    ∂f/∂z̄ₖ = 0. (a) e^(z₁z₂) contains no z̄: holomorphic. ∂g/∂z̄₂ = z₁ ≠ 0:
+    not holomorphic. Re z₁ = (z₁ + z̄₁)/2, so ∂h/∂z̄₁ = z₂/2 ≠ 0: not
+    holomorphic, although h is holomorphic in z₂ for each fixed z₁
+    (separate holomorphy needs EVERY variable). (b) Let f = u + iv, so
+    u = (f + f̄)/2. Now ∂f/∂z̄ₖ = 0, and ∂f̄/∂zⱼ = conj(∂f/∂z̄ⱼ) = 0, hence
+       ∂²u/∂zⱼ∂z̄ₖ = ½(∂/∂zⱼ)(∂f/∂z̄ₖ) + ½(∂/∂z̄ₖ)(∂f̄/∂zⱼ) = 0.
+    (c) u = x₁y₂ is a product of coordinates in different variables, so
+    Δu = ∑ (∂²/∂xⱼ² + ∂²/∂yⱼ²) u = 0. But with x₁ = (z₁ + z̄₁)/2, y₂ = (z₂ −
+    z̄₂)/(2i): ∂u/∂z₁ = (z₂ − z̄₂)/(4i), then ∂/∂z̄₂ gives −1/(4i) = i/4 ≠ 0.
+    So u is harmonic but not pluriharmonic: for n ≥ 2 pluriharmonic
+    (n² conditions) is much stronger than harmonic (one condition).
+    Common mistakes: thinking holomorphic in each variable with the others
+    FIXED at one value is enough (it must hold for all values); confusing
+    ∂/∂z̄ with the complex conjugate of ∂/∂z applied to f. Now you try: is
+    |z₁|² − |z₂|² pluriharmonic? (no: ∂²/∂z₁∂z̄₁ = 1, though Δ = 4 − 4 = 0)
+
+D2. Derive the Cauchy integral formula on the polydisc Δ = Δ(0; r) ⊂ C²,
+    deduce that f is given by a power series on Δ, and prove the Cauchy
+    estimates. Evaluate, with T = {|ζ| = 1, |η| = 1} positively oriented,
+       I = (2πi)⁻² ∫_T e^(ζ+η) / ((ζ − ½)² η³) dζ dη.
+    Answer: I = (∂/∂z)e^z|_(z=½) · (1/2!)(∂/∂w)²e^w|_(w=0) = √e/2 ≈ 0.82436.
+    Teacher explains: Fix w with |w| < r₂. The map z ↦ f(z, w) is
+    holomorphic near |z| ≤ r₁, so by the one-variable formula f(z, w) =
+    (2πi)⁻¹∮_{|ζ|=r₁} f(ζ, w)/(ζ − z) dζ. For each such ζ, w ↦ f(ζ, w) is
+    holomorphic, so f(ζ, w) = (2πi)⁻¹∮_{|η|=r₂} f(ζ, η)/(η − w) dη.
+    Substituting (the integrand is continuous, so the iterated integral
+    is an integral over T by Fubini):
+       f(z, w) = (2πi)⁻² ∫_T f(ζ, η) dζ dη / ((ζ − z)(η − w)).
+    EXPANSION: for (ζ, η) ∈ T and (z, w) ∈ Δ,
+       1/((ζ − z)(η − w)) = ∑_{j,k≥0} zʲwᵏ / (ζ^(j+1) η^(k+1)),
+    uniformly on T for (z, w) in a smaller closed polydisc; integrate
+    term by term: f = ∑ c_jk zʲwᵏ with c_jk = (2πi)⁻² ∫_T f ζ^(−j−1)
+    η^(−k−1) dζ dη. ESTIMATE: |dζ| = r₁dθ, |dη| = r₂dφ, so
+       |c_jk| ≤ (2π)⁻² · M r₁^(−j−1) r₂^(−k−1) · (2πr₁)(2πr₂) = M/(r₁ʲr₂ᵏ),
+    i.e. |∂ʲ_z∂ᵏ_w f(0)| ≤ j!k!M/(r₁ʲr₂ᵏ). Only the TORUS T is used — the
+    distinguished boundary. For I: differentiating the formula gives
+    (2πi)⁻² ∫_T f/((ζ − a)^(j+1)(η − b)^(k+1)) = ∂ʲ_z∂ᵏ_w f(a, b)/(j!k!).
+    Here j = 1, k = 2, (a, b) = (½, 0), f = e^(z+w): I = e^(1/2)·1/2 ≈
+    0.82436. Common mistakes: using the full boundary of Δ (dimension 3)
+    instead of T (dimension 2); forgetting the factorials j!k!. Now you
+    try: (2πi)⁻² ∫_T sin(ζη)/(ζ²η²) dζ dη. (1, the coefficient of zw)
+
+D3. (a) Find the domain of convergence of ∑_{n≥0} (zw)ⁿ and of
+    ∑_{j,k≥0} C(j + k, j) zʲwᵏ. (b) Prove that the domain of convergence
+    of a power series in C² is a LOGARITHMICALLY CONVEX complete Reinhardt
+    domain. (c) Why does the second series diverge at (0.9, −0.9) although
+    its sum is holomorphic there?
+    Answer: (a) {|zw| < 1}; {|z| + |w| < 1}. (b) Abel's lemma + the
+    inequality |c_α z^α| = (|c_α a^α|)ᵗ(|c_α b^α|)^(1−t). (c) convergence
+    depends only on (|z|, |w|).
+    Teacher explains: (a) ∑(zw)ⁿ is geometric in zw: converges iff |zw| <
+    1. This domain is unbounded and not a polydisc: its log image {x + y
+    < 0} (x = log|z|, y = log|w|) is a half-plane. For the second series,
+    absolute convergence at (z, w) means ∑ C(j + k, j)|z|ʲ|w|ᵏ =
+    ∑ₙ (|z| + |w|)ⁿ < ∞ (binomial theorem), i.e. |z| + |w| < 1; the sum is
+    1/(1 − z − w). (b) ABEL'S LEMMA: if |c_α a^α| ≤ M for all α then on
+    the polydisc {|zⱼ| ≤ ρ|aⱼ|}, ρ < 1, we have |c_α z^α| ≤ Mρ^|α|, and
+    ∑_α ρ^|α| < ∞: normal convergence. So the domain is a union of
+    polydiscs centred at 0: complete Reinhardt. If the terms are bounded
+    by M at a and at b, and |zⱼ| = |aⱼ|ᵗ|bⱼ|^(1−t), then
+       |c_α z^α| = (|c_α||a^α|)ᵗ(|c_α||b^α|)^(1−t) ≤ Mᵗ M^(1−t) = M,
+    so the terms are bounded on the "log-segment"; with Abel, log Ω is
+    convex. (c) At (0.9, −0.9), |z| + |w| = 1.8 > 1: diverges, yet 1/(1 −
+    z − w) = 1 there. The domain of convergence is Reinhardt (sees only
+    moduli) while the function's natural domain {z + w ≠ 1} is not.
+    Common mistakes: expecting the domain of convergence to be a polydisc
+    (true only in one variable, where it is a disc); confusing it with the
+    largest domain where the sum is holomorphic. Now you try: domain of
+    ∑ₙ zⁿw²ⁿ. ({|z||w|² < 1})
+
+D4. (a) Let f be holomorphic near 0 ∈ C², f(0) = 0, f ≢ 0. Prove that 0
+    is NOT an isolated zero. (b) Describe the zeros of f = w² − z and
+    g = z² + w² near 0. (c) Find max |z + w + zw| over the closed unit
+    bidisc and say where it is attained.
+    Answer: (a) argument principle in w, uniformly in z. (b) w = ±√z (two
+    for each z ≠ 0); two lines w = ±iz. (c) 3, at (1, 1) only.
+    Teacher explains: (a) After a linear change of coordinates f(0, w) ≢
+    0 (some complex line through 0 is not inside {f = 0}). Its zeros are
+    isolated, so choose r > 0 with f(0, w) ≠ 0 for 0 < |w| ≤ r. By
+    continuity and compactness of {|w| = r}, f(z, w) ≠ 0 for |z| < δ,
+    |w| = r. For such z let
+       N(z) = (2πi)⁻¹ ∮_{|w|=r} (∂f/∂w)(z, w)/f(z, w) dw,
+    the number of zeros of f(z, ·) in |w| < r. N is continuous and
+    integer-valued, hence constant, and N(0) ≥ 1. So EVERY z with |z| < δ
+    has a zero (z, w(z)): a whole family of zeros through 0. (b) w² − z = 0
+    gives two roots ±√z for each z ≠ 0, one (double) at z = 0: N ≡ 2.
+    z² + w² = (w − iz)(w + iz): the union of two complex lines, crossing
+    at 0. (c) For fixed w, z ↦ f is holomorphic, so its maximum on |z| ≤ 1
+    lies on |z| = 1; the same in w: the max is on the TORUS. There |z + w
+    + zw| ≤ 3, with equality iff z, w and zw point the same way, i.e.
+    z = w = 1. Common mistakes: "the maximum principle puts the max on the
+    whole topological boundary" (true but weak: the torus suffices); in
+    (a) forgetting to make f(0, w) ≢ 0 (f = z vanishes identically on the
+    w-axis). Now you try: zeros of z³ − w² near 0? (the cusp w = ±z^(3/2),
+    two points over each z ≠ 0)
+
+D5. HARTOGS FIGURE. Let 0 < a, b < 1 and H = {(z, w) ∈ D² : |z| < a or
+    |w| > b}. Prove that every f holomorphic on H extends holomorphically
+    to the bidisc D², in two ways: (i) Cauchy integral in w, (ii) Laurent
+    series in w.
+    Answer: (i) F(z, w) = (2πi)⁻¹∮_{|η|=r} f(z, η)/(η − w) dη, b < r < 1;
+    (ii) negative Laurent coefficients vanish for |z| < a, hence always.
+    Teacher explains: Draw H in the (|z|, |w|) square [0, 1)²: an "L"
+    made of the vertical strip |z| < a and the top strip |w| > b.
+    (i) Fix r with b < r < 1. For every |z| < 1 the circle {z} × {|η| = r}
+    lies in H (because r > b), so
+       F(z, w) = (2πi)⁻¹ ∮_{|η|=r} f(z, η)/(η − w) dη
+    is defined for |z| < 1, |w| < r; it is continuous and holomorphic in z
+    and in w separately (differentiate under the integral), hence
+    holomorphic on D × D_r. For |z| < a the whole closed disc {z} ×
+    {|η| ≤ r} lies in H, so the one-variable Cauchy formula gives F = f.
+    The set H ∩ (D × D_r) = {|z| < a, |w| < r} ∪ {|z| < 1, b < |w| < r} is
+    connected, F = f on an open subset, so F = f on all of it (identity
+    theorem). Hence "f on H, F on D × D_r" is a single holomorphic
+    function on H ∪ (D × D_r) = D². (ii) On {|z| < 1, b < |w| < 1} write
+    f(z, w) = ∑_{k∈Z} aₖ(z)wᵏ, aₖ(z) = (2πi)⁻¹∮_{|w|=r} f(z, w)w^(−k−1) dw,
+    holomorphic on |z| < 1. For |z| < a, f(z, ·) is holomorphic on the
+    whole disc, so aₖ(z) = 0 for k < 0; by the identity theorem aₖ ≡ 0 for
+    k < 0, and ∑_{k≥0} aₖ(z)wᵏ is the extension. Common mistakes: "f
+    extends because D² ∖ H is small" (it has interior! the point is the
+    SHAPE); forgetting to check that the circles of integration stay in
+    H. Now you try: why is f = 1/(w − c), |c| < b, not a counterexample?
+    (it is not holomorphic on H: the points (z, c) with |z| < a lie in H)
+
+D6. State Hartogs' extension theorem and prove it assuming the lemma:
+    (n ≥ 2) every compactly supported smooth ∂̄-closed (0,1)-form g on Cⁿ
+    equals ∂̄v for some compactly supported smooth v. Deduce: (a) C² ∖ {0}
+    is not a domain of holomorphy; (b) a holomorphic function of n ≥ 2
+    variables has no isolated singularities and no isolated zeros.
+    Answer: cut off near K with χ, correct by v; (a) every f extends to
+    C²; (b) apply it to f and to 1/f.
+    Teacher explains: THEOREM: Ω ⊆ Cⁿ (n ≥ 2) a domain, K ⊂ Ω compact,
+    Ω ∖ K connected; then every f ∈ 𝒪(Ω ∖ K) extends to F ∈ 𝒪(Ω). PROOF:
+    pick χ ∈ C_c^∞(Ω) with χ = 1 near K (and Ω ∖ supp χ connected). The
+    function f₀ = (1 − χ)f (set f₀ = 0 on K) is smooth on Ω, and
+       ∂̄f₀ = −f ∂̄χ =: g,
+    which is smooth, ∂̄-closed (∂̄g = ∂̄∂̄f₀ = 0) and supported in the
+    compact set supp ∂̄χ ⊂ Ω ∖ K; extend it by 0 to Cⁿ. Take v with ∂̄v =
+    g, v compactly supported, and put F = f₀ − v. Then ∂̄F = g − g = 0: F
+    is holomorphic on Ω. Outside supp χ, v is holomorphic (∂̄v = 0) and
+    vanishes for |z| large; the unbounded component of Cⁿ ∖ supp χ is
+    connected, so v = 0 there, in particular on a non-empty open part of
+    Ω ∖ supp χ near ∂Ω. There F = f₀ = f, and by connectedness F = f on
+    Ω ∖ K. (a) Take Ω = C², K = {0}: every f ∈ 𝒪(C² ∖ {0}) is the
+    restriction of an entire function, so no function "blows up" at 0.
+    (b) If f is holomorphic on a ball minus its centre, it extends; if f
+    had an isolated zero at a, 1/f would be holomorphic on a punctured
+    ball, extend, and then f·(1/f) = 1 near a contradicts f(a) = 0. E.g.
+    the singular set of 1/(z² + w²) is the pair of lines w = ±iz, never a
+    point. Common mistakes: forgetting the connectedness of Ω ∖ K (for K =
+    a sphere ∂B ⊂ C² the complement B ∪ (C² ∖ B̄) is disconnected);
+    thinking the theorem holds for n = 1 (1/z). Now you try: is C² minus a
+    closed ball a domain of holomorphy? (no: every f on it extends to an
+    entire function)
+
+D7. (a) Prove that every convex domain Ω ⊆ Cⁿ is a domain of holomorphy.
+    (b) Compute the holomorphic hull (with respect to C²) of the circles
+    K₁ = {(λ/2, λ/2) : |λ| = 1} and K₂ = {(λ/2, λ̄/2) : |λ| = 1}, and of
+    the torus K₃ = {|z| = |w| = ½}. (c) State the Cartan-Thullen theorem.
+    Answer: (a) f_p = 1/(ℓ(z) − ℓ(p)) blows up at each p ∈ ∂Ω. (b) K̂₁ =
+    the disc {(ζ, ζ) : |ζ| ≤ ½}; K̂₂ = K₂; K̂₃ = the closed bidisc of radius
+    ½. (c) domain of holomorphy ⇔ holomorphically convex.
+    Teacher explains: (a) Let p ∈ ∂Ω. A real supporting hyperplane at p
+    has the form Re ℓ(z) = Re ℓ(p) with ℓ complex linear (every real
+    linear functional is Re of a complex linear one), and Re ℓ(z) <
+    Re ℓ(p) on Ω. So f_p(z) = 1/(ℓ(z) − ℓ(p)) is holomorphic on Ω and
+    |f_p| → ∞ as z → p: f_p cannot be continued to any neighbourhood of p.
+    (Via Cartan-Thullen, or by combining countably many f_p, no function
+    family extends anywhere: Ω is a domain of holomorphy.) (b) K₁ lies on
+    the complex line w = z. For a polynomial P, λ ↦ P(λ/2, λ/2) is
+    holomorphic in λ, so by the maximum principle |P| on the disc
+    {(ζ, ζ) : |ζ| ≤ ½} is ≤ max_K₁ |P|: that disc is in K̂₁. Conversely
+    the functions z − w and z bound K̂₁ inside it (|z − w| ≤ 0, |z| ≤ ½).
+    K₂ lies on the curve zw = ¼; using |zw − ¼| ≤ 0, |z| ≤ ½, |w| ≤ ½ we
+    get |z| = |w| = ½ and w = 1/(4z) = z̄: K̂₂ = K₂. The same circle shape,
+    different position, completely different hull! K₃: the maximum
+    principle on polydiscs gives the closed bidisc of radius ½ ⊆ K̂₃, and
+    |z|, |w| ≤ ½ give equality. (c) CARTAN-THULLEN: for Ω ⊆ Cⁿ TFAE: Ω is
+    a domain of holomorphy; Ω is holomorphically convex (K ⊂⊂ Ω ⇒ K̂_Ω ⊂⊂
+    Ω); there is one f ∈ 𝒪(Ω) that extends past no boundary point. Key
+    step: dist(K̂, ∂Ω) = dist(K, ∂Ω) on a domain of holomorphy (Cauchy
+    estimates on polydiscs). Common mistakes: using the polynomial hull
+    when Ω ≠ Cⁿ (the hull depends on Ω: take all f ∈ 𝒪(Ω)); believing
+    "hull = convex hull" (K̂₂ is not convex). Now you try: hull of the
+    sphere {|z|² + |w|² = ¼} with respect to Ω = C² ∖ {0}. ({0 < |z|² +
+    |w|² ≤ ¼}, not compact in Ω, so Ω is not holomorphically convex)
+
+D8. (a) Show that a C² function φ is plurisubharmonic iff its complex
+    Hessian (φ_jk̄) = (∂²φ/∂zⱼ∂z̄ₖ) is positive semidefinite. (b) For which
+    real c is φ = |z|² + |w|² + c Re(zw̄) psh on C²? strictly psh? (c) Show
+    that log|f| is psh for f holomorphic, and that ψ = |z|² + t Re(z²) is
+    psh for every t but convex only for |t| ≤ 1.
+    Answer: (a) Δ_λ φ(a + λb) = 4∑φ_jk̄ bⱼb̄ₖ. (b) psh ⇔ |c| ≤ 2, strictly
+    ⇔ |c| < 2. (c) restriction to lines; ψ = (1 + t)x² + (1 − t)y².
+    Teacher explains: (a) Put u(λ) = φ(a + λb). By the chain rule
+    ∂u/∂λ̄ = ∑ₖ φ_k̄ b̄ₖ and ∂²u/∂λ∂λ̄ = ∑ⱼₖ φ_jk̄ bⱼb̄ₖ, and Δ_λ = 4∂²/∂λ∂λ̄.
+    A C² function of one variable is subharmonic iff Δu ≥ 0. So φ is psh
+    ⇔ ∑φ_jk̄(a)bⱼb̄ₖ ≥ 0 for all a, b ⇔ the Hermitian matrix is psd.
+    (b) φ = zz̄ + ww̄ + (c/2)(zw̄ + z̄w). Then φ_zz̄ = 1, φ_ww̄ = 1,
+    ∂φ/∂w̄ = w + (c/2)z, so φ_zw̄ = ∂/∂z(w + (c/2)z) = c/2 = φ_wz̄.
+    Matrix [[1, c/2], [c/2, 1]], eigenvalues 1 ± c/2:
+    psd ⇔ |c| ≤ 2, pd ⇔ |c| < 2. At c = 2, φ = |z + w|², psh but
+    degenerate in the direction (1, −1). (c) On a line, log|f(a + λb)| is
+    log|h(λ)| with h holomorphic in λ, which is subharmonic (harmonic
+    where h ≠ 0, −∞ at zeros; the sub-mean value inequality holds there
+    trivially). ψ = x² + y² + t(x² − y²) = (1 + t)x² + (1 − t)y²:
+    ψ_zz̄ = ¼Δψ = 1 > 0 always (Re z² is pluriharmonic), but the real
+    Hessian diag(2 + 2t, 2 − 2t) is psd only for |t| ≤ 1. Since
+    biholomorphisms preserve psh (φ ∘ F is psh: the complex Hessian
+    transforms as J*HJ) but not convexity, psh is the right notion of
+    convexity for complex analysis. Common mistakes: using the real
+    Hessian; forgetting that the complex Hessian is Hermitian (φ_wz̄ =
+    conj(φ_zw̄)). Now you try: is (Re z)(Re w) psh? (no: Hessian
+    [[0, ¼], [¼, 0]] is indefinite)
+
+D9. Let Ω = {ρ < 0}, ρ = |z|² + |w|⁴ − 1 (the "egg"). (a) Define the Levi
+    form and compute it at p₁ = (0, 1), p₂ = (1, 0), p₃ = (1/√2, 2^(−1/4)).
+    Is Ω strictly pseudoconvex? (b) Show that the sign of the Levi form on
+    complex tangent vectors does not depend on the defining function.
+    (c) Show that a convex domain with C² boundary is Levi pseudoconvex.
+    Answer: (a) L(p₁) = 1·|t|², L(p₂) = 0, L(p₃)(t) = 2√2 for t = (2^(1/4),
+    −1/√2); pseudoconvex, strictly except on the circle {w = 0, |z| = 1}.
+    Teacher explains: (a) At p ∈ ∂Ω the COMPLEX TANGENT space is T_p =
+    {t ∈ C² : ∑ ρ_zⱼ(p)tⱼ = 0}, and the LEVI FORM is L_p(t) = ∑ ρ_jk̄(p)tⱼt̄ₖ
+    on T_p. Here ρ_z = z̄, ρ_w = 2|w|²w̄ (since |w|⁴ = w²w̄²), ρ_zz̄ = 1,
+    ρ_ww̄ = 4|w|², ρ_zw̄ = 0. At p₁: ∂ρ = (0, 2), T = {t₂ = 0}, L = |t₁|² >
+    0. At p₂: ∂ρ = (1, 0), T = {t₁ = 0}, L = 4|w|²|t₂|² = 0: weakly (not
+    strictly) pseudoconvex. At p₃: |z|² = ½, |w|⁴ = ½, |w|² = 2^(−1/2);
+    ∂ρ = (2^(−1/2), 2·2^(−1/2)·2^(−1/4)) = (2^(−1/2), 2^(1/4)); t = (ρ_w,
+    −ρ_z) = (2^(1/4), −2^(−1/2)) is tangent and
+       L = 1·2^(1/2) + 4·2^(−1/2)·½ = √2 + √2 = 2√2 ≈ 2.828 > 0.
+    In general L = |t₁|² + 4|w|²|t₂|² ≥ 0, = 0 for t ≠ 0 only when w = 0.
+    (b) If ρ̃ = hρ with h > 0, then at p (ρ = 0)
+       ρ̃_jk̄ = hρ_jk̄ + h_j ρ_k̄ + ρ_j h_k̄,
+    and for t ∈ T_p: ∑ ρ_j tⱼ = 0 and ∑ ρ_k̄ t̄ₖ = conj(∑ ρ_k tₖ) = 0 (ρ
+    real), so L̃ = hL: same sign. (c) Write t = u ∈ R⁴ in real terms; T_p
+    is invariant under multiplication by i, so u and iu are both real
+    tangent vectors, and one checks L_p(t) = ¼(D²ρ(u, u) + D²ρ(iu, iu)) ≥
+    0, because a convex defining function has D²ρ ≥ 0 on the tangent
+    space. Common mistakes: computing the Levi form on ALL vectors (the
+    egg's ρ has psd Hessian everywhere, but in general only T_p counts);
+    confusing weak pseudoconvexity with non-pseudoconvexity. Now you try:
+    Levi form of ρ = |z|² − Im w (the Siegel domain) at 0. (|t₁|², on
+    T = {t₂ = 0}: strictly pseudoconvex)
+
+D10. (a) State the Levi problem and its solution. (b) Let U = (D × D_¼) ∪
+     (D_¼ × D) ⊂ C² (D_r = disc of radius r). Show U is not a domain of
+     holomorphy and find its envelope of holomorphy. (c) For which φ is
+     the Hartogs domain Ω_φ = {z ∈ D, |w| < e^(−φ(z))} pseudoconvex?
+     Decide for φ = |z|² and φ = −|z|².
+     Answer: (a) pseudoconvex ⇔ domain of holomorphy. (b) E(U) = {|z| <
+     1, |w| < 1, |zw| < ¼}. (c) φ subharmonic: yes for |z|², no for
+     −|z|².
+     Teacher explains: (a) Every domain of holomorphy is pseudoconvex
+     (−log dist(z, ∂Ω) is psh, by Cartan-Thullen). LEVI PROBLEM: is every
+     pseudoconvex domain a domain of holomorphy? YES (Oka for n = 2 in
+     1942; general n by Oka 1953, Bremermann and Norguet 1954; Hörmander's
+     L² ∂̄-method, 1965, gives a modern proof). (b) U is a complete
+     Reinhardt domain; its log image is the L-shaped region {x < 0, y <
+     log ¼} ∪ {x < log ¼, y < 0}, not convex. The Taylor series at 0 of any
+     f ∈ 𝒪(U) converges on U (it converges on each polydisc in U), so by
+     D3 it converges on the smallest log-convex complete Reinhardt domain
+     containing U. The convex hull of the L-shape is {x < 0, y < 0, x + y
+     < log ¼}: the segment joining the corners (0, log ¼) and (log ¼, 0)
+     lies on x + y = log ¼. So every f extends to
+        E = {|z| < 1, |w| < 1, |zw| < ¼},
+     and E is itself a domain of holomorphy (log-convex), e.g. 1/(1 −
+     4zw) does not extend past {|zw| = ¼}. Check: (0.7, 0.3) ∉ U (0.7 >
+     ¼ and 0.3 > ¼) but |zw| = 0.21 < 0.25, so it is in E. (c) Ω_φ =
+     {(z, w) : z ∈ D, log|w| + φ(z) < 0}. The function log|w| + φ(z) is psh
+     iff φ is subharmonic; then (φ continuous) −log(−log|w| − φ(z)) −
+     log(1 − |z|²) is a psh exhaustion, so Ω_φ is pseudoconvex;
+     conversely pseudoconvexity forces φ subharmonic.
+     φ = |z|² (Δφ = 4 ≥ 0): pseudoconvex. φ = −|z|² is superharmonic:
+     Ω = {|w| < e^(|z|²)} is not pseudoconvex. Common mistakes: taking the
+     convex hull of U itself instead of its log image; thinking the union
+     of two domains of holomorphy is one. Now you try: envelope of (D ×
+     D) ∪ (D₂ × D_½)? ({|z| < 2, |w| < 1, |z||w| < 1}; log hull corners
+     (0, 0), (log 2, −log 2))
+
+D11. State the Weierstrass preparation theorem and sketch its proof. For
+     f(z, w) = w³ + w² + z find the order k, the Weierstrass polynomial P
+     and the unit u (series up to z³). State the division theorem and find
+     the remainder of e^w on division by w² − z.
+     Answer: k = 2; P = w² + (−z + 2z² − 7z³ + ...)w + (z − z² + 3z³ +
+     ...), u = w + 1 + z − 2z² + 7z³ + ...; remainder cosh√z +
+     w·sinh(√z)/√z.
+     Teacher explains: THEOREM: if f is holomorphic near 0 ∈ C^(n−1) × C
+     and f(0′, w) = wᵏh(w), h(0) ≠ 0, then near 0, f = u·P with u(0) ≠ 0
+     and P = wᵏ + a_(k−1)(z′)w^(k−1) + ... + a₀(z′), aⱼ(0′) = 0; u, P are
+     unique. PROOF SKETCH: as in D4 choose r, δ with f ≠ 0 on {|z′| < δ,
+     |w| = r}; then f(z′, ·) has exactly k zeros b₁(z′), ..., bₖ(z′) in
+     |w| < r. The power sums
+        sₘ(z′) = ∑ⱼ bⱼ(z′)ᵐ = (2πi)⁻¹ ∮_{|w|=r} wᵐ (∂f/∂w)/f dw
+     are holomorphic in z′; by Newton's identities so are the elementary
+     symmetric functions, i.e. the coefficients of P = ∏(w − bⱼ); at z′ = 0
+     all bⱼ = 0, so aⱼ(0) = 0. Finally u = f/P has only removable
+     singularities in w, and u(z′, w) = (2πi)⁻¹∮ f/(P·(η − w)) dη shows it
+     is holomorphic jointly; it never vanishes. EXAMPLE: f(0, w) = w²(1 +
+     w): k = 2. Since f is a cubic in w, factor off the root near −1: r₃
+     = −1 + ε with ε − 2ε² + ε³ = −z, so ε = −z + 2z² − 7z³ + ... . Then
+     w³ + w² + z = (w − r₃)(w² + a₁w + a₀) with a₁ = 1 + r₃ = ε and a₀ =
+     r₃a₁; hence a₁ = −z + 2z² − 7z³, a₀ = z − z² + 3z³ (check: −r₃a₀ = z),
+     u = w − r₃ = w + 1 + z − 2z² + 7z³. For fixed small z ≠ 0 the two
+     small roots of P are the zeros of f near 0 (≈ ±√(−z)). DIVISION: for
+     P of degree k, every g = qP + r, deg_w r < k, uniquely. With P = w² −
+     z and g = e^w: r = A(z) + B(z)w must agree with e^w at w = ±√z:
+     A ± B√z = e^(±√z), so A = cosh√z = ∑zᵐ/(2m)!, B = sinh(√z)/√z =
+     ∑zᵐ/(2m + 1)! — both holomorphic, as the theorem promises.
+     Consequence: 𝒪ₙ is Noetherian and a UFD (reduce to C{z′}[w] and use
+     Hilbert's basis theorem and Gauss's lemma, by induction on n).
+     Common mistakes: applying the theorem when f(0′, w) ≡ 0 (f = zw: first
+     change coordinates z = z″ + w); forgetting that aⱼ(0) = 0. Now you
+     try: prepare f = e^w − 1 − z. (k = 1, P = w − log(1 + z), since the
+     zero is w = log(1 + z))
+
+D12. THE ∂̄-PROBLEM. (a) In C solve ∂u/∂z̄ = 𝟙_D (D the unit disc) with
+     the Cauchy-Green formula u(z) = (1/π)∫ f(ζ)/(z − ζ) dA(ζ). (b) On C²,
+     decide whether f = z̄₂ dz̄₁ + z̄₁ dz̄₂ and g = z̄₂ dz̄₁ are ∂̄-exact.
+     (c) Prove: if n = 2 and f = f₁dz̄₁ + f₂dz̄₂ is smooth, compactly
+     supported and ∂̄-closed, then ∂̄u = f has a compactly supported
+     solution. Why does this fail in C?
+     Answer: (a) u = z̄ for |z| ≤ 1, u = 1/z for |z| ≥ 1. (b) f = ∂̄(z̄₁z̄₂);
+     g is not ∂̄-closed, so no solution. (c) u = (1/π)∫ f₁(ζ, z₂)/(z₁ − ζ)
+     dA(ζ); in C the solution in (a) is 1/z at ∞.
+     Teacher explains: (a) E(z) = 1/(πz) is a fundamental solution of
+     ∂/∂z̄ (∂E/∂z̄ = δ₀), so u = E * f solves ∂u/∂z̄ = f. For |z| > 1,
+     ζ ↦ 1/(z − ζ) is holomorphic on D̄, and the area mean value property
+     gives (1/π)∫_D dA/(z − ζ) = (1/π)·π·(1/z) = 1/z. The kernel is
+     locally integrable, so u is continuous on C. On D, ∂(u − z̄)/∂z̄ = 1 −
+     1 = 0: u − z̄ is holomorphic in D, continuous on D̄, and on |z| = 1
+     it equals 1/z − z̄ = 0. By the maximum principle u = z̄ on D. So
+     u(½) = ½, u(2) = ½, u(i/2) = −i/2. (b) The compatibility
+     condition is ∂f₁/∂z̄₂ = ∂f₂/∂z̄₁ (because ∂̄∂̄u = 0). For f: 1 = 1 ✓,
+     and u = z̄₁z̄₂ works (unique up to adding a holomorphic function).
+     For g: ∂g₁/∂z̄₂ = 1 ≠ 0 = ∂g₂/∂z̄₁: no solution. (c) Define
+        u(z₁, z₂) = (1/π)∫_C f₁(ζ, z₂)/(z₁ − ζ) dA(ζ)
+                  = (1/π)∫_C f₁(z₁ − ζ, z₂)/ζ dA(ζ),
+     smooth (differentiate the second form under the integral). By (a),
+     ∂u/∂z̄₁ = f₁. Using the closedness,
+        ∂u/∂z̄₂ = (1/π)∫ (∂f₂/∂ζ̄)(ζ, z₂)/(z₁ − ζ) dA(ζ) = f₂(z₁, z₂),
+     by Cauchy-Pompeiu for the compactly supported f₂(·, z₂). If |z₂| is
+     large, f₁(·, z₂) ≡ 0, so u = 0 there. Outside a large ball u is
+     holomorphic (∂̄u = f = 0) and the complement of the ball is CONNECTED
+     (n ≥ 2) and contains points with |z₂| large, so u ≡ 0 outside the
+     ball: supp u is compact. In C the analogous u from (a) equals 1/z near
+     ∞, and ∫ f ζᵐ dA = 0 for all m ≥ 0 is needed for compact support
+     (here ∫_D 1 dA = π ≠ 0). HÖRMANDER'S THEOREM: on a pseudoconvex Ω and
+     psh weight φ, every ∂̄-closed f ∈ L²(e^(−φ)) has u with ∫|u|²e^(−φ)(1
+     + |z|²)⁻² ≤ ∫|f|²e^(−φ); this yields the solution of the Levi problem.
+     Common mistakes: forgetting the compatibility ∂̄f = 0; a sign error in
+     the kernel (it is 1/(z − ζ), with the factor 1/π). Now you try: solve
+     ∂u/∂z̄₁ = z₂, ∂u/∂z̄₂ = z₁ on C². (u = z̄₁z₂ + z₁z̄₂ = 2Re(z₁z̄₂))
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Wirtinger calculus. Compute what is asked; H = holomorphic, N = not.
+    a) z₁z₂: H or N?                   b) z₁z̄₂: ∂/∂z̄₂; H or N?
+    c) |z₁|² + z₂: ∂/∂z̄₁               d) e^(z₁z₂) sin z₂: H or N?
+    e) Re(z₁)z₂: ∂/∂z̄₁                 f) z₁/(1 − z₂) on {z₂ ≠ 1}: H or N?
+    g) x₁ − iy₁ + z₂: H or N?          h) ∂/∂z̄₁ of |z₁|⁴
+    i) ∂²/∂z₁∂z̄₁ of log(1 + |z₁|²)     j) ∂/∂z̄₂ of g(z₁ + z̄₂), g entire
+    k) a holomorphic f with Re f = x₁² − y₁² + x₂
+    l) is x₁x₂ − y₁y₂ the real part of a holomorphic function? of which?
+    m) ∂²/∂z₁∂z̄₂ of x₁y₂               n) is |z₁|² − |z₂|² pluriharmonic?
+    o) complex Jacobian determinant of F = (z₁², z₂³) at (1, 1)
+    p) inverse of the biholomorphism F(z, w) = (z + w², w) of C²
+    q) det of the complex Jacobian of (e^z, we^(−z)); is F injective?
+    Answers:
+      a) H        b) z₁; N     c) z₁      d) H       e) z₂/2
+      f) H        g) N (it is z̄₁ + z₂)    h) 2z₁²z̄₁ = 2|z₁|²z₁
+      i) 1/(1 + |z₁|²)²        j) g′(z₁ + z̄₂)          k) z₁² + z₂
+      l) yes, Re(z₁z₂)         m) i/4 (so x₁y₂ is not pluriharmonic)
+      n) no (∂²/∂z₁∂z̄₁ = 1)    o) 6       p) (z, w) ↦ (z − w², w)
+      q) 1 everywhere; not injective ((z + 2πi, w) has the same image)
+
+M2. Cauchy formula on the torus T = {|ζ| = 1, |η| = 1} (positively
+    oriented) and Taylor coefficients c_jk of zʲwᵏ.
+    a) (2πi)⁻² ∫_T e^(ζ+η)/(ζη) dζdη
+    b) (2πi)⁻² ∫_T (ζ² + η²)/((ζ − ½)(η − ⅓)) dζdη
+    c) (2πi)⁻² ∫_T e^(ζη)/(ζ³η³) dζdη   d) (2πi)⁻² ∫_T cos(ζ + η)/(ζ²η²) dζdη
+    e) (2πi)⁻² ∫_T dζdη/((ζ − 2)(η − ½))
+    f) c₂₃ for 1/((1 − z)(1 − 2w))      g) c₂₂ for 1/(1 − z − w)
+    h) ∂³f/∂z∂w²(0) for f = e^(z+2w)    i) c₃₃ and c₃₂ for 1/(1 − zw)
+    j) (4π²)⁻¹ ∫∫ f(e^(iθ), e^(iφ)) dθdφ for f = (3 + z + w)²
+    k) (4π²)⁻¹ ∫∫ |1 + 2e^(iθ) + 3e^(iφ)|² dθdφ
+    l) (4π²)⁻¹ ∫∫ |e^(iθ) + e^(iφ)|⁴ dθdφ
+    m) (2πi)⁻² ∫_T e^(ζ+η)/((ζ − ½)²η³) dζdη
+    n) c₁₁ for f = sin(z + w)           o) c₄₀, c₂₂ for (z + w)⁴
+    Answers:
+      a) 1        b) 1/4 + 1/9 = 13/36       c) 1/2     d) −1
+      e) 0 (no pole of ζ inside)         f) 8       g) C(4, 2) = 6
+      h) 4        i) 1 and 0     j) 9 (mean value = f(0, 0))
+      k) 14 (Parseval: 1 + 4 + 9)        l) 6 (|z² + 2zw + w²|²: 1+4+1)
+      m) √e/2 ≈ 0.82436          n) 0 (sin has only odd degree terms)
+      o) 1, 6
+
+M3. Cauchy estimates, Liouville, maximum principle.
+    a) |f| ≤ 1 on the unit bidisc: bound for |∂f/∂z(0)|
+    b) |f| ≤ 3 on Δ(0; (2, 3)): bound for |∂²f/∂z∂w(0)|
+    c) same f: bound for |∂⁴f/∂z²∂w²(0)|
+    d) same f: bound for |c₃₂|
+    e) f entire on C², |f| ≤ 1 + |z| + |w|: what is f?
+    f) f entire, |f| ≤ C(1 + |z|² + |w|²)^(3/2): what is f?
+    g) f entire, |f(z, w)| ≤ e^(Re z): what is f?
+    h) max |zw| on the closed unit bidisc; where attained?
+    i) max |z + w| on the closed unit ball {|z|² + |w|² ≤ 1}
+    j) max |zw| on the closed unit ball
+    k) max |z² + w| on the closed unit bidisc
+    l) max |1 + z + w| on the closed unit ball
+    m) f : D² → D holomorphic, f(0) = 0: best bound for |f_z(0)| + |f_w(0)|
+    n) f : B² → D, f(0) = 0: best bound for |f_z(0)|² + |f_w(0)|²
+    Answers:
+      a) 1        b) 1!1!·3/(2·3) = 1/2       c) 2!2!·3/(2²·3²) = 1/3
+      d) 3/(2³·3²) = 1/24        e) affine: a + bz + cw
+      f) a polynomial of degree ≤ 3       g) ce^z (fe^(−z) is bounded)
+      h) 1, exactly on the torus |z| = |w| = 1      i) √2
+      j) 1/2 (at |z| = |w| = 1/√2)        k) 2       l) 1 + √2
+      m) 1 (restrict to λ ↦ (λe^(iα), λe^(iβ)); equality for (z + w)/2)
+      n) 1 (restrict to the disc in the direction (f̄_z, f̄_w))
+
+M4. Domains of convergence of power series (describe the open domain;
+    for Reinhardt domains also give the log image, x = log|z|, y =
+    log|w|).
+    a) ∑_{j,k} zʲwᵏ                    b) ∑ₙ (zw)ⁿ
+    c) ∑ₙ zⁿw²ⁿ                        d) ∑ₙ zⁿ (as a series in z, w)
+    e) ∑ₙ n! zⁿwⁿ                      f) ∑_{j,k} C(j + k, j) zʲwᵏ
+    g) ∑_{j,k} zʲwᵏ/(2ʲ3ᵏ)             h) ∑ₙ (zw)ⁿ/n²
+    i) ∑_{j,k} C(j + k, j) z²ʲwᵏ        j) ∑ₙ zⁿ w^(n²)
+    k) ∑_{j,k} 2^(jk) zʲwᵏ
+    l) is {|z|² + |w|² < 1} log-convex?  m) is {|z| < 1, |zw| < 1}?
+    n) smallest domain of convergence containing (D × D_½) ∪ (D_½ × D)
+    o) smallest one containing (D × D) ∪ (D₂ × D_½)
+    Answers:
+      a) D², {x < 0, y < 0}             b) {|zw| < 1}, {x + y < 0}
+      c) {|z||w|² < 1}, {x + 2y < 0}     d) D × C, {x < 0}
+      e) empty (converges only on {zw = 0})
+      f) {|z| + |w| < 1}, {eˣ + eʸ < 1}  g) D₂ × D₃
+      h) {|zw| < 1} (absolutely convergent also on |zw| = 1)
+      i) {|z|² + |w| < 1}               j) C × D, {y < 0}
+      k) empty (the terms 2^(n²)rⁿsⁿ are unbounded unless zw = 0)
+      l) yes (eˣ + eʸ convex ⇒ sublevel set convex)
+      m) yes ({x < 0, x + y < 0})       n) {|z|, |w| < 1, |zw| < ¼}
+      o) {|z| < 2, |w| < 1, |zw| < 1}
+
+M5. Hartogs phenomenon: does EVERY f holomorphic on the set extend
+    holomorphically to the larger set? (Y/N, with reason or example)
+    a) C² ∖ {0} → C²                   b) D ∖ {0} → D (in C)
+    c) B ∖ B̄(0, ½) → B (B the unit ball of C²)
+    d) D² ∖ ({|z| ≤ ½} × {0}) → D²       e) C² ∖ {z = 0} → C²
+    f) Hartogs figure H (a = b = ½) → D²
+    g) {(z, w) ∈ D² : |w| > ½} → D²
+    h) D² ∖ {z = 0}, f bounded → D²
+    i) D³ ∖ {z₁ = z₂ = 0} → D³ (a complex line removed)
+    j) C² minus the closed unit ball → C²
+    k) the annulus {½ < |z| < 1} in C → D
+    l) {½ < |z|² + |w|² < 1} → B
+    m) D² ∖ K, K = the closed real disc {(x, 0) : −½ ≤ x ≤ ½} → D²
+    n) singular set of 1/(z² + w²): isolated point?
+    o) zero set of z² − w³ near 0: isolated point?
+    Answers:
+      a) Y (Hartogs)          b) N (1/z)          c) Y (K compact, B ∖ K
+         connected)           d) Y (compact K)    e) N (1/z)
+      f) Y                    g) N (1/w)          h) Y (Riemann extension
+         theorem across a hypersurface)           i) Y (codimension 2:
+         Hartogs-Riemann; D³ ∖ line is not a domain of holomorphy)
+      j) Y (to an entire function)              k) N (1/z; n = 1)
+      l) Y                    m) Y (compact, connected complement)
+      n) N: two lines w = ±iz         o) N: a cusp curve w = z^(2/3)
+
+M6. Domains of holomorphy (Y/N) and holomorphic hulls.
+    a) any domain in C                 b) the unit ball of C²
+    c) the bidisc D²                   d) C² ∖ {0}
+    e) C² ∖ {z = 0}                    f) {½ < |z|² + |w|² < 1}
+    g) Ω₁ × Ω₂, Ωⱼ ⊆ C domains          h) a Hartogs figure
+    i) {|zw| < 1}                      j) {|z|² + |w|⁴ < 1}
+    k) D × (D ∖ {0})                   l) C² minus the closed unit ball
+    m) Ω ∖ {g = 0}, Ω a domain of holomorphy, g ∈ 𝒪(Ω), g ≢ 0
+    n) (D × D_¼) ∪ (D_¼ × D)            o) {|z| < 1, |w| < 1, |zw| < ¼}
+    p) the hull in C² of the torus {|z| = |w| = ½}
+    q) the hull in C² of {(λ/2, 0) : |λ| = 1}
+    r) the hull in C² of {(λ/2, λ̄/2) : |λ| = 1}
+    s) the hull in C² ∖ {0} of the sphere |z|² + |w|² = ¼
+    Answers:
+      a) Y        b) Y (convex)      c) Y       d) N       e) Y (C* × C)
+      f) N (extends to the ball)     g) Y       h) N       i) Y (log-convex)
+      j) Y (convex)                  k) Y (product)       l) N (Hartogs)
+      m) Y        n) N (envelope = o))          o) Y
+      p) the closed bidisc of radius ½   q) {|z| ≤ ½, w = 0}
+      r) the circle itself (it lies on zw = ¼)
+      s) {0 < |z|² + |w|² ≤ ¼}: not compact in Ω
+
+M7. Plurisubharmonic or not? Give the complex Hessian (φ_jk̄) and decide
+    psh / strictly psh / not psh on C² (or on the stated domain).
+    a) |z|² + |w|²                      b) |z|² − |w|²
+    c) log(1 + |z|² + |w|²): det of the Hessian
+    d) Re(z²w)                          e) |z|² + |w|² + c Re(zw̄), c real
+    f) |z + w̄|²                         g) |zw|²
+    h) log|z² + w³|                     i) (Re z)²
+    j) −log(1 − |z|² − |w|²) on the ball: Hessian at 0
+    k) max(|z|, |w|)                    l) |z|² + t Re(z²): psh? convex?
+    m) −|z|²                            n) log(|z|² + |w|²): det of Hessian
+    o) u(z) with u subharmonic on C     p) (Re z)(Re w)
+    Answers:
+      a) I; strictly psh               b) diag(1, −1); not psh
+      c) det = 1/(1 + |z|² + |w|²)³ > 0 (and φ_zz̄ > 0); strictly psh
+      d) 0 (pluriharmonic); psh, not strictly
+      e) [[1, c/2], [c/2, 1]]: psh ⇔ |c| ≤ 2, strictly ⇔ |c| < 2
+      f) I (|z|² + |w|² + 2Re(zw), the last term pluriharmonic); strictly
+      g) [[|w|², z̄w], [zw̄, |z|²]], det 0, trace ≥ 0: psh (= |f|², f = zw)
+      h) psh (log|f|, f holomorphic)   i) [[½, 0], [0, 0]]: psh
+      j) I at 0; strictly psh (the Bergman-type potential)
+      k) psh (max of psh)              l) Hessian diag(1, 0) in (z, w):
+         psh for every t; convex iff |t| ≤ 1
+      m) not psh                       n) 0: psh but degenerate (rank 1)
+      o) psh                           p) [[0, ¼], [¼, 0]]: not psh
+
+M8. Levi form. Ω = {ρ < 0}; decide strictly pseudoconvex (SPC), weakly
+    pseudoconvex (WPC, pseudoconvex but not strictly), Levi-flat (LF), or
+    not pseudoconvex (NPC) near the given point or everywhere.
+    a) ρ = |z|² + |w|² − 1             b) ρ = 1 − |z|² − |w|² (near |z|² +
+                                          |w|² = 1, Ω the outside)
+    c) ρ = |z|² + |w|⁴ − 1 at (1, 0)    d) the same ρ at (0, 1)
+    e) ρ = |z|² − Im w (at 0)          f) ρ = Im w − |z|² (at 0)
+    g) ρ = Re w                        h) ρ = |zw|² − 1 at (1, 1)
+    i) ρ = Re w + |z|⁴ at 0            j) ρ = Re w + (Re z)²
+    k) ρ = Re w − (Re z)²              l) ρ = Re w + y² − x² (z = x + iy)
+    m) ρ = Re w + |z|² + t Re(z²)
+    n) ρ = |z|² + |w|² − 1 at (1/√2, 1/√2): L(t) for t = (1, −1)
+    o) {|w| < e^(−|z|²)}               p) {|w| < e^(|z|²)}
+    q) {|w| < 1/(1 + |z|²)}            r) the bidisc D² near (1, 0)
+    Answers:
+      a) SPC      b) NPC (Levi form −|t|²)     c) WPC (L = 4|w|²|t₂|² = 0)
+      d) SPC      e) SPC (Siegel domain; L = |t₁|²)
+      f) NPC (L = −|t₁|²)                      g) LF (a half-space)
+      h) LF (∂ρ = (1, 1), t = (1, −1), L = 0; ∂Ω is foliated by the
+         curves zw = e^(iθ))
+      i) WPC at 0 (L = 4|z|²|t₁|² = 0), SPC elsewhere
+      j) SPC (L = ½|t₁|²; also convex) k) NPC (L = −½|t₁|²)
+      l) LF (y² − x² = −Re z², pluriharmonic; not convex!)
+      m) SPC for every t (L = |t₁|²); convex only for |t| ≤ 1
+      n) 2 (> 0)  o) pseudoconvex (φ = |z|² subharmonic)
+      p) NPC (φ = −|z|² superharmonic)
+      q) pseudoconvex (φ = log(1 + |z|²) subharmonic)
+      r) LF near (1, 0): the boundary piece {|z| = 1} × D is foliated by
+         discs {e^(iθ)} × D
+
+M9. Weierstrass preparation (w is the distinguished variable). Give the
+    order k, the Weierstrass polynomial P (series to the stated order) and
+    the unit u, or explain why the theorem does not apply directly.
+    a) w² − z                          b) e^w − 1 − z
+    c) w³ + w² + z (to z³)             d) we^z
+    e) zw                              f) sin w − z
+    g) w⁴ + w² + z² (to z⁸)            h) w³ − z²w + z⁵
+    i) z + w                           j) z
+    k) z³ + w⁵e^z                      l) w − w² + z (to z⁴)
+    m) w² + z₁z₂ (in C³)               n) w sin(w²) + z⁴
+    o) number of zeros of z + w² + w³ in |w| < δ for small fixed z ≠ 0
+    Answers:
+      a) k = 2, P = w² − z, u = 1
+      b) k = 1, P = w − log(1 + z) = w − z + z²/2 − z³/3 + ...
+      c) k = 2, P = w² + (−z + 2z² − 7z³)w + (z − z² + 3z³) + ...,
+         u = w + 1 + z − 2z² + 7z³ + ...
+      d) k = 1, P = w, u = e^z
+      e) f(0, w) ≡ 0: not w-regular; with z = z″ + w it becomes w² + z″w
+         (k = 2)
+      f) k = 1, P = w − arcsin z = w − z − z³/6 − 3z⁵/40 − ...
+      g) k = 2, P = w² + (1 − √(1 − 4z²))/2 = w² + z² + z⁴ + 2z⁶ + 5z⁸ +
+         ... (Catalan numbers), u = w² + (1 + √(1 − 4z²))/2
+      h) k = 3, P = f, u = 1           i) k = 1, P = w + z
+      j) not regular; after z = z″ + w: k = 1, P = w + z″
+      k) k = 5, P = w⁵ + z³e^(−z), u = e^z
+      l) k = 1, P = w + z − z² + 2z³ − 5z⁴ + ..., u = (1 + √(1 + 4z))/2 −
+         w
+      m) k = 2, P = f                  n) k = 3 (f(0, w) = w³ − w⁷/6 +
+         ...); P is a cubic in w, u(0) = 1
+      o) 2
+
+M10. Weierstrass division g = qP + r (deg_w r < deg_w P) and the local
+     ring 𝒪₂ = C{z, w}. Give r, or answer the question.
+     a) g = w³, P = w² − z              b) g = w⁴, P = w² − z
+     c) g = e^w, P = w² − z             d) g = w⁵, P = w − z
+     e) g arbitrary, P = w − h(z)       f) g = w², P = w² + zw + z²
+     g) g = sin w, P = w²               h) g = cos w, P = w² − z
+     i) g = w³, P = w² + zw + z²
+     j) is z² − w² irreducible in 𝒪₂?   k) is w² − z³?
+     l) is w² − z² − z³?
+     m) dim_C 𝒪₂/(w² − z, z)            n) dim_C 𝒪₂/(z², w³)
+     o) dim_C 𝒪₂/(z², w² − z³)          p) dim_C 𝒪₂/(zw, z + w)
+     q) dim_C 𝒪₂/(w² − z³, w)           r) is the maximal ideal (z, w)
+        principal?
+     Answers:
+       a) zw       b) z²       c) cosh√z + w·sinh(√z)/√z       d) z⁵
+       e) g(z, h(z))           f) −zw − z²          g) w
+       h) cos√z = ∑(−z)ᵐ/(2m)! (no w term: cos is even)
+       i) z³ (since (w − z)(w² + zw + z²) = w³ − z³)
+       j) no: (z − w)(z + w)   k) yes (z³ is not a square in C{z})
+       l) no: (w − z√(1 + z))(w + z√(1 + z)), √(1 + z) a unit
+       m) 2 (C{w}/(w²))        n) 6 (basis zⁱwʲ, i < 2, j < 3)
+       o) 4 (w² ≡ z³ ≡ 0: basis 1, z, w, zw)
+       p) 2 (w = −z, then z² = 0)          q) 3 (C{z}/(z³))
+       r) no: 𝒪₂ is a UFD but not a PID (z, w have no common factor)
+
+M11. The ∂̄-equation. In C solve ∂u/∂z̄ = f; in C² check the compatibility
+     ∂f₁/∂z̄₂ = ∂f₂/∂z̄₁ for f = (f₁, f₂) and solve ∂u/∂z̄ⱼ = fⱼ if possible.
+     a) f = 1                           b) f = z
+     c) f = z̄                           d) f = z²z̄³
+     e) f = e^(z̄)                       f) f = x = Re z
+     g) (z̄₂, z̄₁)                        h) (z̄₂, 0)
+     i) (z₁, z₂)                        j) (z₂, z₁)
+     k) (2z̄₁z̄₂, z̄₁²)                    l) (z̄₁z₂, z₁z̄₂)
+     m) u = Cauchy-Green solution for f = 𝟙_D: u(½), u(2), u(i/2)
+     n) does ∂u/∂z̄ = 𝟙_D have a compactly supported solution in C?
+     o) ∂u/∂z̄ = f, f ∈ C_c(C): condition for a compactly supported u
+     Answers (u is unique up to adding a holomorphic function):
+       a) z̄        b) |z|² = zz̄      c) z̄²/2       d) z²z̄⁴/4
+       e) e^(z̄)    f) |z|²/2 + z̄²/4 (since x = (z + z̄)/2)
+       g) closed; u = z̄₁z̄₂             h) not closed (1 ≠ 0): no solution
+       i) closed; u = |z₁|² + |z₂|²     j) closed; u = z₂z̄₁ + z₁z̄₂
+       k) closed (2z̄₁ = 2z̄₁); u = z̄₁²z̄₂
+       l) closed; u = (z₂z̄₁² + z₁z̄₂²)/2
+       m) ½, ½, −i/2 (u = z̄ on D̄, 1/z outside)
+       n) no: u ~ 1/z at ∞ since ∫_D 1 dA = π ≠ 0
+       o) ∫ f(ζ)ζᵐ dA(ζ) = 0 for all m ≥ 0 (expand 1/(z − ζ) at ∞)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) A function on C² holomorphic in each variable separately is
+        holomorphic (no continuity assumed).
+     b) The zeros of a holomorphic f ≢ 0 on C² are isolated.
+     c) Every domain in C² is a domain of holomorphy.
+     d) Every convex domain in Cⁿ is a domain of holomorphy.
+     e) Every domain of holomorphy in C² is convex.
+     f) The unit ball and the bidisc in C² are biholomorphic.
+     g) Every power series in C² converges on a polydisc, and its domain
+        of convergence is a polydisc.
+     h) The domain of convergence of a power series is logarithmically
+        convex.
+     i) The maximum and the sum of two psh functions are psh.
+     j) The minimum of two psh functions is psh.
+     k) Every harmonic function on R⁴ = C² is psh.
+     l) Every C² psh function is convex.
+     m) Hartogs' extension theorem holds in C.
+     n) The union of two domains of holomorphy is a domain of holomorphy.
+     o) Each component of the intersection of two domains of holomorphy
+        is a domain of holomorphy.
+     p) Pseudoconvex domains in Cⁿ are exactly the domains of holomorphy.
+     q) Every f ∈ 𝒪₂ with f(0) = 0, f ≢ 0 is w-regular after a linear
+        change of coordinates.
+     r) 𝒪₂ is a principal ideal domain.
+     s) ∂̄u = f is solvable on C² for every smooth (0,1)-form f.
+     t) Strict pseudoconvexity is preserved by biholomorphisms, convexity
+        is not.
+     Answers:
+       a) T (Hartogs' theorem on separate analyticity)
+       b) F: f = z (zero set the line {z = 0})
+       c) F: C² ∖ {0}           d) T
+       e) F: D × {½ < |w| < 1}, or {|zw| < 1}
+       f) F: Poincaré 1907 (their automorphism groups differ)
+       g) F: ∑(zw)ⁿ converges on {|zw| < 1}, not a polydisc
+       h) T        i) T         j) F: min(x, −x) = −|Re z|
+       k) F: |z|² − |w|²        l) F: |z|² + 2Re(z²) = 3x² − y²
+       m) F: 1/z on D ∖ {0}     n) F: the Hartogs figure (union of
+          two polydiscs)        o) T (holomorphic convexity passes to
+          intersections)        p) T (Levi problem: Oka, Bremermann,
+          Norguet)              q) T         r) F: (z, w) is not principal
+       s) F: z̄₂ dz̄₁ (not ∂̄-closed)
+       t) T (the Levi form transforms by the Jacobian; (z, w) ↦ (z, w +
+          z²) maps the half-space {Re w < 0} onto the non-convex
+          {Re w < Re z²})
+
+TEACHING TIPS
+  Struggling: draw everything in the (|z|, |w|) quadrant or the log plane
+  (x, y) = (log|z|, log|w|): polydiscs are rectangles, the ball is a
+  quarter circle, {|zw| < 1} is a half-plane, the Hartogs figure is an L,
+  and "domain of convergence" / "domain of holomorphy" for Reinhardt
+  domains means "log image convex" — the child can SEE the envelope of
+  holomorphy as a convex hull. Always check holomorphy by writing f in z
+  and z̄ and differentiating in z̄; compute complex Hessians as matrices
+  and test psd with trace and determinant; for Levi forms first find the
+  complex tangent vector t = (ρ_w, −ρ_z), then evaluate the Hermitian form
+  on t only. For Weierstrass preparation, first compute f(0, w) to get
+  the order k, then find the k small roots as series in z. Harder: prove
+  Hartogs' theorem on separate analyticity (via Baire and Hartogs'
+  lemma on psh functions); prove that −log dist(z, ∂Ω) is psh for a
+  domain of holomorphy; prove Poincaré's theorem that B² and D² are not
+  biholomorphic by comparing automorphism groups at 0; prove the Oka
+  lemma and Hörmander's L² estimate for ∂̄ on pseudoconvex domains and
+  deduce the Levi problem; show via Weierstrass division that 𝒪ₙ is
+  Noetherian and a UFD, and prove Riemann's extension theorem across an
+  analytic hypersurface and across analytic sets of codimension ≥ 2.
+
+
