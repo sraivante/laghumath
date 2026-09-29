@@ -19134,3 +19134,3206 @@ TEACHING TIPS
   combining the smoothing and approximation properties.
 
 
+================================================================================
+TOPIC 12.25 — OPTIMISATION AND CONTROL THEORY; CONVEX ANALYSIS: CONVEX SETS
+AND FUNCTIONS, DUALITY, KKT, ALGORITHMS, CALCULUS OF VARIATIONS,
+CONTROLLABILITY, STABILITY, PONTRYAGIN, DYNAMIC PROGRAMMING AND LQR
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - CONVEX SETS: C is convex if θx + (1 − θ)y ∈ C for x, y ∈ C, θ ∈ [0, 1].
+    Examples: half-spaces, balls, polyhedra {Ax ≤ b}, the second-order cone
+    {‖x‖ ≤ t}, the PSD cone S₊ⁿ. Intersections, affine images and preimages
+    preserve convexity; unions do not. CARATHÉODORY: a point of conv S ⊆ Rⁿ
+    is a convex combination of at most n + 1 points of S.
+  - PROJECTION AND SEPARATION: for C closed convex non-empty, every x has a
+    unique nearest point P_C(x), characterised by ⟨x − P_C x, y − P_C x⟩ ≤ 0
+    for all y ∈ C; P_C is 1-Lipschitz. SEPARATION: a point outside a closed
+    convex set, or two disjoint convex sets one of which is compact and
+    both closed, can be strictly separated by a hyperplane; SUPPORTING
+    hyperplanes exist at boundary points. FARKAS: exactly one of {Ax = b,
+    x ≥ 0} and {Aᵀy ≥ 0, bᵀy < 0} is solvable.
+  - CONVEX FUNCTIONS: f(θx + (1 − θ)y) ≤ θf(x) + (1 − θ)f(y) (epigraph
+    convex). For differentiable f: convex ⇔ f(y) ≥ f(x) + ∇f(x)ᵀ(y − x); for
+    C² f: convex ⇔ ∇²f ⪰ 0. μ-STRONGLY convex: ∇²f ⪰ μI; L-SMOOTH: ∇f is
+    L-Lipschitz (∇²f ⪯ LI); κ = L/μ is the CONDITION NUMBER. Preserved by
+    non-negative sums, affine substitution, pointwise sup, and h ∘ g with h
+    convex non-decreasing, g convex. Jensen: f(E X) ≤ E f(X). Key examples:
+    eˣ, −ln x, x ln x, ‖x‖, max xᵢ, log ∑ e^(xᵢ), x²/y (y > 0), −log det X,
+    λ_max(X). Local minima of convex functions are global; the minimiser
+    set is convex; strict convexity gives uniqueness (not existence: eˣ).
+  - FENCHEL CONJUGATE f*(y) = sup_x (yᵀx − f(x)): always convex and closed.
+    FENCHEL-YOUNG: f(x) + f*(y) ≥ xᵀy, with equality iff y ∈ ∂f(x).
+    FENCHEL-MOREAU: f** = f iff f is proper, convex and lower semicontinuous;
+    in general f** is the closed convex envelope. Table: (½x²)* = ½y²,
+    (eˣ)* = y ln y − y, (|x|)* = indicator of [−1, 1], (½xᵀQx)* = ½yᵀQ⁻¹y,
+    (|x|ᵖ/p)* = |y|^q/q with 1/p + 1/q = 1, (indicator of a cone)* =
+    indicator of the polar cone.
+  - SUBDIFFERENTIAL ∂f(x) = {g : f(y) ≥ f(x) + gᵀ(y − x) ∀y}: non-empty,
+    compact, convex at interior points of dom f; ∂f(x) = {∇f(x)} where f is
+    differentiable. ∂|x|(0) = [−1, 1], ∂‖x‖₂(0) = closed unit ball, ∂ of a
+    max = convex hull of the active gradients. OPTIMALITY: x* minimises a
+    convex f iff 0 ∈ ∂f(x*). PROXIMAL MAP prox_{tf}(v) = argmin_x (f(x) +
+    ‖x − v‖²/(2t)): prox of t|·| is SOFT-THRESHOLDING sign(v)max(|v| − t, 0),
+    prox of an indicator is a projection; the Moreau envelope of |x| is the
+    Huber function.
+  - UNCONSTRAINED ALGORITHMS: gradient descent x₊ = x − t∇f(x). For L-smooth
+    convex f with t = 1/L: f(x_k) − f* ≤ L‖x₀ − x*‖²/(2k); if also
+    μ-strongly convex: ‖x_k − x*‖ ≤ (1 − μ/L)ᵏ‖x₀ − x*‖ (linear rate); on
+    quadratics the best fixed step 2/(μ + L) gives the factor (κ − 1)/(κ +
+    1). Step t > 2/L can diverge. Nesterov acceleration: O(1/k²).
+    NEWTON's method x₊ = x − ∇²f(x)⁻¹∇f(x): affine invariant, exact in one
+    step on quadratics, LOCALLY QUADRATICALLY convergent, but may diverge
+    far away (damping / line search needed). Proximal gradient (ISTA) and
+    projected gradient for composite and constrained problems.
+  - LINEAR PROGRAMMING: max cᵀx s.t. Ax ≤ b, x ≥ 0 has dual min bᵀy s.t. Aᵀy
+    ≥ c, y ≥ 0. WEAK DUALITY cᵀx ≤ bᵀy; STRONG DUALITY: if either has a
+    finite optimum both do and the values agree; primal unbounded ⇒ dual
+    infeasible. COMPLEMENTARY SLACKNESS yᵢ(b − Ax)ᵢ = 0, xⱼ(Aᵀy − c)ⱼ = 0.
+    Optima are attained at vertices (basic feasible solutions); dual
+    variables are SHADOW PRICES.
+  - LAGRANGIAN DUALITY: for min f₀(x) s.t. fᵢ(x) ≤ 0, hⱼ(x) = 0, L(x, λ, ν) =
+    f₀ + ∑λᵢfᵢ + ∑νⱼhⱼ, dual function g(λ, ν) = inf_x L (always concave),
+    dual problem max g over λ ≥ 0. d* ≤ p* always (weak duality); strong
+    duality d* = p* holds for convex problems under SLATER's condition (a
+    strictly feasible point). Gap example: min e⁻ˣ s.t. x²/y ≤ 0 (y > 0):
+    p* = 1, d* = 0.
+  - KKT CONDITIONS: primal feasibility, λ ≥ 0, complementary slackness
+    λᵢfᵢ(x) = 0, stationarity ∇f₀ + ∑λᵢ∇fᵢ + ∑νⱼ∇hⱼ = 0. Sufficient for
+    convex problems; necessary at a local minimum under a constraint
+    qualification (LICQ, Slater, MFCQ). Failure: min x s.t. x² ≤ 0 has no
+    multiplier at x* = 0. Multiplier = sensitivity ∂p*/∂(constraint level).
+  - CALCULUS OF VARIATIONS: for J[y] = ∫ₐᵇ L(x, y, y′) dx with fixed ends,
+    an extremal satisfies EULER-LAGRANGE (d/dx)L_{y′} = L_y; if L has no x,
+    BELTRAMI L − y′L_{y′} = const. Free endpoint ⇒ NATURAL boundary
+    condition L_{y′} = 0. Constraint ∫G = c ⇒ Lagrange multiplier (L + λG).
+    Necessary: LEGENDRE L_{y′y′} ≥ 0; JACOBI (no conjugate point: ∫₀^b (y′²
+    − y²) ≥ 0 on H₀¹ iff b ≤ π). L jointly convex in (y, y′) ⇒ an extremal
+    is a global minimiser. Classics: straight lines, catenary, cycloid
+    (brachistochrone), circle (isoperimetric), Hamilton's principle.
+  - LINEAR CONTROL SYSTEMS ẋ = Ax + Bu, y = Cx: solution x(t) = e^(At)x₀ +
+    ∫₀ᵗ e^(A(t−s))Bu(s) ds. CONTROLLABLE iff KALMAN rank [B AB ... Aⁿ⁻¹B] = n
+    iff the Gramian W(T) = ∫₀ᵀ e^(As)BBᵀe^(Aᵀs) ds is invertible iff (PBH)
+    rank [A − λI, B] = n for every eigenvalue λ. Minimum-energy control
+    from 0 to x_f costs x_fᵀW(T)⁻¹x_f. OBSERVABILITY is dual: rank [C; CA;
+    ...; CAⁿ⁻¹] = n. POLE PLACEMENT: (A, B) controllable ⇔ the eigenvalues
+    of A − BK can be assigned arbitrarily (complex pairs conjugate).
+    STABILISABLE: every uncontrollable mode is stable.
+  - STABILITY: an equilibrium is (Lyapunov) stable, asymptotically stable,
+    exponentially stable. ẋ = Ax is asymptotically stable iff A is HURWITZ
+    (all Re λ < 0) iff for some (every) Q ≻ 0 the LYAPUNOV equation AᵀP +
+    PA = −Q has a solution P ≻ 0. LYAPUNOV's direct method: V ≻ 0, V̇ ≤ 0 ⇒
+    stable; V̇ < 0 (x ≠ 0) ⇒ asymptotically stable; LaSalle's invariance
+    principle when V̇ ≤ 0 only. Linearisation decides when no eigenvalue
+    lies on the imaginary axis (ẋ = ±x³ shows it can't otherwise). Discrete
+    time: spectral radius < 1. Routh-Hurwitz: s³ + a₂s² + a₁s + a₀ is stable
+    iff all aᵢ > 0 and a₂a₁ > a₀.
+  - PONTRYAGIN MAXIMUM (MINIMUM) PRINCIPLE: for min ∫₀ᵀ L(x, u) dt + φ(x(T))
+    with ẋ = f(x, u), u ∈ U, set H = L + pᵀf. An optimal pair has a costate
+    with ṗ = −∂H/∂x, u*(t) minimising H(x*, u, p) over U, and transversality
+    p(T) = ∇φ(x(T)) for a free endpoint (H ≡ const if autonomous; H ≡ 0 if
+    T is free). Linear-in-u problems with |u| ≤ 1 give BANG-BANG controls
+    (switching function); time-optimal double integrator: at most one
+    switch, switching curve x = −½v|v|.
+  - DYNAMIC PROGRAMMING AND LQR: the value function satisfies BELLMAN's
+    principle and the HJB equation −V_t = min_u {L(x, u) + ∇Vᵀf(x, u)}. For
+    ẋ = Ax + Bu, cost ∫(xᵀQx + uᵀRu): V = xᵀPx with the RICCATI equation
+    −Ṗ = AᵀP + PA − PBR⁻¹BᵀP + Q; infinite horizon ⇒ ALGEBRAIC Riccati
+    equation (ARE), optimal feedback u = −R⁻¹BᵀPx, stabilising if (A, B)
+    stabilisable and (A, Q^(1/2)) detectable. Discrete Riccati recursion
+    P_k = Q + AᵀP_{k+1}A − AᵀP_{k+1}B(R + BᵀP_{k+1}B)⁻¹BᵀP_{k+1}A.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Let C ⊆ Rⁿ be non-empty, closed and convex. (a) Prove that every x ∈ Rⁿ
+    has a unique nearest point p = P_C(x), and that p is characterised by
+    ⟨x − p, y − p⟩ ≤ 0 for all y ∈ C. (b) Deduce that if x ∉ C there is a
+    hyperplane strictly separating x from C. (c) Compute P_C(x) for x =
+    (3, 1) and C the closed unit disc, and for C = {x₁ + x₂ ≤ 0}, x = (2,
+    −1).
+    Answer: (a) minimising sequence + parallelogram law; (b) a = x − p,
+    aᵀy ≤ aᵀp < aᵀx; (c) (3, 1)/√10 and (1.5, −1.5).
+    Teacher explains: (a) Let d = inf_{y∈C}‖x − y‖ and take yₖ ∈ C with
+    ‖x − yₖ‖ → d. The PARALLELOGRAM LAW gives
+       ‖yₖ − yₘ‖² = 2‖x − yₖ‖² + 2‖x − yₘ‖² − 4‖x − (yₖ + yₘ)/2‖².
+    By convexity (yₖ + yₘ)/2 ∈ C, so the last norm is ≥ d, and the right
+    side is ≤ 2‖x − yₖ‖² + 2‖x − yₘ‖² − 4d² → 0: (yₖ) is Cauchy, converges
+    to some p ∈ C (C closed), and ‖x − p‖ = d. Two minimisers p, q give the
+    same identity with ‖p − q‖² ≤ 0: uniqueness. Characterisation: for y ∈
+    C and θ ∈ (0, 1], p + θ(y − p) ∈ C, so
+       ‖x − p‖² ≤ ‖x − p − θ(y − p)‖² = ‖x − p‖² − 2θ⟨x − p, y − p⟩ +
+                  θ²‖y − p‖².
+    Divide by θ and let θ → 0: ⟨x − p, y − p⟩ ≤ 0. Conversely this
+    inequality gives ‖x − y‖² = ‖x − p‖² + ‖p − y‖² − 2⟨x − p, y − p⟩ ≥
+    ‖x − p‖². (b) Put a = x − p ≠ 0. For y ∈ C, aᵀ(y − p) ≤ 0, so aᵀy ≤
+    aᵀp = aᵀx − ‖a‖² < aᵀx; the hyperplane aᵀz = aᵀx − ‖a‖²/2 separates
+    strictly. (c) For the disc, P(x) = x/‖x‖ when ‖x‖ > 1: (3, 1)/√10 ≈
+    (0.94868, 0.31623). For the half-space {aᵀx ≤ b}, P(x) = x − ((aᵀx −
+    b)₊/‖a‖²)a; here aᵀx = 1, so P = (2, −1) − ½(1, 1) = (1.5, −1.5).
+    Common mistakes: forgetting closedness (the open disc has no nearest
+    point to (3, 1)) or convexity (projection onto a circle is not unique at
+    the centre). Now you try: project (2, 3) onto the box [0, 1]². ((1, 1):
+    clip each coordinate)
+
+D2. (a) Prove that a differentiable f on a convex open set is convex iff
+    f(y) ≥ f(x) + ∇f(x)ᵀ(y − x) for all x, y. (b) Show that f(x, y) = x²/y
+    is convex on y > 0 and that log-sum-exp f(x) = log ∑ e^(xᵢ) is convex.
+    (c) For which a is g(x, y) = x² + axy + y² convex?
+    Answer: (a) restrict to lines; (b) Hessians are PSD; (c) |a| ≤ 2.
+    Teacher explains: (a) (⇒) By convexity f(x + θ(y − x)) ≤ f(x) + θ(f(y)
+    − f(x)); subtract f(x), divide by θ, let θ ↓ 0: ∇f(x)ᵀ(y − x) ≤ f(y) −
+    f(x). (⇐) Let z = θx + (1 − θ)y. Apply the inequality at z twice:
+       f(x) ≥ f(z) + ∇f(z)ᵀ(x − z),  f(y) ≥ f(z) + ∇f(z)ᵀ(y − z).
+    Multiply by θ and 1 − θ and add; since θ(x − z) + (1 − θ)(y − z) = 0 we
+    get θf(x) + (1 − θ)f(y) ≥ f(z). Geometrically: the tangent plane is a
+    global under-estimator — the whole of convex duality rests on this.
+    (b) For x²/y: f_xx = 2/y, f_xy = −2x/y², f_yy = 2x²/y³, so
+       ∇²f = (2/y³) [ y²  −xy ; −xy  x² ] = (2/y³) vvᵀ,  v = (y, −x),
+    which is PSD. For log-sum-exp, with pᵢ = e^(xᵢ)/∑e^(xⱼ) (a probability
+    vector), ∇²f = diag(p) − ppᵀ, and for any v,
+       vᵀ∇²f v = ∑pᵢvᵢ² − (∑pᵢvᵢ)² = Var_p(v) ≥ 0
+    by Cauchy-Schwarz (Jensen). (c) The Hessian is [2 a; a 2], PSD iff 4 −
+    a² ≥ 0: |a| ≤ 2. Common mistakes: checking only the diagonal entries of
+    the Hessian (a = 3 has positive diagonal but det −5); concluding x²/y
+    is convex on all of R² (it is not even defined at y = 0, and for y < 0
+    it is concave). Now you try: is xy convex on the positive quadrant?
+    (no: Hessian [0 1; 1 0] has eigenvalue −1)
+
+D3. Compute the Fenchel conjugates of (a) f(x) = eˣ, (b) f(x) = |x|, (c)
+    f(x) = ½xᵀQx with Q ≻ 0, (d) f(x) = −ln x (x > 0). (e) State
+    Fenchel-Young and check the equality case for (c). (f) Find f** for
+    f(x) = (x² − 1)².
+    Answer: (a) y ln y − y (y > 0), 0 (y = 0), ∞ (y < 0); (b) 0 on [−1, 1],
+    ∞ outside; (c) ½yᵀQ⁻¹y; (d) −1 − ln(−y) for y < 0; (f) 0 on [−1, 1],
+    (x² − 1)² for |x| ≥ 1.
+    Teacher explains: f*(y) = sup_x (xy − f(x)) is the largest gap between
+    the line of slope y and the graph. (a) If y < 0, let x → −∞: xy → ∞,
+    so f* = ∞. If y = 0, sup(−eˣ) = 0. If y > 0 the maximiser solves y = eˣ,
+    x = ln y, giving y ln y − y. (b) sup(xy − |x|) is 0 if |y| ≤ 1 (take x =
+    0; xy ≤ |x|) and ∞ if |y| > 1 (x = t·sign y, t → ∞). (c) The concave
+    quadratic yᵀx − ½xᵀQx is maximised at Qx = y, x = Q⁻¹y, value
+    yᵀQ⁻¹y − ½yᵀQ⁻¹y = ½yᵀQ⁻¹y. (d) For y ≥ 0, xy + ln x → ∞; for y < 0 the
+    derivative y + 1/x = 0 gives x = −1/y and f* = −1 + ln(−1/y) = −1 −
+    ln(−y). (e) FENCHEL-YOUNG: f(x) + f*(y) ≥ xᵀy (immediate from the
+    definition), with equality iff y ∈ ∂f(x). In (c): ½xᵀQx + ½yᵀQ⁻¹y −
+    xᵀy = ½(Q^(1/2)x − Q^(−1/2)y)ᵀ(Q^(1/2)x − Q^(−1/2)y) ≥ 0, zero iff y =
+    Qx = ∇f(x). (f) f** is the largest closed convex function below f. f
+    has minima 0 at ±1 and f(0) = 1; f″ = 12x² − 4 > 0 for |x| ≥ 1, so f is
+    convex on each outer piece with f′(±1) = 0. Filling the "hump" with the
+    chord y = 0 gives f** = 0 on [−1, 1] and f** = f outside. Common
+    mistakes: forgetting the domain of f* (writing y ln y − y for y < 0);
+    thinking f** = f always (only for closed convex f). Now you try:
+    compute (x ln x)* for x > 0. (e^(y−1))
+
+D4. (a) Define the subdifferential and prove x* minimises a convex f iff
+    0 ∈ ∂f(x*). (b) Find ∂‖x‖₂ at every x ∈ Rⁿ. (c) Minimise F(x) = |x − 1|
+    + |x − 2| + |x − 5| over R. (d) Show prox_{t|·|}(v) = sign(v)max(|v| −
+    t, 0) and use it to minimise ½(x − 3)² + 2|x|.
+    Answer: (a) immediate from the definition; (b) {x/‖x‖} for x ≠ 0, the
+    unit ball at 0; (c) x = 2, F = 4; (d) x = 1, value 4.
+    Teacher explains: (a) g ∈ ∂f(x) means f(y) ≥ f(x) + gᵀ(y − x) for all y
+    (a supporting affine minorant). With g = 0 this reads f(y) ≥ f(x*) for
+    all y — exactly global minimality. (b) For x ≠ 0 the norm is
+    differentiable with gradient x/‖x‖. At 0: g ∈ ∂‖·‖(0) iff ‖y‖ ≥ gᵀy
+    for all y iff ‖g‖ ≤ 1 (Cauchy-Schwarz, and y = g for the converse).
+    (c) By the sum rule ∂F(x) = ∑ ∂|x − aᵢ|, each term being {sign(x − aᵢ)}
+    or [−1, 1] at x = aᵢ. At x = 2: ∂F = {1} + [−1, 1] + {−1} = [−1, 1] ∋ 0.
+    Hence x* = 2, the MEDIAN, and F(2) = 1 + 0 + 3 = 4. (d) Minimise h(x) =
+    t|x| + ½(x − v)². Optimality: 0 ∈ t∂|x| + x − v. If x > 0: x = v − t,
+    valid when v > t. If x < 0: x = v + t, valid when v < −t. If x = 0: need
+    v ∈ [−t, t]. This is soft-thresholding. For ½(x − 3)² + 2|x| take v = 3,
+    t = 2: x* = 1, value ½·4 + 2 = 4. This is the one-dimensional LASSO.
+    Common mistakes: "set the derivative to 0" at a kink (|x| has no
+    derivative at 0 but 0 ∈ ∂|x|(0)); applying the sum rule without a
+    qualification (safe here since all functions are finite everywhere).
+    Now you try: minimise ½(x + 1)² + 2|x|. (x = 0, value ½)
+
+D5. Let f be μ-strongly convex and L-smooth with minimiser x*. (a) For the
+    quadratic f(x) = ½xᵀQx, μI ⪯ Q ⪯ LI, show gradient descent with step t
+    satisfies ‖x_k‖ ≤ max|1 − tλ|ᵏ‖x₀‖, find the best t and the rate. (b)
+    Run gradient descent with t = 1/L on f = ½(x² + 10y²) from (10, 1). (c)
+    Apply Newton's method to f(x) = x − ln x from x₀ = ½ and from x₀ = 3.
+    Answer: (a) t = 2/(μ + L), rate (κ − 1)/(κ + 1); (b) x_k = (10·0.9ᵏ,
+    0); (c) 0.75, 0.9375, 0.99609375, ... → 1 quadratically; from 3, x₁ =
+    −3 leaves the domain.
+    Teacher explains: (a) ∇f = Qx, so x_{k+1} = (I − tQ)x_k and ‖x_k‖ ≤
+    ‖I − tQ‖ᵏ‖x₀‖, with ‖I − tQ‖ = max over eigenvalues λ ∈ [μ, L] of
+    |1 − tλ| = max(|1 − tμ|, |1 − tL|). This is minimised when 1 − tμ =
+    tL − 1, i.e. t = 2/(μ + L), giving (L − μ)/(L + μ) = (κ − 1)/(κ + 1).
+    It is < 1 iff 0 < t < 2/L; bigger steps diverge along the stiff
+    eigenvector. (b) μ = 1, L = 10, t = 0.1: x_{k+1} = 0.9x_k, y_{k+1} =
+    (1 − 1)y_k = 0. So (10, 1) → (9, 0) → (8.1, 0) → ...; f(x₅) = 50·0.9¹⁰
+    ≈ 17.43392. The rate 1 − μ/L = 0.9 is set by the flattest direction:
+    ill-conditioning (large κ) makes gradient methods slow. (c) f′ = 1 −
+    1/x, f″ = 1/x², so x₊ = x − (1 − 1/x)x² = 2x − x². With e = 1 − x:
+    e₊ = 1 − 2x + x² = e². From x₀ = 0.5: e = 0.5, 0.25, 0.0625, 0.00390625,
+    i.e. x = 0.75, 0.9375, 0.99609375 — the number of correct digits
+    doubles (QUADRATIC convergence). From x₀ = 3: e₀ = −2, x₁ = 6 − 9 = −3
+    ∉ dom f. Newton is only locally convergent; a backtracking line search
+    (damped Newton) fixes this. Common mistakes: using a step bigger than
+    2/L; forgetting that Newton finds stationary points, which are minima
+    only for convex f. Now you try: Newton for eˣ − 2x from x₀ = 0. (x₁ =
+    1, x₂ = 2/e ≈ 0.73576 → ln 2 ≈ 0.69315)
+
+D6. Consider the LP  max 3x + 5y  s.t.  x + y ≤ 4,  x + 3y ≤ 6,  x, y ≥ 0.
+    (a) Solve it graphically. (b) Write the dual and solve it. (c) Prove
+    weak duality and verify complementary slackness. (d) State Farkas'
+    lemma and derive it from LP duality.
+    Answer: (a) (3, 1), value 14; (b) min 4u + 6v s.t. u + v ≥ 3, u + 3v ≥
+    5, u, v ≥ 0: (u, v) = (2, 1), value 14.
+    Teacher explains: (a) The feasible polygon has vertices (0, 0), (4, 0),
+    (3, 1) (where x + y = 4 meets x + 3y = 6) and (0, 2), with objective
+    values 0, 12, 14, 10. The optimum of a linear function over a polytope
+    is attained at a vertex: (3, 1), value 14. (b) Multiply the constraints
+    by u, v ≥ 0 and add: (u + v)x + (u + 3v)y ≤ 4u + 6v. If u + v ≥ 3 and
+    u + 3v ≥ 5, the left side dominates 3x + 5y (x, y ≥ 0), so 4u + 6v is
+    an UPPER BOUND. The dual asks for the best bound. Both primal
+    variables are positive, so both dual constraints are tight: u + v = 3,
+    u + 3v = 5 ⇒ v = 1, u = 2, value 8 + 6 = 14 = primal value: optimal.
+    (c) For feasible x, y: cᵀx ≤ (Aᵀy)ᵀx = yᵀ(Ax) ≤ yᵀb. Equality forces
+    yᵢ(b − Ax)ᵢ = 0 and xⱼ(Aᵀy − c)ⱼ = 0: here both primal constraints are
+    tight (u, v > 0 allowed) and both dual constraints are tight (x, y > 0
+    required). The duals are SHADOW PRICES: raising the first capacity 4 →
+    4 + ε raises the optimum by 2ε. (d) FARKAS: exactly one of (I) Ax = b,
+    x ≥ 0 and (II) Aᵀy ≥ 0, bᵀy < 0 has a solution. Both cannot hold: 0 >
+    bᵀy = xᵀAᵀy ≥ 0. If (I) fails, the LP min{0 : Ax = b, x ≥ 0} is
+    infeasible, so its dual max{−bᵀy : Aᵀy ≥ 0} (feasible at y = 0) must
+    be unbounded — giving y with bᵀy < 0. Common mistakes: forgetting the
+    sign constraints on dual variables; thinking an interior point can be
+    optimal for a non-constant linear objective. Now you try: the dual
+    of min cᵀx s.t. Ax = b, x ≥ 0. (max bᵀy s.t. Aᵀy ≤ c, y free)
+
+D7. (a) For min x² + y² s.t. x + 2y ≥ 5, compute the Lagrange dual
+    function, solve the dual, and check strong duality and KKT. (b) Solve
+    min (x − 2)² + (y − 1)² s.t. x² ≤ y, x + y ≤ 2 by the KKT conditions.
+    (c) Show that KKT can fail at a minimiser without a constraint
+    qualification, and that strong duality can fail without Slater.
+    Answer: (a) g(λ) = 5λ − (5/4)λ², d* = 5 at λ = 2, p* = 5 at (1, 2);
+    (b) (1, 1), λ = (2/3, 2/3), value 1; (c) min x s.t. x² ≤ 0; min e⁻ˣ
+    s.t. x²/y ≤ 0.
+    Teacher explains: (a) Write the constraint as 5 − x − 2y ≤ 0. L = x² +
+    y² + λ(5 − x − 2y). Minimise over x, y (unconstrained, convex): 2x = λ,
+    2y = 2λ, so x = λ/2, y = λ and
+       g(λ) = λ²/4 + λ² + λ(5 − λ/2 − 2λ) = 5λ − (5/4)λ².
+    g is concave (always!); its maximum over λ ≥ 0 is at λ = 2, d* = 10 − 5
+    = 5. The primal optimum is the point of the line nearest the origin,
+    (1, 2), with p* = 5 = d*: no gap, as Slater predicts ((5, 5) is
+    strictly feasible). KKT: stationarity (2, 4) − λ(1, 2) = 0 with λ = 2
+    ≥ 0, constraint active, λ·0 = 0 ✓. SENSITIVITY: replacing 5 by c gives
+    p*(c) = c²/5 and dp*/dc = 2 = λ. (b) Try both constraints active: x² =
+    y and x + y = 2 give (1, 1) (or (−2, 4), which is far worse). With g₁ =
+    x² − y, g₂ = x + y − 2, stationarity reads
+       (2(x − 2), 2(y − 1)) + λ₁(2x, −1) + λ₂(1, 1) = 0  at (1, 1):
+       −2 + 2λ₁ + λ₂ = 0,   −λ₁ + λ₂ = 0  ⇒  λ₁ = λ₂ = 2/3 ≥ 0.
+    All KKT conditions hold and the problem is convex (convex objective,
+    convex gᵢ), so (1, 1) is the global minimiser, value 1 + 0 = 1.
+    (c) min x s.t. x² ≤ 0: the only feasible point is 0, but stationarity
+    1 + λ·2x = 1 ≠ 0 at x = 0 for every λ. Here ∇g(0) = 0: LICQ fails and
+    there is no strictly feasible point. For min e⁻ˣ s.t. x²/y ≤ 0 on
+    {y > 0}: feasible set x = 0, so p* = 1. But inf_{x,y>0}(e⁻ˣ + λx²/y) =
+    0 for every λ ≥ 0 (take x → ∞, y = x³), so d* = 0: a duality gap of 1.
+    Common mistakes: forgetting λ ≥ 0 for inequalities; accepting a KKT
+    point of a NON-convex problem as a global minimum. Now you try: min x²
+    s.t. x ≥ 1 via the dual. (g(λ) = λ − λ²/4, d* = p* = 1 at λ = 2)
+
+D8. (a) Derive the Euler-Lagrange equation for J[y] = ∫ₐᵇ L(x, y, y′) dx
+    with y(a), y(b) fixed. (b) Minimise J[y] = ∫₀¹ (y′² + y²) dx with y(0) =
+    0, y(1) = 1, and prove your extremal is the global minimiser. (c) Show
+    that for L = L(y, y′) the Beltrami identity holds, and state the
+    natural boundary condition for a free endpoint.
+    Answer: (a) (d/dx)L_{y′} − L_y = 0; (b) y = sinh x/sinh 1, J = coth 1 ≈
+    1.31304; (c) L − y′L_{y′} = const; L_{y′} = 0 at a free end.
+    Teacher explains: (a) Perturb y by εη with η(a) = η(b) = 0. Then
+       0 = d/dε J[y + εη]|₀ = ∫ₐᵇ (L_y η + L_{y′} η′) dx
+         = ∫ₐᵇ (L_y − (d/dx)L_{y′}) η dx + [L_{y′}η]ₐᵇ.
+    The boundary term vanishes, and since η is arbitrary the FUNDAMENTAL
+    LEMMA of the calculus of variations gives L_y = (d/dx)L_{y′}. (b) L =
+    y′² + y²: L_y = 2y, L_{y′} = 2y′, so y″ = y, y = A cosh x + B sinh x;
+    y(0) = 0 ⇒ A = 0, y(1) = 1 ⇒ B = 1/sinh 1. Value: integrating y′² by
+    parts, J = [yy′]₀¹ − ∫y(y″ − y) = y(1)y′(1) = cosh 1/sinh 1 = coth 1 ≈
+    1.31304. Global: for any admissible ỹ = y + η (η(0) = η(1) = 0),
+       J[ỹ] = J[y] + 2∫(y′η′ + yη) + ∫(η′² + η²) = J[y] + ∫(η′² + η²),
+    because the middle term is −2∫(y″ − y)η = 0. So J[ỹ] ≥ J[y] with
+    equality only if η ≡ 0. (General principle: L convex in (y, y′) ⇒
+    extremals are global minimisers.) (c) If L has no explicit x,
+    (d/dx)(L − y′L_{y′}) = L_y y′ + L_{y′}y″ − y″L_{y′} − y′(d/dx)L_{y′} =
+    y′(L_y − (d/dx)L_{y′}) = 0. If y(b) is free, η(b) is arbitrary, and the
+    boundary term forces L_{y′}(b) = 0 (NATURAL boundary condition). Common
+    mistakes: stopping at the EL equation without checking it gives a
+    minimum (for ∫₀^b (y′² − y²) and b > π, y ≡ 0 solves EL but is not a
+    minimum — Jacobi's conjugate point); forgetting the boundary term with
+    free ends. Now you try: extremal of ∫₁² x²y′² dx, y(1) = 0, y(2) = 1.
+    ((x²y′)′ = 0: y = 2 − 2/x)
+
+D9. (a) State and prove (the necessity half of) the Kalman rank condition
+    for controllability of ẋ = Ax + Bu. (b) Decide controllability for the
+    double integrator A = [0 1; 0 0], B = (0, 1)ᵀ, and for A = diag(1, 2)
+    with B = (1, 0)ᵀ. (c) Find K such that A − BK has eigenvalues −1, −2 for
+    the double integrator. (d) Find the minimum energy ∫₀¹ u² dt to steer
+    the double integrator from 0 to (1, 0) at T = 1.
+    Answer: (b) yes (rank 2); no (rank 1); (c) K = [2 3]; (d) 12.
+    Teacher explains: (a) THEOREM: the reachable set from 0 in time T is the
+    range of 𝒞 = [B AB ... Aⁿ⁻¹B]; so controllable ⇔ rank 𝒞 = n.
+    Necessity: if rank 𝒞 < n pick v ≠ 0 with vᵀAᵏB = 0 for k < n; by
+    Cayley-Hamilton vᵀAᵏB = 0 for all k, so vᵀe^(At)B = 0 and
+       vᵀx(T) = vᵀ∫₀ᵀ e^(A(T−s))Bu(s) ds = 0
+    for every control: states outside v^⊥ are never reached. (b) For the
+    double integrator AB = (1, 0)ᵀ, 𝒞 = [0 1; 1 0], rank 2: controllable.
+    For diag(1, 2), B = (1, 0)ᵀ: AB = (1, 0)ᵀ, rank 1; the second state
+    obeys ẋ₂ = 2x₂ whatever u does. PBH: rank [A − 2I, B] = rank [−1 0 1;
+    0 0 0] = 1 < 2, so λ = 2 is an uncontrollable (unstable) mode: not
+    even stabilisable. (c) With K = [k₁ k₂], A − BK = [0 1; −k₁ −k₂], with
+    characteristic polynomial s² + k₂s + k₁. Target (s + 1)(s + 2) = s² +
+    3s + 2: k₁ = 2, k₂ = 3. (d) The Gramian W(1) = ∫₀¹ e^(As)BBᵀe^(Aᵀs) ds
+    with e^(As)B = (s, 1)ᵀ gives W = [1/3 1/2; 1/2 1], det = 1/12, W⁻¹ =
+    12[1 −1/2; −1/2 1/3]. The minimum energy is x_fᵀW⁻¹x_f = 12 for x_f =
+    (1, 0), achieved by u(t) = Bᵀe^(Aᵀ(1−t))W⁻¹x_f = 6 − 12t (check: ∫₀¹
+    (6 − 12t)² dt = 36 − 72 + 48 = 12). Common mistakes: using [B AB] with
+    n = 3 states (one needs n blocks); thinking an unstable system cannot be
+    controllable (the double integrator is both). Now you try: place both
+    poles of the double integrator at −2 ± i. (s² + 4s + 5: K = [5 4])
+
+D10. (a) State Lyapunov's direct method and prove that V̇ ≤ 0 gives
+     stability. (b) Solve AᵀP + PA = −I for A = [0 1; −2 −3] and use V =
+     xᵀPx to prove asymptotic stability. (c) Show that ẋ = −x³ is
+     asymptotically stable although its linearisation is inconclusive. (d)
+     Prove the damped pendulum θ̈ + θ̇ + sin θ = 0 is asymptotically stable
+     at 0 using LaSalle.
+     Answer: (b) P = [5/4 1/4; 1/4 1/4] ≻ 0, V̇ = −‖x‖²; (c) V = x², V̇ =
+     −2x⁴; (d) energy V, V̇ = −θ̇², largest invariant set in {θ̇ = 0} is 0.
+     Teacher explains: (a) Let V be C¹, V(0) = 0, V > 0 near 0, and V̇ =
+     ∇V·f ≤ 0. Given ε > 0 let m = min_{‖x‖=ε} V > 0 and choose δ < ε with
+     V < m on the δ-ball. A trajectory starting there has V(x(t)) ≤
+     V(x(0)) < m, so it can never reach the sphere ‖x‖ = ε: stable. If V̇ <
+     0 for x ≠ 0, V(x(t)) decreases to a limit which must be 0 (otherwise
+     V̇ ≤ −c < 0 on the region visited, and V → −∞): asymptotically stable.
+     (b) Write P = [p q; q r]. AᵀP + PA = −I gives the three equations
+        −4q = −1,   p − 3q − 2r = 0,   2q − 6r = −1,
+     so q = 1/4, r = 1/4, p = 5/4. P ≻ 0 since 5/4 > 0 and det P = 5/16 −
+     1/16 = 1/4 > 0. Then V = xᵀPx has V̇ = xᵀ(AᵀP + PA)x = −‖x‖² < 0: A is
+     Hurwitz (indeed its eigenvalues are −1, −2). (c) The linearisation ẋ
+     = 0·x has eigenvalue 0: no information. V = x² gives V̇ = 2x(−x³) =
+     −2x⁴ < 0 for x ≠ 0: globally asymptotically stable (but not
+     exponentially: x(t) = x₀/√(1 + 2x₀²t)). For ẋ = +x³ the same
+     linearisation hides instability. (d) With ω = θ̇, V = ½ω² + 1 − cos θ
+     > 0 near 0 and V̇ = ωω̇ + θ̇ sin θ = ω(−ω − sin θ) + ω sin θ = −ω² ≤ 0:
+     only stability so far. LaSalle: trajectories approach the largest
+     invariant set in {ω = 0}; there ω̇ = −sin θ = 0 forces θ = 0 (near 0).
+     So the origin is asymptotically stable. Common mistakes: concluding
+     asymptotic stability from V̇ ≤ 0 alone (undamped pendulum: V̇ = 0);
+     forgetting to check P ≻ 0. Now you try: ẋ = y, ẏ = −x − y³ with V = x²
+     + y². (V̇ = −2y⁴ ≤ 0; LaSalle: asymptotically stable)
+
+D11. State Pontryagin's minimum principle for min ∫₀ᵀ L(x, u) dt subject to
+     ẋ = f(x, u), u(t) ∈ U. (a) Solve the minimum-energy problem min ½∫₀¹
+     u² dt for ẍ = u, x(0) = ẋ(0) = 0, x(1) = 1, ẋ(1) = 0. (b) Solve the
+     time-optimal problem ẍ = u, |u| ≤ 1, from (x, v) = (1, 0) to (0, 0).
+     Answer: (a) u = 6 − 12t, x = 3t² − 2t³, cost 6; (b) u = −1 on [0, 1],
+     u = +1 on [1, 2], T* = 2.
+     Teacher explains: PMP: define H(x, u, p) = L(x, u) + pᵀf(x, u). If (x*,
+     u*) is optimal there is a costate p(t) ≠ 0 (or with an abnormal
+     multiplier) with ẋ* = ∂H/∂p, ṗ = −∂H/∂x, and u*(t) minimising H(x*(t),
+     u, p(t)) over u ∈ U for almost every t. For an autonomous problem H is
+     constant along the optimum, and H ≡ 0 if T is free. (a) With x₁ = x,
+     x₂ = ẋ: H = ½u² + p₁x₂ + p₂u. Costate: ṗ₁ = 0, ṗ₂ = −p₁, so p₁ = c,
+     p₂ = −ct + d; minimising over u gives u = −p₂ = ct − d, linear in t.
+     Then x(t) = at² + bt³ (x(0) = ẋ(0) = 0); x(1) = 1, ẋ(1) = 0 give a + b
+     = 1, 2a + 3b = 0, so b = −2, a = 3: x = 3t² − 2t³, u = ẍ = 6 − 12t,
+     cost ½∫₀¹(6 − 12t)² dt = ½·12 = 6 (the Gramian result of D9). (b) L = 1:
+     H = 1 + p₁v + p₂u is minimised by u = −sign p₂: BANG-BANG. Since p₂ is
+     linear in t it changes sign at most once: at most one switch. From
+     (1, 0) push towards 0 with u = −1: v = −t, x = 1 − t²/2. Then u = +1
+     brakes along the curve x = v²/2 (v < 0), which ends at the origin.
+     Meeting point: 1 − t²/2 = t²/2 ⇒ t = 1, (x, v) = (1/2, −1); braking
+     takes 1 more unit: T* = 2. In general the switching curve is x =
+     −½v|v| and T*(x₀, 0) = 2√x₀. Common mistakes: forgetting that u
+     minimises H only over the admissible set U (setting ∂H/∂u = 0 with a
+     bound on u); ignoring the one-switch structure and trying several
+     switches. Now you try: time-optimal from (0, 1) to the origin. (u = −1
+     until t = 1 + √2/2, then +1: T* = 1 + √2 ≈ 2.41421)
+
+D12. (a) Derive the Hamilton-Jacobi-Bellman equation from Bellman's
+     principle of optimality. (b) Solve the infinite-horizon LQR problem
+     for ẋ = x + u, cost ∫₀^∞ (3x² + u²) dt, via the HJB equation. (c) Solve
+     the algebraic Riccati equation for the double integrator with Q = I,
+     R = 1, and find the optimal feedback and closed-loop poles.
+     Answer: (a) −V_t = min_u (L + V_x f); (b) V = 3x², u = −3x, closed loop
+     ẋ = −2x; (c) P = [√3 1; 1 √3], K = [1 √3], poles (−√3 ± i)/2.
+     Teacher explains: (a) Let V(t, x) be the optimal cost-to-go from x at
+     time t. BELLMAN: over a short interval [t, t + h] use u, then act
+     optimally:
+        V(t, x) = min_u {L(x, u)h + V(t + h, x + f(x, u)h)} + o(h).
+     Expanding V(t + h, ·) to first order and dividing by h:
+        −V_t(t, x) = min_u {L(x, u) + V_x(t, x)·f(x, u)},  V(T, x) = φ(x).
+     (For infinite horizon and autonomous data V has no t.) The costate of
+     PMP is p = V_x along optimal paths. (b) Guess V = px². HJB: 0 = min_u
+     (3x² + u² + 2px(x + u)); the minimum is at u = −px, giving 0 = 3x² −
+     p²x² + 2px², i.e. p² − 2p − 3 = 0, p = 3 or −1. The value function
+     must be ≥ 0: p = 3, so u = −3x, closed loop ẋ = x − 3x = −2x, optimal
+     cost 3x₀². (The root p = −1 gives the destabilising feedback u = x.)
+     General scalar ARE: 2ap − b²p²/r + q = 0. (c) ARE: AᵀP + PA − PBBᵀP +
+     I = 0 with P = [p₁ p₂; p₂ p₃]. Entry (1, 1): 1 − p₂² = 0; entry (1, 2):
+     p₁ − p₂p₃ = 0; entry (2, 2): 2p₂ − p₃² + 1 = 0. P ≻ 0 forces p₂ = 1,
+     then p₃ = √3, p₁ = √3. K = R⁻¹BᵀP = [p₂ p₃] = [1 √3]; A − BK has
+     characteristic polynomial s² + √3 s + 1, roots (−√3 ± i)/2 (damping
+     ratio √3/2). Common mistakes: taking the wrong root of the Riccati
+     equation (always the stabilising, positive semidefinite one);
+     forgetting that for the finite horizon P depends on t (−Ṗ = AᵀP + PA
+     − PBR⁻¹BᵀP + Q, P(T) = Q_f). Now you try: ẋ = u, cost ∫₀^∞ (x² + u²).
+     (p = 1, u = −x, cost x₀²)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Convex sets and projections. For a)-h) say convex (C) or not (N); for
+    i)-q) compute.
+    a) {x ∈ R² : x₁x₂ ≥ 1, x₁ > 0}         b) {x ∈ R² : x₁x₂ ≥ 1}
+    c) {(x, t) ∈ R² × R : ‖x‖₂ ≤ t}        d) {x ∈ R² : x₁² − x₂² ≤ 1}
+    e) the PSD cone S₊ⁿ                    f) {X ∈ S² : det X ≥ 1}
+    g) {x : ‖x − a‖₂ ≤ ‖x − b‖₂}            h) the union of two disjoint discs
+    i) projection of (3, 4) onto the closed unit disc
+    j) projection of (2, −3, 0.5) onto the box [0, 1]³
+    k) projection of (1, 2) onto {x₁ + x₂ ≤ 1}
+    l) projection of (1, 0.5, −1) onto the simplex {x ≥ 0, ∑xᵢ = 1}
+    m) projection of (x, t) = (3, 0) onto the cone {|x| ≤ t} in R²
+    n) projection of [1 2; 2 1] onto S₊² (Frobenius norm)
+    o) distance from the origin to the line x + 2y = 5
+    p) a hyperplane strictly separating the discs of radius 1 centred at
+       (0, 0) and (4, 0)
+    q) the Carathéodory number (maximum number of points needed) in R³
+    Answers:
+      a) C       b) N (contains (1, 1) and (−1, −1), not (0, 0))     c) C
+      d) N ((2, ±√3) in, midpoint (2, 0) out)      e) C
+      f) N (I and −I in, midpoint 0 out; with X ≻ 0 added it is C)
+      g) C (a half-space)                           h) N
+      i) (0.6, 0.8)      j) (1, 0, 0.5)             k) (0, 1)
+      l) (0.75, 0.25, 0) (threshold θ = 0.25)       m) (1.5, 1.5)
+      n) [1.5 1.5; 1.5 1.5] (keep eigenvalue 3, drop −1)
+      o) √5 ≈ 2.23607      p) x₁ = 2               q) 4
+
+M2. Convex (V), concave (C), both (A = affine) or neither (N) on the given
+    domain.
+    a) e^(3x) on R                     b) x³ on x > 0
+    c) √x on x > 0                     d) 1/x on x > 0
+    e) x ln x on x > 0                 f) ln x on x > 0
+    g) max(x₁, ..., xₙ)                h) log(e^(x₁) + ... + e^(xₙ))
+    i) x₁x₂ on R₊²                     j) √(x₁x₂) on R₊²
+    k) x₁²/x₂ on x₂ > 0                l) log det X on X ≻ 0
+    m) λ_max(X) on symmetric X         n) sin x on [0, π]
+    o) x⁴ − 2x² on R                   p) xᵀQx, Q = [2 1; 1 2]
+    q) xᵀQx, Q = [1 3; 3 1]            r) −ln(1 − x²) on (−1, 1)
+    s) 1/(x₁x₂) on R₊₊²                t) 3x₁ − 2x₂ + 7
+    u) for which a is x⁴ + ax² convex on R?
+    v) μ, L and κ for ½xᵀQx with Q = [3 1; 1 3]
+    Answers:
+      a) V      b) V      c) C      d) V      e) V      f) C
+      g) V      h) V      i) N (Hessian [0 1; 1 0])   j) C (geometric mean)
+      k) V      l) C      m) V (sup of vᵀXv over unit v)   n) C
+      o) N (f″ = 12x² − 4 < 0 near 0)   p) V (eigenvalues 1, 3)
+      q) N (eigenvalues 4, −2)          r) V (f″ = 2(1 + x²)/(1 − x²)²)
+      s) V (Hessian determinant 3/(x₁⁴x₂⁴) > 0, diagonal > 0)   t) A
+      u) a ≥ 0 (f″ = 12x² + 2a)         v) μ = 2, L = 4, κ = 2
+
+M3. Fenchel conjugates f*(y) (write "∞ else" for the domain restriction).
+    a) ax + b                          b) ½x²
+    c) (a/2)x², a > 0                  d) |x|
+    e) eˣ                              f) −ln x (x > 0)
+    g) x ln x (x > 0)                  h) |x|ᵖ/p, p > 1
+    i) indicator of [−1, 1]            j) indicator of a closed convex cone K
+    k) ‖x‖₂ on Rⁿ                       l) ½xᵀQx, Q ≻ 0
+    m) max(0, x)                       n) log(1 + eˣ)
+    o) √(1 + x²)                       p) f** for f(x) = (x² − 1)²
+    q) f** for f = indicator of {−1, 1}
+    r) f** for f(x) = −|x| on [−1, 1] (∞ outside)
+    s) the Fenchel-Young inequality for f = |x|ᵖ/p
+    Answers:
+      a) −b if y = a, ∞ else     b) ½y²      c) y²/(2a)
+      d) 0 on [−1, 1], ∞ else    e) y ln y − y (y > 0), 0 (y = 0), ∞ else
+      f) −1 − ln(−y) for y < 0, ∞ else          g) e^(y−1)
+      h) |y|^q/q, 1/p + 1/q = 1  i) |y|
+      j) indicator of the polar cone K° = {y : yᵀx ≤ 0 ∀x ∈ K}
+      k) indicator of the unit ball {‖y‖₂ ≤ 1}   l) ½yᵀQ⁻¹y
+      m) 0 on [0, 1], ∞ else
+      n) y ln y + (1 − y) ln(1 − y) on [0, 1] (0 ln 0 = 0), ∞ else
+      o) −√(1 − y²) on [−1, 1], ∞ else
+      p) 0 on [−1, 1], (x² − 1)² for |x| ≥ 1
+      q) indicator of [−1, 1]
+      r) −1 on [−1, 1], ∞ outside (since f*(y) = 1 + |y|)
+      s) Young's inequality xy ≤ |x|ᵖ/p + |y|^q/q
+
+M4. Subdifferentials, optimality and proximal maps.
+    a) ∂|x| at x = 0 and at x = 3       b) ∂max(x, 0) at x = 0
+    c) ∂‖x‖₂ at 0 and at (3, 4)         d) ∂(|x| + x²) at 0
+    e) ∂max(x, x²) at x = 1              f) ∂‖x‖₁ at (2, 0, −1)
+    g) ∂max(x₁, x₂) at (0, 0)            h) argmin |x − 1| + |x − 2| + |x − 5|
+    i) argmin |x − 1| + |x − 2| + |x − 5| + |x − 7|, and the minimum
+    j) argmin ½(x − 3)² + 2|x|          k) argmin ½(x + 1)² + 2|x|
+    l) prox_{|·|}(v) for v = 2.5, −0.4, −3
+    m) prox_{t·½x²}(v)                   n) prox of the indicator of [0, 1]
+                                            at v = 1.7
+    o) prox_{‖·‖₂}(v) at v = (3, 4)      p) Moreau envelope of |x| (t = 1)
+                                            at x = 3 and x = 0.5
+    q) the directional derivative f′(0; d) of f = |x|
+    r) ∂(−|x|)(0) in the convex sense
+    Answers:
+      a) [−1, 1]; {1}            b) [0, 1]
+      c) closed unit ball; {(0.6, 0.8)}          d) [−1, 1]
+      e) [1, 2]                  f) {(1, s, −1) : s ∈ [−1, 1]}
+      g) {(θ, 1 − θ) : θ ∈ [0, 1]}               h) 2 (the median)
+      i) every x ∈ [2, 5]; minimum 9             j) 1 (value 4)
+      k) 0 (value ½)             l) 1.5, 0, −2   m) v/(1 + t)
+      n) 1                       o) (1 − 1/5)v = (2.4, 3.2)
+      p) Huber: 2.5 and 0.125 (x²/2 if |x| ≤ 1, |x| − ½ otherwise)
+      q) |d|                     r) ∅ (−|x| is concave at 0)
+
+M5. Gradient and Newton methods.
+    a) GD on f = 2x² (L = 4), step 0.1, x₀ = 1: x₃
+    b) the same with step 0.5; for which steps does GD converge?
+    c) GD on ½(x² + 10y²), step 0.1, from (10, 1): x_k and f(x₅)
+    d) optimal fixed step and contraction factor for μ = 1, L = 10
+    e) iterations k making (1 − 1/κ)ᵏ ≤ 10⁻⁶ for κ = 100
+    f) exact line-search step t = gᵀg/gᵀQg for ½xᵀQx, Q = diag(1, 10), at
+       x₀ = (10, 1), and x₁
+    g) worst-case per-step factor in f for steepest descent with exact
+       line search, κ = 10
+    h) Newton on x − ln x from x₀ = 0.5: x₁, x₂, x₃
+    i) Newton on x − ln x from x₀ = 3
+    j) Newton on eˣ − 2x from x₀ = 0: x₁, x₂ and the limit
+    k) Newton on a strictly convex quadratic: number of steps
+    l) projected GD for min (x − 3)² on [0, 1], step 0.25, x₀ = 0: x₁
+    m) proximal gradient (ISTA) for ½(x − 3)² + 2|x|, step 1, x₀ = 0: x₁
+    n) conjugate gradient on an n × n SPD quadratic: maximum steps
+    o) iterations to reach f − f* ≤ ε: GD versus Nesterov (smooth convex)
+    Answers:
+      a) 0.6³ = 0.216            b) x_k = (−1)ᵏ: no convergence; 0 < t <
+                                    0.5 = 2/L
+      c) (10·0.9ᵏ, 0); f(x₅) = 50·0.9¹⁰ ≈ 17.43392
+      d) t = 2/11, factor 9/11 ≈ 0.81818
+      e) k ≥ ln 10⁶/(−ln 0.99) ≈ 1374.6: k = 1375
+      f) g = (10, 10), t = 200/1100 = 2/11, x₁ = (90/11, −9/11)
+      g) ((κ − 1)/(κ + 1))² = 81/121 ≈ 0.66942
+      h) 0.75, 0.9375, 0.99609375 (error squares)
+      i) x₁ = −3: leaves the domain (diverges)
+      j) 1, 2/e ≈ 0.73576, ln 2 ≈ 0.69315
+      k) 1                       l) 1 (1.5 projected)
+      m) 1 (gradient step to 3, soft-threshold by 2)          n) n
+      o) O(1/ε) versus O(1/√ε)
+
+M6. Linear programming.
+    a) max x + y s.t. x + 2y ≤ 4, 3x + y ≤ 6, x, y ≥ 0: optimum and dual
+       solution
+    b) dual of max cᵀx s.t. Ax ≤ b, x ≥ 0
+    c) dual of min cᵀx s.t. Ax = b, x ≥ 0
+    d) max 2x + 3y s.t. x + y ≤ 4, x + 3y ≤ 6, x ≤ 3, x, y ≥ 0
+    e) max x + y s.t. x − y ≤ 1, x, y ≥ 0; what about the dual?
+    f) max x s.t. x + y ≤ −1, x, y ≥ 0; what about the dual?
+    g) min x₁ + 2x₂ + 3x₃ s.t. x₁ + x₂ + x₃ = 1, x ≥ 0, and its dual
+    h) max 5x + 4y s.t. 6x + 4y ≤ 24, x + 2y ≤ 6, −x + y ≤ 1, y ≤ 2,
+       x, y ≥ 0: optimum and shadow prices
+    i) in h), the new optimum if 24 is changed to 25 (small change)
+    j) Farkas certificate y for infeasibility of x₁ + x₂ = −1, x ≥ 0
+    k) maximum number of basic solutions of a standard-form LP with 2
+       equality constraints and 4 variables
+    l) number of vertices of {x ∈ R³ : 0 ≤ xᵢ ≤ 1}
+    m) write min |x₁| + |x₂| s.t. x₁ + 2x₂ = 4 as an LP and solve it
+    n) min max(x − 1, 2 − x, 0.5x): optimum (as an LP in (x, t))
+    Answers:
+      a) (8/5, 6/5), value 14/5; dual (u, v) = (2/5, 1/5), value 14/5
+      b) min bᵀy s.t. Aᵀy ≥ c, y ≥ 0
+      c) max bᵀy s.t. Aᵀy ≤ c (y free)
+      d) (3, 1), value 9 (degenerate: three active constraints)
+      e) unbounded (x = 1 + s, y = s); dual u ≥ 1, −u ≥ 1 is infeasible
+      f) infeasible; dual min −u s.t. u ≥ 1, u ≥ 0 is unbounded
+      g) x = (1, 0, 0), value 1; dual max y s.t. y ≤ 1, 2, 3: y = 1
+      h) (3, 1.5), value 21; prices (3/4, 1/2, 0, 0)
+      i) 21.75 (increase ¾ per unit)
+      j) y = 1: Aᵀy = (1, 1) ≥ 0, bᵀy = −1 < 0
+      k) C(4, 2) = 6             l) 8
+      m) min t₁ + t₂, −tᵢ ≤ xᵢ ≤ tᵢ, x₁ + 2x₂ = 4: x = (0, 2), value 2
+      n) x = 4/3, t = 2/3 (where 2 − x = 0.5x; x − 1 = 1/3 is smaller)
+
+M7. Lagrange multipliers, KKT and duality (L = f + ∑λᵢgᵢ + ∑νⱼhⱼ with
+    gᵢ ≤ 0). Give the minimiser, multipliers and value.
+    a) min x² + y² s.t. x + y = 2
+    b) min x² + y² s.t. x + 2y ≥ 5      c) min x² + y² s.t. x + 2y ≥ −5
+    d) min (x − 2)² + (y − 1)² s.t. x² ≤ y, x + y ≤ 2
+    e) max xyz s.t. x + y + z = 6, x, y, z ≥ 0
+    f) min x + y s.t. x² + y² ≤ 2       g) min cᵀx s.t. ‖x‖₂ ≤ 1 (c ≠ 0)
+    h) min ½‖x‖² s.t. x₁ + x₂ + x₃ = 3
+    i) max −∑pᵢ ln pᵢ over probability vectors in R⁴
+    j) min x s.t. x² ≤ 0: KKT?
+    k) water-filling: min −∑ ln(αᵢ + xᵢ) s.t. x ≥ 0, ∑xᵢ = 1, α = (0.1,
+       0.5, 1)
+    l) dual function and d* for min x² s.t. x ≥ 1
+    m) p* and d* for min e⁻ˣ s.t. x²/y ≤ 0 on y > 0
+    n) all KKT points of min −x² s.t. −1 ≤ x ≤ 1, and the minimisers
+    o) min-variance portfolio: min xᵀΣx s.t. ∑xᵢ = 1, Σ = diag(1, 2, 4)
+    p) sensitivity: in b) replace 5 by 5.1; estimate the new value
+    Answers:
+      a) (1, 1), ν = −2, value 2             b) (1, 2), λ = 2, value 5
+      c) (0, 0), λ = 0 (inactive), value 0
+      d) (1, 1), λ = (2/3, 2/3), value 1     e) (2, 2, 2), value 8
+      f) (−1, −1), λ = ½, value −2           g) −c/‖c‖, value −‖c‖
+      h) (1, 1, 1), ν = −1, value 3/2        i) uniform, value ln 4 ≈ 1.38629
+      j) x* = 0 but no multiplier exists (∇g(0) = 0; no constraint
+         qualification)
+      k) x = (0.7, 0.3, 0) (water level 0.8)
+      l) g(λ) = λ − λ²/4, d* = 1 at λ = 2 (= p*)
+      m) p* = 1, d* = 0 (Slater fails)
+      n) x = 0 (λ = 0, a maximiser!) and x = ±1 (multiplier 2); minimisers
+         ±1, value −1
+      o) (4/7, 2/7, 1/7), variance 4/7
+      p) 5 + 2·0.1 = 5.2 (exactly 5.1²/5 = 5.202)
+
+M8. Calculus of variations: find the extremal (and the value where asked).
+    a) ∫₀¹ y′² dx, y(0) = 0, y(1) = 2: y and J
+    b) ∫₀¹ (y′² + y²) dx, y(0) = 0, y(1) = 1: y and J
+    c) ∫₀^(π/2) (y′² − y²) dx, y(0) = 0, y(π/2) = 1: y and J
+    d) ∫₀¹ (y′² + 12xy) dx, y(0) = y(1) = 0: y and J
+    e) ∫₁² x²y′² dx, y(1) = 0, y(2) = 1: y and J
+    f) ∫ √(1 + y′²) dx (arc length)
+    g) ∫ y√(1 + y′²) dx (surface of revolution)
+    h) ∫ √((1 + y′²)/y) dx (brachistochrone)
+    i) ∫₀¹ (½y′² − y) dx, y(0) = 0, y(1) free
+    j) ∫₀¹ y′² dx s.t. ∫₀¹ y dx = 1, y(0) = y(1) = 0: y and J
+    k) the maximum area enclosed by a closed curve of length 2π
+    l) for which b > 0 is y ≡ 0 a minimiser of ∫₀^b (y′² − y²) dx with
+       y(0) = y(b) = 0?
+    m) Hamilton's principle for L = ½mẋ² − ½kx²
+    n) the Euler-Poisson equation for ∫ (y″)² dx
+    o) the Beltrami first integral for L = y′² + y²
+    p) ∫₀¹ (y′² + 2yy′ + y²) dx, y(0) = 0, y(1) = 1
+    Answers:
+      a) y = 2x, J = 4
+      b) y = sinh x/sinh 1, J = coth 1 ≈ 1.31304
+      c) y = sin x, J = [yy′] = 0
+      d) y = x³ − x (y″ = 6x), J = 4/5 − 8/5 = −4/5
+      e) y = 2 − 2/x, J = ∫₁² 4/x² dx = 2
+      f) straight lines          g) catenaries y = c cosh((x − d)/c)
+      h) cycloids                i) y = x − x²/2 (natural condition y′(1) = 0)
+      j) y = 6x(1 − x), J = 12   k) π (the unit circle; A ≤ L²/(4π))
+      l) b ≤ π (Wirtinger; conjugate point at π)
+      m) mẍ + kx = 0             n) y⁗ = 0
+      o) y² − y′² = const        p) y″ = y again (2yy′ = (y²)′ is a null
+                                    Lagrangian): y = sinh x/sinh 1,
+                                    J = coth 1 + 1 ≈ 2.31304
+
+M9. Controllability, observability and pole placement.
+    a) A = [0 1; 0 0], B = (0, 1)ᵀ     b) A = [0 1; 0 0], B = (1, 0)ᵀ
+    c) A = diag(1, 2), B = (1, 1)ᵀ     d) A = I₂, B = (1, 1)ᵀ
+    e) A = [1 1; 0 1], B = (0, 1)ᵀ     f) A = diag(1, 2, 3), B = (1, 0, 1)ᵀ:
+                                          dimension of the controllable
+                                          subspace
+    g) observability of A = [0 1; 0 0] with C = [1 0] and with C = [0 1]
+    h) A = diag(1, −2), B = (0, 1)ᵀ: stabilisable?
+    i) A = diag(−1, 2), B = (0, 1)ᵀ: stabilisable?
+    j) double integrator: K placing poles at −1, −2
+    k) double integrator: K placing poles at −2 ± i
+    l) A = [0 1; 2 −1], B = (0, 1)ᵀ: K placing both poles at −1
+    m) ẋ = u on [0, T]: Gramian and minimum energy to go from 0 to 1
+    n) double integrator: Gramian W(1) and minimum energy 0 → (1, 0)
+    o) x_{k+1} = [0 1; 0 0]x_k + (0, 1)ᵀu_k: steps needed to reach 0 from
+       any state (deadbeat)
+    Answers:
+      a) controllable (rank 2)   b) not (rank 1)
+      c) controllable (distinct eigenvalues, B has no zero entry)
+      d) not (rank 1: one input cannot steer a repeated eigenvalue with two
+         Jordan blocks)
+      e) controllable ([B AB] = [0 1; 1 1])             f) 2
+      g) observable; not observable
+      h) no (the unstable mode 1 is uncontrollable)
+      i) yes (the uncontrollable mode −1 is stable)
+      j) K = [2 3]               k) K = [5 4]
+      l) K = [3 1] (s² + (1 + k₂)s + k₁ − 2 = (s + 1)²)
+      m) W = T, energy 1/T (u = 1/T)
+      n) W = [1/3 1/2; 1/2 1], energy 12
+      o) 2
+
+M10. Stability.
+     a) ẋ = [−1 2; 0 −3]x            b) ẋ = [0 1; −1 0]x
+     c) ẋ = [0 1; 0 0]x              d) ẋ = [1 2; 3 4]x
+     e) s³ + 2s² + 3s + 1            f) s³ + s² + s + 2
+     g) for which a is s³ + as² + 2s + 4 Hurwitz?
+     h) for which k is ẋ = [0 1; −k −1]x asymptotically stable?
+     i) Lyapunov equation 2aP = −1 for a = −1; AᵀP + PA = −I for A =
+        diag(−1, −2)
+     j) AᵀP + PA = −I for A = [0 1; −2 −3]
+     k) ẋ = −x³                     l) ẋ = x³
+     m) ẋ = −x + y², ẏ = −y (at 0)
+     n) ẋ = y, ẏ = −x − y³ with V = x² + y²
+     o) the damped pendulum θ̈ + θ̇ + sin θ = 0 at (0, 0) and at (π, 0)
+     p) x_{k+1} = [0.5 1; 0 0.9]x_k and x_{k+1} = diag(1.1, 0.2)x_k
+     q) equilibria of ẋ = x − x³ and their stability
+     Answers:
+       a) asymptotically stable (eigenvalues −1, −3)
+       b) stable, not asymptotically (±i: centres)
+       c) unstable (Jordan block at 0: x₁ = x₁(0) + x₂(0)t)
+       d) unstable (eigenvalues (5 ± √33)/2 ≈ 5.37228, −0.37228)
+       e) stable (2·3 = 6 > 1)         f) unstable (1·1 = 1 < 2)
+       g) a > 2                        h) k > 0
+       i) P = ½; P = diag(1/2, 1/4)
+       j) P = [5/4 1/4; 1/4 1/4] ≻ 0
+       k) globally asymptotically stable (V = x²), not exponentially
+       l) unstable
+       m) locally asymptotically (exponentially) stable: linearisation
+          −I
+       n) V̇ = −2y⁴ ≤ 0; LaSalle ⇒ globally asymptotically stable
+       o) (0, 0) asymptotically stable; (π, 0) a saddle (unstable:
+          eigenvalues (−1 ± √5)/2)
+       p) stable (ρ = 0.9 < 1); unstable (ρ = 1.1)
+       q) 0 unstable (f′ = 1); ±1 asymptotically stable (f′ = −2)
+
+M11. Optimal control: Pontryagin, dynamic programming, LQR.
+     a) ẋ = u, min ∫₀^∞ (x² + u²) dt: P, feedback, cost
+     b) ẋ = x + u, min ∫₀^∞ (3x² + u²) dt
+     c) ẋ = 2u, min ∫₀^∞ (4x² + u²) dt
+     d) ẋ = −x + u, min ∫₀^∞ (x² + u²) dt
+     e) double integrator, Q = I, R = 1: P and K
+     f) ẋ = u, min ∫₀ᵀ u² dt + x(T)²: Riccati solution p(t) and cost
+     g) ẍ = u, min ½∫₀¹ u² dt, (0, 0) → (1, 0): u(t) and cost
+     h) ẋ = u, min ½∫₀¹ u² dt, x(0) = 0, x(1) = 1
+     i) ẋ = u, min ½∫₀¹ u² dt + ½x(1)², x(0) = 1, x(1) free
+     j) max x(1) for ẋ = x + u, |u| ≤ 1, x(0) = 0
+     k) time-optimal ẍ = u, |u| ≤ 1, from (1, 0) and from (4, 0) to 0
+     l) time-optimal ẍ = u, |u| ≤ 1, from (0, 1) to 0
+     m) x_{k+1} = x_k + u_k, min ∑_{k=0}^{1} (x_k² + u_k²) + x₂²: P₁, P₀,
+        u₀
+     n) the same system, infinite horizon ∑_{k≥0} (x_k² + u_k²): P and gain
+     o) verify V(x) = x² solves the HJB equation of a)
+     p) minimum time T(x) to reach 0 for ẋ = u, |u| ≤ 1, and its HJB
+     Answers:
+       a) P = 1, u = −x, cost x₀²
+       b) P = 3, u = −3x, closed loop −2, cost 3x₀²
+       c) P = 1 (−4P² + 4 = 0), u = −2x, closed loop −4
+       d) P = √2 − 1 ≈ 0.41421, u = −Px, closed loop −√2
+       e) P = [√3 1; 1 √3], K = [1 √3]
+       f) p(t) = 1/(1 + T − t), u = −p(t)x, cost x₀²/(1 + T)
+       g) u = 6 − 12t, cost 6        h) u ≡ 1, cost ½
+       i) p ≡ x(1), u = −x(1) ⇒ x(1) = ½, u ≡ −½, cost ¼
+       j) u ≡ 1 (costate e^(1−t) > 0), x(1) = e − 1 ≈ 1.71828
+       k) T = 2 (switch at t = 1); T = 4 (switch at 2); T = 2√x₀
+       l) T = 1 + √2 ≈ 2.41421 (u = −1 then +1)
+       m) P₂ = 1, P₁ = 1.5, P₀ = 1.6, u₀ = −0.6x₀ (cost 1.6x₀²)
+       n) P² − P − 1 = 0: P = (1 + √5)/2 ≈ 1.61803, u = −(P/(1 + P))x ≈
+          −0.61803x
+       o) min_u (x² + u² + 2xu) at u = −x gives x² − x² = 0 ✓
+       p) T(x) = |x|; HJB min_{|u|≤1} (1 + T′(x)u) = 1 − |T′| = 0 (x ≠ 0)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) The intersection of any family of convex sets is convex.
+     b) The union of two convex sets is convex.
+     c) The product of two convex functions is convex.
+     d) If f and g are convex then f ∘ g is convex.
+     e) The pointwise supremum of convex functions is convex.
+     f) Every local minimum of a convex function is global.
+     g) A strictly convex function on R has a minimiser.
+     h) A convex function R → R is continuous.
+     i) A convex function on [0, 1] is continuous.
+     j) f** = f for every function f.
+     k) Strong duality holds for every convex optimisation problem.
+     l) An LP with a finite optimal value has a dual with the same value.
+     m) The KKT conditions hold at every local minimiser.
+     n) For a convex problem satisfying Slater, x is optimal iff (x, λ, ν)
+        satisfies KKT for some multipliers.
+     o) Gradient descent converges for every L-smooth convex f and every
+        fixed step t > 0.
+     p) Newton's method converges from any starting point for a strictly
+        convex function.
+     q) An unstable linear system cannot be controllable.
+     r) V ≻ 0 and V̇ ≤ 0 imply asymptotic stability.
+     s) If the linearisation has an eigenvalue with zero real part, the
+        equilibrium is unstable.
+     t) The set of minimisers of a convex function is convex.
+     u) A solution of the Euler-Lagrange equation minimises J.
+     v) The optimal LQR feedback is stabilising when (A, B) is controllable
+        and Q ≻ 0.
+     Answers:
+       a) T        b) F: [0, 1] ∪ [2, 3]
+       c) F: x · x² = x³ on R (both factors convex)
+       d) F: e^(−x) ∘ x² = e^(−x²) (need the outer function non-decreasing)
+       e) T        f) T        g) F: eˣ
+       h) T (finite convex functions on open sets are continuous)
+       i) F: f = 0 on (0, 1], f(0) = 1
+       j) F: (x² − 1)² (T for proper closed convex f: Fenchel-Moreau)
+       k) F: min e⁻ˣ s.t. x²/y ≤ 0 (gap 1)
+       l) T        m) F: min x s.t. x² ≤ 0
+       n) T        o) F: f = 2x², t = 1 (need t < 2/L)
+       p) F: x − ln x from x₀ = 3; or f = √(1 + x²) from |x₀| > 1
+          (x₊ = −x³)
+       q) F: the double integrator
+       r) F: ẋ = [0 1; −1 0]x with V = ‖x‖² (V̇ = 0)
+       s) F: ẋ = −x³ is asymptotically stable
+       t) T
+       u) F: ∫₀^b (y′² − y²) with b > π (y ≡ 0 is an extremal, not a
+          minimum)
+       v) T
+
+TEACHING TIPS
+  Struggling: draw pictures before formulas — a convex set with a point
+  outside and its projection, the tangent line lying under a convex graph,
+  the "slope-y line pushed up until it touches the graph" for f*, and the
+  feasible polygon with a sliding objective line for LP. Make the student
+  write the Lagrangian with explicit sign conventions (gᵢ ≤ 0, λ ≥ 0) every
+  single time, and check all four KKT conditions in a table. For control
+  problems insist on the routine: rank test → pole placement or Riccati →
+  check closed-loop eigenvalues; for PMP: write H, costate equations,
+  minimise H over U, then use boundary conditions. Always ask "is the
+  problem convex?" before calling a KKT point optimal, and "is V̇ strictly
+  negative?" before claiming asymptotic stability. Harder: prove the
+  Hahn-Banach separation theorem in finite dimensions and derive Farkas
+  and LP strong duality from it; prove Fenchel-Moreau (f** = f for closed
+  convex f); prove the O(1/k) rate of gradient descent and Nesterov's
+  O(1/k²) rate; prove Slater ⇒ strong duality via separation of the set
+  {(g(x) + s, f₀(x) + t)}; derive the Jacobi condition and the Weierstrass
+  excess function; prove sufficiency of the Kalman rank condition via the
+  Gramian; prove Lyapunov's converse theorem for linear systems (P =
+  ∫₀^∞ e^(Aᵀt)Qe^(At) dt); and derive PMP from the HJB equation for smooth
+  value functions, then study the viscosity-solution theory that handles
+  non-smooth value functions such as T(x) = |x|.
+
+
+================================================================================
+TOPIC 12.26 — MATHEMATICAL STATISTICS AND STATISTICAL LEARNING THEORY:
+SUFFICIENCY, EXPONENTIAL FAMILIES, CRAMÉR-RAO, MLE ASYMPTOTICS,
+NEYMAN-PEARSON, BAYESIAN DECISION THEORY, MINIMAX, PAC LEARNING,
+VC DIMENSION, RADEMACHER COMPLEXITY, REGULARISATION, KERNELS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - SUFFICIENCY: T(X) is SUFFICIENT for θ if the law of X given T does not
+    depend on θ. FACTORISATION THEOREM (Fisher-Neyman): T is sufficient iff
+    f_θ(x) = g_θ(T(x))h(x). T is MINIMAL sufficient if it is a function of
+    every sufficient statistic; criterion: f_θ(x)/f_θ(y) is free of θ iff
+    T(x) = T(y). Examples: ∑Xᵢ (Bernoulli, Poisson), X₍ₙ₎ (Uniform(0, θ)),
+    (∑Xᵢ, ∑Xᵢ²) (normal), all order statistics (Cauchy location).
+  - COMPLETENESS: T is complete if E_θ g(T) = 0 for all θ forces g(T) = 0
+    a.s. BASU: a complete sufficient T is independent of every ANCILLARY
+    statistic (e.g. X̄ ⊥ S² in the normal model). BAHADUR: complete
+    sufficient ⇒ minimal sufficient; not conversely (N(θ, θ²),
+    Uniform(θ, θ + 1)).
+  - EXPONENTIAL FAMILIES: f_η(x) = h(x) exp(η·T(x) − A(η)), η in the
+    natural parameter space. A is convex, E T = ∇A(η), Cov T = ∇²A(η);
+    T = ∑T(Xᵢ) is sufficient, and complete when the parameter space
+    contains an open set. Members: Bernoulli, binomial, Poisson,
+    geometric, normal, gamma, beta. Non-members: Uniform(0, θ), Cauchy
+    (support depends on θ, or no finite-dimensional sufficient statistic).
+  - RAO-BLACKWELL: if δ is unbiased and T sufficient, δ* = E[δ | T] is
+    unbiased with Var δ* ≤ Var δ (strict unless δ = δ*). LEHMANN-SCHEFFÉ:
+    an unbiased function of a COMPLETE sufficient statistic is the unique
+    UMVUE. Method: find complete sufficient T; either guess an unbiased
+    g(T) or Rao-Blackwellise a crude unbiased estimator.
+  - FISHER INFORMATION I(θ) = E[(∂ log f/∂θ)²] = −E[∂² log f/∂θ²] (under
+    regularity: common support, differentiation under ∫). For n iid
+    observations Iₙ = nI. CRAMÉR-RAO: for an unbiased estimator of g(θ),
+    Var ≥ g′(θ)²/(nI(θ)); equality iff the score is linear in the
+    estimator (essentially only in exponential families with the natural
+    statistic). Fails for Uniform(0, θ), where variance is O(1/n²).
+  - MLE: θ̂ maximises the likelihood L(θ) = ∏f_θ(Xᵢ). INVARIANCE: the MLE of
+    g(θ) is g(θ̂). Under regularity (identifiable, compact or concave,
+    smooth, I(θ₀) > 0): θ̂ → θ₀ a.s. (consistency, via Wald/Kullback-Leibler)
+    and √n(θ̂ − θ₀) ⇒ N(0, I(θ₀)⁻¹) (asymptotic efficiency). DELTA METHOD:
+    √n(g(θ̂) − g(θ₀)) ⇒ N(0, g′(θ₀)²/I(θ₀)). Wald interval θ̂ ± z_{α/2}/
+    √(nI(θ̂)). Failures: Uniform(0, θ) (rate n, exponential limit),
+    Neyman-Scott (dimension growing with n: σ̂² inconsistent).
+  - NEYMAN-PEARSON LEMMA: for simple H₀: θ₀ vs H₁: θ₁ the test rejecting
+    when f₁(x)/f₀(x) > k (randomising on equality) with size α is MOST
+    POWERFUL of level α. MONOTONE LIKELIHOOD RATIO (MLR) in T ⇒ KARLIN-
+    RUBIN: "reject when T > c" is UMP for one-sided H₀: θ ≤ θ₀ vs θ > θ₀.
+    Two-sided UMP tests generally do NOT exist (restrict to unbiased tests).
+  - LIKELIHOOD RATIO TEST: Λ = sup_{Θ₀} L / sup_Θ L; WILKS: under H₀ and
+    regularity, −2 log Λ ⇒ χ²_r with r = dim Θ − dim Θ₀. Asymptotically
+    equivalent: Wald and score (Rao) tests. The normal-mean LRT is the
+    t-test: Λ^(2/n) = (1 + t²/(n − 1))⁻¹.
+  - BAYESIAN DECISION THEORY: loss L(θ, a), risk R(θ, δ) = E_θ L(θ, δ(X)),
+    Bayes risk r(π, δ) = ∫R(θ, δ)dπ. The Bayes rule minimises posterior
+    expected loss pointwise: posterior MEAN (squared loss), MEDIAN
+    (absolute loss), MODE (0-1 loss, limit), E[θw]/E[w] (weighted squared
+    loss). Conjugate pairs: Beta-binomial, Gamma-Poisson, Gamma-
+    exponential, Normal-normal. Classification: Bayes classifier
+    argmax P(Y = k | x), Bayes risk E[1 − max_k P(Y = k | X)].
+  - MINIMAX AND ADMISSIBILITY: δ is MINIMAX if it minimises sup_θ R(θ, δ).
+    A Bayes rule with CONSTANT risk (or whose Bayes risk equals its sup
+    risk) is minimax and its prior is LEAST FAVOURABLE; e.g. (X + √n/2)/
+    (n + √n) for binomial. Unique Bayes rules are ADMISSIBLE. STEIN: X is
+    admissible for N(θ, I_d) iff d ≤ 2; James-Stein (1 − (d − 2)/‖X‖²)X
+    dominates X for d ≥ 3; X remains minimax, so minimax ≠ admissible.
+  - PAC LEARNING: a class H of classifiers is PAC learnable if for every
+    ε, δ there is m(ε, δ) such that for every distribution, with prob.
+    ≥ 1 − δ over m samples the learner's error is ≤ ε (realizable) or ≤
+    min_H L + ε (agnostic). Finite H: ERM needs m ≥ (ln|H| + ln(1/δ))/ε
+    (realizable) and m ≥ (ln(2|H|) + ln(1/δ))/(2ε²) (agnostic; Hoeffding
+    plus union bound). NO FREE LUNCH: the class of all functions on an
+    infinite domain is not PAC learnable.
+  - VC DIMENSION: H SHATTERS {x₁, ..., x_m} if it realises all 2^m
+    labellings; VCdim = largest shattered size. Growth function Π_H(m).
+    SAUER-SHELAH: VCdim = d ⇒ Π_H(m) ≤ ∑_{i≤d} C(m, i) ≤ (em/d)^d.
+    Values: thresholds 1, intervals 2, half-spaces in R^d d + 1, axis boxes
+    2d, discs 3; sin(ωx) has ∞ with one parameter. FUNDAMENTAL THEOREM:
+    PAC learnable ⇔ VCdim < ∞, with m ≍ (d + ln(1/δ))/ε² (agnostic) and
+    (d ln(1/ε) + ln(1/δ))/ε (realizable).
+  - RADEMACHER COMPLEXITY: R̂_S(F) = E_σ sup_{f∈F} (1/m)∑σᵢf(xᵢ), σᵢ = ±1
+    fair. For f with values in [0, 1], with prob ≥ 1 − δ, for all f,
+    E f ≤ Ê f + 2R_m(F) + √(ln(1/δ)/(2m)) (symmetrisation + McDiarmid).
+    MASSART: finite A ⊂ R^m ⇒ R̂ ≤ max‖a‖₂√(2 ln|A|)/m. Linear class
+    ‖w‖ ≤ B, ‖x‖ ≤ R: R̂ ≤ BR/√m. Contraction (Talagrand): an L-Lipschitz
+    loss multiplies R by at most L; R(conv F) = R(F).
+  - REGULARISATION: minimise L̂(w) + λΩ(w). RIDGE ŵ = (XᵀX + λI)⁻¹Xᵀy
+    (shrinkage, bias ↑ variance ↓, always unique); LASSO (ℓ₁) gives
+    soft-thresholding and sparsity; STRUCTURAL RISK MINIMISATION trades
+    empirical risk against capacity; ridge = MAP with Gaussian prior,
+    lasso = MAP with Laplace prior; λ chosen by cross-validation.
+  - KERNELS: k is a (positive-definite) kernel iff every Gram matrix
+    [k(xᵢ, xⱼ)] is PSD iff k(x, y) = ⟨φ(x), φ(y)⟩ for some feature map
+    (Moore-Aronszajn: unique RKHS H_k with reproducing property f(x) =
+    ⟨f, k(x, ·)⟩). Closed under sums, products, positive scaling, limits,
+    exp. REPRESENTER THEOREM: minimisers of ∑ℓ(yᵢ, f(xᵢ)) + λ‖f‖²_H have
+    f = ∑αᵢk(xᵢ, ·). Kernel ridge: α = (K + λI)⁻¹y. Examples: polynomial
+    (x·y + c)^p, Gaussian exp(−‖x − y‖²/(2σ²)); non-example ‖x − y‖².
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove the "if" half of the factorisation theorem for discrete X.
+    (b) Using it, find sufficient statistics for iid samples from
+    Poisson(λ) and Uniform(0, θ). (c) Show that X₍ₙ₎ is MINIMAL
+    sufficient for Uniform(0, θ).
+    Answer: (a) P(X = x | T = t) = h(x)/∑_{T(y)=t} h(y). (b) ∑Xᵢ; X₍ₙ₎.
+    (c) f_θ(x)/f_θ(y) is free of θ iff max xᵢ = max yᵢ.
+    Teacher explains: (a) Suppose f_θ(x) = g_θ(T(x))h(x). For x with
+    T(x) = t,
+       P_θ(X = x | T = t) = g_θ(t)h(x) / ∑_{y: T(y)=t} g_θ(t)h(y)
+                          = h(x) / ∑_{y: T(y)=t} h(y),
+    and g_θ(t) has CANCELLED: the conditional law is free of θ. (b)
+    Poisson: ∏e^(−λ)λ^(xᵢ)/xᵢ! = [e^(−nλ)λ^(∑xᵢ)]·[1/∏xᵢ!], so T = ∑Xᵢ.
+    Uniform: ∏θ⁻¹𝟙{0 ≤ xᵢ ≤ θ} = [θ⁻ⁿ𝟙{x₍ₙ₎ ≤ θ}]·[𝟙{x₍₁₎ ≥ 0}], so T =
+    X₍ₙ₎. The indicator is the key — it carries the information. (c)
+    For samples x, y with positive entries,
+       f_θ(x)/f_θ(y) = 𝟙{x₍ₙ₎ ≤ θ}/𝟙{y₍ₙ₎ ≤ θ}.
+    If x₍ₙ₎ = y₍ₙ₎ this is 1 (where defined) for all θ. If x₍ₙ₎ < y₍ₙ₎,
+    then for θ ∈ [x₍ₙ₎, y₍ₙ₎) the ratio is 1/0 = ∞ while for θ ≥ y₍ₙ₎ it
+    is 1: it depends on θ. By the ratio criterion X₍ₙ₎ is minimal.
+    Common mistakes: forgetting the support indicator (then one "finds"
+    that nothing depends on θ); calling (X₁, ..., Xₙ) "not sufficient"
+    (the whole sample is always sufficient, just not minimal). Now you
+    try: a minimal sufficient statistic for Uniform(θ, θ + 1).
+    ((X₍₁₎, X₍ₙ₎), two-dimensional for one parameter)
+
+D2. (a) Write the Poisson and the Gamma(α, β) (rate β, both unknown)
+    families in natural exponential form and compute E T, Var T from
+    A(η). (b) Prove that T = ∑Xᵢ is complete for the Poisson model.
+    (c) Explain why completeness fails for N(θ, θ²).
+    Answer: (a) Poisson: η = log λ, A = e^η, E X = Var X = λ. Gamma: η =
+    (α − 1, −β), T = (log x, x), A = log Γ(η₁ + 1) − (η₁ + 1)log(−η₂).
+    (b) power series argument. (c) g = X̄² − (n + 1)S²/n has mean 0 for
+    every θ but is not 0.
+    Teacher explains: (a) Poisson: f(x) = (1/x!) exp(x log λ − λ), so
+    η = log λ, T = x, h = 1/x!, A(η) = e^η. Then E T = A′(η) = e^η = λ
+    and Var T = A″(η) = λ. Gamma: f = β^α x^(α−1)e^(−βx)/Γ(α) = x⁻¹exp(α
+    log x − βx − log Γ(α) + α log β); natural parameters η = (α, −β) with
+    h = 1/x, T = (log x, x) and A = log Γ(η₁) − η₁ log(−η₂) (equivalently
+    shift η₁ = α − 1 with h = 1). Then ∂A/∂η₂ = −η₁/η₂ = α/β = E X ✓ and
+    ∂²A/∂η₂² = η₁/η₂² = α/β² = Var X ✓; ∂A/∂η₁ = ψ(α) − log β = E log X.
+    (b) T ~ Poisson(nλ). If E_λ g(T) = ∑_t g(t)e^(−nλ)(nλ)^t/t! = 0 for
+    all λ > 0, then the power series ∑ (g(t)nᵗ/t!) λᵗ vanishes on (0, ∞),
+    so every coefficient is 0: g(t) = 0 for all t. General fact: full-
+    rank exponential families have complete natural statistics (Laplace
+    transform uniqueness). (c) N(θ, θ²) is a CURVED family: η = (1/θ,
+    −1/(2θ²)) lies on a curve, with no open set. E X̄² = θ² + θ²/n and
+    E S² = θ², so g = X̄² − ((n + 1)/n)S² has mean 0 for all θ but g ≠ 0.
+    Common mistakes: claiming every exponential family statistic is
+    complete; mixing up rate and scale in the gamma. Now you try:
+    binomial(n, p), n known: η and A(η). (η = log(p/(1 − p)), A = n log(1
+    + e^η))
+
+D3. Let X₁, ..., Xₙ iid Poisson(λ). Find the UMVUE of e^(−λ) = P(X = 0) by
+    Rao-Blackwellising 𝟙{X₁ = 0}. Evaluate it and the MLE for n = 5,
+    ∑xᵢ = 10.
+    Answer: δ* = (1 − 1/n)^T; values 0.8¹⁰ ≈ 0.10737 (UMVUE) and e⁻² ≈
+    0.13534 (MLE).
+    Teacher explains: δ = 𝟙{X₁ = 0} is unbiased: E δ = e^(−λ). T = ∑Xᵢ is
+    complete sufficient (D2). Rao-Blackwell: δ* = P(X₁ = 0 | T = t).
+    Given T = t, (X₁, ..., Xₙ) is MULTINOMIAL(t; 1/n, ..., 1/n), so X₁ |
+    T = t ~ Bin(t, 1/n) and
+       δ*(t) = (1 − 1/n)^t.
+    δ* is unbiased (tower property) and a function of the complete T, so
+    by Lehmann-Scheffé it is the UNIQUE UMVUE. Check unbiasedness
+    directly: E(1 − 1/n)^T = exp(nλ((1 − 1/n) − 1)) = e^(−λ) ✓ (Poisson
+    pgf E sᵀ = e^(nλ(s − 1))). Numerically n = 5, t = 10: δ* = 0.8¹⁰ ≈
+    0.10737, while the MLE e^(−x̄) = e⁻² ≈ 0.13534 is biased (Jensen).
+    Rao-Blackwell's inequality is conditional Jensen: Var δ = Var δ* +
+    E Var(δ | T). Common mistakes: plugging in the UMVUE of λ, e^(−X̄), and
+    calling it unbiased; using a non-complete statistic and claiming
+    uniqueness. Now you try: UMVUE of λ² from the same data. (T(T −
+    1)/n² = 90/25 = 3.6)
+
+D4. State and prove the Cramér-Rao inequality. Compute the bound for
+    unbiased estimators of λ from n iid Poisson(λ) and show X̄ attains it.
+    Why does (n + 1)X₍ₙ₎/n for Uniform(0, θ) "beat" the bound?
+    Answer: Var δ ≥ g′(θ)²/(nI(θ)); Poisson: λ/n = Var X̄. The uniform
+    model violates regularity (support depends on θ).
+    Teacher explains: Let s(θ; X) = ∂/∂θ log f_θ(X) (score). Regularity
+    gives E s = ∫∂f/∂θ = ∂/∂θ ∫f = 0 and E s² = I_n(θ) = nI(θ). If E δ =
+    g(θ), differentiate under ∫: g′(θ) = ∫δ ∂f/∂θ = E[δ s] = Cov(δ, s).
+    Cauchy-Schwarz:
+       g′(θ)² = Cov(δ, s)² ≤ Var δ · Var s = Var δ · nI(θ).  □
+    Equality iff s = a(θ)(δ − g(θ)) a.s., i.e. log f is linear in δ:
+    exponential family. Poisson: log f = x log λ − λ − log x!, ∂²/∂λ² =
+    −x/λ², so I = E X/λ² = 1/λ and the bound is λ/n = Var X̄: X̄ is
+    efficient. Numerically n = 20, λ = 3: bound 0.15. Uniform(0, θ):
+    Var((n + 1)X₍ₙ₎/n) = θ²/(n(n + 2)), of order 1/n², far below any
+    c/n. No contradiction: ∫f_θ = 1 cannot be differentiated under the
+    integral because the support [0, θ] moves, so the identity E s = 0
+    and the covariance step both break down. Common mistakes: applying CR to
+    biased estimators without the (g′)² numerator; using I instead of nI.
+    Now you try: the CR bound for unbiased estimators of σ² in N(0, σ²).
+    (2σ⁴/n, attained by ∑Xᵢ²/n)
+
+D5. Sketch the proof that √n(θ̂ − θ₀) ⇒ N(0, 1/I(θ₀)) for a consistent
+    MLE. Apply to Exponential(λ): with n = 100 and x̄ = 2 give λ̂ and a 95%
+    Wald interval. Then, for 60 successes in 100 Bernoulli trials, carry
+    out the likelihood ratio test of p = 1/2 using Wilks' theorem.
+    Answer: λ̂ = 0.5, CI (0.402, 0.598); −2 log Λ ≈ 4.027 > 3.841, reject at
+    5% (p ≈ 0.0448).
+    Teacher explains: Write ℓₙ(θ) = ∑log f_θ(Xᵢ). Taylor-expand the score
+    about θ₀: 0 = ℓₙ′(θ̂) = ℓₙ′(θ₀) + ℓₙ″(θ̃)(θ̂ − θ₀), so
+       √n(θ̂ − θ₀) = [n^(−1/2)ℓₙ′(θ₀)] / [−n⁻¹ℓₙ″(θ̃)].
+    Numerator ⇒ N(0, I(θ₀)) by the CLT (score has mean 0, variance I);
+    denominator → I(θ₀) in probability by the LLN and consistency (θ̃
+    between θ̂ and θ₀, with a uniform bound on ℓ‴). Slutsky: limit
+    N(0, I/I²) = N(0, 1/I). Exponential: ℓ = n log λ − λ∑xᵢ, λ̂ = 1/x̄ =
+    0.5, I(λ) = 1/λ², so SE = λ̂/√n = 0.05 and the interval is 0.5 ± 1.96 ×
+    0.05 = (0.402, 0.598). LRT: sup over H₀ gives (1/2)¹⁰⁰; unrestricted
+    MLE p̂ = 0.6. So
+       −2 log Λ = 2[60 log(0.6/0.5) + 40 log(0.4/0.5)]
+                = 2[10.9393 − 8.9257] ≈ 4.027.
+    Wilks: under H₀ this is approximately χ²₁ (one parameter restricted);
+    4.027 > 3.841, reject at 5%, p ≈ 0.0448. (Wald: z = 0.1/√(0.24/100) ≈
+    2.041; score: z = 0.1/0.05 = 2: all three agree asymptotically.)
+    Common mistakes: using the variance at θ₀ in one place and at θ̂ in
+    another without saying so; forgetting the factor 2 in Wilks. Now you
+    try: Poisson, n = 25, ∑x = 75: λ̂ and 95% Wald CI. (3; (2.321, 3.679))
+
+D6. Prove the Neyman-Pearson lemma. For X₁, ..., X₂₅ iid N(μ, 1) find the
+    most powerful level-0.05 test of μ = 0 vs μ = 0.5 and its power; show it
+    is UMP for μ ≤ 0 vs μ > 0. How large must n be for power 0.9?
+    Answer: reject when X̄ > 1.645/5 = 0.329; power Φ(0.855) ≈ 0.8037;
+    Karlin-Rubin via MLR in X̄; n = 35.
+    Teacher explains: Let φ* reject when f₁ > kf₀ (randomise on equality)
+    with E₀φ* = α, and let φ be any test with E₀φ ≤ α. Then pointwise
+       (φ* − φ)(f₁ − kf₀) ≥ 0,
+    since φ* = 1 ≥ φ where f₁ > kf₀ and φ* = 0 ≤ φ where f₁ < kf₀.
+    Integrate: E₁φ* − E₁φ ≥ k(E₀φ* − E₀φ) ≥ 0.  □ Normal: f₁/f₀ =
+    exp(n(0.5x̄ − 0.125)) is increasing in x̄, so reject for X̄ > c with
+    P₀(X̄ > c) = 0.05: c = 1.645/√25 = 0.329. Power: P₀.₅(X̄ > 0.329) =
+    P(Z > (0.329 − 0.5)·5) = P(Z > −0.855) ≈ 0.8037. The ratio is
+    increasing in x̄ for ANY μ₁ > μ₀: the same test is most powerful
+    against every alternative (UMP for μ = 0 vs μ > 0); and its size over
+    μ ≤ 0 is maximal at μ = 0 (power function increasing) — this is
+    Karlin-Rubin for MLR families. Sample size: need 0.5√n ≥ 1.645 +
+    1.2816, √n ≥ 5.853, n ≥ 34.26, so n = 35. Common mistakes: rejecting
+    for LARGE likelihood ratio f₀/f₁ (inverted); claiming a UMP test for
+    μ ≠ 0 (the one-sided tests in the two directions differ). Now you
+    try: the MP level-α test of λ = 1 vs λ = 2 for one Exponential
+    observation. (reject X < −log(1 − α); for α = 0.05, X < 0.0513)
+
+D7. A coin has unknown p with prior Beta(2, 2); 7 heads in 10 tosses are
+    observed. Find the Bayes estimates under squared, absolute and 0-1
+    loss, the Bayes posterior risk under squared loss, and a 95% equal-
+    tailed credible interval. Prove that the posterior mean is the Bayes
+    rule for squared loss.
+    Answer: posterior Beta(9, 5): mean 9/14 ≈ 0.6429, median ≈ 0.6498, mode
+    2/3; posterior variance ≈ 0.01531; interval ≈ (0.386, 0.861).
+    Teacher explains: π(p | x) ∝ p·(1 − p)·p⁷(1 − p)³ = p⁸(1 − p)⁴: Beta(9,
+    5) (conjugacy: add successes and failures to the prior counts). The
+    Bayes rule minimises the POSTERIOR expected loss for each x: for
+    squared loss, E[(p − a)² | x] = Var(p | x) + (E[p | x] − a)², minimised
+    at a = E[p | x] = 9/14 ≈ 0.6429 with minimum Var(p | x) = 9·5/(14²·15)
+    ≈ 0.01531. Absolute loss: d/da E|p − a| = P(p < a) − P(p > a) = 0 at
+    the posterior MEDIAN ≈ 0.6498 (numerically). 0-1 loss (as a limit of
+    losses 𝟙{|p − a| > ε}): the MODE (9 − 1)/(9 + 5 − 2) = 2/3 = MAP.
+    Credible interval: 2.5% and 97.5% quantiles of Beta(9, 5) ≈ 0.386 and
+    0.861. Note the MLE 0.7 is pulled towards the prior mean 1/2: the
+    posterior mean (2 + 7)/(4 + 10) is a weighted average with weights
+    4/14 and 10/14. Common mistakes: treating the MAP as Bayes under
+    squared loss; forgetting that Bayes risk averages over x as well.
+    Now you try: Gamma(2, 1) prior on a Poisson rate, data ∑x = 10 over
+    n = 4. (posterior Gamma(12, 5), mean 2.4)
+
+D8. For X ~ Bin(n, p) and squared loss, show δ(X) = (X + √n/2)/(n + √n)
+    has constant risk, and deduce it is minimax. Compare it with X/n for
+    n = 16. Why is X not admissible for N(θ, I₃) though it is minimax?
+    Answer: risk 1/(4(1 + √n)²) = 0.01 for n = 16 vs max 1/64 ≈ 0.0156 for
+    X/n; X/n is better only when p < 0.2 or p > 0.8. James-Stein.
+    Teacher explains: For δ = (X + a)/(n + b): bias = (a − bp)/(n + b),
+    variance np(1 − p)/(n + b)², so
+       R(p) = [np(1 − p) + (a − bp)²]/(n + b)².
+    With a = √n/2, b = √n the p² coefficient is −n + b² = 0 and the p
+    coefficient is n − 2ab = 0: R = a²/(n + b)² = n/(4(n + √n)²) = 1/(4(1
+    + √n)²), CONSTANT. δ is the posterior mean for the prior Beta(√n/2,
+    √n/2). THEOREM: a Bayes rule δ_π with R(θ, δ_π) ≤ r(π, δ_π) for all θ
+    is minimax: for any δ, sup R(θ, δ) ≥ r(π, δ) ≥ r(π, δ_π) = sup R(θ,
+    δ_π). So δ is minimax and Beta(√n/2, √n/2) is least favourable. For
+    n = 16: δ = (X + 2)/20, risk 1/100; X/n has risk p(1 − p)/16, below
+    0.01 iff p(1 − p) < 0.16 iff p < 0.2 or p > 0.8. So minimax protects
+    the worst case but loses near the ends. In N(θ, I_d), X has constant
+    risk d and is minimax (limit of N(0, τ²I) priors), yet for d ≥ 3 the
+    James-Stein estimator has risk d − (d − 2)²E[1/‖X‖²] < d everywhere
+    (at θ = 0 it is 2): X is INADMISSIBLE. Common mistakes: "minimax ⇒
+    admissible"; forgetting that constant risk alone is not enough (the
+    rule must also be Bayes, or a limit of Bayes). Now you try: n = 100,
+    minimax risk vs sup risk of X/n. (1/484 ≈ 0.002066 vs 0.0025)
+
+D9. Prove that ERM over a finite class H in the REALIZABLE case returns h
+    with error ≤ ε with probability ≥ 1 − δ once m ≥ (ln|H| + ln(1/δ))/ε.
+    State the agnostic analogue. Compute both sample sizes for |H| =
+    1000, ε = 0.05, δ = 0.01.
+    Answer: realizable m ≥ 230.26 → 231; agnostic m ≥ (ln 2000 + ln 100)/
+    (2·0.0025) ≈ 2441.2 → 2442.
+    Teacher explains: Call h ∈ H BAD if L(h) > ε. ERM returns a hypothesis
+    consistent with the sample (one exists — realizable). Failure needs
+    some bad h to be consistent with all m iid points. For one bad h,
+    P(consistent) ≤ (1 − ε)^m ≤ e^(−εm). Union bound:
+       P(failure) ≤ |H|e^(−εm) ≤ δ  ⇔  m ≥ (ln|H| + ln(1/δ))/ε.
+    AGNOSTIC: by Hoeffding, P(|L̂(h) − L(h)| > ε) ≤ 2e^(−2mε²); union over
+    H gives uniform ε-accuracy when m ≥ (ln(2|H|) + ln(1/δ))/(2ε²), and
+    then ERM satisfies L(ĥ) ≤ L̂(ĥ) + ε ≤ L̂(h*) + ε ≤ L(h*) + 2ε (so use
+    ε/2 in the uniform bound for excess risk ε). Numbers: (6.9078 +
+    4.6052)/0.05 = 230.26 → 231; (7.6009 + 4.6052)/0.005 = 2441.2 → 2442.
+    Note the 1/ε versus 1/ε² rates: noise costs a square. Common mistakes:
+    applying Hoeffding to ĥ itself (it depends on the data — hence the
+    union bound); rounding down. Now you try: realizable, |H| = 2²⁰, ε =
+    δ = 0.01. (m ≥ 1846.8, so 1847)
+
+D10. Compute the VC dimension of (a) intervals on R, (b) half-planes in R²,
+     (c) axis-aligned rectangles in R². Prove the Sauer-Shelah lemma and
+     state the fundamental theorem of PAC learning.
+     Answer: 2, 3, 4; Π_H(m) ≤ ∑_{i≤d} C(m, i); PAC ⇔ VCdim < ∞.
+     Teacher explains: To show VCdim = d: exhibit ONE shattered set of size
+     d and show NO set of size d + 1 is shattered. (a) Two points x < y:
+     all four labellings are realised by intervals. Three points x < y < z
+     cannot get (+, −, +): an interval containing x and z contains y.
+     (b) Three non-collinear points: every labelling is cut off by a line.
+     Four points: if three are collinear, label the middle one −; else
+     one lies in the triangle of the others (label it − and the others +)
+     or they are in convex position (label diagonals alike: XOR) — this is
+     Radon's theorem. (c) Four points in a diamond
+     (±1, 0), (0, ±1) are shattered. For five points take the leftmost,
+     rightmost, top, bottom ones (≤ 4 points); any rectangle containing
+     them contains the fifth, so label it −. SAUER-SHELAH by induction on
+     m + d: for S = {x₁, ..., x_m}, let H₁ = H restricted to S ∖ {x_m} and
+     H₂ = the labellings of S ∖ {x_m} that extend BOTH ways. Then |H|_S| =
+     |H₁| + |H₂|, VCdim H₁ ≤ d and VCdim H₂ ≤ d − 1 (if H₂ shattered T,
+     H would shatter T ∪ {x_m}), so |H|_S| ≤ Φ_d(m − 1) + Φ_{d−1}(m − 1) =
+     Φ_d(m) by Pascal. FUNDAMENTAL THEOREM (binary, 0-1 loss): for VCdim
+     d the following are equivalent — uniform convergence, agnostic PAC
+     by ERM, PAC — with m = Θ((d + ln(1/δ))/ε²) agnostic and
+     m = Θ((d ln(1/ε) + ln(1/δ))/ε) realizable (upper bound); and VCdim = ∞
+     ⇒ not PAC. Example: intervals, m = 10: Π = 1 + 10 + 45 = 56 = C(11,
+     2) + 1 exactly. Common mistakes: showing "some set of size d + 1 is
+     not shattered" (you need EVERY set); equating VC dimension with the
+     number of parameters (sign(sin ωx) has 1 parameter, VCdim ∞). Now you
+     try: VCdim of discs in R². (3)
+
+D11. Define empirical Rademacher complexity. (a) Prove Massart's lemma for
+     a finite set A ⊂ R^m. (b) Prove R̂_S ≤ BR/√m for {x ↦ w·x : ‖w‖ ≤ B}
+     when ‖xᵢ‖ ≤ R. (c) With R_m = 0.05, m = 2000, δ = 0.05 and training
+     error 0.1, evaluate the generalisation bound.
+     Answer: (a) R̂ ≤ max‖a‖₂√(2 ln|A|)/m; (b) Cauchy-Schwarz + Jensen;
+     (c) 0.1 + 0.1 + √(ln 20/4000) ≈ 0.2274.
+     Teacher explains: R̂_S(F) = E_σ[sup_f (1/m)∑σᵢf(xᵢ)] measures how well
+     F can correlate with random noise on the sample S. (a) Let r =
+     max‖a‖₂. For t > 0, by Jensen and the bound E e^(tσa) ≤ e^(t²a²/2):
+        exp(t E sup_a ∑σᵢaᵢ) ≤ E sup_a e^(t∑σᵢaᵢ) ≤ ∑_a ∏ᵢ e^(t²aᵢ²/2)
+                              ≤ |A| e^(t²r²/2).
+     So E sup ∑σᵢaᵢ ≤ ln|A|/t + tr²/2; choosing t = √(2 ln|A|)/r gives
+     r√(2 ln|A|); divide by m. (b) sup_{‖w‖≤B} w·∑σᵢxᵢ = B‖∑σᵢxᵢ‖, and
+     E‖∑σᵢxᵢ‖ ≤ (E‖∑σᵢxᵢ‖²)^(1/2) = (∑‖xᵢ‖²)^(1/2) ≤ R√m (cross terms have
+     mean 0). Divide by m: BR/√m. (c) Bound for [0, 1]-valued losses:
+     L ≤ L̂ + 2R_m + √(ln(1/δ)/(2m)) = 0.1 + 0.1 + √(2.9957/4000) = 0.1 +
+     0.1 + 0.02737 ≈ 0.2274. The proof of the bound: McDiarmid (changing
+     one sample moves sup(L − L̂) by ≤ 1/m) plus SYMMETRISATION with a
+     ghost sample, which produces the 2R_m. Unlike VC, R̂ is data-
+     dependent and works for real-valued classes and norms (margins).
+     Common mistakes: forgetting the factor 2; confusing R̂_S (fixed
+     sample) with R_m = E_S R̂_S. Now you try: Massart's bound for 16
+     ±1-valued functions on m = 100 points. (√(2 ln 16/100) ≈ 0.2355)
+
+D12. (a) Derive the ridge estimator and show it shrinks OLS in an
+     orthonormal design; compare with the lasso. (b) Prove the
+     representer theorem for kernel ridge regression and derive α = (K +
+     λI)⁻¹y. (c) With k(x, y) = 1 + xy, data (0, 1), (1, 3) and λ = 1, find
+     the fitted function and its value at x = 2.
+     Answer: (a) ŵ = (XᵀX + λI)⁻¹Xᵀy; orthonormal: ŵⱼ = zⱼ/(1 + λ), lasso
+     soft-thresholds. (b) orthogonal decomposition in the RKHS. (c) α =
+     (0, 1), f(x) = 1 + x, f(2) = 3.
+     Teacher explains: (a) J(w) = ‖y − Xw‖² + λ‖w‖²; ∇J = −2Xᵀ(y − Xw) +
+     2λw = 0 gives (XᵀX + λI)w = Xᵀy. XᵀX + λI is positive definite for
+     λ > 0, so ŵ is unique even when p > n. If XᵀX = I, then z = Xᵀy is
+     OLS and ŵ = z/(1 + λ): uniform shrinkage, bias −λw/(1 + λ), variance
+     σ²/(1 + λ)² per coordinate. Lasso ½‖y − Xw‖² + λ‖w‖₁ with XᵀX = I
+     separates: ŵⱼ = sign(zⱼ)(|zⱼ| − λ)₊, so small coefficients become
+     EXACTLY 0 (sparsity); e.g. z = 3, λ = 1: lasso 2, ridge (with
+     objective ½‖·‖² + (λ/2)‖w‖²) 1.5. (b) Minimise ∑(yᵢ − f(xᵢ))² +
+     λ‖f‖²_H. Split f = f∥ + f⊥ with f∥ ∈ span{k(xᵢ, ·)}. By the
+     reproducing property f(xᵢ) = ⟨f, k(xᵢ, ·)⟩ = f∥(xᵢ), so the loss
+     sees only f∥, while ‖f‖² = ‖f∥‖² + ‖f⊥‖²: the minimiser has f⊥ = 0,
+     f = ∑αⱼk(xⱼ, ·). Then f(xᵢ) = (Kα)ᵢ and ‖f‖² = αᵀKα; the objective
+     ‖y − Kα‖² + λαᵀKα has gradient 2K((K + λI)α − y), zero at α = (K +
+     λI)⁻¹y. (c) K = [[1, 1], [1, 2]], K + I = [[2, 1], [1, 3]] with
+     inverse (1/5)[[3, −1], [−1, 2]]; α = (1/5)(3 − 3, −1 + 6) = (0, 1).
+     f(x) = 0·k(0, x) + 1·k(1, x) = 1 + x, so f(2) = 3 (fitted values 1
+     and 2: shrunk from 1 and 3). Common mistakes: forgetting that K
+     must be PSD for a valid kernel (‖x − y‖² is not a kernel); writing
+     α = K⁻¹y (interpolation, no regularisation). Now you try: is (x·y +
+     1)² a kernel on R², and what is its feature dimension? (yes; 6)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Give a minimal sufficient statistic for an iid sample X₁, ..., Xₙ.
+    a) Bernoulli(p)                    b) Poisson(λ)
+    c) N(μ, 1)                         d) N(0, σ²)
+    e) N(μ, σ²), both unknown          f) Exponential(λ)
+    g) Geometric(p)                    h) Gamma(α, β), both unknown
+    i) Beta(a, b), both unknown        j) Uniform(0, θ)
+    k) Uniform(−θ, θ)                  l) Uniform(θ, θ + 1)
+    m) Uniform(θ, 2θ), θ > 0           n) f = e^(−(x−θ)), x > θ
+    o) Pareto θcᶿ/x^(θ+1), x > c, c known
+    p) Weibull kλx^(k−1)e^(−λxᵏ), k known
+    q) Cauchy location (1/π)/(1 + (x − θ)²)
+    r) Laplace location ½e^(−|x−θ|)
+    s) N(θ, θ²): minimal sufficient — is it complete?
+    t) Bernoulli, n ≥ 2: is X₁ sufficient?
+    Answers:
+      a) ∑Xᵢ       b) ∑Xᵢ       c) ∑Xᵢ (or X̄)       d) ∑Xᵢ²
+      e) (∑Xᵢ, ∑Xᵢ²) ⇔ (X̄, S²)   f) ∑Xᵢ     g) ∑Xᵢ
+      h) (∑Xᵢ, ∑log Xᵢ)          i) (∑log Xᵢ, ∑log(1 − Xᵢ))
+      j) X₍ₙ₎      k) max|Xᵢ|    l) (X₍₁₎, X₍ₙ₎)     m) (X₍₁₎, X₍ₙ₎)
+      n) X₍₁₎      o) ∑log Xᵢ (⇔ ∏Xᵢ)             p) ∑Xᵢᵏ
+      q) the order statistics (X₍₁₎, ..., X₍ₙ₎)     r) the order statistics
+      s) (∑Xᵢ, ∑Xᵢ²); not complete (D2 c)
+      t) no: given X₁, the law of (X₂, ..., Xₙ) still depends on p
+
+M2. Exponential families: give η, T(x) and A(η) (or say "not an
+    exponential family"), then E T and Var T from A.
+    a) Bernoulli(p)                    b) Poisson(λ)
+    c) Binomial(n, p), n known         d) Geometric (1 − p)ᵏp, k ≥ 0
+    e) N(μ, 1)                         f) Exponential(λ)
+    g) Rayleigh (x/σ²)e^(−x²/(2σ²))   h) Negative binomial, r known,
+                                          C(k + r − 1, k)pʳ(1 − p)ᵏ
+    i) N(μ, σ²), both unknown          j) Uniform(0, θ)
+    k) Cauchy location                 l) A(η) = log(1 + e^η) at η = 0
+    m) A(η) = −log(−η) at η = −2       n) Beta(a, b)
+    o) likelihood equation for the MLE in a natural family
+    Answers:
+      a) η = log(p/(1 − p)), T = x, A = log(1 + e^η); p, p(1 − p)
+      b) η = log λ, A = e^η; λ, λ
+      c) η = logit p, A = n log(1 + e^η); np, np(1 − p)
+      d) η = log(1 − p), A = −log(1 − e^η); (1 − p)/p, (1 − p)/p²
+      e) η = μ, A = η²/2, h = e^(−x²/2)/√(2π); μ, 1
+      f) η = −λ, A = −log(−η); 1/λ, 1/λ²
+      g) T = x², η = −1/(2σ²), A = −log(−2η); E X² = 2σ², Var X² = 4σ⁴
+      h) η = log(1 − p), A = −r log(1 − e^η); r(1 − p)/p, r(1 − p)/p²
+      i) η = (μ/σ², −1/(2σ²)), T = (x, x²), A = −η₁²/(4η₂) − ½log(−2η₂)
+      j) not (support depends on θ)    k) not
+      l) E T = 1/2, Var T = 1/4          m) E T = 1/2, Var T = 1/4
+      n) T = (log x, log(1 − x)), η = (a − 1, b − 1), A = log B(a, b)
+      o) (1/n)∑T(xᵢ) = ∇A(η̂): "match the moments of T"
+
+M3. Find the UMVUE (iid sample of size n, T = ∑Xᵢ unless stated), or
+    evaluate it.
+    a) Bernoulli: p                    b) Bernoulli: p²
+    c) Bernoulli: p(1 − p)             d) Poisson: λ
+    e) Poisson: λ²                     f) Poisson: e^(−λ)
+    g) Poisson: λe^(−λ) = P(X = 1)     h) N(μ, 1): μ²
+    i) N(μ, σ²): σ²                    j) Uniform(0, θ): θ
+    k) Uniform(0, θ): θ²               l) Exponential(λ): 1/λ
+    m) Exponential(λ): λ (n ≥ 2)       n) Bernoulli, n = 10, T = 4: p(1 − p)
+    o) Poisson, n = 5, T = 10: e^(−λ)  p) Uniform(0, θ), data 1.2, 3.1,
+                                          0.7, 2.6: θ
+    q) Binomial(n, p): does an unbiased estimator of 1/p exist?
+    Answers:
+      a) X̄          b) T(T − 1)/(n(n − 1))       c) T(n − T)/(n(n − 1))
+      d) X̄          e) T(T − 1)/n²               f) (1 − 1/n)ᵀ
+      g) (T/n)(1 − 1/n)^(T−1)                     h) X̄² − 1/n
+      i) S² = ∑(Xᵢ − X̄)²/(n − 1)                  j) (n + 1)X₍ₙ₎/n
+      k) (n + 2)X₍ₙ₎²/n    l) X̄        m) (n − 1)/T
+      n) 24/90 ≈ 0.26667  o) 0.8¹⁰ ≈ 0.10737      p) (5/4)(3.1) = 3.875
+      q) no: E g(X) is a polynomial of degree ≤ n in p, never 1/p
+
+M4. Fisher information per observation I(θ), and the Cramér-Rao bound
+    for unbiased estimators of the stated quantity from n observations.
+    a) Bernoulli: p                    b) Poisson: λ
+    c) N(μ, σ²), σ known: μ            d) N(0, σ²): σ²
+    e) Exponential rate λ: λ           f) Exponential rate λ: 1/λ
+    g) Exponential mean θ: θ           h) Geometric (1 − p)^(k−1)p, k ≥ 1: p
+    i) Binomial(m, p), m known: p      j) Cauchy location: θ
+    k) Laplace location: θ             l) Logistic location: θ
+    m) Gamma(α, β), α known: β         n) Bernoulli, log-odds η: I(η)
+    o) Poisson, n = 50, λ = 4: the bound for λ
+    p) N(μ, 1): bound for μ², and Var(X̄² − 1/n)
+    q) Uniform(0, θ): Var of the UMVUE of θ
+    Answers:
+      a) 1/(p(1 − p)); p(1 − p)/n (attained by X̄)
+      b) 1/λ; λ/n (attained)            c) 1/σ²; σ²/n (attained)
+      d) 1/(2σ⁴); 2σ⁴/n (attained by ∑Xᵢ²/n)
+      e) 1/λ²; λ²/n (not attained)      f) 1/λ²; 1/(nλ²) (attained by X̄)
+      g) 1/θ²; θ²/n (attained by X̄)     h) 1/(p²(1 − p)); p²(1 − p)/n
+      i) m/(p(1 − p)); p(1 − p)/(mn)   j) 1/2; 2/n
+      k) 1; 1/n                         l) 1/3; 3/n
+      m) α/β²; β²/(nα)                  n) p(1 − p)
+      o) 0.08
+      p) 4μ²/n; 4μ²/n + 2/n² (bound not attained)
+      q) θ²/(n(n + 2)): CR does not apply (support depends on θ)
+
+M5. MLEs, asymptotic variances and Wald intervals (z = 1.96).
+    a) Bernoulli: p̂, avar             b) Poisson: λ̂, avar
+    c) Exponential rate: λ̂, avar      d) Geometric (k ≥ 1): p̂, avar
+    e) N(μ, σ²): σ̂², bias, avar        f) Pareto, c = 1: θ̂, avar
+    g) Beta(θ, 1), f = θx^(θ−1): θ̂, avar
+    h) Laplace location: θ̂             i) Shifted exponential: θ̂
+    j) Uniform(0, θ): θ̂ and the limit law of n(θ − θ̂)/θ
+    k) Poisson: MLE and delta-method avar of e^(−λ)
+    l) Bernoulli: delta-method avar of the log-odds
+    m) Exponential, n = 100, x̄ = 2: λ̂ and CI
+    n) Bernoulli, n = 400, 120 successes: p̂ and CI
+    o) Poisson, n = 25, ∑x = 75: λ̂ and CI
+    p) Uniform(θ, θ + 1): is the MLE unique?
+    Answers:
+      a) X̄; p(1 − p)/n       b) X̄; λ/n        c) 1/X̄; λ²/n
+      d) 1/X̄; p²(1 − p)/n
+      e) (1/n)∑(Xᵢ − X̄)²; bias −σ²/n; 2σ⁴/n
+      f) n/∑log Xᵢ; θ²/n     g) −n/∑log Xᵢ; θ²/n
+      h) the sample median   i) X₍₁₎
+      j) X₍ₙ₎; Exponential(1) (rate n, not √n; not normal)
+      k) e^(−X̄); λe^(−2λ)/n (invariance + delta method)
+      l) 1/(np(1 − p))
+      m) 0.5; (0.402, 0.598)
+      n) 0.3; 0.3 ± 0.0449 = (0.2551, 0.3449)
+      o) 3; 3 ± 0.6790 = (2.321, 3.679)
+      p) no: any θ ∈ [X₍ₙ₎ − 1, X₍₁₎] maximises
+
+M6. Tests (Φ is the N(0, 1) cdf; z₀.₀₅ = 1.645, z₀.₁ = 1.2816).
+    a) N(μ, 1), n = 16, μ = 0 vs 1, α = 0.05: rejection region, power
+    b) the same with n = 4
+    c) N(μ, 1), μ = 0 vs 0.5, α = 0.05: n for power ≥ 0.9
+    d) one Exponential(λ): λ = 1 vs 2, α = 0.05: region, power
+    e) Uniform(0, θ), n = 5, θ = 1 vs θ > 1, α = 0.05: region, power at 2
+    f) Bin(10, p), p = 1/2 vs p > 1/2: best non-randomised α ≤ 0.05 test;
+       the randomisation γ at the boundary giving size exactly 0.05
+    g) Poisson, n = 5, λ ≤ 1 vs λ > 1 (T ~ Poisson(5) at λ = 1): UMP
+       non-randomised test with α ≤ 0.05, and its size
+    h) N(0, σ²), n = 10, σ² = 1 vs σ² > 1, α = 0.05: region
+    i) N(μ, 1), n = 25, x̄ = 0.4, H₁: μ > 0: p-value
+    j) Bernoulli, 60 of 100, p = 1/2: −2 log Λ, decision at 5%, p-value
+    k) degrees of freedom for testing (μ, σ²) = (0, 1) in N(μ, σ²)
+    l) N(μ, σ²) LRT for μ = 0 as a function of t
+    m) UMP test of μ = 0 vs μ ≠ 0 for N(μ, 1)?
+    n) Which have MLR: Poisson in ∑X; Exponential rate in ∑X; Cauchy
+       location in X?
+    Answers:
+      a) X̄ > 0.4112; Φ(2.355) ≈ 0.9907
+      b) X̄ > 0.8225; Φ(0.355) ≈ 0.6387
+      c) n ≥ ((1.645 + 1.2816)/0.5)² ≈ 34.26, so 35
+      d) X < −log 0.95 ≈ 0.05129; 1 − 0.95² = 0.0975
+      e) X₍ₙ₎ > 0.95^(1/5) ≈ 0.98979; 1 − 0.95/32 ≈ 0.97031
+      f) T ≥ 9 (size 11/1024 ≈ 0.01074); γ = (0.05 − 11/1024)/(45/1024) ≈
+         0.8933 at T = 8
+      g) T ≥ 10; size ≈ 0.03183 (T ≥ 9 has 0.06809)
+      h) ∑Xᵢ² > χ²₁₀,₀.₉₅ ≈ 18.307
+      i) z = 2, p ≈ 0.02275
+      j) ≈ 4.027 > 3.841, reject; p ≈ 0.0448
+      k) 2           l) Λ = (1 + t²/(n − 1))^(−n/2)
+      m) no (the one-sided MP tests differ; UMP unbiased = two-sided z test)
+      n) yes (increasing); yes (decreasing in ∑X); no
+
+M7. Bayes estimates and posteriors.
+    a) Beta(1, 1) prior, 3 successes in 10: posterior, mean
+    b) same: MAP                       c) Beta(2, 2), 7 in 10: mean
+    d) Poisson, Gamma(2, 1) prior (rate 1), ∑x = 10, n = 4: posterior, mean
+    e) same: posterior mode
+    f) N(θ, 1), n = 10, x̄ = 1.1, prior N(0, 1): posterior
+    g) the 95% credible interval in f)
+    h) Beta(1, 1) prior, 1 success in 1: posterior median
+    i) Exponential(λ), Gamma(1, 1) prior, n = 5, ∑x = 9: posterior mean
+    j) Beta(1, 1), loss (θ − a)²/(θ(1 − θ)), x of n: Bayes estimator
+    k) Bernoulli, uniform prior: Bayes risk of (T + 1)/(n + 2)
+    l) 0-1 loss, posterior class probabilities 0.2, 0.5, 0.3: Bayes
+       action and posterior risk
+    m) Binary: cost 5 for a false negative, 1 for a false positive:
+       predict 1 iff P(Y = 1 | x) > ?
+    n) Jeffreys prior: Bernoulli; Poisson; normal location
+    o) Beta(9, 5) posterior: predictive P(next toss = success)
+    Answers:
+      a) Beta(4, 8); 1/3      b) 3/10      c) 9/14 ≈ 0.64286
+      d) Gamma(12, 5); 2.4    e) 11/5 = 2.2
+      f) N(1.0, 1/11) (precision 1 + 10, mean 10·1.1/11)
+      g) 1.0 ± 1.96/√11 ≈ (0.409, 1.591)
+      h) 1/√2 ≈ 0.70711 (density 2θ)      i) Gamma(6, 10); 0.6
+      j) x/n (the weight turns Beta(x + 1, n − x + 1) into Beta(x, n − x))
+      k) 1/(6(n + 2))
+      l) class 2; 0.5           m) 1/6
+      n) Beta(1/2, 1/2); ∝ λ^(−1/2); flat
+      o) 9/14
+
+M8. Risk, minimax and admissibility (squared loss unless stated).
+    a) Bin(n, p): risk of X/n and its maximum
+    b) Bin(n, p): risk of (X + √n/2)/(n + √n); value for n = 16
+    c) n = 100: minimax risk vs sup risk of X/n
+    d) n = 16: for which p is X/n better than the minimax rule?
+    e) least favourable prior for b)
+    f) N(θ, 1), one observation: risk of cX, and the minimax c
+    g) N(θ, I_d): risk of X; is X admissible for d = 1, 2, 3?
+    h) James-Stein risk at θ = 0, d = 10
+    i) N(θ, 1): is δ ≡ 5 admissible? minimax?
+    j) Uniform(0, θ): best multiple cX₍ₙ₎ and its MSE; value for n = 4
+    k) No data; loss L(θ₁, a₁) = 0, L(θ₁, a₂) = 4, L(θ₂, a₁) = 3,
+       L(θ₂, a₂) = 1: minimax randomised rule and minimax risk
+    l) same: least favourable prior π(θ₁) and its Bayes risk
+    m) Bayes rule with constant risk: minimax?
+    Answers:
+      a) p(1 − p)/n; 1/(4n)
+      b) 1/(4(1 + √n)²), constant; 0.01
+      c) 1/484 ≈ 0.002066 vs 0.0025
+      d) p < 0.2 or p > 0.8
+      e) Beta(√n/2, √n/2)
+      f) c² + (1 − c)²θ²; c = 1 (sup risk 1; otherwise ∞)
+      g) d; yes, yes, no (Stein)       h) 2 (vs 10 for X)
+      i) admissible (unique best at θ = 5); not minimax (sup risk ∞)
+      j) c = (n + 2)/(n + 1), MSE θ²/(n + 1)²; c = 1.2, θ²/25
+      k) choose a₁ with probability 1/2; risk 2
+      l) π(θ₁) = 1/3; Bayes risk 2 (= minimax value)
+      m) yes
+
+M9. PAC sample complexity (finite classes: realizable m ≥ (ln|H| +
+    ln(1/δ))/ε; agnostic uniform convergence m ≥ ln(2|H|/δ)/(2ε²)).
+    a) realizable, |H| = 100, ε = 0.1, δ = 0.05
+    b) realizable, |H| = 2²⁰, ε = δ = 0.01
+    c) conjunctions of literals over 10 variables (|H| ≈ 3¹⁰), ε = 0.1,
+       δ = 0.05
+    d) agnostic, |H| = 1000, ε = 0.05, δ = 0.01
+    e) realizable, m = 1000, |H| = 1000, δ = 0.05: guaranteed ε
+    f) agnostic, same data: guaranteed uniform deviation ε
+    g) Hoeffding: m = 500, P(|p̂ − p| ≥ 0.05) ≤ ?
+    h) how does m change when ε is halved (realizable; agnostic)?
+    i) thresholds on [0, 1], realizable: m with (1 − ε)^m ≤ δ via e^(−εm),
+       ε = 0.01, δ = 0.05
+    j) intervals, tightest fit: m ≥ (2/ε)ln(2/δ) for ε = 0.1, δ = 0.05
+    k) all functions {0, 1}^X, X infinite: PAC learnable?
+    l) |H| = 2ᵏ, realizable: order of m in k
+    Answers:
+      a) 76.01 → 77        b) 1846.8 → 1847     c) 139.8 → 140
+      d) 2441.2 → 2442     e) ≈ 0.00990         f) ≈ 0.0728
+      g) 2e^(−2.5) ≈ 0.1642
+      h) doubles; multiplies by 4
+      i) ln 20/0.01 ≈ 299.6 → 300           j) 20 ln 40 ≈ 73.8 → 74
+      k) no (no free lunch)                  l) (k ln 2 + ln(1/δ))/ε
+
+M10. VC dimension and growth functions.
+     a) thresholds 𝟙{x ≥ t} on R        b) intervals on R
+     c) unions of k intervals on R      d) rays in both directions on R
+     e) half-planes in R²               f) affine half-spaces in R^d
+     g) homogeneous half-spaces in R^d  h) axis-aligned rectangles in R²
+     i) axis-aligned boxes in R^d       j) discs in R²
+     k) convex polygons in R²           l) sign(sin(ωx)), ω ∈ R
+     m) a finite class with N functions: upper bound
+     n) monotone conjunctions over n variables
+     o) Sauer bound ∑_{i≤d}C(m, i), d = 3, m = 10
+     p) (em/d)^d for d = 3, m = 10
+     q) growth function of intervals; value at m = 10
+     r) growth function of thresholds
+     s) half-planes: number of labellings of 4 points in general position
+     Answers:
+       a) 1        b) 2        c) 2k       d) 2        e) 3
+       f) d + 1    g) d        h) 4        i) 2d       j) 3
+       k) ∞ (points on a circle)          l) ∞
+       m) ⌊log₂ N⌋                          n) n
+       o) 176      p) ≈ 743.9  q) C(m + 1, 2) + 1; 56 (= Sauer, tight)
+       r) m + 1    s) 14 (m² − m + 2; XOR patterns missing)
+
+M11. Rademacher complexity, regularisation and kernels.
+     a) R̂_S of a class with one function
+     b) F = {f, −f} with f(xᵢ) = 1: R̂ for m = 2 and m = 4
+     c) F realising all 2^m sign patterns: R̂
+     d) Massart: 16 functions with values ±1, m = 100
+     e) linear, ‖w‖ ≤ 2, ‖x‖ ≤ 3, m = 900: bound on R̂
+     f) bound L ≤ L̂ + 2R + √(ln(1/δ)/(2m)) with L̂ = 0.1, R = 0.05,
+        m = 2000, δ = 0.05
+     g) 1-D ridge through 0, x = (1, 2, 3), y = (2, 4, 5), λ = 1; and OLS
+     h) orthonormal design, z = 3 and z = 0.5, λ = 1: ridge ((λ/2)w²
+        penalty) and lasso (λ|w| penalty) estimates
+     i) (x·y + 1)² on R²: kernel? feature dimension?
+     j) Gaussian kernel: PSD? feature dimension?
+     k) k(x, y) = x·y − 1: kernel?
+     l) k(x, y) = ‖x − y‖²: kernel?
+     m) Gram matrix of (xy + 1)² at x = 0, 1, 2; its determinant
+     n) kernel ridge, k = 1 + xy, data (0, 1), (1, 3), λ = 1: α and f(2)
+     o) number of coefficients in the representer solution for n data
+     p) VC dimension of Gaussian-kernel SVM classifiers
+     Answers:
+       a) 0          b) 1/2; 3/8        c) 1          d) ≈ 0.2355
+       e) 0.2        f) ≈ 0.2274
+       g) 25/15 ≈ 1.6667; OLS 25/14 ≈ 1.7857
+       h) z = 3: ridge 1.5, lasso 2; z = 0.5: ridge 0.25, lasso 0
+       i) yes; 6 (1, √2x₁, √2x₂, x₁², x₂², √2x₁x₂)
+       j) yes; ∞       k) no (k(0, 0) = −1 < 0)
+       l) no (2 × 2 Gram matrix has determinant −‖x − y‖⁴ < 0)
+       m) [[1, 1, 1], [1, 4, 9], [1, 9, 25]]; det = 8 (PSD, eigenvalues
+          ≈ 0.200, 1.411, 28.390)
+       n) α = (0, 1); f(x) = 1 + x, f(2) = 3
+       o) n          p) ∞ (hence margin/norm-based bounds)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) The MLE is always unbiased.
+     b) A sufficient statistic of the same dimension as θ always exists.
+     c) A complete sufficient statistic is minimal sufficient.
+     d) A minimal sufficient statistic is complete.
+     e) A UMVUE exists for every g(θ).
+     f) The Cramér-Rao bound holds for Uniform(0, θ).
+     g) The MLE is always unique and consistent.
+     h) There is a UMP test of μ = 0 vs μ ≠ 0 for N(μ, 1).
+     i) The Neyman-Pearson test is most powerful among level-α tests.
+     j) A unique Bayes rule is admissible.
+     k) Minimax estimators are admissible.
+     l) The posterior mean is Bayes under absolute loss.
+     m) VC dimension equals the number of parameters.
+     n) A binary class is PAC learnable iff its VC dimension is finite.
+     o) ERM over all measurable functions generalises.
+     p) R̂(conv F) = R̂(F).
+     q) Sums and products of kernels are kernels.
+     r) The difference of two kernels is a kernel.
+     s) Ridge regression has a unique solution even when p > n (λ > 0).
+     t) Lasso and ridge solutions are both linear in y.
+     Answers:
+       a) F: σ̂² = (1/n)∑(Xᵢ − X̄)²; X₍ₙ₎ for Uniform(0, θ)
+       b) F: Cauchy location needs all n order statistics
+       c) T (Bahadur)
+       d) F: N(θ, θ²); Uniform(θ, θ + 1) (X₍ₙ₎ − X₍₁₎ is ancillary)
+       e) F: 1/p in Bin(n, p) has no unbiased estimator at all
+       f) F: Var of the UMVUE is θ²/(n(n + 2)) = o(1/n)
+       g) F: Uniform(θ, θ + 1) (non-unique); Neyman-Scott (inconsistent)
+       h) F: the one-sided MP tests differ
+       i) T         j) T
+       k) F: X for N(θ, I₃) (James-Stein dominates it)
+       l) F: the posterior median
+       m) F: sign(sin ωx) has one parameter and VCdim ∞
+       n) T (fundamental theorem)
+       o) F: it memorises the sample (no free lunch)
+       p) T         q) T (Schur product theorem)
+       r) F: k − 2k = −k has negative diagonal
+       s) T         t) F: lasso is non-linear (soft-thresholding)
+
+TEACHING TIPS
+  Struggling: begin every estimation question by writing the likelihood
+  and FACTORISING it — the sufficient statistic, the exponential-family
+  form, the MLE equation and the Fisher information all fall out of that
+  single line. Keep a table of the six workhorse families (Bernoulli,
+  Poisson, exponential, normal, uniform, gamma) with T, A(η), MLE, I(θ),
+  UMVUE and conjugate prior, and test every theorem on the uniform first:
+  it is the counterexample to CR, to √n asymptotics and to the "natural
+  statistic" folklore. For tests, always draw the likelihood ratio as a
+  function of the statistic before choosing the rejection region. In
+  learning theory insist on the three-step pattern "one hypothesis
+  (Hoeffding) → union or covering (|H|, Π_H, R̂) → solve for m", and
+  check VC claims with "one set shattered, every larger set not". Harder:
+  prove the Lehmann-Scheffé theorem and Basu's theorem; prove consistency
+  of the MLE via Kullback-Leibler (Wald); derive Wilks' theorem from the
+  quadratic expansion of the log-likelihood; prove Stein's lemma and the
+  James-Stein risk formula; prove the upper bound in the fundamental
+  theorem via symmetrisation and Sauer-Shelah, and the lower bound Ω(d/ε)
+  via a shattered set; prove Talagrand's contraction lemma; prove
+  Moore-Aronszajn and Mercer's theorem; and derive the SVM dual to see
+  kernels and margins appear together.
+
+
+================================================================================
+TOPIC 12.27 — MATHEMATICAL PHYSICS: QUANTUM MECHANICS FORMALISM, GENERAL
+RELATIVITY, GAUGE THEORY, SYMPLECTIC GEOMETRY
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - POSTULATES OF QUANTUM MECHANICS: a system has a separable complex
+    Hilbert space ℋ; PURE STATES are unit vectors up to phase (rays);
+    OBSERVABLES are SELF-ADJOINT operators A; by the spectral theorem A =
+    ∫λ dE(λ), and the BORN RULE gives Prob(A ∈ Δ) = ⟨ψ, E(Δ)ψ⟩ (for an
+    eigenbasis: |⟨eₖ, ψ⟩|²). Expectation ⟨A⟩ = ⟨ψ, Aψ⟩, variance (ΔA)² =
+    ⟨A²⟩ − ⟨A⟩². MIXED states are DENSITY MATRICES ρ ≥ 0, tr ρ = 1, with ⟨A⟩
+    = tr(ρA); ρ is pure iff tr ρ² = 1. Composite systems: ℋ₁ ⊗ ℋ₂; a pure
+    state is ENTANGLED iff it is not a product; reduced state = partial
+    trace; entanglement entropy S = −tr(ρ₁ ln ρ₁).
+  - UNBOUNDED OPERATORS: A is defined on a dense domain D(A); A is
+    SYMMETRIC if ⟨Aφ, ψ⟩ = ⟨φ, Aψ⟩ on D(A), SELF-ADJOINT if moreover D(A*) =
+    D(A). HELLINGER-TOEPLITZ: an everywhere-defined symmetric operator is
+    bounded, so x and p need domains. Von Neumann: a closed symmetric A
+    has self-adjoint extensions iff its DEFICIENCY INDICES n± = dim ker(A*
+    ∓ i) are equal (then parametrised by unitaries between the deficiency
+    spaces). −i d/dx is essentially self-adjoint on C_c^∞(R), has a U(1)
+    family of extensions on [0, 1] (ψ(1) = e^{iθ}ψ(0)), none on [0, ∞).
+  - DYNAMICS: STONE'S THEOREM: strongly continuous one-parameter unitary
+    groups U(t) ↔ self-adjoint generators H, U(t) = e^{−itH/ħ}; this is the
+    Schrödinger equation iħ ∂ψ/∂t = Hψ. Heisenberg picture A(t) =
+    U(t)*AU(t), dA/dt = (i/ħ)[H, A]; EHRENFEST: d⟨x⟩/dt = ⟨p⟩/m, d⟨p⟩/dt
+    = −⟨V′(x)⟩. Stationary states are eigenvectors of H.
+  - CANONICAL COMMUTATION RELATIONS [x, p] = iħ; no bounded (in particular
+    no finite-matrix) solution (trace / Wielandt argument); STONE-VON
+    NEUMANN: the Weyl form is unique up to unitary equivalence (irreducible,
+    finitely many degrees of freedom). ROBERTSON UNCERTAINTY: ΔA ΔB ≥
+    ½|⟨[A, B]⟩|, so Δx Δp ≥ ħ/2 with equality exactly for Gaussians.
+  - STANDARD SYSTEMS: box of width L: Eₙ = n²π²ħ²/(2mL²), n ≥ 1. HARMONIC
+    OSCILLATOR: a = √(mω/2ħ)(x + ip/(mω)), [a, a†] = 1, H = ħω(a†a + ½),
+    Eₙ = ħω(n + ½), a|n⟩ = √n|n − 1⟩, a†|n⟩ = √(n + 1)|n + 1⟩. HYDROGEN:
+    Eₙ = −13.606 eV/n², degeneracy n² (without spin), plus continuous
+    spectrum [0, ∞). ANGULAR MOMENTUM: [Jₓ, J_y] = iħJ_z, J² = ħ²j(j + 1),
+    J_z = ħm, |m| ≤ j, j ∈ ½N; spin ½ uses S = (ħ/2)σ (Pauli matrices),
+    ρ = ½(I + r·σ) with Bloch vector |r| ≤ 1; j₁ ⊗ j₂ = |j₁ − j₂| ⊕ ... ⊕
+    (j₁ + j₂); a 2π rotation multiplies a spinor by −1.
+  - SPECIAL RELATIVITY: Minkowski space R^{1,3}, η = diag(−1, 1, 1, 1)
+    (c = 1), Lorentz group O(1, 3) (dimension 6), Poincaré group
+    (dimension 10). Intervals are timelike/null/spacelike; proper time dτ²
+    = −ds²; γ = (1 − v²)^{−1/2}; rapidities add; 4-momentum p = mγ(1, v)
+    with E² = p² + m².
+  - GENERAL RELATIVITY: spacetime is a 4-manifold with a Lorentzian metric
+    g; the Levi-Civita connection Γ^λ_{μν} = ½g^{λσ}(∂_μg_{σν} + ∂_νg_{σμ} −
+    ∂_σg_{μν}); free particles and light follow GEODESICS ẍ^λ +
+    Γ^λ_{μν}ẋ^μẋ^ν = 0 (EQUIVALENCE PRINCIPLE); tidal effects = RIEMANN
+    curvature R^ρ_{σμν}; Ricci R_{μν} = R^ρ_{μρν}, scalar R, Einstein
+    tensor G_{μν} = R_{μν} − ½Rg_{μν}, ∇^μG_{μν} = 0 (contracted Bianchi).
+    EINSTEIN EQUATIONS G_{μν} + Λg_{μν} = 8πG T_{μν}/c⁴; in vacuum with Λ =
+    0 they say R_{μν} = 0. NEWTONIAN LIMIT: g₀₀ ≈ −(1 + 2Φ/c²) gives
+    ∇²Φ = 4πGρ.
+  - SCHWARZSCHILD: ds² = −(1 − r_s/r)c²dt² + dr²/(1 − r_s/r) + r²dΩ², r_s =
+    2GM/c² (unique spherically symmetric vacuum solution, BIRKHOFF). r =
+    r_s is a coordinate (horizon) singularity, r = 0 a curvature
+    singularity (Kretschmann R_{abcd}R^{abcd} = 12r_s²/r⁶). Static clocks
+    run at dτ/dt = √(1 − r_s/r). In G = c = 1: effective potential
+    (1 − 2M/r)(1 + L²/r²), ISCO r = 6M, photon sphere r = 3M, critical
+    impact parameter 3√3 M; perihelion advance 6πGM/(c²a(1 − e²)) per
+    orbit; light deflection 4GM/(c²b).
+  - COSMOLOGY: FLRW metric −dt² + a(t)²dΣ_k²; FRIEDMANN H² = (ȧ/a)² =
+    8πGρ/3 − k/a² + Λ/3; flat matter era a ∝ t^{2/3}, radiation a ∝ t^{1/2},
+    Λ-dominated a ∝ e^{Ht}; critical density ρ_c = 3H²/(8πG).
+  - GAUGE THEORY: a PRINCIPAL G-BUNDLE P → M with CONNECTION; locally a
+    Lie-algebra-valued 1-form A, covariant derivative D = d + A, CURVATURE
+    F = dA + A ∧ A (F_{μν} = ∂_μA_ν − ∂_νA_μ + [A_μ, A_ν]). GAUGE
+    TRANSFORMATIONS g : M → G act by A ↦ gAg⁻¹ − (dg)g⁻¹, F ↦ gFg⁻¹, so tr
+    F^k is gauge invariant but F is not (unless G is abelian). BIANCHI
+    identity DF = dF + [A, F] = 0. YANG-MILLS action S = −(1/2g²)∫tr(F ∧
+    *F) (A anti-Hermitian), equations D*F = 0. HOLONOMY/WILSON LOOPS P
+    exp(−∮A); pure gauge A = −(dg)g⁻¹ ⇔ F = 0 (on simply connected sets).
+  - ELECTROMAGNETISM = U(1) GAUGE THEORY: F = dA, dF = 0 (∇·B = 0,
+    ∇×E + ∂B/∂t = 0) and d*F = *J (Gauss, Ampère-Maxwell); A ↦ A + dλ,
+    ψ ↦ e^{ieλ}ψ (ħ = 1). AHARONOV-BOHM phase e∮A = eΦ/ħ; flux quantum
+    h/e. DIRAC MONOPOLE: eg = nħc/2 (Gaussian units), i.e. the first Chern
+    number c₁ = (1/2π)∫_{S²}F ∈ Z.
+  - TOPOLOGY OF GAUGE FIELDS: U(1) bundles over S² ↔ c₁ ∈ Z (π₁(U(1)) =
+    Z); SU(2) bundles over S⁴ ↔ instanton number k = (1/8π²)∫tr(F ∧ F)
+    ∈ Z (π₃(SU(2)) = Z); S_YM ≥ 8π²|k|/g² with equality iff F = ±*F
+    (self-dual INSTANTONS, BPST for k = 1). Standard model gauge group
+    SU(3) × SU(2) × U(1), 8 + 3 + 1 = 12 gauge bosons.
+  - SYMPLECTIC MANIFOLDS: (M, ω) with ω a CLOSED, NON-DEGENERATE 2-form;
+    dim M = 2n is even, ωⁿ is a volume form, and for M compact [ω] ≠ 0 in
+    H²(M) (so S⁴ is not symplectic, S² is). Examples: (R²ⁿ, ∑dqᵢ ∧ dpᵢ),
+    cotangent bundles T*Q with ω = −dθ, θ = ∑pᵢdqᵢ, oriented surfaces with
+    area forms, Kähler manifolds (CPⁿ). DARBOUX: locally every symplectic
+    form is ∑dqᵢ ∧ dpᵢ — no local invariants (contrast curvature).
+  - HAMILTONIAN MECHANICS: X_H defined by ι_{X_H}ω = dH (convention with
+    ω = dq ∧ dp gives q̇ = ∂H/∂p, ṗ = −∂H/∂q); POISSON bracket {f, g} =
+    ω(X_f, X_g) = ∑(∂f/∂qᵢ ∂g/∂pᵢ − ∂f/∂pᵢ ∂g/∂qᵢ), ḟ = {f, H}, Jacobi
+    identity. LIOUVILLE: L_{X_H}ω = 0 (Cartan), so Hamiltonian flows are
+    SYMPLECTOMORPHISMS and preserve volume. Linear M is symplectic iff MᵀJM
+    = J (in 2D iff det M = 1); (Q, P) is canonical iff {Q, P} = 1. GROMOV
+    NON-SQUEEZING: B²ⁿ(r) embeds symplectically in B²(R) × R²ⁿ⁻² iff r ≤ R.
+    LEGENDRE transform L(q, q̇) → H(q, p), p = ∂L/∂q̇.
+  - SYMMETRY AND REDUCTION: a MOMENT MAP μ : M → 𝔤* for a symplectic
+    G-action satisfies d⟨μ, ξ⟩ = ι_{ξ_M}ω (e.g. angular momentum q × p for
+    SO(3) on T*R³). NOETHER: {H, J} = 0 ⇒ J is conserved. MARSDEN-
+    WEINSTEIN: M//G = μ⁻¹(c)/G_c has dimension dim M − dim G − dim G_c (e.g.
+    C^{n+1}//S¹ = CPⁿ). ARNOLD-LIOUVILLE: n independent Poisson-commuting
+    integrals ⇒ compact level sets are tori Tⁿ with ACTION-ANGLE variables,
+    Iᵢ = (1/2π)∮pdq, H = H(I), frequencies ∂H/∂Iᵢ.
+  - QUANTISATION: DIRAC's rule {f, g} ↦ (1/iħ)[f̂, ĝ] cannot hold for all
+    polynomials (GROENEWOLD-VAN HOVE); BOHR-SOMMERFELD ∮p dq = 2πħ(n + ½)
+    (Maslov correction ½ for smooth turning points) reproduces the
+    oscillator exactly; geometric quantisation needs [ω/2πħ] integral
+    (prequantisation), which is Dirac's quantisation condition again.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove the Robertson uncertainty relation ΔA ΔB ≥ ½|⟨[A, B]⟩|
+    for self-adjoint A, B and ψ in the relevant domains. (b) Show that
+    the Gaussian ψ(x) = (2πσ²)^(−1/4) e^(−x²/(4σ²)) gives Δx Δp = ħ/2.
+    (c) An electron is localised to Δx = 1 Å = 10⁻¹⁰ m; bound Δp and Δv.
+    Answer: (a) Cauchy-Schwarz on the centred vectors. (b) Δx = σ, Δp =
+    ħ/(2σ). (c) Δp ≥ 5.27 × 10⁻²⁵ kg m/s, Δv ≥ 5.79 × 10⁵ m/s.
+    Teacher explains: (a) Put A₀ = A − ⟨A⟩, B₀ = B − ⟨B⟩; these are still
+    self-adjoint, [A₀, B₀] = [A, B], and ‖A₀ψ‖ = ΔA, ‖B₀ψ‖ = ΔB. By
+    Cauchy-Schwarz, ΔA ΔB ≥ |⟨A₀ψ, B₀ψ⟩| ≥ |Im⟨A₀ψ, B₀ψ⟩|. Now
+       ⟨A₀ψ, B₀ψ⟩ − ⟨B₀ψ, A₀ψ⟩ = ⟨ψ, (A₀B₀ − B₀A₀)ψ⟩ = ⟨[A, B]⟩,
+    and the left side is 2i Im⟨A₀ψ, B₀ψ⟩. Hence ΔA ΔB ≥ ½|⟨[A, B]⟩|. □
+    With [x, p] = iħ this is Δx Δp ≥ ħ/2. (b) |ψ|² is the normal density
+    N(0, σ²), so ⟨x⟩ = 0 and Δx = σ. With p = −iħ d/dx, pψ = (iħx/(2σ²))ψ,
+    so ⟨p⟩ = 0 and ⟨p²⟩ = ‖pψ‖² = (ħ²/(4σ⁴))⟨x²⟩ = ħ²/(4σ²): Δp = ħ/(2σ).
+    Equality holds because pψ is proportional to xψ — exactly the
+    Cauchy-Schwarz equality case (with a purely imaginary factor).
+    (c) Δp ≥ ħ/(2Δx) = 1.0546 × 10⁻³⁴/(2 × 10⁻¹⁰) = 5.27 × 10⁻²⁵ kg m/s;
+    dividing by mₑ = 9.109 × 10⁻³¹ kg: Δv ≥ 5.79 × 10⁵ m/s — atomic
+    electrons really are fast. Common mistakes: forgetting the domain
+    conditions (the relation can "fail" for ψ outside D(AB) ∩ D(BA), e.g.
+    angle and angular momentum); thinking the relation is about
+    measurement disturbance — it concerns spreads in one state. Now you
+    try: for spin-½ in |↑_z⟩, compare ΔSₓ ΔS_y with ½|⟨[Sₓ, S_y]⟩|.
+    (both equal ħ²/4: equality)
+
+D2. (a) Show that [A, B] = iħI has no solution with A, B bounded
+    (first for n × n matrices). (b) Let p = −i d/dx (ħ = 1) on L²[0, 1]
+    with domain D₀ = {ψ ∈ H¹ : ψ(0) = ψ(1) = 0}. Show p is symmetric but
+    not self-adjoint, compute the deficiency indices, find all self-adjoint
+    extensions and their spectra. (c) What happens on [0, ∞)?
+    Answer: (a) trace, then Wielandt's induction. (b) n₊ = n₋ = 1;
+    extensions p_θ with ψ(1) = e^{iθ}ψ(0), spectrum {θ + 2πk : k ∈ Z}.
+    (c) indices (1, 0): no self-adjoint extension.
+    Teacher explains: (a) For matrices, tr[A, B] = 0 but tr(iħI) = iħn ≠ 0.
+    For bounded operators, [A, B] = I (rescale) gives by induction [Aⁿ, B]
+    = nAⁿ⁻¹. Hence n‖Aⁿ⁻¹‖ ≤ 2‖Aⁿ‖‖B‖ ≤ 2‖A‖‖B‖‖Aⁿ⁻¹‖. If Aⁿ⁻¹ ≠ 0 for all
+    n this gives n ≤ 2‖A‖‖B‖ for all n, absurd; and if Aⁿ⁻¹ = 0 then
+    (n − 1)Aⁿ⁻² = [Aⁿ⁻¹, B] = 0, descending to I = 0. So x or p must be
+    unbounded. (b) Integrating by parts, for φ, ψ ∈ H¹,
+       ⟨pφ, ψ⟩ − ⟨φ, pψ⟩ = i[φ̄ψ]₀¹ = i(φ̄(1)ψ(1) − φ̄(0)ψ(0)),
+    which vanishes if ψ ∈ D₀: p is symmetric, and p* = −i d/dx on ALL of
+    H¹ (no boundary condition), so D(p*) ≠ D₀: not self-adjoint. Solve
+    p*ψ = ±iψ: −iψ′ = iψ gives e^{−x}, −iψ′ = −iψ gives eˣ; both lie in
+    L²[0, 1], so n₊ = n₋ = 1 and the extensions form a circle U(1). The
+    boundary form vanishes on D_θ = {ψ ∈ H¹ : ψ(1) = e^{iθ}ψ(0)}, giving
+    self-adjoint p_θ. Eigenfunctions e^{ikx} need e^{ik} = e^{iθ}: k = θ +
+    2πk′. Physically θ is a flux through a ring (Aharonov-Bohm, D10), and
+    e^{−itp_θ} is translation around the circle with a phase e^{iθ} on each
+    wrap (Stone's theorem). (c) On (0, ∞) only e^{−x} is in L²: indices
+    (1, 0), unequal, so momentum on a half-line is NOT an observable (a
+    translation to the left would push the particle off the edge).
+    Common mistakes: "symmetric = self-adjoint" (true only for bounded
+    everywhere-defined operators); forgetting that the adjoint's domain
+    is the real test. Now you try: the spectrum of p_π. ({(2k + 1)π})
+
+D3. For H = p²/(2m) + ½mω²x², define a = √(mω/2ħ)(x + ip/(mω)).
+    (a) Prove [a, a†] = 1 and H = ħω(a†a + ½). (b) Deduce the spectrum
+    ħω(n + ½), n ≥ 0, and the ground state. (c) Compute ⟨n|x²|n⟩, ⟨n|p²|n⟩
+    and Δx Δp in |n⟩; evaluate ⟨3|x²|3⟩ for m = ħ = 1, ω = 2.
+    Answer: (c) ⟨x²⟩ = (ħ/2mω)(2n + 1), ⟨p²⟩ = (mħω/2)(2n + 1), Δx Δp =
+    ħ(n + ½); ⟨3|x²|3⟩ = 7/4.
+    Teacher explains: (a) Only the cross terms survive in [a, a†] =
+    (mω/2ħ)[x + ip/mω, x − ip/mω] = (mω/2ħ)(1/mω)(−i[x, p] + i[p, x]) =
+    (1/2ħ)(−i·iħ + i·(−iħ)) = (1/2ħ)(2ħ) = 1. And
+    a†a = (mω/2ħ)(x² + p²/m²ω²) + (i/2ħ)[x, p] = H/(ħω) − ½. (b) Let N = a†a.
+    Then [N, a] = −a and [N, a†] = a†, so if Nψ = λψ then N(aψ) = (λ − 1)aψ.
+    Also λ‖ψ‖² = ⟨ψ, Nψ⟩ = ‖aψ‖² ≥ 0. Repeated lowering would produce
+    negative eigenvalues unless it stops: some aψ₀ = 0, forcing λ ∈ {0, 1,
+    2, ...}. The ground state solves (x + (ħ/mω) d/dx)ψ₀ = 0: ψ₀ ∝
+    exp(−mωx²/(2ħ)), E₀ = ħω/2 (zero-point energy). (c) x = √(ħ/2mω)(a +
+    a†), so x² = (ħ/2mω)(a² + a†² + aa† + a†a) and only aa† + a†a = 2N + 1
+    has diagonal entries: ⟨x²⟩ = (ħ/2mω)(2n + 1). Similarly ⟨p²⟩ =
+    (mħω/2)(2n + 1). Both means vanish, so Δx Δp = ħ(n + ½): only n = 0
+    saturates the bound. Virial check: ⟨p²/2m⟩ = ⟨½mω²x²⟩ = Eₙ/2. With m =
+    ħ = 1, ω = 2: ⟨3|x²|3⟩ = (1/4)(7) = 7/4. Common mistakes: sign slips
+    giving H = ħω(a†a − ½); forgetting that aa† = a†a + 1. Now you try:
+    ⟨n|x⁴|n⟩. ((ħ/2mω)²(6n² + 6n + 3); n = 0 gives 3σ⁴ for a Gaussian)
+
+D4. (a) For the spin-½ state ψ = (3|↑⟩ + 4i|↓⟩)/5 find the Bloch vector
+    and the probabilities of Sₓ = +ħ/2, S_y = +ħ/2, S_z = +ħ/2.
+    (b) Show that ρ = ½(I + r·σ) is a state iff |r| ≤ 1, pure iff |r| = 1.
+    (c) For the singlet |s⟩ = (|↑↓⟩ − |↓↑⟩)/√2 compute the reduced state,
+    the entanglement entropy and ⟨(a·σ) ⊗ (b·σ)⟩.
+    Answer: (a) r = (0, 24/25, −7/25); probabilities 1/2, 49/50, 9/25.
+    (b) eigenvalues (1 ± |r|)/2. (c) ρ₁ = I/2, S = ln 2, ⟨·⟩ = −a·b.
+    Teacher explains: (a) For ψ = (α, β), r = (2 Re(ᾱβ), 2 Im(ᾱβ), |α|² −
+    |β|²). Here ᾱβ = (3/5)(4i/5) = 12i/25, so r = (0, 24/25, 9/25 − 16/25)
+    = (0, 24/25, −7/25); check |r|² = (576 + 49)/625 = 1: pure. The
+    probability of +ħ/2 along a unit vector n is (1 + n·r)/2: along x, y,
+    z these are 1/2, 49/50, 9/25 (the last is |α|² directly). (b) (r·σ)² =
+    |r|²I and tr σᵢ = 0, so r·σ has eigenvalues ±|r|, and ρ has (1 ± |r|)/2;
+    ρ ≥ 0 iff |r| ≤ 1, and tr ρ² = (1 + |r|²)/2 equals 1 iff |r| = 1. So
+    pure states = sphere S² = CP¹, mixed states = the ball. (c) ρ₁ = tr₂
+    |s⟩⟨s| = ½(|↑⟩⟨↑| + |↓⟩⟨↓|) = I/2 (centre of the ball), S = −2(½ ln ½) =
+    ln 2, the maximum for a qubit: the singlet is maximally entangled.
+    The singlet is rotation invariant (total spin 0), so ⟨σ_a ⊗ σ_b⟩ =
+    −a·b; choosing four directions at 45° gives the CHSH value 2√2 > 2,
+    impossible for local hidden variables (Bell). Common mistakes:
+    confusing the angle θ on the Bloch sphere with the angle θ/2 in
+    cos(θ/2)|↑⟩ + e^{iφ}sin(θ/2)|↓⟩; thinking a mixture ½(|↑⟩⟨↑| + |↓⟩⟨↓|)
+    is the same as the superposition (|↑⟩ + |↓⟩)/√2. Now you try: the
+    entanglement entropy of cos α|00⟩ + sin α|11⟩ for α = π/6.
+    (−(3/4)ln(3/4) − (1/4)ln(1/4) ≈ 0.5623)
+
+D5. On the sphere of radius a, g = a²(dθ² + sin²θ dφ²). (a) Compute the
+    Christoffel symbols and the geodesic equations; which latitude circles
+    are geodesics? (b) Compute R^θ_{φθφ}, the Gaussian curvature, Ricci
+    and scalar curvature. (c) Parallel transport a vector around the
+    latitude θ₀ = π/3 and find the rotation angle; relate it to area.
+    Answer: (a) Γ^θ_{φφ} = −sin θ cos θ, Γ^φ_{θφ} = cot θ; only the equator.
+    (b) R^θ_{φθφ} = sin²θ, K = 1/a², R_{ij} = g_{ij}/a², R = 2/a².
+    (c) 2π(1 − cos θ₀) = π = (enclosed area)/a².
+    Teacher explains: (a) From Γ^λ_{μν} = ½g^{λσ}(∂_μg_{σν} + ∂_νg_{σμ} −
+    ∂_σg_{μν}), the only non-constant entry is g_{φφ} = a² sin²θ, so
+    Γ^θ_{φφ} = −½(1/a²)∂_θ(a² sin²θ) = −sin θ cos θ and Γ^φ_{θφ} = Γ^φ_{φθ}
+    = ½(a² sin²θ)⁻¹∂_θ(a² sin²θ) = cot θ. Geodesic equations:
+       θ̈ − sin θ cos θ φ̇² = 0,     φ̈ + 2 cot θ θ̇ φ̇ = 0.
+    A latitude θ = θ₀ with φ̇ ≠ 0 needs sin θ₀ cos θ₀ = 0: only θ₀ = π/2.
+    Meridians (φ constant) are geodesics too: great circles. (b) R^θ_{φθφ}
+    = ∂_θΓ^θ_{φφ} − Γ^θ_{φφ}Γ^φ_{θφ} = (sin²θ − cos²θ) + cos²θ = sin²θ.
+    K = R_{θφθφ}/det g = a² sin²θ/(a⁴ sin²θ) = 1/a². In 2D, R_{ij} = Kg_{ij}
+    and R = 2K. (c) Along θ = θ₀ the transported components satisfy V̇^θ −
+    sin θ₀ cos θ₀ V^φ = 0, V̇^φ + cot θ₀ V^θ = 0 (dot = d/dφ); in an
+    orthonormal frame this is a rotation at rate cos θ₀. After one loop
+    the frame has turned by 2π cos θ₀ relative to the coordinates, which
+    themselves turned by 2π, so the holonomy angle is 2π(1 − cos θ₀) =
+    ∬K dA over the polar cap (Gauss-Bonnet). For θ₀ = π/3: π. This is the
+    prototype of GAUGE HOLONOMY (D9): curvature = infinitesimal holonomy.
+    Common mistakes: using the non-symmetric Γ^φ_{φθ} ≠ Γ^φ_{θφ}; sign
+    conventions for Riemann (fix one and keep it). Now you try: the
+    holonomy angle for θ₀ = π/4. (2π(1 − √2/2) ≈ 1.8403)
+
+D6. (a) Show that the trace-reversed Einstein equation is R_{μν} =
+    (8πG/c⁴)(T_{μν} − ½Tg_{μν}) (Λ = 0) and deduce that vacuum means
+    Ricci-flat. (b) Derive Newtonian gravity for a static weak field g₀₀ =
+    −(1 + 2Φ/c²), dust T_{μν} = ρc² δ⁰_μδ⁰_ν, slow particles. (c) For a flat
+    matter-dominated FLRW universe solve Friedmann's equation and compute
+    the age and critical density for H₀ = 70 km/s/Mpc.
+    Answer: (b) ẍ = −∇Φ and ∇²Φ = 4πGρ. (c) a ∝ t^{2/3}, t₀ = 2/(3H₀) ≈
+    9.31 Gyr, ρ_c = 3H₀²/(8πG) ≈ 9.20 × 10⁻²⁷ kg/m³.
+    Teacher explains: (a) Tracing G_{μν} = κT_{μν} (κ = 8πG/c⁴) in 4D: R −
+    2R = κT, so R = −κT and R_{μν} = κT_{μν} + ½Rg_{μν} = κ(T_{μν} −
+    ½Tg_{μν}). If T = 0 then R_{μν} = 0 (but the Riemann tensor, which has
+    20 components versus Ricci's 10, need not vanish: Schwarzschild).
+    (b) For slow motion dx^i/dτ ≪ c dt/dτ, the geodesic equation gives
+    d²x^i/dt² ≈ −c²Γ^i_{00}, and for a static field Γ^i_{00} = −½∂_ig₀₀ =
+    ∂_iΦ/c². So d²x/dt² = −∇Φ: Newton's law with the metric as potential.
+    Next, to first order R₀₀ ≈ ∂_iΓ^i_{00} = ∇²Φ/c². For dust T = g^{00}T₀₀
+    = −ρc², so R₀₀ = κ(ρc² − ½ρc²) = 4πGρ/c². Equating: ∇²Φ = 4πGρ,
+    Poisson's equation. (c) With k = Λ = 0, ρ ∝ a⁻³ and (ȧ/a)² = 8πGρ/3 =
+    C/a³, so a^{1/2}ȧ = √C and a ∝ t^{2/3}. Then H = ȧ/a = 2/(3t), so t₀ =
+    2/(3H₀). H₀ = 70 km/s/Mpc = 2.27 × 10⁻¹⁸ s⁻¹, 1/H₀ = 13.97 Gyr, t₀ =
+    9.31 Gyr (too young compared with old stars — one historical argument
+    for Λ). ρ_c = 3H₀²/(8πG) = 9.20 × 10⁻²⁷ kg/m³ ≈ 5.5 protons per cubic
+    metre. Common mistakes: sign of g₀₀ in the (−+++) convention; claiming
+    "no matter ⇒ no curvature". Now you try: radiation era, ρ ∝ a⁻⁴: the
+    growth law and H(t). (a ∝ t^{1/2}, H = 1/(2t))
+
+D7. Schwarzschild: (a) show that r = r_s is not a curvature singularity
+    but r = 0 is (use the Kretschmann scalar), and compute r_s for the Sun
+    and the Earth; (b) derive the rate of a static clock and estimate the
+    daily GPS clock offset (orbit radius 26 560 km, GM⊕ = 3.986 × 10¹⁴
+    m³/s², R⊕ = 6371 km); (c) the maximal proper time from horizon to
+    singularity for M = 10 M_⊙.
+    Answer: (a) K = 12r_s²/r⁶; r_s ≈ 2.95 km (Sun), 8.87 mm (Earth).
+    (b) +45.7 μs/day (gravity) − 7.2 μs/day (speed) ≈ +38.5 μs/day.
+    (c) πGM/c³ ≈ 1.55 × 10⁻⁴ s.
+    Teacher explains: (a) g_{tt} → 0 and g_{rr} → ∞ at r = r_s, but a
+    scalar built from curvature, K = R_{abcd}R^{abcd} = 48G²M²/(c⁴r⁶) =
+    12r_s²/r⁶, is finite there and blows up only as r → 0. Indeed in
+    Eddington-Finkelstein coordinates v = t + r* (r* = r + r_s ln|r/r_s −
+    1|) the metric −(1 − r_s/r)dv² + 2dv dr + r²dΩ² is smooth across r_s.
+    r_s = 2GM/c²: Sun 2.95 km, Earth 8.87 mm. (b) A static observer has
+    dr = dΩ = 0, so dτ = √(1 − r_s/r) dt. For weak fields, the rate
+    relative to infinity is 1 − GM/(rc²) − v²/(2c²). The satellite at r =
+    2.656 × 10⁷ m moves at v = √(GM/r) = 3.874 km/s. Gravitational gain
+    relative to the ground: (GM/c²)(1/R⊕ − 1/r) = 5.29 × 10⁻¹⁰, i.e. 45.7
+    μs/day; velocity loss v²/(2c²) = 8.35 × 10⁻¹¹, 7.2 μs/day (the ground
+    clock's rotation, 0.46 km/s, is a smaller correction). Net ≈ +38.5
+    μs/day — ignored, it would give kilometres of position error per day.
+    (c) Inside, r is timelike; the longest proper time is the radial free
+    fall from rest at the horizon, τ = ∫₀^{r_s} dr/√(r_s/r − 1)·(1/c) =
+    (π/2)r_s/c = πGM/c³. For 10 M_⊙: 1.55 × 10⁻⁴ s. Common mistakes:
+    calling the horizon a singularity; using special relativity alone
+    (the gravitational term dominates for GPS). Now you try: the
+    gravitational redshift z from the surface of a neutron star with M =
+    1.4 M_⊙, R = 12 km. (r_s = 4.14 km, z = (1 − r_s/R)^{−1/2} − 1 ≈ 0.235)
+
+D8. Orbits in Schwarzschild (G = c = 1). (a) With E = (1 − 2M/r)ṫ, L =
+    r²φ̇ conserved, derive ṙ² + V(r) = E² for timelike geodesics in the
+    equatorial plane, V = (1 − 2M/r)(1 + L²/r²). (b) Find the circular
+    orbits, the ISCO and its binding energy. (c) Find the photon sphere and
+    the critical impact parameter. (d) Evaluate the perihelion advance of
+    Mercury (a = 5.791 × 10¹⁰ m, e = 0.2056, period 87.969 days) and the
+    deflection of light grazing the Sun (R = 6.957 × 10⁸ m).
+    Answer: (b) r = (L² ± √(L⁴ − 12M²L²))/(2M); ISCO r = 6M, E = √(8/9),
+    binding 5.72%. (c) r = 3M, b = 3√3 M. (d) 43.0″ per century; 1.75″.
+    Teacher explains: (a) The metric is independent of t and φ, giving the
+    Killing conserved quantities E and L. The constraint g(u, u) = −1 reads
+    −(1 − 2M/r)ṫ² + ṙ²/(1 − 2M/r) + r²φ̇² = −1; multiply by (1 − 2M/r) and
+    substitute: ṙ² = E² − (1 − 2M/r)(1 + L²/r²). (b) V = 1 − 2M/r + L²/r²
+    − 2ML²/r³, V′ = 0 ⇔ Mr² − L²r + 3ML² = 0, roots as stated; real iff L²
+    ≥ 12M², merging (inflection) at L² = 12M², r = L²/(2M) = 6M, the
+    innermost stable circular orbit. There E² = V(6M) = (2/3)(4/3) = 8/9,
+    so a particle spiralling in from infinity radiates 1 − √(8/9) ≈ 5.72%
+    of its rest mass (accretion discs!). (c) For light, ṙ² + (1 − 2M/r)
+    L²/r² = E²; V = L²(1/r² − 2M/r³) peaks at r = 3M with value L²/(27M²),
+    so photons with b = L/E < 3√3 M ≈ 5.196M are captured: the black-hole
+    shadow. (d) The orbit equation for u = 1/r becomes u″ + u = M/L² +
+    3Mu²; perturbing the Kepler ellipse gives Δφ = 6πGM/(c²a(1 − e²)) per
+    orbit. For Mercury: 5.02 × 10⁻⁷ rad per orbit, × 415.2 orbits per
+    century = 42.99″. Deflection 4GM/(c²R) = 8.49 × 10⁻⁶ rad = 1.75″ (twice
+    the "Newtonian" value; confirmed in 1919). Common mistakes: forgetting
+    the factor (1 − 2M/r) in E; mixing r_s = 2M with M. Now you try: the
+    rate of a static clock at r = 4M relative to infinity. (√(1/2) ≈ 0.707)
+
+D9. Let G ⊆ U(N) with Lie algebra 𝔤 (anti-Hermitian matrices), A a
+    𝔤-valued 1-form, D = d + A. (a) Show that D²ψ = Fψ with F = dA + A ∧ A
+    and that under ψ ↦ gψ, A ↦ gAg⁻¹ − (dg)g⁻¹ one has F ↦ gFg⁻¹.
+    (b) Prove the Bianchi identity DF = dF + A ∧ F − F ∧ A = 0. (c) For
+    G = SU(2) and constant A = (i/2)(σ₁ dx + σ₂ dy) compute F. (d) Show
+    how Maxwell's equations arise for G = U(1).
+    Answer: (c) F = −(i/2)σ₃ dx ∧ dy ≠ 0 although A is constant.
+    (d) A = −ia: F = −i da, a ↦ a + dλ, dF = 0 ⇔ homogeneous Maxwell.
+    Teacher explains: (a) D²ψ = d(dψ + Aψ) + A ∧ (dψ + Aψ) = dA ψ − A ∧
+    dψ + A ∧ dψ + A ∧ Aψ = (dA + A ∧ A)ψ: F is a multiplication operator
+    (no derivatives survive) — curvature. If D′ = gDg⁻¹, i.e. D′(gψ) =
+    g(Dψ), then d + A′ = g(d + A)g⁻¹ = d + g d(g⁻¹) + gAg⁻¹, and g d(g⁻¹) =
+    −(dg)g⁻¹; so A′ is as stated, and F′ = (D′)² = gD²g⁻¹ = gFg⁻¹. Hence tr
+    F ∧ F and |F|² are gauge invariant, while F itself is only covariant.
+    (b) dF = dA ∧ A − A ∧ dA = (F − A∧A) ∧ A − A ∧ (F − A∧A) = F ∧ A − A ∧
+    F. So DF := dF + [A, F] = 0: an identity, not an equation of motion;
+    the Yang-Mills equation is the other half, D*F = 0. (c) dA = 0, and
+    F_{xy} = [A_x, A_y] = (i/2)²[σ₁, σ₂] = −¼(2iσ₃) = −(i/2)σ₃. A constant
+    potential with non-zero field strength: impossible in electromagnetism,
+    it shows that A cannot be gauged to 0 (F ≠ 0 is gauge-covariant).
+    (d) u(1) = iR; write A = −ia (charge absorbed). A ∧ A = 0, so F = −i da
+    is gauge INVARIANT; g = e^{iλ} gives a ↦ a + dλ. With a = −φ dt +
+    A·dx, the components of da are F_{i0} = Eᵢ = −∂ᵢφ − ∂ₜAᵢ and F_{ij} =
+    ε_{ijk}Bₖ (B = ∇×A); dF = 0 is ∇·B = 0 and ∇×E + ∂ₜB = 0, and
+    the Yang-Mills equation with a source, d*da = *J, gives
+    ∇·E = ρ and ∇×B − ∂ₜE = J. Common mistakes: writing A ↦ gAg⁻¹ + g⁻¹dg
+    (the order matters and depends on left vs right action); believing F
+    is gauge invariant for non-abelian G. Now you try: F for A = i(σ₁ dx +
+    σ₃ dy). (F_{xy} = −[σ₁, σ₃] = 2iσ₂)
+
+D10. (a) Explain the Aharonov-Bohm effect and compute the phase shift for
+     a flux Φ = h/(2e). (b) For the Dirac monopole B = g r̂/r² (Gaussian
+     units) write potentials on the northern and southern patches, find the
+     transition function and derive eg = nħc/2. (c) Interpret n as a first
+     Chern number and compute the minimal g/e.
+     Answer: (a) Δ = eΦ/ħ = π. (b) A_N = g(1 − cos θ)dφ, A_S = −g(1 + cos
+     θ)dφ, A_N − A_S = 2g dφ = dλ. (c) c₁ = 2eg/(ħc) = n; g_min = e/(2α) ≈
+     68.5e.
+     Teacher explains: (a) Outside an ideal solenoid B = 0 but A ≠ 0
+     (∮A·dl = Φ). A charged particle's wavefunction along a path γ picks
+     up exp((ie/ħ)∫_γ A·dl), so two paths around opposite sides interfere
+     with relative phase (e/ħ)∮A·dl = eΦ/ħ = 2πΦ/(h/e): the holonomy of the
+     U(1) connection. For Φ = h/(2e) (the superconducting flux quantum) the
+     shift is π, reversing the fringes, although the electrons never meet
+     the field. (b) No single smooth A exists on R³ ∖ {0} since ∮_{S²}B·dS
+     = 4πg ≠ 0 but ∫_{S²}dA = 0 by Stokes. On U_N (θ < π) take A_N = g(1 −
+     cos θ)dφ, smooth at θ = 0; on U_S (θ > 0), A_S = −g(1 + cos θ)dφ; both
+     have dA = g sin θ dθ ∧ dφ, i.e. B = g r̂/r². On the overlap A_N − A_S =
+     2g dφ = dλ, λ = 2gφ. The wavefunctions differ by the transition
+     function exp(ieλ/(ħc)) = exp(2iegφ/(ħc)), which must be single valued
+     in φ: 2eg/(ħc) = n ∈ Z. One magnetic monopole anywhere would force
+     all charges to be quantised! (c) Normalising the connection as (e/ħc)
+     A, c₁ = (1/2π)(e/ħc)∫_{S²}dA = (e/ħc)(4πg)/(2π) = 2eg/(ħc) = n: the
+     winding number of the transition function S¹ → U(1). With α =
+     e²/(ħc) ≈ 1/137.036, the minimal g = ħc/(2e) = e/(2α) ≈ 68.5e: a
+     strongly coupled particle. The non-abelian analogue: SU(2) bundles on
+     S⁴ are classified by the INSTANTON NUMBER (1/8π²)∫tr F ∧ F ∈ Z.
+     Common mistakes: thinking A is "unphysical" so AB cannot be real (the
+     holonomy is gauge invariant); forgetting the Dirac string is an
+     artefact of a single-patch description. Now you try: the relative AB
+     phase for Φ = 3h/(2e), modulo 2π. (π)
+
+D11. (a) Prove that a symplectic vector space has even dimension and that
+     a compact symplectic manifold M²ⁿ has H²(M; R) ≠ 0. (b) With ω = dq ∧
+     dp and ι_{X_H}ω = dH, derive Hamilton's equations, show {f, g} =
+     ω(X_f, X_g) = f_q g_p − f_p g_q and ḟ = {f, H}. (c) Prove Liouville's
+     theorem. (d) Show Q = ln(q⁻¹ sin p), P = q cot p is canonical.
+     Answer: (a) det Ω = det(−Ωᵀ) = (−1)^m det Ω forces m even; if ω = dα
+     then ∫ωⁿ = 0. (b) q̇ = H_p, ṗ = −H_q. (c) L_{X_H}ω = d(dH) = 0.
+     (d) {Q, P} = 1/sin²p − cot²p = 1.
+     Teacher explains: (a) If ω is non-degenerate on V of dimension m, its
+     matrix Ω = −Ωᵀ is invertible, and det Ω = det(−Ωᵀ) = (−1)^m det Ω, so m
+     is even. On a compact M²ⁿ, ωⁿ is a volume form (non-degeneracy in
+     Darboux normal form: ωⁿ = n! dq₁∧dp₁∧...∧dqₙ∧dpₙ), so ∫_M ωⁿ ≠ 0. If ω
+     = dα were exact, ωⁿ = d(α ∧ ωⁿ⁻¹) and Stokes gives ∫ωⁿ = 0. Hence [ω]
+     ≠ 0 and H² ≠ 0: S² (area form) is symplectic, S⁴ and S⁶ are not.
+     (b) Write X = a∂_q + b∂_p; ι_X(dq ∧ dp) = a dp − b dq. Setting this
+     equal to dH = H_q dq + H_p dp: a = H_p, b = −H_q, i.e. q̇ = ∂H/∂p,
+     ṗ = −∂H/∂q. Then ω(X_f, X_g) = f_p(−g_q) − (−f_q)g_p = f_q g_p − f_p
+     g_q, and ḟ = f_q q̇ + f_p ṗ = f_q H_p − f_p H_q = {f, H}. In particular
+     H is conserved ({H, H} = 0). (c) By Cartan's formula L_X = dι_X + ι_Xd,
+     L_{X_H}ω = d(ι_{X_H}ω) + ι_{X_H}dω = d(dH) + 0 = 0. So the flow φ_t
+     preserves ω, hence ωⁿ: phase-space volume is conserved (the basis of
+     statistical mechanics). (d) Q_q = −1/q, Q_p = cot p, P_q = cot p, P_p =
+     −q/sin²p: {Q, P} = (−1/q)(−q/sin²p) − cot p·cot p = 1/sin²p − cot²p =
+     1. Common mistakes: sign conventions (many books use ι_Xω = −dH —
+     always check with H = p²/2); thinking area preservation suffices in
+     dimension ≥ 4 (it does not: non-squeezing). Now you try: is Q = q cos
+     p, P = q sin p canonical? (no: {Q, P} = q)
+
+D12. (a) Find the moment map for the rotation action of S¹ on (R², dq ∧
+     dp) and for SO(3) on T*R³; state Noether's theorem in this language.
+     (b) For H = p²/(2m) + ½mω²q² find action-angle variables and apply
+     Bohr-Sommerfeld. (c) Do the same for a particle in a box of width L.
+     (d) State what goes wrong with the "perfect" quantisation rule.
+     Answer: (a) μ = ±(q² + p²)/2; μ = q × p. (b) I = E/ω, H = ωI, Eₙ =
+     ħω(n + ½). (c) E = π²ħ²n²/(2mL²). (d) Groenewold-van Hove.
+     Teacher explains: (a) The counterclockwise rotation field X = −p∂_q +
+     q∂_p satisfies ι_X(dq ∧ dp) = −p dp − q dq = d(−(q² + p²)/2), so μ =
+     −(q² + p²)/2 (the sign is convention). For SO(3) on T*R³ the
+     infinitesimal rotation about ξ is generated by ⟨μ, ξ⟩ = ξ·(q × p):
+     μ is angular momentum. NOETHER: if H is G-invariant then {H, ⟨μ, ξ⟩} =
+     dH(X_{⟨μ,ξ⟩}) = 0, so μ is conserved; reducing by the symmetry (fix μ,
+     divide by the stabiliser) removes 2 dimensions per conserved,
+     commuting quantity. (b) The level set H = E is an ellipse with
+     semi-axes √(2E/(mω²)) and √(2mE), area 2πE/ω. The action I = (area)/2π
+     = E/ω, so H = ωI and the angle advances at ∂H/∂I = ω: every orbit has
+     the same period (isochronous). Bohr-Sommerfeld ∮p dq = 2πħ(n + ½)
+     gives 2πE/ω = 2πħ(n + ½): Eₙ = ħω(n + ½), exactly the true spectrum
+     (D3). (c) In the box |p| = √(2mE) is constant, the orbit is a
+     rectangle, ∮p dq = 2L√(2mE), and with hard walls the Maslov correction
+     is 1 (not ½): 2L√(2mE) = 2πħn gives Eₙ = π²ħ²n²/(2mL²), again exact.
+     Also I = L√(2mE)/π, E = π²I²/(2mL²), frequency ∂E/∂I = πv/L (period
+     2L/v ✓). (d) Dirac asked for a linear map Q with [Q(f), Q(g)] =
+     iħQ({f, g}), Q(1) = I and Q(q), Q(p) irreducible. GROENEWOLD-VAN
+     HOVE: no such map exists on all polynomials in q, p (it breaks at
+     degree 4: q²p² = {q³, p³}/9 = {q²p, qp²}/3, and the two brackets are
+     forced to quantise differently). Hence quantisation is a CHOICE (Weyl
+     ordering, geometric quantisation with a polarisation, deformation
+     quantisation), correct only to leading order in ħ. Common mistakes:
+     forgetting the ½ (or the Maslov index) in Bohr-Sommerfeld; confusing
+     the action I with the Lagrangian action integral. Now you try: for H
+     = |p| + |q| find I(E), H(I) and the period. (I = E²/π, H = √(πI),
+     period 4E)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Operator algebra and measurement (Pauli matrices σₓ, σ_y, σ_z;
+    ħ = 1 unless shown).
+    a) [σₓ, σ_y]                       b) σₓσ_y
+    c) eigenvalues of σₓ               d) (n·σ)² for a unit vector n
+    e) eigenvalues of σₓ + σ_z         f) e^{−iθσ_z/2}
+    g) e^{iπσₓ/2}                      h) ⟨σ_z⟩ and ⟨σ_y⟩ in (1, i)/√2
+    i) [x, p²]                         j) [x, f(p)] and [p, V(x)]
+    k) [Lₓ, L_y]                       l) [H, a] for the oscillator
+    m) ΔSₓ in the state |↑_z⟩          n) tr[A, B] for n × n matrices
+    o) Heisenberg-picture x(t) for H = p²/(2m)
+    p) for ψ = (1, 2i, 2)/3 and A = diag(1, 2, 3): P(A = 3), ⟨A⟩, ΔA
+    q) the width σ(t) of a free Gaussian packet with σ(0) = σ₀
+    r) d⟨x⟩/dt and d⟨p⟩/dt for H = p²/(2m) + V(x) (Ehrenfest)
+    Answers:
+      a) 2iσ_z     b) iσ_z      c) ±1        d) I
+      e) ±√2       f) diag(e^{−iθ/2}, e^{iθ/2})         g) iσₓ
+      h) 0 and 1   i) 2iħp      j) iħf′(p), −iħV′(x)  k) iħL_z
+      l) −ħωa      m) ħ/2       n) 0         o) x + pt/m
+      p) 4/9, 7/3, 2/3 (⟨A²⟩ = 53/9)
+      q) σ(t)² = σ₀² + (ħt/(2mσ₀))²      r) ⟨p⟩/m and −⟨V′(x)⟩
+
+M2. Standard spectra and matrix elements (mₑ = 9.109 × 10⁻³¹ kg).
+    a) box: E₃/E₁                      b) electron in a 1 nm box: E₁ (eV)
+    c) same: E₂ − E₁ and the photon wavelength
+    d) oscillator: E₄ in units of ħω
+    e) 3D isotropic oscillator: degeneracy of E = ħω(N + 3/2), N = 3
+    f) hydrogen: E₃                    g) Balmer-α wavelength (R∞ = 1.0973731
+                                          × 10⁷ m⁻¹, infinite nuclear mass)
+    h) hydrogen degeneracy of n = 4 (no spin)
+    i) ⟨n|x|n⟩ and ⟨0|x²|0⟩             j) ⟨1|x|0⟩
+    k) ⟨n|p²|n⟩                         l) a†|n⟩ and a|5⟩
+    m) coherent state |α⟩, α = 2: ⟨N⟩ and P(n = 0)
+    n) same: ΔN                         o) V = −λδ(x): bound-state energies
+    p) hydrogen: ionisation energy from n = 2
+    q) oscillator: ⟨0|x⁴|0⟩ in units (ħ/2mω)²
+    Answers:
+      a) 9         b) 0.376 eV              c) 1.128 eV, ≈ 1099 nm
+      d) 9/2       e) 10 ((N + 1)(N + 2)/2)  f) −1.512 eV
+      g) 656.1 nm  h) 16        i) 0 and ħ/(2mω)      j) √(ħ/(2mω))
+      k) (mħω/2)(2n + 1)        l) √(n + 1)|n + 1⟩, √5|4⟩
+      m) 4, e⁻⁴ ≈ 0.0183        n) 2 (Poisson: ΔN = |α|)
+      o) exactly one: −mλ²/(2ħ²)  p) 3.401 eV    q) 3
+
+M3. Angular momentum, spin, density matrices, entanglement.
+    a) l = 2: eigenvalue of L² and multiplet dimension
+    b) 1 ⊗ ½                           c) 1 ⊗ 1
+    d) ½ ⊗ ½ ⊗ ½                        e) is [[½, ½], [½, ½]] pure?
+    f) ρ = diag(3/4, 1/4): tr ρ² and S = −tr ρ ln ρ
+    g) ρ = [[0.7, 0.2 − 0.1i], [0.2 + 0.1i, 0.3]]: Bloch vector, |r|,
+       eigenvalues
+    h) is (|00⟩ + |01⟩ + |10⟩ + |11⟩)/2 entangled?
+    i) (|00⟩ + |11⟩)/√2: reduced state and entropy
+    j) cos α|00⟩ + sin α|11⟩, α = π/6: reduced state
+    k) entangled? (|00⟩ + 2|01⟩ + 3|10⟩ + 6|11⟩)/√50 and
+       (|00⟩ + |01⟩ + |10⟩ − |11⟩)/2
+    l) singlet: ⟨σ_a ⊗ σ_b⟩ for axes 60° apart
+    m) CHSH bound: classical and quantum (Tsirelson)
+    n) H = ωS_z, initial |↑ₓ⟩: ⟨Sₓ(t)⟩
+    o) beam |↑_z⟩ → keep Sₓ = +ħ/2 → measure S_z: fraction of the original
+       beam ending in |↓_z⟩
+    p) dimension of the state space of 10 qubits
+    q) e^{−i2πS_z/ħ} on spin ½          r) Clebsch-Gordan: ⟨½ ½; ½ −½|1 0⟩
+    Answers:
+      a) 6ħ², 5     b) 3/2 ⊕ 1/2 (6 = 4 + 2)    c) 2 ⊕ 1 ⊕ 0 (9 = 5 + 3 + 1)
+      d) 3/2 ⊕ 1/2 ⊕ 1/2         e) yes (tr ρ² = 1; it is |+ₓ⟩⟨+ₓ|)
+      f) 5/8, ≈ 0.5623           g) r = (0.4, 0.2, 0.4), 0.6, 0.8 and 0.2
+      h) no (|+⟩|+⟩; coefficient determinant 0)   i) I/2, ln 2
+      j) diag(3/4, 1/4)          k) no (1·6 − 2·3 = 0); yes (det ≠ 0)
+      l) −1/2      m) 2 and 2√2 ≈ 2.828       n) (ħ/2)cos ωt
+      o) 1/4       p) 2¹⁰ = 1024 (complex)     q) −I
+      r) 1/√2
+
+M4. Operators on Hilbert space: bounded? self-adjoint? spectrum?
+    a) (Mf)(x) = xf(x) on L²[0, 1]      b) (Mf)(x) = xf(x) on L²(R)
+    c) −d²/dx² on L²(R)                 d) −d²/dx² on L²[0, π], Dirichlet
+    e) −d²/dx² on L²[0, π], Neumann     f) −d²/dx² on L²[0, 2π], periodic
+    g) −i d/dx on L²[0, ∞)             h) the right shift S on ℓ²(N)
+    i) the oscillator H/(ħω)            j) the hydrogen Hamiltonian
+    k) U(t) = e^{−itH} for H = −i d/dx on L²(R)
+    l) generator H of (U(t)f)(x) = e^{itx}f(x) (U = e^{−itH})
+    m) Volterra (Vf)(x) = ∫₀ˣf on L²[0, 1]
+    n) an orthogonal projection P ≠ 0, I
+    o) e^{−itσₓ} and its value at t = π
+    p) a symmetric operator defined on all of ℋ
+    Answers:
+      a) bounded, s.a., spectrum [0, 1], no eigenvalues
+      b) unbounded, s.a. on {f : xf ∈ L²}, spectrum R (continuous)
+      c) unbounded, s.a. (on H²), spectrum [0, ∞), no eigenvalues
+      d) eigenvalues n², n ≥ 1          e) n², n ≥ 0
+      f) n², n ≥ 0, each n ≥ 1 doubly degenerate (e^{±inx})
+      g) symmetric (ψ(0) = 0), deficiency indices unequal: no s.a. extension
+      h) bounded, not normal (S*S = I ≠ SS*), spectrum the closed unit disc
+      i) {n + ½ : n ≥ 0}                j) {−13.6 eV/n²} ∪ [0, ∞)
+      k) (U(t)f)(x) = f(x − t)          l) H = −x
+      m) compact, not s.a., spectrum {0}, ‖V‖ = 2/π
+      n) spectrum {0, 1}                o) cos t I − i sin t σₓ; −I
+      p) bounded and s.a. (Hellinger-Toeplitz)
+
+M5. Special relativity (c = 1 unless units are shown).
+    a) s² = −t² + x² for (t, x) = (5, 3); proper time
+    b) the same for (3, 5)              c) the same for (4, 4)
+    d) γ for v = 0.6, 0.8, 0.99         e) velocity addition 0.6 ⊕ 0.8
+    f) the rapidity of v = 0.6
+    g) muon (τ₀ = 2.197 μs) with γ = 20: lab lifetime and mean path
+    h) twin to a star 4 ly away and back at 0.8: ages of both
+    i) m = 3, |p| = 4: E and v
+    j) invariant mass of two photons of energy E: head-on; parallel
+    k) Doppler factor ν_obs/ν_emit for a source receding at 0.6
+    l) threshold kinetic energy of p + p → p + p + π⁰ on a fixed target
+       (m_p = 938.27 MeV, m_π = 134.98 MeV)
+    m) boost the event (t, x) = (1, 0) by v = 0.6
+    n) dimensions of the Lorentz and Poincaré groups
+    o) constant proper acceleration 1 from rest: t, x, v at τ = 2
+    Answers:
+      a) −16 (timelike), 4      b) +16 (spacelike)      c) 0 (null)
+      d) 1.25, 5/3, ≈ 7.089     e) 35/37 ≈ 0.9459
+      f) artanh 0.6 = ln 2 ≈ 0.6931 (rapidities add: 0.6 ⊕ 0.6 = tanh(2 ln
+         2) = 15/17)
+      g) 43.94 μs, ≈ 13.2 km    h) Earth 10 y, traveller 6 y
+      i) 5, 0.8    j) 2E, 0     k) 1/2        l) ≈ 279.7 MeV
+      m) (t′, x′) = (1.25, −0.75)              n) 6, 10
+      o) t = sinh 2 ≈ 3.627, x = cosh 2 − 1 ≈ 2.762, v = tanh 2 ≈ 0.9640
+
+M6. Curvature: give the Gaussian curvature K (2D) or what is asked.
+    a) dx² + dy²                        b) dr² + r²dφ²: Γ^r_{φφ}, Γ^φ_{rφ}, K
+    c) a²(dθ² + sin²θ dφ²): K and R     d) (dx² + dy²)/y²
+    e) 4(dx² + dy²)/(1 − x² − y²)²      f) dr² + sinh²r dφ²
+    g) dr² + f(r)²dφ²: general K; then f = ½ sin 2r
+    h) e^{2u}(dx² + dy²): general K; then u = −ln y; u = x² + y² at 0
+    i) torus R = 2, r = 1: K on the outer and inner equators; ∫K dA
+    j) the cylinder dz² + dφ²
+    k) Gauss-Bonnet: ∫K dA for a closed surface of genus 3
+    l) holonomy angle around θ₀ = π/4 on the unit sphere
+    m) independent components of Riemann in dimension 2, 3, 4
+    n) the round S³ of radius 1: Ricci and scalar curvature
+    o) upper half-plane: the distance from i to 3i; the geodesics
+    p) vacuum Einstein equations in 3D: what do they imply?
+    Answers:
+      a) 0         b) −r, 1/r, 0            c) 1/a², 2/a²
+      d) −1        e) −1        f) −1       g) −f″/f; 4
+      h) −e^{−2u}Δu; −1; −4     i) 1/3, −1; 0 (χ = 0)
+      j) 0         k) 2π(2 − 2g) = −8π      l) 2π(1 − √2/2) ≈ 1.8403
+      m) n²(n² − 1)/12: 1, 6, 20             n) R_{ij} = 2g_{ij}, R = 6
+      o) ln 3 ≈ 1.0986; vertical lines and semicircles centred on R
+      p) flatness (in 3D Riemann is determined by Ricci): no local degrees
+         of freedom, no gravitational waves
+
+M7. Black holes and cosmology (G = 6.674 × 10⁻¹¹, c = 2.998 × 10⁸,
+    M_⊙ = 1.989 × 10³⁰ kg, SI units; G = c = 1 where M appears alone).
+    a) r_s of the Sun                   b) r_s of the Earth (5.972 × 10²⁴ kg)
+    c) r_s of Sgr A* (4.3 × 10⁶ M_⊙) in AU
+    d) ISCO and photon sphere radii in units of r_s
+    e) ISCO energy per unit mass and radiative efficiency
+    f) critical impact parameter in units of r_s
+    g) static clock rate at r = 4M     h) redshift z from r = 3M to ∞
+    i) deflection of light at the solar limb
+    j) Kretschmann scalar at the horizon of a 10 M_⊙ hole
+    k) maximal horizon-to-singularity proper time, 10 M_⊙
+    l) Hawking temperature ħc³/(8πGMk_B) for M = M_⊙
+    m) a(t) for flat matter, radiation, Λ-dominated universes
+    n) age for H₀ = 70 km/s/Mpc: 1/H₀ and Einstein-de Sitter 2/(3H₀)
+    o) critical density for H₀ = 70 km/s/Mpc
+    p) perihelion advance of Mercury per century
+    q) deceleration q₀ = Ω_m/2 − Ω_Λ for Ω_m = 0.3, Ω_Λ = 0.7
+    Answers:
+      a) 2.95 km   b) 8.87 mm   c) 1.27 × 10¹⁰ m ≈ 0.085 AU
+      d) 3 and 1.5              e) √(8/9) ≈ 0.9428, ≈ 5.72%
+      f) 3√3/2 ≈ 2.598          g) √(1/2) ≈ 0.7071     h) √3 − 1 ≈ 0.732
+      i) 1.75″     j) 12/r_s⁴ ≈ 1.58 × 10⁻¹⁷ m⁻⁴ (smaller for larger holes)
+      k) ≈ 1.55 × 10⁻⁴ s        l) ≈ 6.17 × 10⁻⁸ K
+      m) t^{2/3}, t^{1/2}, e^{Ht}
+      n) 13.97 Gyr, 9.31 Gyr    o) 9.20 × 10⁻²⁷ kg/m³ (≈ 5.5 protons/m³)
+      p) ≈ 43.0″                q) −0.55 (accelerating)
+
+M8. Differential forms and electromagnetism (ħ = c = 1 unless SI shown).
+    a) d(x dy)                          b) d(x²y dx + x dy)
+    c) ω = (y dx − x dy)/(x² + y²): dω and ∮ω over the unit circle (ccw)
+    d) Hodge star in R³: *dx and *(dx ∧ dy)
+    e) curl of A = (B/2)(−y, x, 0)       f) curl of A = (0, Bx, 0)
+    g) the gauge function relating e) and f)
+    h) AB phase for a flux Φ; for Φ = h/e (SI)
+    i) E and B from a = −φ dt + A·dx
+    j) E² − B² and E·B for E = (1, 0, 0), B = (0, 1, 0)
+    k) the same for E = (3, 0, 0), B = (0, 0, 4); simplest frame
+    l) how ψ and D = d − ieA transform under A ↦ A + dλ
+    m) Maxwell equations contained in dF = 0
+    n) independent components of F in 4D; of a U(1) gauge parameter
+    o) minimal Dirac magnetic charge in units of e (α ≈ 1/137.036)
+    p) flux quanta h/e and h/(2e) in webers
+    Answers:
+      a) dx ∧ dy    b) (1 − x²) dx ∧ dy
+      c) 0 (closed away from 0), −2π (ω = −dθ: closed, not exact)
+      d) dy ∧ dz, dz                     e) (0, 0, B)      f) (0, 0, B)
+      g) λ = Bxy/2 (A_f − A_e = ∇λ)      h) eΦ/ħ; 2π (no visible effect)
+      i) E = −∇φ − ∂ₜA, B = ∇×A          j) 0 and 0 (a null field, like a
+                                            plane wave)
+      k) −7, 0: a frame with E = 0 and |B| = √7
+      l) ψ ↦ e^{ieλ}ψ, Dψ ↦ e^{ieλ}Dψ
+      m) ∇·B = 0, ∇×E + ∂ₜB = 0          n) 6; one function λ
+      o) 1/(2α) ≈ 68.5                  p) 4.136 × 10⁻¹⁵, 2.068 × 10⁻¹⁵
+
+M9. Non-abelian gauge theory and topology (A anti-Hermitian, D = d + A).
+    a) dim su(2), su(3), su(N)          b) dim so(n); so(10)
+    c) gauge bosons of SU(3) × SU(2) × U(1)
+    d) F for constant A = i(σ₁ dx + σ₃ dy)
+    e) F for A = iσ₃ x dy                f) F for pure gauge A = −(dg)g⁻¹
+    g) how F, tr F ∧ F and tr(F_{μν}F^{μν}) transform
+    h) Dφ for φ in the adjoint representation
+    i) Bianchi identity and Yang-Mills equations
+    j) Yang-Mills action bound in terms of k = (1/8π²)|∫tr F ∧ F|
+    k) instanton number of the BPST instanton; condition for equality in j)
+    l) π₁(U(1)), π₂(S²), π₃(SU(2)), π₁(SO(3))
+    m) c₁ of TS²; c₁ of the tautological line bundle over CP¹
+    n) U(1) holonomy e^{i∮a} of a = (1/3)dθ around the circle
+    o) Chern-Simons 3-form whose d is tr F ∧ F
+    p) massive gauge bosons after SU(2) × U(1) → U(1)_em
+    Answers:
+      a) 3, 8, N² − 1           b) n(n − 1)/2; 45      c) 8 + 3 + 1 = 12
+      d) F_{xy} = [A_x, A_y] = −[σ₁, σ₃] = 2iσ₂, F = 2iσ₂ dx ∧ dy
+      e) iσ₃ dx ∧ dy (commuting components: abelian-like)   f) 0
+      g) gFg⁻¹; invariant; invariant      h) dφ + [A, φ]
+      i) DF = 0 (identity); D*F = 0 (or = *J)
+      j) S ≥ 8π²k/g²             k) 1; F = ±*F (self-dual/anti-self-dual)
+      l) Z, Z, Z, Z/2            m) 2 (= χ(S²)); −1
+      n) e^{2πi/3}               o) tr(A ∧ dA + (2/3)A ∧ A ∧ A)
+      p) 3 (W⁺, W⁻, Z)
+
+M10. Symplectic forms, brackets and maps (ω = dq ∧ dp in 2D; {f, g} =
+     ∑(f_q g_p − f_p g_q)).
+     a) is dx ∧ dy + dz ∧ dw symplectic on R⁴?
+     b) is dx ∧ dy symplectic on R³?
+     c) is x dx ∧ dy symplectic on R²? on {x > 0}?
+     d) is (1 + x²) dx ∧ dy symplectic on R²?
+     e) is dx₁ ∧ dy₁ + x₁ dx₂ ∧ dy₂ symplectic on {x₁ > 0} ⊆ R⁴?
+     f) ω ∧ ω for ω = dq₁ ∧ dp₁ + dq₂ ∧ dp₂
+     g) {q, p}, {q², p²}, {q³, p}
+     h) {Lₓ, L_y} and {L_z, x}          i) {L², L_z}
+     j) X_H and the flow for H = (q² + p²)/2
+     k) is (q, p) ↦ (p, −q) symplectic?  l) (q, p) ↦ (q, p + f′(q))?
+     m) Q = q², P = p/(2q)?              n) Q = q cos p, P = q sin p?
+     o) the linear map [[1, 2], [3, 7]]? [[2, 0], [0, 1]]?
+     p) on S² with ω = sin θ dθ ∧ dφ: total area, and the Hamiltonian
+        generating rotation about the z-axis
+     q) the volume form ω²/2! for ω in f); ∫ over the unit ball of R⁴
+     Answers:
+       a) yes        b) no (odd dimension; kernel ∂_z)
+       c) no (degenerate on x = 0); yes      d) yes (2D: closed automatically)
+       e) no: d(x₁ dx₂ ∧ dy₂) = dx₁ ∧ dx₂ ∧ dy₂ ≠ 0 (not closed)
+       f) 2 dq₁ ∧ dp₁ ∧ dq₂ ∧ dp₂           g) 1, 4qp, 3q²
+       h) L_z, y     i) 0
+       j) X_H = p∂_q − q∂_p: q = q₀cos t + p₀sin t, p = p₀cos t − q₀sin t
+       k) yes (det 1)             l) yes (a "fibre translation" by df)
+       m) yes ({Q, P} = 1, q ≠ 0)  n) no ({Q, P} = q)
+       o) yes (det 1); no (det 2)
+       p) 4π; H = z = cos θ (ι_{∂φ}ω = −sin θ dθ = d cos θ)
+       q) dq₁ ∧ dp₁ ∧ dq₂ ∧ dp₂; π²/2
+
+M11. Hamiltonian mechanics, integrability and semiclassics.
+     a) Hamilton's equations for H = p²/(2m) + V(q)
+     b) Legendre transform of L = ½(q̇₁² + q̇₂²) + q̇₁q₂
+     c) Legendre transform of L = −m√(1 − v²) (c = 1)
+     d) oscillator m = 1, ω = 2, E = 6: action I
+     e) H = I²: frequency              f) box of width L: I(E), period
+     g) Bohr-Sommerfeld for V = F|q| (smooth turning points): Eₙ
+     h) Bohr-Sommerfeld/Bohr for hydrogen: Eₙ
+     i) Noether: symmetries giving momentum, angular momentum, energy
+     j) moment map of S¹ acting on (C, dx ∧ dy) by rotation
+     k) image of the moment map of T² acting on CP² (shape)
+     l) C^{n+1}//S¹ at level |z|² = 1: the space and its real dimension
+        for n = 2
+     m) dimension of T*R³//SO(3) at a generic μ ≠ 0
+     n) number of commuting integrals for integrability in dim 2n; what
+        the compact level sets are
+     o) does B⁴(2) embed symplectically in B²(1) × R²? volume-preservingly?
+     p) period of small oscillations of H = p²/2 − cos q
+     Answers:
+       a) q̇ = p/m, ṗ = −V′(q)
+       b) p₁ = q̇₁ + q₂, p₂ = q̇₂; H = ½(p₁ − q₂)² + ½p₂²
+       c) p = mγv, H = √(p² + m²)
+       d) E/ω = 3    e) ω = 2I    f) I = L√(2mE)/π, period 2L/v
+       g) Eₙ = (3πħF(n + ½)/(4√(2m)))^{2/3}
+       h) −me⁴/(2ħ²n²) = −13.6 eV/n² (Gaussian units)
+       i) translations, rotations, time translations
+       j) μ = −|z|²/2 (up to sign and constant)
+       k) a triangle (Delzant polytope)      l) CP², 4
+       m) 6 − 3 − 1 = 2 (the radial phase space {(r, p_r) : r > 0}, with
+          H = p_r²/2m + |μ|²/(2mr²) + V(r))
+       n) n; tori Tⁿ (Arnold-Liouville)
+       o) no (Gromov non-squeezing); yes (a linear map with determinant 1)
+       p) 2π (ω = 1)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every symmetric operator is self-adjoint.
+     b) An everywhere-defined symmetric operator on ℋ is bounded.
+     c) [x, p] = iħ can be realised by finite matrices.
+     d) Every self-adjoint operator has an eigenvector.
+     e) A density matrix ρ is pure iff tr ρ² = 1.
+     f) The reduced state of a pure bipartite state is pure.
+     g) A 2π rotation acts as the identity on spin-½ vectors.
+     h) The Schwarzschild horizon r = r_s is a curvature singularity.
+     i) In 4 dimensions, Ricci-flat implies flat.
+     j) In 2 dimensions the Einstein tensor vanishes identically.
+     k) A timelike geodesic maximises proper time among ALL curves
+        between its endpoints.
+     l) A constant non-abelian gauge potential has zero curvature.
+     m) F is gauge invariant for G = U(1).
+     n) F is gauge invariant for G = SU(2).
+     o) Every nowhere-vanishing 2-form on R² is symplectic.
+     p) S⁴ admits a symplectic form.
+     q) Symplectomorphisms preserve volume.
+     r) Volume-preserving maps of R⁴ are symplectic.
+     s) Dirac's rule can be realised on all polynomials in q, p.
+     t) Locally, every symplectic form looks like ∑dqᵢ ∧ dpᵢ.
+     Answers:
+       a) F: −i d/dx on [0, 1] with ψ(0) = ψ(1) = 0 (D2)
+       b) T (Hellinger-Toeplitz)       c) F: trace argument (D2)
+       d) F: multiplication by x on L²[0, 1]
+       e) T                            f) F: a Bell state, ρ₁ = I/2
+       g) F: it multiplies by −1 (the ray is unchanged)
+       h) F: K = 12r_s²/r⁶ is finite there
+       i) F: Schwarzschild             j) T (R_{ij} = ½Rg_{ij} in 2D)
+       k) F: in Schwarzschild a circular orbit and a radial up-and-down
+          geodesic can join the same two events with different proper
+          times (geodesics are only locally maximal, until conjugate points)
+       l) F: A = (i/2)(σ₁ dx + σ₂ dy) has F = −(i/2)σ₃ dx ∧ dy
+       m) T                            n) F: F ↦ gFg⁻¹
+       o) T (closed in 2D, non-degenerate)
+       p) F: H²(S⁴) = 0
+       q) T (Liouville: ωⁿ preserved)
+       r) F: (q₁, p₁, q₂, p₂) ↦ (2q₁, 2p₁, q₂/2, p₂/2) pulls ω back to 4dq₁
+          ∧ dp₁ + ¼dq₂ ∧ dp₂
+       s) F: Groenewold-van Hove       t) T (Darboux)
+
+TEACHING TIPS
+  Struggling: tie every abstract statement to a 2 × 2 example first —
+  Pauli matrices for observables and uncertainty, the Bloch ball for
+  density matrices, the round sphere for Christoffel symbols and holonomy
+  (which is literally gauge-theory curvature), and (R², dq ∧ dp) for
+  Hamiltonian flows. Insist on writing the conventions at the top of
+  every computation (signature −+++, ι_Xω = ±dH, D = d + A with A
+  anti-Hermitian or d − ieA): most "wrong" answers in this topic are sign
+  slips. In GR, first identify the conserved quantities (Killing vectors)
+  and reduce to a one-dimensional effective potential; in gauge theory,
+  compute D² before anything else. Harder: prove von Neumann's
+  extension theorem and Stone's theorem; derive the Schwarzschild metric
+  from the vacuum equations and prove Birkhoff's theorem; show the
+  Kruskal extension is maximal; prove Darboux's theorem by Moser's
+  trick; prove Arnold-Liouville; construct the BPST instanton and check
+  k = 1; show that the prequantum line bundle of (S², kω/4π) exists iff k
+  ∈ Z and relate this to spin j = k/2 and the Dirac monopole; and read
+  about the Atiyah-Singer index theorem as the common home of
+  instantons, Chern numbers and anomalies.
+
+
+================================================================================
+TOPIC 12.28 — MATHEMATICAL FINANCE: ARBITRAGE PRICING, BLACK-SCHOLES,
+STOCHASTIC CONTROL
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - MARKET MODEL: a bank account Bₜ (Bₜ = Rᵗ in discrete time, e^(rt) in
+    continuous time) and risky assets Sₜ on (Ω, 𝓕, (𝓕ₜ), P). A trading
+    strategy is predictable; it is SELF-FINANCING if the wealth changes
+    only through price changes: dXₜ = Δₜ dSₜ + (Xₜ − ΔₜSₜ) r dt. An
+    ARBITRAGE is a self-financing strategy with X₀ = 0, X_T ≥ 0 a.s. and
+    P(X_T > 0) > 0. LAW OF ONE PRICE: equal payoffs ⇒ equal prices.
+  - STATIC NO-ARBITRAGE RELATIONS (no model needed): forward price F =
+    S₀e^(rT) (S₀e^((r−q)T) with dividend yield q); PUT-CALL PARITY C − P =
+    S₀ − Ke^(−rT); bounds (S₀ − Ke^(−rT))⁺ ≤ C ≤ S₀, (Ke^(−rT) − S₀)⁺ ≤ P ≤
+    Ke^(−rT); C is decreasing and CONVEX in K with slope ≥ −e^(−rT)
+    (butterfly spreads have non-negative value).
+  - ONE-PERIOD BINOMIAL MODEL: S₁ ∈ {uS₀, dS₀}, gross rate R. No arbitrage
+    ⇔ d < R < u. Every claim V is REPLICATED by Δ = (V_u − V_d)/(S₀(u − d))
+    shares and B = (uV_d − dV_u)/(R(u − d)) in the bank, and
+    V₀ = (qV_u + (1 − q)V_d)/R with q = (R − d)/(u − d), independent of the
+    real probability p. q is the RISK-NEUTRAL probability.
+  - MULTI-PERIOD (CRR) MODEL: backward induction Vₙ = (qV_{n+1}^u +
+    (1 − q)V_{n+1}^d)/R, so V₀ = R⁻ᴺ E^Q[V_N]; for path-independent claims
+    V₀ = R⁻ᴺ ∑ C(N, j) qʲ(1 − q)^(N−j) f(S₀uʲd^(N−j)). With u = e^(σ√Δt),
+    d = 1/u, the CRR prices converge to Black-Scholes as Δt → 0 (CLT).
+  - FUNDAMENTAL THEOREMS OF ASSET PRICING. FTAP I: (finite Ω, or discrete
+    time — Dalang-Morton-Willinger) no arbitrage ⇔ there exists an
+    EQUIVALENT MARTINGALE MEASURE (EMM) Q ~ P under which all discounted
+    prices S̃ₜ = Sₜ/Bₜ are martingales (continuous time: "no free lunch
+    with vanishing risk", Delbaen-Schachermayer). FTAP II: an arbitrage-
+    free market is COMPLETE (every claim replicable) ⇔ the EMM is unique.
+    Arbitrage-free prices of a claim H are E^Q[H/B_T]; in an incomplete
+    market they form an interval between the sub- and super-replication
+    prices inf/sup over EMMs.
+  - BLACK-SCHOLES MODEL: dSₜ = μSₜ dt + σSₜ dWₜ, so Sₜ = S₀exp((μ − σ²/2)t
+    + σWₜ). GIRSANOV: with market price of risk θ = (μ − r)/σ and dQ/dP =
+    exp(−θW_T − θ²T/2), W̃ₜ = Wₜ + θt is a Q-Brownian motion and dS = rS dt
+    + σS dW̃. Unique EMM ⇒ complete market.
+  - BLACK-SCHOLES PDE: V_t + ½σ²S²V_SS + rSV_S − rV = 0, V(T, S) = f(S),
+    derived by DELTA-HEDGING (Δ = V_S makes the portfolio riskless) or by
+    FEYNMAN-KAC from V = e^(−r(T−t))E^Q[f(S_T) | Sₜ = S]. μ does not appear.
+  - BLACK-SCHOLES FORMULA: C = SN(d₁) − Ke^(−rτ)N(d₂), P = Ke^(−rτ)N(−d₂) −
+    SN(−d₁), d₁ = (ln(S/K) + (r + σ²/2)τ)/(σ√τ), d₂ = d₁ − σ√τ, τ = T − t.
+    N(d₂) = Q(S_T > K); digital call = e^(−rτ)N(d₂); asset-or-nothing =
+    SN(d₁). With dividend yield q replace S by Se^(−qτ). IMPLIED
+    VOLATILITY: the σ equating the formula to the market price (unique,
+    since vega > 0).
+  - GREEKS (call, no dividends): Δ = N(d₁), Γ = φ(d₁)/(Sσ√τ), vega =
+    Sφ(d₁)√τ, Θ = −Sφ(d₁)σ/(2√τ) − rKe^(−rτ)N(d₂), ρ = Kτe^(−rτ)N(d₂);
+    put: Δ = N(d₁) − 1, same Γ and vega. Identity Θ + rSΔ + ½σ²S²Γ = rV.
+    DELTA HEDGING neutralises first-order risk; DELTA-GAMMA hedging needs a
+    second option. A discretely rebalanced hedge has P&L ≈ ½Γ(ΔS)² + ΘΔt.
+  - AMERICAN OPTIONS: value = sup over stopping times τ ≤ T of
+    E^Q[e^(−rτ)g(S_τ)]; discrete time: SNELL ENVELOPE Uₙ = max(g(Sₙ),
+    E^Q[U_{n+1} | 𝓕ₙ]/R), optimal τ* = first n with Uₙ = g(Sₙ). An American
+    CALL on a non-dividend stock is never exercised early (= European); an
+    American PUT may be. Continuous time: free-boundary problem / variational
+    inequality max(V_t + 𝓛V − rV, g − V) = 0 with SMOOTH PASTING. PERPETUAL
+    PUT: S* = γK/(1 + γ), V = (K − S*)(S/S*)^(−γ) for S ≥ S*, γ = 2r/σ².
+  - INTEREST-RATE MODELS: zero-coupon bond P(t, T) = E^Q[exp(−∫ₜᵀ r_s ds) |
+    𝓕ₜ]; yield y = −ln P/(T − t); forward rate f(t, T) = −∂_T ln P(t, T);
+    par swap rate (1 − P(0, T_n))/∑ P(0, Tᵢ)δ. Short-rate models: VASICEK
+    dr = a(b − r)dt + σdW (Gaussian, affine, r can be negative), CIR dr =
+    a(b − r)dt + σ√r dW (r ≥ 0; r > 0 if 2ab ≥ σ² — Feller), Ho-Lee /
+    Hull-White (fit the initial curve). AFFINE models give P = exp(A(τ) −
+    B(τ)r); Vasicek B = (1 − e^(−aτ))/a. The bond PDE P_t + (drift)P_r +
+    ½(vol)²P_rr − rP = 0. HJM: under Q the forward-rate drift must be
+    α(t, T) = σ(t, T)∫ₜᵀ σ(t, s) ds.
+  - STOCHASTIC CONTROL: controlled diffusion dX = b(X, u)dt + σ(X, u)dW,
+    value V(t, x) = sup_u E[∫ₜᵀ f(X_s, u_s)ds + g(X_T) | Xₜ = x]. DYNAMIC
+    PROGRAMMING gives the HJB equation V_t + sup_u {b V_x + ½σ²V_xx + f} = 0,
+    V(T, ·) = g (infinite horizon, discount ρ: ρV = sup_u {...}). The
+    VERIFICATION THEOREM: a smooth (C^{1,2}, suitable growth) solution of HJB
+    equals the value, and the pointwise maximiser u*(t, x) is an optimal
+    feedback control. LQ problems reduce to a RICCATI ODE. Without
+    smoothness one uses VISCOSITY solutions.
+  - MERTON PORTFOLIO PROBLEM: wealth dX = X[(r + π(μ − r))dt + πσ dW] − c dt
+    with CRRA utility U(x) = x^(1−γ)/(1−γ). Ansatz V = f(t)x^(1−γ)/(1−γ)
+    gives the MERTON FRACTION π* = (μ − r)/(γσ²) (constant!), certainty-
+    equivalent rate r + θ²/(2γ), and with consumption and discount ρ on an
+    infinite horizon c*/X = [ρ − (1 − γ)(r + θ²/(2γ))]/γ; log utility
+    (γ = 1): π* = θ/σ (Kelly), c*/X = ρ. Several assets: π* = Σ⁻¹(μ − r𝟏)/γ.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. One-period binomial model: S₀ = 100, u = 1.2, d = 0.9, gross interest
+    R = 1.05. (a) Prove that the model is arbitrage-free iff d < R < u.
+    (b) Price a call with K = 100 by replication and by risk-neutral
+    expectation. (c) Price the put and verify put-call parity.
+    Answer: (a) proof below. (b) Δ = 2/3, B = −57.1429, C₀ = 9.5238,
+    q = 1/2. (c) P₀ = 4.7619; C₀ − P₀ = 4.7619 = 100 − 100/1.05.
+    Teacher explains: (a) A portfolio (Δ shares, B in the bank) with value
+    zero today has B = −ΔS₀ and value tomorrow ΔS₀(u − R) in the up state,
+    ΔS₀(d − R) in the down state. If R ≤ d, Δ = 1 gives two non-negative
+    values, at least one positive (u > d): arbitrage. If R ≥ u, take Δ = −1.
+    If d < R < u the two values have opposite signs for any Δ ≠ 0: no
+    arbitrage. (b) Replicate: ΔS₀u + BR = C_u = 20, ΔS₀d + BR = C_d = 0.
+    Subtracting, Δ = 20/(120 − 90) = 2/3, and BR = −2/3·90 = −60, so B =
+    −60/1.05 = −57.1429. Then C₀ = ΔS₀ + B = 66.6667 − 57.1429 = 9.5238.
+    Any other price is an arbitrage (sell the dearer of call and
+    replicating portfolio, buy the cheaper). Risk-neutral form: substitute
+    Δ and B into ΔS₀ + B to get C₀ = (qC_u + (1 − q)C_d)/R with
+    q = (R − d)/(u − d) = 0.15/0.3 = 1/2: C₀ = 0.5·20/1.05 = 9.5238 ✓.
+    Note q ∈ (0, 1) exactly when d < R < u, and E^Q[S₁] = RS₀.
+    (c) Put payoffs 0 and 10: P₀ = 0.5·10/1.05 = 4.7619, and
+    C₀ − P₀ = 4.7619 = S₀ − K/R ✓. Common mistakes: using the real
+    probability p to discount expected payoffs (p never enters); forgetting
+    that B is borrowed (negative). Now you try: same model, digital claim
+    paying 1 in the up state. (q/R = 0.47619)
+
+D2. Three-period binomial model: S₀ = 100, u = 1.1, d = 0.9, R = 1.02 per
+    period. Price the European call and put with K = 100 by backward
+    induction, find the hedge at time 0, and check put-call parity.
+    Answer: q = 0.6; C₀ = 10.3603, P₀ = 4.5925; Δ₀ = 0.62399, B₀ =
+    −52.039; C₀ − P₀ = 5.7678 = 100 − 100/1.02³.
+    Teacher explains: q = (1.02 − 0.9)/0.2 = 0.6. Terminal prices 133.1,
+    108.9, 89.1, 72.9 with risk-neutral probabilities q³ = 0.216,
+    3q²(1 − q) = 0.432, 3q(1 − q)² = 0.288, (1 − q)³ = 0.064. Call payoffs
+    33.1, 8.9, 0, 0:
+       C₀ = (0.216·33.1 + 0.432·8.9)/1.02³ = 10.9944/1.061208 = 10.3603.
+    Backward induction gives the same and the intermediate values: at
+    time 2, C = 22.9608, 5.2353, 0; at time 1, C_u = 15.5594, C_d = 3.0796.
+    The hedge at time 0: Δ₀ = (15.5594 − 3.0796)/(110 − 90) = 0.62399,
+    B₀ = C₀ − Δ₀S₀ = −52.039. The strategy is re-balanced each period and is
+    self-financing: the portfolio's value at each node equals the call's
+    value there. Put payoffs 0, 0, 10.9, 27.1: P₀ = (0.288·10.9 +
+    0.064·27.1)/1.061208 = 4.5925. Parity: C₀ − P₀ = 5.7678 and
+    100 − 100/1.061208 = 5.7678 ✓. Common mistakes: forgetting the binomial
+    coefficients (3 paths reach 108.9); discounting by R instead of R³.
+    Now you try: the digital call paying 1 if S₃ > 100. (0.648/1.061208 =
+    0.61062)
+
+D3. (a) Prove FTAP I for a one-period market with finitely many states
+    ω₁, ..., ω_m (all P(ωᵢ) > 0), bank account R and assets with prices
+    S₀ ∈ Rᵈ and payoffs S₁(ωᵢ). (b) State FTAP II. (c) In the trinomial
+    model S₀ = 100, S₁ ∈ {120, 100, 80}, R = 1, find all EMMs and the
+    interval of arbitrage-free prices of the call with K = 100.
+    Answer: (a) separating-hyperplane proof. (c) Q = (q, 1 − 2q, q),
+    0 < q < 1/2; prices 20q ∈ (0, 10); incomplete market.
+    Teacher explains: (a) (⇐) If Q ~ P with E^Q[S₁/R] = S₀, the discounted
+    gain of any holding θ, G(θ) = θ·(S₁/R − S₀), has E^Q[G] = 0, so G ≥ 0
+    a.s. forces G = 0 a.s. (Q charges every state): no arbitrage.
+    (⇒) Consider the set of attainable discounted gains
+    𝒦 = {G(θ) : θ ∈ Rᵈ} ⊆ Rᵐ, a linear subspace, and the simplex Δ = {x ≥ 0,
+    ∑xᵢ = 1}. No arbitrage says 𝒦 ∩ Δ = ∅. Δ is compact convex, 𝒦 is closed
+    convex, so a hyperplane strictly separates them: there is λ ∈ Rᵐ with
+    λ·k = 0 for k ∈ 𝒦 (a linear functional bounded on a subspace vanishes
+    there) and λ·x > 0 on Δ, so every λᵢ > 0 (take x = eᵢ). Put
+    Q(ωᵢ) = λᵢ/∑λⱼ: then Q ~ P and E^Q[G(θ)] = 0 for all θ, i.e.
+    E^Q[S₁/R] = S₀. □ (b) FTAP II: an arbitrage-free market is complete
+    iff the EMM is unique (finite Ω: iff the payoff matrix [R, S₁] has rank
+    m). (c) E^Q[S₁] = 100 and ∑Q = 1: 120q_u + 100q_m + 80q_d = 100 gives
+    q_u = q_d = q, q_m = 1 − 2q, all positive iff 0 < q < 1/2. A continuum
+    of EMMs ⇒ incomplete (3 states, 2 assets). Call payoffs (20, 0, 0):
+    price 20q ∈ (0, 10). The super-replication price 10 (hold ½ share,
+    borrow 40: payoffs 20, 10, 0 ≥ call) and sub-replication 0 are not
+    attained by any EMM. Common mistakes: allowing q = 0 (not equivalent);
+    thinking an incomplete market has no price (it has an interval). Now
+    you try: add the call as a traded asset at price 6. (q = 0.3, now
+    complete: Q = (0.3, 0.4, 0.3))
+
+D4. In the Black-Scholes model dS = μS dt + σS dW, (a) solve for Sₜ,
+    (b) use Girsanov to find the EMM Q and the Q-dynamics, (c) derive the
+    call formula C₀ = S₀N(d₁) − Ke^(−rT)N(d₂) from C₀ = e^(−rT)E^Q[(S_T −
+    K)⁺], (d) for S₀ = K = 100, μ = 0.10, r = 0.05, σ = 0.2, T = 1 compare
+    P(S_T > K) and Q(S_T > K).
+    Answer: (a) Sₜ = S₀exp((μ − σ²/2)t + σWₜ); (b) θ = (μ − r)/σ, dS =
+    rS dt + σS dW̃; (d) N(0.4) = 0.6554 versus N(0.15) = 0.5596.
+    Teacher explains: (a) Itô on ln S: d ln S = dS/S − ½(dS)²/S² =
+    (μ − σ²/2)dt + σ dW; integrate. (b) Let θ = (μ − r)/σ and Z_T =
+    exp(−θW_T − θ²T/2), a positive P-martingale with E[Z_T] = 1; define
+    dQ = Z_T dP. Girsanov: W̃ₜ = Wₜ + θt is a Q-Brownian motion, so
+       dS = μS dt + σS(dW̃ − θ dt) = rS dt + σS dW̃,
+    and e^(−rt)Sₜ = S₀exp(σW̃ₜ − σ²t/2) is a Q-martingale. Q is the only
+    EMM (θ is forced), so the market is complete. (c) Under Q, ln S_T =
+    ln S₀ + (r − σ²/2)T + σ√T Z, Z ~ N(0, 1). S_T > K ⇔ Z > −d₂ with d₂ =
+    (ln(S₀/K) + (r − σ²/2)T)/(σ√T). Split the expectation:
+    e^(−rT)E^Q[K𝟙{S_T>K}] = Ke^(−rT)N(d₂), and e^(−rT)E^Q[S_T𝟙{S_T>K}] =
+    S₀E[e^(σ√T Z − σ²T/2)𝟙{Z > −d₂}] = S₀N(d₂ + σ√T) = S₀N(d₁) (complete
+    the square: the density shifts by σ√T; equivalently change numéraire
+    to the stock). (d) Under P, d₂ᴾ = (μ − σ²/2)T/(σ√T) = 0.08/0.2 = 0.4:
+    P = N(0.4) = 0.6554; under Q, d₂ = 0.03/0.2 = 0.15: Q = N(0.15) =
+    0.5596. Q is NOT a forecast; it is a pricing device. Common mistakes:
+    forgetting the −σ²/2 Itô correction; using μ in the pricing formula.
+    Now you try: price the claim paying S_T² (S₀ = 100, r = 0.05, σ = 0.2,
+    T = 1). (S₀²e^((r + σ²)T) = 10000e^(0.09) = 10941.74)
+
+D5. Derive the Black-Scholes PDE by delta-hedging, state the Feynman-Kac
+    link, and compute call and put for S = K = 100, r = 0.05, σ = 0.2,
+    T = 1.
+    Answer: V_t + ½σ²S²V_SS + rSV_S − rV = 0; d₁ = 0.35, d₂ = 0.15,
+    C = 10.4506, P = 5.5735.
+    Teacher explains: Let V(t, S) be the price and form Π = V − ΔS. By Itô,
+       dV = (V_t + μSV_S + ½σ²S²V_SS)dt + σSV_S dW,
+       dΠ = (V_t + μSV_S + ½σ²S²V_SS − μΔS)dt + σS(V_S − Δ)dW.
+    Choose Δ = V_S: the dW term vanishes, so Π is riskless and must earn r
+    (otherwise arbitrage): dΠ = rΠ dt = r(V − SV_S)dt. Equating,
+       V_t + ½σ²S²V_SS + rSV_S − rV = 0,  V(T, S) = (S − K)⁺.
+    μ has cancelled. FEYNMAN-KAC: the solution is V(t, S) =
+    e^(−r(T−t))E^Q[f(S_T) | Sₜ = S] with dS = rS dt + σS dW̃ — the same
+    answer as D4. Numbers: d₁ = (0 + (0.05 + 0.02))/0.2 = 0.35, d₂ = 0.15,
+    N(0.35) = 0.63683, N(0.15) = 0.55962, e^(−0.05) = 0.95123:
+       C = 100·0.63683 − 95.123·0.55962 = 10.4506,
+       P = 95.123·0.44038 − 100·0.36317 = 5.5735.
+    Parity: C − P = 4.8771 = 100 − 95.1229 ✓. Common mistakes: hedging with
+    Δ = N(d₂); treating Δ as constant when differentiating Π (the argument
+    is a self-financing one, dΠ = dV − ΔdS). Now you try: the same with
+    r = 0. (C = P = 7.9656; ATM rule 0.4σ√T S = 8)
+
+D6. For the call in D5 compute Δ, Γ, vega, Θ and ρ, verify the identity
+    Θ + rSΔ + ½σ²S²Γ = rC, estimate the price change if S moves to 102, and
+    make a short position in 100 of these calls delta-gamma neutral using a
+    second call (K = 110, T = 0.5: Δ = 0.33489, Γ = 0.02576) and stock.
+    Answer: Δ = 0.63683, Γ = 0.018762, vega = 37.524, Θ = −6.4140/yr,
+    ρ = 53.232; identity 0.52253 = 0.05·10.4506; ΔC ≈ 1.3112 (exact
+    1.3105); buy 72.84 of the second call and 39.29 shares.
+    Teacher explains: φ(0.35) = 0.37524. Γ = φ(d₁)/(Sσ√T) = 0.37524/20 =
+    0.018762; vega = Sφ(d₁)√T = 37.524 (0.375 per vol point); Θ =
+    −Sφ(d₁)σ/2 − rKe^(−r)N(d₂) = −3.7524 − 2.6616 = −6.4140 per year
+    (−0.0176 per day); ρ = Ke^(−r)N(d₂) = 53.232. Identity (the BS PDE
+    itself): −6.4140 + 5·0.63683 + 0.02·10⁴·0.018762 = −6.4140 + 3.1842 +
+    3.7524 = 0.5225 = rC ✓. Taylor: ΔC ≈ Δ·2 + ½Γ·4 = 1.2737 + 0.0375 =
+    1.3112; the exact change is 1.3105. Hedge: short 100 calls has Δ =
+    −63.683, Γ = −1.8762. Buy x second calls with x·0.02576 = 1.8762, x =
+    72.84; the delta becomes −63.683 + 72.84·0.33489 = −39.29, so buy 39.29
+    shares. Now small moves cost nothing to second order. Common mistakes:
+    fixing delta first and then adding options (which re-introduces delta);
+    quoting vega per unit of σ as if per percentage point. Now you try: the
+    put's Δ and Γ. (−0.36317; 0.018762, same as the call)
+
+D7. Cox-Ross-Rubinstein: with Δt = T/n, u = e^(σ√Δt), d = 1/u, R =
+    e^(rΔt), (a) show q → 1/2 and that the risk-neutral log-return has
+    mean ≈ (r − σ²/2)Δt and variance ≈ σ²Δt; (b) explain why the binomial
+    call price converges to Black-Scholes; (c) tabulate the CRR price for
+    S = K = 100, r = 0.05, σ = 0.2, T = 1, n = 1, 2, 4, 10, 100, 1000.
+    Answer: (c) 12.1623, 9.5405, 9.9705, 10.2534, 10.4306, 10.4486 → 10.4506.
+    Teacher explains: (a) Expand: u ≈ 1 + σ√Δt + σ²Δt/2, d ≈ 1 − σ√Δt +
+    σ²Δt/2, R ≈ 1 + rΔt, so q = (R − d)/(u − d) ≈ (σ√Δt + (r − σ²/2)Δt)/
+    (2σ√Δt) = ½ + ((r − σ²/2)/(2σ))√Δt → ½. The log-step X = ±σ√Δt has
+    E^Q X = (2q − 1)σ√Δt ≈ (r − σ²/2)Δt and Var X = σ²Δt(1 − (2q − 1)²) ≈
+    σ²Δt. (b) ln(S_n/S₀) is a sum of n i.i.d. steps with total mean → (r −
+    σ²/2)T and variance → σ²T; by the Lindeberg CLT it converges in law to
+    N((r − σ²/2)T, σ²T), the Q-law of ln(S_T/S₀) in Black-Scholes. The
+    payoff is continuous and dominated by S_T (uniformly integrable), so
+    the discounted expectations converge. (c) n = 1: u = 1.2214, q =
+    0.57749, C = 12.1623; the table oscillates (even/odd n) and converges
+    at rate O(1/n): 10.4306 at n = 100, 10.4486 at n = 1000. Common
+    mistakes: taking q = p; forgetting that convergence of laws needs a
+    uniform-integrability check for unbounded payoffs. Now you try: q for
+    σ = 0.3, Δt = 1/12, r = 0.06. (u = 1.09046, d = 0.91704, q = 0.50727)
+
+D8. (a) Prove that an American call on a non-dividend-paying stock (r ≥ 0)
+    should never be exercised early. (b) Two-period model S₀ = 100, u = 1.2,
+    d = 0.8, R = 1.05: price the European and American puts with K = 100,
+    identify the optimal exercise rule and explain the Snell envelope.
+    Answer: (a) C_Am ≥ C_Eu ≥ S − Ke^(−r(T−t)) ≥ S − K. (b) European
+    6.2925, American 7.9932; exercise at the down node (S = 80).
+    Teacher explains: (a) At any t < T, the European call satisfies Cₜ ≥
+    Sₜ − Ke^(−r(T−t)) (compare with a forward). Hence C_Am(t) ≥ Cₜ ≥ Sₜ −
+    K: the option alive is worth at least the exercise value, so
+    exercising early never helps; C_Am = C_Eu. (Equivalently (S − K)⁺ is
+    convex with g(0) = 0, so e^(−rt)g(Sₜ) is a Q-submartingale and stopping
+    late is best.) For a PUT, Pₜ can be < K − Sₜ deep in the money (time
+    value of K). (b) q = (1.05 − 0.8)/0.4 = 0.625. Nodes: S₂ = 144, 96, 64,
+    put payoffs 0, 4, 36. At S₁ = 120: continuation (0.625·0 +
+    0.375·4)/1.05 = 1.4286 > 0 = exercise. At S₁ = 80: continuation
+    (0.625·4 + 0.375·36)/1.05 = 15.2381 < 20 = exercise: EXERCISE. Root:
+    (0.625·1.4286 + 0.375·20)/1.05 = 7.9932 > 0. European (no exercise
+    check): (0.625·1.4286 + 0.375·15.2381)/1.05 = 6.2925. Early-exercise
+    premium 1.7007. SNELL ENVELOPE: Uₙ = max(gₙ, E^Q[U_{n+1}|𝓕ₙ]/R) is the
+    smallest discounted Q-supermartingale dominating the payoff; τ* =
+    min{n : Uₙ = gₙ} is optimal, and U₀ = sup_τ E^Q[R^(−τ)g_τ]. The writer
+    super-hedges it by a strategy that consumes at nodes where the holder
+    should have exercised. Common mistakes: comparing continuation with the
+    EUROPEAN value rather than the American one at later nodes. Now you
+    try: same tree with K = 110. (European 11.8197, American 13.6905)
+
+D9. Perpetual American put in Black-Scholes (no expiry, no dividends).
+    (a) Show that on the continuation region V solves ½σ²S²V″ + rSV′ − rV
+    = 0 and find its general solution. (b) Using V(S*) = K − S* and smooth
+    pasting V′(S*) = −1, find the exercise boundary S* and V. (c) Evaluate
+    for K = 100, r = 0.05, σ = 0.2 at S = 100 and S = 60.
+    Answer: V = AS + BS^(−γ), γ = 2r/σ²; S* = γK/(1 + γ); V = (K −
+    S*)(S/S*)^(−γ) for S ≥ S*, K − S below. (c) γ = 2.5, S* = 71.4286,
+    V(100) = 12.3200, V(60) = 40.
+    Teacher explains: (a) With no expiry V does not depend on t, and in the
+    region where holding is optimal the discounted price is a Q-martingale:
+    the BS PDE without V_t. Try V = Sᵐ: ½σ²m(m − 1) + rm − r = 0, i.e.
+    (m − 1)(½σ²m + r) = 0, so m = 1 or m = −2r/σ² = −γ. (b) As S → ∞ the
+    put is worthless, so A = 0: V = BS^(−γ). Continuity at S*: BS*^(−γ) =
+    K − S*. Smooth pasting: −γBS*^(−γ−1) = −1, i.e. γ(K − S*)/S* = 1,
+    S* = γK/(1 + γ). (The value of a threshold rule "exercise at L" is
+    (K − L)(S/L)^(−γ); maximising over L gives the same S*, which is why
+    smooth pasting holds.) (c) γ = 0.1/0.04 = 2.5, S* = 250/3.5 = 71.4286,
+    V(100) = 28.5714·(1.4)^(−2.5) = 28.5714·0.43120 = 12.3200 — more than
+    the European put of any maturity at these parameters (5.5735 for T = 1).
+    S = 60 < S*: exercise immediately, V = 40. Verification: V ≥ (K − S)⁺,
+    V is C¹, and 𝓛V − rV = −rK < 0 in the stopping region: the variational
+    inequality max(𝓛V − rV, (K − S)⁺ − V) = 0 holds. Common mistakes: keeping
+    the S¹ term; imposing only continuity (every L gives a continuous
+    function; smooth fit selects the optimum). Now you try: r = 0.08,
+    σ = 0.4, K = 50, S = 50. (γ = 1, S* = 25, V = 12.5)
+
+D10. Vasicek model under Q: dr = a(b − r)dt + σ dW. (a) Solve for rₜ and
+     give its mean and variance. (b) Derive the bond PDE and show P(t, T) =
+     exp(A(τ) − B(τ)rₜ), τ = T − t, with B = (1 − e^(−aτ))/a. (c) For a =
+     0.5, b = 0.05, σ = 0.01, r₀ = 0.03 compute E[r₂], Var r₂, P(0, 2) and
+     the 2-year yield.
+     Answer: (a) rₜ = b + (r₀ − b)e^(−at) + σ∫₀ᵗ e^(−a(t−s))dW_s; mean
+     b + (r₀ − b)e^(−at), variance σ²(1 − e^(−2at))/(2a). (c) 0.042642,
+     8.6466·10⁻⁵, B = 1.26424, A = −0.036721, P = 0.92807, y = 3.7324%.
+     Teacher explains: (a) d(e^(at)rₜ) = e^(at)(ab dt + σ dWₜ); integrate.
+     The stochastic integral is Gaussian with Itô-isometry variance
+     σ²∫₀ᵗ e^(−2a(t−s))ds. (b) P(t, T) = E^Q[exp(−∫ₜᵀ r ds) | rₜ] = F(t, rₜ).
+     Since e^(−∫₀ᵗ r)F(t, rₜ) is a Q-martingale its drift vanishes:
+        F_t + a(b − r)F_r + ½σ²F_rr − rF = 0,  F(T, r) = 1.
+     Try F = exp(A(τ) − B(τ)r) (∂_t = −∂_τ): the terms in r give B′ = 1 − aB,
+     B(0) = 0 ⇒ B = (1 − e^(−aτ))/a; the constant terms give A′ = −abB +
+     ½σ²B², A(0) = 0, whose solution is
+        A(τ) = (b − σ²/(2a²))(B − τ) − σ²B²/(4a).
+     (c) e^(−1) = 0.36788: E[r₂] = 0.05 − 0.02·0.36788 = 0.042642; Var =
+     10⁻⁴(1 − e^(−2))/1 = 8.6466·10⁻⁵. B(2) = 2(1 − 0.36788) = 1.26424;
+     A = 0.0498·(−0.73576) − 10⁻⁴·1.59830/2 = −0.036641 − 0.000080 =
+     −0.036721; P = exp(−0.036721 − 0.037927) = 0.92807; y = −ln P/2 =
+     3.7324%. As τ → ∞ the yield tends to b − σ²/(2a²) = 4.98%. Common
+     mistakes: using the P-drift (the market price of rate risk matters);
+     forgetting the convexity term −σ²B²/(4a). Now you try: the duration
+     −∂ ln P/∂r for τ = 2. (B = 1.26424, less than τ = 2 by mean reversion)
+
+D11. (a) Derive, heuristically from the dynamic programming principle, the
+     HJB equation for V(t, x) = inf_u E[∫ₜᵀ f(X_s, u_s)ds + g(X_T) | Xₜ = x]
+     with dX = b(X, u)dt + σ(X, u)dW, and state the verification theorem.
+     (b) Solve the LQ problem dX = u dt + σ dW, cost ∫ₜᵀ (X² + u²)ds + X_T².
+     (c) Redo (b) without terminal cost and evaluate V(0, 1) for T = 1,
+     σ = 1.
+     Answer: (a) V_t + inf_u {b V_x + ½σ²V_xx + f} = 0, V(T, ·) = g.
+     (b) V = x² + σ²(T − t), u* = −x. (c) V = tanh(T − t)x² + σ² ln cosh(T −
+     t), u* = −tanh(T − t)x; V(0, 1) = 0.76159 + 0.43378 = 1.19537.
+     Teacher explains: (a) DPP: V(t, x) = inf_u E[∫ₜ^(t+h) f ds + V(t + h,
+     X_(t+h))]. Apply Itô to V over [t, t + h] with the control frozen at u:
+     E V(t + h, X) = V + h(V_t + bV_x + ½σ²V_xx) + o(h). Subtract V, divide
+     by h, let h → 0: 0 = inf_u {f + V_t + bV_x + ½σ²V_xx}. VERIFICATION:
+     if w ∈ C^{1,2} with polynomial growth solves HJB with w(T) = g, then for
+     every admissible u, Itô + taking expectations gives w(t, x) ≤ J(t, x; u);
+     equality holds for the feedback u*(t, x) attaining the infimum (if the
+     closed-loop SDE is well posed), so w = V and u* is optimal. (b) HJB:
+     V_t + inf_u {uV_x + u²} + x² + ½σ²V_xx = 0; the infimum is at u* =
+     −V_x/2 and equals −V_x²/4. Ansatz V = p(t)x² + k(t): x²(p′ + 1 − p²) +
+     (k′ + σ²p) = 0, so the RICCATI equation p′ = p² − 1, p(T) = 1, and
+     k′ = −σ²p, k(T) = 0. p ≡ 1 is the solution (an equilibrium!), so V =
+     x² + σ²(T − t), u* = −x. (c) p(T) = 0: p(t) = tanh(T − t) (check:
+     d/dt tanh(T − t) = −sech² = tanh² − 1 ✓), k = σ²∫ₜᵀ tanh(T − s)ds =
+     σ² ln cosh(T − t). V(0, 1) = tanh 1 + ln cosh 1 = 1.19537. Note the
+     noise raises the cost but not the control (certainty equivalence in
+     LQ). Common mistakes: plugging in u* before minimising; wrong sign of
+     time in the Riccati equation (it runs BACKWARD from T). Now you try:
+     infinite horizon, discount ρ = 1: ρV = inf_u {x² + u² + uV_x} +
+     ½σ²V_xx. (V = px² + pσ², p = (√5 − 1)/2 = 0.61803, u* = −px)
+
+D12. Merton's problem: invest a fraction π of wealth in a stock (μ, σ), the
+     rest at rate r, maximise E[X_T^(1−γ)/(1−γ)], γ > 0, γ ≠ 1. (a) Write
+     the HJB equation and solve it with V = f(t)x^(1−γ)/(1−γ). (b) For
+     μ = 0.08, r = 0.02, σ = 0.2, γ = 3 find π*, the certainty-equivalent
+     rate and V(0, 1) for T = 10. (c) Log utility: π* and the growth rate.
+     (d) Infinite horizon with consumption, discount ρ = 0.05, γ = 3: the
+     optimal consumption rate c*/X.
+     Answer: (a) π* = (μ − r)/(γσ²), f = exp((1 − γ)(r + θ²/(2γ))(T − t)).
+     (b) π* = 0.5, rate 3.5%, V = −0.5e^(−0.7) = −0.24829. (c) π* = 1.5,
+     growth 6.5%. (d) 0.04.
+     Teacher explains: (a) dX = X(r + π(μ − r))dt + XπσdW. HJB: V_t +
+     sup_π {x(r + π(μ − r))V_x + ½π²σ²x²V_xx} = 0, V(T, x) = U(x). V is
+     concave (V_xx < 0) so the sup is at π* = −(μ − r)V_x/(σ²xV_xx). With
+     the ansatz, V_x = fx^(−γ), V_xx = −γfx^(−γ−1), hence −V_x/(xV_xx) = 1/γ
+     and π* = θ/(γσ), θ = (μ − r)/σ. Substituting: xrV_x = rfx^(1−γ), the
+     π-terms give (θ²/γ − θ²/(2γ))fx^(1−γ), so
+        f′/(1 − γ) + (r + θ²/(2γ))f = 0,  f(T) = 1,
+     f(t) = exp((1 − γ)(r + θ²/(2γ))(T − t)). The fraction is CONSTANT in
+     time and wealth; the verification theorem confirms optimality.
+     (b) θ = 0.3, π* = 0.06/(3·0.04) = 0.5; CE rate 0.02 + 0.09/6 = 0.035;
+     V(0, 1) = (1/(−2))e^(−2·0.035·10) = −0.5e^(−0.7) = −0.24829.
+     (c) E ln X_T = ln x + (r + π(μ − r) − π²σ²/2)T, maximised at π = (μ −
+     r)/σ² = 1.5 (the KELLY fraction, borrowing 50%); growth r + θ²/2 =
+     0.065. (d) Add −c V_x + U(c) and discount: the optimal c* = V_x^(−1/γ)
+     and V = Ax^(1−γ)/(1−γ) give c*/X = [ρ − (1 − γ)(r + θ²/(2γ))]/γ =
+     (0.05 + 2·0.035)/3 = 0.04. Common mistakes: confusing the fraction π
+     with the amount πX; forgetting that γ < 1 and γ > 1 flip the sign of
+     V. Now you try: γ = 2, μ = 0.10, r = 0.03, σ = 0.25. (π* = 0.56)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. One-period binomial pricing (S₀, u, d, gross rate R per period).
+    Model I: S₀ = 100, u = 1.1, d = 0.9, R = 1.
+    Model II: S₀ = 100, u = 1.2, d = 0.9, R = 1.05.
+    Model III: S₀ = 50, u = 1.5, d = 0.5, R = 1.1.
+    a) Model I: q                     b) Model I: call K = 100
+    c) Model I: put K = 100           d) Model II: q and call K = 100
+    e) Model II: Δ and B replicating the call
+    f) Model II: put K = 100          g) Model II: put K = 110 and its Δ
+    h) Model II: digital paying 1 in the up state
+    i) Model II: the zero-value forward delivery price
+    j) Model II: claim paying S₁²     k) Model II: state prices ψ_u, ψ_d
+    l) Model II with real p = 0.7: dQ/dP in each state
+    m) Model III: q and call K = 60   n) Model III: Δ and B for m)
+    o) Model III: call K = 50 and put K = 50 (check parity)
+    p) S₀ = 100, u = 1.04, d = 0.95, R = 1.05: arbitrage? give one
+    q) general formula for Δ of a claim with payoffs V_u, V_d
+    Answers:
+      a) 1/2      b) 5        c) 5        d) 1/2, 9.5238
+      e) Δ = 2/3, B = −57.1429            f) 4.7619
+      g) 9.5238, Δ = −2/3                 h) 0.47619
+      i) 105      j) 11250/1.05 = 10714.29
+      k) 0.47619 each                     l) 5/7 = 0.71429 (up), 5/3 (down)
+      m) q = 0.6, C = 0.6·15/1.1 = 8.1818
+      n) Δ = 0.3, B = −7.5/1.1 = −6.8182
+      o) q = 0.6: C = 0.6·25/1.1 = 13.6364, P = 0.4·25/1.1 = 9.0909;
+         C − P = 4.5455 = 50 − 50/1.1 ✓
+      p) yes (R > u): short 1 share, lend 100; payoffs 1 or 10 at no cost
+      q) Δ = (V_u − V_d)/(S₀(u − d))
+
+M2. Multi-period binomial trees. Tree A: S₀ = 100, u = 1.2, d = 0.8,
+    R = 1.05, 2 periods. Tree B: S₀ = 100, u = 1.1, d = 0.9, R = 1.02,
+    3 periods. K = 100 unless stated.
+    a) Tree A: q and the European call
+    b) Tree A: European put           c) Tree A: check put-call parity
+    d) Tree A: American put and where to exercise
+    e) Tree A: American call          f) Tree A: hedge ratio Δ₀ for the call
+    g) Tree A, K = 110: European and American put
+    h) Tree B: q, European call       i) Tree B: European put
+    j) Tree B: digital call 𝟙{S₃ > 100}
+    k) Tree B: Q(S₃ = 108.9)           l) Tree B: American put and exercise
+       nodes
+    m) Tree B: E^Q[S₃] (check the martingale property)
+    n) CRR with σ = 0.3, Δt = 1/12: u and d
+    o) n) with r = 6% continuous: q
+    p) number of paths to the node uʲd^(N−j) and its Q-probability
+    Answers:
+      a) q = 0.625, C = 0.390625·44/1.1025 = 15.5896
+      b) 6.2925         c) 15.5896 − 6.2925 = 9.2971 = 100 − 100/1.1025 ✓
+      d) 7.9932; exercise at S₁ = 80 (20 > 15.2381)
+      e) 15.5896 (= European)         f) 26.1905/40 = 0.65476
+      g) 11.8197 and 13.6905
+      h) q = 0.6, C = 10.3603         i) 4.5925
+      j) 0.648/1.061208 = 0.61062     k) 0.432
+      l) 4.9076 (European 4.5925); exercise at S₁ = 90 (10 > 9.9654) and at
+         S₂ = 81 (19 > 17.0392)
+      m) 100·1.02³ = 106.1208         n) u = e^(0.086603) = 1.09046, d =
+         0.91704
+      o) (e^(0.005) − d)/(u − d) = 0.50727
+      p) C(N, j); C(N, j)qʲ(1 − q)^(N−j)
+
+M3. Static no-arbitrage (continuous compounding, no dividends unless
+    stated). Compute, or exhibit the arbitrage.
+    a) lower bound for a European call: S = 100, K = 95, r = 5%, T = 1
+    b) lower bound for a European put: S = 90, K = 100, r = 5%, T = 1
+    c) C = 10, S = K = 100, r = 5%, T = 1: the put by parity
+    d) C = 5, P = 3, S = K = 50, T = 1: the implied rate r
+    e) C = 3 in a): the arbitrage and its minimum profit
+    f) C = 12, S = 100, K = 90, r = 5%, T = 1: arbitrage-free?
+    g) forward price: S = 100, r = 4%, dividend yield 1%, T = 2
+    h) forward price: S = 100, r = 5%, T = 1, dividend 2 paid at t = 0.5
+    i) C(90) = 12, C(100) = 8, C(110) = 3 (same T): consistent?
+    j) upper bound for C(100) − C(105), r = 5%, T = 1
+    k) parity with yield q = 2%: C − P for S = K = 100, r = 5%, T = 1
+    l) value of the box spread (long C(90) − C(110), short P(90) − P(110)),
+       r = 5%, T = 1
+    m) upper bounds for C and P with S = K = 100, r = 5%, T = 1
+    n) two calls with strikes 100 and 100 but T = 1 and T = 2: which is
+       worth more (no dividends)?
+    Answers:
+      a) 100 − 95e^(−0.05) = 9.6332      b) 100e^(−0.05) − 90 = 5.1229
+      c) 5.1229                          d) Ke^(−r) = 48, r = ln(50/48) =
+                                            0.040822
+      e) buy call, short stock, lend 97: at T receive 97e^(0.05) = 101.97,
+         buy the stock back for min(S_T, 95): profit ≥ 6.97 at T, i.e.
+         ≥ 9.6332 − 3 = 6.6332 in present value
+      f) no: bound 100 − 85.6106 = 14.3894 > 12
+      g) 100e^(0.06) = 106.1837          h) (100 − 2e^(−0.025))e^(0.05) =
+                                            103.0765
+      i) no: convexity needs C(100) ≤ 7.5; buy 1 C(90) + 1 C(110), sell 2
+         C(100): receive 1 now, payoff ≥ 0
+      j) 5e^(−0.05) = 4.7561             k) 100e^(−0.02) − 100e^(−0.05) =
+                                            2.8969
+      l) 20e^(−0.05) = 19.0246           m) C ≤ 100, P ≤ 95.1229
+      n) T = 2 (an American call = European, and a longer American option
+         is worth at least as much)
+
+M4. Risk-neutral measures and the fundamental theorems.
+    a) S₀ = 100, S₁ ∈ {120, 100, 80}, R = 1: all EMMs
+    b) a): the range of prices of the call K = 100
+    c) a): super- and sub-replication prices of that call
+    d) S₀ = 100, S₁ ∈ {130, 100, 70}, R = 1: range for the put K = 100
+    e) S₀ = 100, S₁ ∈ {120, 110, 90}, R = 1.1: all EMMs
+    f) e): range for the put K = 110
+    g) S₁ ∈ {120, 90}, S₀ = 100, R = 1.25: arbitrage? which one?
+    h) two states, bond and one stock (100 → 120 or 80), R = 1: complete?
+       Q?
+    i) three states, bond and one stock: complete?
+    j) a) plus the call K = 100 traded at 6: complete? Q?
+    k) a) plus the call traded at 12: arbitrage-free?
+    l) Black-Scholes, μ = 0.12, r = 0.04, σ = 0.2: market price of risk θ
+       and the Q-Brownian motion
+    m) l): E[Z_T²] for Z_T = dQ/dP at T = 1
+    n) l): the Q-drift of S and of e^(−rt)Sₜ
+    o) number of EMMs in an N-period binomial model with d < R < u
+    p) two stocks driven by ONE Brownian motion with different Sharpe
+       ratios: what goes wrong?
+    Answers:
+      a) (q, 1 − 2q, q), 0 < q < 1/2     b) (0, 10)
+      c) 10 and 0 (not attained)          d) 30q, 0 < q < 1/2: (0, 15)
+      e) (2c, 1 − 3c, c), 0 < c < 1/3     f) 20c/1.1 ∈ (0, 6.0606)
+      g) yes (R > u): short the stock, invest 100 → 125 > S₁
+      h) yes, Q = (1/2, 1/2)               i) no (rank 2 < 3)
+      j) yes: 20q = 6, Q = (0.3, 0.4, 0.3)
+      k) no: 12 ≥ super-replication price 10 (sell call, super-hedge)
+      l) θ = 0.4, W̃ₜ = Wₜ + 0.4t        m) e^(θ²) = e^(0.16) = 1.17351
+      n) r = 0.04 and 0 (Q-martingale)   o) exactly one (complete)
+      p) no EMM exists: θ₁ ≠ θ₂ cannot both equal the drift shift, and a
+         long-short combination is riskless with return ≠ r (arbitrage)
+
+M5. Lognormal and Itô computations. Sₜ = 100exp((μ − σ²/2)t + σWₜ) with
+    μ = 0.10, σ = 0.2; r = 0.05 where Q is used; T = 1.
+    a) d ln S                         b) E[S₁]
+    c) Var S₁                         d) median of S₁
+    e) P(S₁ > 100)                    f) Q(S₁ > 100)
+    g) E^Q[S₁]                        h) E^Q[S₁²]
+    i) price of the claim S₁²         j) price of the claim ln S₁
+    k) d(S²)                          l) d(Wₜ²) and E[Wₜ²]
+    m) ∫₀ᵀ W dW                       n) E[e^(σW_T)]
+    o) d⟨S⟩ₜ (quadratic variation)    p) E[(∫₀¹ Wₜ dWₜ)²]
+    q) the price of a claim paying 1/S₁
+    Answers:
+      a) (μ − σ²/2)dt + σ dW = 0.08 dt + 0.2 dW
+      b) 100e^(0.1) = 110.517            c) 10⁴e^(0.2)(e^(0.04) − 1) = 498.46
+      d) 100e^(0.08) = 108.329           e) N(0.4) = 0.65542
+      f) N(0.15) = 0.55962               g) 100e^(0.05) = 105.127
+      h) 10⁴e^(0.14) = 11502.74          i) 10⁴e^(0.09) = 10941.74
+      j) e^(−0.05)(ln 100 + 0.03) = 4.40911
+      k) S²((2μ + σ²)dt + 2σ dW)          l) 2W dW + dt; t
+      m) (W_T² − T)/2                     n) e^(σ²T/2) = e^(0.02) = 1.02020
+      o) σ²Sₜ² dt                          p) 1/2 (Itô isometry: ∫₀¹ t dt)
+      q) e^(−r)E^Q[1/S₁] = e^(−r)(1/100)e^(−r + σ²) = 0.01e^(−0.06) =
+         0.0094176
+
+M6. Black-Scholes prices (no dividends unless stated). Give C and P.
+    a) S = K = 100, r = 5%, σ = 20%, T = 1 (also d₁, d₂)
+    b) S = 100, K = 110, r = 5%, σ = 20%, T = 0.5
+    c) S = K = 50, r = 10%, σ = 30%, T = 0.25
+    d) S = 100, K = 90, r = 3%, σ = 25%, T = 2
+    e) S = 40, K = 45, r = 4%, σ = 40%, T = 1
+    f) S = 120, K = 100, r = 5%, σ = 20%, T = 1
+    g) S = K = 100, r = 0, σ = 20%, T = 1
+    h) a): cash-or-nothing digital call paying 100
+    i) a): asset-or-nothing call      j) a) with dividend yield q = 2%
+    k) a) in the limit σ → 0          l) a) in the limit T → ∞
+    m) implied vol: C = 8, S = K = 100, r = 0, T = 1
+    n) implied vol: C = 12, S = K = 100, r = 5%, T = 1
+    o) ATM rule C ≈ 0.4σ√T S versus exact: S = K = 100, r = 0, σ = 30%,
+       T = 0.25
+    Answers:
+      a) d₁ = 0.35, d₂ = 0.15; C = 10.4506, P = 5.5735
+      b) 2.9065, 10.1906       c) 3.6105, 2.3759      d) 21.9571, 6.7159
+      e) 5.1021, 8.3376        f) 26.1690, 1.2920     g) 7.9656, 7.9656
+      h) 100e^(−0.05)N(0.15) = 53.232   i) 100N(0.35) = 63.683
+      j) d₁ = 0.25; C = 9.2270, P = 6.3301
+      k) C → (100 − 95.1229)⁺ = 4.8771, P → 0
+      l) C → S = 100, P → 0      m) σ = 0.2009 (ATM rule: 0.2)
+      n) σ = 0.2411              o) 6.0 versus 5.9785
+
+M7. Greeks. Base case: S = K = 100, r = 5%, σ = 20%, T = 1 (per year, per
+    unit σ).
+    a) Δ of call and put             b) Γ
+    c) vega                          d) Θ of call and put
+    e) ρ of call and put             f) check Θ + rSΔ + ½σ²S²Γ = rV (put)
+    g) S = 100, K = 110, T = 0.5: Δ, Γ, vega of the call
+    h) S = 120 (base otherwise): Δ and Γ of the call
+    i) Δ-Γ estimate and exact change of C if S → 102
+    j) the same for S → 98
+    k) shares needed to delta-hedge a short position in 1000 calls
+    l) delta-gamma hedge of 100 short calls with the option in g)
+    m) Δ of the digital call paying 1 (base case)
+    n) one-day P&L of a delta-hedged long call if S moves by 2
+    o) break-even daily move for n)
+    p) Δ and Γ of a long forward contract
+    Answers:
+      a) 0.63683, −0.36317     b) 0.018762      c) 37.524
+      d) −6.4140, −1.6579      e) 53.232, −41.890
+      f) −1.6579 − 1.8159 + 3.7524 = 0.27868 = 0.05·5.5735 ✓
+      g) 0.33489, 0.025758, 25.757          h) 0.89646, 0.0075002
+      i) 1.2737 + 0.0375 = 1.3112; exact 1.3105
+      j) −1.2737 + 0.0375 = −1.2361; exact −1.2355
+      k) buy 636.83               l) buy 72.84 options and 39.29 shares
+      m) e^(−r)φ(d₂)/(Sσ√T) = 0.018762 (= Γ·S/K)
+      n) ½Γ(ΔS)² + Θ/365 = 0.03752 − 0.01757 = 0.01995
+      o) √(2·0.017573/0.018762) = 1.3687 (≈ Sσ/√365 = 1.047 plus the r
+         terms)
+      p) 1 and 0
+
+M8. American options and optimal stopping.
+    a) American call, base case of M7   b) Tree A (M2): American put
+    c) b): early-exercise premium       d) Tree B (M2): American put
+    e) perpetual put r = 5%, σ = 20%, K = 100: γ, S*, V(100)
+    f) e): V(60) and V(200)
+    g) perpetual put r = 8%, σ = 40%, K = 50: S*, V(50)
+    h) the smooth-pasting condition at S*
+    i) perpetual American call, no dividends: value and exercise policy
+    j) the Snell-envelope recursion
+    k) roll a fair die at most 2 (resp. 3) times, keep the last roll:
+       optimal expected value
+    l) i.i.d. Uniform(0, 1) offers, at most 3, no recall: optimal value
+    m) European put 8 with S = 90, K = 100: lower bound for the American
+    n) r = 0: is the American put ever exercised early?
+    o) the optimal stopping time in a finite tree
+    Answers:
+      a) 10.4506 (= European)          b) 7.9932
+      c) 7.9932 − 6.2925 = 1.7007      d) 4.9076
+      e) γ = 2.5, S* = 71.4286, V = 12.3200
+      f) 40 and 28.5714·2.8^(−2.5) = 2.1779
+      g) γ = 1, S* = 25, V = 25·(50/25)⁻¹ = 12.5
+      h) V′(S*) = −1 (C¹ fit with K − S)
+      i) V = S; never exercise (S − Ke^(−rt) < S for every stopping rule)
+      j) U_N = g_N, Uₙ = max(gₙ, E^Q[U_{n+1} | 𝓕ₙ]/R)
+      k) 4.25 (reroll 1-3); 14/3 (first roll: keep 5, 6)
+      l) 1/2 → 5/8 → 89/128 = 0.69531 (thresholds 5/8, 1/2)
+      m) 10 (≥ max(K − S, P_Eu))
+      n) no: with r = 0, (K − Sₜ)⁺ is a Q-submartingale; = European
+      o) τ* = min{n : Uₙ = gₙ}
+
+M9. Interest rates and term structure.
+    a) P(0, 5) with constant r = 4%
+    b) P(0, 1) = 0.97, P(0, 2) = 0.93: continuous yields y₁, y₂
+    c) b): continuous forward rate for [1, 2]
+    d) b): simply-compounded forward rate for [1, 2]
+    e) b): 2-year annual par swap rate
+    f) b): price of a 2-year 5% annual-coupon bond, face 100
+    g) Vasicek a = 0.5, b = 5%, σ = 1%, r₀ = 3%: B(2), P(0, 2), y(2)
+    h) g): limiting long yield
+    i) g): E[r₂] and Var r₂
+    j) CIR with a = 0.5, b = 5%: Feller condition for σ = 0.2 and 0.25
+    k) Ho-Lee-type dr = θ dt + σ dW, r₀ = 3%, θ = 0.01, σ = 0.01: P(0, 2)
+    l) P(0, T) = exp(−0.03T − 0.001T²): f(0, T) and f(0, 5)
+    m) zero curve y(T) = 0.02 + 0.005T: P(0, 4) and f(0, 4)
+    n) the HJM drift for constant forward volatility σ
+    o) the bond-price PDE for dr = α(r)dt + β(r)dW̃ (under Q)
+    p) g): modified duration −∂ ln P/∂r at τ = 2
+    Answers:
+      a) e^(−0.2) = 0.81873            b) 3.0459%, 3.6285%
+      c) ln(0.97/0.93) = 4.2111%       d) 0.97/0.93 − 1 = 4.3011%
+      e) (1 − 0.93)/(0.97 + 0.93) = 3.6842%
+      f) 5·0.97 + 105·0.93 = 102.5
+      g) 1.26424, 0.92807, 3.7324%     h) b − σ²/(2a²) = 4.98%
+      i) 0.042642, 8.6466·10⁻⁵
+      j) 2ab = 0.05 ≥ 0.04: holds; 0.05 < 0.0625: fails (0 attainable)
+      k) exp(−r₀T − θT²/2 + σ²T³/6) = 0.92324
+      l) 0.03 + 0.002T; 4%            m) e^(−0.16) = 0.85214; 6%
+      n) α(t, T) = σ²(T − t)
+      o) P_t + αP_r + ½β²P_rr − rP = 0, P(T, r) = 1
+      p) B(2) = 1.26424
+
+M10. Dynamic programming and HJB equations.
+     a) dX = u dt + σ dW, minimise E[∫₀ᵀ (X² + u²)dt + X_T²]: V and u*
+     b) a) without terminal cost: V(0, 1) for T = 1, σ = 1
+     c) a) on an infinite horizon with discount ρ = 1: V and u*
+     d) c) with general ρ > 0: the Riccati equation for p
+     e) dX = (X + u)dt, cost ∫₀^∞ (X² + u²)dt: p and u*
+     f) the Riccati ODE for dX = (aX + bu)dt + σdW, cost ∫₀ᵀ(qX² + ru²)dt
+        + hX_T²
+     g) deterministic: minimise ∫₀¹ u² dt with x′ = u, x(0) = 0, x(1) = 1
+     h) discrete: x_{k+1} = x_k + u_k + w_k, Var w = 1, minimise
+        E[u₀² + u₁² + x₂²] from x₀ = 1: J₀ and u₀*
+     i) generator 𝓛 of geometric Brownian motion
+     j) Feynman-Kac: u(t, x) = E[W_T² | Wₜ = x] and the PDE it solves
+     k) CARA utility −e^(−αX_T), dX = θ(μ − r)dt + θσ dW (θ = amount),
+        r = 0, μ = 0.06, σ = 0.2, α = 2: optimal amount θ*
+     l) HJB form of optimal stopping with payoff g
+     m) the maximiser u* in inf_u {uV_x + u²}; in sup_u {uV_x − u⁴/4}
+     n) what the verification theorem requires of a candidate w
+     Answers:
+       a) V = x² + σ²(T − t), u* = −x
+       b) tanh 1 + ln cosh 1 = 0.76159 + 0.43378 = 1.19537
+       c) V = px² + pσ², p = (√5 − 1)/2 = 0.61803, u* = −px
+       d) ρp = 1 − p², p = (−ρ + √(ρ² + 4))/2
+       e) p² − 2p − 1 = 0: p = 1 + √2 = 2.41421, u* = −px
+       f) −p′ = 2ap + q − b²p²/r, p(T) = h; u* = −(b/r)px
+       g) 1 (u ≡ 1)
+       h) J₁(x) = x²/2 + 1 (u₁ = −x/2), J₀(x) = x²/3 + 3/2 (u₀ = −x/3):
+          J₀(1) = 11/6, u₀* = −1/3
+       i) 𝓛f = μxf′ + ½σ²x²f″
+       j) x² + (T − t); u_t + ½u_xx = 0, u(T, x) = x²
+       k) θ* = μ/(ασ²) = 0.06/0.08 = 0.75
+       l) max(V_t + 𝓛V − rV, g − V) = 0 (or min(−V_t − 𝓛V + rV, V − g) = 0)
+       m) −V_x/2; V_x^(1/3)
+       n) C^{1,2}, growth bounds (local martingale is a true martingale),
+          HJB with terminal condition, and an admissible maximiser
+
+M11. The Merton problem (CRRA γ, θ = (μ − r)/σ). Base: μ = 8%, r = 2%,
+     σ = 20%, γ = 3.
+     a) base: π*                       b) log utility: π*
+     c) γ = 2, μ = 10%, r = 3%, σ = 25%: π*
+     d) base with γ = 0.5              e) base with μ = 1%
+     f) base: certainty-equivalent rate r + θ²/(2γ)
+     g) base: V(0, 1) for T = 10
+     h) log growth rate r + π(μ − r) − π²σ²/2 at π = 0, 1.5, 3
+     i) base, infinite horizon, ρ = 5%: c*/X
+     j) log utility with consumption, ρ = 5%: c*/X
+     k) two independent stocks, μ − r = (6%, 4%), σ = (0.2, 0.1), γ = 2
+     l) μ − r = (5%, 3%), σ = (0.2, 0.1), correlation 0.5, γ = 2
+     m) base with σ doubled            n) γ → ∞ and γ → 0
+     o) base: the μ making π* = 1      p) base: volatility of the optimal
+                                          portfolio
+     Answers:
+       a) 0.06/(3·0.04) = 0.5          b) 0.06/0.04 = 1.5
+       c) 0.07/(2·0.0625) = 0.56       d) 3 (leverage)
+       e) −1/12 = −0.08333 (short)     f) 0.02 + 0.09/6 = 3.5%
+       g) −½e^(−0.7) = −0.24829
+       h) 2%, 6.5% (maximum), 2% (double Kelly gains nothing)
+       i) (0.05 + 2·0.035)/3 = 0.04    j) 0.05
+       k) (0.75, 2.0)                   l) Σ⁻¹(μ − r)/γ = (1/3, 7/6)
+       m) 0.125                        n) 0 (all in bank); unbounded
+       o) μ − r = γσ² = 0.12: μ = 14%  p) π*σ = θ/γ = 0.1
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) The binomial price of a call depends on the real probability p.
+     b) If d < R < u then the one-period binomial model is complete.
+     c) Every arbitrage-free market is complete.
+     d) In an incomplete market every claim has infinitely many
+        arbitrage-free prices.
+     e) The risk-neutral measure Q is equivalent to P.
+     f) The Black-Scholes call price is increasing in σ.
+     g) The Black-Scholes call price is increasing in μ.
+     h) An American put on a non-dividend stock is never exercised early.
+     i) An American call on a dividend-paying stock is never exercised
+        early.
+     j) Put-call parity holds for American options.
+     k) The call price is a convex function of K.
+     l) Γ of a European call can be negative.
+     m) Delta-hedging in discrete time removes all risk.
+     n) In the Vasicek model rₜ ≥ 0 almost surely.
+     o) The HJB equation always has a classical C^{1,2} solution.
+     p) The Merton fraction depends on the investor's wealth (CRRA).
+     q) If an EMM exists in a finite market, there is no arbitrage.
+     r) A positive local martingale is a martingale.
+     Answers:
+       a) F: q = (R − d)/(u − d) does not involve p
+       b) T (two states, two assets)
+       c) F: the trinomial model M4 a)
+       d) F: replicable claims (e.g. the stock, the bond) have one price
+       e) T (same null sets; needed for FTAP)
+       f) T (vega = Sφ(d₁)√τ > 0)
+       g) F: μ does not appear in the formula
+       h) F: Tree A of M2 (exercise at S₁ = 80)
+       i) F: just before a large dividend, e.g. S = 100, K = 50, a
+          dividend of 60 an instant before T: exercise now gives 50, waiting
+          gives 0
+       j) F: only bounds S − K ≤ C_Am − P_Am ≤ S − Ke^(−rT)
+       k) T (butterflies have non-negative prices)
+       l) F: Γ = φ(d₁)/(Sσ√τ) > 0
+       m) F: residual P&L ≈ ½Γ((ΔS)² − σ²S²Δt)
+       n) F: rₜ is Gaussian, Q(rₜ < 0) > 0
+       o) F: degenerate problems need viscosity solutions (exit from
+          (−1, 1) with speed |u| ≤ 1: V = 1 − |x|, not C¹ at 0)
+       p) F: π* = (μ − r)/(γσ²)
+       q) T (FTAP I, easy direction)
+       r) F: it is only a supermartingale; 1/|B_t| for 3-d Brownian
+          motion started away from 0 is a strict local martingale
+
+TEACHING TIPS
+  Struggling: begin with the one-period binomial model and do every idea
+  there first — replication, the no-arbitrage inequality d < R < u, the
+  risk-neutral q, state prices, completeness (count states versus
+  assets) — and only then pass to trees, where backward induction is the
+  same computation repeated. Insist that "risk-neutral" is a pricing
+  device, not a belief: make students compute P(S_T > K) and Q(S_T > K)
+  side by side. For Black-Scholes, derive the PDE by delta-hedging on the
+  board and the formula by the expectation; check every answer with
+  put-call parity and with the identity Θ + rSΔ + ½σ²S²Γ = rV. For
+  control, always write the HJB, minimise pointwise, then try an ansatz
+  (quadratic for LQ, power for CRRA). Harder: prove FTAP I for discrete
+  time with infinite Ω (Dalang-Morton-Willinger) and discuss NFLVR;
+  derive the Black-Scholes formula by changing numéraire to the stock;
+  prove the Snell-envelope characterisation and show that the American
+  put's exercise boundary is increasing in t; compute the Vasicek bond
+  option (Jamshidian) and derive the HJM drift condition; prove the
+  verification theorem carefully and solve Merton's problem with
+  consumption by duality (convex conjugate of U); show that the
+  viscosity solution of a degenerate HJB is the value function.
+
+
