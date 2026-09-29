@@ -1,0 +1,65 @@
+================================================================================
+  STAGE 13: PhD RESEARCH YEARS — QUESTIONS AND ANSWERS
+  Frontier topics and research skills
+================================================================================
+
+How to use this file (note for the parent / teacher)
+----------------------------------------------------
+- There are 32 topics (13.1 to 13.32, the same as in topic.txt), in two
+  groups: the Advanced research-level topics (13.1-13.22: algebraic and
+  arithmetic geometry, automorphic forms, advanced algebraic and geometric
+  topology, quantum topology, mirror symmetry, advanced differential
+  geometry, index theory, operator algebras, nonlinear PDE, dynamical
+  systems, advanced probability, optimal transport, topological data
+  analysis, higher categories, additive combinatorics, geometric group
+  theory, mathematics of machine learning, formal verification, quantum
+  information and the great open problems) and the Research skills
+  (13.23-13.32: reading papers, literature search, choosing a problem,
+  examples and counterexamples, writing, presenting, collaboration and
+  ethics, teaching, the thesis, and life after the PhD).
+  Each topic has:
+    * WHAT THE CHILD MUST LEARN   the checklist of definitions, theorems,
+                                  standard examples, counterexamples and
+                                  methods in that topic
+    * PART A — DESCRIPTIVE        12 questions (D1-D12): proofs,
+                                  explanations, derivations and worked
+                                  numerical problems, each with the answer
+                                  and "Teacher explains" (the method step
+                                  by step as a teacher shows it on the
+                                  board, common mistakes, and a "Now you
+                                  try" question)
+    * PART B — MATHEMATICAL ONLY  12 questions (M1-M12): pure drills with
+                                  answers. Most have many parts (a, b,
+                                  c ...) so that EVERY case of the topic is
+                                  practised again and again, from the
+                                  easiest to the hardest — not just one
+                                  example of each idea.
+    * TEACHING TIPS               what to do if the student struggles, and
+                                  how to make it harder
+- In total: 384 descriptive + 384 mathematical questions.
+- Level: PhD research. The expectation (topic.txt) is DEPTH IN ONE OR TWO
+  of 13.1-13.22 and working AWARENESS of the others: a student should be
+  able to do every "Part B" drill in every topic, and every "Part A"
+  question in the topics of their own research area.
+- The research-skill topics (13.23-13.32) are also practised with
+  mathematics: every question there is attached to real computations,
+  proofs, estimates or small research tasks, so the skills are learned by
+  doing mathematics, not by reading advice.
+- What is new in Stage 13: FROM LEARNING TO CREATING. Stage 12 taught the
+  student to solve qualifying-exam problems; Stage 13 teaches the student
+  to compute invariants in the modern theories, to test conjectures on
+  examples, to find counterexamples, and to write and defend new results.
+- Conventions: as in A12.txt. N = {1, 2, 3, ...}; log = ln unless a base is
+  written; ≅ means isomorphic; □ ends a proof; exact answers first,
+  decimals with ≈.
+- Method: for every theorem know its hypotheses, the simplest example
+  where it applies and the simplest example where it fails. Check every
+  computation with software (SageMath, Macaulay2, Magma/PARI, GAP, Lean,
+  Python) and write every solution in LaTeX.
+- Do 3-4 hours a day: 1-2 descriptive questions (full written proof or
+  essay) and 2-3 drills, plus one research paper per week read with the
+  method of 13.23.
+- Revise Stage 12 (A12.txt) whenever the student finds something
+  difficult: 12.14-12.16 before 13.1-13.3; 12.9-12.10 before 13.4-13.9;
+  12.2, 12.12-12.13 before 13.10-13.14; 12.21-12.23 before 13.16-13.18;
+  12.26 before 13.19; 12.21 before 13.20; 12.27 before 13.21.
