@@ -15956,3 +15956,3181 @@ TEACHING TIPS
   correspondence principle and multiple recurrence.
 
 
+================================================================================
+TOPIC 12.21 — MATHEMATICAL LOGIC: MODEL THEORY, SET THEORY (ZFC, FORCING,
+LARGE CARDINALS), RECURSION THEORY, PROOF THEORY
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - FIRST-ORDER LOGIC: a language L (constants, function and relation
+    symbols), L-structures 𝔐, satisfaction 𝔐 ⊨ φ[ā], theories T, models,
+    T ⊨ φ (semantic) versus T ⊢ φ (formal proof). SOUNDNESS (⊢ ⇒ ⊨) and
+    GÖDEL'S COMPLETENESS THEOREM (⊨ ⇒ ⊢; equivalently every consistent
+    theory has a model, via Henkin constants and a maximal consistent set).
+  - COMPACTNESS: T has a model iff every finite subset does. Consequences:
+    nonstandard models of Th(N) and of R (infinitesimals); "finite",
+    "torsion", "connected graph", "well-ordered" are NOT first-order
+    axiomatizable; a theory with arbitrarily large finite models has an
+    infinite model; De Bruijn-Erdős (a graph is k-colourable iff every
+    finite subgraph is).
+  - LÖWENHEIM-SKOLEM: if |L| ≤ κ and T has an infinite model, it has a model
+    of every cardinality ≥ |L| + ℵ₀ (upward) and every infinite 𝔐 has an
+    ELEMENTARY submodel 𝔑 ≼ 𝔐 of any size between |L| + ℵ₀ and |𝔐|
+    (downward; Tarski-Vaught test). Skolem's "paradox": ZFC, if consistent,
+    has a countable model although it proves R uncountable.
+  - CATEGORICITY: T is κ-categorical if it has exactly one model of size κ
+    up to ≅. ŁOŚ-VAUGHT TEST: κ-categorical with no finite models ⇒
+    complete. Examples: DLO (ℵ₀-categorical, Cantor back-and-forth); ACF_p
+    and Q-vector spaces (categorical in every uncountable κ, not in ℵ₀);
+    the random graph (ℵ₀ only). MORLEY: categorical in one uncountable κ
+    ⇒ in all. VAUGHT: a complete countable theory never has exactly 2
+    countable models.
+  - ULTRAFILTERS AND ULTRAPRODUCTS: U ⊆ 𝒫(I) is an ultrafilter if it is a
+    filter and for every A exactly one of A, I ∖ A is in U; non-principal
+    ones exist by Zorn. ŁOŚ'S THEOREM: ∏𝔐ᵢ/U ⊨ φ[[f]] iff {i : 𝔐ᵢ ⊨
+    φ[f(i)]} ∈ U. Gives a second proof of compactness, the hyperreals ∗R,
+    and ∏F_p/U, a field of characteristic 0.
+  - TYPES AND QUANTIFIER ELIMINATION: a (complete) n-type over A is a
+    maximal consistent set of formulas in x₁..xₙ with parameters in A;
+    realized versus omitted types; ω-saturated models. T has QE if every
+    formula is T-equivalent to a quantifier-free one: DLO, ACF (Chevalley:
+    constructible sets), RCF (Tarski-Seidenberg: semialgebraic sets),
+    Presburger arithmetic (with congruences ≡ₙ). QE + a decidable
+    quantifier-free part ⇒ decidability.
+  - ZFC: Extensionality, Foundation, Pairing, Union, Power set, Separation
+    (schema), Replacement (schema), Infinity, Choice. ZFC is not finitely
+    axiomatizable (Reflection). Useful models of fragments: V_ω ⊨ ZFC −
+    Infinity; V_{ω+ω} ⊨ Z but not Replacement; H(ℵ₁) ⊨ ZFC − Power set.
+    AC ⇔ Zorn's lemma ⇔ well-ordering theorem.
+  - ORDINALS: transitive sets well-ordered by ∈; α + 1 = α ∪ {α}; successor
+    and limit ordinals; transfinite induction and recursion. ORDINAL
+    ARITHMETIC is not commutative: 1 + ω = ω ≠ ω + 1, 2·ω = ω ≠ ω·2 = ω + ω.
+    CANTOR NORMAL FORM α = ω^β₁·c₁ + ... + ω^βₖ·cₖ (β₁ > ... > βₖ). ε₀ =
+    sup{ω, ω^ω, ω^ω^ω, ...}, the least α with ω^α = α. The rank hierarchy
+    V₀ = ∅, V_{α+1} = 𝒫(V_α), V_λ = ⋃_{α<λ} V_α; V = ⋃V_α (by Foundation).
+  - CARDINALS: |A| ≤ |B| via injections; SCHRÖDER-BERNSTEIN; CANTOR |X| <
+    |𝒫(X)|; alephs ℵ_α, κ⁺; under AC κ·κ = κ for infinite κ, so κ + λ = κ·λ
+    = max. Cofinality cf(κ); regular (cf κ = κ) versus singular (cf ℵ_ω =
+    ω). KÖNIG: κ^cf(κ) > κ, hence cf(2^κ) > κ and 2^ℵ₀ ≠ ℵ_ω. Hausdorff:
+    ℵ_{n+1}^ℵ₀ = ℵ_{n+1}·ℵ_n^ℵ₀. GCH: 2^κ = κ⁺.
+  - INDEPENDENCE OF CH: GÖDEL'S constructible universe L (L₀ = ∅, L_{α+1} =
+    definable subsets of L_α) is an inner model of ZFC + V = L + GCH, so
+    Con(ZF) ⇒ Con(ZFC + GCH). COHEN FORCING: a countable transitive model
+    M, a poset P ∈ M, a generic filter G meeting every dense D ∈ M; M[G] ⊨
+    ZFC; forcing theorem (truth in M[G] is forced by some p ∈ G). Adding ℵ₂
+    Cohen reals with Fn(ℵ₂ × ω, 2) (ccc, so cardinals are preserved) gives
+    2^ℵ₀ = ℵ₂; so Con(ZF) ⇒ Con(ZFC + ¬CH). EASTON: 2^ℵ₀ can be any κ
+    with cf κ > ω.
+  - LARGE CARDINALS: κ is (strongly) INACCESSIBLE if uncountable, regular
+    and λ < κ ⇒ 2^λ < κ; then V_κ ⊨ ZFC, so by Gödel II ZFC ⊬ "an
+    inaccessible exists". Hierarchy (increasing strength): inaccessible <
+    Mahlo < weakly compact < measurable < strong < Woodin < supercompact.
+    κ is MEASURABLE if there is a κ-complete non-principal ultrafilter on
+    κ ⇔ a nontrivial elementary embedding j : V → M with critical point κ.
+    Measurable ⇒ inaccessible; SCOTT: measurable ⇒ V ≠ L. KUNEN: there is
+    no nontrivial j : V → V (in ZFC).
+  - COMPUTABILITY: Turing machines ≡ partial recursive (μ-recursive)
+    functions ≡ λ-calculus (CHURCH-TURING THESIS). Primitive recursive
+    functions ⊊ total recursive (the ACKERMANN function). Kleene normal
+    form φₑ(x) = U(μs T(e, x, s)); s-m-n theorem; universal machine;
+    KLEENE'S RECURSION THEOREM (every total computable f has e with φ_{f(e)}
+    = φₑ: quines).
+  - UNDECIDABILITY: the HALTING SET K = {e : φₑ(e)↓} is c.e. but not
+    computable (diagonalisation). A set is computable iff it and its
+    complement are c.e. RICE: every non-trivial index set {e : φₑ ∈ 𝒞} is
+    undecidable. Many-one (≤ₘ) and Turing (≤_T) reductions, Turing degrees,
+    the jump A′, 0 < 0′ < 0″; POST'S problem (Friedberg-Muchnik: c.e.
+    degrees strictly between 0 and 0′). Natural undecidable problems:
+    Hilbert's 10th (MRDP), the word problem for groups, Th(N, +, ·).
+  - ARITHMETICAL HIERARCHY: Σₙ, Πₙ, Δₙ = Σₙ ∩ Πₙ by quantifier alternation
+    over a decidable matrix. Σ₁ = c.e., Δ₁ = computable. POST: A ∈ Σₙ₊₁ ⇔ A
+    is c.e. in ∅⁽ⁿ⁾. Complete sets: K (Σ₁), Tot = {e : φₑ total} and Inf
+    (Π₂), Fin (Σ₂), Cof and Rec = {e : Wₑ computable} (Σ₃).
+  - GÖDEL'S INCOMPLETENESS: for a consistent, computably axiomatized T ⊇ Q
+    (Robinson arithmetic): (I) there is a Π₁ sentence G with T ⊬ G (and T ⊬
+    ¬G if T is ω-consistent, or always with ROSSER'S sentence); (II) T ⊬
+    Con(T). Tools: Gödel numbering, representability of computable
+    functions, the DIAGONAL (fixed point) LEMMA, Hilbert-Bernays-Löb
+    derivability conditions, LÖB'S THEOREM (T ⊢ Pr(⌜φ⌝) → φ ⇒ T ⊢ φ).
+    TARSKI: truth in N is not arithmetically definable. Complete decidable
+    contrasts: Presburger arithmetic, Th(R, +, ·, <), ACF_p.
+  - PROOF THEORY: sequent calculus LK; GENTZEN'S HAUPTSATZ (cut
+    elimination) ⇒ subformula property, consistency of pure logic,
+    Herbrand's theorem. GENTZEN (1936): Con(PA) is provable in PRA + TI(ε₀)
+    (transfinite induction along ε₀ for primitive recursive predicates),
+    while PA proves TI(α) for every α < ε₀ but not TI(ε₀): the
+    PROOF-THEORETIC ORDINAL of PA is ε₀ (of PRA and RCA₀: ω^ω; of ATR₀: Γ₀).
+  - TRUE BUT UNPROVABLE COMBINATORICS: GOODSTEIN'S THEOREM (every Goodstein
+    sequence reaches 0; proof by the ordinals below ε₀ in hereditary base
+    notation) is unprovable in PA (Kirby-Paris), as are the hydra game and
+    the Paris-Harrington theorem; the fast-growing hierarchy f_{ε₀}
+    eventually dominates every PA-provably total function.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) State the compactness theorem and derive it from the completeness
+    theorem. (b) Prove that there is no set of first-order sentences in the
+    language of groups whose models are exactly the torsion groups.
+    (c) Prove that Th(N, 0, 1, +, ·, <) has a model with an element larger
+    than every standard numeral n̄ = 1 + ... + 1.
+    Answer: (a) proofs are finite; (b) add a constant c and the sentences
+    cⁿ ≠ e; (c) add a constant c and the sentences c > n̄.
+    Teacher explains: (a) COMPACTNESS: T has a model iff every finite T₀ ⊆
+    T has one. If T has no model, then T ⊨ ⊥, so by COMPLETENESS T ⊢ ⊥. A
+    formal proof uses finitely many axioms, so some finite T₀ ⊆ T has T₀ ⊢
+    ⊥; by SOUNDNESS T₀ has no model. (b) Suppose Σ axiomatizes the torsion
+    groups. Add a new constant c and let
+       Σ′ = Σ ∪ {cⁿ ≠ e : n = 1, 2, 3, ...}.
+    A finite part of Σ′ mentions only cⁿ ≠ e for n ≤ N; it is satisfied in
+    the torsion group Z/(N + 1)Z with c = 1. By compactness Σ′ has a model:
+    a group satisfying Σ (so torsion) in which c has infinite order.
+    Contradiction. (c) Let T = Th(N) ∪ {c > n̄ : n ∈ N}. A finite part
+    mentions c > n̄ for n ≤ N only; interpret c as N + 1 in N. By
+    compactness T has a model 𝔐 ⊨ Th(N) in which c is "infinite". Every
+    such 𝔐 starts with a copy of N; a countable one has order type ω +
+    (ω* + ω)·η (η = order type of Q). Common mistakes: trying to add the
+    infinitely long sentence "∀x (x = e ∨ x² = e ∨ ...)"; forgetting that
+    compactness needs EVERY finite subset, including those containing
+    axioms of Σ. Now you try: show "the graph is connected" is not
+    first-order. (add constants a, b and "no path of length n from a to b"
+    for every n)
+
+D2. (a) Prove by a back-and-forth argument that any two countable dense
+    linear orders without endpoints are isomorphic. (b) Deduce with the
+    Łoś-Vaught test that DLO is complete. (c) Show DLO is not
+    2^ℵ₀-categorical.
+    Answer: (a) extend finite partial isomorphisms alternately; (b) DLO is
+    ℵ₀-categorical with no finite models; (c) R and R + Q (R followed by
+    a copy of Q) are non-isomorphic models of size 2^ℵ₀.
+    Teacher explains: (a) Enumerate A = {a₀, a₁, ...}, B = {b₀, b₁, ...}.
+    Build finite order-preserving maps f₀ ⊆ f₁ ⊆ ... . At an even step
+    take the first aᵢ not in dom fₙ; it lies in some "gap" between points
+    of dom fₙ (or beyond all of them); since B is dense without endpoints
+    there is b in the corresponding gap of ran fₙ; put fₙ₊₁ = fₙ ∪ {(aᵢ,
+    b)}. At odd steps do the same backwards for the first bⱼ not in ran fₙ.
+    Then f = ⋃fₙ is total, onto and order-preserving: an isomorphism.
+    (b) ŁOŚ-VAUGHT: if T has no finite models and is κ-categorical for some
+    κ ≥ |L| + ℵ₀, then T is complete. Proof: if T ⊬ φ and T ⊬ ¬φ, both T ∪
+    {φ} and T ∪ {¬φ} have infinite models, hence by Löwenheim-Skolem models
+    of size κ; they are isomorphic yet disagree on φ. DLO has no finite
+    models (density produces new points), so it is complete, i.e. DLO =
+    Th(Q, <). (c) R and R + Q (a copy of R followed by a copy of Q; still
+    dense without endpoints, size 2^ℵ₀) are not isomorphic: in R every
+    bounded non-empty set has a supremum, while in R + Q the set R has
+    upper bounds but no least one. Common mistakes: doing only the
+    "forth" direction (gives an embedding, not a bijection); forgetting
+    the "no finite models" clause (the empty theory of pure equality is
+    ℵ₀-categorical but has finite models, and is not complete: it does
+    not decide "there are at least 2 elements").
+    Now you try: is the theory of infinite sets (pure equality) complete?
+    (yes: κ-categorical for every infinite κ)
+
+D3. Let U be a non-principal ultrafilter on N and ∗R = R^N/U.
+    (a) State Łoś's theorem and prove the step for ∃. (b) Show ε =
+    [(1, 1/2, 1/3, ...)] is a positive infinitesimal. (c) Show that
+    ∏_p F_p/U (p over the primes) is a field of characteristic 0.
+    Answer: (b) {n : 0 < 1/n < r} is cofinite, hence in U, for each real
+    r > 0; (c) for each n the set {p : n·1 ≠ 0 in F_p} is cofinite.
+    Teacher explains: (a) ŁOŚ: for every formula φ and f₁, ..., fₖ ∈ ∏Mᵢ,
+       ∏Mᵢ/U ⊨ φ[[f₁], ..., [fₖ]] ⇔ {i : Mᵢ ⊨ φ[f₁(i), ..., fₖ(i)]} ∈ U.
+    Induction on φ: atomic by definition; ¬ uses "A ∈ U or I ∖ A ∈ U,
+    not both" (this is where ULTRA is needed); ∧ uses closure of U under
+    ∩. For ∃x ψ: if the product satisfies ψ[[g], [f]], then {i : Mᵢ ⊨ ψ[g(i),
+    f(i)]} ∈ U and it is contained in X = {i : Mᵢ ⊨ ∃x ψ[f(i)]}, so X ∈ U
+    (upward closure). Conversely if X ∈ U, choose (AC) g(i) witnessing ψ
+    for i ∈ X (arbitrary otherwise); then the set for ψ[[g], [f]] contains
+    X, so it is in U. (b) Non-principal ultrafilters contain every
+    cofinite set (if a finite F were in U, one of its points would be).
+    For r > 0 real, {n : 0 < 1/n < r} ⊇ {n > 1/r} is cofinite, so 0 < ε <
+    r in ∗R. (c) Being a field is first-order, each F_p is a field, so by
+    Łoś the product is a field. The sentence 1 + ... + 1 (n times) ≠ 0
+    holds in F_p for all p > n, a cofinite set, so it holds in the
+    ultraproduct: characteristic 0. Common mistakes: using a principal U
+    (then ∏Mᵢ/U ≅ M_{i₀}, nothing new); thinking the ultraproduct of the
+    F_p is algebraically closed (it is not: x² = a can fail; the
+    ultraproduct of the algebraic closures of F_p is ACF₀ of size 2^ℵ₀,
+    hence ≅ C). Now you try: is [(n)ₙ] ∈ ∗R larger than every real? (yes)
+
+D4. (a) In RCF = Th(R, +, ·, 0, 1, <) find a quantifier-free equivalent of
+    ∃x (ax² + bx + c = 0); in ACF find one for the same formula.
+    (b) How many complete 1-types over ∅ and over Q does DLO have? How
+    many 2-types over ∅? (c) Explain why QE for ACF₀ plus the
+    decidability of the quantifier-free sentences gives decidability.
+    Answer: (a) RCF: (a ≠ 0 ∧ b² − 4ac ≥ 0) ∨ (a = 0 ∧ b ≠ 0) ∨ (a = b = c
+    = 0); ACF: a ≠ 0 ∨ b ≠ 0 ∨ c = 0. (b) 1; 2^ℵ₀; 3. (c) below.
+    Teacher explains: (a) Split by the degree. If a ≠ 0 the quadratic
+    formula shows a real root exists iff the discriminant is ≥ 0; if a = 0
+    ≠ b there is the root −c/b; if a = b = 0 we need c = 0. In an
+    algebraically closed field every non-constant polynomial has a root, so
+    only the constant case a = b = 0 needs c = 0. TARSKI-SEIDENBERG says
+    this always works in RCF: the projection of a semialgebraic set is
+    semialgebraic. (b) By QE for DLO, a 1-type over ∅ is determined by the
+    quantifier-free formulas in x, i.e. x = x: exactly 1 type. A 2-type
+    over ∅ must decide x < y, x = y or x > y: 3 types. Over the parameter
+    set Q a 1-type is determined by the cut x makes in Q: x = q (ℵ₀
+    types, realized), "just above q" or "just below q" (q⁺, q⁻), +∞, −∞,
+    and the irrational cuts (2^ℵ₀ of them). Total 2^ℵ₀. (In general the
+    number of n-types over ∅ is the number of weak orderings of n points:
+    1, 3, 13, 75, ...) (c) Given a sentence φ, compute (effectively) a
+    quantifier-free ψ with ACF₀ ⊢ φ ↔ ψ. A quantifier-free SENTENCE is a
+    Boolean combination of equations m·1 = n·1 between integers, true in
+    ACF₀ iff true in Z. So ACF₀ is decidable. Common mistakes: forgetting
+    the a = 0 cases; counting only the realized types over Q (types need
+    not be realized in the given model). Now you try: quantifier-free form
+    in RCF of ∃x (x² = a). (a ≥ 0)
+
+D5. (a) Using the recursive definitions (α + 0 = α, α + (β + 1) = (α + β)
+    + 1, α + λ = sup_{β<λ}(α + β), and similarly for ·), compute in Cantor
+    normal form: 1 + ω, ω + 1, 2·ω, ω·2, 2·(ω + 1), (ω + 1)², (ω + 3)·(ω +
+    2), 2^ω. (b) Show that V_{ω+ω} satisfies Separation and Power set but
+    not Replacement. (c) Find the rank of the Kuratowski pair ⟨a, b⟩ =
+    {{a}, {a, b}} in terms of rank a and rank b; compute rank ⟨0, 1⟩.
+    Answer: (a) ω, ω + 1, ω, ω + ω, ω + 2, ω² + ω + 1, ω² + ω·2 + 3, ω.
+    (b) the map n ↦ ω + n has range of rank ω + ω. (c) max(rank a, rank b)
+    + 2; rank ⟨0, 1⟩ = 3.
+    Teacher explains: (a) 1 + ω = sup(1 + n) = sup(n + 1) = ω, but ω + 1 =
+    ω ∪ {ω} > ω: addition is not commutative. 2·ω = sup 2n = ω, whereas
+    ω·2 = ω·1 + ω = ω + ω. LEFT distributivity holds: 2·(ω + 1) = 2·ω + 2
+    = ω + 2; RIGHT distributivity fails ((1 + 1)·ω = ω ≠ ω + ω). For
+    (ω + 1)² = (ω + 1)(ω + 1) = (ω + 1)·ω + (ω + 1): here (ω + 1)·n = ω·n +
+    1 (the middle 1's are absorbed: 1 + ω = ω), so (ω + 1)·ω = sup(ω·n +
+    1) = ω². Hence (ω + 1)² = ω² + ω + 1. Similarly (ω + 3)(ω + 2) = (ω +
+    3)ω + (ω + 3)·2 = ω² + ω + 3 + ω + 3 = ω² + ω·2 + 3 (the first 3 is
+    absorbed by the following ω). 2^ω = sup 2ⁿ = ω. RULE: in a sum of CNF
+    terms, a term is absorbed by a later term with a larger exponent:
+    ω³ + ω⁵ = ω⁵. (b) λ = ω + ω is a limit ordinal, so x ∈ V_λ ⇒ x ∈ V_α
+    for some α < λ, so 𝒫(x) ∈ V_{α+2} ⊆ V_λ and every subset of x is in
+    V_{α+1} ⊆ V_λ: Separation and Power set hold (V_λ is transitive, so Δ₀
+    facts are absolute). But F(n) = ω + n is definable in V_λ, each ω + n ∈
+    V_λ, and the range {ω + n : n ∈ ω} has rank ω + ω, so it is not in
+    V_λ: Replacement fails. Indeed Z ⊬ "ω + ω exists". (c) rank x = sup{rank
+    y + 1 : y ∈ x}. rank{a} = rank a + 1, rank{a, b} = max + 1, so rank
+    ⟨a, b⟩ = max(rank a, rank b) + 2. For ⟨0, 1⟩: max(0, 1) + 2 = 3.
+    Common mistakes: "simplifying" ω + 1 to ω; computing (ω + 1)² as ω² +
+    2ω + 1 by the high-school rule. Now you try: (ω² + 1)·(ω + 1).
+    (ω³ + ω² + 1)
+
+D6. (a) Prove Cantor's theorem |X| < |𝒫(X)|. (b) Show that |R| = |𝒫(N)|
+    = ℵ₀^ℵ₀ = 2^ℵ₀ and that the set of continuous f : R → R has size 2^ℵ₀
+    while R^R has size 2^(2^ℵ₀). (c) Prove KÖNIG'S THEOREM κ^cf(κ) > κ and
+    deduce cf(2^ℵ₀) > ℵ₀, so 2^ℵ₀ ≠ ℵ_ω.
+    Answer: (a) diagonal set D = {x : x ∉ f(x)}; (b) binary expansions and
+    Schröder-Bernstein; continuous f is determined by f|Q; (c) diagonalise
+    against a cofinal sequence.
+    Teacher explains: (a) x ↦ {x} injects X into 𝒫(X). If f : X → 𝒫(X),
+    put D = {x ∈ X : x ∉ f(x)}. If D = f(d) then d ∈ D ⇔ d ∉ f(d) = D,
+    absurd; so f is not onto. (b) 𝒫(N) ↔ {0, 1}^N; 2^ℵ₀ ≤ ℵ₀^ℵ₀ ≤
+    (2^ℵ₀)^ℵ₀ = 2^(ℵ₀·ℵ₀) = 2^ℵ₀. For R: x ↦ {q ∈ Q : q < x} injects R
+    into 𝒫(Q), and A ↦ ∑_{n∈A} 2·3⁻ⁿ injects 𝒫(N) into R (Cantor-set
+    points; no double expansions), so Schröder-Bernstein gives |R| = 2^ℵ₀
+    = 𝔠. A continuous f is determined by its values on the dense set Q,
+    so there are at most 𝔠^ℵ₀ = 𝔠 of them, and at least 𝔠 (constants).
+    |R^R| = 𝔠^𝔠 = 2^(ℵ₀·𝔠) = 2^𝔠. (c) Write κ = sup_{i<λ} κᵢ with κᵢ <
+    κ, λ = cf κ. Given any F : κ → κ^λ (functions λ → κ), define g : λ →
+    κ by choosing g(i) ∉ {F(α)(i) : α < κᵢ}, a set of size ≤ κᵢ < κ. Every
+    α < κ is below some κᵢ, and then g(i) ≠ F(α)(i); so g ∉ ran F and κ^λ
+    > κ. Now if cf(2^κ) = λ ≤ κ, König gives (2^κ)^λ > 2^κ, but (2^κ)^λ =
+    2^(κ·λ) = 2^κ: contradiction. Since cf ℵ_ω = ω, 2^ℵ₀ ≠ ℵ_ω. Common
+    mistakes: believing ℵ₀^ℵ₀ = ℵ₀ ("ℵ₀·ℵ₀ = ℵ₀, so powers too"); using
+    AC-free arguments where AC is needed (κ·κ = κ needs a well-order).
+    Now you try: |{f : N → N bijective}|. (2^ℵ₀)
+
+D7. Let M be a countable transitive model of ZFC + GCH and P = Fn(ω₂ × ω,
+    2) (finite partial functions, ordered by reverse inclusion), ω₂ =
+    ω₂^M. Let G be P-generic over M. (a) Show F = ⋃G is a total function
+    ω₂ × ω → 2 and the reals r_α(n) = F(α, n) are pairwise distinct.
+    (b) Explain why ω₁ and ω₂ are not collapsed. (c) Show M[G] ⊨ 2^ℵ₀ =
+    ℵ₂. (d) What does Gödel's L contribute?
+    Answer: (a) density arguments; (b) P is ccc (Δ-system lemma); (c) ≥ by
+    (a), (b); ≤ by counting nice names: (ℵ₂^ℵ₀)^M = ℵ₂. (d) Con(ZF) ⇒
+    Con(ZFC + GCH); together: CH is independent of ZFC.
+    Teacher explains: GENERIC means G is a filter meeting every dense D ⊆ P
+    lying in M; one exists because M is countable (Rasiowa-Sikorski). (a)
+    D_{α,n} = {p : (α, n) ∈ dom p} is dense (extend any p there) and in M;
+    G meets it, and compatible conditions agree, so F is a total function.
+    For α ≠ β, E_{α,β} = {p : ∃n p(α, n) ≠ p(β, n)} is dense (use an n not
+    yet mentioned), so r_α ≠ r_β. Each r_α ∉ M (density of {p : p differs
+    from x somewhere} for each x ∈ M). (b) Any uncountable family of
+    finite domains contains an uncountable Δ-SYSTEM (common root); two
+    conditions agreeing on the root are compatible, so every antichain is
+    countable: P is CCC. A ccc forcing preserves cofinalities, hence all
+    cardinals: if f ∈ M[G] mapped ω onto ω₁^M, each value f(n) would be
+    decided by a countable antichain, trapping ran f in a countable set of
+    M. (c) So M[G] has ℵ₂ distinct reals and 2^ℵ₀ ≥ ℵ₂. Conversely every
+    subset of ω in M[G] has a NICE NAME ⋃_n {ň} × Aₙ with Aₙ countable
+    antichains; there are at most (|P|^ℵ₀)^ℵ₀ = ℵ₂^ℵ₀ = ℵ₂ of them in M
+    (GCH, cf ℵ₂ > ℵ₀). So M[G] ⊨ 2^ℵ₀ = ℵ₂. (d) L ⊨ ZFC + GCH, so CH is
+    not refutable; forcing shows it is not provable. Common mistakes:
+    thinking G ∈ M (it never is); forgetting that cardinals of M could
+    collapse (Fn(ω, ω₁) makes ω₁^M countable). Now you try: what is 2^ℵ₀
+    after adding ℵ_{ω₁} Cohen reals to a GCH model? (ℵ_{ω₁}: cf ω₁ > ω, so
+    ℵ_{ω₁}^ℵ₀ = ℵ_{ω₁} under GCH)
+
+D8. (a) Show that if κ is inaccessible then V_κ ⊨ ZFC, and that |V_α| < κ
+    for α < κ. (b) Deduce that ZFC (if consistent) does not prove that
+    inaccessible cardinals exist. (c) Prove that a measurable cardinal is
+    inaccessible. (d) Compute |V_n| for n ≤ 5 and |V_{ω+1}|.
+    Answer: (a) regularity gives Replacement, strong limit gives Power
+    set; (b) Gödel II; (c) κ-completeness kills a λ-sequence of halvings;
+    (d) 0, 1, 2, 4, 16, 65536; 2^ℵ₀.
+    Teacher explains: (a) By induction |V_{α+1}| = 2^|V_α| < κ (strong
+    limit) and |V_λ| ≤ ∑_{α<λ}|V_α| < κ for λ < κ (regularity). V_κ is
+    transitive, closed under pairing, union and 𝒫, contains ω. REPLACEMENT:
+    if x ∈ V_κ and F : x → V_κ is definable, |x| < κ and ran F ⊆ V_κ;
+    by regularity the ranks of F(y) are bounded below κ, so ran F ∈ V_κ.
+    (b) If ZFC ⊢ "there is an inaccessible κ", then ZFC ⊢ "V_κ ⊨ ZFC", so
+    ZFC ⊢ Con(ZFC), which contradicts Gödel's second theorem unless ZFC is
+    inconsistent. (Large cardinals are measured by CONSISTENCY STRENGTH.)
+    (c) Let U be a κ-complete non-principal ultrafilter on κ. U contains no
+    set of size < κ (a union of < κ singletons ∉ U). REGULAR: if κ = ⋃_{i<λ}
+    Xᵢ with λ < κ and |Xᵢ| < κ, then by κ-completeness some Xᵢ ∈ U, absurd.
+    STRONG LIMIT: if 2^λ ≥ κ for some λ < κ, inject κ into {0, 1}^λ, x ↦
+    fₓ. For each α < λ exactly one of {x : fₓ(α) = 0}, {x : fₓ(α) = 1}
+    is in U; call its value e(α). The intersection of these λ sets is in U
+    but contains only x with fₓ = e: at most 1 point. Contradiction.
+    (d) |V_{n+1}| = 2^|V_n|: 0, 1, 2, 4, 16, 2¹⁶ = 65536; |V_ω| = ℵ₀,
+    |V_{ω+1}| = 2^ℵ₀. Common mistakes: "inaccessible" meaning only
+    "regular limit" (that is WEAKLY inaccessible; under GCH they agree);
+    thinking large cardinals are provable from ZFC plus more work (they
+    are new axioms). Now you try: is the least inaccessible measurable?
+    (no: below a measurable κ there are κ inaccessibles)
+
+D9. (a) Prove that K = {e : φₑ(e)↓} is c.e. but not computable. (b) State
+    and prove RICE'S THEOREM. (c) Show that Tot = {e : φₑ is total} is Π₂,
+    is not c.e. and is not co-c.e.
+    Answer: (a) diagonalise; (b) reduce K to the index set; (c) Tot ≡
+    ∀x ∃s (φₑ,ₛ(x)↓); K ≤ₘ Tot and K̄ ≤ₘ Tot.
+    Teacher explains: (a) K is c.e.: run φₑ(e) and accept if it halts
+    (universal machine). If K were computable, so would be
+       d(e) = φₑ(e) + 1 if e ∈ K,   d(e) = 0 if e ∉ K.
+    d is total computable, so d = φ_c for some c, and c ∈ K; then d(c) =
+    φ_c(c) + 1 = d(c) + 1. Contradiction. So K̄ is not c.e. (a set is
+    computable iff it and its complement are c.e.). (b) RICE: if 𝒞 is a
+    set of partial computable functions with ∅ ≠ I = {e : φₑ ∈ 𝒞} ≠ N,
+    then I is not computable. Proof: WLOG the empty function ∉ 𝒞 (else
+    use the complement), and fix a with φ_a ∈ 𝒞. By s-m-n there is a
+    total computable h with φ_{h(x)}(y) = φ_a(y) if φₓ(x)↓, and undefined
+    otherwise (first run φₓ(x), then φ_a(y)). So x ∈ K ⇔ φ_{h(x)} = φ_a ∈ 𝒞
+    ⇔ h(x) ∈ I: K ≤ₘ I, and I is not computable. (c) e ∈ Tot ⇔ ∀x ∃s
+    [φₑ(x) halts within s steps], a decidable matrix under ∀∃: Π₂.
+    K ≤ₘ Tot by h(x) with φ_{h(x)}(y) = φₓ(x) (ignore y): total iff x ∈
+    K. So Tot is not co-c.e. K̄ ≤ₘ Tot by g(x) with φ_{g(x)}(y) = 0 if
+    φₓ(x) has NOT halted within y steps, undefined otherwise: total iff x
+    ∉ K. So Tot is not c.e. (In fact Tot is Π₂-complete.) Common
+    mistakes: applying Rice to properties of machines rather than of the
+    functions they compute ("halts within 100 steps" is decidable); getting
+    the direction of a reduction backwards (to show I hard, reduce K TO I).
+    Now you try: is {e : φₑ(3) = 7} computable? c.e.? (not computable by
+    Rice; c.e.: Σ₁)
+
+D10. (a) Show the Ackermann function A(0, n) = n + 1, A(m + 1, 0) = A(m,
+     1), A(m + 1, n + 1) = A(m, A(m + 1, n)) satisfies A(1, n) = n + 2,
+     A(2, n) = 2n + 3, A(3, n) = 2^(n+3) − 3, and compute A(3, 3) and
+     A(4, 0). (b) Explain why A is computable but not primitive recursive.
+     (c) Use Kleene's recursion theorem to show there is e with φₑ(x) = e
+     for all x, and one with Wₑ = {e}. (d) Compute the Cantor pairing
+     π(x, y) = (x + y)(x + y + 1)/2 + y at (3, 4) and invert 20 and 100.
+     Answer: (a) A(3, 3) = 61, A(4, 0) = 13; (b) A dominates every p.r.
+     function; (c) apply the theorem to f(e) = index of "output e";
+     (d) 32; π⁻¹(20) = (0, 5), π⁻¹(100) = (4, 9).
+     Teacher explains: (a) Induction on n. A(1, 0) = A(0, 1) = 2 and A(1, n
+     + 1) = A(1, n) + 1, so A(1, n) = n + 2. A(2, 0) = A(1, 1) = 3 and A(2,
+     n + 1) = A(2, n) + 2: A(2, n) = 2n + 3. A(3, 0) = A(2, 1) = 5 and A(3, n
+     + 1) = 2A(3, n) + 3; the formula 2^(n+3) − 3 satisfies 2(2^(n+3) − 3)
+     + 3 = 2^(n+4) − 3 ✓. So A(3, 3) = 64 − 3 = 61, A(4, 0) = A(3, 1) = 13
+     (and A(4, 1) = A(3, 13) = 2¹⁶ − 3 = 65533). (b) The recursion is a
+     well-founded (lexicographic) descent on (m, n), so a program computes
+     A. For every p.r. f one proves by induction on its construction that
+     there is m with f(x₁, ..., xₖ) < A(m, max xᵢ) for all x. If A were p.r.
+     so would be g(n) = A(n, n), and g(n) < A(m, n) for all n; at n = m this
+     says A(m, m) < A(m, m). (c) RECURSION THEOREM: for total computable
+     f there is e with φ_{f(e)} = φₑ. By s-m-n let f(e) be an index of the
+     constant function x ↦ e; a fixed point satisfies φₑ(x) = φ_{f(e)}(x)
+     = e: a QUINE. For Wₑ = {e}, let f(e) index the function defined only
+     at e. (d) π(3, 4) = 7·8/2 + 4 = 32. To invert z find the largest w
+     with w(w + 1)/2 ≤ z, then y = z − w(w + 1)/2, x = w − y: for 20, w = 5
+     (15), y = 5, x = 0; for 100, w = 13 (91), y = 9, x = 4. Common
+     mistakes: thinking "total computable = primitive recursive"; forgetting
+     that a p.r. function is always total. Now you try: A(2, 10) and A(3,
+     5). (23; 253)
+
+D11. (a) Code finite sequences by (a₁, ..., aₖ) ↦ ∏ pᵢ^(aᵢ+1): code (2, 0,
+     1) and decode 360. (b) Prove the DIAGONAL LEMMA: for every ψ(y) there
+     is a sentence φ with Q ⊢ φ ↔ ψ(⌜φ⌝). (c) Prove Gödel's first theorem
+     for a consistent, computably axiomatized T ⊇ Q using G ↔ ¬Pr_T(⌜G⌝)
+     (assume ω-consistency for the second half), and sketch the second.
+     (d) State Löb's theorem and apply it to a Henkin sentence H ↔
+     Pr_T(⌜H⌝).
+     Answer: (a) 2³·3¹·5² = 600; 360 = 2³·3²·5¹ ↦ (2, 1, 0). (b) substitute
+     a formula's own code into itself; (c) below; (d) T ⊢ H.
+     Teacher explains: (b) Let diag(n) be the code of the result of
+     substituting the numeral n̄ for x in the formula with code n; diag is
+     computable, so it is represented in Q by δ(x, y). Put θ(x) = ∃y (δ(x,
+     y) ∧ ψ(y)), m = ⌜θ⌝ and φ = θ(m̄). Then diag(m) = ⌜φ⌝, so Q ⊢ φ ↔
+     ∃y (δ(m̄, y) ∧ ψ(y)) ↔ ψ(⌜φ⌝). (c) Apply (b) to ¬Pr_T(y), where Pr_T(y)
+     = ∃p Prf_T(p, y) is Σ₁ (T computably axiomatized). If T ⊢ G, then
+     Pr_T(⌜G⌝) is a true Σ₁ sentence, so T ⊢ Pr_T(⌜G⌝) (Σ₁-completeness of
+     Q), while T ⊢ G gives T ⊢ ¬Pr_T(⌜G⌝): T is inconsistent. So T ⊬ G;
+     hence no n codes a proof of G, and T ⊢ ¬Prf_T(n̄, ⌜G⌝) for every n.
+     If also T ⊢ ¬G, i.e. T ⊢ ∃p Prf_T(p, ⌜G⌝), T is ω-INCONSISTENT. (Rosser
+     removes ω-consistency by using "for every proof of me there is a
+     shorter proof of my negation".) G is TRUE in N (it says it is
+     unprovable, and it is). SECOND THEOREM: the argument "if T ⊢ G then T
+     is inconsistent" formalizes in T under the derivability conditions:
+     T ⊢ Con(T) → G. So T ⊢ Con(T) would give T ⊢ G. (d) LÖB: if T ⊢
+     Pr_T(⌜φ⌝) → φ then T ⊢ φ. For H, T ⊢ Pr_T(⌜H⌝) → H, so T ⊢ H: the
+     sentence asserting its own provability is provable. Gödel II is the
+     case φ = ⊥. Common mistakes: saying "G is true, so T is unsound";
+     believing that adding G fixes incompleteness (T + G has its own
+     Gödel sentence); forgetting "computably axiomatized" (Th(N) is
+     complete). Now you try: does PA ⊢ Con(PA) → Con(PA + ¬Con(PA))? (yes:
+     if PA + ¬Con(PA) ⊢ ⊥, then PA ⊢ Con(PA), contradicting Gödel II; this
+     argument formalizes in PA)
+
+D12. (a) Compute the Goodstein sequences of 3 and of 4 (first 7 terms):
+     write n in hereditary base b, replace b by b + 1, subtract 1.
+     (b) Write 266 in hereditary base 2 and compute the next term.
+     (c) Assign ordinals below ε₀ (replace the base by ω) to the terms of
+     G(4) and prove that every Goodstein sequence terminates. (d) State
+     Gentzen's cut-elimination theorem and explain why it proves the
+     consistency of first-order logic, and what Gentzen's 1936 result says
+     about PA.
+     Answer: (a) 3, 3, 3, 2, 1, 0; 4, 26, 41, 60, 83, 109, 139. (b) 266 =
+     2^(2^(2+1)) + 2^(2+1) + 2; next term 3^81 + 83. (c) ω^ω > ω²·2 +
+     ω·2 + 2 > ω²·2 + ω·2 + 1 > ...; (d) below.
+     Teacher explains: (a) 3 = 2 + 1 → 3 + 1 − 1 = 3; 3 (base 3) = 3 → 4 −
+     1 = 3; in base 4, 3 is a digit: 3 − 1 = 2, then 1, then 0. For 4 =
+     2²: 3³ − 1 = 26 = 2·3² + 2·3 + 2; → 2·4² + 2·4 + 2 − 1 = 41; → 2·5² +
+     2·5 + 1 − 1 = 60; → 2·6² + 2·6 − 1 = 83 = 2·6² + 6 + 5; → 2·7² + 7 + 5
+     − 1 = 109; → 2·8² + 8 + 4 − 1 = 139. G(4) reaches 0 only after about
+     3·2^402653211 steps. (b) 266 = 256 + 8 + 2 = 2^(2^(2+1)) + 2^(2+1) +
+     2¹; bump: 3^(3^(3+1)) + 3^(3+1) + 3 − 1 = 3^81 + 81 + 2 = 3^81 + 83 ≈
+     4.4·10³⁸. (c) Replacing the base by ω maps 4 = 2² to ω^ω, 26 to ω²·2 +
+     ω·2 + 2, 41 to ω²·2 + ω·2 + 1, 60 to ω²·2 + ω·2, 83 to ω²·2 + ω + 5.
+     Changing the base does not change the ordinal; subtracting 1 strictly
+     lowers it. A strictly decreasing sequence of ordinals is finite, so
+     the sequence hits 0. KIRBY-PARIS: PA ⊬ "every Goodstein sequence
+     terminates" (it implies Con(PA)). (d) HAUPTSATZ: every sequent
+     provable in LK has a proof without the cut rule. Every other rule has
+     the SUBFORMULA PROPERTY: formulas above the line are subformulas of
+     those below. The empty sequent ⇒ has no subformulas, and axioms A ⇒ A
+     are non-empty, so ⇒ has no cut-free proof, hence no proof at all:
+     logic is consistent. GENTZEN: assign ordinals < ε₀ to PA-derivations
+     so that each reduction step lowers the ordinal; TI(ε₀) for these
+     primitive recursive orderings then proves Con(PA) in PRA. Since PA ⊬
+     Con(PA), PA ⊬ TI(ε₀), though it proves TI(α) for each α < ε₀. Common
+     mistakes: "Goodstein sequences decrease" (they grow enormously first);
+     forgetting to rewrite the EXPONENTS in base b too. Now you try: G(2).
+     (2, 2, 1, 0)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Axiomatizability. For each class of structures answer FA (finitely
+    axiomatizable), A (axiomatizable, but not finitely) or N (not
+    first-order axiomatizable), in the natural language.
+    a) groups                          b) abelian groups
+    c) infinite groups                 d) finite groups
+    e) torsion-free groups             f) torsion groups
+    g) fields of characteristic 0      h) fields of characteristic 5
+    i) algebraically closed fields     j) well-ordered sets (L = {<})
+    k) dense linear orders w/o ends    l) connected graphs
+    m) bipartite graphs                n) real closed fields
+    o) ordered fields                  p) Archimedean ordered fields
+    q) models of PA                    r) sets with exactly 7 elements
+    s) infinite sets                   t) groups of exponent dividing 6
+    Answers:
+      a) FA      b) FA      c) A       d) N (compactness)    e) A
+      f) N (D1)  g) A (an ultraproduct of the F_p has char 0)  h) FA
+      i) A       j) N (add c₀ > c₁ > c₂ > ...)     k) FA     l) N (D1)
+      m) A (no odd cycles; not FA: an ultraproduct of odd cycles C₂ₙ₊₁ is
+         bipartite)                    n) A      o) FA
+      p) N (add c > 1 + ... + 1 for all n)         q) A (Ryll-Nardzewski)
+      r) FA      s) A       t) FA (∀x x⁶ = e)
+
+M2. For each complete theory state: ℵ₀-categorical? (Y/N), categorical in
+    uncountable cardinals? (Y/N), number of countable models.
+    a) DLO = Th(Q, <)                  b) infinite sets (pure equality)
+    c) ACF₀                            d) ACF₇
+    e) non-trivial divisible torsion-free abelian groups (Q-vector spaces)
+    f) infinite vector spaces over F₂  g) Th(Z, s), s(x) = x + 1
+    h) the random graph                i) RCF = Th(R, +, ·)
+    j) Th(N, +, ·)                     k) Th(Z, <)
+    l) Th((Z/4)^(ω) ⊕ (Z/2)^(ω)) in the language of groups
+    m) Ehrenfeucht: DLO + constants c₀ < c₁ < c₂ < ...
+    n) Th(Q, <, 0) (DLO with one constant)
+    Answers:
+      a) Y, N, 1         b) Y, Y, 1          c) N, Y, ℵ₀ (tr. deg 0..ℵ₀)
+      d) N, Y, ℵ₀        e) N, Y, ℵ₀ (dim 1..ℵ₀)       f) Y, Y, 1
+      g) N, Y, ℵ₀ (number of Z-chains 0..ℵ₀ beyond the standard one)
+      h) Y, N, 1         i) N, N, 2^ℵ₀       j) N, N, 2^ℵ₀
+      k) N, N, 2^ℵ₀ (Z·L for countable orders L)
+      l) Y, N, 1 (uncountable models (Z/4)^(κ) ⊕ (Z/2)^(λ) vary)
+      m) N, N, 3 (the cₙ unbounded; bounded with a least upper bound;
+         bounded with none) — Vaught: never exactly 2   n) Y, N, 1
+
+M3. Quantifier elimination and types. Give a quantifier-free equivalent,
+    or the number of types asked.
+    a) RCF: ∃x (x² = a)                b) RCF: ∃x (x² + bx + c = 0)
+    c) RCF: ∀x (x² + bx + c > 0)       d) RCF: ∃x (ax = b)
+    e) ACF: ∃x (ax = b)                f) ACF: ∃x (x² = a)
+    g) RCF: ∃x ∃y (x² + y² = r)        h) RCF: ∃x (x³ + px + q = 0)
+    i) RCF: ∃y (y² = x ∧ y ≠ 0)        j) DLO: ∃x (a < x ∧ x < b)
+    k) DLO: ∃x (x < a)                 l) DLO: ∃x (c < x ∧ x < a ∧ x < b)
+    m) Presburger (Z, +, <, 0, 1): ∃y (x = y + y)
+    n) Presburger: ∃y (x = y + y + y + 1)
+    o) number of 1-types over ∅ in DLO; 2-types; 3-types
+    p) number of 1-types over ∅ in ACF₀
+    q) number of 1-types over Q in DLO
+    r) number of 1-types over ∅ in the random graph; 2-types
+    s) number of 1-types over ∅ in Th(N, +, ·)
+    t) a formula in (R, +, ·) defining x ≤ y
+    Answers:
+      a) a ≥ 0             b) b² − 4c ≥ 0        c) b² − 4c < 0
+      d) a ≠ 0 ∨ b = 0     e) a ≠ 0 ∨ b = 0      f) ⊤ (true)
+      g) r ≥ 0             h) ⊤ (odd degree)     i) x > 0
+      j) a < b             k) ⊤ (no endpoints)   l) c < a ∧ c < b
+      m) x ≡ 0 (mod 2)     n) x ≡ 1 (mod 3) (QE needs the ≡ₙ predicates)
+      o) 1, 3, 13 (weak orderings)
+      p) ℵ₀ (one per irreducible polynomial over Q, plus the
+         transcendental type)       q) 2^ℵ₀ (cuts of Q; D4)
+      r) 1; 3 (x = y, xEy, x ≠ y ∧ ¬xEy)
+      s) 2^ℵ₀ (a type decides "pₙ | x" for every prime pₙ)
+      t) ∃z (y = x + z·z)
+
+M4. Ordinal arithmetic: write in Cantor normal form.
+    a) ω + 5 + ω                       b) 5 + ω + 5
+    c) (ω + 5)·2                       d) 2·(ω + 5)
+    e) (ω + 1)²                        f) (ω + 1)³
+    g) (ω + 3)·(ω + 2)                 h) (ω² + ω)·2
+    i) (ω·2)²                          j) ω² + ω³
+    k) (ω³ + ω·5) + (ω² + 4)           l) (ω·3 + 7) + (ω·2 + 1)
+    m) (ω·2 + 3)·3                     n) (ω² + ω)²
+    o) (ω² + 1)·(ω + 1)                p) (ω + 1)·(ω² + 1)
+    q) 2^ω, 2^(ω+1), 3^(ω+2), 2^(ω·2)  r) (ω + 1)^ω
+    s) the least α with ω + α = α      t) the least α with ω^α = α
+    u) the order type of N × N ordered lexicographically; of {1 − 1/n :
+       n ≥ 1} ∪ {2 − 1/n : n ≥ 1} ⊆ R
+    Answers:
+      a) ω·2           b) ω + 5         c) ω·2 + 5        d) ω + 10
+      e) ω² + ω + 1    f) ω³ + ω² + ω + 1                 g) ω² + ω·2 + 3
+      h) ω²·2 + ω      i) ω²·2          j) ω³             k) ω³ + ω² + 4
+      l) ω·5 + 1       m) ω·6 + 3       n) ω⁴ + ω³        o) ω³ + ω² + 1
+      p) ω³ + ω + 1    q) ω, ω·2, ω·9, ω²                 r) ω^ω
+      s) ω² (ω + α = α ⇔ α ≥ ω²)        t) ε₀             u) ω²; ω·2
+
+M5. Cardinal arithmetic in ZFC (𝔠 = 2^ℵ₀). Simplify.
+    a) ℵ₀ + ℵ₁                         b) ℵ₃·ℵ₅
+    c) ℵ₀^7                            d) 𝔠·ℵ₁
+    e) ℵ₀^ℵ₀                           f) ℵ₁^ℵ₀
+    g) 𝔠^ℵ₁                            h) |algebraic numbers|
+    i) |finite subsets of R|           j) |countable subsets of R|
+    k) |Borel subsets of R|            l) |Lebesgue measurable sets|
+    m) |continuous R → R|              n) |monotone R → R|
+    o) |R^R|                           p) |ultrafilters on N|
+    q) ∑_{n<ω} ℵₙ ; ∏_{n<ω} ℵₙ          r) |V_{ω+2}|
+    s) under GCH: ℵ₁^ℵ₀, ℵ₁^ℵ₁, ℵ_ω^ℵ₀, ℵ_{ω₁}^ℵ₀, ℵ₅^ℵ₂
+    t) |{countable ordinals}| ; |{well-orderings of N}| (as relations)
+    Answers:
+      a) ℵ₁      b) ℵ₅      c) ℵ₀      d) 𝔠 (ℵ₁ ≤ 𝔠)     e) 𝔠
+      f) 𝔠 (𝔠 ≤ ℵ₁^ℵ₀ ≤ 𝔠^ℵ₀ = 𝔠)       g) 2^ℵ₁     h) ℵ₀
+      i) 𝔠       j) 𝔠       k) 𝔠       l) 2^𝔠 (all subsets of the Cantor
+         set)    m) 𝔠       n) 𝔠       o) 2^𝔠      p) 2^𝔠 (Pospíšil)
+      q) ℵ_ω ; ℵ_ω^ℵ₀ (> ℵ_ω by König)  r) 2^𝔠
+      s) ℵ₁, ℵ₂, ℵ_{ω+1} (cf ℵ_ω = ω), ℵ_{ω₁} (cf = ω₁ > ω), ℵ₅
+      t) ℵ₁ ; 𝔠
+
+M6. Cofinality and the continuum. (a)-(m): find cf. (n)-(u): is the
+    statement consistent with ZFC (Y/N)?
+    a) ω + 1       b) ω·2        c) ω²         d) ω^ω        e) ε₀
+    f) ω₁          g) ω₁ + ω     h) ω₁·2       i) ω₁·ω       j) ℵ_ω
+    k) ℵ_{ω₁}      l) ℵ_{ω+1}    m) ℵ_{ω_ω}
+    n) 2^ℵ₀ = ℵ₁          o) 2^ℵ₀ = ℵ₂          p) 2^ℵ₀ = ℵ_ω
+    q) 2^ℵ₀ = ℵ_{ω+1}     r) 2^ℵ₀ = ℵ_{ω₁}      s) 2^ℵ₀ = ℵ_{ω·2}
+    t) 2^ℵ₁ = ℵ₁          u) 2^ℵ₀ = 2^ℵ₁ = ℵ₂   v) 2^ℵ₀ = ℵ₃, 2^ℵ₁ = ℵ₂
+    Answers:
+      a) 1 (successor)   b) ω    c) ω     d) ω     e) ω     f) ω₁
+      g) ω        h) ω₁       i) ω        j) ω     k) ω₁ (ℵ_{ω₁} singular)
+      l) ℵ_{ω+1} (successors are regular)          m) ω
+      n) Y (L)    o) Y (D7)   p) N (König)          q) Y (Easton)
+      r) Y        s) N (cf = ω)          t) N (Cantor)
+      u) Y (e.g. MA + 2^ℵ₀ = ℵ₂)        v) N (2^κ is monotone in κ)
+
+M7. Constructibility, forcing and large cardinals. Answer briefly.
+    a) Does L satisfy AC? GCH?
+    b) Is "V = L" consistent with an inaccessible? with a measurable?
+    c) Does Fn(ω, 2) add a new real? collapse any cardinal?
+    d) What does Fn(ω, ω₁) do to ω₁?
+    e) Fn(ω₁, 2) with COUNTABLE conditions (σ-closed): new reals? CH?
+    f) After adding ℵ₃ Cohen reals to a GCH model: 2^ℵ₀ = ?
+    g) Order by consistency strength: measurable, Con(ZFC), Woodin,
+       inaccessible, supercompact, Mahlo, weakly compact
+    h) Is the least inaccessible Mahlo? Is a measurable weakly compact?
+    i) Does V_κ, κ the least inaccessible, contain an inaccessible?
+    j) Why is ω excluded from the definition of inaccessible?
+    k) Martin's axiom MA_ℵ₁ decides CH how? PFA gives 2^ℵ₀ = ?
+    l) Can large cardinals decide CH? (Lévy-Solovay)
+    m) Is there a nontrivial elementary j : V → V? (ZFC)
+    n) Which hypothesis gives projective determinacy?
+    o) The critical point of j : V → M (M transitive) is always ...
+    p) Solovay's model (all sets of reals Lebesgue measurable, with DC)
+       needs which assumption?
+    Answers:
+      a) yes; yes       b) yes (κ stays inaccessible in L); no (Scott)
+      c) yes (the generic real); no (ccc)
+      d) collapses it: ω₁^V becomes countable
+      e) no new reals, adds a subset of ω₁; forces CH        f) ℵ₃
+      g) Con(ZFC) < inaccessible < Mahlo < weakly compact < measurable <
+         Woodin < supercompact            h) no; yes
+      i) no (V_κ ⊨ "no inaccessibles")    j) only uncountable cardinals
+         count (ω is regular and a strong limit)
+      k) MA_ℵ₁ ⇒ 2^ℵ₀ > ℵ₁ (¬CH); PFA ⇒ 2^ℵ₀ = ℵ₂
+      l) no: small forcing preserves them and can make CH true or false
+      m) no (Kunen)     n) infinitely many Woodin cardinals (Martin-Steel)
+      o) a measurable cardinal   p) an inaccessible (necessary: Shelah)
+
+M8. Place each set at its exact level of the arithmetical hierarchy
+    (Δ₁ = computable, Σ₁, Π₁, Δ₂, Σ₂, Π₂, Σ₃, ...; "complete" if so).
+    a) K = {e : φₑ(e)↓}                 b) {e : Wₑ ≠ ∅}
+    c) {e : Wₑ = ∅}                     d) {e : φₑ(0) = 5}
+    e) {e : φₑ(0) halts within e steps} f) the primes
+    g) Tot = {e : φₑ total}             h) Inf = {e : Wₑ infinite}
+    i) Fin = {e : Wₑ finite}            j) Cof = {e : Wₑ cofinite}
+    k) Rec = {e : Wₑ computable}        l) {e : Wₑ = N}
+    m) {e : |Wₑ| = 3}                   n) {(e, i) : Wₑ = Wᵢ}
+    o) {e : φₑ total and constant}      p) codes of theorems of PA
+    q) {polynomials in Z[x₁..xₙ] with an integer zero}
+    r) codes of true sentences of (N, +, ·)
+    s) codes of true sentences of (R, +, ·, <)
+    t) K̄ ; K ⊕ K̄ = {2x : x ∈ K} ∪ {2x + 1 : x ∉ K}
+    Answers:
+      a) Σ₁-complete   b) Σ₁-complete   c) Π₁-complete   d) Σ₁-complete
+      e) Δ₁ (bounded search)            f) Δ₁ (primitive recursive)
+      g) Π₂-complete   h) Π₂-complete   i) Σ₂-complete   j) Σ₃-complete
+      k) Σ₃-complete   l) Π₂-complete
+      m) Δ₂ ("≥ 3" is Σ₁, "≤ 3" is Π₁; neither Σ₁ nor Π₁)
+      n) Π₂ (∀x ∀s ∃t)  o) Π₂           p) Σ₁-complete
+      q) Σ₁-complete (MRDP: Hilbert's 10th problem is unsolvable)
+      r) not arithmetical at all (Tarski; it computes every ∅⁽ⁿ⁾)
+      s) Δ₁ (Tarski's QE)               t) Π₁-complete; Δ₂, ≡_T K
+
+M9. Computation drill: Ackermann values, pairing, sequence codes,
+    primitive recursion. (Codes: (a₁, ..., aₖ) ↦ ∏ pᵢ^(aᵢ+1).)
+    a) A(1, 5)       b) A(2, 4)       c) A(3, 2)       d) A(3, 4)
+    e) A(4, 0)       f) A(4, 1)       g) π(2, 2)       h) π(5, 0)
+    i) π(10, 10)     j) π⁻¹(50)       k) code of (1, 1, 1)
+    l) decode 540    m) μy (y² ≥ 50)  n) μy (y·y = 7)
+    o) primitive recursive? x!, 2^(2^x), the n-th prime, A(x, x), the
+       busy-beaver function Σ(n), f(x) = 1 if Goldbach's conjecture is
+       true and 0 otherwise, 𝟙_K
+    p) Σ(n) (max ones printed by a halting n-state, 2-symbol machine)
+       for n = 1, 2, 3, 4
+    q) define x·y by primitive recursion from + ; x^y from ·
+    r) is the class of p.r. functions c.e. (as a set of programs)? can it
+       contain a universal function for itself?
+    Answers:
+      a) 7       b) 11      c) 29      d) 125     e) 13      f) 65533
+      g) 12      h) 15      i) 220     j) (4, 5)  k) 2²·3²·5² = 900
+      l) 540 = 2²·3³·5¹ ↦ (1, 2, 0)    m) 8       n) undefined (no y)
+      o) yes, yes, yes, no, no (not even computable), yes (it is a
+         constant function, whichever constant), no (not computable)
+      p) 1, 4, 6, 13
+      q) x·0 = 0, x·(y + 1) = x·y + x; x⁰ = 1, x^(y+1) = x^y·x
+      r) yes (programs built from the schemes are listable); no: the
+         diagonal f(x) = U(x, x) + 1 would be p.r. and differ from all
+
+M10. Complete? Decidable? (answer C/I and D/U; assume consistency)
+     a) Robinson arithmetic Q         b) PA
+     c) Th(N, +, ·)                   d) Presburger Th(N, +)
+     e) Skolem arithmetic Th(N, ·)    f) Th(R, +, ·)
+     g) ACF₀ = Th(C, +, ·)            h) Th(Q, +, ·)
+     i) Th(Z, +, ·)                   j) group theory
+     k) abelian group theory          l) ZFC
+     m) DLO                           n) Th(Z, +, <)
+     o) validity in a language with one binary relation symbol
+     p) validity in pure monadic predicate logic
+     q) the sentences true in all finite fields
+     r) Tarski's elementary Euclidean geometry
+     Answers:
+       a) I, U (essentially undecidable)  b) I, U     c) C, U
+       d) C, D     e) C, D     f) C, D (Tarski)   g) C, D
+       h) C, U (J. Robinson)   i) C, U           j) I, U (Tarski)
+       k) I, D (Szmielew)      l) I, U           m) C, D
+       n) C, D     o) U (Church-Turing)          p) D
+       q) I, D (Ax)            r) C, D
+
+M11. Hereditary base notation, Goodstein sequences and ε₀.
+     a) 35 in hereditary base 2        b) 100 in hereditary base 2
+     c) 100 in hereditary base 3       d) G(1)
+     e) G(2)                           f) G(3)
+     g) G(4): first 5 terms            h) G(5): first 4 terms
+     i) the ordinals (base ↦ ω) of the first 3 terms of G(5)
+     j) the ordinal of 35 (base 2)     k) the second term of G(266)
+     l) cf(ε₀); ω^ε₀; is ε₀ countable?
+     m) proof-theoretic ordinals of PA, ACA₀, PRA, RCA₀, ATR₀
+     n) which of these are unprovable in PA: Goodstein's theorem, the
+        hydra game terminates, Paris-Harrington, finite Ramsey theorem,
+        "every specific Goodstein sequence G(n₀) terminates" (fixed n₀)
+     Answers:
+       a) 2^(2²+1) + 2 + 1              b) 2^(2²+2) + 2^(2²+1) + 2²
+       c) 3^(3+1) + 2·3² + 1            d) 1, 0
+       e) 2, 2, 1, 0                    f) 3, 3, 3, 2, 1, 0
+       g) 4, 26, 41, 60, 83             h) 5, 27, 255, 467
+       i) ω^ω + 1, ω^ω, ω³·3 + ω²·3 + ω·3 + 3
+       j) ω^(ω^ω + 1) + ω + 1           k) 3^81 + 83
+       l) ω; ε₀; yes (a countable union of countable ordinals)
+       m) ε₀, ε₀, ω^ω, ω^ω, Γ₀
+       n) unprovable: the first three; provable: finite Ramsey, and each
+          single G(n₀) (a true Σ₁ sentence, so provable in Q)
+
+M12. True (T) or false (F)? Give a counterexample (or reason) for F.
+     a) Every consistent theory in a countable language has a countable
+        model.
+     b) Every complete theory is κ-categorical for some infinite κ.
+     c) A theory with arbitrarily large finite models has an infinite
+        model.
+     d) The class of finite fields is first-order axiomatizable.
+     e) Every uncountable model of DLO is isomorphic to R.
+     f) An ultraproduct of finite sets over a non-principal ultrafilter is
+        infinite.
+     g) ω + 1 = 1 + ω.
+     h) Every infinite cardinal is regular.
+     i) 2^ℵ₀ can be ℵ_ω.
+     j) ZFC proves CH or ZFC proves ¬CH.
+     k) Measurable cardinals exist in L if they exist in V.
+     l) Every inaccessible cardinal is measurable.
+     m) Every c.e. set is computable.
+     n) Every total computable function is primitive recursive.
+     o) No non-trivial index set is c.e.
+     p) If A and its complement are c.e., A is computable.
+     q) Every sentence true in N is provable in PA.
+     r) PA + ¬Con(PA) is inconsistent.
+     s) If T ⊢ Pr_T(⌜φ⌝) → φ then T ⊢ φ (T ⊇ PA computably axiomatized).
+     t) Every model of ZFC is well-founded (∈ is well-founded
+        externally).
+     u) Cut-free LK proofs have the subformula property.
+     v) PA proves transfinite induction up to ε₀.
+     Answers:
+       a) T (downward Löwenheim-Skolem)  b) F: RCF, Th(N, +, ·)
+       c) T (compactness)                d) F: the ultraproduct ∏F_p/U is
+          an infinite field satisfying the same sentences
+       e) F: R + Q (D2)                  f) F: all of size 3 give size 3
+          (true if the sizes are unbounded on every set in U)
+       g) F: 1 + ω = ω < ω + 1           h) F: ℵ_ω (cf ω)
+       i) F: König, cf(2^ℵ₀) > ω         j) F: Gödel (L) and Cohen
+       k) F: Scott, V = L ⇒ no measurables
+       l) F: the least inaccessible       m) F: K
+       n) F: Ackermann                   o) F: {e : Wₑ ≠ ∅} is c.e. (Rice
+          only gives "not computable")    p) T (run both enumerations)
+       q) F: Gödel's G, Goodstein's theorem
+       r) F: consistent by Gödel II (its models are nonstandard)
+       s) T (Löb)
+       t) F: by compactness add constants cₙ₊₁ ∈ cₙ; also ω-nonstandard
+          models exist
+       u) T                              v) F: Gentzen; only each α < ε₀
+
+TEACHING TIPS
+  Struggling: organise the whole subject around THREE TOOLS and ask which
+  one a problem needs. (1) COMPACTNESS / LÖWENHEIM-SKOLEM: "add new
+  constants and finitely satisfiable axioms" answers almost every "is it
+  axiomatizable?" or "is there a nonstandard model?" question; always
+  check the finite subsets explicitly. (2) DIAGONALISATION: Cantor's D =
+  {x : x ∉ f(x)}, the halting set, König's theorem and Gödel's sentence
+  are one argument; have students write the four side by side. (3) WELL-
+  FOUNDEDNESS: ordinal arithmetic, rank, Goodstein and Gentzen all rest on
+  "no infinite descending sequence of ordinals" — drill Cantor normal form
+  (absorption rule: a smaller term is swallowed by a later larger one)
+  until it is automatic. For computability, insist on "to show I is hard,
+  reduce K TO I" and count quantifiers for the arithmetical hierarchy.
+  Harder: prove the completeness theorem by Henkin's method; prove
+  Morley's theorem for ω-stable theories; prove the Ax-Grothendieck
+  theorem (an injective polynomial map Cⁿ → Cⁿ is onto) via ultraproducts
+  of the algebraic closures of F_p; prove the Δ-system lemma and the
+  forcing theorem; show that adding a Cohen real makes the set of
+  ground-model reals meagre; prove the Friedberg-Muchnik theorem with a
+  finite-injury priority argument; derive Löb's theorem from the diagonal
+  lemma and the derivability conditions; and prove Goodstein's theorem is
+  unprovable in PA by showing it implies Con(PA) via the Wainer hierarchy.
+
+
+================================================================================
+TOPIC 12.22 — CATEGORY THEORY: FUNCTORS, NATURAL TRANSFORMATIONS,
+ADJUNCTIONS, LIMITS, ABELIAN CATEGORIES, DERIVED FUNCTORS (YONEDA LEMMA,
+MONADS, EQUIVALENCES)
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - CATEGORY 𝒞: objects, sets Hom(A, B), an associative composition and
+    identities 1_A. Examples: Set, Grp, Ab, Ring, R-Mod, Vect_k, Top; a
+    POSET (one arrow a → b iff a ≤ b); a MONOID or GROUP (one object);
+    a GROUPOID (every arrow invertible). The OPPOSITE 𝒞ᵒᵖ reverses arrows
+    (DUALITY: every theorem has a dual). MONO: f∘g = f∘h ⇒ g = h; EPI:
+    g∘f = h∘f ⇒ g = h; ISO: two-sided inverse. Mono + epi ⇏ iso: Z ↪ Q
+    is an epi in Ring; Q ↪ R is an epi in Haus (dense image).
+  - FUNCTOR F : 𝒞 → 𝒟 preserves composition and identities (covariant) or
+    reverses them (contravariant = 𝒞ᵒᵖ → 𝒟). Examples: forgetful U, free
+    F, Hom(A, −), Hom(−, B), abelianization G ↦ Gᵃᵇ = G/[G, G], π₁, Hₙ,
+    V ↦ V*, P (power set, both variances), GLₙ, units R ↦ Rˣ. FAITHFUL /
+    FULL = injective / surjective on each Hom-set; ESSENTIALLY SURJECTIVE =
+    every object is isomorphic to some F(A). Functors preserve isos.
+  - NATURAL TRANSFORMATION α : F ⇒ G: arrows α_A : FA → GA with
+    G(f)∘α_A = α_B∘F(f) (naturality square). Examples: V → V** (a natural
+    iso on finite-dimensional spaces; V ≅ V* is NOT natural), det : GLₙ ⇒
+    (−)ˣ, G → Gᵃᵇ, Hurewicz π₁ → H₁. Functor categories [𝒞, 𝒟]; presheaves
+    [𝒞ᵒᵖ, Set].
+  - EQUIVALENCE: F : 𝒞 → 𝒟 with G and natural isos GF ≅ 1, FG ≅ 1.
+    THEOREM: F is an equivalence ⇔ fully faithful + essentially surjective
+    (uses choice). Every category is equivalent to a SKELETON (one object
+    per iso class). Examples: FinVect_k ≃ Mat_k (objects n ∈ N, arrows
+    matrices), FinVect_k ≃ FinVect_kᵒᵖ (duality), FinSetᵒᵖ ≃ finite Boolean
+    algebras, R-Mod ≃ Mₙ(R)-Mod (Morita), covering spaces ≃ π₁-sets.
+    Equivalence is weaker than isomorphism of categories.
+  - YONEDA LEMMA: for F : 𝒞 → Set, Nat(Hom(A, −), F) ≅ F(A), α ↦ α_A(1_A),
+    naturally in A and F. Hence the YONEDA EMBEDDING A ↦ Hom(−, A) is fully
+    faithful and Hom(−, A) ≅ Hom(−, B) ⇒ A ≅ B. REPRESENTABLE functors:
+    U_Grp ≅ Hom(Z, −), U_CRing ≅ Hom(Z[x], −), R ↦ Rˣ ≅ Hom(Z[x, x⁻¹], −),
+    P ≅ Hom(−, {0, 1}), open sets ≅ Hom(−, Sierpiński space). Cayley's
+    theorem is the Yoneda embedding of a one-object category.
+  - UNIVERSAL PROPERTIES: INITIAL and TERMINAL objects are unique up to
+    unique iso (Set: ∅, point; Grp: trivial group = ZERO object; Ring: Z
+    and 0; Field: neither). Free objects, quotients, tensor products,
+    localizations are all defined by universal properties.
+  - LIMITS: a limit of D : J → 𝒞 is a terminal cone. PRODUCTS, EQUALIZERS,
+    PULLBACKS (fibre products), INVERSE LIMITS (Z_p = lim Z/pⁿ, Ẑ = lim
+    Z/n), terminal object (empty limit). COLIMITS (dual): COPRODUCTS (⊔ in
+    Set, free product * in Grp, ⊕ in Ab, ⊗ in CRing), COEQUALIZERS,
+    PUSHOUTS (amalgams; van Kampen), DIRECT LIMITS (Z[1/p], Z(p^∞), Q/Z).
+    In a poset: limit = infimum, colimit = supremum. Products + equalizers
+    ⇒ all small limits; lim D ⊆ ∏ D(j) is the set of compatible families.
+  - ADJUNCTION F ⊣ G: Hom_𝒟(FA, B) ≅ Hom_𝒞(A, GB) naturally in A, B;
+    equivalently unit η : 1 ⇒ GF and counit ε : FG ⇒ 1 with TRIANGLE
+    IDENTITIES εF∘Fη = 1_F, Gε∘ηG = 1_G. Examples: free ⊣ forgetful;
+    abelianization ⊣ inclusion Ab ⊆ Grp; − ⊗_R M ⊣ Hom_R(M, −); − × A ⊣
+    (−)ᴬ (currying); discrete ⊣ U ⊣ indiscrete (Top → Set); Stone-Čech β
+    ⊣ inclusion CHaus ⊆ Top; colim ⊣ Δ ⊣ lim; ⌈·⌉ ⊣ (Z ⊆ R) ⊣ ⌊·⌋ (Galois
+    connections). Adjoints are unique up to unique natural iso.
+  - RAPL: RIGHT ADJOINTS PRESERVE LIMITS, LEFT ADJOINTS PRESERVE COLIMITS
+    (hence − ⊗ M is right exact and commutes with ⊕; Hom(A, −) is left
+    exact). FREYD'S ADJOINT FUNCTOR THEOREM: G : 𝒟 → 𝒞 with 𝒟 complete and
+    locally small has a left adjoint ⇔ G preserves small limits and
+    satisfies the SOLUTION SET condition. Used negatively: U : Grp → Set
+    has no right adjoint (U(trivial group) = point ≠ ∅).
+  - MONADS: T : 𝒞 → 𝒞 with η : 1 ⇒ T, μ : TT ⇒ T, associativity μ∘Tμ =
+    μ∘μT and unit laws μ∘Tη = μ∘ηT = 1. Every adjunction F ⊣ G gives T =
+    GF, μ = GεF; conversely every monad comes from its KLEISLI and
+    EILENBERG-MOORE (T-algebra) adjunctions. Examples: list monad (algebras
+    = monoids), maybe X ⊔ {∗} (pointed sets), power set (sup-lattices;
+    Kleisli = Rel), ultrafilter β (compact Hausdorff spaces), M × − (M-sets).
+    G is MONADIC if 𝒟 ≃ 𝒞ᵀ: Grp, Ab, CHaus → Set are; Top → Set is not.
+  - ADDITIVE category: Hom-sets are abelian groups, composition bilinear,
+    zero object, finite BIPRODUCTS A ⊕ B. ABELIAN: also every arrow has a
+    kernel and cokernel, every mono is a kernel and every epi a cokernel;
+    then mono + epi ⇒ iso and im f = ker(coker f) ≅ coim f. Examples: Ab,
+    R-Mod, finite abelian groups, sheaves of abelian groups, chain
+    complexes Ch(𝒜), G-representations. Non-examples: Grp (not additive),
+    free or torsion-free abelian groups, Banach spaces, topological
+    groups. FREYD-MITCHELL: a small abelian category embeds exactly and
+    fully in some R-Mod, so diagram chases are legitimate.
+  - EXACTNESS: A → B → C exact if im = ker. SPLITTING LEMMA; FIVE LEMMA;
+    SNAKE LEMMA ker a → ker b → ker c → coker a → coker b → coker c with
+    connecting map δ; a short exact sequence of complexes gives a LONG
+    EXACT SEQUENCE in homology. Hom(A, −), Hom(−, B) are LEFT exact; − ⊗ M
+    is RIGHT exact.
+  - PROJECTIVE P: Hom(P, −) exact ⇔ direct summand of a free module
+    (over Z or a PID: free). INJECTIVE I: Hom(−, I) exact; BAER: test on
+    ideals; over a PID ⇔ divisible (Q, Q/Z). FLAT: − ⊗ M exact (over a
+    PID ⇔ torsion-free: Q is flat, not projective). R-Mod has enough
+    projectives and enough injectives.
+  - DERIVED FUNCTORS: resolve M by projectives P• → M (COMPARISON THEOREM:
+    any map lifts to resolutions, unique up to homotopy), then LₙF(M) =
+    Hₙ(F(P•)) for F right exact (L₀F = F); RⁿF(M) = Hⁿ(F(I•)) via
+    injectives for F left exact. Short exact sequences give long exact
+    sequences; the Lₙ, Rⁿ are UNIVERSAL δ-functors (Grothendieck).
+    Torₙ^R(A, B) = Lₙ(A ⊗ −)(B), Extⁿ_R(A, B) = Rⁿ Hom(A, −)(B), both
+    BALANCED (resolve either variable). Also Hⁿ(G, M) = Extⁿ_ZG(Z, M),
+    sheaf cohomology Hⁿ(X, ℱ) = RⁿΓ(ℱ).
+  - STANDARD COMPUTATIONS: over Z (d = gcd(m, n)) Z/m ⊗ Z/n ≅ Hom(Z/m,
+    Z/n) ≅ Tor₁(Z/m, Z/n) ≅ Ext¹(Z/m, Z/n) ≅ Z/d; Ext¹(Z/n, Z) ≅ Z/n;
+    Tor₁(Q/Z, A) = A_tors; Torₙ = Extⁿ = 0 for n ≥ 2 (PID). Over k[x]/(x²):
+    Extⁿ(k, k) ≅ k for all n (infinite global dimension). Ext¹(A, B)
+    classifies extensions 0 → B → E → A → 0 (Yoneda/Baer). Global
+    dimension: field 0, PID 1, k[x₁, ..., xₙ] n (Hilbert syzygy theorem).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove that in Grp a homomorphism is a monomorphism iff it is
+    injective. (b) Prove that the inclusion Z ↪ Q is an epimorphism in Ring
+    (rings with 1), although it is not surjective. (c) In the category of
+    divisible abelian groups show that the quotient π : Q → Q/Z is a
+    monomorphism. Conclude that "mono + epi ⇒ iso" fails in general.
+    Answer: (a) test with homomorphisms out of Z; (b) f(1/n) = f(n)⁻¹ is
+    forced; (c) a map into Z from a divisible group is 0.
+    Teacher explains: The definitions are ARROW-THEORETIC: f is mono if it
+    can be cancelled on the left. (a) If f is injective and f∘g = f∘h then
+    f(g(x)) = f(h(x)) gives g(x) = h(x): mono. Conversely suppose f : G →
+    H is mono and f(a) = e. The homomorphisms g, h : Z → G with g(1) = a,
+    h(1) = e satisfy f∘g = f∘h (both send 1 to e), so g = h, i.e. a = e.
+    The trick: Z REPRESENTS elements, Hom(Z, G) = G. (b) Let f, g : Q → R
+    be ring maps with f|_Z = g|_Z. For n ≠ 0, n is a unit in Q, so f(n) is
+    a unit in R and f(1/n) = f(n)⁻¹ = g(n)⁻¹ = g(1/n); then f(m/n) =
+    f(m)f(1/n) = g(m/n). So f = g: the inclusion is epi. It is also mono
+    (injective), but not an iso (no ring map Q → Z). (c) Let f, g : D → Q
+    with D divisible and π∘f = π∘g. Then h = f − g : D → Z ⊆ Q, and h(D) is
+    a divisible subgroup of Z; the only one is 0. So f = g. (π is also epi,
+    being surjective, but it is not an iso.) Common mistakes: "mono means
+    injective" — true in Set, Grp, R-Mod, false in general; checking epi
+    only against surjective test maps. Now you try: show Z → Z[1/2] is an
+    epimorphism in Ring. (f(1/2) = f(2)⁻¹ is determined)
+
+D2. (a) Show that the evaluation maps ev_V : V → V**, ev_V(v)(φ) = φ(v),
+    form a natural transformation 1 ⇒ (−)** on Vect_k, an isomorphism on
+    finite-dimensional spaces. (b) Show that no family of isomorphisms
+    φ_V : V → V* on the real vector spaces can be natural with respect to
+    all isomorphisms f : V → W (dualizing f by (f⁻¹)*). (c) Show that det
+    : GLₙ ⇒ (−)ˣ is natural on commutative rings.
+    Answer: (a) f**∘ev_V = ev_W∘f; (b) naturality for f = 2·1_V forces
+    φ_V = 4φ_V, so φ_V = 0; (c) ring maps commute with polynomials.
+    Teacher explains: (a) For f : V → W, f* : W* → V* is ψ ↦ ψ∘f, and f** :
+    V** → W** is Θ ↦ Θ∘f*. For v ∈ V and ψ ∈ W*:
+       f**(ev_V(v))(ψ) = ev_V(v)(ψ∘f) = ψ(f(v)) = ev_W(f(v))(ψ).
+    So the square commutes. The definition of ev_V uses NO basis — this is
+    the informal meaning of "natural". ev_V is injective (for v ≠ 0 extend
+    to a basis and pick φ with φ(v) = 1) and dim V** = dim V when finite,
+    so it is an iso there; for infinite-dimensional V it is not onto.
+    (b) Naturality says (f⁻¹)*∘φ_V = φ_W∘f, i.e. φ_V(v)(u) =
+    φ_W(fv)(fu): the bilinear form b(v, u) = φ_V(v)(u) is preserved by
+    every isomorphism. Take W = V, f = 2·1: b(v, u) = b(2v, 2u) = 4b(v, u),
+    so b = 0, contradicting that φ_V is an isomorphism (V ≠ 0). A choice of
+    basis gives V ≅ V*, but never naturally. (c) For φ : R → S, GLₙ(φ)
+    applies φ entrywise; det is a polynomial in the entries with integer
+    coefficients, so det(φ(A)) = φ(det A): the square commutes. Common
+    mistakes: calling a map natural because it is "canonical-looking"
+    without checking the square; forgetting that V ↦ V* is contravariant.
+    Now you try: show that the quotient maps G → Gᵃᵇ form a natural
+    transformation 1_Grp ⇒ (inclusion)∘(ab). (f([G, G]) ⊆ [H, H])
+
+D3. State and prove the Yoneda lemma. Deduce: (a) the Yoneda embedding is
+    fully faithful; (b) the natural transformations U ⇒ U for the
+    forgetful functor U : Grp → Set are exactly g ↦ gⁿ (n ∈ Z); (c) the
+    natural transformations U ⇒ U for U : CRing → Set are r ↦ p(r),
+    p ∈ Z[x].
+    Answer: Nat(Hom(A, −), F) ≅ F(A) via α ↦ α_A(1_A); (b) U ≅ Hom(Z, −),
+    so Nat(U, U) ≅ U(Z) = Z; (c) U ≅ Hom(Z[x], −), Nat ≅ Z[x].
+    Teacher explains: Given α : Hom(A, −) ⇒ F put x = α_A(1_A) ∈ F(A). For
+    any f : A → B, naturality applied to the element 1_A gives
+       α_B(f) = α_B(f∘1_A) = F(f)(α_A(1_A)) = F(f)(x).
+    So α is DETERMINED by x. Conversely, for x ∈ F(A) define α^x_B(f) =
+    F(f)(x); it is natural because F(g)(F(f)(x)) = F(g∘f)(x). The two
+    constructions are inverse: α^x_A(1_A) = F(1_A)(x) = x. (a) Take F =
+    Hom(B, −): Nat(Hom(A, −), Hom(B, −)) ≅ Hom(B, A), and every natural
+    map is precomposition with a unique arrow — full and faithful
+    (contravariantly; the version with Hom(−, A) is covariant). (b) U(G) =
+    Hom(Z, G) (g ↔ the map 1 ↦ g), so Nat(U, U) ≅ U(Z) = Z. The element n
+    ∈ Z corresponds to α_G(g) = U(g-map)(n) = gⁿ. So every "natural
+    operation on elements of groups" is a power map; e.g. g ↦ g⁻¹ is n =
+    −1. (c) Hom(Z[x], R) ≅ R via φ ↦ φ(x), and Nat(U, U) ≅ U(Z[x]) = Z[x],
+    the polynomial p acting by r ↦ p(r). Common mistakes: applying Yoneda
+    to a non-representable functor; confusing Nat(Hom(A, −), Hom(B, −)) ≅
+    Hom(B, A) (arrows reversed!). Now you try: find Nat(U × U, U) for U :
+    Grp → Set. (U × U ≅ Hom(F₂, −), so Nat ≅ F₂: (g, h) ↦ w(g, h))
+
+D4. (a) Prove that a fully faithful, essentially surjective functor F :
+    𝒞 → 𝒟 is an equivalence. (b) Show that FinVect_k is equivalent to the
+    category Mat_k whose objects are n = 0, 1, 2, ... and whose arrows
+    n → m are m × n matrices, but not isomorphic to it. (c) Show that
+    FinSet is equivalent to its skeleton and count |Hom(3, 4)| there.
+    Answer: (a) choose G(d) with ε_d : FG(d) ≅ d; (b) n ↦ kⁿ is fully
+    faithful and essentially surjective; (c) |Hom(3, 4)| = 4³ = 64.
+    Teacher explains: (a) For each d ∈ 𝒟 CHOOSE (axiom of choice) an
+    object G(d) and an iso ε_d : F(G(d)) → d. For g : d → d′ the arrow
+    ε_{d′}⁻¹∘g∘ε_d : FG(d) → FG(d′) is F of a UNIQUE arrow G(g) (F fully
+    faithful); uniqueness makes G a functor and ε : FG ⇒ 1 natural and
+    invertible. Finally η_c : c → GF(c) is the unique arrow with F(η_c) =
+    ε_{F c}⁻¹; it is an iso because F reflects isos (fully faithful). □
+    (b) F(n) = kⁿ, F(M) = the linear map x ↦ Mx. Hom(n, m) = M_{m×n}(k) ≅
+    Hom(kⁿ, kᵐ) (fully faithful) and every finite-dimensional V ≅ k^{dim V}
+    (essentially surjective). Not an isomorphism: Mat_k has one object per
+    dimension, while FinVect_k has many distinct but isomorphic objects
+    (k² and the plane x + y + z = 0 in k³). Equivalence is the RIGHT notion
+    of sameness: all categorical properties (limits, adjoints, abelian)
+    transfer, and it explains why linear algebra "is" matrix algebra.
+    (c) The skeleton has objects n = {1, ..., n}; |Hom(3, 4)| = 64, of
+    which 4·3·2 = 24 are monos and 0 are epis. Common mistakes: demanding
+    GF = 1 on the nose; forgetting that essential surjectivity is "up to
+    iso". Now you try: show FinVect_k ≃ FinVect_kᵒᵖ. (V ↦ V*, V ≅ V**)
+
+D5. (a) Define limits and show that a category with all (small) products
+    and equalizers has all small limits. (b) Compute in Ab the pullback of
+    Z →(×2) Z ←(×3) Z. (c) In the poset (N_{≥1}, |) compute the product of
+    12 and 18, and describe all limits in a poset. (d) Describe
+    lim(⋯ → Z/8 → Z/4 → Z/2).
+    Answer: (a) lim D = equalizer of ∏_j D(j) ⇉ ∏_{u:i→j} D(j);
+    (b) {(a, b) : 2a = 3b} = Z·(3, 2) ≅ Z; (c) gcd(12, 18) = 6, limits are
+    gcd's (infima); (d) Z₂, the 2-adic integers.
+    Teacher explains: A CONE over D : J → 𝒞 is an object L with arrows
+    p_j : L → D(j) such that D(u)∘p_i = p_j for all u : i → j; the LIMIT is
+    the terminal cone. (a) Put P = ∏_j D(j), Q = ∏_{u : i→j} D(j) (one
+    factor per arrow of J). Two maps s, t : P → Q have u-components
+    s_u = pr_j and t_u = D(u)∘pr_i. A map x : L → P equalizes s and t iff
+    its components form a cone; so the equalizer is the limit. In Set this
+    is literally lim D = {(x_j) ∈ ∏D(j) : D(u)(x_i) = x_j}. (b) The pullback
+    of f : X → Z, g : Y → Z is {(x, y) : f(x) = g(y)} ⊆ X × Y. Here 2a = 3b
+    forces 3 | a: a = 3t, b = 2t, so the pullback is Z generated by (3, 2),
+    with projections t ↦ 3t, t ↦ 2t. (c) In a poset an arrow a → b means
+    a | b; a product c of 12, 18 must divide both and be divisible by every
+    common divisor: c = gcd = 6. In any poset limits are infima and
+    colimits are suprema (here lcm). (d) Compatible sequences (xₙ) with
+    xₙ ∈ Z/2ⁿ and xₙ₊₁ ≡ xₙ (mod 2ⁿ): exactly the 2-adic integers Z₂;
+    e.g. −1 = (1, 3, 7, 15, ...). Common mistakes: computing a pullback as
+    X × Y; forgetting the arrows (cone condition) in a limit. Now you try:
+    pullback of Z →(×4) Z ←(×6) Z. (Z·(3, 2) again: {4a = 6b})
+
+D6. Compute the following colimits: (a) the coproduct of Z/2 and Z/2 in
+    Set, Ab, Grp and CRing; (b) the pushout of Z/4 ← Z/2 → Z/6 (both maps
+    injective) in Ab; (c) colim(Z →(×2) Z →(×2) Z → ⋯) in Ab; (d) the
+    pushout D² ← S¹ → point in Top.
+    Answer: (a) 4 points; Z/2 ⊕ Z/2; the infinite dihedral group D_∞;
+    Z/2 ⊗ Z/2 ≅ Z/2. (b) Z/12. (c) Z[1/2]. (d) S².
+    Teacher explains: A colimit is an initial cocone; its universal
+    property says maps OUT of it are compatible families of maps out of
+    the pieces. (a) Set: disjoint union, 2 + 2 = 4 elements. Ab: the direct
+    sum (in an additive category coproduct = product = biproduct). Grp:
+    the free product ⟨a, b | a², b²⟩; ab has infinite order, and this is
+    D_∞ (a, b are reflections of R). CRing: the coproduct of A and B is
+    A ⊗_Z B (maps out of it = pairs of maps from A and B), and Z/2 ⊗ Z/2 =
+    Z/2. (b) The pushout of B ← A → C in Ab is (B ⊕ C)/{(f(a), −g(a))}.
+    Here the generator of Z/2 goes to 2 ∈ Z/4 and 3 ∈ Z/6, so we quotient
+    Z/4 ⊕ Z/6 (order 24) by ⟨(2, −3)⟩ (order 2): order 12. Relation matrix
+    rows (4, 0), (0, 6), (2, 3): the gcd of entries is 1 and of 2 × 2
+    minors is 12, so the Smith form is diag(1, 12): Z/12. (c) A direct limit
+    of Z →(×2) Z → ⋯: send the n-th copy to Q by x ↦ x/2ⁿ; the images
+    exhaust Z[1/2] and the maps are compatible, so the colimit is Z[1/2].
+    (d) Gluing the boundary circle of a disc to a point gives the sphere.
+    In Grp, van Kampen says π₁ turns such pushouts (of open covers) into
+    pushouts of groups. Common mistakes: using ⊕ as the coproduct in Grp;
+    thinking the coproduct in CRing is the product. Now you try: the
+    coproduct of Z/2 and Z/3 in CRing. (Z/2 ⊗ Z/3 = 0, the zero ring)
+
+D7. Define an adjunction F ⊣ G by Hom-sets and by unit and counit, and
+    show the definitions agree. Then: (a) exhibit abelianization ⊣
+    inclusion Ab ⊆ Grp and use it to count |Hom_Grp(S₃, Z/6)|,
+    |Hom_Grp(Q₈, Z/4)| and |Hom_Grp(A₄, Z/6)|; (b) verify the currying
+    adjunction − × A ⊣ (−)ᴬ in Set for |A| = 2, |B| = 3, |C| = 2.
+    Answer: (a) Hom_Grp(G, B) ≅ Hom_Ab(Gᵃᵇ, B): 2, 4, 3; (b) both
+    Hom-sets have 2⁶ = 64 elements.
+    Teacher explains: F ⊣ G means bijections θ : Hom_𝒟(FA, B) ≅
+    Hom_𝒞(A, GB) natural in A and B. Put η_A = θ(1_{FA}) : A → GFA (unit)
+    and ε_B = θ⁻¹(1_{GB}) : FGB → B (counit). Naturality gives θ(f) =
+    G(f)∘η_A and θ⁻¹(g) = ε_B∘F(g); then θ⁻¹θ = 1 and θθ⁻¹ = 1 become the
+    TRIANGLE IDENTITIES ε_{FA}∘F(η_A) = 1_{FA}, G(ε_B)∘η_{GB} = 1_{GB}.
+    Conversely, given η, ε with the triangle identities, these formulas
+    define inverse natural bijections. Slogan: η_A is the UNIVERSAL arrow
+    from A to G. (a) Every homomorphism f : G → B with B abelian kills
+    commutators, so it factors UNIQUELY through q : G → Gᵃᵇ: Hom_Grp(G, B)
+    ≅ Hom_Ab(Gᵃᵇ, B); the unit is q. S₃ᵃᵇ = S₃/A₃ = Z/2, and |Hom(Z/2,
+    Z/6)| = gcd(2, 6) = 2. Q₈ᵃᵇ = Q₈/{±1} = (Z/2)², |Hom((Z/2)², Z/4)| =
+    2² = 4. A₄ᵃᵇ = A₄/V₄ = Z/3, |Hom(Z/3, Z/6)| = 3. (b) θ(f)(a)(b) =
+    f(a, b) (currying): |Hom(A × B, C)| = 2^(2·3) = 64 and |Hom(A, Cᴮ)| =
+    (2³)² = 64. The unit is x ↦ (a ↦ (x, a)), the counit is evaluation
+    Cᴬ × A → C. Common mistakes: getting the side wrong — the LEFT adjoint
+    is the "free/generated" construction; counting Hom(G, B) directly by
+    generators without the abelianization shortcut. Now you try: the free
+    group F ⊣ U gives |Hom_Grp(F₂, S₃)| = ? (|S₃|² = 36)
+
+D8. Prove that right adjoints preserve limits. Deduce: (a) the forgetful
+    functor U : Grp → Set has no right adjoint; (b) − ⊗_R M is right exact
+    and commutes with direct sums; (c) the forgetful functor U : CHaus →
+    Set has a left adjoint but no right adjoint. State Freyd's general
+    adjoint functor theorem and explain why U : Grp → Set satisfies it.
+    Answer: Hom(A, G(lim D)) ≅ lim Hom(A, G D) naturally in A, then
+    Yoneda. (a) U does not preserve the initial object; (b) − ⊗ M is a
+    left adjoint; (c) U does not preserve coproducts.
+    Teacher explains: Let G : 𝒟 → 𝒞 have left adjoint F and let L = lim D.
+    For every A ∈ 𝒞, naturally in A,
+       Hom(A, GL) ≅ Hom(FA, L) ≅ lim_j Hom(FA, D_j) ≅ lim_j Hom(A, GD_j),
+    and the last is the set of cones from A to GD. So GL represents cones
+    over GD, i.e. GL is a limit of GD (Yoneda). Dually left adjoints
+    preserve colimits. (a) If U had a right adjoint it would be a LEFT
+    adjoint and would preserve colimits, in particular initial objects:
+    but the initial group is {e}, with U({e}) a point, while the initial
+    set is ∅. (U does have a LEFT adjoint, the free group.) (b) − ⊗_R M ⊣
+    Hom_R(M, −) (Hom(A ⊗ M, B) ≅ Hom(A, Hom(M, B))). So − ⊗ M preserves
+    colimits: direct sums, (⊕Aᵢ) ⊗ M ≅ ⊕(Aᵢ ⊗ M), and cokernels, which is
+    exactly right exactness: A → B → C → 0 exact ⇒ A ⊗ M → B ⊗ M → C ⊗ M →
+    0 exact. (c) The left adjoint is X ↦ βX (Stone-Čech of the discrete
+    space), whose points are ultrafilters. The coproduct in CHaus of
+    countably many points is βN (a coproduct must be compact), and U(βN)
+    is uncountable, not N: U does not preserve coproducts. FREYD (GAFT): if
+    𝒟 is complete and locally small, G : 𝒟 → 𝒞 has a left adjoint iff G
+    preserves small limits and, for each A, there is a SET of arrows
+    A → G(Dᵢ) through which every A → G(D) factors. For Grp: limits are
+    computed on underlying sets; any map X → U(H) factors through the
+    subgroup generated by its image, of cardinality ≤ max(|X|, ℵ₀), and
+    there is only a set of such groups up to iso. Common mistakes: "U
+    preserves products, so it has a right adjoint" (wrong side); assuming
+    ⊗ commutes with infinite products (false: (∏Z) ⊗ Q ≠ ∏Q). Now you try:
+    does the inclusion Ab → Grp have a right adjoint? (No: Z ⊕ Z ≠ Z * Z,
+    it does not preserve coproducts)
+
+D9. (a) Define a monad and show that every adjunction F ⊣ G gives one.
+    (b) Work out the monad of the free-monoid adjunction on Set and show
+    that its algebras are exactly monoids. (c) Show that the power set
+    monad has Kleisli category equal to the category Rel of sets and
+    relations. (d) Compute μ([[1, 2], [ ], [3, 1]]) and μ_P({{1, 2}, {2, 3},
+    ∅}).
+    Answer: (a) T = GF, η = unit, μ = GεF; (b) T X = finite words, μ =
+    concatenation; (c) Kleisli arrows X → P(Y) are relations; (d) [1, 2,
+    3, 1] and {1, 2, 3}.
+    Teacher explains: A MONAD is (T, η, μ) with μ∘Tμ = μ∘μT (flattening a
+    triple-nested structure either way agrees) and μ∘Tη = μ∘ηT = 1_T.
+    (a) For F ⊣ G: T = GF, η the unit, μ = GεF : GFGF ⇒ GF. Associativity
+    is naturality of ε; the unit laws are the triangle identities
+    (Gε_F∘η_{GF} = 1 and G(ε_F∘Fη) = 1). (b) F(X) = X* (words, with
+    concatenation), so T(X) = UF(X) = X* as a set; η(x) = [x] and μ : X** →
+    X* flattens a word of words. A T-ALGEBRA is a : X* → X with a([x]) = x
+    and a∘μ = a∘T(a). Put x·y = a([x, y]), e = a([ ]). Associativity of
+    · follows from a([a([x, y]), z]) = a([x, y, z]) = a([x, a([y, z])]),
+    both being a∘μ of a nested word; unit: a([e, x]) = a([x]) = x. Conversely
+    a monoid gives a(word) = product. So the Eilenberg-Moore category is
+    Mon: U : Mon → Set is MONADIC. (c) P(X) = subsets, η(x) = {x}, μ =
+    union. A Kleisli arrow X → Y is a function X → P(Y), i.e. a relation
+    R ⊆ X × Y; Kleisli composition μ∘P(S)∘R is x ↦ ⋃_{y∈R(x)} S(y), which
+    is composition of relations. P-algebras are complete sup-lattices.
+    (d) μ concatenates: [1, 2, 3, 1]; μ_P takes the union: {1, 2, 3}.
+    Common mistakes: forgetting that the monad of discrete ⊣ U : Top → Set
+    is the identity (so Top is NOT monadic: its algebras are just sets);
+    confusing Kleisli (free algebras) with Eilenberg-Moore (all algebras).
+    Now you try: algebras for T(X) = X ⊔ {∗}. (pointed sets)
+
+D10. (a) Define additive and abelian categories and prove that in an
+     abelian category a morphism that is mono and epi is an iso. (b) Show
+     that the category of torsion-free abelian groups is additive but not
+     abelian. (c) State the snake lemma and apply it to multiplication by
+     6 on the sequence 0 → Z →(×4) Z → Z/4 → 0.
+     Answer: (a) f epi ⇒ f = coker(ker f) = coker(0) is an iso; (b) ×2 :
+     Z → Z is mono and epi there but not iso; (c) 0 → Z/2 → Z/6 →(×4)
+     Z/6 → Z/2 → 0.
+     Teacher explains: ADDITIVE: each Hom(A, B) is an abelian group with
+     bilinear composition, there is a zero object and binary biproducts.
+     ABELIAN: additive, every arrow has a kernel and a cokernel, every
+     mono is the kernel of its cokernel and every epi is the cokernel of
+     its kernel. (a) Let f : A → B be mono and epi. Mono ⇒ ker f = 0 (if
+     f∘k = 0 = f∘0 then k = 0). Epi ⇒ f is the cokernel of its kernel,
+     i.e. of 0 → A, and the cokernel of 0 → A is 1_A: so f ≅ 1_A is an iso.
+     (b) Torsion-free groups: Hom-sets, 0 and ⊕ are inherited from Ab.
+     ×2 : Z → Z is mono; it is epi because g∘2 = h∘2 gives 2(g − h) = 0,
+     and the target is torsion-free, so g = h. It is not an iso: the
+     would-be cokernel Z/2 is not torsion-free (in this category the
+     cokernel of ×2 is 0). (c) SNAKE: given exact rows A → B → C → 0 and
+     0 → A′ → B′ → C′ with vertical maps a, b, c, there is an exact
+          ker a → ker b → ker c →(δ) coker a → coker b → coker c,
+     with δ(z) = "lift z to B, apply b, pull back to A′". Here a = b = ×6 on
+     Z, c = ×6 on Z/4 (which is ×2). ker a = ker b = 0, ker c = {x ∈ Z/4 :
+     6x = 0} = {0, 2} ≅ Z/2, coker a = coker b = Z/6, coker c = Z/4/2Z/4 ≅
+     Z/2. So 0 → Z/2 →(δ) Z/6 →(×4) Z/6 → Z/2 → 0; check: ×4 on Z/6 has
+     kernel {0, 3} and image {0, 2, 4} of index 2 ✓, and the orders
+     alternate 2·6 = 6·2. Common mistakes: forgetting the vertical map on
+     the quotient is induced (×6 ≡ ×2 on Z/4); believing Grp is abelian (it
+     is not even additive: Hom(G, H) is not a group). Now you try: vertical
+     ×2 on 0 → Z →(×3) Z → Z/3 → 0. (all kernels 0; coker a ≅ coker b =
+     Z/2, coker c = 0; δ = 0 and Z/2 →(×3) Z/2 is an iso)
+
+D11. (a) Prove that Hom(A, −) is left exact but not exact, and that
+     − ⊗ M is right exact but not left exact, with explicit examples over
+     Z. (b) Show that Q is an injective and flat Z-module but not
+     projective, and that Z/n is none of the three over Z but both
+     projective and injective over Z/n. (c) Prove that a projective
+     Z-module P has Hom(P, −) exact.
+     Answer: (a) Hom(Z/2, −) on 0 → Z → Z → Z/2 → 0; − ⊗ Z/2 on the same;
+     (b) Q is divisible and torsion-free, Hom(Q, Z) = 0; (c) lift through
+     surjections using a basis (or summand of free).
+     Teacher explains: (a) If 0 → B′ →(i) B →(p) B″ is exact then 0 →
+     Hom(A, B′) → Hom(A, B) → Hom(A, B″) is exact: i∘f = 0 ⇒ f = 0 (i mono);
+     if p∘g = 0 then g lands in ker p = im i, so g = i∘f. It is not right
+     exact: apply Hom(Z/2, −) to 0 → Z →(×2) Z → Z/2 → 0 to get 0 → 0 → 0 →
+     Z/2: the last map is not onto (the identity of Z/2 does not lift).
+     − ⊗ M is right exact by D8; applying − ⊗ Z/2 to the same sequence gives
+     Z/2 →(×2 = 0) Z/2 → Z/2 → 0: the first map is not injective. The
+     failures are MEASURED by Ext¹(Z/2, Z) ≅ Z/2 and Tor₁(Z/2, Z/2) ≅ Z/2.
+     (b) Over a PID, injective ⇔ divisible (Baer's criterion: extend
+     maps from ideals (n) — possible iff every element is divisible by n),
+     and flat ⇔ torsion-free. Q is both. It is not projective: projective
+     Z-modules are free, and a free module F ≠ 0 has a nonzero map to Z
+     while Hom(Q, Z) = 0 (image divisible in Z). Z/n over Z: torsion (not
+     flat), not divisible (not injective), not free. Over Z/n it is free of
+     rank 1, hence projective; and Z/n is self-injective (Baer: a map from
+     the ideal (d), d | n, sends d to a multiple of d, so it extends).
+     (c) Let P be free on a basis (e_s), and p : B → C onto, g : P → C.
+     Choose b_s with p(b_s) = g(e_s) and define h(e_s) = b_s; then p∘h = g.
+     A direct summand of a free module inherits the lifting. Common
+     mistakes: "flat ⇒ projective" (Q); "Z/n is never projective" (it is
+     over Z/n); forgetting the choice of preimages. Now you try: is Q/Z
+     flat over Z? (no: Tor₁(Q/Z, Z/2) = Z/2 ≠ 0; it is injective)
+
+D12. (a) Define left derived functors via projective resolutions and
+     explain why they are well defined. (b) Compute Tor₁^Z(Z/m, Z/n) and
+     Ext¹_Z(Z/m, Z/n) for d = gcd(m, n), and Ext¹_Z(Z/n, Z). (c) Compute
+     Torₙ^R(k, k) for R = k[x]/(x²). (d) Use Ext¹ to count the extensions
+     0 → Z/p → E → Z/p → 0 and identify E.
+     Answer: (b) Z/d, Z/d, Z/n; (c) k for every n ≥ 0; (d) |Ext¹(Z/p,
+     Z/p)| = p classes: the split one E = (Z/p)² and p − 1 with E ≅ Z/p².
+     Teacher explains: (a) Choose a projective resolution ⋯ → P₁ → P₀ → M
+     → 0 (exact; R-Mod has enough projectives: free modules). For F right
+     exact put LₙF(M) = Hₙ(F(P•)). COMPARISON THEOREM: a map M → N lifts to
+     a chain map P• → Q• of resolutions, unique up to chain homotopy, so
+     two resolutions of M are homotopy equivalent and Hₙ(F(−)) agrees
+     canonically. L₀F = F by right exactness, and 0 → A → B → C → 0 gives
+     (horseshoe lemma) a long exact sequence ⋯ → L₁F(C) → F(A) → F(B) →
+     F(C) → 0. (b) Resolve: 0 → Z →(×m) Z → Z/m → 0. Tensor with Z/n and
+     drop Z/m: 0 → Z/n →(×m) Z/n → 0, so Tor₁ = ker(×m on Z/n) = {x : mx
+     ≡ 0 (mod n)} = (n/d)Z/nZ ≅ Z/d, Tor₀ = coker = Z/d = Z/m ⊗ Z/n.
+     Apply Hom(−, Z/n): 0 → Z/n →(×m) Z/n → 0, so Hom(Z/m, Z/n) = ker ≅
+     Z/d and Ext¹ = coker ≅ Z/d. With Z in place of Z/n: 0 → Z →(×n) Z →
+     0 gives Hom(Z/n, Z) = 0, Ext¹(Z/n, Z) = Z/n. (c) Resolution ⋯ →(x) R
+     →(x) R →(x) R → k → 0 (ker of x on R is xR = im x). Apply − ⊗_R k:
+     every map becomes multiplication by x on k, which is 0; so Torₙ(k, k)
+     = k for all n. Hence gl.dim R = ∞, although R is finite-dimensional.
+     (d) Ext¹(A, B) is in bijection with equivalence classes of extensions
+     (Baer sum = group law, split extension = 0). |Ext¹(Z/p, Z/p)| = p. E
+     has order p², so E ≅ (Z/p)² (split class) or Z/p²; the p − 1 nonzero
+     classes are the maps Z/p² → Z/p composed with the p − 1 automorphisms
+     of the quotient, all with E ≅ Z/p². Common mistakes: not dropping M
+     from the resolution before applying F; confusing "iso classes of
+     groups E" with "equivalence classes of extensions" (p vs 2). Now you
+     try: Ext¹_Z(Z/2, Z/4) and the possible E. (Z/2: Z/4 ⊕ Z/2 or Z/8)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Categories and special morphisms.
+    a) number of arrows in the poset category ({1, ..., 5}, ≤)
+    b) number of arrows in the poset of divisors of 12 under |
+    c) number of isomorphisms in the poset of b)
+    d) a group of order 6 as a one-object category: arrows? isos?
+    e) the monoid (N, +) as a category: which arrows are isos?
+    f) in Set: |Hom(3, 4)|, the number of monos, the number of epis
+    g) in Set: |Hom(4, 2)| and the number of epis
+    h) in Set: the number of automorphisms of a 4-element set
+    i) Z ↪ Q in Ring: mono? epi? iso?
+    j) ×2 : Z → Z in Ab: mono? epi?
+    k) Q → Q/Z in divisible abelian groups: mono? epi?
+    l) Q ↪ R: epi in Haus? epi in Top?
+    m) Z/2 ↪ S₃ in Grp: epi?
+    n) Z → Z_(p) (localization) in CRing: epi?   Z → Z[x]: epi?
+    o) is every arrow in the category of fields a mono?
+    p) ×2 : Z → Z in Ab: split mono?
+    q) initial / terminal objects of Set, Grp, Ring, Field, (N_{≥1}, |)
+    Answers:
+      a) 15      b) 18 (∑ of d(b) over b | 12: 1+2+2+3+4+6)
+      c) 6 (identities only)      d) 6, 6      e) only 0
+      f) 64, 24, 0               g) 16, 14 (2⁴ − 2)          h) 24
+      i) yes, yes, no            j) mono yes, epi no (coker Z/2)
+      k) yes, yes (not an iso)   l) yes (dense image); no (epi = onto)
+      m) no (in Grp epi ⇔ surjective)
+      n) yes (like D1); no (x ↦ 0 and x ↦ 1 agree on Z)
+      o) yes (field maps are injective)
+      p) no (a left inverse r would give 1 = r(2) = 2r(1) in Z)
+      q) Set: ∅, point; Grp: {e} (zero object); Ring: Z, 0; Field: none,
+         none; (N_{≥1}, |): 1 initial, no terminal
+
+M2. For each functor state: covariant or contravariant; faithful?; full?
+    a) U : Grp → Set                b) free group F : Set → Grp
+    c) abelianization Grp → Ab      d) inclusion Ab → Grp
+    e) P = Hom(−, {0, 1}) : Setᵒᵖ → Set (inverse images)
+    f) V ↦ V* on FinVect_k          g) V ↦ V** on FinVect_k
+    h) X ↦ X × X on Set             i) units (−)ˣ : CRing → Grp
+    j) GL₂ : CRing → Grp             k) group ring Z[−] : Grp → Ring
+    l) − ⊗ Z/2 : Ab → Ab             m) U : Top → Set
+    n) inclusion CHaus → Top         o) diagonal Δ : 𝒞 → 𝒞 × 𝒞
+    p) V ↦ V ⊕ V on FinVect_k: is it an equivalence?
+    Answers:
+      a) co, faithful, not full      b) co, faithful, not full (Hom(Z, Z)
+         = Z but Hom_Set(1, 1) has 1 element)
+      c) co, not faithful (Z → S₃ by 1 ↦ (12) and 1 ↦ (13) agree after
+         abelianizing), not full (Q₈ᵃᵇ = (Z/2)²: the identity of (Z/2)² is
+         not induced by any (Z/2)² → Q₈, whose image lies in {±1})
+      d) co, full, faithful          e) contra, faithful, not full
+      f) contra, full, faithful      g) co, full, faithful (≅ identity)
+      h) co, faithful, not full (the swap X² → X² is not f × f)
+      i) co, not faithful (x ↦ 0, x ↦ 1 on Z[x] → Z agree on {±1})
+      j) co, faithful (use [[1, r], [0, 1]])
+      k) co, faithful, not full (2 ring maps Z[Z/2] → Z, 1 group map)
+      l) co, not faithful (1 and 0 on Z/3 both become 0)
+      m) co, faithful, not full      n) co, full, faithful
+      o) co, faithful, not full (Hom(A, B)² ≠ Hom(A, B))
+      p) no: faithful but neither full nor essentially surjective (odd
+         dimensions are missed)
+
+M3. Yoneda lemma and representable functors.
+    a) |Nat(Hom_Set(2, −), Hom_Set(3, −))|
+    b) |Nat(Hom_Set(3, −), Hom_Set(2, −))|
+    c) |Nat(P, P)| for P = Hom(−, 2) : Setᵒᵖ → Set
+    d) Nat(1_Set, 1_Set)
+    e) Nat(U, U), U : Grp → Set     f) Nat(U, U), U : Ab → Set
+    g) Nat(U, U), U : CRing → Set   h) Nat(U, U), U : Vect_k → Set
+    i) Nat(U, U × U), U : Grp → Set
+    j) Nat(U × U, U), U : Grp → Set
+    k) Nat(U × U, U), U : Ab → Set
+    l) |Nat(E_n, U)| for E_n(G) = {g : gⁿ = e} and U : Grp → Set
+    Represent (give A with F ≅ Hom(A, −) or Hom(−, A)), or say "no":
+    m) R ↦ Rˣ (CRing)                n) R ↦ {r : r² = 0} (CRing)
+    o) G ↦ {(g, h) : gh = hg} (Grp)  p) X ↦ {open subsets of X} (Topᵒᵖ)
+    q) Ab → Set, A ↦ A × A           r) the constant functor {∗} : 𝒞 → Set
+    s) G ↦ {subgroups of G} (Grp)    t) X ↦ X ⊔ X (Set → Set)
+    Answers:
+      a) |Hom(3, 2)| = 8      b) |Hom(2, 3)| = 9     c) |Hom(2, 2)| = 4
+      d) only the identity (Hom(1, −) ≅ 1_Set, U(1) = 1 point)
+      e) Z (g ↦ gⁿ)          f) Z (a ↦ na)       g) Z[x] (r ↦ p(r))
+      h) k (v ↦ λv)          i) Z × Z (g ↦ (gᵃ, gᵇ))
+      j) F₂, the free group (words w(g, h))
+      k) Z² ((a, b) ↦ ma + nb)
+      l) n (E_n ≅ Hom(Z/n, −), Nat ≅ U(Z/n); g ↦ gᵏ)
+      m) Z[x, x⁻¹]            n) Z[x]/(x²)          o) Z²
+      p) the Sierpiński space {0, 1}, open sets ∅, {1}, {0, 1}
+      q) Z²                   r) an initial object (if one exists)
+      s) no: Sub((Z/2)²) has 5 elements ≠ |Sub(Z/2)|² = 4, but
+         representables preserve products
+      t) no: |1 ⊔ 1| = 2 but |Hom(A, 1)| = 1
+
+M4. Equivalences and skeletons (yes/no, or count).
+    a) FinVect_R ≃ Mat_R?                 b) are they isomorphic?
+    c) FinVect_k ≃ FinVect_kᵒᵖ?            d) FinAb ≃ FinAbᵒᵖ?
+    e) FinSetᵒᵖ ≃ finite Boolean algebras?  f) Set ≃ Setᵒᵖ?
+    g) R-Mod ≃ M₂(R)-Mod? are R and M₂(R) isomorphic rings?
+    h) the preorder a ≤ b, b ≤ a, a ≤ c, b ≤ c on {a, b, c} is
+       equivalent to which poset?
+    i) a connected groupoid with an object x is equivalent to?
+    j) the fundamental groupoid of a path-connected X is equivalent to?
+    k) covering spaces of a connected, locally simply connected X?
+    l) objects in a skeleton of the sets with ≤ 5 elements
+    m) objects in a skeleton of the groups of order 8
+    n) objects in a skeleton of the abelian groups of order 72
+    o) objects in a skeleton of the abelian groups of order 360
+    p) objects in a skeleton of F₃-vector spaces of dimension ≤ 4
+    q) number of arrows 2 → 3 in the skeleton Mat_{F₂}
+    Answers:
+      a) yes      b) no      c) yes (V ↦ V*)
+      d) yes (Pontryagin: A ↦ Hom(A, Q/Z))    e) yes (X ↦ P(X))
+      f) no (Setᵒᵖ ≃ complete atomic Boolean algebras)
+      g) yes (Morita); no
+      h) the 2-element chain {a ≅ b} < c
+      i) the one-object groupoid Aut(x) (a group)
+      j) π₁(X, x₀)             k) π₁(X)-sets (Galois correspondence)
+      l) 6         m) 5         n) 6 (3 for 8 times 2 for 9)
+      o) 6 (3·2·1)              p) 5          q) 2⁶ = 64 (3 × 2 matrices)
+
+M5. Limits: compute.
+    a) product of a 3-set and a 5-set in Set (size)
+    b) in (N_{≥1}, |): product of 12 and 18; of 7 and 11
+    c) in (N, |) with 0 included: terminal and initial object
+    d) in (R, ≤): product of x and y; limit of the diagram {1/n : n ≥ 1}
+    e) product of Z/2 and Z/3 in Grp     f) product of F₂ and F₃ in Field
+    g) equalizer in Set of x ↦ x² and x ↦ x on R
+    h) equalizer in Ab of f, g : Z → Z/6, f(1) = 2, g(1) = 5
+    i) equalizer in Ab of f, g : Z² → Z, f = 3a + b, g = a + 2b
+    j) pullback in Set of f : {1, 2, 3} → {0, 1}, f = (0, 0, 1) and
+       g : {a, b, c} → {0, 1}, g = (0, 1, 1): its size
+    k) pullback of Z →(×4) Z ←(×6) Z in Ab
+    l) pullback of Z →(×2) Z/4 ← Z/2 (1 ↦ 2) in Ab
+    m) pullback of two subsets A, B ⊆ X along the inclusions
+    n) lim(⋯ → Z/8 → Z/4 → Z/2)        o) lim(⋯ →(×2) Z →(×2) Z)
+    p) lim(⋯ ⊆ 4Z ⊆ 2Z ⊆ Z)            q) lim Z/n over (N_{≥1}, |)
+    r) the empty limit in Set, Grp, Ring
+    s) the kernel pair of Z → Z/3 (pullback of the map with itself)
+    Answers:
+      a) 15       b) 6; 1       c) terminal 0, initial 1
+      d) min(x, y); 0 (the infimum)       e) Z/6
+      f) does not exist (no field maps to both F₂ and F₃)
+      g) {0, 1}   h) {x : 3x ≡ 0 (mod 6)} = 2Z ≅ Z
+      i) ker(2a − b) = Z·(1, 2)          j) 2·1 + 1·2 = 4
+      k) Z·(3, 2) ≅ Z                     l) {(a, a mod 2)} ≅ Z
+      m) A ∩ B    n) Z₂       o) 0 (a₀ would be divisible by all 2ⁿ)
+      p) 0 (the intersection)   q) Ẑ ≅ ∏_p Z_p
+      r) point, trivial group, zero ring
+      s) {(a, b) ∈ Z² : a ≡ b (mod 3)}
+
+M6. Colimits: compute.
+    a) coproduct of a 3-set and a 5-set in Set (size)
+    b) coproduct of Z/2 and Z/3 in Ab    c) ... in Grp
+    d) coproduct of Z/2 and Z/2 in Grp   e) coproduct of Z[x], Z[y] in CRing
+    f) coproduct of Z/2, Z/3 in CRing    g) Z/12 ⊗ Z/18
+    h) C ⊗_R C as a ring                 i) Q ⊗_Z Q; Q ⊗ Z/5
+    j) coequalizer in Ab of f, g : Z → Z², f(1) = (2, 0), g(1) = (0, 3)
+    k) coequalizer in Set of f, g : {∗} → {1, 2, 3}, f(∗) = 1, g(∗) = 2
+    l) pushout in Ab of Z/4 ← Z/2 → Z/6 (injective maps)
+    m) pushout in Ab of Z/4 ← Z/2 → Z/4 (injective maps)
+    n) pushout in Grp of Z ← {e} → Z   o) pushout in Top of D² ← S¹ → ∗
+    p) colim(Z →(×2) Z →(×2) ⋯)        q) colim(Z →(×2) Z →(×3) Z →(×4) ⋯)
+    r) colim(Z/p ↪ Z/p² ↪ Z/p³ ↪ ⋯)    s) colim Z/n over (N_{≥1}, |)
+    t) in (N_{≥1}, |): coproduct of 12 and 18
+    u) the empty colimit in Ring, Grp, Field
+    Answers:
+      a) 8        b) Z/6 (= Z/2 × Z/3)
+      c) Z/2 * Z/3 ≅ PSL₂(Z), infinite    d) D_∞, infinite
+      e) Z[x, y]  f) 0 (the zero ring)    g) Z/6
+      h) C × C (x ⊗ y ↦ (xy, x ȳ))       i) Q; 0
+      j) Z²/⟨(2, −3)⟩ ≅ Z ((2, −3) is primitive)
+      k) 2 elements ({1, 2} identified)    l) Z/12
+      m) Z/2 ⊕ Z/4 (Smith form diag(2, 4))  n) F₂ = Z * Z (π₁ of S¹ ∨ S¹)
+      o) S²       p) Z[1/2]      q) Q      r) Z(p^∞) = Z[1/p]/Z
+      s) Q/Z      t) 36          u) Z; {e}; none
+
+M7. Adjunctions: give the left and right adjoints (or "none"), then count
+    using an adjunction.
+    a) U : Grp → Set                   b) U : Top → Set
+    c) inclusion Ab → Grp              d) inclusion CHaus → Top
+    e) inclusion Z → R (posets)        f) diagonal Δ : 𝒞 → 𝒞 × 𝒞
+    g) − × A : Set → Set               h) − ⊗_R M : Mod-R → Ab
+    i) units (−)ˣ : Ring → Grp         j) inclusion of torsion groups → Ab
+    k) inclusion of torsion-free groups → Ab
+    l) restriction of scalars R-Mod → Ab
+    m) inverse image f⁻¹ : P(Y) → P(X) (posets under ⊆), f : X → Y
+    n) |Hom_Grp(F₂, S₃)|               o) |Hom_Grp(S₃, Z/4)|
+    p) |Hom_Grp(Q₈, Q/Z)|              q) |Hom_Grp(SL₂(Z), Cˣ)|
+    r) |Hom_Grp(A₄, Z/6)|              s) |Hom_CRing(Z[x, y], Z/5)|
+    t) |Hom_CRing(Z[x]/(x² − 2), F₇)|; |Hom_CRing(Z[x]/(x² + 1), F₇)|
+    u) the unit and counit of free ⊣ forgetful (Set, Grp)
+    Answers:
+      a) left: free group; right: none (U{e} ≠ ∅)
+      b) left: discrete; right: indiscrete
+      c) left: abelianization; right: none (Z * Z ≠ Z ⊕ Z)
+      d) left: Stone-Čech β      e) left ⌈·⌉, right ⌊·⌋
+      f) left: coproduct; right: product     g) right: (−)ᴬ
+      h) right: Hom_Z(M, −)      i) left: Z[G] (group ring)
+      j) right: A ↦ A_tors      k) left: A ↦ A/A_tors
+      l) left: R ⊗_Z −; right: Hom_Z(R, −)
+      m) left: direct image A ↦ f(A); right: A ↦ {y : f⁻¹(y) ⊆ A}
+      n) 6² = 36   o) |Hom(Z/2, Z/4)| = 2   p) |Hom((Z/2)², Q/Z)| = 4
+      q) 12 (SL₂(Z)ᵃᵇ ≅ Z/12)   r) 3 (A₄ᵃᵇ = Z/3)   s) 5² = 25
+      t) 2 (x = 3, 4: roots of x² = 2 in F₇); 0 (−1 is not a square mod 7)
+      u) η_X : X → UF(X), x ↦ the one-letter word x; ε_G : F(UG) → G,
+         a word in the elements of G ↦ its product in G
+
+M8. Preservation of limits and colimits (RAPL). Yes or no (with reason).
+    a) U : Grp → Set preserves products? coproducts?
+    b) free F : Set → Grp preserves coproducts? products?
+    c) − ⊗ Z/2 on Ab preserves cokernels? kernels?
+    d) Hom(Z/2, −) on Ab preserves kernels? cokernels?
+    e) inclusion Ab → Grp preserves products? coproducts?
+    f) abelianization preserves coproducts? finite products? kernels?
+    g) U : Ring → Set preserves coproducts?
+    h) U : Top → Set preserves all colimits?
+    i) U : CHaus → Set has a right adjoint?
+    j) (⊕Mᵢ) ⊗ N ≅ ⊕(Mᵢ ⊗ N)?         k) (∏Mᵢ) ⊗ N ≅ ∏(Mᵢ ⊗ N)?
+    l) Hom(⊕Aᵢ, B) ≅ ∏Hom(Aᵢ, B)?    m) Hom(A, ⊕Bᵢ) ≅ ⊕Hom(A, Bᵢ)?
+    n) Z³ ⊗ Z/5 and Hom(Z³, Z/5)
+    o) filtered colimits commute with finite limits in Set?
+    p) U : Field → Set has a left adjoint?
+    q) representable Hom(A, −) preserves all limits?
+    Answers:
+      a) yes (right adjoint); no (Z * Z)
+      b) yes (left adjoint: F(X ⊔ Y) = F(X) * F(Y)); no (F(1) = Z, but
+         F(1 × 1) = Z ≠ Z × Z)
+      c) yes (right exact); no (×2 : Z → Z becomes 0 on Z/2)
+      d) yes (left exact); no (Z → Z/2 onto, Hom(Z/2, Z) = 0)
+      e) yes (right adjoint to ab); no
+      f) yes (left adjoint); yes ([G × H, G × H] = [G, G] × [H, H]); no
+         (A₃ = ker(S₃ → Z/2) has A₃ᵃᵇ = Z/3, but ker(Z/2 → Z/2) = 0)
+      g) no (Z[x] ⊗ Z[y] = Z[x, y] ≠ Z[x] ⊔ Z[y])
+      h) yes (it has the right adjoint "indiscrete")
+      i) no (the coproduct of ℵ₀ points is βN, uncountable)
+      j) yes    k) no (M_i = Z, N = Q: (1, 1/2, 1/3, ...) is not in
+         (∏Z) ⊗ Q, whose elements have bounded denominators)
+      l) yes (Hom(−, B) turns colimits into limits)
+      m) yes for A finitely generated; no for A = ⊕_N Z, Bᵢ = Z
+      n) (Z/5)³; (Z/5)³     o) yes
+      p) no (it would give an initial field; none exists)
+      q) yes (limits in Set are computed by Hom)
+
+M9. Monads.
+    a) the monad of free monoid ⊣ forgetful: T(X), η, μ
+    b) μ([[1, 2], [ ], [3, 1]]) in the list monad
+    c) number of words of length ≤ 3 in T({a, b})
+    d) maybe monad T(X) = X ⊔ {∗}: |T(X)|, |T(T(X))| for |X| = 3; μ?
+    e) algebras for the maybe monad    f) algebras for the list monad
+    g) algebras for the free abelian group monad on Set
+    h) power set monad: η, μ, algebras, Kleisli category
+    i) μ_P({{1, 2}, {2, 3}, ∅})         j) |P(P(X))| for |X| = 2
+    k) algebras for T(X) = M × X, M a monoid (η(x) = (1, x))
+    l) the monad of discrete ⊣ U (Set → Top → Set); is Top monadic?
+    m) monadic over Set? Grp, Ab, CHaus, Poset
+    n) Kleisli composite in the maybe monad: f(x) = 1/x (partial on Q),
+       g(x) = x − 1; evaluate (f ∘_K g)(1) and (f ∘_K g)(3)
+    o) a monad on a poset is ...; example on P(R²) and its algebras
+    p) continuation monad X ↦ 2^(2^X): |T(X)| for |X| = 1, 2
+    q) ultrafilter monad β on a finite set X
+    r) check μ∘Tη = 1 on the list [a, b]
+    s) the monad of − × A ⊣ (−)ᴬ
+    Answers:
+      a) X* (finite words), η(x) = [x], μ = concatenation of words
+      b) [1, 2, 3, 1]   c) 1 + 2 + 4 + 8 = 15
+      d) 4, 5; μ identifies the two base points of X ⊔ {∗} ⊔ {∗}
+      e) pointed sets    f) monoids      g) abelian groups
+      h) η(x) = {x}, μ = union; complete sup-lattices; Rel
+      i) {1, 2, 3}       j) 16
+      k) left M-sets (a(m, x) = m·x with 1·x = x, (mn)·x = m·(n·x))
+      l) the identity monad; no (its algebras are just sets)
+      m) yes, yes, yes (ultrafilter monad, Manes), no
+      n) ∗ (undefined: g(1) = 0); 1/2
+      o) a closure operator (x ≤ Tx, TTx = Tx, monotone); convex hull;
+         algebras = convex sets
+      p) 4, 16          q) βX = X (every ultrafilter is principal)
+      r) [a, b] ↦ [[a], [b]] ↦ [a, b] ✓
+      s) the state monad X ↦ (X × A)ᴬ
+
+M10. Abelian categories, exactness, projective/injective/flat.
+     a) ker and coker of Z² → Z² given by [[2, 4], [6, 8]]
+     b) coker of [[1, 2], [3, 4]]      c) coker of [[2, 0], [0, 3]]
+     d) ker and coker of Z³ → Z² given by [[2, 4, 6], [6, 8, 10]]
+     e) is 0 → Z/2 → Z/4 → Z/2 → 0 exact? split?
+     f) is 0 → Z →(×2) Z →(×3) Z → 0 exact?
+     g) is Z →(1 ↦ 4) Z/8 →(×2) Z/8 exact at the middle?
+     h) abelian? Ab; free abelian groups; torsion-free groups; finite
+        abelian groups; Grp; Banach spaces; Ch(R-Mod); sheaves of abelian
+        groups on X; finite-dimensional C-representations of a group G
+     i) in topological abelian groups: id : R_discrete → R
+     j) over Z, which of P (projective), I (injective), F (flat): Z, Q,
+        Q/Z, Z/6, Z^N, Z[1/2]
+     k) over Z/6: is Z/2 projective? injective?
+     l) over R = k[x]/(x²): which of P, I, F are k and R?
+     m) snake lemma for 0 → Z →(×6) Z → Z/6 → 0 with vertical ×4: the
+        six-term sequence
+     n) in 0 → Z →(×m) Z → Z/m → 0 with vertical ×n, what is δ?
+     Answers:
+       a) 0; Z/2 ⊕ Z/4 (Smith form diag(2, 4))
+       b) Z/2 (det −2, gcd of entries 1)    c) Z/6
+       d) Z·(1, −2, 1); Z/2 ⊕ Z/4
+       e) exact, not split (Z/4 ≇ (Z/2)²)
+       f) no (×2 not onto; im ×2 ≠ ker ×3 = 0)
+       g) yes: im = {0, 4} = ker(×2)
+       h) yes; no; no; yes; no (not additive); no; yes; yes; yes
+       i) mono and epi but not an iso (not abelian)
+       j) Z: P, F;  Q: I, F;  Q/Z: I;  Z/6: none;  Z^N: F only (not free:
+          Baer-Specker);  Z[1/2]: F only
+       k) both (Z/6 ≅ Z/2 × Z/3, Z/2 is a direct summand)
+       l) k: none; R: P, I, F (R is self-injective)
+       m) 0 → Z/2 → Z/4 →(×6 = ×2) Z/4 → Z/2 → 0 (ker c = {0, 3} ⊆ Z/6)
+       n) δ : {x̄ ∈ Z/m : nx ≡ 0 (mod m)} → Z/n: lift x̄ to x ∈ Z, then
+          δ(x̄) = (nx/m) mod n
+
+M11. Derived functors: compute (all over Z unless stated).
+     a) Tor₁(Z/12, Z/18)               b) Ext¹(Z/12, Z/18)
+     c) Hom(Z/n, Z) and Ext¹(Z/n, Z)    d) Tor₁(Z/4, Z/6)
+     e) Tor₁(Z/8, Z/12)                f) Tor₁(Z/n, Q/Z)
+     g) Tor₁(Q, A)                      h) Tor₁(Q/Z, Z/4 ⊕ Z)
+     i) Tor₂(A, B) and Ext²(A, B)       j) Ext¹(Z/n, Q/Z); Ext¹(Z/n, Q)
+     k) Ext¹(Z/4 ⊕ Z/9, Z/6)            l) Tor₁(Z/4 ⊕ Z, Z/6 ⊕ Z/5)
+     m) Hom(Q, Z) and Ext¹(Q, Z)
+     n) Torₙ^{Z/4}(Z/2, Z/2) for n ≥ 0
+     o) Extⁿ_{k[x]/(x²)}(k, k) for n ≥ 0
+     p) Torₙ^{k[x,y]}(k, k) for n ≥ 0 (Koszul resolution)
+     q) Extⁿ_{Z/6}(Z/2, M) for n ≥ 1
+     r) Hⁿ(Z/m, Z) = Extⁿ_{Z[Z/m]}(Z, Z) for n ≥ 0 (trivial action)
+     s) H₁(S₃, Z) = Tor₁^{Z S₃}(Z, Z)
+     t) the extensions 0 → Z/3 → E → Z/3 → 0: number of classes, groups E
+     u) the abelian extensions 0 → Z/4 → E → Z/2 → 0
+     v) global dimension of Z, k[x, y, z], Z/4, Z/6, Q[x]
+     w) the long exact Tor sequence of 0 → Z → Q → Q/Z → 0 tensored with
+        Z/n: which map is an isomorphism?
+     Answers:
+       a) Z/6      b) Z/6      c) 0; Z/n     d) Z/2     e) Z/4
+       f) Z/n (the n-torsion of Q/Z)          g) 0 (Q is flat)
+       h) Z/4 (Tor₁(Q/Z, A) = A_tors)         i) 0 and 0 (Z is a PID)
+       j) 0 (Q/Z injective); 0 (Q injective)
+       k) Z/2 ⊕ Z/3 ≅ Z/6                     l) Z/2 (only Tor₁(Z/4, Z/6))
+       m) 0; nonzero: ≅ R as an abstract group (a Q-vector space of
+          dimension 2^ℵ₀)
+       n) Z/2 for every n (resolution ⋯ →(×2) Z/4 →(×2) Z/4 → Z/2)
+       o) k for every n              p) k, k², k, then 0 for n ≥ 3
+       q) 0 (Z/2 is projective over Z/6)
+       r) Z, then 0 for n odd and Z/m for n even ≥ 2
+       s) S₃ᵃᵇ = Z/2
+       t) |Ext¹(Z/3, Z/3)| = 3 classes: (Z/3)² (split) and Z/9 (2 classes)
+       u) Ext¹(Z/2, Z/4) = Z/2: Z/4 ⊕ Z/2 (split) and Z/8
+       v) 1, 3, ∞, 0, 1
+       w) δ : Tor₁(Q/Z, Z/n) → Z ⊗ Z/n = Z/n (Q ⊗ Z/n = 0 and Tor₁(Q, −)
+          = 0 on both sides)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every monomorphism in Set is injective.
+     b) A morphism that is both mono and epi is an isomorphism.
+     c) Every epimorphism in Ring is surjective.
+     d) Right adjoints preserve colimits.
+     e) A fully faithful, essentially surjective functor is an
+        equivalence (assuming choice).
+     f) Equivalent categories are isomorphic.
+     g) Left adjoints, when they exist, are unique up to natural iso.
+     h) Every forgetful functor to Set has a left adjoint.
+     i) The natural map V → V** is an isomorphism for every vector space.
+     j) In an abelian category, mono + epi ⇒ iso.
+     k) Grp is an abelian category.
+     l) Finitely generated free abelian groups form an abelian category.
+     m) Every projective Z-module is free.
+     n) Every flat Z-module is projective.
+     o) Hom(A, −) is exact for every abelian group A.
+     p) − ⊗ M is left exact.
+     q) Tor₁^Z(A, B) = 0 whenever A is torsion-free.
+     r) Ext¹_Z(A, Z) = 0 ⇒ A is free.
+     s) Representable functors Hom(A, −) preserve limits.
+     t) The Yoneda embedding preserves colimits.
+     u) Every monad arises from an adjunction.
+     v) Products and equalizers give all small limits.
+     w) Extⁿ_R(A, B) may be computed from a projective resolution of A or
+        an injective resolution of B.
+     x) The category of fields has all finite products.
+     Answers:
+       a) T        b) F: Z ↪ Q in Ring        c) F: Z ↪ Q
+       d) F: U : Grp → Set does not preserve coproducts
+       e) T        f) F: FinVect_k ≃ Mat_k
+       g) T        h) F: U : Field → Set
+       i) F: infinite-dimensional V (not onto)      j) T
+       k) F: not additive (Z/2 * Z/2 ≠ Z/2 × Z/2)
+       l) F: there ×2 : Z → Z is mono and epi (its cokernel is 0) but
+          not an iso
+       m) T (submodules of free modules over a PID are free)
+       n) F: Q         o) F: Hom(Z/2, −) on Z → Z/2
+       p) F: ×2 on Z, tensored with Z/2
+       q) T (torsion-free over a PID ⇒ flat)
+       r) F in general: this is the Whitehead problem, independent of ZFC
+          (Shelah); T for countable A (Stein)
+       s) T        t) F: Hom(−, ∅) is not the empty (initial) presheaf
+       u) T (Kleisli or Eilenberg-Moore)             v) T
+       w) T (Ext is balanced)                        x) F: F₂ × F₃
+
+TEACHING TIPS
+  Struggling: draw EVERY definition as a diagram and make the student
+  chase it with elements in Set, Ab and a poset before going abstract; a
+  poset is the best laboratory (limits = inf, colimits = sup, adjunctions
+  = Galois connections ⌈·⌉ ⊣ ι ⊣ ⌊·⌋, monads = closure operators). Drill
+  the three reflexes: "what does Hom out of / into it classify?" (Yoneda:
+  Hom(Z, G) = G, Hom(Z[x], R) = R), "left adjoints are free and preserve
+  colimits, right adjoints are forgetful and preserve limits", and, for
+  Tor/Ext, "resolve, DELETE the module, apply the functor, take homology"
+  — always starting with 0 → Z →(×m) Z → Z/m → 0 and the answer Z/gcd.
+  Warn early that mono/epi are not injective/surjective in general (Z ↪ Q
+  in Ring). Harder: prove the adjoint functor theorems (general and
+  special) and derive the existence of free groups and Stone-Čech
+  compactifications; prove Beck's monadicity theorem and show CHaus is
+  monadic over Set; prove the snake lemma in an arbitrary abelian
+  category and explain how Freyd-Mitchell justifies element chases;
+  prove the comparison theorem, the horseshoe lemma and the balancing of
+  Ext and Tor; show Ext¹ with the Baer sum is a group isomorphic to
+  derived-functor Ext¹; compute group cohomology of cyclic groups via the
+  periodic resolution; and preview derived categories: localize Ch(𝒜) at
+  quasi-isomorphisms, so that RHom and ⊗^L become single functors whose
+  cohomology is Ext and Tor.
+
+
+================================================================================
+TOPIC 12.23 — COMBINATORICS (GRADUATE): THE PROBABILISTIC METHOD, EXTREMAL
+COMBINATORICS, ALGEBRAIC COMBINATORICS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - THE BASIC PROBABILISTIC METHOD: to show an object with property P
+    exists, build a random object and prove P(it has P) > 0. UNION BOUND:
+    P(⋃Aᵢ) ≤ ∑P(Aᵢ). Erdős (1947): if C(n, k)2^(1−C(k,2)) < 1 then some
+    2-colouring of E(Kₙ) has no monochromatic Kₖ, so R(k, k) > n; hence
+    R(k, k) > 2^(k/2) for k ≥ 3. Also: a k-uniform hypergraph with fewer
+    than 2^(k−1) edges is 2-colourable (Property B).
+  - LINEARITY OF EXPECTATION: E[∑Xᵢ] = ∑E[Xᵢ] with NO independence needed;
+    some outcome has X ≥ E[X] (and one has X ≤ E[X]). Examples: a
+    tournament with ≥ n!/2^(n−1) Hamiltonian paths (Szele); every graph
+    has a bipartite subgraph with ≥ m/2 edges; CARO-WEI α(G) ≥
+    ∑_v 1/(d(v) + 1) (random ordering); every set of n non-zero integers
+    has a sum-free subset of size > n/3.
+  - ALTERATION (DELETION): make a random object, then repair its few
+    defects. R(k, k) > n − C(n, k)2^(1−C(k,2)) for every n; a graph with
+    average degree d ≥ 1 has α ≥ n/(2d); Erdős: graphs of girth > g AND
+    chromatic number > k exist for all g, k.
+  - SECOND MOMENT METHOD: CHEBYSHEV P(|X − μ| ≥ λ) ≤ Var X/λ², hence
+    P(X = 0) ≤ Var X/(E X)². For X = ∑ indicators, Var X ≤ E X + ∑_{i∼j}
+    P(Aᵢ ∧ Aⱼ). THRESHOLDS in G(n, p): the property "contains H" has
+    threshold n^(−1/m(H)), m(H) = max_{H′ ⊆ H} e(H′)/v(H′) (triangle 1/n,
+    K₄ n^(−2/3)); connectivity at (ln n)/n; giant component at 1/n.
+  - CONCENTRATION: MARKOV P(X ≥ a) ≤ E X/a (X ≥ 0); CHERNOFF for S = sum
+    of n independent ±1: P(S ≥ a) ≤ e^(−a²/(2n)); for X ~ Bin(n, p):
+    P(|X − np| ≥ a) ≤ 2e^(−2a²/n) (Hoeffding); AZUMA / bounded differences
+    for martingales (χ(G(n, ½)) is concentrated in a window of O(√n)).
+  - LOVÁSZ LOCAL LEMMA (symmetric): events A₁, ..., A_N, each with P(Aᵢ)
+    ≤ p, each mutually independent of all but at most d others; if
+    e p (d + 1) ≤ 1 then P(no Aᵢ) > 0. Uses: k-SAT with each clause
+    meeting ≤ 2^k/e − 1 others is satisfiable; R(k, k) > (√2/e)k2^(k/2)
+    (1 + o(1)), twice the union bound.
+  - TURÁN: a K_{r+1}-free graph on n vertices has at most t_r(n) ≤
+    (1 − 1/r)n²/2 edges, with equality only for the Turán graph T_r(n)
+    (complete r-partite, parts as equal as possible). r = 2: MANTEL
+    ⌊n²/4⌋. ERDŐS-STONE-SIMONOVITS: ex(n, H) = (1 − 1/(χ(H) − 1) + o(1))
+    n²/2, so the chromatic number decides the answer unless H is
+    bipartite.
+  - BIPARTITE (DEGENERATE) EXTREMAL PROBLEMS: KŐVÁRI-SÓS-TURÁN ex(n, K_{s,t})
+    ≤ ½(t − 1)^(1/s)n^(2−1/s) + ½(s − 1)n = O(n^(2−1/s)); ex(n, C₄) ≤
+    (n/4)(1 + √(4n − 3)), sharp in order via the polarity graph of the
+    projective plane PG(2, q) (q²+q+1 vertices, q(q+1)²/2 edges).
+    ZARANKIEWICZ z(n; 2): max 1s in an n × n 0-1 matrix with no 2 × 2
+    block of 1s. ERDŐS-GALLAI: ex(n, P_k) ≤ (k − 1)n/2 (P_k = path with k
+    edges).
+  - EXTREMAL SET THEORY: SPERNER: an antichain in 2^[n] has ≤ C(n, ⌊n/2⌋)
+    sets; LYM inequality ∑_{A∈𝓕} 1/C(n, |A|) ≤ 1. ERDŐS-KO-RADO: an
+    intersecting family of k-subsets of [n], n ≥ 2k, has ≤ C(n − 1, k − 1)
+    members (stars are extremal; unique for n > 2k); Katona's cycle
+    proof. SAUER-SHELAH: a family on n points with VC-dimension d has ≤
+    ∑_{i≤d} C(n, i) sets. KRUSKAL-KATONA: the minimal shadow of m k-sets.
+  - RAMSEY THEORY: R(s, t) ≤ R(s − 1, t) + R(s, t − 1), so R(s, t) ≤
+    C(s + t − 2, s − 1) and R(k, k) < 4^k; R(3, 3) = 6, R(3, 4) = 9, R(3, 5)
+    = 14, R(4, 4) = 18, R(3, 3, 3) = 17. ERDŐS-SZEKERES: a sequence of rs +
+    1 distinct reals has an increasing subsequence of length r + 1 or a
+    decreasing one of length s + 1 (sharp). SCHUR, VAN DER WAERDEN
+    (W(2, 3) = 9), happy-ending problem.
+  - ORDER AND MATCHING: DILWORTH (min number of chains covering a poset =
+    max antichain), MIRSKY (dual), HALL (a bipartite G has a matching
+    saturating A iff |N(S)| ≥ |S| for all S ⊆ A), KÖNIG (max matching =
+    min vertex cover in bipartite graphs).
+  - THE LINEAR ALGEBRA METHOD: if vectors are linearly independent in an
+    n-dimensional space there are at most n of them. ODDTOWN: odd clubs
+    with pairwise even intersections: ≤ n clubs (eventown: ≤ 2^⌊n/2⌋).
+    FISHER: sets with all pairwise intersections exactly λ > 0: ≤ n sets.
+    GRAHAM-POLLAK: Kₙ needs n − 1 complete bipartite graphs to partition
+    its edges. POLYNOMIAL METHOD: COMBINATORIAL NULLSTELLENSATZ ⇒
+    CAUCHY-DAVENPORT |A + B| ≥ min(p, |A| + |B| − 1) in Z_p; CHEVALLEY-
+    WARNING (number of common zeros ≡ 0 mod p if ∑deg < #variables).
+  - SPECTRAL GRAPH THEORY: adjacency eigenvalues (Kₙ: n − 1, (−1)^(n−1);
+    Petersen: 3, 1⁵, (−2)⁴); HOFFMAN bound α ≤ n(−λ_min)/(d − λ_min) for
+    d-regular graphs; KIRCHHOFF MATRIX-TREE THEOREM: τ(G) = any cofactor
+    of the Laplacian L = D − A = (1/n)∏(non-zero Laplace eigenvalues);
+    τ(Kₙ) = n^(n−2) (Cayley), τ(K_{m,n}) = m^(n−1)n^(m−1).
+  - GENERATING FUNCTIONS: ordinary for unlabelled, exponential for
+    labelled structures. Partitions ∑p(n)xⁿ = ∏1/(1 − xᵏ); EULER: #
+    partitions into distinct parts = # into odd parts; PENTAGONAL NUMBER
+    THEOREM ∏(1 − xᵏ) = ∑(−1)ʲx^(j(3j−1)/2) gives p(n) = p(n−1) + p(n−2)
+    − p(n−5) − p(n−7) + ...; Catalan C(x) = (1 − √(1 − 4x))/(2x), Cₙ =
+    C(2n, n)/(n + 1); Stirling and Bell numbers; Lagrange inversion.
+  - TABLEAUX AND SYMMETRIC FUNCTIONS: a partition λ ⊢ n, its Young
+    diagram, standard (SYT) and semistandard (SSYT) tableaux. HOOK LENGTH
+    FORMULA f^λ = n!/∏h(c). RSK: permutations of [n] ↔ pairs (P, Q) of SYT
+    of the same shape, so ∑_λ (f^λ)² = n!; SCHENSTED: first-row length =
+    longest increasing subsequence. SCHUR FUNCTION s_λ = ∑_{T SSYT} x^T;
+    Kostka numbers K_{λμ}; Pieri rule; hook-content formula s_λ(1, ..., 1)
+    = ∏(N + c(u))/h(u); f^λ = dimension of the irreducible Sₙ-module.
+  - COUNTING WITH SYMMETRY AND POSETS: BURNSIDE # orbits = (1/|G|)∑_g
+    |Fix(g)|; PÓLYA: colourings with k colours = Z_G(k, ..., k); MÖBIUS
+    INVERSION on a locally finite poset: g(x) = ∑_{y≤x} f(y) ⇔ f(x) =
+    ∑_{y≤x} μ(y, x)g(y); Boolean lattice μ = (−1)^|B∖A| (inclusion-
+    exclusion), divisor lattice = number-theoretic μ; irreducible
+    polynomials of degree n over F_q: (1/n)∑_{d|n} μ(d)q^(n/d).
+    q-BINOMIALS [n choose k]_q count k-subspaces of F_qⁿ.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove that if C(n, k)2^(1−C(k,2)) < 1 then R(k, k) > n, and deduce
+    R(k, k) > 2^(k/2) for k ≥ 3. (b) Prove the alteration bound R(k, k) >
+    n − C(n, k)2^(1−C(k,2)) for every n. (c) Evaluate both bounds for
+    k = 10.
+    Answer: (a) union bound; (b) delete a vertex from each monochromatic
+    Kₖ; (c) R(10, 10) > 100 (union bound), R(10, 10) > 116 (alteration,
+    n = 127).
+    Teacher explains: (a) Colour each edge of Kₙ red or blue independently
+    with probability ½. For a fixed k-set S, let A_S = "S is
+    monochromatic"; P(A_S) = 2·2^(−C(k,2)) (all red or all blue). By the
+    union bound
+       P(some A_S) ≤ C(n, k)2^(1−C(k,2)) < 1,
+    so some colouring has no monochromatic Kₖ: R(k, k) > n. For n =
+    ⌊2^(k/2)⌋: C(n, k) < nᵏ/k! ≤ 2^(k²/2)/k!, so the bound is < 2^(1+k/2)/k!,
+    which is < 1 for k ≥ 3 (k = 3: 2^2.5/6 ≈ 0.94). (b) Now let X = number
+    of monochromatic k-sets; E X = C(n, k)2^(1−C(k,2)) =: μ. Some colouring
+    has X ≤ μ. Delete one vertex from each monochromatic Kₖ: at least n − μ
+    vertices remain and the colouring on them has no monochromatic Kₖ.
+    (c) k = 10: C(k, 2) = 45, so we need C(n, 10) < 2⁴⁴ ≈ 1.76·10¹³; C(100,
+    10) ≈ 1.73·10¹³ works, C(101, 10) ≈ 1.92·10¹³ does not: R(10, 10) > 100.
+    Alteration at n = 127: μ ≈ 11.89, so some colouring has at most 11 bad
+    10-sets; deleting 11 vertices leaves 116: R(10, 10) > 116. Both are
+    exponential lower bounds; no explicit (constructive) colouring of
+    comparable quality is known. Common mistakes: forgetting the factor 2
+    (red OR blue); rounding μ up instead of down in (b) (X is an integer
+    ≤ μ). Now you try: the union bound for k = 5. (C(11, 5) = 462 < 512 <
+    C(12, 5) = 792, so R(5, 5) > 11)
+
+D2. Linearity of expectation. (a) Show some tournament on n vertices has
+    at least n!/2^(n−1) Hamiltonian paths; evaluate for n = 5 and 6.
+    (b) Show every graph with m edges has a bipartite subgraph with ≥ m/2
+    edges. (c) Prove Caro-Wei α(G) ≥ ∑_v 1/(d(v) + 1) and apply it to C₅,
+    the Petersen graph and the star K_{1,5}.
+    Answer: (a) 7.5 → ≥ 8 for n = 5; 22.5 → ≥ 23 for n = 6. (b) random
+    bipartition. (c) C₅: 5/3 → α ≥ 2; Petersen: 5/2 → α ≥ 3; K_{1,5}: 8/3 →
+    α ≥ 3.
+    Teacher explains: (a) Orient each edge of Kₙ at random. For each of
+    the n! orderings σ of the vertices, let X_σ = 1 if σ(1) → σ(2) → ... →
+    σ(n) is a directed path; P(X_σ = 1) = 2^(−(n−1)). X = ∑X_σ has E X =
+    n!/2^(n−1), and some tournament has X ≥ E X. n = 5: 120/16 = 7.5, so
+    some tournament has ≥ 8; n = 6: 720/32 = 22.5, so ≥ 23. (b) Put each
+    vertex in A or B independently with probability ½. An edge crosses
+    with probability ½, so E[# crossing edges] = m/2 and some bipartition
+    achieves ≥ m/2. (c) Take a uniformly random ordering of V and let I =
+    {v : v precedes all its neighbours}. I is independent (of two adjacent
+    vertices only the earlier can be in I). v ∈ I iff v is first among
+    the d(v) + 1 vertices {v} ∪ N(v): probability 1/(d(v) + 1). So E|I| =
+    ∑1/(d(v) + 1) and some ordering gives |I| at least this. C₅: 5·(1/3)
+    = 5/3, α ≥ 2 (true: 2). Petersen (3-regular): 10/4, α ≥ 3 (true: 4).
+    K_{1,5}: 1/6 + 5/2 = 8/3, α ≥ 3 (true: 5). By convexity the bound is ≥
+    n/(d̄ + 1), which is Turán's theorem in complementary form. Common
+    mistakes: thinking the Xᵢ must be independent — linearity needs
+    nothing; concluding "every" tournament has many paths (only some does).
+    Now you try: alteration — for average degree d, pick vertices with
+    probability p = 1/d and delete one end of each surviving edge. What
+    bound on α results? (E ≥ np − (nd/2)p² = n/(2d))
+
+D3. Let X be the number of triangles in G(n, p). (a) Show that if np → 0
+    then P(X > 0) → 0, and if np → ∞ then P(X > 0) → 1, so 1/n is a
+    threshold. (b) Compute E X, Var X and the Chebyshev bound on P(X = 0)
+    for n = 100, p = 0.1.
+    Answer: (a) first and second moment; (b) E X = 161.7, Var X ≈ 585.03,
+    P(X = 0) ≤ 0.0224.
+    Teacher explains: X = ∑_T X_T over the C(n, 3) vertex triples, X_T =
+    1 if T spans a triangle. E X = C(n, 3)p³ ~ (np)³/6. FIRST MOMENT: by
+    Markov P(X > 0) ≤ E X → 0 when np → 0. SECOND MOMENT: P(X = 0) ≤
+    P(|X − E X| ≥ E X) ≤ Var X/(E X)². Now
+       Var X = ∑_T Var X_T + ∑_{T≠T′} Cov(X_T, X_T′).
+    If T, T′ share no edge they use disjoint edge sets: Cov = 0. Sharing
+    exactly one edge (3(n − 3) choices of T′ for each T): Cov = p⁵ − p⁶.
+    Hence
+       Var X = C(n, 3)[p³ − p⁶ + 3(n − 3)(p⁵ − p⁶)]
+    and Var X/(E X)² ≤ 1/E X + 3(n − 3)/(C(n, 3)p) ~ 6/(np)³ + 18/(n²p) → 0
+    when np → ∞. (b) C(100, 3) = 161700, E X = 161700·0.001 = 161.7; Var X
+    = 161700(0.000999 + 291·0.000009) = 161700·0.003618 ≈ 585.03; so
+    P(X = 0) ≤ 585.03/161.7² ≈ 0.0224. General rule: the threshold for a
+    copy of H is n^(−1/m(H)), m(H) the maximum edge density e/v over
+    subgraphs; triangle m = 1, K₄ m = 3/2 (threshold n^(−2/3)). At p = c/n
+    the triangle count is asymptotically Poisson(c³/6). Common mistakes:
+    using the density of H itself when a denser subgraph exists; applying
+    Markov to show P(X > 0) → 1 (Markov only bounds upper tails). Now you
+    try: the threshold for containing K₄ plus a pendant edge. (n^(−2/3):
+    the densest part is K₄, 6/4 > 7/5)
+
+D4. State the symmetric Lovász Local Lemma. Use it to prove (a) a
+    k-uniform hypergraph in which every edge meets at most d other edges is
+    2-colourable if e(d + 1) ≤ 2^(k−1); (b) R(k, k) > n whenever
+    e·2^(1−C(k,2))(C(k, 2)C(n, k − 2) + 1) ≤ 1, and compare with the union
+    bound for k = 20.
+    Answer: (a) d ≤ 187 suffices for k = 10; (b) k = 20: union bound
+    R > 5817, LLL R > 7739.
+    Teacher explains: LLL: let A₁, ..., A_N be events, each Aᵢ mutually
+    independent of the family {Aⱼ : j ∉ Γ(i) ∪ {i}} with |Γ(i)| ≤ d, and
+    P(Aᵢ) ≤ p. If e p (d + 1) ≤ 1 then P(⋂ Āᵢ) ≥ (1 − 1/(d + 1))^N > 0. The
+    point: the union bound needs N p < 1, which fails when N is huge; the
+    LLL only needs p small compared with the LOCAL dependence d. (a) Colour
+    vertices randomly; A_E = "edge E monochromatic", P(A_E) = 2^(1−k). A_E is
+    determined by the colours on E, so it is independent of all events
+    for edges disjoint from E: d as given. The condition e·2^(1−k)(d + 1) ≤
+    1 is e(d + 1) ≤ 2^(k−1). k = 10: d + 1 ≤ 512/e ≈ 188.35, so d ≤ 187.
+    (b) Colour E(Kₙ) randomly; A_S for each k-set S, p = 2^(1−C(k,2)). A_S
+    depends only on A_T with |S ∩ T| ≥ 2 (sharing an edge); the number of
+    such T is < C(k, 2)C(n, k − 2). The LLL gives the stated criterion;
+    asymptotically it yields R(k, k) > (√2/e)k2^(k/2)(1 + o(1)), twice the
+    union-bound constant 1/(e√2). k = 20: the union bound gives 5817, the
+    LLL gives 7739 (for small k such as 10 the LLL is actually weaker: 96
+    against 100). Same argument for k-SAT: a clause is false with
+    probability 2^(−k), so if each clause shares variables with ≤ 2^k/e − 1
+    others the formula is satisfiable. Common mistakes: checking only
+    pairwise independence (the LLL needs Aᵢ independent of the whole family
+    outside Γ(i)); using d instead of d + 1. Now you try: 8-SAT
+    where each clause meets at most d others — largest d the LLL allows.
+    (d + 1 ≤ 256/e ≈ 94.2, d ≤ 93)
+
+D5. State and prove Turán's theorem, and compute t₃(10), t₄(10) and the
+    Erdős-Stone asymptotics of ex(n, H) for H = Petersen graph, K₅ − e and
+    K_{3,3}.
+    Answer: t₃(10) = 33, t₄(10) = 37; Petersen n²/4, K₅ − e n²/3, K_{3,3}
+    o(n²).
+    Teacher explains: THEOREM: if G on n vertices has no K_{r+1} then e(G)
+    ≤ e(T_r(n)) = t_r(n). PROOF (Erdős's degree domination): we show there
+    is a complete r-partite H on V(G) with d_H(x) ≥ d_G(x) for all x;
+    induct on r (r = 1: G has no edges). Let v have maximum degree Δ, A =
+    N(v), B = V ∖ A. G[A] has no K_r (else add v), so by induction there is
+    a complete (r − 1)-partite H′ on A dominating G[A]. Let H = H′ joined
+    completely to B, with B independent. For x ∈ B: d_H(x) = |A| = Δ ≥
+    d_G(x). For x ∈ A: d_H(x) = d_{H′}(x) + |B| ≥ d_{G[A]}(x) + |N(x) ∩ B|
+    = d_G(x). Summing, e(G) ≤ e(H). Among complete r-partite graphs, moving
+    a vertex from a part of size a to one of size b ≤ a − 2 gains a − 1 − b
+    > 0 edges, so the balanced T_r(n) is best. t_r(n) ≤ (1 − 1/r)n²/2
+    (Cauchy-Schwarz on the part sizes). NUMBERS: T₃(10) has parts 4, 3, 3:
+    12 + 12 + 9 = 33 (bound (2/3)·50 = 33.3). T₄(10) has parts 3, 3, 2, 2:
+    45 − (3 + 3 + 1 + 1) = 37. ERDŐS-STONE: ex(n, H) = (1 − 1/(χ(H) − 1) +
+    o(1))n²/2. Petersen: χ = 3, ~ n²/4. K₅ − e: χ = 4, ~ n²/3. K_{3,3}:
+    bipartite, o(n²) (in fact O(n^(5/3)) by Kővári-Sós-Turán). Common
+    mistakes: t_r(n) = (1 − 1/r)n²/2 exactly (only when r | n); claiming
+    Erdős-Stone determines ex(n, H) for bipartite H. Now you try: t₃(11).
+    (parts 4, 4, 3: 55 − 15 = 40)
+
+D6. (a) Prove that a C₄-free graph on n vertices has at most (n/4)(1 +
+    √(4n − 3)) edges. (b) Describe the polarity graph of PG(2, q) and count
+    its edges; compare with (a) for q = 2, 3. (c) State Kővári-Sós-Turán.
+    Answer: (a) count "cherries"; (b) q(q + 1)²/2 edges on q² + q + 1
+    vertices: 9 for n = 7 (bound 10.5), 24 for n = 13 (bound 26).
+    Teacher explains: (a) A cherry is a path x − v − y; count them by
+    their middle vertex: ∑_v C(d(v), 2). Since G has no C₄, two vertices
+    x, y have at most one common neighbour, so the count is ≤ C(n, 2). By
+    Jensen (convexity of C(t, 2)) with average degree 2e/n:
+       n·C(2e/n, 2) ≤ C(n, 2)  ⇒  4e² − 2en − n²(n − 1) ≤ 0
+       ⇒  e ≤ (n/4)(1 + √(4n − 3)).
+    So ex(n, C₄) ≤ ½n^(3/2) + O(n). (b) The points of PG(2, q) are the
+    1-dimensional subspaces of F_q³: n = q² + q + 1. Join x ≠ y iff x·y = 0
+    (dot product). The neighbours of x are the q + 1 points of the line
+    x^⊥, minus x itself when x·x = 0; exactly q + 1 points are such
+    ABSOLUTE points, of degree q. Two points x ≠ y have at most one common
+    neighbour (the point x^⊥ ∩ y^⊥), so there is no C₄. Edges =
+    [(q + 1)(q² + q + 1) − (q + 1)]/2 = q(q + 1)²/2 ~ ½n^(3/2): the order
+    n^(3/2) is right. q = 2: 9 edges, n = 7, bound (7/4)(1 + √25) = 10.5,
+    and indeed ex(7, C₄) = 9. q = 3: 24 edges, n = 13, bound (13/4)(1 + 7)
+    = 26; the truth is ex(13, C₄) = 24. (c) KST:
+    ex(n, K_{s,t}) ≤ ½(t − 1)^(1/s)n^(2−1/s) + ½(s − 1)n for s ≤ t; same
+    proof, counting stars K_{1,s} whose leaves have ≤ t − 1 common
+    neighbours. Common mistakes: forgetting the absolute points (the naive
+    count (q + 1)n/2 is not an integer for q = 2); thinking the answer is
+    Θ(n²) as for non-bipartite H. Now you try: bound ex(21, C₄) by (a) and
+    by the polarity graph with q = 4. (52.5 → ≤ 52; ≥ 50; truth 50)
+
+D7. (a) Prove the LYM inequality and deduce Sperner's theorem. (b) Prove
+    the Erdős-Ko-Rado theorem by Katona's cycle method. (c) Evaluate: the
+    largest antichain in 2^[6]; the largest intersecting family of
+    3-subsets of [8]; the same for 3-subsets of [5].
+    Answer: (c) 20; C(7, 2) = 21; C(5, 3) = 10 (n < 2k: all sets meet).
+    Teacher explains: (a) Choose a uniformly random maximal chain ∅ ⊂ {σ(1)}
+    ⊂ {σ(1), σ(2)} ⊂ ... ⊂ [n] (σ a random permutation). A fixed set A of
+    size a is on the chain iff {σ(1), ..., σ(a)} = A: probability a!(n −
+    a)!/n! = 1/C(n, a). A chain meets an antichain 𝓕 at most once, so these
+    events are disjoint and
+       ∑_{A∈𝓕} 1/C(n, |A|) = E[# members of 𝓕 on the chain] ≤ 1.   (LYM)
+    Since C(n, a) ≤ C(n, ⌊n/2⌋), |𝓕|/C(n, ⌊n/2⌋) ≤ 1: SPERNER. (b) Let 𝓕
+    be intersecting, n ≥ 2k. KATONA'S LEMMA: for a cyclic order of [n], at
+    most k of the n "arcs" (k consecutive elements) lie in 𝓕. Proof: if
+    the arc A = (1, ..., k) is in 𝓕, every other member arc meets A, so it
+    starts or ends strictly inside A; the arc ending at i and the arc
+    starting at i + 1 (1 ≤ i ≤ k − 1) are disjoint because n ≥ 2k, so at
+    most one of each of these k − 1 pairs is in 𝓕: total ≤ 1 + (k − 1).
+    DOUBLE COUNT pairs (cyclic order, member of 𝓕 that is an arc): there
+    are (n − 1)! cyclic orders, each with ≤ k, and each k-set is an arc in
+    k!(n − k)! of them. So |𝓕|·k!(n − k)! ≤ k(n − 1)!, i.e. |𝓕| ≤ C(n − 1,
+    k − 1). The star {A : 1 ∈ A} attains it. (c) C(6, 3) = 20; C(7, 2) =
+    21; for n = 5 < 2k = 6 any two 3-subsets meet, so all C(5, 3) = 10.
+    Common mistakes: applying EKR when n < 2k; thinking LYM characterises
+    all antichain profiles (in [4] it allows one singleton and four pairs,
+    but at most three pairs avoid the singleton's element). Now you try:
+    the largest intersecting family of 4-subsets of [8]. (C(7, 3) = 35 =
+    C(8, 4)/2: take one set from each complementary pair)
+
+D8. (a) Prove R(3, 3) = 6. (b) Prove R(s, t) ≤ R(s − 1, t) + R(s, t − 1),
+    hence R(s, t) ≤ C(s + t − 2, s − 1), and show R(3, 4) = 9. (c) Prove the
+    Erdős-Szekeres theorem and show it is sharp for r = s = 3.
+    Answer: (a) pigeonhole at a vertex + the pentagon; (b) R(3, 4) ≤ 9 by a
+    parity argument, > 8 by the Wagner graph; (c) labels (iₖ, dₖ).
+    Teacher explains: (a) In a 2-colouring of K₆, a vertex v has 5 edges, so
+    ≥ 3 of one colour, say red to x, y, z. If any of xy, yz, xz is red we
+    have a red triangle with v; otherwise xyz is blue. So R(3, 3) ≤ 6;
+    colouring the pentagon C₅ red and its complement (another C₅) blue
+    shows R(3, 3) > 5. (b) Let n = R(s − 1, t) + R(s, t − 1) and fix v; v has
+    n − 1 neighbours, so either ≥ R(s − 1, t) red or ≥ R(s, t − 1) blue
+    neighbours. In the first case the red neighbourhood has a red K_{s−1}
+    (which with v gives K_s) or a blue K_t; the second case is symmetric.
+    With R(s, 2) = s, induction gives the binomial bound (Pascal's rule).
+    R(3, 4) ≤ R(2, 4) + R(3, 3) = 4 + 6 = 10. To get 9: in a bad colouring
+    of K₉ (no red K₃, no blue K₄), a red neighbourhood is a blue clique, so
+    red degree ≤ 3; a blue neighbourhood has no red K₃ and no blue K₃, so
+    blue degree ≤ 5. Since 3 + 5 = 8, every vertex has red degree exactly
+    3, and the red graph would be 3-regular on 9 vertices: sum of degrees
+    27 is odd, impossible. Lower bound: on Z₈ colour xy red iff x − y ∈
+    {±1, 4} (the Wagner graph): no red triangle and no blue K₄, so R(3, 4)
+    > 8. (c) Let a₁, ..., a_N be distinct, N = rs + 1. Label aₖ by (iₖ, dₖ),
+    the lengths of the longest increasing and decreasing subsequences
+    ENDING at aₖ. For j < k: if aⱼ < aₖ then iₖ > iⱼ; if aⱼ > aₖ then dₖ > dⱼ.
+    So all labels are distinct; if all iₖ ≤ r and dₖ ≤ s there are only rs
+    labels < N. Sharp: 7 8 9 4 5 6 1 2 3 has length 9 and no monotone
+    subsequence of length 4. Common mistakes: thinking C(s + t − 2, s − 1)
+    is the true value (R(4, 4) = 18 < 20); forgetting the case "blue K_t"
+    inside the red neighbourhood. Now you try: the minimum N forcing a
+    monotone subsequence of length 6. (26 = 5·5 + 1)
+
+D9. (a) ODDTOWN: n citizens form clubs of odd size, any two clubs sharing
+    an even number of members. Prove there are at most n clubs. (b) FISHER:
+    if distinct A₁, ..., A_m ⊆ [n] satisfy |Aᵢ ∩ Aⱼ| = λ > 0 for all i ≠ j,
+    prove m ≤ n. (c) Give extremal examples, including one from the Fano
+    plane, and show that without the parity condition on sizes (eventown)
+    2^⌊n/2⌋ clubs are possible.
+    Answer: (a), (b) linear independence of characteristic vectors;
+    (c) singletons; the 7 lines of the Fano plane (λ = 1); pairs {2i − 1,
+    2i} and their unions.
+    Teacher explains: (a) Let vᵢ ∈ F₂ⁿ be the characteristic vector of club
+    i. Then vᵢ·vⱼ = |Aᵢ ∩ Aⱼ| mod 2 = 1 if i = j (odd size) and 0 if i ≠ j.
+    If ∑cᵢvᵢ = 0 (cᵢ ∈ F₂), dot with vⱼ: cⱼ = 0. So the vᵢ are linearly
+    independent in the n-dimensional space F₂ⁿ: at most n clubs. (b) Let M
+    be the m × n incidence matrix (over R). Then MMᵀ = λJ + D, D =
+    diag(|Aᵢ| − λ). Each |Aᵢ| ≥ λ, and at most one |Aᵢ| equals λ (such an Aᵢ
+    is contained in all others; two of them would coincide). For x ≠ 0:
+    xᵀ(λJ + D)x = λ(∑xᵢ)² + ∑dᵢxᵢ² > 0 (if the second sum is 0 then x is
+    supported on the single index with dᵢ = 0 and the first term is λxₖ² >
+    0). So MMᵀ is positive definite, m = rank MMᵀ ≤ rank M ≤ n. (c) Oddtown:
+    the n singletons. Fisher: the 7 lines of the Fano plane on 7 points meet
+    pairwise in exactly one point, m = n = 7; also the "near-pencil" {1, 2,
+    ..., n − 1}, {1, n}, {2, n}, ..., {n − 1, n}. Eventown (even sizes, even
+    intersections): pair up the points and take all unions of pairs: 2^⌊n/2⌋
+    clubs, so the parity of sizes is essential. Common mistakes: working
+    over R in (a) (the parity information lives in F₂); forgetting that two
+    sets of size λ would be equal. Now you try: n = 4 — list a maximum
+    eventown. (∅, {1, 2}, {3, 4}, {1, 2, 3, 4})
+
+D10. (a) Prove Euler's theorem: partitions of n into distinct parts are
+     equinumerous with partitions into odd parts; check n = 7 by listing.
+     (b) Use the pentagonal number theorem to compute p(10) and p(12).
+     (c) Derive the Catalan generating function and Cₙ = C(2n, n)/(n + 1).
+     Answer: (a) 5 each for n = 7; (b) p(10) = 42, p(12) = 77; (c) C(x) =
+     (1 − √(1 − 4x))/(2x).
+     Teacher explains: (a) ∏_{k≥1}(1 + xᵏ) = ∏(1 − x^(2k))/(1 − xᵏ); the
+     numerator cancels the even factors of the denominator, leaving
+     ∏_{k odd} 1/(1 − xᵏ). The left side generates distinct-part partitions,
+     the right side odd-part partitions. (Bijection: merge equal odd parts
+     in pairs repeatedly — Glaisher.) n = 7, distinct: 7, 6+1, 5+2, 4+3,
+     4+2+1; odd: 7, 5+1+1, 3+3+1, 3+1+1+1+1, 1×7: five each. (b) EULER:
+     ∏(1 − xᵏ) = ∑_{j∈Z} (−1)ʲ x^(j(3j−1)/2) = 1 − x − x² + x⁵ + x⁷ − x¹² −
+     x¹⁵ + .... Multiplying by ∑p(n)xⁿ gives 1, so
+        p(n) = p(n − 1) + p(n − 2) − p(n − 5) − p(n − 7) + p(n − 12) + ...
+     With p(0..9) = 1, 1, 2, 3, 5, 7, 11, 15, 22, 30: p(10) = 30 + 22 − 7 −
+     3 = 42; p(11) = 42 + 30 − 11 − 5 = 56; p(12) = 56 + 42 − 15 − 7 + 1 =
+     77. (c) A non-empty binary tree is a root with a left and a right
+     subtree, so C(x) = 1 + xC(x)², hence C = (1 − √(1 − 4x))/(2x) (the minus
+     sign makes C(0) = 1). Using √(1 − 4x) = 1 − 2∑_{n≥1} (1/n)C(2n − 2,
+     n − 1)xⁿ gives Cₙ = (1/(n + 1))C(2n, n): 1, 1, 2, 5, 14, 42, 132.
+     Common mistakes: taking the + sign (C would have a pole at 0);
+     omitting the "+ p(n − 12)" term once n ≥ 12. Now you try: the number of
+     self-conjugate partitions of 10 (= partitions into distinct odd
+     parts). (2: 9 + 1, 7 + 3)
+
+D11. (a) State the hook length formula and compute f^λ for λ = (3, 2),
+     (3, 2, 1) and (4, 4). (b) Perform RSK on w = 4 1 3 5 2, and relate the
+     shape to increasing/decreasing subsequences. (c) Explain why
+     ∑_{λ⊢n}(f^λ)² = n! and check it for n = 4. (d) Expand s_(2,1)(x₁, x₂,
+     x₃) in monomials.
+     Answer: (a) 5, 16, 14; (b) P = 1 2 5 / 3 / 4, Q = 1 3 4 / 2 / 5, LIS =
+     3, LDS = 3; (c) 1 + 9 + 4 + 9 + 1 = 24; (d) m_(2,1) + 2m_(1,1,1), 8 terms.
+     Teacher explains: (a) The hook of a cell is the cell, the cells to its
+     right and the cells below it. f^λ = n!/∏h. (3, 2): hooks 4 3 1 / 2 1,
+     product 24, f = 120/24 = 5. (3, 2, 1): hooks 5 3 1 / 3 1 / 1, product
+     45, f = 720/45 = 16. (4, 4): hooks 5 4 3 2 / 4 3 2 1, product 2880,
+     f = 40320/2880 = 14 (= Catalan C₄: two-row rectangles are ballot
+     sequences). (b) Row-insert x: in row 1 x replaces (bumps) the smallest
+     entry > x, which is inserted into row 2, etc.; Q records where the
+     new cell appears. 4: [4]. 1: bumps 4 → 1 / 4. 3: 1 3 / 4. 5: 1 3 5 /
+     4. 2: bumps 3 from row 1, 3 bumps 4 from row 2 → 1 2 5 / 3 / 4, new
+     cell in row 3. So P = 1 2 5 / 3 / 4 and Q = 1 3 4 / 2 / 5. SCHENSTED:
+     λ₁ = longest increasing subsequence (1 3 5: 3) and the number of rows
+     = longest decreasing (4 3 2: 3). (c) RSK is a bijection Sₙ → {(P, Q) :
+     same shape λ}, so n! = ∑(f^λ)². n = 4: shapes 4, 31, 22, 211, 1111 with
+     f = 1, 3, 2, 3, 1. (Also: w ↦ w⁻¹ swaps P and Q, so the involutions
+     number ∑f^λ: 10 for n = 4.) (d) s_λ = ∑ over SSYT (rows weakly
+     increasing, columns strictly) of x^T. Shape (2,1), entries ≤ 3: the
+     type-(2,1) monomials x₁²x₂ etc. each occur once (6 terms) and x₁x₂x₃
+     occurs twice (tableaux 1 2 / 3 and 1 3 / 2): s_(2,1) = m_(2,1) +
+     2m_(1,1,1), and s_(2,1)(1, 1, 1) = 8 = hook-content (3·4·2)/(3·1·1).
+     Common mistakes: hooks counting the cells above/left; bumping the
+     largest instead of the smallest larger entry. Now you try: f^(4,2).
+     (hooks 5 4 2 1 / 2 1, 720/80 = 9)
+
+D12. (a) Prove Burnside's lemma. (b) Count necklaces of 6 beads in 2
+     colours up to rotation, and up to rotation and reflection (bracelets).
+     (c) State Möbius inversion on the divisor lattice and use it to count
+     binary Lyndon words (= irreducible polynomials over F₂) of length 6.
+     (d) Derive the derangement number D₆ from Möbius inversion on the
+     Boolean lattice.
+     Answer: (a) count pairs (g, x) with gx = x; (b) 14 and 13; (c) 9;
+     (d) 265.
+     Teacher explains: (a) Count S = {(g, x) : gx = x}. By g: |S| =
+     ∑|Fix(g)|. By x: |S| = ∑|Stab(x)| = ∑|G|/|Orb(x)|, and each orbit O
+     contributes |O|·|G|/|O| = |G|. So # orbits = (1/|G|)∑|Fix(g)|. (b)
+     Rotation by j fixes 2^gcd(j,6) colourings: j = 0..5 give 64, 2, 4, 8,
+     4, 2; total 84, /6 = 14. Reflections (6 of them): 3 through opposite
+     beads fix 2⁴ = 16 each, 3 through edge midpoints fix 2³ = 8 each:
+     total 72; (84 + 72)/12 = 13. (c) If g(n) = ∑_{d|n} f(d) then f(n) =
+     ∑_{d|n} μ(d)g(n/d). Every word of length n is a power of a unique
+     primitive word of length d | n, and primitive words come in rotation
+     classes of size exactly d: qⁿ = ∑_{d|n} d·L(d). Inverting, L(n) =
+     (1/n)∑_{d|n} μ(d)q^(n/d). n = 6, q = 2: (64 − 8 − 4 + 2)/6 = 54/6 = 9,
+     which is also the number of irreducible degree-6 polynomials over F₂.
+     (d) Let f(S) = # permutations whose fixed-point set is exactly S and
+     g(S) = ∑_{T⊇S} f(T) = (n − |S|)!. Möbius on the Boolean lattice
+     (μ(S, T) = (−1)^|T∖S|) gives D_n = f(∅) = ∑_k (−1)ᵏC(n, k)(n − k)! =
+     n!∑(−1)ᵏ/k!: D₆ = 720(1 − 1 + 1/2 − 1/6 + 1/24 − 1/120 + 1/720) = 265.
+     Common mistakes: dividing the number of colourings by |G| (wrong when
+     some colourings have non-trivial stabilisers); forgetting the two
+     reflection types for even n. Now you try: 2-colourings of the faces of
+     a cube up to rotation. ((2⁶ + 3·2⁴ + 12·2³ + 8·2²)/24 = 240/24 = 10)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Linearity of expectation: compute the expectation, then state what
+    existence it guarantees where asked.
+    a) fixed points of a uniformly random permutation of [n]
+    b) E[F²] for F = number of fixed points (n ≥ 2)
+    c) the number of 3-cycles of a random permutation of [n] (n ≥ 3)
+    d) the number of cycles of a random permutation of [4]
+    e) inversions of a random permutation of [10]
+    f) descents of a random permutation of [10]
+    g) monochromatic triangles in a random 2-colouring of K₆; of K₁₀
+    h) Hamiltonian paths of a random tournament on 6 and on 7 vertices
+    i) directed Hamiltonian cycles of a random tournament on 5 and on 7
+       vertices
+    j) edges and triangles of G(10, ½)
+    k) copies of K₄ in G(20, ½)
+    l) isolated vertices of G(10, 0.2)
+    m) a graph has 15 edges: guaranteed size of a bipartite subgraph
+    n) Caro-Wei lower bound for α of C₇, K_{3,3}, Petersen, K_{1,5}
+    o) guaranteed sum-free subset of any 10 non-zero integers
+    p) coupon collector: expected draws to see all 6 faces of a die
+    q) 100 vertices, average degree 9: the alteration bound for α; the
+       Caro-Wei bound if the graph is 9-regular
+    Answers:
+      a) 1        b) 2        c) 1/3      d) H₄ = 25/12      e) 22.5
+      f) 4.5      g) 5; 30 (C(n, 3)/4)
+      h) 22.5 (some tournament has ≥ 23); 78.75 (≥ 79)
+      i) (n − 1)!/2ⁿ: 0.75; 720/128 = 5.625      j) 22.5; 15
+      k) 4845/64 ≈ 75.70       l) 10·0.8⁹ ≈ 1.342       m) ≥ 8
+      n) 7/3 → 3; 3/2 → 2; 5/2 → 3; 8/3 → 3      o) ≥ 4 (size > n/3)
+      p) 6H₆ = 14.7            q) n/(2d) ≈ 5.56 → α ≥ 6; n/(d + 1) = 10
+
+M2. Union bound, alteration and the Local Lemma.
+    a) largest n for which the union bound proves R(4, 4) > n
+    b) the same for R(5, 5)          c) the same for R(6, 6)
+    d) the alteration bound for R(6, 6) (best n)
+    e) the union bound for R(10, 10)  f) the bound 2^(k/2) for k = 20
+    g) the maximum number of edges that guarantees (Property B via the
+       union bound) that a 5-uniform hypergraph is 2-colourable
+    h) m(2) and m(3): the fewest edges of a non-2-colourable 2-uniform and
+       3-uniform hypergraph
+    i) LLL: 8-uniform hypergraph, each edge meets ≤ d others: largest d
+    j) the same for 10-uniform
+    k) 6-SAT, each clause shares variables with ≤ d others: largest d
+    l) 10-SAT, each variable in ≤ t clauses: largest t the LLL allows
+    m) expected number of monochromatic K₄ in a random 2-colouring of
+       K₁₇, and why this does not contradict R(4, 4) = 18
+    n) the union and LLL bounds for R(20, 20)
+    Answers:
+      a) 6 (C(6, 4) = 15 < 32 < C(7, 4) = 35)    b) 11
+      c) 17 (C(17, 6) = 12376 < 2¹⁴ = 16384 < C(18, 6) = 18564)
+      d) R(6, 6) > 18 (n = 22: E ≈ 4.55, delete 4 vertices)
+      e) 100      f) R(20, 20) > 1024      g) 15 (< 2⁴ edges)
+      h) 3 (triangle), 7 (Fano plane)
+      i) 46 (d + 1 ≤ 128/e ≈ 47.09)          j) 187 (512/e ≈ 188.35)
+      k) 22 (64/e ≈ 23.54)
+      l) 38 (e(10(t − 1) + 1) ≤ 1024)
+      m) 2380/32 = 74.375: a large expectation says nothing about the
+         minimum
+      n) 5817; 7739
+
+M3. Random graphs G(n, p): thresholds and moments.
+    Threshold for G(n, p) to contain
+    a) an edge                b) a triangle           c) K₄
+    d) C₅                     e) K_{2,3}              f) K₅
+    g) K₄ with a pendant edge h) a path with 2 edges
+    Threshold for
+    i) connectivity           j) a giant component    k) a perfect
+                                                        matching (n even)
+    Limits and moments:
+    l) p = 3/n: limit of E[# triangles] and of P(triangle-free)
+    m) p = (ln n + ln 2)/n: limit of P(connected)
+    n) G(100, 0.1): E[# triangles] and the Chebyshev bound on P(none)
+    o) G(10, ½): expected number of 4-cycles (as subgraphs)
+    p) G(1000, ½): largest k with E[# Kₖ] ≥ 1
+    q) order of the clique and chromatic numbers of G(n, ½)
+    Answers:
+      a) n⁻²      b) n⁻¹      c) n^(−2/3)            d) n⁻¹
+      e) n^(−5/6) (m = 6/5)                          f) n^(−1/2)
+      g) n^(−2/3) (densest subgraph K₄)              h) n^(−3/2)
+      i) (ln n)/n j) 1/n      k) (ln n)/n
+      l) 4.5; e^(−4.5) ≈ 0.0111 (Poisson limit)
+      m) e^(−e^(−ln 2)) = e^(−1/2) ≈ 0.6065
+      n) 161.7; ≤ 585.03/161.7² ≈ 0.0224
+      o) 3C(10, 4)/16 = 39.375                       p) 15
+      q) ω ~ 2 log₂ n, χ ~ n/(2 log₂ n) (Bollobás)
+
+M4. Concentration inequalities.
+    a) X ≥ 0, E X = 3: Markov bound on P(X ≥ 12)
+    b) Var X = 4: Chebyshev bound on P(|X − E X| ≥ 6)
+    c) X ~ Bin(100, ½): Chebyshev bound on P(|X − 50| ≥ 10)
+    d) the same by Hoeffding 2e^(−2a²/n)
+    e) c) and d) with 20 in place of 10
+    f) S = sum of 100 independent ±1: Chernoff bound on P(S ≥ 30)
+    g) Paley-Zygmund / second moment: E X = 5, E X² = 30: P(X > 0) ≥ ?
+    h) E X = 10, Var X = 20: bound on P(X = 0)
+    i) Var of Bin(50, 0.2)
+    j) Azuma for χ(G(n, ½)) (vertex exposure): P(|χ − Eχ| > 3√(n − 1))
+    k) random ±1 colouring of 100 points, 100 sets: the discrepancy bound
+       √(2n ln(2n))
+    l) fixed points F of a random permutation (Var F = 1): bound P(F ≥ 4)
+    m) mono triangles in a random colouring of K₁₀: Markov bound on P(X ≥
+       60)
+    Answers:
+      a) 1/4      b) 1/9      c) 25/100 = 1/4        d) 2e⁻² ≈ 0.2707
+      e) 1/16; 2e⁻⁸ ≈ 6.7·10⁻⁴                       f) e^(−4.5) ≈ 0.0111
+      g) 25/30 = 5/6          h) 20/100 = 0.2        i) 8
+      j) ≤ 2e^(−9/2) ≈ 0.0222 k) √(200 ln 200) ≈ 32.55
+      l) ≤ 1/9 (Chebyshev with |F − 1| ≥ 3)          m) ≤ 30/60 = 1/2
+
+M5. Extremal graph theory.
+    a) ex(9, K₃)       b) ex(11, K₃)      c) t₃(9)          d) t₃(11)
+    e) t₄(12)          f) t₄(13)          g) lim ex(n, K₆)/C(n, 2)
+    Erdős-Stone: the asymptotics of ex(n, H) for
+    h) H = Petersen graph   i) H = octahedron K_{2,2,2}   j) H = K₅ − e
+    k) H = K_{3,3} (order of magnitude by KST)
+    l) the bound (n/4)(1 + √(4n − 3)) for ex(21, C₄)
+    m) the polarity graph for q = 5: vertices, edges
+    n) Erdős-Gallai: ex(12, P₄) (path with 4 edges) and an extremal graph
+    o) ex(9, K_{1,4})
+    p) Zarankiewicz z(4; 2) and z(7; 2)
+    q) minimum number of triangles in a graph on 10 vertices with 26 edges
+    r) Dirac: minimum degree forcing a Hamiltonian cycle on 10 vertices
+    Answers:
+      a) 20       b) 30       c) 27       d) 40 (parts 4, 4, 3)
+      e) 54       f) 63 (parts 4, 3, 3, 3)            g) 4/5
+      h) ~ n²/4   i) ~ n²/4   j) ~ n²/3   k) O(n^(5/3)) (truth Θ(n^(5/3)))
+      l) 52 (truth 50)        m) 31, 90
+      n) 18: three disjoint K₄'s        o) 13 (⌊3·9/2⌋)
+      p) 9; 21 (incidence matrix of the Fano plane)
+      q) 5 (Rademacher: ⌊n²/4⌋ + 1 edges force ⌊n/2⌋ triangles)
+      r) 5
+
+M6. Extremal set theory.
+    a) the largest antichain in 2^[5], 2^[7], 2^[10]
+    b) in 2^[4], an antichain contains one singleton: the LYM bound on the
+       number of 2-sets and the true maximum
+    c) EKR maxima for (n, k) = (7, 3), (10, 4), (6, 3), (5, 3)
+    d) the largest intersecting family in 2^[6] (all sizes)
+    e) Hilton-Milner: the largest intersecting family of 3-subsets of [7]
+       with empty common intersection
+    f) Sauer-Shelah bound for (n, d) = (10, 2) and (6, 3)
+    g) the VC-dimension of intervals in R, half-planes in R², discs in R²,
+       axis-parallel rectangles in R²
+    h) Kruskal-Katona: the minimum shadow (2-sets) of 7 and of 10 3-sets
+    i) the number of chains in a symmetric chain decomposition of 2^[5]
+    j) the number of antichains of 2^[3] (monotone Boolean functions)
+    k) the largest family in 2^[5] with no chain A ⊂ B ⊂ C
+    Answers:
+      a) 10, 35, 252          b) 1/4 + a/6 ≤ 1 ⇒ a ≤ 4; truth 3
+      c) 15, 84, 10, 10 (n < 2k)          d) 2^(n−1) = 32
+      e) 13 (= C(6, 2) − C(3, 2) + 1)     f) 56, 42
+      g) 2, 3, 3, 4
+      h) 9 (7 = C(4, 3) + C(3, 2) ⇒ C(4, 2) + C(3, 1)); 10 (C(5, 2))
+      i) 10       j) 20       k) 20 (two middle layers, Erdős)
+
+M7. Ramsey theory, sequences, posets and matchings.
+    a) R(3, 3), R(3, 4), R(3, 5), R(4, 4), R(3, 6), R(3, 3, 3)
+    b) the recursion bound for R(4, 5) and its true value
+    c) C(s + t − 2, s − 1) for s = t = 5, and what is known
+    d) the minimal length forcing a monotone subsequence of length 5
+    e) LIS and LDS of 5 2 8 6 3 9 1 7 4
+    f) the width of ({1, ..., 20}, divisibility) and a chain partition
+    g) the longest chain there, and the minimal number of antichains
+    h) Schur numbers S(2), S(3)            i) van der Waerden W(2, 3)
+    j) points in general position forcing a convex 4-gon; a convex 5-gon
+    k) Hall: A = {a, b, c}, N(a) = N(b) = {1}, N(c) = {1, 2, 3}: a
+       violating set S
+    l) König: the maximum matching and minimum vertex cover of C₆
+    Answers:
+      a) 6, 9, 14, 18, 18, 17
+      b) R(3, 5) + R(4, 4) = 32; R(4, 5) = 25
+      c) 70; 43 ≤ R(5, 5) ≤ 46          d) 17 = 4·4 + 1
+      e) 3 (e.g. 2 3 7) and 4 (8 6 3 1)
+      f) 10 ({11, ..., 20}); chains {m, 2m, 4m, ...} for odd m ≤ 19
+      g) 5 (1 | 2 | 4 | 8 | 16); 5 antichains (Mirsky)
+      h) 4, 13    i) 9        j) 5, 9
+      k) S = {a, b}: |N(S)| = 1 < 2       l) 3 and 3
+
+M8. Linear algebra and spectral methods.
+    a) adjacency eigenvalues of K₅, K_{3,3}, C₆, Q₃, Petersen
+    b) the Hoffman bound for α of Petersen, C₆, K_{3,3}
+    c) matrix-tree: τ(K₅), τ(K_{2,3}), τ(C₇), τ(K₄ − e), τ(W₄) (hub + 4-cycle)
+    d) τ(Q₃) and τ(Petersen)
+    e) τ(Kₙ) from the Laplacian spectrum
+    f) Oddtown and Eventown maxima for n = 8
+    g) Fisher: the minimum number of blocks of a 2-(7, 3, 1) design
+    h) Graham-Pollak: bicliques needed to partition E(K₁₀)
+    i) Cauchy-Davenport lower bound and true |A + B| in Z₇ for A = {0, 1,
+       2}, B = {0, 3}; for A = B = {0, 1, 2}; for |A| = 4, |B| = 5
+    j) Erdős-Ginzburg-Ziv for n = 5, and a sequence of length 8 showing
+       sharpness
+    k) Chevalley-Warning: what it says about x² + y² + z² = 0 over F₃, and
+       the actual number of solutions
+    l) spectra: K_{1,4} and C₄ ∪ K₁
+    Answers:
+      a) 4, (−1)⁴; ±3, 0⁴; 2, 1², (−1)², −2; ±3, (±1)³; 3, 1⁵, (−2)⁴
+      b) 10·2/5 = 4; 6·2/4 = 3; 6·3/6 = 3 (all sharp)
+      c) 125, 12, 7, 8, 45        d) 384, 2000
+      e) eigenvalues 0, nⁿ⁻¹: τ = nⁿ⁻¹/n = nⁿ⁻²
+      f) 8; 2⁴ = 16               g) 7 (b ≥ v)       h) 9
+      i) 4, 6; 5, 5 (equality for progressions); 7, 7 (all of Z₇)
+      j) any 9 integers contain 5 summing to 0 mod 5; 0,0,0,0,1,1,1,1
+      k) N ≡ 0 (mod 3); N = 9
+      l) both 2, 0, 0, 0, −2: cospectral but not isomorphic
+
+M9. Generating functions and partitions.
+    a) p(5), p(8), p(10), p(12), p(13), p(20)
+    b) partitions of 10 into distinct parts; into odd parts
+    c) partitions of 8 into at most 3 parts
+    d) [x¹⁰] 1/((1 − x)(1 − x²)(1 − x⁵)) (making 10 with coins 1, 2, 5)
+    e) self-conjugate partitions of 12
+    f) Catalan C₅, C₆; Motzkin M₅
+    g) compositions of 10 into parts 1 and 2
+    h) S(5, 2), S(6, 3), Bell B₅, unsigned Stirling c(5, 2)
+    i) surjections [5] → [3]
+    j) derangements D₇
+    k) [x⁵] (1 − 4x)^(−1/2)
+    l) rooted labelled trees on 5 vertices (Lagrange inversion)
+    m) the EGF of set partitions and of derangements
+    Answers:
+      a) 7, 22, 42, 77, 101, 627         b) 10, 10       c) 10
+      d) 10       e) 3 (11 + 1, 9 + 3, 7 + 5)            f) 42, 132; 21
+      g) F₁₁ = 89 h) 15, 90, 52, 50      i) 3!S(5, 3) = 150
+      j) 1854     k) C(10, 5) = 252      l) 5⁴ = 625
+      m) exp(eˣ − 1); e⁻ˣ/(1 − x)
+
+M10. Tableaux, RSK and Schur functions.
+    a) f^λ for λ = (2,1), (3,1), (2,2), (3,3), (4,2), (3,1,1), (2,2,2)
+    b) f^(4,3,1), f^(5,3,1), f^(4,3,2,1), f^(n−1,1)
+    c) check ∑(f^λ)² = 120 for n = 5
+    d) the number of involutions of [5] as ∑f^λ
+    e) RSK of 3 1 4 2: P and Q
+    f) RSK insertion tableau of 5 2 8 6 3 9 1 7 4 and its shape
+    g) Kostka K_{(2,1),(1,1,1)}, K_{(3,1),(2,1,1)}, K_{(2,2),(2,1,1)}
+    h) s_(2,1)(1, 1, 1), s_(2,2)(1, 1, 1), s_(3)(1, 1, 1), s_(2,1)(1, 1, 1, 1)
+    i) Pieri: s₁², s_(2,1)s₁
+    j) e₂, h₂ and p₂ in the Schur basis
+    k) Littlewood-Richardson c^(3,2,1)_{(2,1),(2,1)}
+    Answers:
+      a) 2, 3, 2, 5, 9, 6, 5          b) 70, 162, 768, n − 1
+      c) 1 + 16 + 25 + 36 + 25 + 16 + 1 = 120
+      d) 1 + 4 + 5 + 6 + 5 + 4 + 1 = 26
+      e) P = 1 2 / 3 4, Q = 1 3 / 2 4
+      f) 1 3 4 / 2 6 7 / 5 9 / 8, shape (3, 3, 2, 1)
+      g) 2, 2, 1                      h) 8, 6, 10, 20
+      i) s₂ + s_(1,1); s_(3,1) + s_(2,2) + s_(2,1,1)
+      j) s_(1,1); s₂; s₂ − s_(1,1)    k) 2
+
+M11. Symmetry, Möbius functions and q-analogues.
+    a) 2-colour necklaces with 6 beads (rotations); bracelets
+    b) 3-colour necklaces with 4 beads; bracelets
+    c) colourings of the faces of a cube with 2 and with 3 colours
+    d) 2-colourings of the vertices of a square up to D₄
+    e) μ(1, 12), μ(1, 30) in the divisor lattice; μ(∅, [n]) in 2^[n];
+       μ(0̂, 1̂) in the partition lattice Π₄
+    f) irreducible polynomials over F₂ of degree 4 and 6; over F₃ of
+       degree 2
+    g) φ(36) via φ(n) = ∑_{d|n} μ(d)n/d
+    h) [4 choose 2]_q, and its value at q = 2
+    i) the number of 1-dimensional subspaces of F₃³
+    j) permutations of [4] with exactly 2 inversions (coefficient of q² in
+       [4]_q!)
+    k) the chromatic polynomial of C₄ and its value at k = 3
+    Answers:
+      a) 14; 13   b) 24; 21   c) 10; 57   d) 6
+      e) 0, −1, (−1)ⁿ, −6 (= (−1)³3!)
+      f) 3, 9; 3  g) 12       h) 1 + q + 2q² + q³ + q⁴; 35
+      i) 13       j) 5        k) (k − 1)⁴ + (k − 1); 18
+
+M12. True (T) or false (F)? Give a counterexample for every F.
+     a) R(k, k) > 2^(k/2) for all k ≥ 3.
+     b) If X is a non-negative integer variable with E X ≥ 1 then P(X ≥ 1)
+        ≥ ½.
+     c) Linearity of expectation needs the summands to be independent.
+     d) Every graph with m edges has a bipartite subgraph with ≥ m/2 edges.
+     e) Pairwise independent events with P ≤ 1/e can be avoided
+        simultaneously (the LLL with d = 0 under pairwise independence).
+     f) ex(n, H) = o(n²) if and only if H is bipartite.
+     g) Every intersecting family of k-subsets of [n] has at most
+        C(n − 1, k − 1) members.
+     h) A family with ∑1/C(n, |A|) ≤ 1 is an antichain.
+     i) An eventown on n citizens has at most n clubs.
+     j) Fisher's inequality m ≤ n remains true for λ = 0.
+     k) Two graphs with the same adjacency spectrum are isomorphic.
+     l) The number of orbits equals (number of colourings)/|G|.
+     m) Every Möbius function takes values in {−1, 0, 1}.
+     n) Cauchy-Davenport holds in Z_n for every n.
+     o) The Erdős-Szekeres bound rs + 1 is best possible.
+     p) The Sauer-Shelah bound is attained for every n and d.
+     Answers:
+       a) T        b) F: X = N with probability 1/N, else 0
+       c) F: fixed points of a permutation (dependent indicators)
+       d) T        e) F: the q + 1 lines through 0 in F_q² (q = 3) for a
+                      random point: pairwise independent, P = 1/3 each,
+                      and they cover the plane
+       f) T (Erdős-Stone and KST)
+       g) F: n < 2k, all 3-subsets of [5] (10 > C(4, 2) = 6)
+       h) F: {{1}, {1, 2}} in [3] (1/3 + 1/3 ≤ 1)
+       i) F: 2^⌊n/2⌋ clubs (16 > 8 for n = 8)
+       j) F: ∅, {1}, ..., {n} (n + 1 sets, pairwise disjoint)
+       k) F: K_{1,4} and C₄ ∪ K₁ (M8 l)
+       l) F: 6-bead necklaces: 14 ≠ 64/6
+       m) F: Π₄ has μ(0̂, 1̂) = −6
+       n) F: Z₄, A = B = {0, 2}: |A + B| = 2 < 3
+       o) T (M7 d, D8)            p) T (all sets of size ≤ d)
+
+TEACHING TIPS
+  Struggling: for every probabilistic argument insist on the same four
+  lines on the board — "the random object is ...", "the bad events are
+  ...", "their expected number / total probability is ...", "so some
+  outcome ..." — and let the child compute the numbers (C(100, 10) against
+  2⁴⁴, 120/16 for tournaments) before any asymptotics. In extremal
+  problems, first guess the extremal example (Turán graph, star, middle
+  layer, polarity graph) and only then look for the double count or the
+  chain argument that matches it. For tableaux, draw the Young diagram and
+  write the hook lengths in the cells; for Burnside, fill in a table of
+  group elements and fixed points. Harder: prove the general (asymmetric)
+  Lovász Local Lemma and the Moser-Tardos algorithmic version; prove
+  Erdős's theorem on graphs of large girth and chromatic number; prove the
+  Erdős-Stone theorem via the regularity lemma, and the triangle removal
+  lemma ⇒ Roth's theorem; prove that the Fano plane polarity graph is
+  extremal and Füredi's ex(q² + q + 1, C₄) = q(q + 1)²/2; prove the
+  Frankl-Wilson theorem and deduce Kahn-Kalai's counterexample to
+  Borsuk's conjecture; prove RSK is a bijection and the Jacobi-Trudi
+  identity; and derive the Frobenius character formula relating Schur
+  functions and irreducible characters of Sₙ.
+
+
+================================================================================
+TOPIC 12.24 — NUMERICAL ANALYSIS (GRADUATE): FINITE ELEMENT METHODS, SPECTRAL
+METHODS, NUMERICAL PDES, ITERATIVE METHODS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - WEAK FORMULATION: multiply the PDE by a test function v and integrate
+    by parts. For −(pu′)′ + qu = f on (0, 1), u(0) = u(1) = 0: find u ∈
+    V = H¹₀(0, 1) with a(u, v) = ∫(pu′v′ + quv) = ∫fv = ℓ(v) for all v ∈
+    V. Dirichlet conditions are ESSENTIAL (built into V), Neumann/Robin
+    conditions are NATURAL (appear as boundary terms in ℓ or a). POINCARÉ:
+    ‖v‖_{L²} ≤ C_P‖v′‖_{L²} on H¹₀(0, L), best C_P = L/π.
+  - LAX-MILGRAM: V a Hilbert space, a bounded (|a(u, v)| ≤ M‖u‖‖v‖) and
+    COERCIVE (a(v, v) ≥ α‖v‖²), ℓ ∈ V′ ⇒ a unique u with a(u, v) = ℓ(v) ∀v,
+    and ‖u‖ ≤ ‖ℓ‖/α. Symmetry of a is NOT needed (if symmetric it is
+    Riesz; u minimises the energy J(v) = ½a(v, v) − ℓ(v)).
+  - GALERKIN METHOD AND CÉA'S LEMMA: choose Vₕ ⊂ V finite-dimensional,
+    find uₕ ∈ Vₕ with a(uₕ, vₕ) = ℓ(vₕ). GALERKIN ORTHOGONALITY a(u − uₕ,
+    vₕ) = 0 gives CÉA: ‖u − uₕ‖ ≤ (M/α) inf_{vₕ∈Vₕ} ‖u − vₕ‖; for symmetric
+    a, uₕ is the a-orthogonal projection (BEST approximation in the energy
+    norm ‖v‖ₐ = a(v, v)^(1/2)).
+  - FINITE ELEMENTS: a triple (K, P, Σ) (Ciarlet). P1 "hat" functions φᵢ
+    (φᵢ(xⱼ) = δᵢⱼ); STIFFNESS Kᵢⱼ = a(φⱼ, φᵢ), MASS Mᵢⱼ = ∫φⱼφᵢ, load
+    bᵢ = ℓ(φᵢ). 1D P1 element matrices (1/h)[1 −1; −1 1] and (h/6)[2 1;
+    1 2]. Pₖ on triangles has (k + 1)(k + 2)/2 dofs; work on a REFERENCE
+    element and map affinely; ASSEMBLE element matrices into the global
+    sparse SPD matrix.
+  - ERROR ESTIMATES: interpolation (Bramble-Hilbert) |u − Iₕu|_{H^m} ≤
+    C h^(k+1−m)|u|_{H^(k+1)} on shape-regular meshes; hence Pₖ FEM error
+    O(hᵏ) in H¹ (Céa) and O(h^(k+1)) in L² (AUBIN-NITSCHE duality, needs
+    H²-regularity of the dual problem, e.g. convex domain). Singularities
+    (re-entrant corners, u ~ r^(2/3)) reduce the rate; 1D P1 is exact at
+    nodes. Stiffness condition number κ ~ C h⁻².
+  - SPECTRAL ACCURACY: Fourier coefficients of a periodic f decay like
+    o(|k|⁻ˢ) if f ∈ Cˢ and GEOMETRICALLY (ρ^(−|k|)) if f is analytic in a
+    strip; truncation error then decays faster than any power of N. A
+    jump gives O(1/k) coefficients and the GIBBS overshoot ≈ 8.95% of the
+    jump.
+  - DISCRETE FOURIER: on xⱼ = 2πj/N the modes e^(ikx) and e^(i(k+N)x)
+    coincide (ALIASING); the trapezoidal rule is spectrally accurate for
+    periodic analytic f; FFT costs O(N log N); spectral differentiation
+    multiplies f̂ₖ by ik; the 2/3 RULE dealiases quadratic terms.
+    Fourier-GALERKIN, COLLOCATION (pseudospectral) and TAU methods.
+  - CHEBYSHEV METHODS: Tₙ(cos θ) = cos nθ; Chebyshev-Lobatto points xⱼ =
+    cos(jπ/N); interpolation at Chebyshev points has LEBESGUE CONSTANT
+    O(log n) (equispaced: ~2ⁿ, Runge phenomenon for 1/(1 + 25x²));
+    differentiation matrix D_N with (D_N)₀₀ = (2N² + 1)/6; eigenvalues of
+    D_N² grow like N⁴ (explicit time steps O(N⁻⁴) for diffusion).
+  - FINITE DIFFERENCES: truncation error by Taylor series; (u₊ − 2u₀ +
+    u₋)/h² = u″ + (h²/12)u⁽⁴⁾ + ...; 5-point Laplacian O(h²); discrete
+    maximum principle; CONSISTENCY + STABILITY ⇒ CONVERGENCE, and for
+    linear well-posed problems the LAX EQUIVALENCE THEOREM: a consistent
+    scheme converges iff it is stable.
+  - VON NEUMANN ANALYSIS: insert uⱼⁿ = gⁿe^(ijθ); stability iff |g(θ)| ≤
+    1 + O(Δt). Heat equation, r = Δt/h²: FTCS g = 1 − 4r sin²(θ/2), stable
+    iff r ≤ 1/2; BTCS and CRANK-NICOLSON unconditionally stable (CN is
+    O(Δt² + h²) but not L-stable: g(π) → −1 for large r). θ-method stable
+    for all r iff θ ≥ 1/2.
+  - HYPERBOLIC SCHEMES for uₜ + auₓ = 0, ν = aΔt/h: CFL CONDITION (numerical
+    domain of dependence must contain the true one) is NECESSARY; FTCS is
+    unconditionally unstable; UPWIND (stable for 0 ≤ ν ≤ 1, first order,
+    numerical diffusion (ah/2)(1 − ν)uₓₓ by the MODIFIED EQUATION);
+    LAX-FRIEDRICHS; LAX-WENDROFF (second order, dispersive). GODUNOV:
+    linear monotone schemes are at most first order.
+  - STATIONARY ITERATIONS: A = M − N, x ← M⁻¹(Nx + b) converges for every
+    x₀ iff ρ(M⁻¹N) < 1. JACOBI (M = D), GAUSS-SEIDEL (M = D + L), SOR
+    (ω). Both converge for strictly diagonally dominant A; GS and SOR (0 <
+    ω < 2) converge for SPD A. Model problem: ρ(J) = cos πh, ρ(GS) =
+    cos²πh, ω_opt = 2/(1 + sin πh), ρ(SOR) = ω_opt − 1 ≈ 1 − 2πh.
+  - KRYLOV METHODS: Kₖ = span{r₀, Ar₀, ..., Aᵏ⁻¹r₀}. CONJUGATE GRADIENT
+    (A SPD) minimises ‖x − xₖ‖_A over x₀ + Kₖ, directions A-conjugate,
+    terminates in ≤ (number of distinct eigenvalues) steps, and ‖eₖ‖_A ≤
+    2((√κ − 1)/(√κ + 1))ᵏ‖e₀‖_A (steepest descent only ((κ − 1)/(κ + 1))ᵏ).
+    GMRES (any A) minimises ‖rₖ‖₂ via Arnoldi. PRECONDITIONING replaces A
+    by P⁻¹A with small κ(P⁻¹A).
+  - MULTIGRID: damped Jacobi (ω = 2/3) has smoothing factor 1/3 on the
+    high frequencies; the smooth error is corrected on a coarser grid;
+    V-cycles give h-independent convergence at O(N) cost (work per V-cycle
+    ≤ 2, 4/3, 8/7 fine-grid sweeps in 1D, 2D, 3D).
+  - MODEL MATRIX: (1/h²)tridiag(−1, 2, −1) of size n = 1/h − 1 has
+    eigenvalues (4/h²)sin²(kπh/2), eigenvectors sin(kπxⱼ), and κ₂ =
+    cot²(πh/2) ≈ 4/(π²h²); the same κ holds for the 2D 5-point matrix.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Derive the weak formulation of −(pu′)′ + qu = f on (0, 1), u(0) =
+    u(1) = 0, with p(x) ≥ p₀ > 0 and q(x) ≥ 0 bounded, f ∈ L². Prove by
+    Lax-Milgram that there is a unique weak solution, with explicit
+    constants M and α in the H¹ norm.
+    Answer: a(u, v) = ∫(pu′v′ + quv), ℓ(v) = ∫fv on V = H¹₀; M = max(‖p‖∞,
+    ‖q‖∞), α = p₀π²/(1 + π²).
+    Teacher explains: Multiply by v ∈ H¹₀ and integrate by parts: ∫−(pu′)′v
+    = [−pu′v]₀¹ + ∫pu′v′, and the boundary term vanishes because v(0) =
+    v(1) = 0. So the WEAK problem is: find u ∈ H¹₀ with a(u, v) = ℓ(v) for
+    all v ∈ H¹₀. BOUNDED: by Cauchy-Schwarz |a(u, v)| ≤ ‖p‖∞‖u′‖‖v′‖ +
+    ‖q‖∞‖u‖‖v‖ ≤ M‖u‖_{H¹}‖v‖_{H¹}; |ℓ(v)| ≤ ‖f‖‖v‖_{H¹}. COERCIVE: a(v, v)
+    ≥ p₀‖v′‖². The Poincaré inequality ‖v‖² ≤ (1/π²)‖v′‖² (equality for
+    sin πx: ∫sin²πx = 1/2, ∫π²cos²πx = π²/2) gives ‖v‖²_{H¹} = ‖v‖² +
+    ‖v′‖² ≤ (1 + 1/π²)‖v′‖², so
+       a(v, v) ≥ p₀ (π²/(1 + π²)) ‖v‖²_{H¹}.
+    Lax-Milgram gives a unique u with ‖u‖_{H¹} ≤ ‖f‖/α. If u ∈ C² it is a
+    classical solution (integrate back by parts, use density of test
+    functions). Note q ≥ 0 is only used to drop ∫qv². Common mistakes:
+    taking V = H¹ (then Dirichlet data are lost); claiming coercivity from
+    q ≥ 0 alone (with p the only source of it, Poincaré is essential).
+    Now you try: p = 2, q = 0: the best α in the H¹ norm. (2π²/(1 + π²) ≈
+    1.81600)
+
+D2. State and prove Céa's lemma. For symmetric a show that uₕ is the best
+    energy-norm approximation and that ‖u − uₕ‖ₐ² = ‖u‖ₐ² − ‖uₕ‖ₐ². Apply
+    to −u″ = 1, u(0) = u(1) = 0, with one hat function at x = 1/2.
+    Answer: ‖u − uₕ‖ ≤ (M/α) inf ‖u − vₕ‖; here uₕ = φ/8 and ‖u − uₕ‖ₐ =
+    1/√48 ≈ 0.14434.
+    Teacher explains: Subtracting a(uₕ, vₕ) = ℓ(vₕ) from a(u, vₕ) = ℓ(vₕ)
+    gives GALERKIN ORTHOGONALITY a(u − uₕ, vₕ) = 0 for all vₕ ∈ Vₕ. For any
+    vₕ, since uₕ − vₕ ∈ Vₕ,
+       α‖u − uₕ‖² ≤ a(u − uₕ, u − uₕ) = a(u − uₕ, u − vₕ)
+                  ≤ M‖u − uₕ‖‖u − vₕ‖.
+    Divide by ‖u − uₕ‖ and take the infimum. □ If a is symmetric it is an
+    inner product, and orthogonality says uₕ is the a-orthogonal
+    projection of u onto Vₕ: ‖u − uₕ‖ₐ = min ‖u − vₕ‖ₐ (constant 1, not
+    M/α), and Pythagoras gives ‖u‖ₐ² = ‖uₕ‖ₐ² + ‖u − uₕ‖ₐ². Example: u =
+    x(1 − x)/2, u′ = 1/2 − x, ‖u‖ₐ² = ∫(1/2 − x)² = 1/12. With h = 1/2, a(φ,
+    φ) = ∫φ′² = 2/h = 4 and ℓ(φ) = ∫φ = h = 1/2, so uₕ = cφ, c = 1/8 (=
+    u(1/2), exact at the node). ‖uₕ‖ₐ² = 4/64 = 1/16, error² = 1/12 − 1/16
+    = 1/48. Common mistakes: forgetting that Céa's constant M/α can be
+    huge (convection-dominated problems); using Pythagoras when a is not
+    symmetric. Now you try: h = 1/4 (three hats): energy error? (‖uₕ‖ₐ² =
+    5/64, error² = 1/192, error ≈ 0.07217: halved, i.e. O(h))
+
+D3. Assemble and solve the P1 finite element system for −u″ = 1, u(0) =
+    u(1) = 0, on the uniform mesh h = 1/4. Explain why the nodal values
+    are exact in 1D.
+    Answer: (1/h)tridiag(−1, 2, −1)U = h(1, 1, 1)ᵀ gives U = (3/32, 1/8,
+    3/32) = u(xᵢ) exactly.
+    Teacher explains: On an element [xᵢ, xᵢ₊₁] only two hats are non-zero,
+    with slopes ∓1/h, so the ELEMENT STIFFNESS is (1/h)[1 −1; −1 1].
+    Adding the contributions of neighbouring elements (ASSEMBLY) gives
+    row i of K: (1/h)(−1, 2, −1). The load is bᵢ = ∫φᵢ = h (area of a hat
+    of height 1 and base 2h). With h = 1/4:
+       4 [ 2 −1  0 ] [U₁]   [1/4]            [3/2]        [3/32]
+         [−1  2 −1 ] [U₂] = [1/4],  so  U =  [ 2 ]/16  =  [1/8 ]
+         [ 0 −1  2 ] [U₃]   [1/4]            [3/2]        [3/32].
+    The exact solution x(1 − x)/2 gives 3/32, 1/8, 3/32: exact! Reason: the
+    Green's function G(x, xᵢ) of −d²/dx² is piecewise linear with a kink
+    only at xᵢ, so G(·, xᵢ) ∈ Vₕ; then u(xᵢ) = a(u, G(·, xᵢ)) = a(uₕ,
+    G(·, xᵢ)) = uₕ(xᵢ) by Galerkin orthogonality. (In 2D this fails.) Common
+    mistakes: using bᵢ = f(xᵢ) without the factor h; forgetting that the
+    stiffness scales like 1/h in 1D (h⁰ in 2D). Now you try: −u″ = x with
+    h = 1/2. (4U = 1/4, U = 1/16 = u(1/2) for u = (x − x³)/6)
+
+D4. Prove the 1D interpolation estimates for P1: on each element
+    ‖(u − Iₕu)′‖∞ ≤ h‖u″‖∞ and ‖u − Iₕu‖∞ ≤ (h²/8)‖u″‖∞. Deduce the H¹
+    rate of the FEM, and explain the Aubin-Nitsche argument for the L²
+    rate. Given L² errors 3.2·10⁻³, 8.1·10⁻⁴, 2.0·10⁻⁴ on h, h/2, h/4,
+    find the observed order.
+    Answer: H¹ error O(h), L² error O(h²); observed order ≈ 1.98 and 2.02.
+    Teacher explains: Let e = u − Iₕu on [xᵢ, xᵢ₊₁]; e vanishes at both
+    ends, so by Rolle e′(ξ) = 0 for some ξ, and e′(x) = ∫_ξ^x u″ gives |e′|
+    ≤ h‖u″‖∞. For the max: at an interior point x, the standard remainder
+    e(x) = ½u″(η)(x − xᵢ)(x − xᵢ₊₁), and |(x − xᵢ)(x − xᵢ₊₁)| ≤ h²/4, so
+    |e| ≤ (h²/8)‖u″‖∞. Céa (with vₕ = Iₕu) gives ‖u − uₕ‖_{H¹} ≤ Ch‖u″‖.
+    AUBIN-NITSCHE: let e = u − uₕ and solve the dual problem a(v, w) =
+    (e, v) ∀v, with ‖w‖_{H²} ≤ C‖e‖ (elliptic regularity). Then
+       ‖e‖² = a(e, w) = a(e, w − Iₕw) ≤ M‖e‖_{H¹}‖w − Iₕw‖_{H¹}
+            ≤ M‖e‖_{H¹} · Ch‖w‖_{H²} ≤ C′h‖e‖_{H¹}‖e‖,
+    so ‖e‖ ≤ C′h‖e‖_{H¹} = O(h²): one extra power of h. Observed order p
+    = log₂(e(h)/e(h/2)): log₂(3.2/0.81) ≈ 1.98, log₂(8.1/2.0) ≈ 2.02, so
+    second order as predicted. Common mistakes: expecting O(h²) in the H¹
+    norm; using Aubin-Nitsche on an L-shaped domain (the dual problem is
+    not H²: the L² rate drops to h^(4/3) on uniform meshes). Now you try:
+    the interpolation bound for u = sin πx, h = 0.1. (π²/800 ≈ 0.012337)
+
+D5. Compute the P1 element stiffness matrix of the reference triangle
+    with vertices (0, 0), (1, 0), (0, 1), and its mass matrix. Show that on
+    the uniform mesh of the unit square (squares cut by one diagonal)
+    the assembled equation for −Δu = 1 at an interior node is the 5-point
+    difference stencil multiplied by h².
+    Answer: K = [1 −½ −½; −½ ½ 0; −½ 0 ½], M = (1/24)[2 1 1; 1 2 1; 1 1 2];
+    row: 4Uᵢⱼ − Uᵢ±₁,ⱼ − Uᵢ,ⱼ±₁ = h².
+    Teacher explains: The barycentric basis is λ₁ = 1 − x − y, λ₂ = x,
+    λ₃ = y with constant gradients (−1, −1), (1, 0), (0, 1). Kᵢⱼ = |T|∇λᵢ·
+    ∇λⱼ with |T| = 1/2: K₁₁ = ½·2 = 1, K₁₂ = K₁₃ = −½, K₂₂ = K₃₃ = ½, K₂₃ =
+    0. In general Kᵢⱼ = −½cot θₖ (θₖ the angle opposite edge ij), which
+    is SCALE INVARIANT: every right isosceles triangle of the mesh has
+    this matrix. Mass: ∫λᵢ² = |T|/6, ∫λᵢλⱼ = |T|/12, so M = (|T|/12)[2 1 1;
+    1 2 1; 1 1 2]. Assembly at an interior node P: six triangles meet at
+    P; in two of them P is the right-angle vertex (contribution 1 each),
+    in four it is a 45° vertex (½ each): diagonal 2 + 4·½ = 4. A
+    horizontal or vertical edge PQ is shared by two triangles, each with
+    −½: total −1. The diagonal edge has opposite right angles, cot 90° = 0:
+    entry 0. The load is ∫φ_P = 6 · (h²/2)/3 = h². Hence 4U_P − ∑U_Q = h²,
+    i.e. the 5-point scheme (4U_P − ∑U_Q)/h² = 1. Common mistakes: scaling
+    K by h² (in 2D K is independent of h); forgetting the diagonal edge.
+    Now you try: the entry Kᵢⱼ for an edge whose opposite angles are 120°
+    and 100°. (−½(cot 120° + cot 100°) ≈ +0.37684 > 0: no M-matrix, the
+    discrete maximum principle can fail)
+
+D6. Let f(x) = 1/(5 − 4 cos x). (a) Show f̂ₖ = (1/3)2^(−|k|). (b) Explain
+    aliasing and show that the N-point trapezoidal rule for ∫₀^{2π} f has
+    error (2π/3)·2/(2ᴺ − 1). Evaluate for N = 4, 8, 16 and contrast with
+    f(x) = |x| on (−π, π).
+    Answer: errors ≈ 0.27925, 0.016427, 6.3917·10⁻⁵ (geometric); |x| has
+    coefficients O(k⁻²) and only algebraic convergence.
+    Teacher explains: (a) The Poisson kernel identity ∑ r^|k| e^(ikx) =
+    (1 − r²)/(1 − 2r cos x + r²) with r = 1/2 gives (3/4)/(5/4 − cos x) =
+    3/(5 − 4 cos x). So f = (1/3)∑2^(−|k|)e^(ikx). (b) On xⱼ = 2πj/N,
+    e^(ikxⱼ) = e^(i(k+N)xⱼ): the grid cannot tell k from k + N. Hence
+       (2π/N)∑ⱼ e^(ikxⱼ) = 2π if N | k, and 0 otherwise,
+    so the trapezoidal sum equals 2π∑_m f̂_{mN}. The error is 2π∑_{m≠0}
+    f̂_{mN} = (2π/3)·2∑_{m≥1}2^(−mN) = (2π/3)·2/(2ᴺ − 1). N = 4: 0.27925;
+    N = 8: 0.016427; N = 16: 6.3917·10⁻⁵ (exact ∫ = 2π/3 ≈ 2.09440).
+    Each doubling of N SQUARES the error: that is spectral accuracy,
+    coming from the analyticity of f in the strip |Im x| < ln 2. For |x|,
+    f̂ₖ = ((−1)ᵏ − 1)/(πk²): the kink costs smoothness, the truncation
+    error ∑_{|k|>N}|f̂ₖ| is O(1/N). Common mistakes: believing the
+    trapezoidal rule is always O(h²) (for smooth PERIODIC integrands it is
+    spectral); reading an aliased mode as a genuine low frequency. Now
+    you try: on the N = 8 grid, which mode in −4 ≤ k ≤ 3 does cos 10x
+    look like? (cos 2x)
+
+D7. (a) Explain the Runge phenomenon and why Chebyshev points cure it.
+    (b) Build the Chebyshev differentiation matrix D₂ on x = (1, 0, −1)
+    and check it on u = x². (c) Solve u″ = −(π²/4)cos(πx/2), u(±1) = 0,
+    by Chebyshev collocation with N = 2, and describe the errors for N =
+    4, 8, 16 (exact u = cos(πx/2)).
+    Answer: (b) D₂ = [3/2 −2 1/2; 1/2 0 −1/2; −1/2 2 −3/2], D₂(1, 0, 1)ᵀ =
+    (2, 0, −2)ᵀ = 2x. (c) u(0) ≈ π²/8 ≈ 1.2337; errors ≈ 5.1·10⁻³, 1.1·10⁻⁷,
+    4·10⁻¹⁵.
+    Teacher explains: (a) Interpolation error is f⁽ⁿ⁺¹⁾(ξ)ωₙ(x)/(n + 1)!
+    with ωₙ = ∏(x − xⱼ). Equispaced nodes make |ωₙ| huge near ±1; the
+    LEBESGUE CONSTANT Λₙ = max ∑|ℓⱼ(x)| grows like 2ⁿ (Λ₁₀ ≈ 29.9), and
+    for f = 1/(1 + 25x²) the interpolants diverge near the ends. At
+    Chebyshev points ωₙ = 2⁻ⁿTₙ₊₁ is as small as possible (minimax
+    property), Λₙ ~ (2/π)ln n (Λ₁₀ ≈ 2.49), and for f analytic inside the
+    Bernstein ellipse with parameter ρ the error is O(ρ⁻ⁿ). (b) D_N is
+    the matrix of "interpolate, then differentiate": row i holds ℓⱼ′(xᵢ).
+    With nodes 1, 0, −1: ℓ₀ = x(x + 1)/2, ℓ₁ = 1 − x², ℓ₂ = x(x − 1)/2, so
+    ℓ₀′ = x + ½, ℓ₁′ = −2x, ℓ₂′ = x − ½; evaluating at 1, 0, −1 gives the
+    rows above. Check: the corner (D₂)₀₀ = 3/2 = (2·4 + 1)/6 ✓. (c) D₂² has
+    every row (1, −2, 1) (second derivative of the quadratic interpolant).
+    With U₀ = U₂ = 0, the middle equation is −2U₁ = −π²/4, U₁ = π²/8 ≈
+    1.2337 (error 0.2337). For larger N solve the interior block of D_N²:
+    the errors ≈ 5.1·10⁻³ (N = 4), 1.1·10⁻⁷ (N = 8), ~10⁻¹⁵ (N = 16,
+    rounding level): each doubling roughly squares the error. Common
+    mistakes: using equispaced points "because they are simpler"; forgetting
+    that D_N is dense and badly conditioned (‖D_N²‖ ~ N⁴). Now you try:
+    D₁ on nodes (1, −1). ([1/2 −1/2; 1/2 −1/2])
+
+D8. For −u″ = f on (0, 1), u(0) = u(1) = 0, use the scheme (−Uᵢ₋₁ + 2Uᵢ −
+    Uᵢ₊₁)/h² = f(xᵢ), written A_hU = F. Prove (a) consistency with
+    truncation error τ = −(h²/12)u⁽⁴⁾ + O(h⁴), (b) stability ‖A_h⁻¹‖∞ ≤
+    1/8, (c) convergence ‖u − U‖∞ ≤ (h²/96)‖u⁽⁴⁾‖∞. Test with f = π² sin πx
+    and h = 1/2, 1/4. State the Lax equivalence theorem.
+    Answer: errors at x = 1/2: 0.2337 and 0.0530 (ratio ≈ 4.4, second
+    order), below the bounds 0.2537 and 0.0634.
+    Teacher explains: (a) Taylor: u(x ± h) = u ± hu′ + (h²/2)u″ ± (h³/6)u‴ +
+    (h⁴/24)u⁽⁴⁾ ± ..., so (u₊ − 2u₀ + u₋)/h² = u″ + (h²/12)u⁽⁴⁾ + O(h⁴) and
+    τᵢ = (A_hu)ᵢ − fᵢ = −(h²/12)u⁽⁴⁾(xᵢ) + O(h⁴). (b) A_h is an M-matrix
+    (A_hv ≥ 0 ⇒ v ≥ 0 by the discrete maximum principle), so A_h⁻¹ ≥ 0
+    entrywise and ‖A_h⁻¹‖∞ = max row sum = ‖A_h⁻¹𝟙‖∞. But A_hw = 𝟙 is
+    solved EXACTLY by w = x(1 − x)/2 (the scheme is exact on quadratics),
+    so ‖A_h⁻¹‖∞ = max w = 1/8. (c) The error e = u − U solves A_he = τ, so
+    ‖e‖∞ ≤ (1/8)(h²/12)‖u⁽⁴⁾‖∞ = (h²/96)‖u⁽⁴⁾‖∞. Test: u = sin πx, u⁽⁴⁾ =
+    π⁴ sin πx. h = 1/2: 8U₁ = π², U₁ = π²/8 = 1.2337, error 0.2337 ≤
+    π⁴/384 = 0.2537. h = 1/4: sin πxᵢ is an eigenvector with eigenvalue
+    64 sin²(π/8) = 9.3726, so U = (π²/9.3726) sin πxᵢ = 1.0530 sin πxᵢ,
+    error 0.0530 ≤ π⁴/1536 = 0.0634. LAX EQUIVALENCE: for a consistent
+    linear scheme approximating a well-posed linear problem, stability is
+    NECESSARY AND SUFFICIENT for convergence. Here we proved
+    "consistency + stability ⇒ convergence" directly. Common mistakes:
+    thinking consistency alone gives convergence (FTCS for advection is
+    consistent but diverges); confusing τ with the global error. Now you
+    try: the 5-point Laplacian's truncation error. ((h²/12)(uₓₓₓₓ + u_yyyy))
+
+D9. For uₜ = uₓₓ perform the von Neumann analysis of FTCS, BTCS and
+    Crank-Nicolson (r = Δt/h²). With h = 0.01 find the largest stable
+    FTCS step, and compute the CN and BTCS amplification of the highest
+    mode θ = π when Δt = 0.01.
+    Answer: g = 1 − 4rs, 1/(1 + 4rs), (1 − 2rs)/(1 + 2rs), s = sin²(θ/2);
+    Δt ≤ 5·10⁻⁵; CN g(π) ≈ −0.99005, BTCS g(π) ≈ 0.0024938.
+    Teacher explains: Put uⱼⁿ = gⁿe^(ijθ). Since e^(iθ) − 2 + e^(−iθ) =
+    2cos θ − 2 = −4 sin²(θ/2) = −4s: FTCS uⱼⁿ⁺¹ = uⱼⁿ + r(uⱼ₊₁ⁿ − 2uⱼⁿ +
+    uⱼ₋₁ⁿ) gives g = 1 − 4rs. For |g| ≤ 1 for all s ∈ [0, 1] we need 1 −
+    4r ≥ −1, i.e. r ≤ 1/2. With h = 0.01: Δt ≤ h²/2 = 5·10⁻⁵ (20000 steps to
+    reach t = 1!). BTCS: g(1 + 4rs) = 1, g = 1/(1 + 4rs) ∈ (0, 1]:
+    unconditionally stable. CN averages the two: g(1 + 2rs) = 1 − 2rs,
+    |g| ≤ 1 for all r > 0: unconditionally stable and O(Δt² + h²). But with
+    Δt = 0.01, r = 100: CN g(π) = (1 − 200)/(1 + 200) ≈ −0.99005, so the
+    grid-scale mode flips sign and barely decays, whereas the true decay
+    factor is e^(−(π/h)²Δt) = e^(−986.96) ≈ 0. BTCS gives 1/401 ≈ 0.0024938
+    (damped correctly: BTCS is L-stable). For rough data, start CN with a
+    few BTCS steps or take smaller Δt. Common mistakes: "unconditionally
+    stable" ⇒ "accurate for any Δt"; forgetting the dimension factor (2D
+    FTCS needs r ≤ 1/4). Now you try: FTCS with r = 0.6: g(π)? (−1.4:
+    unstable)
+
+D10. For uₜ + auₓ = 0 (a > 0), ν = aΔt/h: (a) show FTCS (centred space)
+     is unconditionally unstable; (b) show upwind is stable iff 0 ≤ ν ≤
+     1, and that this is the CFL condition; (c) derive the modified
+     equation of upwind; (d) give the Lax-Wendroff scheme and its
+     amplification factor. Numerically: a = 2, h = 0.01.
+     Answer: (a) |g|² = 1 + ν² sin²θ; (b) |g|² = 1 − 4ν(1 − ν)s;
+     (c) uₜ + auₓ = (ah/2)(1 − ν)uₓₓ; (d) |g|² = 1 − 4ν²(1 − ν²)s²;
+     Δt ≤ 0.005.
+     Teacher explains: (a) uⱼⁿ⁺¹ = uⱼⁿ − (ν/2)(uⱼ₊₁ⁿ − uⱼ₋₁ⁿ) gives g = 1 −
+     iν sin θ, |g|² = 1 + ν² sin²θ > 1 for θ ≠ 0, π: every Δt fails (the
+     growth (1 + ν²)^(n/2) is not bounded by e^(CT) under refinement with ν
+     fixed). (b) Upwind uⱼⁿ⁺¹ = uⱼⁿ − ν(uⱼⁿ − uⱼ₋₁ⁿ): g = 1 − ν + νe^(−iθ), a
+     circle of radius ν centred at 1 − ν; it lies in the unit disc iff 0 ≤
+     ν ≤ 1. Algebraically |g|² = 1 − 2ν(1 − ν)(1 − cos θ) = 1 − 4ν(1 − ν)s.
+     CFL: the scheme's value at (xⱼ, tₙ) depends on the data in [xⱼ − nh,
+     xⱼ], while the true solution uses the point xⱼ − atₙ = xⱼ − nνh. If ν
+     > 1 that point lies outside, and changing the data there changes u
+     but not U: no convergence. So CFL is NECESSARY (not sufficient: FTCS
+     satisfies it for ν ≤ 1 and still blows up). With a = 2, h = 0.01:
+     Δt ≤ h/a = 0.005. (c) Expand the scheme in Taylor series and replace
+     uₜₜ = a²uₓₓ: uₜ + auₓ = (ah/2)(1 − ν)uₓₓ + O(h²). Upwind really solves
+     an advection-diffusion equation: first order, smears fronts, and is
+     EXACT at ν = 1 (shift by one cell). (d) Lax-Wendroff (Taylor to
+     second order in t): uⱼⁿ⁺¹ = uⱼⁿ − (ν/2)(uⱼ₊₁ − uⱼ₋₁) + (ν²/2)(uⱼ₊₁ − 2uⱼ
+     + uⱼ₋₁); g = 1 − iν sin θ − 2ν²s and |g|² = 1 − 4ν²(1 − ν²)s²: stable for
+     |ν| ≤ 1, second order, but DISPERSIVE (wiggles behind fronts; Godunov:
+     no linear second-order scheme is monotone). Common mistakes: using
+     upwind in the wrong direction for a < 0 (then unstable); reading the
+     CFL condition as sufficient. Now you try: upwind with ν = 1.5 and θ =
+     π: g? (1 − 3 = −2: unstable)
+
+D11. Solve Ax = b with A = [4 1; 1 3], b = (1, 2)ᵀ by two steps of Jacobi
+     and of Gauss-Seidel from x₀ = 0, and compute ρ(J), ρ(GS). Then for the
+     2D model Poisson problem with h = 1/64 estimate the iterations needed
+     to reduce the error by 10⁻⁶ for Jacobi, GS and optimal SOR.
+     Answer: exact x = (1/11, 7/11); Jacobi x₂ = (1/12, 7/12), GS x₂ =
+     (5/48, 91/144); ρ(J) = 1/√12 ≈ 0.28868, ρ(GS) = 1/12. Model: ≈ 11463,
+     5732, 141 iterations.
+     Teacher explains: Splitting A = M − N, xₖ₊₁ = M⁻¹(Nxₖ + b); the error
+     obeys eₖ₊₁ = Geₖ, G = M⁻¹N, so eₖ → 0 for all e₀ iff ρ(G) < 1, and
+     roughly ln(tol)/ln ρ(G) iterations are needed. JACOBI (M = D): x ←
+     ((1 − y)/4, (2 − x)/3): x₁ = (1/4, 2/3), x₂ = (1/12, 7/12). GAUSS-
+     SEIDEL uses the new x at once: x₁ = (1/4, 7/12), x₂ = ((1 − 7/12)/4,
+     (2 − 5/48)/3) = (5/48, 91/144) ≈ (0.10417, 0.63194), much closer to
+     (0.09091, 0.63636). G_J = [0 −1/4; −1/3 0] has eigenvalues ±1/√12;
+     for this (consistently ordered) matrix ρ(GS) = ρ(J)² = 1/12. MODEL
+     PROBLEM: ρ(J) = cos(π/64) ≈ 0.998795, so k ≈ ln 10⁻⁶/ln ρ ≈ 11463;
+     GS: ρ = cos², k ≈ 5732; SOR with ω_opt = 2/(1 + sin(π/64)) ≈ 1.90645,
+     ρ = ω_opt − 1 ≈ 0.90645, k ≈ 141. Jacobi needs O(h⁻²) iterations, SOR
+     O(h⁻¹). Common mistakes: judging convergence by ‖G‖ in one norm
+     (‖G‖ ≥ 1 does not imply divergence; only ρ decides); assuming GS always
+     beats Jacobi (for A = [1 2 −2; 1 1 1; 2 2 1] Jacobi converges, ρ(J) = 0,
+     but ρ(GS) = 2). Now you try: ρ(J) and ρ(GS) for [2 −1; −1 2]. (1/2,
+     1/4)
+
+D12. Derive the conjugate gradient method as a minimiser of φ(x) = ½xᵀAx
+     − bᵀx over Krylov spaces; prove finite termination and quote the
+     κ-bound. Run CG on A = [4 1; 1 3], b = (1, 2)ᵀ, x₀ = 0. How many
+     iterations does the bound promise for a 10⁻⁶ reduction when κ = 100,
+     and how many for steepest descent?
+     Answer: x₁ = (1/4, 1/2), x₂ = (1/11, 7/11) exactly; CG ≤ 73 steps,
+     steepest descent ≈ 691.
+     Teacher explains: For SPD A, ∇φ = Ax − b, so minimising φ solves Ax =
+     b, and φ(x) − φ(x*) = ½‖x − x*‖_A². CG picks directions p₀ = r₀, pₖ₊₁ =
+     rₖ₊₁ + βₖpₖ that are A-CONJUGATE (pᵢᵀApⱼ = 0, i ≠ j), and exact line
+     searches αₖ = rₖᵀrₖ/pₖᵀApₖ, βₖ = rₖ₊₁ᵀrₖ₊₁/rₖᵀrₖ. Then xₖ minimises ‖x −
+     x*‖_A over x₀ + Kₖ(A, r₀). Since eₖ = pₖ(A)e₀ for a polynomial of degree
+     k with pₖ(0) = 1, ‖eₖ‖_A ≤ min_p max_{λ∈σ(A)}|p(λ)|·‖e₀‖_A. If A has m
+     distinct eigenvalues, p(λ) = ∏(1 − λ/λᵢ) gives eₘ = 0: FINITE
+     TERMINATION. Chebyshev polynomials on [λ_min, λ_max] give
+        ‖eₖ‖_A ≤ 2((√κ − 1)/(√κ + 1))ᵏ‖e₀‖_A.
+     Example: r₀ = b = (1, 2), Ar₀ = (6, 7), α₀ = 5/20 = 1/4, x₁ = (1/4,
+     1/2), r₁ = (−1/2, 1/4), β₀ = (5/16)/5 = 1/16, p₁ = (−7/16, 3/8), Ap₁ =
+     (−11/8, 11/16), p₁ᵀAp₁ = 55/64, α₁ = 4/11, x₂ = (1/11, 7/11): exact in 2
+     steps, as promised. For κ = 100: (√κ − 1)/(√κ + 1) = 9/11, need
+     2(9/11)ᵏ ≤ 10⁻⁶: k ≥ ln(2·10⁶)/ln(11/9) ≈ 72.3, so 73. Steepest descent
+     has rate (κ − 1)/(κ + 1) = 99/101: k ≈ 691. PRECONDITIONING (e.g.
+     incomplete Cholesky, multigrid) reduces κ; for non-symmetric A use
+     GMRES (minimal residual over Kₖ via Arnoldi). Common mistakes: running
+     CG on a non-symmetric or indefinite matrix; expecting exact
+     termination in floating point for large n. Now you try: with κ =
+     10⁴, the CG bound for 10⁻⁶. (k ≥ ln(2·10⁶)/ln(101/99) ≈ 725.4, so 726)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Weak forms, Sobolev spaces and Lax-Milgram.
+    a) best Poincaré constant C_P (‖v‖ ≤ C_P‖v′‖) on H¹₀(0, 1)
+    b) the same on H¹₀(0, 3)
+    c) the same on H¹₀ of the unit square (‖v‖ ≤ C_P‖∇v‖)
+    d) best coercivity constant of ∫u′v′ on H¹₀(0, 1) in the full H¹ norm
+    e) −u″ = f, u(0) = 0, u′(1) = g: the space V and the weak form
+    f) −u″ + u = f, u′(0) = u′(1) = 0: V, a, M, α
+    g) −u″ = f, u′(0) = u′(1) = 0: the solvability condition
+    h) −u″ = f, u(0) = 0, u′(1) + βu(1) = 0 (β > 0): the bilinear form
+    i) is ∫u′v′ coercive on H¹(0, 1)?
+    j) which lie in H¹(−1, 1): |x|, sign x, |x|^(1/2), |x|^(3/4)?
+    k) is ln|ln r| in H¹ of the disc r < 1/2 in R²? Is it bounded?
+    l) −∇·(A∇u) = f, A = [2 1; 1 2]: α and M relative to ‖∇u‖²
+    m) −εu″ + u′ = f on H¹₀(0, 1): a(v, v), and Céa's constant M/α for
+       ε = 0.01 (norm ‖v′‖)
+    n) the energy functional J(v) whose minimiser solves −u″ = f in H¹₀
+    Answers:
+      a) 1/π ≈ 0.31831     b) 3/π ≈ 0.95493     c) 1/(π√2) ≈ 0.22508
+      d) π²/(1 + π²) ≈ 0.90800
+      e) V = {v ∈ H¹ : v(0) = 0}; ∫u′v′ = ∫fv + g v(1) ∀v ∈ V
+      f) V = H¹(0, 1), a = ∫(u′v′ + uv), M = α = 1 (a is the H¹ inner
+         product)
+      g) ∫₀¹ f = 0; u is unique up to an additive constant
+      h) a(u, v) = ∫u′v′ + βu(1)v(1) on {v ∈ H¹ : v(0) = 0}
+      i) no: a(1, 1) = 0 for the constant 1
+      j) |x| yes; sign x no (jump); |x|^(1/2) no (∫|x|⁻¹ = ∞); |x|^(3/4)
+         yes (∫|x|^(−1/2) < ∞)
+      k) yes, ∫|∇u|² = 2π∫₀^(1/2) dr/(r ln²r) < ∞; unbounded at 0 (H¹ ⊄ L∞
+         in 2D)
+      l) α = λ_min = 1, M = λ_max = 3
+      m) a(v, v) = ε‖v′‖² (∫v′v = 0); M/α = 1 + 1/(πε) ≈ 32.831
+      n) J(v) = ½∫v′² − ∫fv
+
+M2. One-dimensional finite elements (uniform mesh, P1 unless stated).
+    a) element stiffness matrix for −u″ on an element of length h
+    b) element mass matrix
+    c) global stiffness matrix, h = 1/4, Dirichlet at both ends
+    d) load vector for f = 1, h = 1/4
+    e) −u″ = 1, h = 1/3: nodal values
+    f) −u″ = x, h = 1/2: U₁
+    g) load entry ∫x²φᵢ at an interior node xᵢ
+    h) −u″ = x², h = 1/2: U₁, and the exact u(1/2)
+    i) −u″ = 1, u(0) = 0, u′(1) = 0, h = 1/2: (U₁, U₂)
+    j) −u″ + u = 1, u(0) = u(1) = 0, h = 1/2: U₁ (exact u(1/2)?)
+    k) interior row of the global mass matrix
+    l) P2 element stiffness matrix on [0, h] (nodes 0, h/2, h)
+    m) P2 element mass matrix
+    n) number of unknowns: P2, N elements, Dirichlet at both ends
+    o) eigenvalues of the h = 1/N stiffness (1/h)tridiag(−1, 2, −1) and
+       κ₂ for N = 10
+    p) energy errors for −u″ = 1 with h = 1/2 and h = 1/4
+    Answers:
+      a) (1/h)[1 −1; −1 1]       b) (h/6)[2 1; 1 2]
+      c) 4·[2 −1 0; −1 2 −1; 0 −1 2]         d) (1/4, 1/4, 1/4)
+      e) (1/9, 1/9) (exact)      f) 1/16 (exact: u = (x − x³)/6)
+      g) h(xᵢ² + h²/6)           h) U₁ = 7/192 = u(1/2), u = (x − x⁴)/12
+      i) (3/8, 1/2) (exact: u = x − x²/2)
+      j) 3/26 ≈ 0.11538 (exact 1 − 1/cosh(1/2) ≈ 0.11318; not nodally
+         exact because of the u term)
+      k) (h/6)(1, 4, 1)
+      l) (1/(3h))[7 −8 1; −8 16 −8; 1 −8 7]
+      m) (h/30)[4 2 −1; 2 16 2; −1 2 4]     n) 2N − 1
+      o) (4/h)sin²(kπh/2), k = 1, ..., N − 1; κ₂ = cot²(π/20) ≈ 39.863
+      p) 1/√48 ≈ 0.14434 and 1/√192 ≈ 0.072169
+
+M3. Convergence rates and error estimates.
+    a) P1, H¹ error 0.08 at h: predicted error at h/2
+    b) P1, L² error 0.004 at h: at h/2
+    c) P2, H¹ error 0.01 at h: at h/3
+    d) P3 (smooth u): factor by which the L² error drops when h halves
+    e) errors 2.0·10⁻², 5.1·10⁻³, 1.3·10⁻³ (h halved each time): order
+    f) errors 0.1, 0.07, 0.049 (h halved): order, and a likely cause
+    g) e(0.1) = 3·10⁻³, e(0.025) = 1.9·10⁻⁴: order
+    h) P1 max interpolation bound (h²/8)‖u″‖∞ for sin πx, h = 0.1
+    i) the same for eˣ on [0, 1], h = 0.1
+    j) number of elements so that the bound in h) is ≤ 10⁻⁶
+    k) L-shaped domain, u ~ r^(2/3)sin(2θ/3), uniform P1: H¹ and L² rates
+    l) Richardson: A(h) = 1.2, A(h/2) = 1.05, error ∝ h²: extrapolate
+    m) spectral errors 10⁻², 10⁻⁴, 10⁻⁶ at N = 10, 20, 30: error ≈ Cρ⁻ᴺ,
+       ρ = ?
+    n) P1 in 2D with N unknowns on a uniform mesh: H¹ error in terms of N
+    Answers:
+      a) 0.04      b) 0.001      c) 0.01/9 ≈ 0.0011111      d) 16
+      e) ≈ 1.97, so 2          f) ≈ 0.51: u ∉ H², a singularity
+      g) ln(3/0.19)/ln 4 ≈ 1.99      h) π²/800 ≈ 0.012337
+      i) e/800 ≈ 0.0033979     j) h ≤ √(8·10⁻⁶)/π ≈ 9.0032·10⁻⁴: 1111
+      k) h^(2/3) and h^(4/3)   l) (4·1.05 − 1.2)/3 = 1
+      m) 10^(1/5) ≈ 1.5849     n) O(N^(−1/2)) (h ~ N^(−1/2))
+
+M4. Finite elements in two and three dimensions.
+    a) dim Pₖ on a triangle for k = 1, 2, 3
+    b) dim Pₖ on a tetrahedron for k = 1, 2
+    c) dofs of Q1 and Q2 on a square
+    d) stiffness matrix of the reference triangle (0, 0), (1, 0), (0, 1)
+    e) mass matrix of the same triangle
+    f) stiffness matrix of an equilateral triangle
+    g) stiffness matrix of the triangle (0, 0), (2, 0), (0, 1)
+    h) cotangent formula for Kᵢⱼ (edge ij with opposite angles α, β)
+    i) Kᵢⱼ when α = β = 45°, and when α = β = 90°
+    j) Kᵢⱼ when α = 120°, β = 100°; is K an M-matrix?
+    k) load ∫φ_P for f = 1 at an interior node of the uniform
+       right-triangle mesh with spacing h
+    l) n × n squares, each cut into 2 triangles: numbers of vertices,
+       edges, triangles for n = 10, and a check with Euler's formula
+    m) P1 unknowns with Dirichlet data on that mesh (n = 10)
+    n) P2 unknowns with Dirichlet data on that mesh (n = 10)
+    o) bandwidth of the P1 matrix with row-by-row numbering (n = 10)
+    Answers:
+      a) 3, 6, 10    b) 4, 10    c) 4, 9
+      d) [1 −½ −½; −½ ½ 0; −½ 0 ½]           e) (1/24)[2 1 1; 1 2 1; 1 1 2]
+      f) (1/(2√3))[2 −1 −1; −1 2 −1; −1 −1 2] (any size)
+      g) [5/4 −1/4 −1; −1/4 1/4 0; −1 0 1] (area 1)
+      h) Kᵢⱼ = −½(cot α + cot β)             i) −1; 0
+      j) ≈ +0.37684; no (positive off-diagonal entry)
+      k) h²          l) 121, 320, 200; 121 − 320 + 200 = 1 ✓
+      m) 81          n) 361 = 19²
+      o) 10 structurally (the diagonal neighbour is n = 10 away), but that
+         entry is 0, so the non-zero band has half-width n − 1 = 9
+
+M5. Fourier spectral methods (period 2π; f̂ₖ = (1/2π)∫f e^(−ikx)).
+    a) f̂ₖ for f = x on (−π, π), k ≠ 0
+    b) f̂ₖ for f = |x| on (−π, π)
+    c) f̂ₖ for f = 1/(5 − 4 cos x)
+    d) decay rate of f̂ₖ for f = e^(cos x)
+    e) f ∈ C³ with f⁽⁴⁾ of bounded variation: decay of f̂ₖ
+    f) N = 8 grid: the alias of e^(11ix) in −4 ≤ k ≤ 3
+    g) N = 8 grid: the alias of cos 10x, of sin 9x
+    h) trapezoidal value T₄ for ∫₀^{2π} dx/(5 − 4 cos x)
+    i) errors of T₈ and T₁₆ for the same integral
+    j) least N with error < 10⁻¹²
+    k) Fourier spectral derivative on N = 8 of sin 3x, of sin 4x
+    l) uₜ = uₓₓ, u(x, 0) = sin x + sin 3x: u(x, t) and the mode-3
+       amplitude at t = 1
+    m) 2/3 rule with N = 96 modes: which |k| are kept
+    n) speed-up of the FFT over a direct DFT for N = 1024
+    o) Gibbs overshoot for a jump of height 2
+    Answers:
+      a) i(−1)ᵏ/k (O(1/k))        b) ((−1)ᵏ − 1)/(πk²), f̂₀ = π/2
+      c) (1/3)2^(−|k|)            d) f̂ₖ = I_k(1) ~ 1/(2ᵏk!): faster
+         than geometric (f is entire)
+      e) O(|k|⁻⁵)                  f) k = 3
+      g) cos 2x; sin x             h) (2π/3)(17/15) ≈ 2.37365
+      i) ≈ 0.016427, ≈ 6.3917·10⁻⁵              j) 42
+      k) 3 cos 3x (exact); 0 (sin 4x vanishes on the grid)
+      l) e^(−t)sin x + e^(−9t)sin 3x; e⁻⁹ ≈ 1.2341·10⁻⁴
+      m) |k| ≤ 32 (= N/3)          n) N/log₂N = 102.4
+      o) ≈ 0.17898 (8.95% of the jump, on each side)
+
+M6. Chebyshev and polynomial spectral methods.
+    a) T₃(x) and T₄(x)                 b) T₅(1/2)
+    c) the zeros of T₃                  d) Chebyshev-Lobatto points, N = 4
+    e) min of max_{[−1,1]}|p| over monic p of degree 5
+    f) bound for |eˣ − p₅(x)| on [−1, 1], p₅ interpolating at the 6
+       zeros of T₆
+    g) express x³ in the basis T₀, ..., T₃   h) T₂T₃ as a sum of Tₖ
+    i) D₁ on nodes (1, −1)              j) D₂ on nodes (1, 0, −1)
+    k) (D_N)₀₀ for N = 4 and N = 16     l) T₁₀′(1)
+    m) Lebesgue constant Λ₁₀: equispaced vs Chebyshev points (approx.)
+    n) f = 1/(1 + 25x²): Bernstein-ellipse parameter ρ and the degree for
+       Chebyshev error ≈ ρ⁻ⁿ = 10⁻⁶
+    o) u″ = −(π²/4)cos(πx/2), u(±1) = 0, collocation N = 2: U(0)
+    p) Gauss-Legendre with 5 nodes: exact up to degree?
+    q) growth of the largest eigenvalue of D_N² and the explicit Euler
+       step ratio Δt(N = 16)/Δt(N = 32) for uₜ = uₓₓ
+    Answers:
+      a) 4x³ − 3x; 8x⁴ − 8x² + 1         b) cos(5π/3) = 1/2
+      c) 0, ±√3/2                        d) ±1, ±√2/2, 0
+      e) 2⁻⁴ = 1/16 (attained by T₅/16)   f) e/(2⁵·6!) ≈ 1.1798·10⁻⁴
+      g) (3T₁ + T₃)/4                     h) (T₅ + T₁)/2
+      i) [1/2 −1/2; 1/2 −1/2]
+      j) [3/2 −2 1/2; 1/2 0 −1/2; −1/2 2 −3/2]
+      k) 11/2; 513/6 = 85.5               l) n² = 100
+      m) ≈ 29.9 vs ≈ 2.49
+      n) ρ = 1/5 + √(1 + 1/25) ≈ 1.2198; n ≈ 70 (13.8155/0.19867 ≈ 69.5)
+      o) π²/8 ≈ 1.2337                    p) 2·5 − 1 = 9
+      q) O(N⁴); 16
+
+M7. Truncation errors of finite differences (leading term).
+    a) (u(x + h) − u(x))/h − u′           b) (u(x + h) − u(x − h))/(2h) − u′
+    c) (−3u₀ + 4u₁ − u₂)/(2h) − u′         d) (u₋₂ − 8u₋₁ + 8u₁ − u₂)/(12h) − u′
+    e) (u₁ − 2u₀ + u₋₁)/h² − u″            f) 5-point Laplacian − Δu
+    g) apply e) to u = x⁴ at x = 0, h = 0.1
+    h) error of b) for sin x at x = 1, h = 0.1 (value and prediction)
+    i) order of FTCS for the heat equation; the special value of r
+    j) order of Crank-Nicolson           k) order of upwind
+    l) order of Lax-Wendroff
+    m) Lax-Friedrichs modified equation (diffusion coefficient)
+    n) upwind numerical diffusion for a = 1, h = 0.01, ν = 0.5
+    o) Richardson: D(h) = 0.5, D(h/2) = 0.52, error ∝ h²
+    Answers:
+      a) (h/2)u″                b) (h²/6)u‴          c) −(h²/3)u‴
+      d) −(h⁴/30)u⁽⁵⁾           e) (h²/12)u⁽⁴⁾       f) (h²/12)(uₓₓₓₓ + u_yyyy)
+      g) 2h² = 0.02 (= (h²/12)·24)
+      h) ≈ −9.0005·10⁻⁴; prediction −(h²/6)cos 1 ≈ −9.0050·10⁻⁴
+      i) O(Δt + h²); r = 1/6 gives O(Δt² + h⁴) (the leading terms cancel)
+      j) O(Δt² + h²)    k) O(Δt + h)    l) O(Δt² + h²)
+      m) uₜ + auₓ = (h²/(2Δt))(1 − ν²)uₓₓ    n) (ah/2)(1 − ν) = 0.0025
+      o) (4·0.52 − 0.5)/3 ≈ 0.52667
+
+M8. Von Neumann analysis (s = sin²(θ/2), r = Δt/h², ν = aΔt/h): give g
+    and the stability condition.
+    a) FTCS heat           b) BTCS heat           c) Crank-Nicolson heat
+    d) θ-method heat       e) FTCS heat, r = 0.6: g(π)
+    f) FTCS advection      g) upwind advection
+    h) upwind, ν = 0.5, θ = π: g        i) upwind, ν = 1.5, θ = π: g
+    j) Lax-Friedrichs      k) Lax-Wendroff
+    l) leapfrog advection  m) FTCS heat in d dimensions (equal h)
+    n) leapfrog for uₜₜ = c²uₓₓ
+    o) FTCS for uₜ + auₓ = Duₓₓ with r = 0.25, ν = 0.8
+    Answers:
+      a) 1 − 4rs; r ≤ 1/2       b) 1/(1 + 4rs); always
+      c) (1 − 2rs)/(1 + 2rs); always (|g| → 1 as r → ∞ at θ = π)
+      d) (1 − 4(1 − θ)rs)/(1 + 4θrs); always if θ ≥ 1/2, else r ≤
+         1/(2(1 − 2θ))
+      e) −1.4: unstable
+      f) 1 − iν sin θ, |g|² = 1 + ν² sin²θ: never stable
+      g) 1 − ν(1 − e^(−iθ)), |g|² = 1 − 4ν(1 − ν)s; 0 ≤ ν ≤ 1
+      h) 0 (the mode is killed)  i) −2: unstable
+      j) cos θ − iν sin θ, |g|² = 1 − (1 − ν²)sin²θ; |ν| ≤ 1
+      k) 1 − iν sin θ − 2ν²s, |g|² = 1 − 4ν²(1 − ν²)s²; |ν| ≤ 1
+      l) g² + 2iν sin θ g − 1 = 0; |g| = 1 for |ν| ≤ 1 (no dissipation)
+      m) r ≤ 1/(2d)             n) c Δt/h ≤ 1
+      o) needs ν² ≤ 2r ≤ 1; ν² = 0.64 > 0.5: unstable
+
+M9. Time steps, CFL numbers and cost.
+    a) uₜ = uₓₓ, h = 0.01, FTCS: largest Δt; steps to t = 1
+    b) uₜ = 0.1uₓₓ, h = 0.02, FTCS: largest Δt
+    c) uₜ = Δu in 2D, h = 0.01, FTCS: largest Δt
+    d) uₜ + 3uₓ = 0, h = 0.01, upwind: largest Δt
+    e) wave speed 340, h = 1, leapfrog: largest Δt
+    f) 2D upwind, velocity (1, 2), h = 0.03 (condition |νₓ| + |ν_y| ≤ 1)
+    g) upwind with a = 1, h = 0.01, ν = 0.8: steps to advect a distance 1
+    h) Crank-Nicolson, h = 0.01, Δt = 0.01: r and g(π)
+    i) BTCS, same data: g(π)
+    j) true decay factor of the mode k = π/h over Δt = 0.01
+    k) y′ = −1000y, explicit Euler: stability limit
+    l) FTCS vs CN for h = 10⁻³ to t = 1 (CN with Δt = h): numbers of steps
+    m) Chebyshev collocation N = 64 vs N = 32, explicit advection: factor
+       by which Δt must shrink
+    Answers:
+      a) 5·10⁻⁵; 20000         b) h²/(2·0.1) = 2·10⁻³
+      c) h²/4 = 2.5·10⁻⁵        d) 1/300 ≈ 3.3333·10⁻³
+      e) 1/340 ≈ 2.9412·10⁻³    f) h/3 = 0.01
+      g) Δt = 0.008, 125 steps
+      h) r = 100, g(π) = −199/201 ≈ −0.99005
+      i) 1/401 ≈ 0.0024938      j) e^(−986.96) ≈ 0 (so CN is badly wrong)
+      k) Δt < 0.002             l) 2·10⁶ vs 1000
+      m) 4 (Δt = O(N⁻²) for first-order operators)
+
+M10. Stationary iterative methods.
+     a) A = [4 1; 1 3]: ρ(J), ρ(GS)
+     b) same A, b = (1, 2), x₀ = 0: two Jacobi steps
+     c) A = [2 −1; −1 2]: ρ(J), ρ(GS), ω_opt, ρ(SOR_opt)
+     d) A = [1 2; 2 1]: ρ(J), ρ(GS)
+     e) A = [1 2 −2; 1 1 1; 2 2 1]: ρ(J), ρ(GS)
+     f) A = [2 −1 1; 2 2 2; −1 −1 2]: ρ(J), ρ(GS)
+     g) 1D model, h = 1/10: ρ(J), ρ(GS), ω_opt, ρ(SOR)
+     h) 2D model, h = 1/64: ρ(J)
+     i) iterations for a 10⁻⁶ reduction there: Jacobi, GS, SOR
+     j) Richardson x ← x + α(b − Ax), σ(A) ⊂ [1, 9]: α_opt and ρ
+     k) iterations for 10⁻⁶ with ρ = 0.8
+     l) bound ‖G_J‖∞ for A = [5 1 2; 1 4 1; 2 1 6]
+     m) damped Jacobi (ω = 2/3), 1D model: smoothing factor
+        max_{π/2≤θ≤π}|1 − 2ω sin²(θ/2)|
+     n) G = [0.5 10; 0 0.5]: ρ(G), ‖G‖∞; does xₖ₊₁ = Gxₖ converge?
+     Answers:
+       a) 1/√12 ≈ 0.28868; 1/12        b) (1/4, 2/3), (1/12, 7/12)
+       c) 1/2, 1/4, 2/(1 + √3/2) ≈ 1.07180, ≈ 0.07180
+       d) 2, 4 (both diverge; A is indefinite)
+       e) 0 (G_J nilpotent: Jacobi converges in 3 steps), 2
+       f) √5/2 ≈ 1.11803 (diverges), 1/2
+       g) cos(π/10) ≈ 0.95106, ≈ 0.90451, 2/(1 + sin(π/10)) ≈ 1.52786,
+          ≈ 0.52786
+       h) cos(π/64) ≈ 0.998795        i) ≈ 11463, 5732, 141
+       j) 2/(1 + 9) = 0.2, ρ = 8/10 = 0.8          k) 62 (61.9)
+       l) 0.6 (row sums 3/5, 2/4, 3/6)  m) 1/3
+       n) 0.5, 10.5; yes (ρ < 1 decides; ‖G‖ ≥ 1 does not)
+
+M11. Krylov methods, conditioning and multigrid.
+     a) κ₂ of diag(1, 100)
+     b) κ₂ of tridiag(−1, 2, −1), h = 1/10, exact and ≈ 4/(π²h²)
+     c) the same for h = 1/100
+     d) 2D 5-point matrix, h = 10⁻³: κ and √κ
+     e) CG iterations promised by the κ-bound for 10⁻⁶: κ = 100, κ = 10⁴
+     f) steepest descent, κ = 100, 10⁻⁶
+     g) CG on A = [4 1; 1 3], b = (1, 2), x₀ = 0: α₀, x₁, x₂
+     h) maximal CG steps if A (n = 1000) has 4 distinct eigenvalues
+     i) CG steps if r₀ is an eigenvector of A
+     j) GMRES on A = [2 1; 0 2], b = (0, 1), x₀ = 0: x₁ and ‖r₁‖
+     k) κ₂ of [100 1; 1 1] and after diagonal (Jacobi) scaling
+     l) Lanczos/Arnoldi: shape of the projected matrix for symmetric and
+        non-symmetric A
+     m) work per V-cycle relative to one fine-grid sweep (1D, 2D, 3D)
+     n) total work of full multigrid for N unknowns
+     o) costs of one CG iteration
+     Answers:
+       a) 100        b) cot²(π/20) ≈ 39.863; ≈ 40.528
+       c) ≈ 4052.2; ≈ 4052.8        d) ≈ 4.0528·10⁵; ≈ 637
+       e) 73; 726                   f) ≈ 691
+       g) 1/4, (1/4, 1/2), (1/11, 7/11)          h) 4
+       i) 1 (x₁ = x*)
+       j) x₁ = (2/5)b = (0, 2/5), r₁ = (−2/5, 1/5), ‖r₁‖ = 1/√5 ≈ 0.44721
+       k) ≈ 101.03; [1 0.1; 0.1 1] has κ = 1.1/0.9 ≈ 1.2222
+       l) tridiagonal; upper Hessenberg      m) 2, 4/3, 8/7
+       n) O(N)      o) one mat-vec, two inner products, three vector updates
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) For symmetric coercive a, uₕ is the best approximation in the H¹
+        norm.
+     b) Lax-Milgram needs a to be symmetric.
+     c) An unconditionally stable scheme is accurate for any Δt.
+     d) The CFL condition is sufficient for stability.
+     e) A consistent scheme converges.
+     f) If Gauss-Seidel converges then so does Jacobi.
+     g) Gauss-Seidel converges for every SPD matrix.
+     h) Jacobi converges for every SPD matrix.
+     i) In exact arithmetic CG solves an n × n SPD system in ≤ n steps.
+     j) Chebyshev interpolants of every continuous f converge uniformly.
+     k) The trapezoidal rule is only second-order accurate.
+     l) Fourier methods converge spectrally for every C^∞ f on [−π, π].
+     m) 1D P1 FEM for −u″ = f is exact at the nodes.
+     n) The P1 stiffness matrix is always an M-matrix.
+     o) Aubin-Nitsche gives O(h²) in L² for P1 on every polygon.
+     p) Lax-Wendroff is monotone (creates no new extrema).
+     q) Multigrid V-cycles converge at an h-independent rate for Poisson.
+     r) ρ(G) < 1 implies ‖G‖∞ < 1.
+     Answers:
+       a) F: best in the energy norm; in H¹ only within M/α (e.g. ∫u′v′
+          on H¹₀: uₕ = Iₕu in 1D, not the H¹ projection)
+       b) F: −u″ + u′ on H¹₀ is non-symmetric but coercive
+       c) F: Crank-Nicolson with r = 100 (g(π) ≈ −0.99)
+       d) F: FTCS for advection with ν ≤ 1
+       e) F: the same FTCS scheme (Lax: needs stability)
+       f) F: M10 f) (ρ(J) ≈ 1.118, ρ(GS) = 1/2)
+       g) T                 h) F: [1 a a; a 1 a; a a 1], a = 0.8: SPD
+          (eigenvalues 2.6, 0.2, 0.2) but ρ(J) = 2a = 1.6
+       i) T                 j) F: Faber; there are continuous f for which
+          they diverge (true for Lipschitz f)
+       k) F: spectral for smooth periodic integrands (D6)
+       l) F: f = x is C^∞ but its periodic extension jumps: f̂ₖ = O(1/k),
+          Gibbs (use Chebyshev instead)
+       m) T                 n) F: M4 j) (opposite angles 120°, 100°)
+       o) F: L-shaped domain, rate h^(4/3)
+       p) F: oscillations at a step (Godunov's theorem)
+       q) T                 r) F: G = [0.5 10; 0 0.5]
+
+TEACHING TIPS
+  Struggling: tie every method to one model problem: −u″ = f on (0, 1)
+  with the matrix tridiag(−1, 2, −1). Have students assemble it by hand
+  as a finite element matrix, derive it by Taylor series as a finite
+  difference matrix, find its eigenvalues (4/h²)sin²(kπh/2) with the
+  vectors sin(kπxⱼ), and then read off everything else from that single
+  formula: FTCS stability (r ≤ 1/2 is 1 − Δtλ_max ≥ −1), κ ≈ 4/(π²h²),
+  ρ(J) = cos πh, why damped Jacobi smooths the high modes, and why CG
+  needs O(1/h) steps. For stability questions always write "insert
+  gⁿe^(ijθ)" and use e^(iθ) − 2 + e^(−iθ) = −4 sin²(θ/2). Harder: prove
+  the Bramble-Hilbert lemma and the scaling argument behind interpolation
+  estimates; analyse the inf-sup (LBB) condition for mixed methods and
+  Stokes (why P1-P1 fails and Taylor-Hood P2-P1 works); derive
+  SUPG/streamline diffusion for −εΔu + b·∇u = f; prove the Lax
+  equivalence theorem via the uniform boundedness principle; show that
+  the Chebyshev coefficients of an analytic f decay like ρ⁻ᵏ using the
+  Joukowski map; prove the optimal SOR formula from Young's relation
+  (λ + ω − 1)² = λω²μ²; and prove the two-grid convergence estimate by
+  combining the smoothing and approximation properties.
+
+
