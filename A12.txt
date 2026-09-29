@@ -6498,3 +6498,3211 @@ TEACHING TIPS
   Nagata's Noetherian ring of infinite dimension.
 
 
+================================================================================
+TOPIC 12.9 — ALGEBRAIC TOPOLOGY: SINGULAR HOMOLOGY, CELLULAR HOMOLOGY,
+COHOMOLOGY, CUP PRODUCTS, POINCARÉ DUALITY, HIGHER HOMOTOPY GROUPS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - SINGULAR HOMOLOGY: a singular n-simplex is a continuous σ : Δⁿ → X;
+    Cₙ(X) is the free abelian group on them, ∂σ = ∑ᵢ (−1)ⁱ σ|[v₀..v̂ᵢ..vₙ],
+    ∂∂ = 0, Hₙ(X) = ker ∂ₙ / im ∂ₙ₊₁. H₀(X) = Z^(number of path
+    components); Hₙ(point) = 0 for n > 0. Reduced homology H̃ kills one Z
+    in degree 0. Functorial: f : X → Y gives f_* : Hₙ(X) → Hₙ(Y).
+  - THE AXIOMS IN PRACTICE: HOMOTOPY INVARIANCE (f ≃ g ⇒ f_* = g_*), the
+    LONG EXACT SEQUENCE of a pair (X, A), EXCISION (H(X ∖ Z, A ∖ Z) ≅
+    H(X, A) when cl Z ⊆ int A), GOOD PAIRS Hₙ(X, A) ≅ H̃ₙ(X/A), and
+    MAYER-VIETORIS ... → Hₙ(A ∩ B) → Hₙ(A) ⊕ Hₙ(B) → Hₙ(X) → Hₙ₋₁(A ∩ B)
+    → ... for X = int A ∪ int B. Result: H̃ₖ(Sⁿ) = Z if k = n, else 0.
+  - CONSEQUENCES: Sᵐ ≄ Sⁿ for m ≠ n; no retraction Dⁿ → Sⁿ⁻¹; BROUWER
+    fixed-point theorem; INVARIANCE OF DIMENSION (Hₖ(Rⁿ, Rⁿ ∖ 0) = Z only
+    for k = n); H₁(X) ≅ π₁(X)^ab for path-connected X; SUSPENSION
+    H̃ₖ₊₁(ΣX) ≅ H̃ₖ(X); H̃ₖ(X ∨ Y) ≅ H̃ₖ(X) ⊕ H̃ₖ(Y) (good basepoints).
+  - DEGREE of f : Sⁿ → Sⁿ: f_*(x) = (deg f)x on Hₙ = Z. deg(fg) = deg f
+    · deg g, homotopy invariant, reflection −1, antipodal map (−1)ⁿ⁺¹,
+    z ↦ zᵏ on S¹ has degree k; deg = sum of LOCAL degrees over a regular
+    fibre. No fixed point ⇒ deg f = (−1)ⁿ⁺¹. HAIRY BALL: Sⁿ has a
+    nowhere-zero tangent field iff n is odd.
+  - CW COMPLEXES AND CELLULAR HOMOLOGY: Cₙᶜᵂ = Hₙ(Xⁿ, Xⁿ⁻¹) = free on the
+    n-cells; CELLULAR BOUNDARY FORMULA d(eⁿ_α) = ∑_β d_αβ eⁿ⁻¹_β with d_αβ
+    the degree of S^(n−1) → Xⁿ⁻¹ → Xⁿ⁻¹/(Xⁿ⁻¹ ∖ e_β) ≅ Sⁿ⁻¹; for 2-cells
+    d_αβ = exponent sum of the letter β in the attaching word. Hᶜᵂ ≅ H.
+    Cells only in even degrees ⇒ all d = 0 (CPⁿ, S²×S²).
+  - STANDARD ANSWERS: Σ_g: Z, Z²ᵍ, Z. N_h (# of h RP²): Z, Zʰ⁻¹ ⊕ Z/2,
+    0. RPⁿ: d_k = 1 + (−1)ᵏ, so Hₖ = Z/2 for k odd < n, 0 for k even
+    (0 < k < n), Hₙ = Z (n odd) or 0 (n even). Lens space L(p, q): Z,
+    Z/p, 0, Z. Moore space S¹ ∪ₙ D²: H₁ = Z/n.
+  - EULER CHARACTERISTIC χ = ∑(−1)ᵏ rank Hₖ = ∑(−1)ᵏ (#k-cells);
+    χ(X × Y) = χ(X)χ(Y); an n-sheeted cover multiplies χ by n. LEFSCHETZ:
+    L(f) = ∑(−1)ᵏ tr(f_* on Hₖ(X; Q)); X a finite CW complex (or compact
+    ENR) and L(f) ≠ 0 ⇒ f has a fixed point.
+  - COEFFICIENTS AND KÜNNETH: Hₙ(X; G) ≅ Hₙ(X) ⊗ G ⊕ Tor(Hₙ₋₁(X), G);
+    Hₙ(X × Y) ≅ ⊕_{i+j=n} Hᵢ(X) ⊗ Hⱼ(Y) ⊕ ⊕_{i+j=n−1} Tor(Hᵢ X, Hⱼ Y).
+    Z/m ⊗ Z/n ≅ Tor(Z/m, Z/n) ≅ Z/gcd(m, n); Tor(free, −) = 0.
+  - COHOMOLOGY: Cⁿ(X; G) = Hom(Cₙ(X), G), δφ = φ ∘ ∂, Hⁿ = ker δ / im δ;
+    contravariant. UNIVERSAL COEFFICIENTS: 0 → Ext(Hₙ₋₁ X, G) → Hⁿ(X; G) →
+    Hom(Hₙ X, G) → 0, split (not naturally). Ext(Z/m, Z) = Z/m, Ext(Z/m,
+    Z/n) = Z/gcd, Ext(free, G) = 0. So integral torsion MOVES UP one
+    degree: Hⁿ(X) = Free(Hₙ) ⊕ Tors(Hₙ₋₁) for finite type X.
+  - CUP PRODUCT: (φ ∪ ψ)(σ) = φ(σ|[v₀..v_k]) ψ(σ|[v_k..v_{k+l}]); δ(φ ∪ ψ)
+    = δφ ∪ ψ + (−1)ᵏ φ ∪ δψ, so H*(X; R) is a graded ring, associative,
+    unital, natural (f*(α ∪ β) = f*α ∪ f*β) and GRADED COMMUTATIVE:
+    α ∪ β = (−1)^(kl) β ∪ α. In a wedge, products of classes from
+    different summands vanish.
+  - STANDARD RINGS: H*(Tⁿ) = exterior algebra Λ[a₁, ..., aₙ], |aᵢ| = 1;
+    H*(Σ_g): aᵢbᵢ = −bᵢaᵢ = [Σ]* and all other products of degree-1
+    classes 0; H*(CPⁿ) = Z[x]/(xⁿ⁺¹), |x| = 2; H*(RPⁿ; Z/2) =
+    Z/2[a]/(aⁿ⁺¹), |a| = 1; H*(Sᵖ × S^q) = Λ[x, y]. Rings separate T²
+    from S¹ ∨ S¹ ∨ S² and CP² from S² ∨ S⁴, and prove BORSUK-ULAM.
+  - MANIFOLDS AND ORIENTATION: for a closed n-manifold M, Hₙ(M, M ∖ x) ≅
+    Z; an orientation is a continuous choice of generators; connected
+    closed M is orientable ⇔ Hₙ(M; Z) ≅ Z (a FUNDAMENTAL CLASS [M]),
+    otherwise Hₙ(M; Z) = 0; always Hₙ(M; Z/2) = Z/2. Simply connected ⇒
+    orientable; RPⁿ is orientable iff n is odd.
+  - POINCARÉ DUALITY: M closed, R-orientable ⇒ D : Hᵏ(M; R) → Hₙ₋ₖ(M; R),
+    α ↦ [M] ∩ α, is an isomorphism (R = Z/2 always works). Consequences:
+    bₖ = bₙ₋ₖ; Tors Hₖ ≅ Tors Hₙ₋ₖ₋₁; χ(M) = 0 if n is odd; Hₙ₋₁(M; Z)
+    torsion-free; the CUP PAIRING Hᵏ ⊗ Hⁿ⁻ᵏ → Z is unimodular mod
+    torsion. For n = 4k the INTERSECTION FORM on H²ᵏ is symmetric and its
+    SIGNATURE is a homotopy invariant (CP²: +1, S² × S²: 0, hyperbolic).
+    Relatives: Lefschetz duality Hₖ(M, ∂M) ≅ Hⁿ⁻ᵏ(M), Alexander duality
+    H̃ᵢ(Sⁿ ∖ K) ≅ H̃ⁿ⁻ⁱ⁻¹(K).
+  - HIGHER HOMOTOPY GROUPS: πₙ(X, x₀) = [(Sⁿ, *), (X, x₀)] = [(Iⁿ, ∂Iⁿ),
+    (X, x₀)]; ABELIAN for n ≥ 2 (Eckmann-Hilton: slide the cubes past each
+    other); π₁ acts on πₙ; πₙ(X × Y) = πₙX × πₙY; a covering X̃ → X is an
+    isomorphism on πₙ for n ≥ 2 (so πₙ(S¹) = πₙ(Tⁿ) = 0, π₂(RP²) = Z);
+    relative groups and the LES of a pair.
+  - FIBRATIONS: homotopy lifting ⇒ LES ... → πₙF → πₙE → πₙB → πₙ₋₁F →
+    .... HOPF FIBRATIONS S¹ → S³ → S², S³ → S⁷ → S⁴, S⁷ → S¹⁵ → S⁸ give
+    π₃(S²) = Z, πₙ(S³) ≅ πₙ(S²) for n ≥ 3, Z ⊆ π₇(S⁴). πₙ(ΩX) ≅ πₙ₊₁(X).
+    EILENBERG-MACLANE SPACES K(G, n): S¹ = K(Z, 1), RP^∞ = K(Z/2, 1),
+    CP^∞ = K(Z, 2), Σ_g (g ≥ 1) = K(π₁, 1).
+  - HUREWICZ, WHITEHEAD, FREUDENTHAL: cellular approximation ⇒ πₖ(Sⁿ) = 0
+    for k < n. HUREWICZ: X (n−1)-connected, n ≥ 2 ⇒ πₙ(X) ≅ Hₙ(X) (and
+    πₙ(Sⁿ) = Z). WHITEHEAD: a map of CW complexes inducing isomorphisms on
+    all πₙ is a homotopy equivalence (for simply connected complexes an
+    H_*-isomorphism suffices). FREUDENTHAL: πₙ₊ₖ(Sⁿ) is stable for
+    n > k + 1: πₙ₊₁ = Z/2 (n ≥ 3), πₙ₊₂ = Z/2 (n ≥ 2), πₙ₊₃ = Z/24
+    (n ≥ 5).
+  - CAUTIONARY EXAMPLES: homology does not see πₙ (π₃(S²) = Z but
+    H₃(S²) = 0); π₂(S¹ ∨ S²) ≅ Z[t, t⁻¹] is not finitely generated; the
+    Poincaré homology sphere has the homology of S³ but |π₁| = 120; RP² ×
+    S³ and S² × RP³ have the same homotopy groups but are not homotopy
+    equivalent.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove that ∂∂ = 0 on singular chains. (b) Compute Hₙ(point)
+    directly from the singular chain complex. (c) Prove that H₀(X) is free
+    abelian on the path components of X.
+    Answer: (a) each face of a face appears twice with opposite signs.
+    (b) H₀ = Z, Hₙ = 0 for n > 0. (c) the augmentation ε(∑nᵢσᵢ) = ∑nᵢ on
+    each path component.
+    Teacher explains: (a) ∂∂σ = ∑_{j<i} (−1)ⁱ(−1)ʲ σ|[..v̂ⱼ..v̂ᵢ..] +
+    ∑_{j>i} (−1)ⁱ(−1)ʲ⁻¹ σ|[..v̂ᵢ..v̂ⱼ..]: when we delete vᵢ first, the
+    later vertex vⱼ has moved to position j − 1. Swapping the names i, j in
+    the second sum shows it is the negative of the first, so ∂∂σ = 0.
+    (b) For each n there is exactly ONE map σₙ : Δⁿ → point, and every face
+    of σₙ is σₙ₋₁. So ∂σₙ = ∑_{i=0}^{n} (−1)ⁱ σₙ₋₁, which is σₙ₋₁ if n is
+    even (n + 1 terms, sum 1) and 0 if n is odd. The complex is
+       ... → Z --≅--> Z --0--> Z --≅--> Z --0--> Z → 0
+           (C₄)      (C₃)     (C₂)     (C₁)     (C₀)
+    For n odd: ker ∂ₙ = Z = im ∂ₙ₊₁, so Hₙ = 0. For n even ≥ 2: ker ∂ₙ = 0.
+    H₀ = Z/im(0) = Z. (c) A 0-simplex is a point, a 1-simplex a path γ
+    with ∂γ = γ(1) − γ(0). So two points in the same path component are
+    homologous. Define ε : C₀(X) → Z^(components) by sending x to the
+    basis vector of its path component; ε∂ = 0 (both endpoints of a path
+    lie in one component) and ε is onto; if ε(c) = 0, fix a point x_α in
+    each component, join every point of c to its x_α by paths, and c
+    becomes a boundary. So H₀ ≅ Z^(components). Common mistakes: thinking
+    Cₙ(point) = 0 for n > 0 (there IS one n-simplex in every degree);
+    forgetting that H₀ counts PATH components (the topologist's sine curve
+    has H₀ = Z²). Now you try: H₀ of Q ⊂ R? (free abelian on uncountably
+    many generators: every point is a path component)
+
+D2. Using Mayer-Vietoris, prove H̃ₖ(Sⁿ) ≅ Z for k = n and 0 otherwise.
+    Deduce that Sᵐ ≄ Sⁿ for m ≠ n, that there is no retraction Dⁿ → Sⁿ⁻¹,
+    and Brouwer's fixed-point theorem.
+    Answer: H̃ₖ(Sⁿ) ≅ H̃ₖ₋₁(Sⁿ⁻¹) by MV; induct from S⁰.
+    Teacher explains: Write Sⁿ = A ∪ B with A = Sⁿ minus the south pole, B
+    = Sⁿ minus the north pole. A and B are contractible (stereographic
+    projection) and A ∩ B ≃ Sⁿ⁻¹ (a band around the equator). In reduced
+    Mayer-Vietoris,
+       H̃ₖ(A) ⊕ H̃ₖ(B) = 0 → H̃ₖ(Sⁿ) → H̃ₖ₋₁(A ∩ B) → 0 = H̃ₖ₋₁(A) ⊕ H̃ₖ₋₁(B),
+    so the boundary map is an isomorphism H̃ₖ(Sⁿ) ≅ H̃ₖ₋₁(Sⁿ⁻¹). Start: S⁰
+    = two points, H̃₀(S⁰) = Z, H̃ₖ(S⁰) = 0 otherwise. Induction gives the
+    claim. Different spheres have different homology, so they are not
+    homotopy equivalent (Rᵐ ≇ Rⁿ follows too: remove a point). If r : Dⁿ →
+    Sⁿ⁻¹ were a retraction, r ∘ i = id on Sⁿ⁻¹ gives
+       Z = H̃ₙ₋₁(Sⁿ⁻¹) --i_*--> H̃ₙ₋₁(Dⁿ) = 0 --r_*--> H̃ₙ₋₁(Sⁿ⁻¹) = Z
+    composing to the identity of Z: impossible. BROUWER: if f : Dⁿ → Dⁿ
+    had no fixed point, the ray from f(x) through x meets Sⁿ⁻¹ at r(x); r
+    is continuous and r = id on Sⁿ⁻¹, a retraction. Common mistakes:
+    using unreduced groups in MV and losing track of degree 0; forgetting
+    that MV needs the INTERIORS of A and B to cover. Now you try: H̃ₖ of
+    Sⁿ minus two points. (≃ Sⁿ⁻¹: Z in degree n − 1 only)
+
+D3. (a) Compute Hₖ(Dⁿ, Sⁿ⁻¹). (b) Compute Hₖ(Rⁿ, Rⁿ ∖ {0}) and prove
+    invariance of dimension: a nonempty open U ⊆ Rᵐ is not homeomorphic to
+    an open V ⊆ Rⁿ if m ≠ n. (c) Compute Hₖ(S², A) with A a set of m ≥ 1
+    points.
+    Answer: (a), (b) Z for k = n, else 0. (c) H₂ = Z, H₁ = Zᵐ⁻¹, H₀ = 0.
+    Teacher explains: (a) (Dⁿ, Sⁿ⁻¹) is a good pair and Dⁿ/Sⁿ⁻¹ ≅ Sⁿ, so
+    Hₖ(Dⁿ, Sⁿ⁻¹) ≅ H̃ₖ(Sⁿ). Alternatively, in the LES
+       H̃ₖ(Dⁿ) = 0 → Hₖ(Dⁿ, Sⁿ⁻¹) → H̃ₖ₋₁(Sⁿ⁻¹) → H̃ₖ₋₁(Dⁿ) = 0
+    the connecting map is an isomorphism. (b) By excision Hₖ(Rⁿ, Rⁿ ∖ 0) ≅
+    Hₖ(Dⁿ, Dⁿ ∖ 0) and Dⁿ ∖ 0 ≃ Sⁿ⁻¹, so the answer is Hₖ(Dⁿ, Sⁿ⁻¹): Z
+    exactly in degree n. For x ∈ U open, excision gives Hₖ(U, U ∖ x) ≅
+    Hₖ(Rᵐ, Rᵐ ∖ x), which is Z only for k = m. A homeomorphism h : U → V
+    induces Hₖ(U, U ∖ x) ≅ Hₖ(V, V ∖ h(x)), forcing m = n. (c) LES of the
+    pair in reduced form: H̃₁(S²) = 0 → H₁(S², A) → H̃₀(A) = Zᵐ⁻¹ → H̃₀(S²)
+    = 0, so H₁ = Zᵐ⁻¹; H₂(S², A) ≅ H₂(S²) = Z since H₂(A) = H₁(A) = 0;
+    H₀(S², A) = 0 (every point is homologous to a point of A). Common
+    mistakes: writing Hₖ(X, A) = Hₖ(X)/Hₖ(A) (relative groups are NOT
+    quotients; the connecting map matters); applying Hₖ(X, A) ≅ H̃ₖ(X/A)
+    to pairs that are not good (e.g. A = Q ⊂ R). Now you try: Hₖ(S¹, S⁰)
+    with S⁰ two points of S¹. (H₁ = Z², all others 0)
+
+D4. (a) Show the antipodal map a : Sⁿ → Sⁿ has degree (−1)ⁿ⁺¹. (b) Prove
+    that a map f : Sⁿ → Sⁿ without fixed points has degree (−1)ⁿ⁺¹.
+    (c) Prove the hairy ball theorem. (d) Compute the degree of z ↦ z³z̄⁵
+    on S¹ and of p(z) = z³ − 2z + 1 extended to S² = C ∪ {∞}.
+    Answer: (a) product of n + 1 reflections. (b) f ≃ a. (c) a field v
+    gives id ≃ a. (d) −2 and 3.
+    Teacher explains: (a) The reflection r(x₁, ..., xₙ₊₁) = (−x₁, x₂, ...)
+    has degree −1: with Sⁿ as two n-simplices glued along their boundary
+    (swapped by r), r sends the fundamental cycle Δ₁ − Δ₂ to Δ₂ − Δ₁.
+    The antipodal map is the composition of n + 1 reflections, so deg a
+    = (−1)ⁿ⁺¹. (b) If f(x) ≠ x, the segment from f(x) to −x misses 0, so
+       H(x, t) = ((1 − t)f(x) − t x)/|(1 − t)f(x) − t x|
+    is a homotopy from f to a, hence deg f = (−1)ⁿ⁺¹. (Similarly f(x) ≠
+    −x for all x ⇒ f ≃ id ⇒ deg f = 1.) (c) If v(x) ⊥ x, v(x) ≠ 0, put
+    w = v/|v|; Hₜ(x) = cos(πt)x + sin(πt)w(x) is a homotopy id ≃ a in Sⁿ.
+    So 1 = (−1)ⁿ⁺¹ and n is odd. Conversely on S²ᵏ⁻¹ ⊂ Cᵏ the field
+    v(z) = iz works. (d) On S¹, z³z̄⁵ = z⁻² (|z| = 1), degree −2 (the
+    winding number). For p: near ∞, p behaves like z³; a regular value w
+    has 3 preimages (fundamental theorem of algebra, counted without
+    multiplicity for generic w) and a holomorphic map preserves
+    orientation, so each local degree is +1: deg = 3. Common mistakes:
+    "the antipodal map is a rotation, so degree 1" (true only for n odd);
+    counting preimages without local signs for non-holomorphic maps.
+    Now you try: prove that Z/2 is the only nontrivial group acting freely
+    on S²ᵏ. (each non-identity element has degree (−1)²ᵏ⁺¹ = −1, and deg is
+    a homomorphism G → {±1} with trivial kernel)
+
+D5. Build RPⁿ as a CW complex with one cell in each dimension 0, ..., n.
+    Explain why the cellular boundary dₖ : Cₖ → Cₖ₋₁ is multiplication by
+    1 + (−1)ᵏ, and compute Hₖ(RP⁴), Hₖ(RP⁵) and Hₖ(RP⁵; Z/2).
+    Answer: RP⁴: Z, Z/2, 0, Z/2, 0. RP⁵: Z, Z/2, 0, Z/2, 0, Z.
+    RP⁵ with Z/2: Z/2 in every degree 0, ..., 5.
+    Teacher explains: RPᵏ = RPᵏ⁻¹ ∪ eᵏ, the attaching map being the
+    2-fold cover φ : Sᵏ⁻¹ → RPᵏ⁻¹. By the cellular boundary formula dₖ =
+    degree of Sᵏ⁻¹ → RPᵏ⁻¹ → RPᵏ⁻¹/RPᵏ⁻² ≅ Sᵏ⁻¹. This composite is a
+    homeomorphism on each open hemisphere and collapses the equator. On
+    one hemisphere it is "the identity", on the other it is the identity
+    precomposed with the antipodal map of Sᵏ⁻¹ (degree (−1)ᵏ). Summing
+    local degrees gives 1 + (−1)ᵏ: that is 0 for k odd and 2 for k even.
+    Cellular chain complex of RP⁵ (C₅ → ... → C₀, all Z):
+       Z --0--> Z --2--> Z --0--> Z --2--> Z --0--> Z
+    H₅ = ker 0 = Z; H₄ = ker(2) = 0; H₃ = Z/2Z = Z/2 (kernel Z, image 2Z);
+    H₂ = 0; H₁ = Z/2; H₀ = Z. For RP⁴ the top map d₄ = 2 is injective, so
+    H₄ = 0 and H₃ = Z/2. With Z/2 coefficients the maps become 0 and 2 = 0,
+    so every Hₖ(RP⁵; Z/2) = Z/2. Check χ: RP⁵ has χ = 1 − 1 + 1 − 1 + 1 − 1
+    = 0 = 1 − 0 + 0 − 0 + 0 − 1 (ranks). Common mistakes: forgetting the top
+    cell for n odd (it is a cycle: RPⁿ is orientable for n odd); using d =
+    2 in odd degrees. Now you try: Hₖ(RP^∞). (Z, then Z/2 in every odd
+    degree, 0 in even degrees > 0)
+
+D6. Using cellular homology, compute the homology of the orientable
+    surface Σ_g (word a₁b₁a₁⁻¹b₁⁻¹ ... a_gb_ga_g⁻¹b_g⁻¹) and of the Klein
+    bottle K (word abab⁻¹). Check with the Euler characteristic.
+    Answer: Σ_g: Z, Z²ᵍ, Z. K: Z, Z ⊕ Z/2, 0. χ(Σ_g) = 2 − 2g, χ(K) = 0.
+    Teacher explains: Both have one 0-cell v, several 1-cells (loops at v)
+    and one 2-cell. d₁ = 0 since every 1-cell is a loop: d₁(a) = v − v.
+    For a 2-cell attached along a word, d₂(e) = ∑ (exponent sum of each
+    letter) · letter. Σ_g: every letter appears once with +1 and once with
+    −1, so d₂ = 0. Hence H₂ = ker d₂ = Z (the fundamental class), H₁ =
+    Z²ᵍ/0 = Z²ᵍ, H₀ = Z. Klein bottle: a appears twice with +1, b once
+    with +1 and once with −1, so d₂(e) = 2a. Then H₂ = ker d₂ = 0 (non-
+    orientable!) and H₁ = Z⟨a, b⟩/⟨2a⟩ = Z/2 ⊕ Z. Euler: Σ_g has 1 − 2g + 1
+    = 2 − 2g cells-count and 1 − 2g + 1 in ranks; K has 1 − 2 + 1 = 0 and
+    1 − 1 + 0 = 0 ✓. For general boundary matrices use the Smith normal
+    form: the diagonal entries d₁ | d₂ | ... give torsion Z/dᵢ. Common
+    mistakes: reading "2a" as "H₁ = Z/2" and losing the free b; computing
+    d₂ from the number of letters instead of exponent sums. Now you try:
+    N₃ with word a²b²c². (d₂ = 2a + 2b + 2c; H₁ = Z² ⊕ Z/2, H₂ = 0)
+
+D7. State the universal coefficient theorem for cohomology. Compute
+    H*(K; Z) and H*(K; Z/2) for the Klein bottle both from the UCT and
+    directly from cellular cochains, and compute H*(RPⁿ; Z).
+    Answer: H*(K; Z) = Z, Z, Z/2; H*(K; Z/2) = Z/2, (Z/2)², Z/2.
+    H*(RPⁿ; Z): Z in degree 0, Z/2 in even degrees 0 < k ≤ n, 0 in odd
+    degrees < n, and Hⁿ = Z if n is odd.
+    Teacher explains: UCT: Hⁿ(X; G) ≅ Hom(Hₙ(X), G) ⊕ Ext(Hₙ₋₁(X), G),
+    split but not naturally. With H₀ = Z, H₁ = Z ⊕ Z/2, H₂ = 0:
+       H⁰ = Hom(Z, Z) = Z;  H¹ = Hom(Z ⊕ Z/2, Z) ⊕ Ext(Z, Z) = Z ⊕ 0 = Z;
+       H² = Hom(0, Z) ⊕ Ext(Z ⊕ Z/2, Z) = Z/2.
+    The torsion of H₁ has moved UP to H². With G = Z/2: H¹ = Hom(Z ⊕ Z/2,
+    Z/2) = (Z/2)², H² = Ext(Z ⊕ Z/2, Z/2) = Z/2. Directly: the cellular
+    cochain complex is the TRANSPOSE (dual) of the chain complex. d₂(e) =
+    2a + 0b, so δ¹ : C¹ = Z² → C² = Z is the row [2 0]; δ⁰ = 0. Then H¹ =
+    ker δ¹ = Z (spanned by b*), H² = Z/im = Z/2. Mod 2, δ¹ = [0 0], giving
+    (Z/2)² and Z/2 ✓. For RPⁿ dualize Z ←0− Z ←2− Z ←0− ...: the coboundary
+    δᵏ : Cᵏ → Cᵏ⁺¹ is 0 for k even and 2 for k odd, so Hᵏ = Z/2 for k
+    even > 0 (cokernel of 2 coming from Cᵏ⁻¹) and 0 for k odd < n. Common
+    mistakes: "Hⁿ is just Hom(Hₙ, Z)" (loses the Ext term: H²(RP²) = Z/2
+    although H₂(RP²) = 0); "H¹ can have torsion" (H¹(X; Z) = Hom(H₁, Z) is
+    always torsion-free). Now you try: H*(L(p, q); Z). (Z, 0, Z/p, Z)
+
+D8. Define the cup product and state its main properties. Show that T²
+    and X = S¹ ∨ S¹ ∨ S² have isomorphic homology and cohomology groups but
+    are not homotopy equivalent.
+    Answer: in H*(T²), a ∪ b generates H²; in H*(X) all products of
+    degree-1 classes are 0.
+    Teacher explains: For φ ∈ Cᵏ, ψ ∈ Cˡ, (φ ∪ ψ)(σ) = φ(σ|front k-face) ·
+    ψ(σ|back l-face). The Leibniz rule δ(φ ∪ ψ) = δφ ∪ ψ + (−1)ᵏφ ∪ δψ
+    shows cocycle ∪ cocycle is a cocycle and cocycle ∪ coboundary is a
+    coboundary, so ∪ descends to H*. It is natural, associative, has unit
+    1 ∈ H⁰ and is graded commutative. Groups: both spaces have H⁰ = Z,
+    H¹ = Z², H² = Z. RING OF T²: let p₁, p₂ : T² → S¹ be the projections
+    and θ ∈ H¹(S¹) a generator; a = p₁*θ, b = p₂*θ form a basis of H¹, and
+    by the Künneth theorem (or a computation on the two triangles of the
+    Δ-complex) a ∪ b = θ × θ generates H²(T²). Also a ∪ a = p₁*(θ ∪ θ) =
+    0 because H²(S¹) = 0, and b ∪ a = −a ∪ b. RING OF X: let r : X →
+    S¹ ∨ S¹ collapse the S². r* is an isomorphism on H¹, so every α, β ∈
+    H¹(X) are r*α′, r*β′ and α ∪ β = r*(α′ ∪ β′) = r*(0) = 0 since H²(S¹ ∨
+    S¹) = 0. A homotopy equivalence would induce a RING isomorphism, but
+    in T² there are α, β with α ∪ β ≠ 0. Common mistakes: expecting the
+    cup product to be commutative (it is graded commutative); believing
+    that homology groups determine a space. Now you try: in H*(T³) =
+    Λ[a₁, a₂, a₃] compute (a₁ + a₂) ∪ (a₁ − a₂). (−2a₁a₂)
+
+D9. (a) Compute H*(CPⁿ; Z) as a group and state its ring structure.
+    (b) Show CP² ≄ S² ∨ S⁴. (c) Show every map f : CP²ᵏ → CP²ᵏ has a
+    fixed point. (d) If f*(x) = m x, find deg f on H₂ₙ.
+    Answer: (a) Z in each even degree ≤ 2n, ring Z[x]/(xⁿ⁺¹). (b) x² ≠ 0
+    in CP², but 0 in S² ∨ S⁴. (c) L(f) = 1 + m + ... + m²ᵏ ≠ 0. (d) mⁿ.
+    Teacher explains: (a) CPⁿ = CPⁿ⁻¹ ∪ e²ⁿ has one cell in each even
+    dimension 0, 2, ..., 2n. All cellular boundaries go between a zero
+    group and a nonzero one, so d = 0 and H₂ₖ = Z for 0 ≤ k ≤ n, other
+    groups 0; by UCT also H²ᵏ = Z. RING: let x generate H². By Poincaré
+    duality the pairing H²ᵏ × H²ⁿ⁻²ᵏ → Z is unimodular, and induction on
+    n (using that CPⁿ⁻¹ ⊂ CPⁿ is an isomorphism on H^(≤2n−2)) shows x ∪
+    x^(n−1) generates H²ⁿ; so H* = Z[x]/(xⁿ⁺¹). (b) In CP², x² generates
+    H⁴. In S² ∨ S⁴ a generator of H² comes from S² via the retraction onto
+    S², and its square lies in H⁴(S²) = 0. (c) Write f*(x) = m x. Then
+    f*(xʲ) = mʲxʲ, so the trace on H²ʲ(; Q) is mʲ and odd groups vanish:
+       L(f) = 1 + m + m² + ... + m²ᵏ.
+    For m = 1 this is 2k + 1 ≠ 0; otherwise it equals (m²ᵏ⁺¹ − 1)/(m − 1),
+    which vanishes only if m²ᵏ⁺¹ = 1, i.e. m = 1. So L(f) ≠ 0 and f has a
+    fixed point by Lefschetz. (d) f*(xⁿ) = mⁿxⁿ, so deg f = mⁿ; e.g. on
+    CP² every map has NON-NEGATIVE degree m². Common mistakes: forgetting
+    that ring isomorphism is needed (the groups of CP² and S² ∨ S⁴ agree);
+    applying the geometric series formula for m = 1. Now you try: for CP³
+    and f*(x) = −x, compute L(f); does a fixed-point-free map exist?
+    (L = 1 − 1 + 1 − 1 = 0; yes: [z₀:z₁:z₂:z₃] ↦ [−z̄₁:z̄₀:−z̄₃:z̄₂])
+
+D10. State Poincaré duality. (a) Let M be a closed connected orientable
+     3-manifold with H₁(M) = Z² ⊕ Z/6. Find all Hₖ(M) and Hᵏ(M).
+     (b) Prove χ(M) = 0 for every closed manifold of odd dimension.
+     (c) Show the intersection forms of S² × S² and CP² # CP̄² are not
+     isomorphic, so these manifolds are not homotopy equivalent.
+     Answer: (a) Hₖ: Z, Z² ⊕ Z/6, Z², Z; Hᵏ: Z, Z², Z² ⊕ Z/6, Z.
+     (b) bₖ = b₂ₘ₊₁₋ₖ pairs terms of opposite sign. (c) [[0, 1], [1, 0]]
+     is even, diag(1, −1) is odd.
+     Teacher explains: POINCARÉ DUALITY: if M is a closed R-orientable
+     n-manifold with fundamental class [M], then Hᵏ(M; R) → Hₙ₋ₖ(M; R), α ↦
+     [M] ∩ α, is an isomorphism for all k (R = Z needs orientability, R =
+     Z/2 needs nothing). (a) H₀ = Z, H₃ = Z (orientable), H₂ ≅ H¹ =
+     Hom(H₁, Z) = Z². Cohomology by UCT: H¹ = Z², H² = Hom(H₂, Z) ⊕
+     Ext(H₁, Z) = Z² ⊕ Z/6, H³ = Hom(H₃, Z) ⊕ Ext(H₂, Z) = Z. Check PD: H² ≅
+     H₁ ✓, H³ ≅ H₀ ✓. Note the torsion rule Tors H₁ ≅ Tors H_{3−1−1} =
+     Tors H₁, consistent. (b) With field coefficients F (F = Z/2 if M is
+     non-orientable), PD and UCT give dim Hₖ(M; F) = dim Hₙ₋ₖ(M; F). For n
+     odd the terms (−1)ᵏ dim Hₖ and (−1)ⁿ⁻ᵏ dim Hₙ₋ₖ cancel, and χ can be
+     computed with any field coefficients, so χ = 0. (c) On H²(S² × S²) =
+     Z⟨x, y⟩, x² = y² = 0 and xy = [M]*: the form is [[0, 1], [1, 0]], so
+     (ax + by)² = 2ab — EVEN. For CP² # CP̄² the form is diag(1, −1): x² = 1
+     is ODD. A homotopy equivalence preserves the cup product pairing up
+     to a sign on the fundamental class; the parity is preserved, so the
+     spaces differ, although both are simply connected with homology Z, 0,
+     Z², 0, Z and both have signature 0. Common mistakes: applying Z-duality
+     to non-orientable M (H₂(RP²; Z) = 0 ≠ H⁰ = Z); forgetting the Ext term
+     when passing from Hₖ to Hᵏ. Now you try: a closed orientable
+     5-manifold has H₁ = Z ⊕ Z/2 and H₂ = Z³ ⊕ Z/3. Find H₃ and H₄.
+     (H₃ ≅ H² = Z³ ⊕ Z/2, H₄ ≅ H¹ = Z)
+
+D11. (a) Explain why πₙ(X) is abelian for n ≥ 2. (b) Show that a
+     covering map p : X̃ → X induces isomorphisms on πₙ for n ≥ 2, and
+     compute πₙ(S¹), π₂(T²), π₂(RP²). (c) Using the Hopf fibration S¹ → S³
+     → S², compute π₂(S²) and π₃(S²).
+     Answer: (a) Eckmann-Hilton. (b) lifting of maps from simply connected
+     Sⁿ; πₙ(S¹) = 0 (n ≥ 2), π₂(T²) = 0, π₂(RP²) = Z. (c) both Z.
+     Teacher explains: (a) Represent f, g ∈ πₙ as maps Iⁿ → X sending ∂Iⁿ
+     to x₀. f + g uses the first coordinate: f on the left half, g on the
+     right. Shrink f and g to small cubes (the rest maps to x₀); for n ≥ 2
+     there is a SECOND coordinate direction, so we can slide the f-cube up,
+     move the g-cube to the left, and bring f down to the right: f + g ≃ g
+     + f. With n = 1 there is no room to pass. (b) Sⁿ (n ≥ 2) is simply
+     connected, so any based map Sⁿ → X lifts uniquely to X̃, and so do
+     homotopies (Sⁿ × I is simply connected); hence p_* is onto and one-
+     to-one. (Or: the LES of the fibration with discrete fibre F gives
+     πₙ(F) = 0 → πₙ(X̃) → πₙ(X) → πₙ₋₁(F) = 0 for n ≥ 2.) R → S¹ and R² →
+     T² have contractible total spaces, so πₙ(S¹) = 0 and πₙ(T²) = 0 for n
+     ≥ 2. S² → RP²: π₂(RP²) ≅ π₂(S²) = Z. (c) The fibration LES:
+        π₂(S¹) = 0 → π₂(S³) = 0 → π₂(S²) → π₁(S¹) = Z → π₁(S³) = 0,
+     so π₂(S²) ≅ Z. And π₃(S¹) = 0 → π₃(S³) → π₃(S²) → π₂(S¹) = 0, so
+     π₃(S²) ≅ π₃(S³) = Z, generated by the Hopf map η itself (Hopf
+     invariant 1: two fibres are circles linked once). Common mistakes:
+     thinking πₖ(Sⁿ) = 0 for k > n "as for homology"; treating a covering
+     as a fibration with contractible fibre instead of discrete fibre. Now
+     you try: compute π₂(SO(3)) and π₃(SO(3)) using SO(3) ≅ RP³. (0 and Z,
+     via the cover S³ → RP³)
+
+D12. State the Hurewicz and Whitehead theorems. (a) Compute π₂(S² ∨ S²),
+     π₂(S² × S²), πₙ(Sⁿ). (b) Compute π₂(S¹ ∨ S²) using the universal
+     cover. (c) Show RP² × S³ and S² × RP³ have isomorphic homotopy groups
+     but are not homotopy equivalent. (d) Why does H̃_*(P) = H̃_*(S³) for
+     the Poincaré sphere P not force P ≃ S³?
+     Answer: (a) Z², Z², Z. (b) Z[t, t⁻¹], free abelian of countable rank.
+     (c) π₁ = Z/2 and universal cover S² × S³ for both; H₅ differ (0 vs Z).
+     (d) π₁(P) has order 120; Whitehead needs simple connectivity.
+     Teacher explains: HUREWICZ: if X is (n−1)-connected and n ≥ 2 then
+     the map h : πₙ(X) → Hₙ(X), [f] ↦ f_*[Sⁿ], is an isomorphism and h is
+     onto in degree n + 1; for n = 1, π₁^ab ≅ H₁. WHITEHEAD: a map of
+     connected CW complexes inducing isomorphisms on all πₙ is a homotopy
+     equivalence; between simply connected CW complexes it suffices that
+     it be an isomorphism on all Hₙ. (a) S² ∨ S² and S² × S² are simply
+     connected (van Kampen / products), so π₂ ≅ H₂ = Z² in both cases, and
+     Sⁿ is (n−1)-connected (cellular approximation), so πₙ(Sⁿ) ≅ Hₙ(Sⁿ) = Z
+     (the isomorphism is the degree). (b) The universal cover of S¹ ∨ S² is
+     the real line with a copy of S² attached at every integer: it is
+     simply connected and ≃ ⋁_{k∈Z} S². So π₂(S¹ ∨ S²) ≅ π₂(cover) ≅
+     H₂(cover) = ⊕_{k∈Z} Z, and the deck group Z = ⟨t⟩ acts by shifting:
+     as a Z[π₁]-module it is Z[t, t⁻¹]. A finite complex can have a non-
+     finitely generated π₂! (c) Both have π₁ = Z/2 and universal cover
+     S² × S³, so πₙ ≅ πₙ(S²) × πₙ(S³) for n ≥ 2 in both. But RP² × S³ is a
+     non-orientable closed 5-manifold (H₅ = 0), while S² × RP³ is
+     orientable (H₅ = Z). No map realizes the isomorphisms, so Whitehead
+     does not apply. (d) Here a map exists: a degree-1 map P → S³
+     induces isomorphisms on homology, but P is not simply
+     connected, and π₁(P) ≅ binary icosahedral group, perfect of order
+     120 (so H₁ = π₁^ab = 0). Common mistakes: using Hurewicz without the
+     connectivity hypothesis (π₂(T²) = 0 but H₂(T²) = Z); believing
+     "isomorphic homotopy groups" means "homotopy equivalent" without a
+     map inducing them. Now you try: π₃(S² ∨ S³)? (S² ∨ S³ is only
+     1-connected, so Hurewicz only says π₃ → H₃ = Z is onto; in fact π₃ ≅
+     π₃(S²) ⊕ π₃(S³) = Z²)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Give the integral homology groups H₀, H₁, H₂, ... (up to the top
+    nonzero one).
+    a) S³                              b) S¹ ∨ S¹ ∨ S¹
+    c) S² ∨ S⁴                         d) T²
+    e) T³                              f) Σ₃
+    g) RP²                             h) RP³
+    i) RP⁶                             j) the Klein bottle K
+    k) N₄ = RP² # RP² # RP² # RP²      l) CP³
+    m) S² × S³                         n) S¹ × RP²
+    o) the Möbius band                 p) R³ minus a circle
+    q) S³ minus the Hopf link          r) Σ₂ minus one point
+    s) the lens space L(7, 2)          t) SO(3)
+    Answers:
+      a) Z, 0, 0, Z                    b) Z, Z³
+      c) Z, 0, Z, 0, Z                 d) Z, Z², Z
+      e) Z, Z³, Z³, Z                  f) Z, Z⁶, Z
+      g) Z, Z/2, 0                     h) Z, Z/2, 0, Z
+      i) Z, Z/2, 0, Z/2, 0, Z/2, 0     j) Z, Z ⊕ Z/2, 0
+      k) Z, Z³ ⊕ Z/2, 0                l) Z, 0, Z, 0, Z, 0, Z
+      m) Z, 0, Z, Z, 0, Z              n) Z, Z ⊕ Z/2, Z/2, 0
+      o) Z, Z (≃ S¹)                   p) Z, Z, Z (≃ S¹ ∨ S²)
+      q) Z, Z², Z (≃ T² × (0, 1))      r) Z, Z⁴ (≃ ⋁⁴ S¹)
+      s) Z, Z/7, 0, Z                  t) Z, Z/2, 0, Z (SO(3) ≅ RP³)
+
+M2. Compute the degree.
+    a) z ↦ z⁵ on S¹                    b) z ↦ z̄³ on S¹
+    c) the antipodal map of S⁴         d) the antipodal map of S⁵
+    e) (x₁, x₂, x₃) ↦ (−x₁, −x₂, x₃) on S²
+    f) (x₁, ..., x₇) ↦ (−x₁, x₂, ..., x₇) on S⁶
+    g) a constant map Sⁿ → Sⁿ          h) f ∘ g with deg f = 3, deg g = −2
+    i) the suspension Σf of a degree-4 map
+    j) z ↦ z³z̄⁵ on S¹                  k) z ↦ z⁴ − 7z + 1 on CP¹ = S²
+    l) z ↦ (z³ + 1)/(z² − 2) on CP¹ (a rational map)
+    m) z ↦ z̄² on CP¹                   n) q ↦ q³ on S³ ⊂ H (quaternions)
+    o) a map S⁶ → S⁶ with no fixed point
+    p) a map S⁴ → S⁴ with f(x) ≠ −x for all x
+    q) S² → S² ∨ S² (pinch) followed by id ∨ (antipodal)
+    r) the same pinch followed by id ∨ id
+    s) f with a regular value whose preimage has 4 points with local
+       degrees +1, +1, −1, +1
+    t) rotation of S² by angle π about an axis
+    Answers:
+      a) 5       b) −3      c) −1      d) 1       e) 1       f) −1
+      g) 0       h) −6      i) 4       j) −2      k) 4       l) 3
+      m) −2      n) 3       o) −1      p) 1       q) 0       r) 2
+      s) 2       t) 1
+
+M3. Relative homology, exact sequences and Mayer-Vietoris. Give Hₖ for
+    all k (list H₀, H₁, ...), or the requested quantity.
+    a) Hₖ(D², S¹)                      b) Hₖ(S², 3 points)
+    c) Hₖ(R³, R³ ∖ 0)                   d) Hₖ(S¹ × I, S¹ × ∂I)
+    e) Hₖ(Möbius band, boundary circle)
+    f) Hₖ(T², T¹) with T¹ = the 1-skeleton S¹ ∨ S¹
+    g) Hₖ(Sⁿ, Sⁿ ∖ x)                    h) H̃ₖ(Σ RP²) (suspension)
+    i) Hₖ(S¹ ∨ RP²)                     j) Hₖ(S² with north and south
+                                           poles identified)
+    k) Hₖ(R² minus k points)            l) Hₖ(S² ∪ an equatorial disc)
+    m) T² = A ∪ B, A, B annuli, A ∩ B two annuli: rank of the kernel of
+       H₁(A ∩ B) → H₁(A) ⊕ H₁(B)
+    n) K = two Möbius bands glued along the boundary: the map H₁(A ∩ B)
+       → H₁(A) ⊕ H₁(B), and the resulting H₁(K), H₂(K)
+    o) Hₖ(X, x₀) for X path connected (in terms of H(X))
+    p) Hₖ(Dⁿ, Dⁿ ∖ {0})                  q) Hₖ(RP², RP¹)
+    Answers:
+      a) 0, 0, Z                          b) 0, Z², Z
+      c) 0, 0, 0, Z                       d) 0, Z, Z (quotient ≃ S² ∨ S¹)
+      e) 0, Z/2, 0 (quotient is RP²)      f) 0, 0, Z (quotient S²)
+      g) Z in degree n only               h) 0, 0, Z/2, 0
+      i) Z, Z ⊕ Z/2, 0                    j) Z, Z, Z (≃ S² ∨ S¹)
+      k) Z, Zᵏ                            l) Z, 0, Z² (≃ S² ∨ S²)
+      m) 1 (kernel spanned by (1, −1); it gives H₂(T²) = Z)
+      n) 1 ↦ (2, 2) (up to sign); injective so H₂(K) = 0, and H₁(K) =
+         Z²/⟨(2, 2)⟩ ≅ Z ⊕ Z/2
+      o) H̃ₖ(X)                            p) Z in degree n only
+      q) 0, 0, Z (quotient RP²/RP¹ = S²)
+
+M4. Cellular homology. X has one 0-cell unless stated; 1-cells are loops
+    a, b, c, ...; 2-cells are attached along the words given. Compute
+    H₁ and H₂ (and higher groups where asked).
+    a) one 1-cell a, one 2-cell a⁵      b) one 1-cell a, one 2-cell a⁰
+                                           (constant attaching map)
+    c) a, b; 2-cell a²b³                d) a, b; 2-cell aba⁻¹b⁻¹a²
+    e) a, b; 2-cells a², b²             f) a, b; 2-cells a²b⁴, a⁴b²
+    g) a, b, c; 2-cells a²b, b²c, c²a   h) a, b; 2-cells ab, ab⁻¹
+    i) a; 2-cell aaa⁻¹ (dunce cap)      j) a, b; 2-cell abab⁻¹ plus a
+                                           second 2-cell b
+    k) cells in dims 0, 1, 2, 3 with d₁ = 0, d₂ = 0, d₃ = 3: all Hₖ
+    l) the lens space L(p, q): chain complex Z → Z → Z → Z with d₁ = 0,
+       d₂ = p, d₃ = 0: all Hₖ
+    m) S² × S² with cells in dims 0, 2, 2, 4: all Hₖ
+    n) RP^∞: all Hₖ                     o) CP^∞: all Hₖ
+    p) the 2-complex of ⟨a, b | a³, b³, (ab)³⟩: H₁ and H₂
+    Answers:
+      a) Z/5, 0            b) Z, Z (S¹ ∨ S²)       c) Z, 0 (gcd(2, 3) = 1)
+      d) Z ⊕ Z/2, 0 (exponent sums 2, 0)            e) Z/2 ⊕ Z/2, 0
+      f) Z/2 ⊕ Z/6, 0 (Smith form diag(2, 6), det = −12)
+      g) Z/9, 0 (Smith form diag(1, 1, 9))
+      h) Z/2, 0 (matrix [[1, 1], [1, −1]], det −2)
+      i) 0, 0 (it is contractible)
+      j) Z/2, 0 (killing b in the Klein bottle)
+      k) Z, Z, Z/3, 0
+      l) Z, Z/p, 0, Z
+      m) Z, 0, Z², 0, Z
+      n) Z, then Z/2 in odd degrees, 0 in even degrees > 0
+      o) Z in every even degree, 0 in odd degrees
+      p) Z/3 ⊕ Z/3 (rows (3, 0), (0, 3), (3, 3)) and Z (3 2-cells minus
+         rank 2 of d₂)
+
+M5. Euler characteristic and the Lefschetz number.
+    a) χ(Sⁿ)                            b) χ(Σ_g)
+    c) χ(N_h)                           d) χ(CPⁿ)
+    e) χ(RPⁿ)                           f) χ(S² × Σ₂)
+    g) the genus of a 3-sheeted connected cover of Σ₂
+    h) χ(S² ∨ T²)                       i) χ(L(p, q))
+    j) the Petersen graph (10 vertices, 15 edges): χ and rank H₁
+    k) L(f) for f : Sⁿ → Sⁿ of degree d
+    l) L(antipodal map of S²), and why this is consistent
+    m) L(id_X)
+    n) L(f) for f : T² → T², f induced by A = [[2, 1], [1, 1]]
+    o) L(f) for (z, w) ↦ (z², w³) on S¹ × S¹
+    p) L(f) for f : CP² → CP² with f*(x) = 3x
+    q) does every map RP² → RP² have a fixed point?
+    r) does every map T² → T² have a fixed point?
+    s) χ of a closed orientable 3-manifold, and of S¹ ∨ S¹ ∨ S¹
+    Answers:
+      a) 1 + (−1)ⁿ            b) 2 − 2g            c) 2 − h
+      d) n + 1                e) 1 (n even), 0 (n odd)
+      f) 2 · (−2) = −4        g) χ = −6, so genus 4
+      h) 2 + 0 − 1 = 1        i) 0                j) −5, 6
+      k) 1 + (−1)ⁿd            l) 1 + (−1) = 0: the map has no fixed
+                                  points
+      m) χ(X)                 n) det(I − A) = −1 (1 − tr A + det A)
+      o) det(I − diag(2, 3)) = 2
+      p) 1 + 3 + 9 = 13       q) yes: H̃(RP²; Q) = 0, so L(f) = 1
+      r) no: a translation (L = 0)
+      s) 0 and −2
+
+M6. Universal coefficients and coefficients. Compute.
+    a) Hom(Z/6, Z), Ext(Z/6, Z)         b) Hom(Z/4, Z/6), Ext(Z/4, Z/6)
+    c) Z/4 ⊗ Z/6, Tor(Z/4, Z/6)         d) Z/3 ⊗ Q, Tor(Z/3, Q)
+    e) H*(RP³; Z)                       f) H*(RP⁴; Z)
+    g) H*(RP⁴; Z/2)                     h) Hₖ(RP²; Z/3)
+    i) H*(K; Q)                         j) H*(K; Z/3)
+    k) H*(L(p, q); Z)                   l) H*(S¹ ∪ₙ D²; Z)
+    m) Hₖ(RP²; Z/2) via the homology UCT
+    n) X connected with H₁ = Z³ ⊕ Z/4, H₂ = Z ⊕ Z/2, Hₖ = 0 for k ≥ 3:
+       H*(X; Z)
+    o) the same X: dimensions of H*(X; Z/2); check χ
+    p) the same X: Hₖ(X; Z/4)
+    q) H¹(X; Z) always torsion-free? H²(X; Z) always?
+    Answers:
+      a) 0, Z/6              b) Z/2, Z/2          c) Z/2, Z/2
+      d) 0, 0                e) Z, 0, Z/2, Z      f) Z, 0, Z/2, 0, Z/2
+      g) Z/2 in degrees 0-4  h) Z/3, 0, 0 (2 is invertible mod 3)
+      i) Q, Q, 0             j) Z/3, Z/3, 0
+      k) Z, 0, Z/p, Z        l) Z, 0, Z/n (n ≠ 0)
+      m) Z/2, Z/2 (Z/2 ⊗ Z/2), Z/2 (Tor(Z/2, Z/2))
+      n) Z, Z³, Z ⊕ Z/4, Z/2
+      o) 1, 4, 3, 1; 1 − 4 + 3 − 1 = −1 = 1 − 3 + 1 (ranks) ✓
+      p) Z/4, (Z/4)⁴, Z/4 ⊕ Z/2 ⊕ Z/4 (Tor(Z/4, Z/4)), Z/2 (Tor(Z/2,
+         Z/4))
+      q) yes (Hom(H₁, Z)); no (H²(RP²) = Z/2)
+
+M7. Künneth formula. Give the integral homology (H₀, H₁, ...) or the
+    requested Betti numbers / Poincaré polynomial.
+    a) T³ = S¹ × S¹ × S¹ (Betti numbers)
+    b) S² × S⁴                         c) RP² × S²
+    d) RP² × RP²                       e) RP³ × RP³
+    f) Σ₂ × S² (Betti numbers)         g) CP² × CP³ (Poincaré polynomial)
+    h) S¹ × L(3, 1)                    i) M(Z/2, 1) × M(Z/3, 1), where
+                                          M(Z/n, 1) = S¹ ∪ₙ D²
+    j) dimensions of H*(RP² × RP²; Z/2)
+    k) dimensions of H*(RP³ × RP³; Z/2), and check against e)
+    l) Sᵖ × S^q, p ≠ q, p, q ≥ 1
+    m) T² × RP²
+    Answers:
+      a) 1, 3, 3, 1                    b) Z, 0, Z, 0, Z, 0, Z
+      c) Z, Z/2, Z, Z/2, 0             d) Z, (Z/2)², Z/2, Z/2, 0
+      e) Z, (Z/2)², Z/2, Z² ⊕ Z/2, (Z/2)², 0, Z
+      f) 1, 4, 2, 4, 1 ((1 + 4t + t²)(1 + t²))
+      g) 1 + 2t² + 3t⁴ + 3t⁶ + 2t⁸ + t¹⁰
+      h) Z, Z ⊕ Z/3, Z/3, Z, Z
+      i) Z, Z/6, 0, 0, 0 (Z/2 ⊗ Z/3 = Tor(Z/2, Z/3) = 0)
+      j) 1, 2, 3, 2, 1                 k) 1, 2, 3, 4, 3, 2, 1 ✓
+      l) Z in degrees 0, p, q, p + q
+      m) Z, Z² ⊕ Z/2, Z ⊕ (Z/2)², Z/2, 0
+
+M8. Cup products. Compute, or answer the question.
+    a) In H*(T²) = Λ[a, b]: a ∪ b, b ∪ a, a ∪ a
+    b) In H*(T³): (a₁ + a₂) ∪ (a₁ − a₂), and (a₁ + a₃)(a₂ − a₃)a₁
+    c) Σ₂, symplectic basis a₁, b₁, a₂, b₂ (aᵢbᵢ = [Σ]*): (a₁ + 2a₂) ∪
+       (3b₁ + b₂), and (a₁ + b₁)²
+    d) In H*(CP³): (2x) ∪ (3x²), and (x + x²)²
+    e) In H*(RP³; Z/2): a³, and in H*(RP²; Z/2): (a + a²)²
+    f) H*(RP^∞; Z/2) and H*(RP^∞; Z) as rings
+    g) In H*(S² × S²) = Λ-like ring with x² = y² = 0: (x + y)², (2x − y)²
+    h) Intersection forms and signatures of CP², CP² # CP², CP² # CP̄²,
+       S² × S², CP⁴ (on H⁴)
+    i) Is S² × S² ≃ CP² # CP̄²?
+    j) f : CP² → CP², f*(x) = −2x: deg f
+    k) f : S² × S² → S² × S², f*(x) = 2x + y, f*(y) = x + 3y: deg f
+    l) The degree on H⁴ of any map S⁴ → CP²
+    m) Why is α ∪ α = 0 for every α ∈ H¹(X; Z)? For every α ∈ H³(X; Z)
+       with H⁶(X; Z) torsion-free?
+    n) Show there is no map g : RPⁿ → RPᵐ with g*(a) ≠ 0 in H¹(; Z/2)
+       when n > m
+    o) In C_η = S² ∪_η D⁴ (η the Hopf map): x² = ? (the Hopf invariant)
+    p) In S¹ ∨ S¹ ∨ S² (classes α, β ∈ H¹, γ ∈ H²): α ∪ β, α ∪ γ
+    Answers:
+      a) [T²]*, −[T²]*, 0              b) −2a₁a₂; −a₁a₂a₃
+      c) 3a₁b₁ + 2a₂b₂ = 5[Σ]*; a₁b₁ + b₁a₁ = 0
+      d) 6x³; x² + 2x³ (x⁴ = 0)         e) a³ ≠ 0 (generator of H³); a²
+                                          (cross terms 2a³ = 0)
+      f) Z/2[a], |a| = 1; Z[y]/(2y), |y| = 2
+      g) 2xy; −4xy
+      h) (1), σ = 1; diag(1, 1), σ = 2; diag(1, −1), σ = 0;
+         [[0, 1], [1, 0]], σ = 0; (1) generated by x², σ = 1
+      i) no: even form vs odd form (though both have σ = 0)
+      j) 4                             k) 2·3 + 1·1 = 7
+      l) 0 (f*x ∈ H²(S⁴) = 0, so f*(x²) = 0)
+      m) degree 1: α = f*θ for some f : X → S¹ = K(Z, 1), and θ² ∈
+         H²(S¹) = 0; degree 3: α² = (−1)⁹α² gives 2α² = 0, so α² = 0 in
+         the torsion-free group H⁶
+      n) g*(a) = a′ would give a′ᵐ⁺¹ = g*(aᵐ⁺¹) = 0, but a′ᵐ⁺¹ ≠ 0 in
+         H*(RPⁿ; Z/2) since m + 1 ≤ n
+      o) C_η = CP², so x² generates H⁴: Hopf invariant ±1
+      p) 0, 0
+
+M9. Poincaré duality and its relatives. M denotes a closed connected
+    manifold.
+    a) M⁴ orientable, simply connected, b₂ = 5: all Hₖ(M) and χ
+    b) M³ orientable, H₁ = Z/7: all Hₖ
+    c) M⁵ orientable, H₁ = Z ⊕ Z/2, H₂ = Z³ ⊕ Z/3: H₃, H₄, H₅, χ
+    d) M³ = RP² × S¹: H₃(M; Z) and dimensions of H*(M; Z/2)
+    e) can a closed orientable 3-manifold have H₁ = Z/2, H₂ = Z/2?
+    f) χ of any closed 7-manifold
+    g) M⁶ orientable, b₁ = 0, b₂ = 2, b₃ = 4: b₄, b₅, χ
+    h) the genus of a closed orientable surface with χ = −6
+    i) the matrix of the cup pairing H¹(Σ_g) × H¹(Σ_g) → Z and its
+       determinant
+    j) is Hₙ₋₁(M; Z) torsion-free when M is orientable? and for RP²?
+    k) Lefschetz duality: Hₖ(S¹ × D², S¹ × S¹) for k = 0, 1, 2, 3
+    l) Alexander duality: Hₖ(S³ ∖ K), K a knot
+    m) Alexander duality: H̃ₖ(S⁴ ∖ (S¹ ⊔ S¹))
+    n) the Z/2-Betti numbers of RP⁴, checking symmetry
+    o) M⁴ orientable with π₁ = Z/3 and b₂ = 0 (e.g. a spun lens space):
+       all Hₖ(M)
+    p) is there a closed orientable 4-manifold with intersection form
+       (2)? with form diag(1, 1, −1)?
+    Answers:
+      a) Z, 0, Z⁵, 0, Z; χ = 7          b) Z, Z/7, 0, Z
+      c) H₃ ≅ H² = Z³ ⊕ Z/2, H₄ ≅ H¹ = Z, H₅ = Z; χ = 1 − 1 + 3 − 3 + 1 − 1
+         = 0
+      d) 0 (non-orientable); 1, 2, 2, 1
+      e) no: Tors H₂ ≅ Tors H₀ = 0
+      f) 0                              g) 2, 0; χ = 1 + 2 − 4 + 2 + 1 = 2
+      h) 4
+      i) block diagonal with g blocks [[0, 1], [−1, 0]]; det = 1
+      j) yes (≅ H¹ = Hom(H₁, Z)); no: H₁(RP²) = Z/2 (non-orientable)
+      k) 0, 0, Z, Z (≅ H³, H², H¹, H⁰ of S¹ × D²)
+      l) Z, Z, 0, 0 (H̃₁ ≅ H¹(K) = Z)    m) 0, 0, Z², Z
+      n) 1, 1, 1, 1, 1
+      o) Z, Z/3, Z/3, 0, Z (H₁ = π₁^ab = Z/3; Tors H₂ ≅ Tors H₁ and
+         b₂ = 0 give H₂ = Z/3; H₃ ≅ H¹ = Hom(Z/3, Z) = 0)
+      p) no: a unimodular form has determinant ±1, and (2) has det 2;
+         yes: CP² # CP² # CP̄²
+
+M10. Homotopy groups. Compute.
+     a) π₁, π₂, π₃ of S³               b) πₙ(S¹), n ≥ 2
+     c) π₂(T²), π₅(T⁷)                 d) π₂(RP²), π₃(RP²)
+     e) π₃(RP³)                        f) π₂(S² × S²), π₃(S² × S²)
+     g) π₂(S² ∨ S²)                    h) πₙ(Sⁿ ∨ Sⁿ), n ≥ 2
+     i) πₙ(CP^∞) for all n             j) πₙ(RP^∞) for all n
+     k) πₙ(Σ_g), g ≥ 1, n ≥ 2           l) π₂(S¹ ∨ S²)
+     m) π₃(S² × S³)                    n) π₁, π₂, π₃ of SO(3)
+     o) π₂(CPⁿ), π₃(CPⁿ) (n ≥ 2), π₂ₙ₊₁(CPⁿ)
+     p) π₄(S³), π₅(S⁴), π₁₀₀(S⁹⁹)      q) π₄(S²), π₅(S³), π₇(S⁵)
+     r) π₈(S⁵), π₁₀(S⁷) (stable n + 3 stem)
+     s) π₇(S⁴)                         t) π₂(S² with two points
+                                          identified)
+     Answers:
+       a) 0, 0, Z           b) 0                 c) 0, 0
+       d) Z, Z (≅ π₃(S²))    e) Z                 f) Z², Z²
+       g) Z² (Hurewicz)      h) Z²                i) Z for n = 2, else 0
+       j) Z/2 for n = 1, else 0                   k) 0 (R² is the cover)
+       l) Z[t, t⁻¹] (free abelian, infinitely generated)
+       m) Z ⊕ Z             n) Z/2, 0, Z          o) Z, 0, Z
+       p) Z/2, Z/2, Z/2 (stable n + 1 stem)
+       q) Z/2, Z/2, Z/2 (n + 2 stem)              r) Z/24, Z/24
+       s) Z ⊕ Z/12          t) Z[t, t⁻¹] (≃ S² ∨ S¹)
+
+M11. Long exact sequences of fibrations and pairs.
+     a) S¹ → S³ → S²: π₂(S²)          b) the same: π₃(S²), π₄(S²) from
+                                          π₄(S³) = Z/2
+     c) S³ → S⁷ → S⁴: show Z ⊆ π₇(S⁴)    d) path-loop: π₂(ΩS³), πₙ(ΩSⁿ⁺¹)
+     e) SO(2) → SO(3) → S²: π₁(SO(3)), given that ∂ : π₂(S²) → π₁(SO(2))
+        is multiplication by 2
+     f) U(n − 1) → U(n) → S²ⁿ⁻¹: π₁(U(n))
+     g) SU(n − 1) → SU(n) → S²ⁿ⁻¹: π₃(SU(3)), π₂(SU(n))
+     h) Z → R → S¹: πₙ(S¹), n ≥ 2        i) S¹ → S^∞ → CP^∞: πₙ(CP^∞)
+     j) Z/2 → Sⁿ → RPⁿ: πₖ(RPⁿ), 2 ≤ k
+     k) S¹ → S²ⁿ⁺¹ → CPⁿ: πₖ(CPⁿ) for k ≥ 3
+     l) F → E → B with E contractible: πₙ(B) in terms of F
+     m) pair (Dⁿ, Sⁿ⁻¹): πₙ(Dⁿ, Sⁿ⁻¹)
+     n) is η_* : π₃(S³) → π₃(S²) an isomorphism?
+     o) S⁷ → S¹⁵ → S⁸: π₁₅(S⁸) contains which infinite cyclic group?
+     p) fibration S¹ → T² → S¹ (projection): the boundary map π₂(S¹) →
+        π₁(S¹)
+     Answers:
+       a) Z                  b) Z; Z/2 (πₙ(S²) ≅ πₙ(S³) for n ≥ 3)
+       c) the fibre inclusion S³ → S⁷ is null-homotopic, so the LES
+          splits: π₇(S⁴) ≅ π₇(S⁷) ⊕ π₆(S³) = Z ⊕ Z/12
+       d) Z; πₙ₊₁(Sⁿ⁺¹) = Z
+       e) Z/2: π₂(S²) = Z --2--> π₁(SO(2)) = Z → π₁(SO(3)) → π₁(S²) = 0
+       f) Z (induction from U(1) = S¹; det : U(n) → S¹ induces it)
+       g) Z (≅ π₃(SU(2)) = π₃(S³)); 0
+       h) 0                  i) Z at n = 2 only (πₙ(CP^∞) ≅ πₙ₋₁(S¹))
+       j) πₖ(Sⁿ)             k) πₖ(S²ⁿ⁺¹)
+       l) πₙ(B) ≅ πₙ₋₁(F)    m) Z (≅ πₙ₋₁(Sⁿ⁻¹))
+       n) yes (π₃(S¹) = π₂(S¹) = 0)
+       o) Z (π₁₅(S⁸) ≅ Z ⊕ π₁₄(S⁷) = Z ⊕ Z/120)
+       p) 0 (π₂(S¹) = 0; the sequence splits: π₁(T²) = Z²)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Homotopy equivalent spaces have isomorphic homology groups.
+     b) Spaces with isomorphic homology groups are homotopy equivalent.
+     c) Spaces with isomorphic cohomology RINGS are homotopy equivalent.
+     d) A simply connected CW complex with H̃_* = 0 is contractible.
+     e) A CW complex with H̃_* = 0 is contractible.
+     f) H¹(X; Z) is torsion-free for every X.
+     g) H₁(X; Z) is torsion-free for every X.
+     h) Hⁿ(X; Z) ≅ Hom(Hₙ(X), Z) for every X.
+     i) Every closed n-manifold M (connected) has Hₙ(M; Z) ≅ Z.
+     j) Every closed manifold is Z/2-orientable.
+     k) πₙ(X) is abelian for n ≥ 2.
+     l) πₖ(Sⁿ) = 0 for k > n.
+     m) The cup product is commutative.
+     n) If f : Sⁿ → Sⁿ has deg f ≠ (−1)ⁿ⁺¹ then f has a fixed point.
+     o) Every closed odd-dimensional manifold has χ = 0.
+     p) The Hurewicz map π₂(X) → H₂(X) is an isomorphism for every
+        path-connected CW complex X.
+     q) A map of CW complexes inducing isomorphisms on all πₙ is a
+        homotopy equivalence.
+     r) A map inducing isomorphisms on all Hₙ is a homotopy equivalence.
+     s) Every covering map induces isomorphisms on πₙ for n ≥ 2.
+     t) If M⁴ is a closed simply connected 4-manifold then H₂(M) is free.
+     u) A finite CW complex has finitely generated homotopy groups.
+     v) If L(f) = 0 then f has no fixed point.
+     Answers:
+       a) T
+       b) F: T² and S¹ ∨ S¹ ∨ S²
+       c) F: the Poincaré homology sphere P and S³ (π₁ differs)
+       d) T (Hurewicz gives all πₙ = 0, then Whitehead)
+       e) F: P minus an open ball is acyclic but π₁ ≠ 0
+       f) T (Hom(H₁, Z) and Ext(H₀, Z) = 0)
+       g) F: RP²
+       h) F: H²(RP²) = Z/2 but H₂(RP²) = 0 (the Ext term)
+       i) F: RP², Klein bottle (Hₙ = 0 when non-orientable)
+       j) T
+       k) T
+       l) F: π₃(S²) = Z
+       m) F: graded commutative; b ∪ a = −a ∪ b in T²
+       n) T (fixed-point-free maps are homotopic to the antipodal map)
+       o) T (Z/2 Poincaré duality)
+       p) F: π₂(T²) = 0 but H₂(T²) = Z (needs simple connectivity)
+       q) T (Whitehead's theorem)
+       r) F: a degree-1 map P → S³ (true for simply connected complexes)
+       s) T
+       t) T (H₁ = 0, so Tors H₂ ≅ Tors H₁ = 0 by duality)
+       u) F: π₂(S¹ ∨ S²) ≅ Z[t, t⁻¹] (true if simply connected, by Serre)
+       v) F: the identity of a circle has L = 0 and fixes every point
+
+TEACHING TIPS
+  Struggling: make the student compute H_* of every space in M1 from a
+  CW structure before touching any theorem, always writing the cellular
+  chain complex as a row of Z's with the maps written on the arrows, and
+  reading off kernels and cokernels (Smith normal form for matrices).
+  Then insist on three reflexes: "homology is homotopy-invariant, so first
+  simplify the space" (deformation retract, quotient by a contractible
+  subcomplex); "cohomology = homology with torsion shifted up one
+  degree" (UCT); and "when groups agree, compare rings" (T² vs S¹ ∨ S¹ ∨
+  S², CP² vs S² ∨ S⁴). For homotopy groups, draw the Eckmann-Hilton
+  picture and always ask whether a covering or a fibration is available.
+  Harder: prove the Mayer-Vietoris sequence from the snake lemma and the
+  small-simplices lemma; prove excision; derive the cellular boundary
+  formula; prove Poincaré duality via the Mayer-Vietoris argument on
+  convex open sets in Rⁿ; show that the Hopf invariant is 1 for the
+  Hopf maps and use Steenrod squares (Adams) to show it is odd only for
+  n = 2, 4, 8, so that Rⁿ is a division algebra only for n = 1, 2, 4, 8;
+  compute H*(CPⁿ) via the Gysin sequence; prove Freudenthal's suspension
+  theorem and compute π₄(S³) = Z/2; show that the Borsuk-Ulam theorem
+  follows from the ring H*(RPⁿ; Z/2); and compute π₂ of a non-simply
+  connected complex as a Z[π₁]-module.
+
+
+================================================================================
+TOPIC 12.10 — DIFFERENTIAL TOPOLOGY AND GEOMETRY: MANIFOLDS, VECTOR BUNDLES,
+DIFFERENTIAL FORMS, DE RHAM COHOMOLOGY, RIEMANNIAN METRICS, CONNECTIONS,
+CURVATURE, GEODESICS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - SMOOTH MANIFOLD of dimension n: a Hausdorff, second-countable space
+    with an ATLAS of charts φ_α : U_α → Rⁿ whose TRANSITION MAPS φ_β ∘ φ_α⁻¹
+    are C^∞; a maximal atlas is a SMOOTH STRUCTURE. Examples: Rⁿ, Sⁿ (two
+    stereographic charts, transition u ↦ u/|u|²), RPⁿ and CPⁿ (charts
+    {xᵢ ≠ 0}), tori Tⁿ = Rⁿ/Zⁿ, open subsets, products, matrix groups.
+    Hausdorff matters: the line with two origins is locally Euclidean but
+    not a manifold. PARTITIONS OF UNITY exist on every manifold.
+  - TANGENT SPACE TₚM = derivations of germs at p, basis ∂/∂x¹, ..., ∂/∂xⁿ;
+    the DIFFERENTIAL dFₚ : TₚM → T_{F(p)}N is the Jacobian in charts.
+    IMMERSION (dF injective), SUBMERSION (dF surjective), EMBEDDING
+    (immersion + homeomorphism onto image). INVERSE FUNCTION THEOREM,
+    RANK THEOREM. REGULAR VALUE THEOREM: if c is a regular value of F :
+    M → N then F⁻¹(c) is an embedded submanifold of dimension dim M −
+    dim N. SARD: critical values have measure 0. WHITNEY: every n-manifold
+    embeds in R²ⁿ.
+  - MATRIX GROUPS: GL(n) (dim n²), SL(n) = det⁻¹(1) (n² − 1), O(n) (n(n −
+    1)/2, tangent space at I = skew matrices), U(n) (n²), SU(n) (n² − 1),
+    Sp(2n, R) (n(2n + 1)); Grassmannian G_k(Rⁿ) has dimension k(n − k).
+  - VECTOR FIELDS AND FLOWS: a vector field X is a section of TM; its
+    integral curves form a local FLOW φ_t (global if M is compact). LIE
+    BRACKET [X, Y]f = X(Yf) − Y(Xf), in coordinates [X, Y]ⁱ = Xʲ∂ⱼYⁱ −
+    Yʲ∂ⱼXⁱ; antisymmetric, Jacobi identity, [X, fY] = (Xf)Y + f[X, Y].
+    [X, Y] = 0 iff the flows commute; [X, Y] measures the failure of the
+    "square" φ₋ₛ ψ₋ₜ φₛ ψₜ to close (displacement ≈ st[X, Y]). FROBENIUS: a
+    distribution is integrable iff it is closed under brackets.
+  - VECTOR BUNDLE π : E → M of rank k: fibres Eₚ ≅ Rᵏ, LOCAL TRIVIALIZATIONS
+    π⁻¹(U) ≅ U × Rᵏ, TRANSITION FUNCTIONS g_αβ : U_α ∩ U_β → GL(k) with the
+    COCYCLE condition g_αβ g_βγ = g_αγ. Constructions: TM, T*M, ΛᵏT*M,
+    ⊕ (Whitney sum), ⊗, Hom, dual, pullback. A rank-k bundle is trivial iff
+    it has k everywhere-independent sections. Examples: the MÖBIUS line
+    bundle (= tautological bundle over RP¹) is non-trivial; TS¹, TS³, TS⁷
+    are trivial; TS² is not (HAIRY BALL); TSⁿ ⊕ ε¹ ≅ εⁿ⁺¹ (stably trivial).
+    Real line bundles over M ↔ H¹(M; Z/2); complex ones ↔ H²(M; Z) (c₁).
+  - DIFFERENTIAL FORMS Ωᵏ(M): sections of ΛᵏT*M, locally ∑ f_I dx^I.
+    WEDGE product (α ∧ β = (−1)^{kl} β ∧ α), EXTERIOR DERIVATIVE d (the
+    unique antiderivation with df = differential, d² = 0), PULLBACK F*
+    (commutes with d and ∧), INTERIOR PRODUCT i_X, LIE DERIVATIVE with
+    CARTAN'S MAGIC FORMULA L_X = d i_X + i_X d. In R³, d on 0-, 1-, 2-forms
+    is grad, curl, div, and d² = 0 is curl grad = 0, div curl = 0.
+  - ORIENTATION AND INTEGRATION: M is orientable iff it has a nowhere-zero
+    n-form (iff an atlas with det(transition Jacobians) > 0); ∫_M ω defined
+    with charts and a partition of unity. STOKES: ∫_M dω = ∫_{∂M} ω for
+    compactly supported ω on an oriented manifold with boundary (Green,
+    Gauss, classical Stokes, FTC are special cases). Consequence: on a
+    closed manifold ∫_M dη = 0. DEGREE of F : M → N (closed, oriented,
+    connected, same dimension): ∫_M F*ω = deg F ∫_N ω.
+  - DE RHAM COHOMOLOGY Hᵏ_dR(M) = ker d / im d (closed / exact k-forms).
+    H⁰ = locally constant functions = R^(#components). POINCARÉ LEMMA: on a
+    star-shaped open set every closed k-form (k ≥ 1) is exact. HOMOTOPY
+    INVARIANCE, MAYER-VIETORIS long exact sequence, KÜNNETH formula. The
+    form dθ = (x dy − y dx)/(x² + y²) is closed, not exact on R² ∖ 0
+    (∮ = 2π). For M closed, connected, oriented: Hⁿ(M) ≅ R via ∫_M, and
+    POINCARÉ DUALITY Hᵏ ≅ (Hⁿ⁻ᵏ)*; non-orientable ⇒ Hⁿ = 0. DE RHAM'S
+    THEOREM: Hᵏ_dR(M) ≅ Hᵏ(M; R) (singular). χ(M) = ∑(−1)ᵏ dim Hᵏ.
+  - STANDARD COMPUTATIONS: Hᵏ(Sⁿ) = R for k = 0, n, else 0; H*(Tⁿ) has
+    dimensions C(n, k); genus-g surface Σ_g: 1, 2g, 1; RPⁿ: R in degree 0
+    (and n if n is odd); CPⁿ: R in even degrees 0, ..., 2n; Klein bottle:
+    1, 1, 0; R² minus k points: 1, k.
+  - POINCARÉ-HOPF: for a vector field with isolated zeros on a closed
+    manifold, ∑ indices = χ(M); hence a closed M has a nowhere-zero vector
+    field iff χ(M) = 0 (so on S^even every field vanishes somewhere).
+  - RIEMANNIAN METRIC g: a smoothly varying inner product on each TₚM,
+    locally g = gᵢⱼ dxⁱ dxʲ. Exists on every manifold (partition of unity).
+    Length L(γ) = ∫|γ′| dt, distance d(p, q) = inf L, volume form √det g
+    dx¹ ∧ ... ∧ dxⁿ. Models: Euclidean Rⁿ, round Sⁿ, HYPERBOLIC upper half
+    plane (dx² + dy²)/y² with cosh d(z, w) = 1 + |z − w|²/(2 Im z Im w),
+    Poincaré disk 4|dz|²/(1 − |z|²)². Induced metrics on submanifolds.
+  - CONNECTIONS on a bundle E: ∇ : Γ(TM) × Γ(E) → Γ(E), C^∞-linear in X,
+    LEIBNIZ in s: ∇_X(fs) = (Xf)s + f∇_X s. Locally ∇ = d + A (A a matrix
+    of 1-forms); the difference of two connections is a tensor, but the
+    Christoffel symbols are NOT a tensor. PARALLEL TRANSPORT along curves;
+    HOLONOMY. LEVI-CIVITA THEOREM: a unique torsion-free (∇_X Y − ∇_Y X =
+    [X, Y]) metric (Xg(Y, Z) = g(∇_X Y, Z) + g(Y, ∇_X Z)) connection, given
+    by the KOSZUL formula; Γᵏᵢⱼ = ½gᵏˡ(∂ᵢgⱼₗ + ∂ⱼgᵢₗ − ∂ₗgᵢⱼ).
+  - CURVATURE R(X, Y)Z = ∇_X∇_Y Z − ∇_Y∇_X Z − ∇_{[X,Y]}Z (a tensor; for a
+    bundle F = dA + A ∧ A). Symmetries R_{abcd} = −R_{bacd} = −R_{abdc} =
+    R_{cdab}, first Bianchi R(X,Y)Z + cyclic = 0; n²(n² − 1)/12 independent
+    components. SECTIONAL K(σ) = ⟨R(X,Y)Y, X⟩/|X ∧ Y|², RICCI Ric(Y, Z) =
+    tr(X ↦ R(X,Y)Z), SCALAR s = tr Ric. Constant curvature κ: Sⁿ (κ = 1,
+    Ric = (n − 1)g, s = n(n − 1)), Rⁿ (0), Hⁿ (−1). For surfaces K = Gauss
+    curvature, s = 2K; THEOREMA EGREGIUM: K is intrinsic (mean curvature is
+    not). Formulas: dr² + G(r)²dθ² ⇒ K = −G″/G; e^{2f}(dx² + dy²) ⇒ K =
+    −e^{−2f}Δf; graph z = f(x, y) ⇒ K = (f_xx f_yy − f_xy²)/(1 + |∇f|²)².
+  - GAUSS-BONNET: ∫_M K dA + ∫_{∂M} k_g ds + ∑(exterior angles) = 2πχ(M).
+    Closed surfaces: ∫K dA = 2πχ = 2π(2 − 2g). Geodesic triangles: angle
+    sum − π = ∫_T K dA (sphere: excess = area; H²: defect = area).
+  - GEODESICS: ∇_γ′γ′ = 0, i.e. ẍᵏ + Γᵏᵢⱼ ẋⁱ ẋʲ = 0; critical points of
+    energy/length; constant speed. Examples: lines in Rⁿ, great circles on
+    Sⁿ, vertical lines and semicircles ⟂ R in H², helices on a cylinder.
+    EXPONENTIAL MAP exp_p(v) = γ_v(1), a diffeomorphism near 0 (normal
+    coordinates); geodesics are LOCALLY minimizing. CLAIRAUT: r cos ψ =
+    const on surfaces of revolution. HOPF-RINOW: for connected M, metric
+    completeness ⇔ geodesic completeness ⇔ closed bounded sets compact, and
+    then any two points are joined by a minimizing geodesic.
+  - JACOBI FIELDS AND COMPARISON: J″ + R(J, γ′)γ′ = 0; CONJUGATE points
+    (antipodes on Sⁿ at distance π) — past one a geodesic stops minimizing.
+    BONNET-MYERS: complete, Ric ≥ (n − 1)k g with k > 0 ⇒ diam ≤ π/√k, M
+    compact, π₁ finite. CARTAN-HADAMARD: complete, K ≤ 0 ⇒ exp_p is a
+    covering, universal cover ≅ Rⁿ (no metric of K ≤ 0 on Sⁿ).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Show that the two stereographic projections σ_N, σ_S : Sⁿ ∖ {pole}
+    → Rⁿ form a smooth atlas, computing the transition map. (b) Give an
+    atlas of RPⁿ and the transition map for n = 1. (c) Why is the "line
+    with two origins" not a manifold?
+    Answer: (a) σ_S ∘ σ_N⁻¹(u) = u/|u|² on Rⁿ ∖ 0, a C^∞ involution.
+    (b) Uᵢ = {[x] : xᵢ ≠ 0}, φᵢ[x] = (x₀/xᵢ, ..., x̂ᵢ, ..., xₙ/xᵢ); for n =
+    1, u ↦ 1/u. (c) It is not Hausdorff.
+    Teacher explains: Write points of Sⁿ ⊂ Rⁿ⁺¹ as (x, t), x ∈ Rⁿ, |x|² +
+    t² = 1, N = (0, 1), S = (0, −1). The line from N through (x, t) hits
+    the plane t = 0 at σ_N(x, t) = x/(1 − t); similarly σ_S(x, t) = x/(1 +
+    t). Inverting: if u = σ_N(x, t) then |u|² = (1 + t)/(1 − t), so
+       σ_N⁻¹(u) = (2u, |u|² − 1)/(|u|² + 1).
+    Then σ_S(σ_N⁻¹(u)) = [2u/(|u|² + 1)] / [1 + (|u|² − 1)/(|u|² + 1)] =
+    2u/(2|u|²) = u/|u|². This is smooth on σ_N(Sⁿ ∖ {N, S}) = Rⁿ ∖ 0 and
+    is its own inverse, so both transition maps are C^∞: the atlas is
+    smooth. (b) On Uᵢ the ratio coordinates are well defined because
+    rescaling x does not change them; on U₀ ∩ U₁ ⊂ RP¹, u = x₁/x₀ and v =
+    x₀/x₁ = 1/u, smooth for u ≠ 0. (c) Take two copies of R glued along
+    R ∖ 0. The two origins 0₁, 0₂ have no disjoint neighbourhoods, yet
+    every point has a chart to R. Without Hausdorff, limits of sequences
+    are not unique and partitions of unity can fail. Common mistakes:
+    thinking one chart suffices for Sⁿ (Sⁿ is compact, Rⁿ is not, so no
+    single chart can cover it); forgetting to check smoothness in BOTH
+    directions. Now you try: give the transition map of CP¹ with charts
+    [z₀ : z₁] ↦ z₁/z₀ and z₀/z₁. (w = 1/z, holomorphic on C ∖ 0)
+
+D2. Prove that O(n) = {A : AᵀA = I} is a submanifold of M_n(R) ≅ R^{n²}
+    of dimension n(n − 1)/2 and identify T_I O(n). Do the same for SL(n).
+    Answer: I is a regular value of F(A) = AᵀA : M_n → Sym_n; T_I O(n) =
+    skew-symmetric matrices; SL(n) has dimension n² − 1 and T_I SL(n) =
+    trace-zero matrices.
+    Teacher explains: F takes values in the SYMMETRIC matrices Sym_n, a
+    space of dimension n(n + 1)/2 (this choice of target is the key).
+    Differentiate F along A + sH: dF_A(H) = d/ds|₀ (A + sH)ᵀ(A + sH) =
+    AᵀH + HᵀA. Surjectivity at A ∈ O(n): given S ∈ Sym_n put H = AS/2;
+    then AᵀH + HᵀA = S/2 + Sᵀ/2 = S. So I is a regular value and O(n) =
+    F⁻¹(I) is a submanifold of dimension
+       n² − n(n + 1)/2 = n(n − 1)/2,
+    with tangent space ker dF_I = {H : H + Hᵀ = 0}. (n = 2: dimension 1,
+    two circles; n = 3: dimension 3.) For SL(n): det is a polynomial, and
+    d(det)_A(H) = det(A) tr(A⁻¹H) (Jacobi's formula; at A = I it is
+    tr H). For det A = 1, H = A gives the value n ≠ 0, so the differential
+    is onto R: 1 is a regular value and dim SL(n) = n² − 1, T_I SL(n) =
+    {tr H = 0}. Common mistakes: taking the target to be M_n (then dF is
+    never onto and the theorem gives nothing); claiming det⁻¹(0) is a
+    manifold (0 is not a regular value: d det = 0 at A = 0). Now you try:
+    dim U(n), using F(A) = A*A into Hermitian matrices. (2n² − n² = n²)
+
+D3. Let X = ∂_x and Y = x ∂_y on R². (a) Compute [X, Y]. (b) Compute the
+    flows φ_t of X and ψ_s of Y and the point ψ₋ₛ φ₋ₜ ψₛ φₜ(x, y). (c) Show
+    that X = −y∂_x + x∂_y and Y = x∂_x + y∂_y commute and interpret.
+    Answer: (a) ∂_y; (b) φ_t(x, y) = (x + t, y), ψ_s(x, y) = (x, y + sx),
+    the loop ends at (x, y + st); (c) [X, Y] = 0: rotations commute with
+    dilations.
+    Teacher explains: (a) Apply to a test function f: X(Yf) = ∂_x(x f_y) =
+    f_y + x f_xy and Y(Xf) = x f_xy, so [X, Y]f = f_y, i.e. [X, Y] = ∂_y.
+    (b) Integral curves of X: ẋ = 1, ẏ = 0, so φ_t(x, y) = (x + t, y). Of
+    Y: ẋ = 0, ẏ = x, so ψ_s(x, y) = (x, y + sx). Now follow the "square":
+       (x, y) →φ_t (x + t, y) →ψ_s (x + t, y + s(x + t))
+              →φ₋ₜ (x, y + sx + st) →ψ₋ₛ (x, y + st).
+    The square fails to close by st in the ∂_y direction: exactly st[X, Y],
+    the general second-order picture. (c) Using [X, Y]ⁱ = Xʲ∂ⱼYⁱ − Yʲ∂ⱼXⁱ:
+    X(Y-components) = (X(x), X(y)) = (−y, x); Y(X-components) = (Y(−y),
+    Y(x)) = (−y, x); difference 0. The flows (rotation by t, scaling by
+    eˢ) commute, as they must when the bracket vanishes. Common mistakes:
+    forgetting the second-order terms cancel (xf_xy appears twice); sign
+    conventions — [X, Y] = XY − YX, so [Y, X] = −∂_y. Now you try:
+    [∂_x, eˣ ∂_y]. (eˣ ∂_y)
+
+D4. (a) Define the Möbius line bundle over S¹ via transition functions and
+    prove it is not trivial. (b) Show that TS¹ and TS³ are trivial and that
+    TS² is not. (c) Is Möbius ⊕ Möbius trivial?
+    Answer: (a) cover S¹ by two arcs; g = +1 on one component of the
+    overlap and −1 on the other; every section vanishes somewhere. (b)
+    TS³: x ↦ xi, xj, xk (quaternions); TS²: χ(S²) = 2 ≠ 0. (c) Yes.
+    Teacher explains: (a) Let U, V be two open arcs covering S¹; U ∩ V has
+    two components W₊, W₋. Glue U × R and V × R by (p, t) ~ (p, g(p)t)
+    with g = 1 on W₊, g = −1 on W₋ (the cocycle condition is automatic with
+    two sets). Equivalently E = [0, 1] × R/((0, t) ~ (1, −t)). A section is
+    a continuous s : [0, 1] → R with s(1) = −s(0); by the intermediate
+    value theorem s has a zero. The trivial bundle S¹ × R has the nowhere-
+    zero section 1, so E is not trivial. (b) S¹: (x, y) ↦ (−y, x) is a
+    nowhere-zero tangent field, so TS¹ ≅ S¹ × R. S³ = unit quaternions; for
+    q ∈ S³ the vectors qi, qj, qk are orthogonal to q (Re(q̄ · qi) = Re(i) =
+    0) and orthonormal, giving three independent fields: TS³ is trivial.
+    For S², a trivialization would give a nowhere-zero vector field, but by
+    Poincaré-Hopf the indices of any field sum to χ(S²) = 2 ≠ 0 (hairy
+    ball). (c) Möbius ⊕ Möbius has transition function g·I₂ = −I₂ on W₋,
+    and −I₂ lies in the path component of I₂ in GL(2) (rotation by π);
+    deforming g to I₂ shows the bundle is trivial. Common mistakes: "the
+    total space is non-orientable, so the bundle has no section" — it has
+    sections, just no NOWHERE-ZERO one; thinking "orientable ⇒ trivial"
+    in rank ≥ 2 (TS² is orientable, non-trivial). Now you try: why is
+    every real line bundle over S² trivial? (S² is simply connected:
+    H¹(S²; Z/2) = 0)
+
+D5. On R² let ω = x dy − y dx. (a) Compute dω. (b) Compute the pullback of
+    dx ∧ dy and of ω under polar coordinates and check F*(dω) = d(F*ω).
+    (c) Use Cartan's formula to compute L_X(dx ∧ dy) for X = x∂_x + y∂_y.
+    (d) Prove d² = 0 on functions in coordinates.
+    Answer: (a) 2 dx ∧ dy; (b) r dr ∧ dθ and r² dθ; (c) 2 dx ∧ dy;
+    (d) symmetry of mixed partials.
+    Teacher explains: (a) dω = dx ∧ dy − dy ∧ dx = 2 dx ∧ dy. (b) With x =
+    r cos θ, y = r sin θ:
+       dx = cos θ dr − r sin θ dθ,   dy = sin θ dr + r cos θ dθ,
+       dx ∧ dy = r cos²θ dr ∧ dθ − r sin²θ dθ ∧ dr = r dr ∧ dθ,
+       x dy − y dx = r cos θ (r cos θ dθ) + r sin θ (r sin θ dθ) = r² dθ
+    (the dr terms cancel). Check: d(r² dθ) = 2r dr ∧ dθ = F*(2 dx ∧ dy).
+    This naturality F* d = d F* is why forms are the right objects to
+    integrate: no Jacobians have to be remembered, they are built in.
+    (c) L_X = d i_X + i_X d. Here d(dx ∧ dy) = 0 and i_X(dx ∧ dy) = dx(X)
+    dy − dy(X) dx = x dy − y dx, whose d is 2 dx ∧ dy. So L_X(dx ∧ dy) =
+    2 dx ∧ dy: the flow (x, y) ↦ eᵗ(x, y) scales areas by e^{2t}, whose
+    derivative at t = 0 is 2. (d) d(df) = d(∑ ∂ᵢf dxⁱ) = ∑ᵢⱼ ∂ⱼ∂ᵢf dxʲ ∧
+    dxⁱ; the coefficient is symmetric in (i, j) and dxʲ ∧ dxⁱ is
+    antisymmetric, so the sum is 0. Common mistakes: writing dx ∧ dx = 2 dx
+    ∧ dx instead of 0; forgetting the sign in i_X (it is an antiderivation).
+    Now you try: pull back dx ∧ dy under (u, v) ↦ (u², v). (2u du ∧ dv)
+
+D6. Let ω = (x dy ∧ dz + y dz ∧ dx + z dx ∧ dy)/r³ on R³ ∖ 0, r = |x|.
+    (a) Show dω = 0. (b) Compute ∫_{S²} ω. (c) Deduce, via Stokes, that ω is
+    not exact, so H²_dR(R³ ∖ 0) ≠ 0. (d) Verify Stokes for x dy on the
+    unit disc.
+    Answer: (a) div(x/r³) = 0; (b) 4π; (c) exact would force ∫ = 0;
+    (d) both sides equal π.
+    Teacher explains: STOKES: ∫_M dη = ∫_{∂M} η. (a) dω = (∂_x(x/r³) +
+    ∂_y(y/r³) + ∂_z(z/r³)) dx ∧ dy ∧ dz, and ∂_x(x/r³) = 1/r³ − 3x²/r⁵;
+    summing, 3/r³ − 3r²/r⁵ = 0. (b) On the unit sphere r = 1 and ω
+    restricts to x dy ∧ dz + y dz ∧ dx + z dx ∧ dy = i_N(dx ∧ dy ∧ dz)
+    with N the outward normal, i.e. the AREA FORM. So ∫_{S²} ω = 4π. (Or:
+    for the closed ball, ∫_{S²}(x dy∧dz + ...) = ∫_B 3 dV = 4π.) (c) If ω
+    = dη on R³ ∖ 0, then since S² is a closed manifold, ∫_{S²} ω = ∫_{S²}
+    dη = ∫_{∂S²} η = 0, a contradiction. So [ω] ≠ 0 (in fact it spans
+    H² ≅ R, since R³ ∖ 0 ≃ S²). The same form measures flux: any closed
+    surface enclosing 0 gives 4π, one not enclosing 0 gives 0 (Gauss's law).
+    (d) D = unit disc: ∫_D d(x dy) = ∫_D dx ∧ dy = π; ∂D: x = cos t, y =
+    sin t, ∫₀^{2π} cos²t dt = π. ✓ Common mistakes: applying Stokes to ω
+    on the ball (ω is singular at 0, so B is not in its domain);
+    forgetting the orientation (outward normal first). Now you try: ∮ x dy
+    around the ellipse x²/4 + y²/9 = 1. (area = 6π)
+
+D7. (a) Prove the Poincaré lemma for 1-forms on a star-shaped open set
+    U ⊆ Rⁿ. (b) Show that dθ = (x dy − y dx)/(x² + y²) is closed but not
+    exact on R² ∖ 0, and describe H¹_dR(R² ∖ 0).
+    Answer: (a) f(x) = ∫₀¹ ∑aᵢ(tx) xᵢ dt is a primitive; (b) ∮_{S¹} dθ =
+    2π; H¹ ≅ R, every closed ω = c dθ + df with c = (1/2π)∮ω.
+    Teacher explains: (a) Let ω = ∑aᵢ dxᵢ be closed: ∂ⱼaᵢ = ∂ᵢaⱼ. U is
+    star-shaped about 0, so the segment t ↦ tx lies in U; define f(x) =
+    ∫₀¹ ∑ᵢ aᵢ(tx) xᵢ dt (the line integral of ω along it). Differentiating
+    under the integral (smooth integrand on a compact interval):
+       ∂ⱼf(x) = ∫₀¹ [aⱼ(tx) + ∑ᵢ t xᵢ ∂ⱼaᵢ(tx)] dt
+              = ∫₀¹ [aⱼ(tx) + ∑ᵢ t xᵢ ∂ᵢaⱼ(tx)] dt = ∫₀¹ d/dt[t aⱼ(tx)] dt
+              = aⱼ(x).
+    So df = ω. (b) With P = −y/ρ, Q = x/ρ, ρ = x² + y²: Q_x = (y² − x²)/ρ²
+    = P_y, so d(dθ) = 0. On the unit circle (cos t, sin t), dθ pulls back
+    to dt and ∮ = 2π. If dθ = df, then ∮ df = f(end) − f(start) = 0: so it
+    is not exact. The name: locally dθ = d(arg), but arg has no single-
+    valued branch on R² ∖ 0. Given any closed ω, put c = (1/2π)∮_{S¹}ω;
+    then ω − c dθ has zero period on every loop (all loops in R² ∖ 0 are
+    homotopic to multiples of S¹), so its line integral from a base point
+    defines f with df = ω − c dθ. Hence H¹(R² ∖ 0) = R[dθ]. Common
+    mistakes: concluding "closed ⇒ exact" without a star-shaped (or simply
+    connected) domain; thinking dθ is exact because it is "d of θ" (θ is
+    not a function on R² ∖ 0). Now you try: find a primitive of 2xy dx +
+    x² dy on R². (x²y)
+
+D8. (a) Use Mayer-Vietoris to compute H*_dR(Sⁿ). (b) State Künneth and
+    compute H*_dR(T²) with explicit generators. (c) Give H* of the genus-g
+    surface and check χ.
+    Answer: (a) R in degrees 0 and n, 0 otherwise. (b) H⁰ = R, H¹ = R²
+    (dx, dy), H² = R (dx ∧ dy). (c) 1, 2g, 1; χ = 2 − 2g.
+    Teacher explains: MAYER-VIETORIS for M = U ∪ V: the short exact
+    sequence 0 → Ω(M) → Ω(U) ⊕ Ω(V) → Ω(U ∩ V) → 0 (restrictions,
+    difference; surjective by a partition of unity) gives
+       ... → Hᵏ(M) → Hᵏ(U) ⊕ Hᵏ(V) → Hᵏ(U ∩ V) →δ Hᵏ⁺¹(M) → ...
+    (a) Take U = Sⁿ ∖ N, V = Sⁿ ∖ S, both ≅ Rⁿ (cohomology R in degree 0
+    only, Poincaré lemma), with U ∩ V ≅ Sⁿ⁻¹ × R ≃ Sⁿ⁻¹. For k ≥ 1 the
+    middle terms Hᵏ(U) ⊕ Hᵏ(V) vanish, so δ : Hᵏ(Sⁿ⁻¹) ≅ Hᵏ⁺¹(Sⁿ). In low
+    degree: 0 → H⁰(Sⁿ) → R² → H⁰(Sⁿ⁻¹) → H¹(Sⁿ) → 0. For n ≥ 2, Sⁿ⁻¹ is
+    connected, the map R² → R, (a, b) ↦ a − b is onto, so H¹(Sⁿ) = 0 and
+    H⁰ = R. Start with S¹ (n = 1: H⁰(S⁰) = R², so H¹(S¹) = R) and induct:
+    Hⁿ(Sⁿ) ≅ Hⁿ⁻¹(Sⁿ⁻¹) ≅ ... ≅ H¹(S¹) = R, all other positive degrees 0.
+    (b) KÜNNETH: Hᵏ(M × N) ≅ ⊕_{i+j=k} Hⁱ(M) ⊗ Hʲ(N) (finite-dimensional
+    cohomology). T² = S¹ × S¹: dims 1, 1 + 1, 1. Generators on R²/Z²: dx
+    and dy (closed, periods 1 around the two circles, so not exact) and
+    dx ∧ dy (∫_{T²} = 1 ≠ 0). (c) Σ_g: H⁰ = R (connected), H² = R
+    (closed, oriented), and H¹ = R^{2g} (from the 4g-gon or Mayer-
+    Vietoris); χ = 1 − 2g + 1 = 2 − 2g. Common mistakes: forgetting to
+    check the connecting map in degree 0; applying Künneth to non-finite-
+    type spaces carelessly. Now you try: dimensions of H*(S² × S²).
+    (1, 0, 2, 0, 1)
+
+D9. The hyperbolic upper half-plane H² = {y > 0}, g = (dx² + dy²)/y².
+    (a) Compute the length of the vertical segment from ai to bi (0 < a <
+    b) and prove it is the shortest curve. (b) Compute the length of the
+    horizontal segment from i to 1 + i and compare with d(i, 1 + i) =
+    arccosh(3/2). (c) Why does every manifold admit a Riemannian metric?
+    Answer: (a) ln(b/a); (b) 1 > arccosh(3/2) ≈ 0.96242; horizontal lines
+    are not geodesics. (c) glue local Euclidean metrics with a partition
+    of unity; positive-definiteness is preserved by convex combinations.
+    Teacher explains: (a) For γ(t) = (x(t), y(t)), L(γ) = ∫ √(ẋ² + ẏ²)/y
+    dt. On the vertical segment x = 0, y = t ∈ [a, b]: L = ∫_a^b dt/t =
+    ln(b/a). For ANY curve from ai to bi,
+       L(γ) ≥ ∫ |ẏ|/y dt ≥ |∫ ẏ/y dt| = ln(b/a),
+    with equality iff ẋ ≡ 0 and ẏ ≥ 0: the vertical segment is the unique
+    minimizer, hence a geodesic, and d(ai, bi) = ln(b/a). Check with the
+    formula cosh d = 1 + |z − w|²/(2 Im z Im w): for i, 2i, 1 + 1/4 = 5/4
+    = cosh(ln 2) ✓. (b) Along y = 1 the metric is dx², length 1. But
+    cosh d(i, 1 + i) = 1 + 1/2 = 3/2, d ≈ 0.96242 < 1: the geodesic (the
+    arc of the circle centred at 1/2 of radius √5/2) bulges upward, where
+    the metric is smaller. As y → 0 distances blow up: the real axis is at
+    infinite distance ("boundary at infinity"). (c) Cover M by charts
+    U_α with Euclidean metrics g_α = ∑(dxᵢ)², take a partition of unity
+    ρ_α subordinate to it and put g = ∑ρ_α g_α: locally finite, smooth,
+    and at each point a convex combination of inner products is an inner
+    product. (The same trick FAILS for Lorentzian metrics: S² has none.)
+    Common mistakes: measuring hyperbolic lengths with the Euclidean
+    metric; assuming straight lines are geodesics. Now you try: d(i, e·i).
+    (1)
+
+D10. (a) Derive the Koszul formula and deduce the Christoffel symbols of
+     the Levi-Civita connection. (b) Compute them for the round sphere g =
+     dθ² + sin²θ dφ².
+     Answer: (a) 2g(∇_X Y, Z) = Xg(Y, Z) + Yg(X, Z) − Zg(X, Y) + g([X, Y],
+     Z) − g([X, Z], Y) − g([Y, Z], X); Γᵏᵢⱼ = ½gᵏˡ(∂ᵢgⱼₗ + ∂ⱼgᵢₗ − ∂ₗgᵢⱼ).
+     (b) Γ^θ_φφ = −sin θ cos θ, Γ^φ_θφ = Γ^φ_φθ = cot θ, all others 0.
+     Teacher explains: (a) Assume ∇ is metric and torsion-free. Write metric
+     compatibility for the three cyclic permutations:
+        Xg(Y, Z) = g(∇_X Y, Z) + g(Y, ∇_X Z),
+        Yg(Z, X) = g(∇_Y Z, X) + g(Z, ∇_Y X),
+        Zg(X, Y) = g(∇_Z X, Y) + g(X, ∇_Z Y).
+     Add the first two, subtract the third and use ∇_A B − ∇_B A = [A, B]
+     to replace each pair: the result is the Koszul formula. Its right side
+     does not involve ∇, so ∇ is UNIQUE; conversely, defining ∇_X Y by it
+     (the right side is C^∞-linear in Z) gives a connection with both
+     properties, so it EXISTS. With coordinate fields ([∂ᵢ, ∂ⱼ] = 0):
+     2g(∇_{∂ᵢ}∂ⱼ, ∂ₗ) = ∂ᵢgⱼₗ + ∂ⱼgᵢₗ − ∂ₗgᵢⱼ; writing ∇_{∂ᵢ}∂ⱼ = Γᵏᵢⱼ∂ₖ
+     and raising the index gives the formula; torsion-free ⇔ Γᵏᵢⱼ = Γᵏⱼᵢ.
+     (b) g_θθ = 1, g_φφ = sin²θ, g_θφ = 0; the only non-constant entry is
+     g_φφ, depending on θ, with ∂_θ g_φφ = 2 sin θ cos θ. Then
+        Γ^θ_φφ = ½ g^θθ(−∂_θ g_φφ) = −sin θ cos θ,
+        Γ^φ_θφ = ½ g^φφ ∂_θ g_φφ = (2 sin θ cos θ)/(2 sin²θ) = cot θ,
+     and all others vanish (e.g. Γ^θ_θθ = ½∂_θ g_θθ = 0). Geometric check:
+     ∇_{∂φ}∂φ = −sin θ cos θ ∂θ points toward the equator: the latitude
+     circles curve away from being geodesics except at θ = π/2. Common
+     mistakes: forgetting the factor ½ or g^{kl}; treating Γ as a tensor.
+     Now you try: Christoffel symbols of dr² + r²dθ². (Γ^r_θθ = −r,
+     Γ^θ_rθ = 1/r)
+
+D11. (a) For g = dr² + G(r)² dθ², show K = −G″/G using the curvature
+     tensor. Evaluate for G = r, sin r, sinh r. (b) Verify Gauss-Bonnet for
+     the geodesic disc of radius ρ < π on the unit sphere. (c) Use Gauss-
+     Bonnet to find the area of a hyperbolic triangle with angles π/3,
+     π/4, π/6, and show the torus carries no metric with K < 0.
+     Answer: (a) K = −G″/G: 0, 1, −1. (b) 2π(1 − cos ρ) + 2π cos ρ = 2π.
+     (c) π/4; ∫_{T²} K dA = 2πχ(T²) = 0.
+     Teacher explains: (a) As in D10 (with sin θ replaced by G): Γ^r_θθ =
+     −GG′, Γ^θ_rθ = G′/G, others 0. So ∇_r ∂_r = 0, ∇_r ∂_θ = (G′/G)∂_θ,
+     ∇_θ ∂_θ = −GG′∂_r. Then
+        ∇_r∇_θ∂_θ = −(GG′)′ ∂_r = −(G′² + GG″)∂_r,
+        ∇_θ∇_r∂_θ = (G′/G)∇_θ∂_θ = −G′² ∂_r,
+     and [∂_r, ∂_θ] = 0, so R(∂_r, ∂_θ)∂_θ = −GG″ ∂_r. K = ⟨R(∂_r, ∂_θ)∂_θ,
+     ∂_r⟩/(|∂_r|²|∂_θ|²) = −GG″/G² = −G″/G. G = r (flat polar): 0; G =
+     sin r (unit sphere, r = distance from the pole): 1; G = sinh r
+     (hyperbolic plane in polar form): −1. (b) The disc D_ρ has area ∫₀^{2π}
+     ∫₀^ρ sin r dr dθ = 2π(1 − cos ρ). Its boundary circle r = ρ has length
+     2π sin ρ and geodesic curvature k_g = G′/G = cot ρ (the divergence of
+     the unit normal ∂_r), so ∫k_g ds = 2π cos ρ. Sum: 2π = 2πχ(disc) ✓.
+     (c) For a geodesic triangle, ∫_T K dA = (α + β + γ) − π. With K = −1,
+     Area = π − (π/3 + π/4 + π/6) = π − 3π/4 = π/4. For T², χ = 0, so ∫K dA
+     = 0: K must be positive somewhere if it is negative somewhere; K < 0
+     everywhere is impossible (as is K > 0). Common mistakes: using
+     interior instead of exterior angles; forgetting ∫k_g ds on the
+     boundary. Now you try: area of the geodesic triangle on the unit
+     sphere with three right angles. (π/2: an octant, 4π/8)
+
+D12. On the unit sphere g = dθ² + sin²θ dφ²: (a) write the geodesic
+     equations and decide which of the equator, the meridians and the
+     latitude θ = θ₀ are geodesics; (b) parallel transport a vector once
+     around the latitude θ = θ₀ and find the holonomy angle; (c) find the
+     first conjugate point along a geodesic and explain why arcs longer
+     than π do not minimize; (d) state Hopf-Rinow.
+     Answer: (a) θ̈ − sin θ cos θ φ̇² = 0, φ̈ + 2 cot θ θ̇ φ̇ = 0; equator and
+     meridians yes, other latitudes no. (b) rotation by 2π cos θ₀ relative
+     to the frame, i.e. holonomy 2π(1 − cos θ₀) = cap area (mod 2π).
+     (c) at distance π (the antipode).
+     Teacher explains: (a) ẍᵏ + Γᵏᵢⱼẋⁱẋʲ = 0 with the symbols of D10 (the
+     cross term appears twice). Meridian φ = const, θ = t: both equations
+     hold. Equator θ = π/2, φ = t: cos θ = 0, φ̈ = 0 ✓. Latitude θ = θ₀ ∉
+     {0, π/2, π}, φ = t: first equation gives −sin θ₀ cos θ₀ ≠ 0 ✗. (b) V =
+     a∂_θ + b∂_φ along φ ↦ (θ₀, φ): ∇_φ V = 0 reads a′ − sin θ₀ cos θ₀ b = 0,
+     b′ + cot θ₀ a = 0. In the orthonormal frame e₁ = ∂_θ, e₂ = ∂_φ/sin θ₀,
+     with c = b sin θ₀: a′ = cos θ₀ c, c′ = −cos θ₀ a — a rotation at rate
+     cos θ₀. After φ = 2π the vector has turned by 2π cos θ₀ relative to
+     the frame; since 2π cos θ₀ ≡ −2π(1 − cos θ₀) (mod 2π), the holonomy
+     angle is (up to orientation sign) 2π(1 − cos θ₀), exactly the area
+     of the polar cap: holonomy = ∫K dA, a local form of Gauss-Bonnet.
+     (θ₀ = π/2: no net rotation; θ₀ → 0: rotation → 0 as well.)
+     (c) JACOBI: along a unit-speed geodesic in constant curvature 1, J″ +
+     J = 0, so J(t) = sin t vanishes at t = π: all geodesics from p
+     reconverge at −p (conjugate point). An arc of length π + ε can be
+     shortened: the complementary arc has length π − ε. In general,
+     geodesics minimize up to (at most) the first conjugate point. (d)
+     HOPF-RINOW: for connected (M, g) the following are equivalent: (M, d)
+     complete; every geodesic extends for all time; closed bounded sets
+     are compact; exp_p is defined on all of TₚM for some p. Then any two
+     points are joined by a minimizing geodesic. Counterexample without
+     completeness: R² ∖ 0, points (±1, 0). Common mistakes: "geodesics
+     always minimize" (only locally); forgetting to reduce mod 2π
+     in (b). Now you try: holonomy around θ₀ = π/3. (π)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Give the dimension (as a real manifold).
+    a) S⁵                              b) RP⁴
+    c) CP³                             d) T⁷
+    e) GL(3, R)                        f) SL(3, R)
+    g) O(4)                            h) U(3)
+    i) SU(3)                           j) Sp(4, R) (4 × 4 symplectic)
+    k) the Stiefel manifold V₂(R⁵) of orthonormal 2-frames in R⁵
+    l) the Grassmannian G₂(R⁵)         m) the total space of TS³
+    n) {x ∈ R⁴ : x₁² + x₂² − x₃² − x₄² = 1}
+    o) the rank-1 matrices in M₂(R)    p) the complex Grassmannian G₂(C⁴)
+    q) the unit tangent bundle of S²   r) S² × RP³ × T²
+    s) O(n) for general n; how many components?
+    Answers:
+      a) 5       b) 4       c) 6       d) 7       e) 9       f) 8
+      g) 6       h) 9       i) 8       j) 10 (n(2n + 1), n = 2)
+      k) 7 (nk − k(k + 1)/2)            l) 6 (k(n − k))     m) 6
+      n) 3 (1 is a regular value)       o) 3 (r(m + n − r))
+      p) 8 (2k(n − k))                  q) 3 (≅ SO(3) ≅ RP³)
+      r) 7                              s) n(n − 1)/2; 2 components
+         (det = ±1)
+
+M2. Is c a regular value of f? Is f⁻¹(c) a smooth embedded submanifold,
+    and of what dimension?
+    a) f = x² + y², c = 1              b) f = x² + y², c = 0
+    c) f = x² − y², c = 0              d) f = x² − y², c = 1
+    e) f = x² + y² − z², c = 0         f) f = x² + y² − z², c = −1
+    g) f = y² − x³, c = 0
+    h) f = xyz on R³, c = 1 (also: number of components)
+    i) f = x⁴ + y⁴, c = 1
+    j) f = det on M₂(R), c = 0 and c = 1
+    k) f = (x² + y² + z², z) : R³ → R², c = (1, 0)
+    l) critical points and values of the height z on S²
+    m) critical points of f = x³ − 3x + y² and their type
+    n) critical values of the height x on the torus ((2 + cos u) cos v,
+       (2 + cos u) sin v, sin u)
+    Answers:
+      a) regular; S¹, dim 1
+      b) not regular (the gradient vanishes at 0); the level set is a
+         point — still a 0-manifold: regularity is sufficient, not
+         necessary
+      c) not regular; the cross {y = ±x} is not a manifold at 0
+      d) regular; hyperbola, dim 1, 2 components
+      e) not regular; double cone, not a manifold at the vertex
+      f) regular; two-sheeted hyperboloid, dim 2
+      g) not regular; the cusp is homeomorphic to R but NOT a smooth
+         embedded submanifold at 0
+      h) regular (∇f = 0 needs two zero coordinates, so f = 0); dim 2,
+         4 components (sign patterns +++, +−−, −+−, −−+)
+      i) regular; dim 1 (a "squircle")
+      j) c = 0 not regular (d det = 0 at A = 0; det⁻¹(0) is a cone);
+         c = 1 regular: SL(2, R), dim 3
+      k) regular (Jacobian rank 2 where (x, y) ≠ 0); the circle
+         x² + y² = 1, z = 0
+      l) (0, 0, ±1); values ±1
+      m) (1, 0) minimum (Hessian diag(6, 2)); (−1, 0) saddle
+         (diag(−6, 2)); values −2, 2
+      n) ±3 and ±1 (four critical points: u, v ∈ {0, π})
+
+M3. Lie brackets, flows and differentials on Rⁿ.
+    a) [∂_x, ∂_y]                       b) [∂_x, x ∂_y]
+    c) [x ∂_x, ∂_x]                     d) [x ∂_x, x² ∂_x]
+    e) [x ∂_y, y ∂_x]                   f) [x ∂_x + y ∂_y, x ∂_y − y ∂_x]
+    g) [∂_x, eˣ ∂_y]                    h) [y ∂_x, y ∂_y]
+    i) [∂_x, x²y ∂_y]                   j) [∂_x, x² ∂_x] on R
+    k) on R³: [L_x, L_y] with L_x = y∂_z − z∂_y, L_y = z∂_x − x∂_z
+    l) [∂_r, ∂_θ] in polar coordinates
+    m) the flow of x ∂_x on R
+    n) the flow of x² ∂_x from x₀ > 0; is the field complete?
+    o) the flow of −y ∂_x + x ∂_y
+    p) F(x, y) = (x + y, x − y) = (u, v): F_*(∂_x) and F_*(∂_y)
+    q) dF at (1, 2) for F(x, y) = (x², xy); is F a local diffeomorphism
+       there?
+    r) the displacement of the "square" of flows of ∂_x and x ∂_y after
+       times t = 0.1, s = 0.2
+    Answers:
+      a) 0        b) ∂_y       c) −∂_x      d) x² ∂_x
+      e) x ∂_x − y ∂_y         f) 0         g) eˣ ∂_y     h) −y ∂_x
+      i) 2xy ∂_y               j) 2x ∂_x
+      k) y ∂_x − x ∂_y = −L_z (L_z = x∂_y − y∂_x)        l) 0
+      m) φ_t(x) = eᵗx          n) φ_t(x₀) = x₀/(1 − t x₀), defined only
+         for t < 1/x₀: not complete (blows up in finite time)
+      o) rotation by angle t   p) ∂_u + ∂_v and ∂_u − ∂_v
+      q) [[2, 0], [2, 1]], det 2 ≠ 0: yes
+      r) 0.02 in the y-direction (st[X, Y] = st ∂_y, exact here)
+
+M4. Exterior algebra and calculus. Simplify or compute.
+    a) (dx + dy) ∧ (dx − dy)
+    b) (x dx + y dy) ∧ (−y dx + x dy)
+    c) d(x²y dz)                       d) d(xy dx + yz dy + zx dz)
+    e) d(xy dy ∧ dz)                   f) d(f dx ∧ dy ∧ dz) on R³
+    g) d(eˣ sin y dx + eˣ cos y dy)
+    h) α ∧ α for α = dx ∧ dy + dz ∧ dw on R⁴
+    i) α ∧ α for any 1-form α
+    j) i_X(dx ∧ dy) with X = ∂_x + 2∂_y
+    k) i_X(dx ∧ dy ∧ dz) with X = x∂_x + y∂_y + z∂_z
+    l) L_X(dx) with X = x² ∂_x          m) L_X(x dy) with X = ∂_x
+    n) dim Λᵏ(R⁵)* for k = 0, ..., 5
+    o) d(x dy ∧ dz + y dz ∧ dx + z dx ∧ dy)
+    p) d(d(x²y³))
+    q) for which a is ω = y dx + a x dy closed?
+    r) the 3-form dx ∧ dy ∧ dz evaluated on (e₁ + e₂, e₂, e₃ + e₁)
+    Answers:
+      a) −2 dx ∧ dy               b) (x² + y²) dx ∧ dy
+      c) 2xy dx ∧ dz + x² dy ∧ dz
+      d) −x dx ∧ dy − y dy ∧ dz − z dz ∧ dx
+      e) y dx ∧ dy ∧ dz           f) 0 (no 4-forms on R³)
+      g) 0 (closed; = d(eˣ sin y))
+      h) 2 dx ∧ dy ∧ dz ∧ dw (≠ 0, so α is not decomposable)
+      i) 0                        j) dy − 2 dx
+      k) x dy ∧ dz + y dz ∧ dx + z dx ∧ dy
+      l) 2x dx                    m) dy
+      n) 1, 5, 10, 10, 5, 1       o) 3 dx ∧ dy ∧ dz
+      p) 0                        q) a = 1 (dω = (a − 1) dx ∧ dy)
+      r) det[[1,1,0],[0,1,0],[1,0,1]] = 1
+
+M5. Pullbacks, integrals and Stokes.
+    a) F*(dx ∧ dy), F(u, v) = (u², v)
+    b) F*(dx ∧ dy) in polar coordinates
+    c) F*(dx ∧ dy ∧ dz) in spherical coordinates (ρ, φ, θ), x = ρ sin φ
+       cos θ, y = ρ sin φ sin θ, z = ρ cos φ
+    d) γ*(x dy − y dx), γ(t) = (cos t, sin t)
+    e) ∮_{unit circle} (x dy − y dx)
+    f) ∮_{|z| = 2} (x dy − y dx)/(x² + y²)
+    g) ∫_γ (y dx + x dy), γ(t) = (t, t²), 0 ≤ t ≤ 1
+    h) ∫_{S²} (x dy ∧ dz + y dz ∧ dx + z dx ∧ dy), unit sphere, outward
+    i) ∫_{|x| = 5} (x dy ∧ dz + y dz ∧ dx + z dx ∧ dy)/r³ in R³
+    j) ∮_{unit circle} (−y³ dx + x³ dy)
+    k) ∫_{[0,1]³} d(xyz dx ∧ dy)
+    l) ∫_{T²} dx ∧ dy on T² = R²/Z², and ∫_{T²} d(sin(2πx) dy)
+    m) ∫_{S²} d(z dx)
+    n) the area of the unit S² as ∫ sin φ dφ dθ
+    o) F*(dθ) for F : S¹ → S¹, z ↦ zⁿ, and deg F
+    p) the degree of the antipodal map of Sⁿ
+    q) the degree of z ↦ z̄ on S¹, and of z ↦ z³z̄⁵ on S¹
+    Answers:
+      a) 2u du ∧ dv                 b) r dr ∧ dθ
+      c) ρ² sin φ dρ ∧ dφ ∧ dθ      d) dt
+      e) 2π                         f) 2π
+      g) 1 (= d(xy), value xy at (1, 1))
+      h) 4π (= ∫_B 3 dV)            i) 4π (independent of the radius)
+      j) 3π/2 (Green: ∬ 3(x² + y²) dA)
+      k) 1/4 (= ∫ xy dV; only the face z = 1 contributes on ∂)
+      l) 1 and 0                    m) 0 (Stokes, ∂S² = ∅)
+      n) 4π                         o) n dθ; deg n
+      p) (−1)ⁿ⁺¹                    q) −1 and −2 (= 3 − 5)
+
+M6. De Rham cohomology: give the Betti numbers (b₀, b₁, ..., b_top) and χ.
+    a) R⁵                            b) S¹
+    c) S³                            d) T³
+    e) Σ₂ (closed orientable genus 2)
+    f) RP²                           g) RP³
+    h) CP²                           i) the Klein bottle
+    j) the open Möbius band          k) R² minus 3 points
+    l) S² minus 3 points             m) S² × S¹
+    n) S² × S⁴                       o) SO(3)
+    p) RP⁴                           q) CPⁿ (general n)
+    r) T² minus a point              s) R³ minus a circle
+    t) the solid torus S¹ × D²
+    Answers:
+      a) (1); χ = 1                   b) (1, 1); 0
+      c) (1, 0, 0, 1); 0              d) (1, 3, 3, 1); 0
+      e) (1, 4, 1); −2                f) (1, 0, 0); 1
+      g) (1, 0, 0, 1); 0              h) (1, 0, 1, 0, 1); 3
+      i) (1, 1, 0); 0                 j) (1, 1, 0) (≃ S¹); 0
+      k) (1, 3); −2                   l) (1, 2); −1
+      m) (1, 1, 1, 1); 0              n) (1, 0, 1, 0, 1, 0, 1); 4
+      o) (1, 0, 0, 1) (≅ RP³); 0      p) (1, 0, 0, 0, 0); 1
+      q) 1 in each even degree 0, ..., 2n; χ = n + 1
+      r) (1, 2, 0) (≃ wedge of two circles); −1
+      s) (1, 1, 1, 0) (≃ S¹ ∨ S²); 1  t) (1, 1, 0, 0) (≃ S¹); 0
+
+M7. Closed? Exact? Give a primitive, or the period ∮ over the unit
+    circle (counterclockwise) when the form is closed but not exact.
+    Domain R² ∖ 0 unless stated.
+    a) 2x dx + 2y dy                   b) y dx + x dy
+    c) y dx − x dy                     d) (x dx + y dy)/(x² + y²)
+    e) (−y dx + x dy)/(x² + y²)
+    f) (x dy − y dx + 3x dx + 3y dy)/(x² + y²)
+    g) (x dy − y dx)/(x² + 4y²)        h) x dy on R²
+    i) sin y dx + x cos y dy           j) (x dx + y dy)/(x² + y²)²
+    k) (x dy − y dx)/(x² + y²) on the half-plane x > 0
+    l) (x dy − y dx)/(x² + y²) on R³ minus the z-axis
+    m) any closed 1-form on R³ ∖ 0: exact?
+    n) cos²θ dθ on S¹: its class as a multiple of [dθ]
+    o) on T² = R²/Z²: dx, sin(2πx) dx, cos²(2πy) dy
+    p) (x dy − y dx)/(x² + y²) + (x dy − (y − 3) dx)/(x² + (y − 3)²) on
+       R² ∖ {(0, 0), (0, 3)}: periods around each puncture
+    Answers:
+      a) exact: x² + y²               b) exact: xy
+      c) not closed (d = −2 dx ∧ dy)  d) exact: ½ ln(x² + y²)
+      e) closed, not exact; period 2π
+      f) closed, not exact; period 2π (= dθ + 3 d(½ ln(x² + y²)))
+      g) closed, not exact; period π (∫₀^{2π} dt/(1 + 3 sin²t) = π):
+         its class is ½[dθ]
+      h) not closed                   i) exact: x sin y
+      j) exact: −1/(2(x² + y²))       k) exact: arctan(y/x)
+      l) closed, not exact; period 2π around the axis
+      m) yes (H¹(R³ ∖ 0) = H¹(S²) = 0)
+      n) ½[dθ] (cos²θ dθ = ½ dθ + d(sin 2θ/4))
+      o) dx: closed, not exact (period 1); sin(2πx) dx = d(−cos(2πx)/(2π))
+         exact; cos²(2πy) dy: class ½[dy]
+      p) 2π around each puncture (4π around both)
+
+M8. Vector bundles. Answer briefly.
+    a) Is TS¹ trivial?                  b) Is TS² trivial?
+    c) For which n is TSⁿ trivial?      d) Is TS² ⊕ ε¹ trivial?
+    e) Is the Möbius bundle trivial? Is Möbius ⊕ Möbius?
+    f) Iso classes of real line bundles over S¹, S², T², RP³
+    g) c₁ of the tautological line bundle over CP¹, and of TCP¹
+    h) rank of TM ⊕ T*M, and of Λ²T*M, for dim M = 5
+    i) Does T² carry a nowhere-zero vector field? Does Σ₂?
+    j) Is every orientable real line bundle trivial?
+    k) Is RP² orientable? Is RP³ parallelizable?
+    l) the normal bundle of RP¹ ⊂ RP²
+    m) the normal bundle of Sⁿ ⊂ Rⁿ⁺¹
+    n) the transition Jacobian of TS² in stereographic charts at u = (1, 0)
+    o) Is every vector bundle over R^k trivial?
+    p) Sections of the trivial bundle M × Rᵏ are ... ?
+    q) the Euler number e(TS²)[S²] and e(TΣ_g)[Σ_g]
+    Answers:
+      a) yes          b) no (hairy ball, χ = 2)
+      c) n = 0, 1, 3, 7 (Adams)          d) yes (stably trivial)
+      e) no; yes      f) 2, 1, 4, 2 (H¹(M; Z/2))
+      g) −1 and 2 (= χ(S²))              h) 10 and 10
+      i) yes (χ = 0); no (χ = −2)        j) yes
+      k) no; yes (RP³ ≅ SO(3), a Lie group)
+      l) the Möbius bundle (a neighbourhood of a line in RP² is a Möbius
+         band)                           m) trivial (the unit normal)
+      n) (|u|²I − 2uuᵀ)/|u|⁴ = diag(−1, 1)
+      o) yes (contractible base)         p) smooth maps M → Rᵏ
+      q) 2 and 2 − 2g
+
+M9. Metrics, Christoffel symbols, lengths and areas.
+    a) Christoffel symbols of dr² + r² dθ²
+    b) of a²(dθ² + sin²θ dφ²) (sphere of radius a)
+    c) of the half-plane (dx² + dy²)/y²
+    d) of the surface of revolution dt² + f(t)² dφ²
+    e) of e^{2x}(dx² + dy²)
+    f) in H²: the length of the segment from i to 3i, and of the
+       horizontal segment from 2i to 4 + 2i
+    g) d_{H²}(i, 1 + i)                h) d_{H²}(2i, 3 + 6i)
+    i) circumference and area of the circle of radius π/3 on the unit S²
+    j) circumference and area of a hyperbolic circle of radius 1
+    k) the hyperbolic area of {0 < x < 1, y > 1} in H²
+    l) the area of {|z| < 1/2} in the Poincaré disk 4|dz|²/(1 − |z|²)²,
+       and its hyperbolic radius
+    m) the induced metric on the cylinder x² + y² = 1 in (θ, z), and on
+       the cone z = √(x² + y²) in (r, θ)
+    n) the pullback of dx² + dy² + dz² under t ↦ (cos t, sin t, t), and
+       the length of one turn
+    o) |∂_φ| at θ = π/6 on the unit sphere
+    p) the volume density √det g of R³ in spherical coordinates
+    Answers:
+      a) Γ^r_θθ = −r, Γ^θ_rθ = 1/r      b) Γ^θ_φφ = −sin θ cos θ,
+         Γ^φ_θφ = cot θ (scaling does not change Γ)
+      c) Γ^x_xy = −1/y, Γ^y_xx = 1/y, Γ^y_yy = −1/y
+      d) Γ^t_φφ = −f f′, Γ^φ_tφ = f′/f
+      e) Γ^x_xx = 1, Γ^x_yy = −1, Γ^y_xy = 1 (others 0)
+      f) ln 3 ≈ 1.09861 and 2          g) arccosh(3/2) ≈ 0.96242
+      h) arccosh(49/24) ≈ 1.34069 (cosh d = 1 + 25/24)
+      i) 2π sin(π/3) = π√3 ≈ 5.44140; 2π(1 − cos(π/3)) = π
+      j) 2π sinh 1 ≈ 7.38401; 2π(cosh 1 − 1) ≈ 3.41228
+      k) 1 (∫₀¹∫₁^∞ dy dx/y²)
+      l) 4π/3; radius 2 artanh(1/2) = ln 3 (check 2π(cosh ln 3 − 1)
+         = 4π/3)
+      m) dθ² + dz² (flat!); 2 dr² + r² dθ²
+      n) 2 dt²; 2π√2 ≈ 8.88577     o) 1/2      p) ρ² sin φ
+
+M10. Curvature. Compute.
+     a) K of the sphere of radius 3
+     b) K of dr² + sinh²r dθ²          c) K of dr² + cosh²r dθ²
+     d) K of (dx² + dy²)/y²
+     e) K of 4(dx² + dy²)/(1 + x² + y²)²
+     f) K of 4(dx² + dy²)/(1 − x² − y²)²
+     g) K of e^{2(x² + y²)}(dx² + dy²) at the origin
+     h) the torus r² du² + (R + r cos u)² dv² with R = 2, r = 1: K at
+        u = 0, π/2, π; and ∫K dA
+     i) K of the graph z = x² + y² at (0, 0) and at (1, 0)
+     j) K of z = xy and of z = x² − y² at the origin
+     k) sectional, Ricci and scalar curvature of the unit S³
+     l) scalar curvature of the unit S² and of H³
+     m) area of a geodesic triangle on the unit sphere with angles
+        π/2, π/2, π/3
+     n) area of a hyperbolic triangle with angles π/3, π/4, π/6, and of
+        an ideal triangle (all angles 0)
+     o) ∫_{Σ₃} K dA for any metric; the area of Σ₂ with K ≡ −1
+     p) the cone dr² + (r sin α)²dθ²: K for r > 0 and the angle defect
+        at the vertex
+     q) number of independent components of the Riemann tensor for
+        n = 2, 3, 4
+     r) R(X, Y)Z in constant curvature κ
+     Answers:
+       a) 1/9      b) −1      c) −1 (G″/G = 1)      d) −1
+       e) 1 (stereographic round sphere)            f) −1 (Poincaré disk)
+       g) −4 (K = −e^{−2f}Δf, Δ(x² + y²) = 4, f(0) = 0)
+       h) 1/3, 0, −1 (K = cos u/(r(R + r cos u))); ∫K dA = 0 (χ = 0)
+       i) 4 and 4/25 (K = (f_xx f_yy − f_xy²)/(1 + |∇f|²)²)
+       j) −1 and −4
+       k) K ≡ 1, Ric = 2g, s = 6        l) 2 and −6
+       m) π/3 (angle excess)            n) π/4; π
+       o) −8π (2πχ, χ = −4); 4π         p) 0; 2π(1 − sin α)
+       q) 1, 6, 20 (n²(n² − 1)/12)
+       r) κ(g(Y, Z)X − g(X, Z)Y)
+
+M11. Geodesics, distance, completeness.
+     a) the geodesics of Euclidean R² and of the flat cylinder
+     b) which are geodesics of S²: equator, meridian, the 45° latitude?
+     c) the geodesic equations of H² = {(dx² + dy²)/y²}
+     d) the unit-speed geodesic up the imaginary axis from i
+     e) the geodesic of H² through i and 1 + i; through i and 2 + i
+     f) the distance on the unit S² from (1, 0, 0) to (0, 1, 0), and to
+        (1, 1, 1)/√3
+     g) the great-circle distance from the North Pole to the equator on
+        a sphere of radius 6371 km
+     h) the first conjugate point along a geodesic of the sphere of
+        radius a; of H²
+     i) Clairaut: a geodesic leaves the equator of the unit sphere at 30°
+        to it. Its highest latitude?
+     j) injectivity radius of the unit S², the round RP², and the flat
+        torus R²/Z²
+     k) exp_N(v) on the unit S² for |v| = π; for |v| = 2π
+     l) Bonnet-Myers: an upper bound for diam M if M is complete with
+        Ric ≥ 4(n − 1)g
+     m) complete or not: Euclidean R²; R² ∖ 0; H²; the open unit disc with
+        the Euclidean metric; any compact Riemannian manifold
+     n) does S² (or any Sⁿ, n ≥ 2) admit a metric with K ≤ 0?
+     o) number of minimizing geodesics joining antipodal points of S²
+     Answers:
+       a) straight lines; helices t ↦ (cos(at), sin(at), bt) (incl. lines
+          and circles)
+       b) yes, yes, no
+       c) ẍ − (2/y)ẋẏ = 0, ÿ + (ẋ² − ẏ²)/y = 0
+       d) γ(t) = i eᵗ
+       e) circle centre 1/2, radius √5/2; circle centre 1, radius √2
+       f) π/2 ≈ 1.57080; arccos(1/√3) ≈ 0.95532
+       g) 6371π/2 ≈ 10007.5 km
+       h) at distance πa; none (K ≤ 0 ⇒ no conjugate points)
+       i) 30° (r cos ψ = cos 30° ⇒ r_min = √3/2 = cos(latitude))
+       j) π, π/2, 1/2
+       k) the South Pole; the North Pole again
+       l) π/2 (π/√k with k = 4)
+       m) yes; no; yes; no; yes
+       n) no (Cartan-Hadamard: the universal cover would be Rⁿ, but Sⁿ
+          is compact and simply connected; for S² also Gauss-Bonnet)
+       o) infinitely many (every half great circle)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every closed form is exact.
+     b) On a star-shaped open subset of Rⁿ every closed k-form, k ≥ 1, is
+        exact.
+     c) Every smooth manifold admits a Riemannian metric.
+     d) Every manifold admits a Lorentzian metric.
+     e) Every vector bundle over a contractible manifold is trivial.
+     f) A vector bundle with a nowhere-zero section is trivial.
+     g) A closed manifold with χ = 0 has a nowhere-zero vector field.
+     h) H¹_dR(M) is finite-dimensional for every manifold M.
+     i) ∇_X Y is C^∞-linear in Y.
+     j) The difference of two connections is a tensor.
+     k) The Christoffel symbols form a tensor.
+     l) Gaussian curvature depends only on the metric.
+     m) Mean curvature depends only on the metric.
+     n) Geodesics minimize length between their endpoints.
+     o) In a connected complete Riemannian manifold any two points are
+        joined by a minimizing geodesic.
+     p) The same holds without completeness.
+     q) A closed orientable surface with K > 0 everywhere is diffeomorphic
+        to S².
+     r) The torus admits a metric with K < 0 everywhere.
+     s) Every compact surface embedded in R³ has a point with K > 0.
+     t) de Rham cohomology is a homotopy invariant.
+     u) The regular value theorem's converse holds: if F⁻¹(c) is a
+        submanifold then c is a regular value.
+     v) Every orientable rank-2 bundle over S² is trivial.
+     Answers:
+       a) F: dθ on R² ∖ 0            b) T (Poincaré lemma)
+       c) T (partition of unity)     d) F: S² (would need a line field;
+                                        χ(S²) ≠ 0)
+       e) T                          f) F: Möbius ⊕ ε¹ over S¹ (non-
+                                        orientable, so not trivial)
+       g) T (Hopf)                   h) F: R² minus Z × {0} (H¹ has
+                                        infinite dimension)
+       i) F: ∇_X(fY) = (Xf)Y + f∇_X Y (it is C^∞-linear in X)
+       j) T                          k) F: 0 in Cartesian, Γ^r_θθ = −r in
+                                        polar coordinates of R²
+       l) T (Theorema Egregium)      m) F: plane (H = 0) and cylinder
+                                        (H = 1/2) are locally isometric
+       n) F: a great-circle arc longer than π
+       o) T (Hopf-Rinow)             p) F: (−1, 0), (1, 0) in R² ∖ 0
+       q) T (Gauss-Bonnet: χ > 0)    r) F: ∫K dA = 2πχ = 0
+       s) T (at a point farthest from the origin K ≥ 1/R² > 0)
+       t) T                          u) F: f = x², c = 0 (f⁻¹(0) = {0})
+       v) F: TS² (Euler number 2)
+
+TEACHING TIPS
+  Struggling: keep ONE worked model for every concept and return to it —
+  S² with (θ, φ) for metrics, Christoffel symbols, geodesics, curvature
+  and Gauss-Bonnet; H² for negative curvature and "straight lines that
+  look curved"; R² ∖ 0 with dθ for closed-versus-exact and for H¹; the
+  Möbius band for non-trivial bundles. Always compute a form by first
+  writing dx, dy in the new variables, then expanding the wedge (never
+  memorize Jacobians), and always check an answer with Stokes or
+  Gauss-Bonnet (total curvature 2πχ is a free sanity check). For
+  cohomology, first ask "what is it homotopy equivalent to?" and then use
+  Mayer-Vietoris only on the small pieces. Harder: prove Sard's theorem
+  and the Whitney embedding theorem; prove de Rham's theorem via good
+  covers and the Čech-de Rham double complex; prove Poincaré duality for
+  compactly supported cohomology; derive the second variation formula
+  and use it to prove Bonnet-Myers and Synge's theorem; prove Cartan-
+  Hadamard; compute the curvature of a U(1) connection on the Hopf bundle
+  and show (i/2π)∫F = −1 (Chern-Weil); and show that Sⁿ has a nowhere-zero
+  vector field iff n is odd.
+
+
+================================================================================
+TOPIC 12.11 — LIE GROUPS AND LIE ALGEBRAS: STRUCTURE, ROOT SYSTEMS,
+CLASSIFICATION OF SEMISIMPLE LIE ALGEBRAS, REPRESENTATIONS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - LIE GROUP: a group G that is a smooth manifold with smooth
+    multiplication and inversion. Its LIE ALGEBRA g = T_eG with the
+    bracket of left-invariant vector fields. For a closed subgroup G ⊆
+    GL(n) (a matrix group, closed by CARTAN'S CLOSED SUBGROUP THEOREM
+    automatically a Lie group) g = {X : e^(tX) ∈ G for all t} and
+    [X, Y] = XY − YX. Standard list: gl(n) (n²), sl(n): tr X = 0 (n² − 1),
+    so(n): Xᵀ = −X (n(n − 1)/2), u(n): X* = −X (n²), su(n) (n² − 1),
+    sp(2n, R): XᵀJ + JX = 0 (n(2n + 1)), Heisenberg (3).
+  - EXPONENTIAL MAP exp : g → G, t ↦ exp(tX) is the ONE-PARAMETER SUBGROUP
+    with velocity X; exp is a local diffeomorphism at 0; det e^X = e^(tr X).
+    BAKER-CAMPBELL-HAUSDORFF: log(e^X e^Y) = X + Y + ½[X, Y] + (1/12)([X,
+    [X, Y]] + [Y, [Y, X]]) + ..., so the bracket determines the group law
+    near e. exp is onto for compact connected G but NOT for SL(2, R):
+    tr(exp X) ≥ −2 for X ∈ sl(2, R), so diag(−2, −½) is not exponential.
+    A homomorphism Φ : G → H has dΦ : g → h with Φ(exp X) = exp(dΦ X);
+    Ad : G → GL(g), Ad(g)Y = gYg⁻¹, and d(Ad) = ad, ad X(Y) = [X, Y].
+  - LIE CORRESPONDENCE: Lie subalgebras of g ↔ connected Lie subgroups of G;
+    if G is SIMPLY CONNECTED every Lie algebra homomorphism g → h lifts to
+    a group homomorphism G → H. Every finite-dimensional real Lie algebra
+    is the Lie algebra of a unique simply connected group G̃ (Lie III, via
+    ADO'S THEOREM: every Lie algebra embeds in some gl(n)); the connected
+    groups with Lie algebra g are G̃/Γ, Γ a discrete central subgroup.
+    Model: SU(2) ≅ S³ → SO(3) is a double cover (kernel ±I), su(2) ≅ so(3),
+    π₁(SO(3)) = Z/2; the universal cover of SL(2, R) is not a matrix group.
+  - ABSTRACT LIE ALGEBRAS (over a field, here R or C): bilinear,
+    alternating bracket with the JACOBI identity. Ideals, quotients, ad.
+    DERIVED series g ⊇ [g, g] ⊇ ...; SOLVABLE if it reaches 0. LOWER
+    CENTRAL series Cᵏ⁺¹ = [g, Cᵏ]; NILPOTENT if it reaches 0. Examples:
+    strictly upper triangular nₙ (nilpotent), upper triangular bₙ (solvable,
+    not nilpotent), aff(1): [x, y] = y (solvable), e(2) (solvable).
+  - ENGEL: g is nilpotent iff ad X is nilpotent for every X. LIE'S THEOREM
+    (C, char 0): a solvable g ⊆ gl(V) has a common eigenvector, hence is
+    upper triangular in some basis; so [g, g] is nilpotent. Fails over R
+    (so(2) on R²). The RADICAL rad g = largest solvable ideal; g is
+    SEMISIMPLE if rad g = 0 (equivalently no nonzero abelian ideals).
+    LEVI: g = rad g ⋊ s with s semisimple (e.g. sl(2) ⋉ C²). REDUCTIVE =
+    semisimple ⊕ abelian (gl(n), u(n)).
+  - KILLING FORM κ(X, Y) = tr(ad X ad Y): symmetric, ad-invariant
+    κ([X, Y], Z) = κ(X, [Y, Z]). For sl(n): κ = 2n tr(XY); so(n): (n − 2)
+    tr(XY); sp(2n): (2n + 2) tr(XY); gl(n): 2n tr(XY) − 2 tr X tr Y.
+    CARTAN'S CRITERIA: g is solvable iff κ(g, [g, g]) = 0; g is semisimple
+    iff κ is NONDEGENERATE. Semisimple ⇒ g = g₁ ⊕ ... ⊕ gₖ (simple
+    ideals), g = [g, g], all derivations inner. Compact G semisimple ⇒ κ
+    negative definite (su(2): signature (0, 3); sl(2, R): (2, 1)).
+  - WEYL'S THEOREM: every finite-dimensional representation of a semisimple
+    Lie algebra over C is COMPLETELY REDUCIBLE (proof: the CASIMIR element
+    Ω = ∑XᵢXⁱ, dual bases for a nondegenerate invariant form). Fails for
+    solvable algebras: b₂ on C² has an invariant line with no invariant
+    complement.
+  - CARTAN SUBALGEBRA h (maximal toral: abelian, ad-semisimple) of a complex
+    semisimple g; ROOT SPACE DECOMPOSITION g = h ⊕ ⊕_{α∈Φ} g_α, g_α = {X :
+    [H, X] = α(H)X}. Facts: dim g_α = 1; Φ = −Φ; [g_α, g_β] = g_{α+β} when
+    α + β ∈ Φ; each α gives an sl(2)-triple (E_α, H_α, F_α) with
+    α(H_α) = 2; κ restricted to h is nondegenerate, and via it Φ spans a
+    real Euclidean space E. sl(n): h = traceless diagonal, roots εᵢ − εⱼ.
+  - ROOT SYSTEM Φ ⊆ E: finite, spans E, 0 ∉ Φ; Rα ∩ Φ = {±α}; the
+    REFLECTION s_α(β) = β − ⟨β, α^∨⟩α maps Φ to Φ, where ⟨β, α^∨⟩ =
+    2(β, α)/(α, α) ∈ Z. Then ⟨β, α^∨⟩⟨α, β^∨⟩ = 4cos²θ ∈ {0, 1, 2, 3}:
+    angles 90°, 60°/120°, 45°/135°, 30°/150°, length ratios² 1, 2, 3. The
+    WEYL GROUP W = ⟨s_α⟩ is finite and acts simply transitively on the
+    Weyl chambers. Rank 2: A₁ × A₁, A₂, B₂, G₂ (4, 6, 8, 12 roots).
+  - SIMPLE ROOTS Δ = {α₁, ..., αₗ}: a basis such that every root is an
+    integer combination with all coefficients ≥ 0 (POSITIVE Φ⁺) or all ≤ 0.
+    CARTAN MATRIX aᵢⱼ = ⟨αᵢ, αⱼ^∨⟩ (aᵢᵢ = 2, aᵢⱼ ∈ {0, −1, −2, −3},
+    aᵢⱼ = 0 ⇔ aⱼᵢ = 0, positive definite after symmetrising). DYNKIN
+    DIAGRAM: nodes αᵢ, aᵢⱼaⱼᵢ edges, arrow toward the short root. W is
+    generated by the simple reflections sᵢ; ρ = ½∑_{α>0} α.
+  - CLASSIFICATION (KILLING-CARTAN): complex simple Lie algebras ↔
+    connected Dynkin diagrams: Aₗ = sl(l + 1), Bₗ = so(2l + 1), Cₗ = sp(2l),
+    Dₗ = so(2l) (l ≥ 4), and E₆, E₇, E₈, F₄, G₂. Dimensions l(l + 2),
+    l(2l + 1), l(2l + 1), l(2l − 1), 78, 133, 248, 52, 14; dim g = rank +
+    |Φ|. SERRE'S THEOREM rebuilds g from its Cartan matrix. Low-rank
+    coincidences: A₁ = B₁ = C₁, B₂ = C₂ (so(5) ≅ sp(4)), A₃ = D₃ (so(6) ≅
+    sl(4)), D₂ = A₁ × A₁ (so(4) ≅ sl(2) ⊕ sl(2)).
+  - REPRESENTATIONS OF sl(2, C): for each n ≥ 0 exactly one irreducible
+    V(n), dim n + 1, h-eigenvalues (WEIGHTS) n, n − 2, ..., −n, basis
+    vₖ with h vₖ = (n − 2k)vₖ, f vₖ = (k + 1)vₖ₊₁, e vₖ = (n − k + 1)vₖ₋₁.
+    CLEBSCH-GORDAN: V(m) ⊗ V(n) = V(m + n) ⊕ V(m + n − 2) ⊕ ... ⊕ V(|m − n|).
+    Casimir Ω = ef + fe + ½h² acts on V(n) by n(n + 2)/2.
+  - HIGHEST WEIGHT THEORY: weights λ ∈ h*; the WEIGHT LATTICE P = {λ :
+    ⟨λ, α^∨⟩ ∈ Z}, FUNDAMENTAL WEIGHTS ⟨ωᵢ, αⱼ^∨⟩ = δᵢⱼ, dominant P⁺ =
+    ∑Nωᵢ, root lattice Q ⊆ P with |P/Q| = det(Cartan matrix) = order of
+    the centre of the simply connected group. THEOREM: finite-dimensional
+    irreducibles ↔ dominant integral λ (quotients of VERMA modules
+    U(g) ⊗_{U(b)} C_λ; PBW: U(g) has basis of ordered monomials).
+  - WEYL CHARACTER FORMULA χ_λ = ∑_w ε(w)e^{w(λ+ρ)} / ∑_w ε(w)e^{wρ} and
+    WEYL DIMENSION FORMULA dim V(λ) = ∏_{α>0} ⟨λ + ρ, α^∨⟩/⟨ρ, α^∨⟩. For
+    sl(3): dim V(a, b) = (a + 1)(b + 1)(a + b + 2)/2 (3, 8, 6, 10, 27, ...).
+    Tensor products: 3 ⊗ 3̄ = 8 ⊕ 1, 3 ⊗ 3 = 6 ⊕ 3̄, 8 ⊗ 8 = 27 ⊕ 10 ⊕ 10̄
+    ⊕ 8 ⊕ 8 ⊕ 1.
+  - COMPACT LIE GROUPS: bi-invariant HAAR measure; averaging gives an
+    invariant inner product, so every representation is unitary and
+    completely reducible (the UNITARY TRICK transfers this to sl(n, C)).
+    Characters: ∫χ_Vχ̄_W dg = dim Hom_G(V, W); PETER-WEYL: matrix
+    coefficients of irreducibles are dense in L²(G). MAXIMAL TORUS T:
+    every element is conjugate into T; W = N(T)/T. SU(2): χₙ(θ) =
+    sin((n + 1)θ)/sin θ, Haar density (2/π)sin²θ dθ on [0, π]. SO(3) has
+    irreducibles only of ODD dimension 2l + 1 (spherical harmonics).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Determine the Lie algebras of SL(n, R), SO(n), U(n), SU(n) and
+    Sp(2n, R) and their dimensions. (b) Show that for a closed subgroup G ⊆
+    GL(n), g = {X : e^(tX) ∈ G ∀t} is closed under the bracket. (c) Show
+    that su(2) ≅ so(3) as real Lie algebras.
+    Answer: (a) tr X = 0 (n² − 1); Xᵀ = −X (n(n − 1)/2); X* = −X (n²);
+    X* = −X, tr X = 0 (n² − 1); XᵀJ + JX = 0 (n(2n + 1)). (b) [X, Y] is
+    the derivative of Ad(e^(tX))Y. (c) uₖ = −(i/2)σₖ and Lₖ both satisfy
+    [1, 2] = 3 cyclically.
+    Teacher explains: (a) Differentiate the defining equation at t = 0.
+    det e^(tX) = e^(t tr X) = 1 for all t ⇔ tr X = 0. If A(t)ᵀA(t) = I with
+    A(0) = I, A′(0) = X, then Xᵀ + X = 0; conversely (e^(tX))ᵀ = e^(tXᵀ) =
+    e^(−tX) = (e^(tX))⁻¹. The same for X* = −X in U(n). For Sp(2n, R),
+    J = [[0, I], [−I, 0]], write X = [[A, B], [C, D]]; XᵀJ + JX = 0 gives
+    D = −Aᵀ, B = Bᵀ, C = Cᵀ: n² + 2·n(n + 1)/2 = n(2n + 1) parameters.
+    (b) g is a vector space: cX ∈ g trivially, and X + Y ∈ g by the Lie
+    product formula e^(X+Y) = lim (e^(X/k)e^(Y/k))ᵏ and closedness of G.
+    For X, Y ∈ g, e^(tX)e^(sY)e^(−tX) = exp(s e^(tX)Ye^(−tX)) ∈ G for all
+    s, so Z(t) = e^(tX)Ye^(−tX) ∈ g; g is a closed subspace, so Z′(0) =
+    XY − YX ∈ g. (c) With the Pauli matrices σₖ, σ₁σ₂ = iσ₃, so [u₁, u₂] =
+    (−i/2)²·2iσ₃ = −(i/2)σ₃ = u₃, cyclically. In so(3), L₁ = E₃₂ − E₂₃,
+    L₂ = E₁₃ − E₃₁, L₃ = E₂₁ − E₁₂ (infinitesimal rotations about the axes)
+    satisfy [L₁, L₂] = L₃ cyclically. So uₖ ↦ Lₖ is an isomorphism (both
+    are R³ with the cross product). Common mistakes: forgetting that u(n)
+    contains iI (so dim u(n) = n², not n² − 1); confusing the real
+    dimension of SL(2, C) (6) with its complex dimension (3). Now you try:
+    the dimension of Sp(4, R) and of SO(5). (10 and 10: B₂ = C₂)
+
+D2. (a) For X ∈ sl(2, R) show X² = −det(X)·I and obtain a closed formula
+    for e^X; compute exp [[0, 4], [1, 0]]. (b) Prove tr(e^X) ≥ −2, with
+    equality only for e^X = −I. Deduce that A = diag(−2, −½) and B =
+    [[−1, 1], [0, −1]] are not exponentials although SL(2, R) is connected.
+    (c) Write A as a product of two exponentials.
+    Answer: (a) δ = −det X = λ² > 0: cosh λ I + (sinh λ/λ)X; δ = −θ² < 0:
+    cos θ I + (sin θ/θ)X; δ = 0: I + X. exp [[0, 4], [1, 0]] = [[cosh 2,
+    2 sinh 2], [½ sinh 2, cosh 2]] ≈ [[3.76220, 7.25372], [1.81343,
+    3.76220]]. (b) tr A = −5/2; tr B = −2 but B ≠ −I. (c) A = e^(πJ)
+    e^(diag(ln 2, −ln 2)), J = [[0, −1], [1, 0]].
+    Teacher explains: Cayley-Hamilton: X² − (tr X)X + (det X)I = 0 and
+    tr X = 0 give X² = δI with δ = −det X. Split the power series of e^X
+    into even and odd powers: X^(2k) = δᵏI, X^(2k+1) = δᵏX. If δ = λ² > 0
+    this gives cosh λ I + (sinh λ/λ)X, trace 2cosh λ ≥ 2. If δ = −θ² < 0
+    it gives cos θ I + (sin θ/θ)X, trace 2cos θ ∈ [−2, 2]; the trace is −2
+    only when cos θ = −1, and then sin θ = 0 so e^X = −I. If δ = 0 (X
+    nilpotent), e^X = I + X, trace 2. Hence tr e^X ≥ −2 always, and −2
+    only at −I. For [[0, 4], [1, 0]], δ = 4, λ = 2 and (sinh 2)/2·X gives
+    the stated matrix (check det = cosh²2 − sinh²2 = 1). A and B violate
+    the trace condition, so exp : sl(2, R) → SL(2, R) is NOT onto. Still
+    A = (−I)·diag(2, ½) with −I = e^(πJ) (δ = −π², θ = π) and diag(2, ½) =
+    e^(diag(ln 2, −ln 2)): in a connected group every element is a product
+    of exponentials. Common mistakes: "connected ⇒ exp onto" (true for
+    compact connected groups and for simply connected nilpotent groups,
+    false in general); forgetting the case δ = 0. Now you try: exp
+    [[0, −1], [4, 0]]. (δ = −4, θ = 2: [[cos 2, −½ sin 2], [2 sin 2,
+    cos 2]])
+
+D3. Construct the double cover SU(2) → SO(3) via the adjoint
+    representation. Show that exp(θu₃), u₃ = −(i/2)σ₃, maps to the rotation
+    by θ about the third axis, and deduce π₁(SO(3)) = Z/2.
+    Answer: Ad : SU(2) → SO(su(2), −2tr) ≅ SO(3) is onto with kernel {±I};
+    exp(2πu₃) = −I ↦ identity; SU(2) ≅ S³ is simply connected.
+    Teacher explains: su(2) ≅ R³ with basis u₁, u₂, u₃ and inner product
+    ⟨X, Y⟩ = −2 tr(XY), for which tr(uⱼuₖ) = −½δⱼₖ makes the uₖ
+    orthonormal. Ad(g)X = gXg⁻¹ preserves su(2) and the trace form, so
+    Ad(g) ∈ O(3); SU(2) = {[[a, −b̄], [b, ā]] : |a|² + |b|² = 1} ≅ S³ is
+    connected, so Ad(g) ∈ SO(3). KERNEL: gXg⁻¹ = X for all X ∈ su(2)
+    means g commutes with su(2), hence with its complex span sl(2, C);
+    as C² is irreducible, Schur gives g scalar, so g = ±I. ONTO: d(Ad) =
+    ad is injective (su(2) has zero centre), so the image is a
+    3-dimensional compact connected subgroup of SO(3), open and closed,
+    hence all of SO(3). For the rotation: Ad(exp θu₃) = exp(θ ad u₃), and [u₃,
+    u₁] = u₂, [u₃, u₂] = −u₁, so ad u₃ is the infinitesimal rotation of the (u₁,
+    u₂) plane and exp(θ ad u₃) is rotation by θ about u₃. Now exp(θu₃) =
+    diag(e^(−iθ/2), e^(iθ/2)); at θ = 2π this is −I, which maps to the identity
+    rotation. The loop of rotations θ ↦ R_θ (0 ≤ θ ≤ 2π) lifts to a PATH from I
+    to −I, so it is not contractible; SO(3) ≅ S³/{±1} = RP³ and π₁ = Z/2.
+    Common mistakes: thinking that isomorphic Lie algebras give isomorphic
+    groups; forgetting ±I both map to the identity. Now you try: the image
+    of [[0, −1], [1, 0]] = exp(πu₂). (rotation by π about the u₂-axis)
+
+D4. (a) Compute the derived and lower central series of b₂ (upper
+    triangular 2 × 2), of the Heisenberg algebra n₃ ([x, y] = z) and of b₃.
+    (b) State Engel's and Lie's theorems. (c) Show Lie's theorem fails over
+    R and complete reducibility fails for solvable algebras.
+    Answer: (a) b₂ ⊃ CE₁₂ ⊃ 0 (solvable), Cᵏ(b₂) = CE₁₂ for all k ≥ 1
+    (not nilpotent); n₃ ⊃ Cz ⊃ 0 both ways (nilpotent); b₃ ⊃ n₃ ⊃ CE₁₃ ⊃ 0
+    (derived length 3). (c) so(2) on R²; b₂ on C².
+    Teacher explains: (a) In b₂ = span(E₁₁, E₂₂, E₁₂): [E₁₁, E₁₂] = E₁₂,
+    [E₂₂, E₁₂] = −E₁₂, [E₁₁, E₂₂] = 0. So [b₂, b₂] = CE₁₂, which is
+    abelian: derived series reaches 0. But C² = [b₂, CE₁₂] = CE₁₂ again
+    (E₁₁ keeps acting by 1), so the lower central series is stuck: b₂ is
+    solvable, not nilpotent (ad E₁₁ has eigenvalue 1, not nilpotent,
+    consistent with Engel). In n₃, [n₃, n₃] = Cz is central, so [n₃, Cz] =
+    0: nilpotent. For b₃: [b₃, b₃] = n₃ (strictly upper), [n₃, n₃] = CE₁₃,
+    then 0. (b) ENGEL: g nilpotent ⇔ ad X nilpotent ∀X ∈ g. LIE: if g ⊆
+    gl(V) is solvable, V ≠ 0 finite-dimensional over C, there is a common
+    eigenvector; by induction V has a g-stable flag, i.e. g is upper
+    triangular in a suitable basis. (c) so(2) = R·J, J = [[0, −1], [1, 0]]
+    is abelian, but J has no real eigenvector. b₂ acts on C²: the line
+    Ce₁ is invariant; any invariant line is an eigenline of E₁₂, i.e. Ce₁
+    again, so Ce₁ has no invariant complement. Common mistakes: confusing
+    "each element nilpotent as a matrix" with "ad-nilpotent" (I ∈ gl(n)
+    is ad-nilpotent but not nilpotent); forgetting Lie's theorem needs an
+    algebraically closed field of characteristic 0. Now you try: is e(2)
+    ([J, P₁] = P₂, [J, P₂] = −P₁, [P₁, P₂] = 0) nilpotent? (no: solvable,
+    Cᵏ = span(P₁, P₂) for all k ≥ 1)
+
+D5. (a) Compute the Killing form of sl(2, C) in the basis (e, h, f) and
+    check κ(X, Y) = 4 tr(XY). (b) Compute the Killing form of aff(1)
+    ([x, y] = y) and of n₃. (c) Prove: if κ is nondegenerate then g is
+    semisimple.
+    Answer: (a) Gram matrix [[0, 0, 4], [0, 8, 0], [4, 0, 0]], det −128.
+    (b) aff(1): κ(x, x) = 1, others 0 (degenerate); n₃: κ ≡ 0. (c) an
+    abelian ideal lies in the radical of κ.
+    Teacher explains: (a) [h, e] = 2e, [h, f] = −2f, [e, f] = h. In the
+    basis (e, h, f): ad h = diag(2, 0, −2); ad e: e ↦ 0, h ↦ −2e, f ↦ h;
+    ad f: e ↦ −h, h ↦ 2f, f ↦ 0. κ(h, h) = 4 + 0 + 4 = 8. ad e ad f sends
+    e ↦ ad e(−h) = 2e, h ↦ ad e(2f) = 2h, f ↦ 0: trace 4 = κ(e, f). ad e
+    and ad f are nilpotent and shift weights, so κ(e, e) = κ(f, f) =
+    κ(e, h) = κ(f, h) = 0. Compare tr(hh) = 2, tr(ef) = 1: κ = 4 tr(XY)
+    (the general formula 2n tr(XY) with n = 2). det = −4·8·4 = −128 ≠ 0.
+    (b) aff(1): ad x = diag(0, 1) in (x, y), ad y: x ↦ −y, y ↦ 0. So
+    κ(x, x) = 1, κ(y, y) = 0, κ(x, y) = tr(x ↦ −y, y ↦ 0) = 0. It kills
+    [g, g] = Cy, as Cartan's solvability criterion predicts. In n₃ every
+    ad X ad Y maps into the centre and kills it: nilpotent, trace 0.
+    (c) If g is not semisimple, the last nonzero term a of the derived
+    series of rad g is a nonzero ABELIAN IDEAL. For a ∈ a, y ∈ g, ad a ad y
+    maps g into a and a into [a, a] = 0, so (ad a ad y)² = 0 and κ(a, y) =
+    0 for all y: a is in the radical of κ, contradiction. (The converse,
+    semisimple ⇒ nondegenerate, uses Cartan's solvability criterion on
+    the ideal g^⊥.) Common mistakes: using tr(XY) instead of tr(ad X ad Y);
+    believing κ ≡ 0 forces nilpotency (only solvability: Cx ⋉ C² with
+    ad x = diag(1, i) has κ ≡ 0). Now you try: the Killing form of so(3)
+    in the basis L₁, L₂, L₃. (−2δⱼₖ: negative definite, as for any compact
+    semisimple group)
+
+D6. Classify the finite-dimensional irreducible representations of
+    sl(2, C). Then decompose V(3) ⊗ V(2) and compute the Casimir
+    eigenvalue on V(n).
+    Answer: one V(n) for each n ≥ 0, dim n + 1, weights n, n − 2, ..., −n;
+    V(3) ⊗ V(2) = V(5) ⊕ V(3) ⊕ V(1); Ω = ef + fe + ½h² acts by n(n + 2)/2.
+    Teacher explains: Let V be irreducible. From [h, e] = 2e: if hv = μv
+    then h(ev) = (μ + 2)ev, so e raises weights by 2 and f lowers by 2.
+    Only finitely many eigenvalues of h exist, so there is a HIGHEST WEIGHT
+    VECTOR v₀ ≠ 0 with hv₀ = λv₀, ev₀ = 0. Put vₖ = fᵏv₀/k!. Then hvₖ =
+    (λ − 2k)vₖ, fvₖ = (k + 1)vₖ₊₁, and by induction evₖ = (λ − k + 1)vₖ₋₁:
+       evₖ = (1/k)e f vₖ₋₁ = (1/k)(hvₖ₋₁ + f evₖ₋₁)
+           = (1/k)((λ − 2k + 2) + (k − 1)(λ − k + 2))vₖ₋₁ = (λ − k + 1)vₖ₋₁.
+    The nonzero vₖ are independent (distinct weights); let vₙ be the last
+    nonzero one. Then 0 = evₙ₊₁ = (λ − n)vₙ, so λ = n ∈ N. span(v₀, ...,
+    vₙ) is invariant, hence equals V: V ≅ V(n), unique up to isomorphism.
+    Tensor product: weights of V(3) ⊗ V(2) are sums of {3, 1, −1, −3} and
+    {2, 0, −2}: 5 (×1), 3 (×2), 1 (×3), −1 (×3), −3 (×2), −5 (×1). Peel
+    off V(5) (weights 5, ..., −5), then V(3), then V(1): dimensions 6 +
+    4 + 2 = 12 ✓. Casimir: Ω commutes with sl(2), so it is scalar on V(n)
+    (Schur); on v₀: efv₀ = e v₁ = nv₀, fev₀ = 0, ½h²v₀ = ½n²v₀; total
+    n + n²/2 = n(n + 2)/2. Common mistakes: listing weights n, n − 1, ...
+    (steps are 2); forgetting |m − n| as the lowest term. Now you try:
+    V(2) ⊗ V(2). (V(4) ⊕ V(2) ⊕ V(0))
+
+D7. Find the root space decomposition of sl(3, C): Cartan subalgebra,
+    roots, simple roots, Cartan matrix, and the Weyl group. Check
+    [g_α, g_β] = g_{α+β} on an example.
+    Answer: h = traceless diagonal; roots αᵢⱼ = εᵢ − εⱼ (i ≠ j), 6 roots,
+    root vectors Eᵢⱼ; Δ = {ε₁ − ε₂, ε₂ − ε₃}; Cartan matrix [[2, −1], [−1,
+    2]] (type A₂); W = S₃, order 6.
+    Teacher explains: For H = diag(a₁, a₂, a₃), ∑aᵢ = 0: [H, Eᵢⱼ] = (aᵢ −
+    aⱼ)Eᵢⱼ. So g = h ⊕ ⊕_{i≠j} CEᵢⱼ, each root space 1-dimensional, with
+    root αᵢⱼ(H) = aᵢ − aⱼ. Positive roots (i < j): α₁ = ε₁ − ε₂, α₂ =
+    ε₂ − ε₃, α₁ + α₂ = ε₁ − ε₃; every positive root is a nonnegative
+    integer combination of α₁, α₂, so they are simple. The sl(2)-triple
+    for α₁ is (E₁₂, H₁ = E₁₁ − E₂₂, E₂₁); the coroot is H₁, and
+    ⟨α₂, α₁^∨⟩ = α₂(H₁) = a₂ − a₃ at H₁ = diag(1, −1, 0), i.e. −1.
+    Symmetrically ⟨α₁, α₂^∨⟩ = −1. With κ = 6 tr on h, all roots have the
+    same length and the angle between α₁, α₂ is 120° (4cos²θ = 1). The
+    Weyl group acts on h by permuting the aᵢ: W = S₃, 6 elements, equal
+    to N(T)/T for T ⊆ SU(3) diagonal. Example: [E₁₂, E₂₃] = E₁₃ ∈ g_{α₁+α₂},
+    while [E₁₂, E₁₃] = 0 since 2α₁ + α₂ is not a root. dim sl(3) = 2 + 6
+    = 8 ✓. Common mistakes: taking all diagonal matrices (that is gl(3));
+    forgetting negative roots when counting. Now you try: the number of
+    roots and positive roots of sl(4). (12 and 6)
+
+D8. State the axioms of a (reduced) root system. Prove that for roots
+    β ≠ ±α the product ⟨β, α^∨⟩⟨α, β^∨⟩ lies in {0, 1, 2, 3}, and list the
+    possible angles and length ratios. Prove that if (α, β) > 0, β ≠ α,
+    then α − β is a root.
+    Answer: 4cos²θ ∈ {0, 1, 2, 3}: θ = 90°; 60°, 120° (ratio 1); 45°,
+    135° (ratio 2); 30°, 150° (ratio 3). If (α, β) > 0 one of the Cartan
+    integers is 1, and a reflection produces α − β.
+    Teacher explains: AXIOMS (E Euclidean): (R1) Φ finite, spans E, 0 ∉ Φ;
+    (R2) the only multiples of α in Φ are ±α; (R3) s_α(Φ) = Φ, where
+    s_α(v) = v − ⟨v, α^∨⟩α; (R4) ⟨β, α^∨⟩ = 2(β, α)/(α, α) ∈ Z. Now
+       ⟨β, α^∨⟩⟨α, β^∨⟩ = 4(α, β)²/(|α|²|β|²) = 4cos²θ ∈ [0, 4],
+    and it is an integer by (R4). The value 4 means cos θ = ±1, so β is a
+    multiple of α, excluded by (R2). So 4cos²θ ∈ {0, 1, 2, 3}, and both
+    integers have the same sign. Also |β|²/|α|² = ⟨β, α^∨⟩/⟨α, β^∨⟩. Table
+    (with |β| ≥ |α|):
+       ⟨α, β^∨⟩  ⟨β, α^∨⟩   θ       |β|²/|α|²
+          0         0      90°     any
+          ±1        ±1     60°/120°    1
+          ±1        ±2     45°/135°    2
+          ±1        ±3     30°/150°    3
+    If (α, β) > 0 and β ≠ α, the table shows ⟨α, β^∨⟩ = 1 or ⟨β, α^∨⟩ =
+    1. In the first case s_β(α) = α − β ∈ Φ; in the second s_α(β) = β − α
+    ∈ Φ, so α − β = −(β − α) ∈ Φ. Dually (α, β) < 0 ⇒ α + β ∈ Φ. Common
+    mistakes: forgetting that 90° allows any length ratio (A₁ × A₁ with
+    different lengths is still a root system); computing ⟨β, α^∨⟩ with
+    |β|² in the denominator. Now you try: the angle and length ratio when
+    ⟨β, α^∨⟩ = −3. (150°, |β|² = 3|α|²; then ⟨α, β^∨⟩ = −1)
+
+D9. Describe the root systems B₂, C₂ and G₂: roots, simple roots,
+    positive roots, Cartan matrices, highest roots and Weyl groups. Find
+    the α-string through β in G₂.
+    Answer: B₂ = {±e₁, ±e₂, ±e₁ ± e₂}, α₁ = e₁ − e₂, α₂ = e₂, Φ⁺ = {α₁, α₂,
+    α₁ + α₂, α₁ + 2α₂}, Cartan [[2, −2], [−1, 2]], W dihedral of order 8.
+    C₂ = {±2eᵢ, ±e₁ ± e₂} ≅ B₂. G₂: Φ⁺ = {α, β, α + β, 2α + β, 3α + β,
+    3α + 2β}, Cartan [[2, −1], [−3, 2]], W dihedral of order 12; the
+    string is β, β + α, β + 2α, β + 3α.
+    Teacher explains: B₂ (so(5)): long roots ±e₁ ± e₂ (length² 2), short
+    ±eᵢ. With α₁ = e₁ − e₂, α₂ = e₂: α₁ + α₂ = e₁, α₁ + 2α₂ = e₁ + e₂ =
+    highest root, height 3. a₁₂ = 2(α₁, α₂)/(α₂, α₂) = 2(−1)/1 = −2, a₂₁ =
+    2(−1)/2 = −1; 4cos²θ = 2: angle 135°. W is generated by reflections in
+    lines at 45°; s₁s₂ is rotation by 90°, of order 4, so W is dihedral
+    of order 8 = the signed permutations of (e₁, e₂). C₂ (sp(4)) has long
+    roots ±2eᵢ and short ±e₁ ± e₂: rotating by 45° and rescaling by
+    1/√2 carries it to B₂, the root-level shadow of so(5) ≅ sp(4). G₂:
+    take α = (1, 0) and β = (−3/2, √3/2): |β|² = 3, (α, β) = −3/2, cos θ =
+    −√3/2, θ = 150°. Then α + β = (−½, √3/2) and 2α + β = (½, √3/2) are short,
+    3α + β = (3/2, √3/2) and 3α + 2β = (0, √3) are long; together with negatives
+    that is 12 roots, and dim g₂ = 2 + 12 = 14. ⟨α, β^∨⟩ = 2(−3/2)/3 = −1, ⟨β,
+    α^∨⟩ = 2(−3/2)/1 = −3. The α-string through β is β − pα, ..., β +
+    qα with p − q = ⟨β, α^∨⟩ = −3 and p = 0 (β − α is not a root, both
+    simple), so q = 3. The highest root is 3α + 2β (height 5 = h − 1,
+    Coxeter number h = 6), and s_αs_β is rotation by 60°: W is dihedral of
+    order 12. Common mistakes: mixing up which simple root is long in the
+    Cartan matrix (convention aᵢⱼ = ⟨αᵢ, αⱼ^∨⟩); listing 2α + 2β, which is
+    not a root. Now you try: ρ = half the sum of the positive roots of
+    G₂. (5α + 3β)
+
+D10. State the classification of complex simple Lie algebras and give,
+     for each type, the rank, number of roots and dimension. Prove that a
+     Dynkin diagram cannot contain a cycle (e.g. the triangle with single
+     edges).
+     Answer: Aₗ (l ≥ 1), Bₗ (l ≥ 2), Cₗ (l ≥ 3), Dₗ (l ≥ 4), E₆, E₇, E₈,
+     F₄, G₂; |Φ| = l(l + 1), 2l², 2l², 2l(l − 1), 72, 126, 240, 48, 12;
+     dim = l + |Φ|. Cycles give a nonzero vector of length 0.
+     Teacher explains: THEOREM: two complex semisimple Lie algebras are
+     isomorphic iff their root systems are, and root systems ↔ Cartan
+     matrices ↔ Dynkin diagrams; simple ↔ connected. Every connected
+     diagram is one of the list, and each occurs (classical matrix
+     algebras, Serre relations for the exceptional ones). Table:
+        type   algebra      dim        |Φ|        |W|
+        Aₗ     sl(l + 1)    l(l + 2)    l(l + 1)   (l + 1)!
+        Bₗ     so(2l + 1)   l(2l + 1)   2l²        2ˡl!
+        Cₗ     sp(2l)       l(2l + 1)   2l²        2ˡl!
+        Dₗ     so(2l)       l(2l − 1)   2l(l − 1)  2ˡ⁻¹l!
+        G₂, F₄, E₆, E₇, E₈: 14, 52, 78, 133, 248.
+     E.g. dim E₈ = 8 + 240 = 248. WHY NO CYCLES: replace the simple roots
+     by unit vectors vᵢ; for joined nodes 2(vᵢ, vⱼ) = −√(aᵢⱼaⱼᵢ) ≤ −1,
+     otherwise 0. For v = ∑vᵢ over n nodes,
+        0 < |v|² = n + ∑_{i<j} 2(vᵢ, vⱼ) ≤ n − (number of edges),
+     since the vᵢ are independent (v ≠ 0). So a connected subdiagram on n
+     nodes has fewer than n edges: it is a TREE, and in particular a cycle
+     is impossible. For the triangle directly: (vᵢ, vⱼ) = −½, |v|² = 3 −
+     3 = 0, contradiction. Similar arguments bound the degree of a node
+     (< 4 counted with multiplicity) and exclude all other trees, leaving
+     exactly the list above. Common mistakes: listing B₁, C₂, D₃ as new
+     types (B₁ = A₁, C₂ = B₂, D₃ = A₃); forgetting the Cartan subalgebra
+     when computing dim g from |Φ|. Now you try: dim E₇ from |Φ| = 126.
+     (133)
+
+D11. For sl(3, C) define the fundamental weights, find the weights of
+     C³, derive dim V(a, b) = (a + 1)(b + 1)(a + b + 2)/2 from the Weyl
+     dimension formula, and decompose 3 ⊗ 3 and 3 ⊗ 3̄.
+     Answer: ⟨ωᵢ, αⱼ^∨⟩ = δᵢⱼ; weights of C³: ε₁ = ω₁, ε₂ = ω₂ − ω₁, ε₃ =
+     −ω₂; 3 ⊗ 3 = V(2, 0) ⊕ V(0, 1) = 6 ⊕ 3̄; 3 ⊗ 3̄ = V(1, 1) ⊕ V(0, 0) =
+     8 ⊕ 1.
+     Teacher explains: THEOREM OF THE HIGHEST WEIGHT: every irreducible
+     finite-dimensional V has a unique highest weight λ (killed by all
+     positive root vectors), λ is dominant integral, λ = aω₁ + bω₂ with
+     a, b ∈ N, and each such λ occurs exactly once: V(a, b). On C³ the
+     weight of eᵢ is εᵢ; pairing with the coroots H₁ = diag(1, −1, 0), H₂
+     = diag(0, 1, −1) gives coordinates (1, 0), (−1, 1), (0, −1). So C³ =
+     V(1, 0) with highest weight ω₁, and its dual has weights −εᵢ, highest
+     −ε₃ = ω₂: 3̄ = V(0, 1). WEYL DIMENSION: ρ = ω₁ + ω₂ and the positive
+     coroots are α₁^∨, α₂^∨, α₁^∨ + α₂^∨, so with λ + ρ = (a + 1)ω₁ + (b +
+     1)ω₂,
+        dim V(a, b) = (a + 1)/1 · (b + 1)/1 · (a + b + 2)/2.
+     E.g. V(1, 1) = 2·2·4/2 = 8 (the adjoint), V(2, 0) = 6, V(3, 0) = 10,
+     V(2, 2) = 27. TENSOR PRODUCTS by peeling highest weights: 3 ⊗ 3 has
+     highest weight 2ω₁, and V(2, 0) = Sym²C³ (6); the rest Λ²C³ has
+     highest weight ε₁ + ε₂ = ω₂: 9 = 6 + 3. 3 ⊗ 3̄ = End C³ = sl(3) ⊕ CI:
+     highest weight ω₁ + ω₂, 9 = 8 + 1. Common mistakes: using ε-coordinates
+     in the dimension formula without converting; forgetting that V(a, b)*
+     ≅ V(b, a). Now you try: dim V(2, 1) and dim V(4, 0). (15 and 15)
+
+D12. Let G = SU(2) and T = {t_θ = diag(e^(iθ), e^(−iθ))}. Using the Weyl
+     integration formula ∫_G f dg = (2/π)∫₀^π f(t_θ) sin²θ dθ for class
+     functions f, show the characters χₙ(θ) = sin((n + 1)θ)/sin θ are
+     orthonormal, compute ∫_G χ₁⁴ dg, and determine the irreducible
+     representations of SO(3).
+     Answer: ∫χₘχₙ = δₘₙ; ∫χ₁⁴ = 2 = multiplicity of V(0) in V(1)^⊗4;
+     SO(3) has one irreducible of each odd dimension 2l + 1.
+     Teacher explains: V(n) = homogeneous polynomials of degree n in two
+     variables; t_θ acts on the weight vectors by e^(i(n−2k)θ), so
+        χₙ(θ) = e^(inθ) + e^(i(n−2)θ) + ... + e^(−inθ)
+              = sin((n + 1)θ)/sin θ   (geometric series).
+     Then χₘχₙ sin²θ = sin((m + 1)θ) sin((n + 1)θ), and
+        (2/π)∫₀^π sin((m + 1)θ) sin((n + 1)θ) dθ = δₘₙ.
+     Since ∫χ_Vχ̄_W = dim Hom_G(V, W) (Schur plus Haar averaging), this
+     reproves that the V(n) are irreducible and pairwise non-isomorphic,
+     and Peter-Weyl says there are no others. ∫χ₁⁴: χ₁ = 2cos θ, so
+        (2/π)∫₀^π 16cos⁴θ sin²θ dθ = (2/π)·16·(π/16) = 2,
+     matching V(1)^⊗4 = V(4) ⊕ 3V(2) ⊕ 2V(0). SO(3) = SU(2)/{±I}: an
+     irreducible of SO(3) is a V(n) on which −I = t_π acts trivially;
+     −I acts by (−1)ⁿ, so n = 2l is even: dimension 2l + 1. These are the
+     spherical harmonics of degree l, and a rotation by φ has character
+     1 + 2cos φ + ... + 2cos lφ = sin((l + ½)φ)/sin(φ/2) (φ = 2θ). Common
+     mistakes: forgetting the density sin²θ (T is not all of G); using
+     Haar measure on T alone. Now you try: ∫_{SU(2)} χ₁⁶ dg. (5, the
+     Catalan number C₃)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Give the (real) dimension of the Lie group.
+    a) GL(3, R)                        b) SL(4, R)
+    c) O(5)                            d) SO(3)
+    e) U(3)                            f) SU(4)
+    g) Sp(4, R)                        h) Sp(2) (compact, 2 × 2 quaternionic)
+    i) SO(3, 1) (Lorentz group)        j) SL(2, C) as a real group
+    k) the Heisenberg group H₃         l) E(3) = R³ ⋊ SO(3)
+    m) the Poincaré group R⁴ ⋊ SO(3, 1) n) invertible upper triangular 4 × 4
+    o) unipotent upper triangular 4 × 4 p) Aff(2) = R² ⋊ GL(2, R)
+    q) SO(8)                           r) GL(3, C) as a real group
+    s) compact G₂ and compact E₈       t) the flag manifold SU(3)/T
+    u) the sphere SO(5)/SO(4)          v) Sp(2n, R) for n = 3
+    Answers:
+      a) 9       b) 15      c) 10      d) 3       e) 9       f) 15
+      g) 10      h) 10      i) 6       j) 6       k) 3       l) 6
+      m) 10      n) 10      o) 6       p) 6       q) 28      r) 18
+      s) 14 and 248         t) 6 (= number of roots)
+      u) 4 (10 − 6)         v) 21
+
+M2. Brackets and exponentials (e = E₁₂, f = E₂₁, h = E₁₁ − E₂₂,
+    J = [[0, −1], [1, 0]]).
+    a) [e, f]                          b) [h, e] and [h, f]
+    c) exp(te)                         d) exp(θJ)
+    e) exp(πJ) and exp(2πJ)            f) exp [[1, 1], [0, 1]]
+    g) exp [[0, 1], [1, 0]]            h) det exp [[1, 2], [3, 4]]
+    i) exp [[0, 1, 0], [0, 0, 1], [0, 0, 0]]
+    j) [e, [e, f]]                     k) the matrix of ad e in the basis
+                                          (e, h, f)
+    l) Ad(g)e for g = diag(2, ½)       m) exp [[0, 4], [1, 0]]
+    n) BCH to order t²: log(e^(te)e^(tf))
+    o) is −I in exp(sl(2, R))?          p) is [[−1, 1], [0, −1]] in
+                                          exp(sl(2, R))? in exp(sl(2, C))?
+    q) is diag(−2, −½) in exp(sl(2, C))?
+    r) the one-parameter subgroup of SO(3) generated by L₃
+    Answers:
+      a) h       b) 2e, −2f             c) [[1, t], [0, 1]]
+      d) [[cos θ, −sin θ], [sin θ, cos θ]]    e) −I and I
+      f) e·[[1, 1], [0, 1]]             g) [[cosh 1, sinh 1], [sinh 1,
+         cosh 1]] ≈ [[1.54308, 1.17520], [1.17520, 1.54308]]
+      h) e⁵ ≈ 148.41316                  i) [[1, 1, ½], [0, 1, 1], [0, 0, 1]]
+      j) −2e (= [e, h])                 k) columns (0, 0, 0), (−2, 0, 0),
+         (0, 1, 0): e ↦ 0, h ↦ −2e, f ↦ h
+      l) 4e      m) [[cosh 2, 2 sinh 2], [½ sinh 2, cosh 2]]
+      n) t(e + f) + (t²/2)h
+      o) yes (exp πJ)                    p) no; no (X² = δI forces e^X
+         diagonalisable or of trace 2)
+      q) yes (diag(ln 2 + iπ, −ln 2 − iπ))
+      r) rotations about the z-axis, t ↦ R_t
+
+M3. Classify: A = abelian, N = nilpotent non-abelian, S = solvable not
+    nilpotent, SS = semisimple (say whether simple), R = reductive not
+    semisimple, M = none of these (give a Levi decomposition).
+    a) R³ with zero bracket            b) Heisenberg n₃
+    c) aff(1): [x, y] = y              d) sl(2, C)
+    e) gl(2, C)                        f) b₃ (upper triangular 3 × 3)
+    g) n₄ (strictly upper 4 × 4)       h) so(3)
+    i) so(4)                           j) e(2)
+    k) sl(2, C) ⋉ C² (natural action)  l) u(2)
+    m) sl(2, R) ⊕ sl(2, R)             n) [x, y] = y, [x, z] = z, [y, z] = 0
+    o) sl(2, R)                        p) so(3, 1) (real)
+    q) a 1-dimensional Lie algebra     r) the derived length of b₃
+    s) the nilpotency class of n₄      t) the Lie algebra of the Poincaré
+                                          group (real)
+    Answers:
+      a) A        b) N        c) S        d) SS, simple
+      e) R (= sl(2) ⊕ C)                  f) S        g) N
+      h) SS, simple (compact form of A₁)  i) SS, not simple (so(3) ⊕ so(3))
+      j) S        k) M: radical C², Levi factor sl(2)
+      l) R (= su(2) ⊕ u(1))               m) SS, not simple
+      n) S        o) SS, simple
+      p) SS, simple as a real algebra (≅ sl(2, C)_R; its complexification
+         sl(2, C) ⊕ sl(2, C) is not simple)
+      q) A (not simple, by convention)    r) 3         s) 3
+      t) M: radical R⁴ (translations), Levi factor so(3, 1)
+
+M4. Killing forms. Compute.
+    a) sl(2, C): κ(h, h)                 b) sl(2, C): κ(e, f)
+    c) sl(2): det of the Gram matrix in (e, h, f)
+    d) sl(3): κ(H, H), H = diag(1, −1, 0)  e) sl(3): κ(E₁₂, E₂₁)
+    f) sl(n): κ(X, Y) in terms of tr(XY)
+    g) gl(2): κ(I, X)                   h) gl(2): κ(E₁₁, E₁₁)
+    i) so(3): κ(L₁, L₁)                 j) so(4): κ(L, L), L = E₁₂ − E₂₁
+    k) so(5): κ(L, L), same L           l) sp(4): κ in terms of tr(XY)
+    m) Heisenberg n₃                    n) aff(1): the Gram matrix in (x, y)
+    o) e(2) in the basis (J, P₁, P₂)
+    p) Cx ⋉ C² with ad x = diag(1, i): κ(x, x)
+    q) the signature of κ on sl(2, R)   r) the signature of κ on su(2)
+    Answers:
+      a) 8        b) 4        c) −128     d) 12       e) 6
+      f) 2n tr(XY)                        g) 0 (gl(2) not semisimple)
+      h) 2 (2n tr(XY) − 2 tr X tr Y = 4 − 2)
+      i) −2       j) −4 (2 tr(L²))        k) −6 (3 tr(L²))
+      l) 6 tr(XY)                         m) 0
+      n) [[1, 0], [0, 0]]                 o) diag(−2, 0, 0)
+      p) 0 (1 + i² = 0; κ ≡ 0 yet ad x is not nilpotent: solvable, not
+         nilpotent)
+      q) (2, 1) (κ(h, h) = 8, κ(e ± f, e ± f) = ±8)
+      r) (0, 3), negative definite
+
+M5. Representations of sl(2, C).
+    a) weights of V(4)                   b) dim V(7)
+    c) V(1) ⊗ V(1)                       d) V(2) ⊗ V(2)
+    e) V(3) ⊗ V(2)                       f) V(1)^⊗3
+    g) V(1)^⊗4                           h) Sym²V(2) and Λ²V(2)
+    i) Sym³V(1)                          j) Sym²V(3) and Λ²V(3)
+    k) Casimir ef + fe + ½h² on V(3)    l) the representation with weights
+                                           3, 1, 1, −1, −1, −3
+    m) weights 2, 2, 0, 0, 0, −2, −2     n) e f v₀ on V(n), v₀ highest
+    o) the adjoint representation        p) sl(3) restricted to sl(2)
+                                           embedded in the top-left corner
+    q) sl(3) restricted to the principal sl(2) (C³ = V(2))
+    r) SO(3) on quadratic polynomials in x, y, z (dim 6)
+    s) the multiplicity of V(0) in V(1)^⊗6
+    Answers:
+      a) 4, 2, 0, −2, −4                  b) 8
+      c) V(2) ⊕ V(0)                      d) V(4) ⊕ V(2) ⊕ V(0)
+      e) V(5) ⊕ V(3) ⊕ V(1)              f) V(3) ⊕ 2V(1)
+      g) V(4) ⊕ 3V(2) ⊕ 2V(0) (5 + 9 + 2 = 16)
+      h) V(4) ⊕ V(0); V(2)                i) V(3)
+      j) V(6) ⊕ V(2); V(4) ⊕ V(0)         k) 15/2
+      l) V(3) ⊕ V(1)                      m) 2V(2) ⊕ V(0)
+      n) n v₀     o) V(2)                  p) V(2) ⊕ 2V(1) ⊕ V(0)
+      q) V(4) ⊕ V(2) (5 + 3 = 8)
+      r) V(4) ⊕ V(0) (5 + 1: harmonic quadratics plus x² + y² + z²)
+      s) 5 (Catalan number)
+
+M6. Root system data. For each type give |Φ|, |Φ⁺|, dim g, |W| and the
+    Coxeter number h = (height of the highest root) + 1.
+    a) A₁       b) A₂       c) A₃       d) A₄       e) B₂       f) B₃
+    g) C₃       h) D₄       i) D₅       j) G₂       k) F₄       l) E₆
+    m) E₇       n) E₈       o) Aₙ in general        p) Dₙ in general
+    q) check |Φ| = rank · h for E₈ and G₂
+    Answers:
+      a) 2, 1, 3, 2, 2               b) 6, 3, 8, 6, 3
+      c) 12, 6, 15, 24, 4            d) 20, 10, 24, 120, 5
+      e) 8, 4, 10, 8, 4              f) 18, 9, 21, 48, 6
+      g) 18, 9, 21, 48, 6            h) 24, 12, 28, 192, 6
+      i) 40, 20, 45, 1920, 8         j) 12, 6, 14, 12, 6
+      k) 48, 24, 52, 1152, 12        l) 72, 36, 78, 51840, 12
+      m) 126, 63, 133, 2903040, 18   n) 240, 120, 248, 696729600, 30
+      o) n(n + 1), n(n + 1)/2, n(n + 2), (n + 1)!, n + 1
+      p) 2n(n − 1), n(n − 1), n(2n − 1), 2ⁿ⁻¹n!, 2n − 2
+      q) 8 · 30 = 240 ✓, 2 · 6 = 12 ✓
+
+M7. Cartan integers, reflections, strings (⟨β, α^∨⟩ = 2(β, α)/(α, α)).
+    a) α = (1, −1, 0), β = (0, 1, −1): ⟨β, α^∨⟩ and s_α(β)
+    b) B₂, α = e₁ − e₂, β = e₂: ⟨β, α^∨⟩, ⟨α, β^∨⟩, s_β(α), the angle
+    c) G₂, α short, β long simple: ⟨α, β^∨⟩, ⟨β, α^∨⟩, the angle
+    d) s_α(v) for α = (1, 1), v = (3, 1)
+    e) A₂, α = ε₁ − ε₃, β = ε₁ − ε₂: ⟨β, α^∨⟩, the angle, β − α
+    f) the α-string through β in G₂ (α short, β long, both simple)
+    g) the α-string through β in B₂ (α = e₂ short, β = e₁ − e₂)
+    h) ⟨β, α^∨⟩ = −2, ⟨α, β^∨⟩ = −1: angle and |β|²/|α|²
+    i) ⟨β, α^∨⟩ = 1, ⟨α, β^∨⟩ = 3: angle and |α|²/|β|²
+    j) can ⟨β, α^∨⟩ = 4 in a reduced root system?
+    k) ρ for A₂ (in ε-coordinates), for B₂, for G₂
+    l) the length of the longest element w₀ of W(A₃), of W(B₂)
+    m) the order of s₁s₂ in A₂, B₂, G₂, A₁ × A₁
+    n) the number of Weyl chambers for B₃
+    o) D₄ with central node α₂: ⟨α₁, α₂^∨⟩ and the highest root
+    p) the highest root of Aₙ, Bₙ, Cₙ (Bourbaki numbering)
+    Answers:
+      a) −1, (1, 0, −1)                  b) −1, −2, e₁ + e₂, 135°
+      c) −1, −3, 150°                    d) (−1, −3)
+      e) 1, 60°, ε₃ − ε₂ = −α₂           f) β, β + α, β + 2α, β + 3α
+      g) β, β + α = e₁, β + 2α = e₁ + e₂  h) 135°, 2
+      i) 30°, 3                          j) no: then 4cos²θ ≥ 4, β = ±2α
+      k) (1, 0, −1); (3/2, 1/2); 5α + 3β
+      l) 6; 4 (= |Φ⁺|)                   m) 3, 4, 6, 2
+      n) 48                              o) −1; α₁ + 2α₂ + α₃ + α₄
+      p) α₁ + ... + αₙ; α₁ + 2α₂ + ... + 2αₙ; 2α₁ + ... + 2αₙ₋₁ + αₙ
+
+M8. Cartan matrices (aᵢⱼ = ⟨αᵢ, αⱼ^∨⟩). Identify the type (or say "not
+    finite type") and give the determinant.
+    a) [[2, −1], [−1, 2]]              b) [[2, 0], [0, 2]]
+    c) [[2, −2], [−1, 2]]              d) [[2, −1], [−3, 2]]
+    e) [[2, −1, 0], [−1, 2, −1], [0, −1, 2]]
+    f) [[2, −1, 0], [−1, 2, −2], [0, −1, 2]]
+    g) [[2, −1, 0], [−1, 2, −1], [0, −2, 2]]
+    h) [[2, −1, −1], [−1, 2, −1], [−1, −1, 2]]
+    i) [[2, −2], [−2, 2]]              j) [[2, −3], [−2, 2]]
+    k) the order of the centre of the simply connected group of type:
+       A₄, B₃, C₃, D₄, D₅, E₆, E₇, E₈, G₂
+    l) the isomorphism type of that centre for D₄ and D₅
+    m) the low-rank coincidences B₁, C₂, D₂, D₃
+    n) the simply connected compact groups of types A₃, B₂, D₃
+    Answers:
+      a) A₂, 3        b) A₁ × A₁, 4     c) B₂, 2        d) G₂, 1
+      e) A₃, 4        f) B₃, 2 (α₃ short)                g) C₃, 2
+      h) not finite type (affine Ã₂, a cycle), 0
+      i) not finite type (affine Ã₁), 0
+      j) not finite type (a₁₂a₂₁ = 6 > 3), −2
+      k) 5, 2, 2, 4, 4, 3, 2, 1, 1
+      l) Z/2 × Z/2 and Z/4
+      m) A₁, B₂, A₁ × A₁, A₃
+      n) SU(4), Sp(2) = Spin(5), SU(4) = Spin(6)
+
+M9. Weyl dimension formula: find dim V(λ), λ = ∑mᵢωᵢ written (m₁, ...).
+    a) sl(2): V(6)
+    b) sl(3): V(1, 0), V(1, 1), V(2, 0), V(3, 0)
+    c) sl(3): V(2, 1), V(2, 2), V(4, 0), V(3, 1), V(3, 3)
+    d) B₂ (α₁ long, α₂ short): V(1, 0), V(0, 1), V(0, 2), V(2, 0), V(1, 1)
+    e) C₂ (α₁ short, α₂ long): V(1, 0), V(0, 1), V(2, 0)
+    f) G₂ (α₁ short): V(1, 0), V(0, 1), V(2, 0), V(0, 2)
+    g) sl(4): V(1, 0, 0), V(0, 1, 0), V(1, 0, 1), V(2, 0, 0), V(0, 2, 0)
+    h) so(7) = B₃: V(1, 0, 0), V(0, 1, 0), V(0, 0, 1)
+    i) so(8) = D₄ (α₂ central): V(1, 0, 0, 0), V(0, 1, 0, 0),
+       V(0, 0, 1, 0), V(0, 0, 0, 1), V(2, 0, 0, 0)
+    j) the smallest nontrivial representations of F₄, E₆, E₇, E₈
+    k) V(ρ) for A₂, B₂, G₂, A₃ (compare 2^|Φ⁺|)
+    l) the general formula for sl(3)
+    Answers:
+      a) 7        b) 3, 8, 6, 10               c) 15, 27, 15, 24, 64
+      d) 5, 4, 10, 14, 16                     e) 4, 5, 10
+      f) 7, 14, 27, 77                        g) 4, 6, 15, 10, 20
+      h) 7, 21, 8 (vector, adjoint, spin)
+      i) 8, 28, 8, 8, 35 (triality permutes the three 8s)
+      j) 26, 27, 56, 248 (for E₈ the adjoint)
+      k) 8, 16, 64, 64 = 2³, 2⁴, 2⁶, 2⁶ ✓
+      l) (a + 1)(b + 1)(a + b + 2)/2
+
+M10. Weights, tensor products and characters.
+     a) the weights of C³ for sl(3) in fundamental coordinates
+     b) the weights of the adjoint of sl(3), with multiplicities
+     c) the multiplicity of the weight 0 in V(1, 1), V(2, 2), V(3, 0)
+     d) V(1, 0) ⊗ V(0, 1)              e) V(1, 0) ⊗ V(1, 0)
+     f) V(1, 0) ⊗ V(1, 1)              g) V(1, 0)^⊗3
+     h) V(1, 1) ⊗ V(1, 1)              i) Λ²C³, Λ³C³ for sl(3)
+     j) Symᵏ C³ and its dimension
+     k) SU(2) characters: χ₂(π/4), χ₄(π/3), χ₃(π/2), χₙ(0)
+     l) ∫_{SU(2)} χ₁⁴, ∫χ₁⁶, ∫χ₂³, ∫χ₃χ₂
+     m) SO(3) character of the (2l + 1)-dim irreducible at a rotation by
+        φ: l = 1, φ = π/2; l = 2, φ = 2π/3
+     n) the W-orbit sizes of ω₁ and ρ in A₂; of e₁ and ρ in B₂
+     o) dim of the SU(3)-invariants in 3 ⊗ 3 ⊗ 3 and in 8 ⊗ 8
+     Answers:
+       a) (1, 0), (−1, 1), (0, −1)
+       b) (2, −1), (−1, 2), (1, 1), their negatives, and (0, 0) twice
+       c) 2, 3, 1       d) V(1, 1) ⊕ V(0, 0)     e) V(2, 0) ⊕ V(0, 1)
+       f) V(2, 1) ⊕ V(0, 2) ⊕ V(1, 0) (24 = 15 + 6 + 3)
+       g) V(3, 0) ⊕ 2V(1, 1) ⊕ V(0, 0) (27 = 10 + 16 + 1)
+       h) V(2, 2) ⊕ V(3, 0) ⊕ V(0, 3) ⊕ 2V(1, 1) ⊕ V(0, 0)
+          (64 = 27 + 10 + 10 + 16 + 1)
+       i) V(0, 1) = 3̄; trivial       j) V(k, 0), (k + 1)(k + 2)/2
+       k) 1, −1, 0, n + 1             l) 2, 5, 1, 0
+       m) 1 + 2cos(π/2) = 1; 1 + 2cos(2π/3) + 2cos(4π/3) = −1
+       n) 3, 6; 4, 8                  o) 1 (the determinant); 1 (κ)
+
+M11. Lie groups: topology, centres, tori, coverings.
+     a) π₁(SO(3)), π₁(SO(n)) for n ≥ 3
+     b) π₁(U(n)), π₁(SU(n)), π₁(Sp(n))
+     c) π₁(SL(2, R)), π₁(SO(2)), π₁(PSU(3))
+     d) centres: SU(3), U(2), SO(4), SO(5), Sp(2)
+     e) rank: U(4), SU(4), SO(7), SO(8), Sp(3), G₂
+     f) Weyl group N(T)/T: U(n), SO(3), SU(3), SO(4), Sp(2)
+     g) dim SU(3)/T and its Euler characteristic
+     h) universal covers of SO(3), SO(4), SO(5), SO(6), SO(3, 1)₀
+     i) number of connected components: O(n), O(3, 1), GL(n, R),
+        GL(n, C), Sp(2n, R)
+     j) is exp onto: U(n), SL(2, R), GL(n, C), SL(2, C), H₃ (Heisenberg)
+     k) does the isomorphism su(2) → so(3) lift to SU(2) → SO(3)? does its
+        inverse lift to SO(3) → SU(2)?
+     l) the connected Lie groups with Lie algebra su(2)
+     m) the connected Lie groups with Lie algebra R
+     Answers:
+       a) Z/2, Z/2              b) Z, 1, 1          c) Z, Z, Z/3
+       d) Z/3 (ωI, ω³ = 1), U(1) (scalars), {±I}, {I}, {±I}
+       e) 4, 3, 3, 4, 3, 2
+       f) Sₙ, Z/2, S₃, Z/2 × Z/2, dihedral of order 8
+       g) 6, 6 = |W|
+       h) SU(2), SU(2) × SU(2), Sp(2), SU(4), SL(2, C)
+       i) 2, 4, 2, 1, 1
+       j) yes, no, yes, no (−[[1, 1], [0, 1]]), yes (a diffeomorphism)
+       k) yes (SU(2) simply connected: the double cover); no
+       l) SU(2) and SO(3)      m) R and S¹
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) exp is onto for every connected Lie group.
+     b) exp is onto for every compact connected Lie group.
+     c) Every Lie group is isomorphic to a closed subgroup of some GL(n).
+     d) Every finite-dimensional real Lie algebra is the Lie algebra of
+        some Lie group.
+     e) Groups with isomorphic Lie algebras are isomorphic.
+     f) Every finite-dimensional representation of a solvable Lie
+        algebra over C is completely reducible.
+     g) Every finite-dimensional representation of sl(n, C) is
+        completely reducible.
+     h) A Lie algebra with Killing form identically 0 is nilpotent.
+     i) A Lie algebra with nondegenerate Killing form is semisimple.
+     j) Lie's theorem holds over R.
+     k) Every subalgebra of a semisimple Lie algebra is semisimple.
+     l) Every ideal of a semisimple Lie algebra is semisimple.
+     m) The direct sum of two simple Lie algebras is simple.
+     n) Root systems with isomorphic Weyl groups are isomorphic.
+     o) The sum of two roots is a root or zero.
+     p) Every positive root is a sum of simple roots.
+     q) Every irreducible finite-dimensional representation of an
+        abelian Lie algebra over C is 1-dimensional.
+     r) so(4) is simple.
+     s) SO(3) has an irreducible representation of dimension 2.
+     t) The Killing form of a compact semisimple Lie algebra is negative
+        definite.
+     Answers:
+       a) F: SL(2, R) (diag(−2, −½))       b) T
+       c) F: the universal cover of SL(2, R)
+       d) T (Ado's theorem + Lie III)      e) F: SU(2) and SO(3)
+       f) F: b₂ on C²                      g) T (Weyl)
+       h) F: Cx ⋉ C², ad x = diag(1, i) (solvable, by Cartan's criterion)
+       i) T (Cartan's criterion)           j) F: so(2) on R²
+       k) F: a Cartan subalgebra (abelian), or a Borel b ⊆ sl(n)
+       l) T (it is a sum of some of the simple factors)
+       m) F: sl(2) ⊕ sl(2) has the ideal sl(2) ⊕ 0
+       n) F: Bₙ and Cₙ (n ≥ 3) share W = (Z/2)ⁿ ⋊ Sₙ
+       o) F: in A₁ × A₁, α + β is not a root; also α + α = 2α
+       p) T (as a sum with repetitions: ∑kᵢαᵢ, kᵢ ∈ N)
+       q) T (commuting operators have a common eigenvector)
+       r) F: so(4) ≅ so(3) ⊕ so(3)          s) F: only odd dimensions
+       t) T
+
+TEACHING TIPS
+  Struggling: make everything concrete in sl(2) and sl(3) first — write
+  the 3 × 3 matrices Eᵢⱼ, compute [H, Eᵢⱼ] = (aᵢ − aⱼ)Eᵢⱼ by hand, and
+  draw the six roots of A₂ as a hexagon before ever saying "root system";
+  then draw B₂ (a square with its diagonals) and G₂ (a star of David with
+  a hexagon) and read off angles and length ratios from the pictures.
+  For every representation question, insist on the routine "list the
+  weights with multiplicities, peel off the highest weight, repeat", and
+  check the total dimension at the end. Keep the dictionary group ↔
+  algebra visible: SU(2) → SO(3) is the example to return to whenever
+  someone claims the Lie algebra determines the group. Harder: prove
+  Engel's and Lie's theorems and Cartan's criterion; prove Weyl's
+  theorem with the Casimir element; show dim g_α = 1 and that the roots
+  form a root system; complete the classification of connected Dynkin
+  diagrams by excluding every tree outside the list; prove the Weyl
+  character formula via the Weyl integration formula for a compact group
+  (or via Verma modules and the Casimir), derive Kostant's multiplicity
+  formula, and show that |P/Q| equals the order of the centre of the
+  simply connected group (Z/n for SU(n), Z/4 or Z/2 × Z/2 for Spin(2n)).
+
+
+================================================================================
+TOPIC 12.12 — PROBABILITY (MEASURE-THEORETIC): CONDITIONAL EXPECTATION,
+MARTINGALES, BROWNIAN MOTION, WEAK CONVERGENCE, CHARACTERISTIC FUNCTIONS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - PROBABILITY SPACE (Ω, ℱ, P): a measure space with P(Ω) = 1. A RANDOM
+    VARIABLE is a measurable X : Ω → R; its LAW is μ_X = P ∘ X⁻¹ on 𝔅(R),
+    with distribution function F(x) = P(X ≤ x). E X = ∫X dP, and E g(X) =
+    ∫g dμ_X. σ(X) = {X⁻¹(B)} is the information carried by X; Y is
+    σ(X)-measurable iff Y = h(X) for a Borel h (Doob-Dynkin lemma).
+  - CONDITIONAL EXPECTATION: for X ∈ L¹ and a sub-σ-algebra 𝒢 ⊆ ℱ,
+    E[X | 𝒢] is the (a.s. unique) 𝒢-measurable Y ∈ L¹ with E[Y𝟙_G] =
+    E[X𝟙_G] for all G ∈ 𝒢. EXISTENCE by Radon-Nikodym (ν(G) = E[X𝟙_G] ≪ P
+    on 𝒢), or, for X ∈ L², as the ORTHOGONAL PROJECTION of X onto the
+    closed subspace L²(𝒢): E[X | 𝒢] is the best 𝒢-measurable predictor.
+  - ELEMENTARY CASES: if 𝒢 is generated by a partition {G₁, G₂, ...} with
+    P(Gᵢ) > 0, then E[X | 𝒢] = E[X𝟙_{Gᵢ}]/P(Gᵢ) on Gᵢ. With a joint
+    density f(x, y), E[Y | X] = h(X), h(x) = ∫y f(x, y) dy / ∫f(x, y) dy.
+    Gaussian vectors: E[Y | X] = EY + (Cov(X, Y)/Var X)(X − EX) (linear!).
+  - PROPERTIES (all a.s.): linearity; monotonicity; E[E[X | 𝒢]] = EX;
+    TOWER E[E[X | 𝒢] | ℋ] = E[X | ℋ] for ℋ ⊆ 𝒢; TAKING OUT WHAT IS KNOWN
+    E[ZX | 𝒢] = Z E[X | 𝒢] for bounded 𝒢-measurable Z; INDEPENDENCE:
+    E[X | 𝒢] = EX if X ⫫ 𝒢; conditional JENSEN φ(E[X | 𝒢]) ≤ E[φ(X) | 𝒢]
+    for convex φ (so ‖E[X | 𝒢]‖_p ≤ ‖X‖_p); conditional MCT, Fatou, DCT.
+    LAW OF TOTAL VARIANCE Var X = E[Var(X | 𝒢)] + Var(E[X | 𝒢]).
+  - MARTINGALES: a FILTRATION (ℱₙ) is an increasing sequence of σ-algebras;
+    (Mₙ) is ADAPTED if Mₙ is ℱₙ-measurable, and a MARTINGALE if also
+    E|Mₙ| < ∞ and E[Mₙ₊₁ | ℱₙ] = Mₙ (SUB: ≥, SUPER: ≤). Examples: sums of
+    independent mean-0 steps, Sₙ² − nσ², products of independent mean-1
+    factors, exp(θSₙ)/φ(θ)ⁿ, (q/p)^{Sₙ}, Doob martingales E[X | ℱₙ],
+    Pólya urn proportions, Zₙ/μⁿ for a branching process. A convex function
+    of a martingale is a submartingale (if integrable). DOOB DECOMPOSITION:
+    a submartingale is Mₙ + Aₙ with M a martingale, A predictable
+    increasing, Aₙ = ∑_{k<n} E[X_{k+1} − X_k | ℱ_k].
+  - STOPPING TIMES: τ with {τ ≤ n} ∈ ℱₙ (hitting times yes, "last visit"
+    times no). The stopped process M_{τ∧n} is a martingale. OPTIONAL
+    STOPPING THEOREM: E M_τ = E M₀ if (i) τ is bounded, or (ii) (M_{τ∧n})
+    is uniformly integrable (e.g. |M_{τ∧n}| ≤ K), or (iii) Eτ < ∞ and the
+    increments are bounded. It FAILS for simple random walk stopped at the
+    hitting time of 1 (E S_τ = 1 ≠ 0). Uses: gambler's ruin, Wald's
+    identities E S_τ = μEτ and E(S_τ − τμ)² = σ²Eτ, waiting-time puzzles.
+  - DOOB'S INEQUALITIES: for a non-negative submartingale, P(max_{k≤n} X_k
+    ≥ λ) ≤ E Xₙ/λ (MAXIMAL); ‖max_{k≤n} X_k‖_p ≤ (p/(p − 1))‖Xₙ‖_p for
+    p > 1 (Lᵖ). Kolmogorov's inequality is the case X = Sₙ².
+  - CONVERGENCE: the UPCROSSING LEMMA (b − a)E Uₙ[a, b] ≤ E(Xₙ − a)⁺ gives
+    DOOB'S THEOREM: sup E|Xₙ| < ∞ ⇒ Xₙ → X∞ a.s., X∞ ∈ L¹. L¹ convergence
+    needs UNIFORM INTEGRABILITY (sup_n E[|Xₙ|; |Xₙ| > K] → 0 as K → ∞);
+    for martingales, UI ⇔ L¹ convergent ⇔ Mₙ = E[M∞ | ℱₙ]; Lᵖ-bounded
+    (p > 1) ⇒ Lᵖ convergence. LÉVY UPWARD: E[X | ℱₙ] → E[X | ℱ∞].
+    Counterexample: Mₙ = ∏ξᵢ, ξᵢ = 0 or 2 (prob ½ each): Mₙ → 0 a.s. but
+    E Mₙ = 1, so no L¹ convergence. Reverse martingales give the SLLN.
+  - BROWNIAN MOTION (B_t)_{t≥0}: B₀ = 0, independent increments, B_t − B_s
+    ~ N(0, t − s), continuous paths. Equivalently a centred Gaussian
+    process with Cov(B_s, B_t) = min(s, t) and continuous paths. Exists
+    (Lévy-Ciesielski series, or Kolmogorov extension + continuity
+    criterion E|X_t − X_s|^α ≤ C|t − s|^{1+β}). INVARIANCES: −B, scaling
+    c^{−1/2}B_{ct}, time inversion tB_{1/t}, B_{s+t} − B_s (Markov
+    property; STRONG MARKOV at stopping times).
+  - PATH PROPERTIES: a.s. nowhere differentiable, Hölder of every order
+    < ½ but not ½; QUADRATIC VARIATION ∑(ΔB)² → t in L² (and a.s. along
+    dyadic partitions), hence INFINITE total variation; LAW OF THE
+    ITERATED LOGARITHM lim sup B_t/√(2t log log t) = 1; zero set is a
+    perfect null set; BROWNIAN BRIDGE B_t − tB₁, Cov = s(1 − t), s ≤ t.
+  - BROWNIAN MARTINGALES AND HITTING TIMES: B_t, B_t² − t,
+    exp(θB_t − θ²t/2), B_t³ − 3tB_t are martingales. For τ = exit time of
+    (−a, b): P(B_τ = b) = a/(a + b), Eτ = ab. T_a = inf{t : B_t = a} is
+    finite a.s. with E T_a = ∞ and E e^{−λT_a} = e^{−a√(2λ)}. REFLECTION
+    PRINCIPLE: P(max_{s≤t} B_s ≥ a) = 2P(B_t ≥ a), so max_{s≤t} B_s has
+    the law of |B_t|, and T_a has density a(2πt³)^{−1/2}e^{−a²/2t}. With
+    drift μ > 0 and unit variance: P(ever reach −a) = e^{−2μa}.
+  - WEAK CONVERGENCE (convergence in distribution) μₙ ⇒ μ: ∫f dμₙ → ∫f dμ
+    for every bounded continuous f. PORTMANTEAU: ⇔ lim sup μₙ(F) ≤ μ(F)
+    for closed F ⇔ lim inf μₙ(G) ≥ μ(G) for open G ⇔ μₙ(A) → μ(A) when
+    μ(∂A) = 0 ⇔ (on R) Fₙ(x) → F(x) at continuity points of F. In prob.
+    ⇒ in distribution; the converse holds only for a constant limit.
+    SLUTSKY, CONTINUOUS MAPPING, SKOROKHOD REPRESENTATION, HELLY
+    SELECTION; PROKHOROV: tight ⇔ relatively compact. Weak convergence
+    does NOT give E Xₙ → E X without uniform integrability.
+  - CHARACTERISTIC FUNCTION φ_X(t) = E e^{itX}: φ(0) = 1, |φ| ≤ 1,
+    uniformly continuous, φ(−t) = conj φ(t), positive definite (BOCHNER:
+    these characterise ch.f.s); φ_{aX+b}(t) = e^{ibt}φ(at); φ_{X+Y} =
+    φ_Xφ_Y for independent X, Y. MOMENTS: E|X|ᵏ < ∞ ⇒ φ ∈ Cᵏ and φ⁽ᵏ⁾(0)
+    = iᵏ E Xᵏ. Table: N(μ, σ²) ↦ e^{iμt − σ²t²/2}, Poisson(λ) ↦
+    e^{λ(e^{it} − 1)}, Exp(λ) ↦ λ/(λ − it), U[−a, a] ↦ sin(at)/(at),
+    Cauchy ↦ e^{−|t|}, Laplace ↦ 1/(1 + t²).
+  - INVERSION AND UNIQUENESS: μ(a, b) + ½μ{a, b} = lim_{T→∞} (1/2π)
+    ∫_{−T}^{T} (e^{−ita} − e^{−itb})/(it) φ(t) dt; if ∫|φ| < ∞, X has the
+    bounded continuous density f(x) = (1/2π)∫e^{−itx}φ(t) dt; for integer
+    X, P(X = k) = (1/2π)∫_{−π}^{π} e^{−itk}φ(t) dt. φ determines μ.
+  - LÉVY CONTINUITY THEOREM: μₙ ⇒ μ ⇒ φₙ → φ pointwise; conversely if
+    φₙ → g pointwise and g is continuous AT 0, then g is a ch.f. and
+    μₙ ⇒ μ_g. CLT (Lindeberg-Lévy): i.i.d., mean μ, variance σ² ∈ (0, ∞)
+    ⇒ (Sₙ − nμ)/(σ√n) ⇒ N(0, 1). LINDEBERG-FELLER: triangular arrays with
+    s_n^{−2}∑E[X_k²; |X_k| > εs_n] → 0. POISSON LIMIT Bin(n, λ/n) ⇒
+    Poisson(λ); WLLN via φ(t/n)ⁿ → e^{iμt}; DELTA METHOD; DONSKER: the
+    rescaled random walk converges to Brownian motion in C[0, 1].
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Roll a fair die; Ω = {1, ..., 6}, X(ω) = ω. (a) Compute E[X | 𝒢] for
+    𝒢 = σ({X even}) and for ℋ = σ({1, 2}, {3, 4}, {5, 6}). (b) Verify the
+    defining property E[Y𝟙_G] = E[X𝟙_G] for G = {2, 4, 6}. (c) Verify the
+    law of total variance for ℋ.
+    Answer: (a) E[X | 𝒢] = 4 on evens, 3 on odds; E[X | ℋ] = 1.5, 3.5,
+    5.5 on the three blocks. (b) both sides 2. (c) 35/12 = 1/4 + 8/3.
+    Teacher explains: When 𝒢 comes from a partition, a 𝒢-measurable Y must
+    be CONSTANT on each block, and the defining property with G = the
+    block forces the constant to be the average of X over the block:
+       E[X | 𝒢] = ∑ᵢ (E[X𝟙_{Gᵢ}]/P(Gᵢ)) 𝟙_{Gᵢ}.
+    (a) On {2, 4, 6} the average is (2 + 4 + 6)/3 = 4; on {1, 3, 5} it is
+    3. For ℋ the block averages are 1.5, 3.5, 5.5. (b) Y = E[X | 𝒢]:
+    E[Y𝟙_G] = 4 · P(G) = 4 · ½ = 2, and E[X𝟙_G] = (2 + 4 + 6)/6 = 2 ✓.
+    (c) Var X = 91/6 − 49/4 = 35/12. Within each block of ℋ, X takes two
+    values 1 apart, so Var(X | ℋ) = 1/4 everywhere. E[X | ℋ] takes 1.5,
+    3.5, 5.5 with probability 1/3 each: variance (4 + 0 + 4)/3 = 8/3. And
+    1/4 + 8/3 = 3/12 + 32/12 = 35/12 ✓. Note E[X | ℋ] is a RANDOM
+    VARIABLE, not a number, and E[E[X | ℋ]] = 3.5 = EX. Common mistakes:
+    giving a single number for E[X | 𝒢]; averaging over the wrong block;
+    forgetting to weight by probabilities when blocks are unequal. Now you
+    try: two fair dice, S = X₁ + X₂. Find E[X₁ | S]. (S/2, by symmetry:
+    E[X₁ | S] = E[X₂ | S] and they add to S)
+
+D2. (a) Prove existence and a.s. uniqueness of E[X | 𝒢] for X ∈ L¹.
+    (b) Show that for X ∈ L², E[X | 𝒢] minimises E(X − Z)² over
+    𝒢-measurable Z ∈ L². (c) Prove the tower property and "taking out
+    what is known".
+    Answer: (a) Radon-Nikodym applied to ν(G) = E[X𝟙_G] on (Ω, 𝒢);
+    uniqueness from E[(Y − Y′)𝟙_{Y>Y′}] = 0. (b) X − E[X | 𝒢] ⊥ L²(𝒢).
+    (c) check the defining identity.
+    Teacher explains: (a) First X ≥ 0. ν(G) = E[X𝟙_G] is a finite measure
+    on 𝒢 with ν ≪ P|_𝒢 (P(G) = 0 ⇒ ν(G) = 0). Radon-Nikodym gives a
+    𝒢-measurable Y = dν/dP ≥ 0 with E[Y𝟙_G] = ν(G) = E[X𝟙_G]. In general
+    take X = X⁺ − X⁻. Uniqueness: if Y, Y′ both work, G = {Y > Y′} ∈ 𝒢,
+    so E[(Y − Y′)𝟙_G] = 0 with a non-negative integrand; hence P(G) = 0,
+    and symmetrically, Y = Y′ a.s. (b) L²(𝒢) is a closed subspace of
+    L²(ℱ) (a limit in L² of 𝒢-measurable functions has a 𝒢-measurable
+    a.s. limit along a subsequence). Let Y be the orthogonal projection
+    of X. Then E[(X − Y)Z] = 0 for all Z ∈ L²(𝒢); taking Z = 𝟙_G gives
+    the defining identity, so Y = E[X | 𝒢], and Pythagoras gives E(X −
+    Z)² = E(X − Y)² + E(Y − Z)² ≥ E(X − Y)². (c) TOWER (ℋ ⊆ 𝒢): for H ∈
+    ℋ ⊆ 𝒢, E[E[X | 𝒢]𝟙_H] = E[X𝟙_H], so E[X | 𝒢] and X have the same
+    conditional expectation given ℋ. KNOWN FACTOR: for Z = 𝟙_A, A ∈ 𝒢,
+    and G ∈ 𝒢: E[𝟙_A E[X | 𝒢]𝟙_G] = E[E[X | 𝒢]𝟙_{A∩G}] = E[X𝟙_{A∩G}] =
+    E[(𝟙_A X)𝟙_G]; extend to simple Z by linearity, bounded Z by DCT.
+    Common mistakes: forgetting that uniqueness is only a.s.; using the
+    tower property in the wrong direction (E[E[X | ℋ] | 𝒢] = E[X | ℋ]
+    trivially, since E[X | ℋ] is already 𝒢-measurable). Now you try: show
+    E[X | 𝒢] = EX when X is independent of 𝒢. (E[X𝟙_G] = EX · P(G))
+
+D3. (a) (X, Y) has density f(x, y) = x + y on [0, 1]². Find E[Y | X] and
+    check E[E[Y | X]] = EY. (b) (X, Y) is Gaussian with EX = EY = 0,
+    Var X = 4, Var Y = 9, Cov(X, Y) = 3. Find E[Y | X] and Var(Y | X).
+    (c) Let X, Y be i.i.d. U[0, 1] and M = max(X, Y). Find E[X | M].
+    Answer: (a) (3X + 2)/(6X + 3); EY = 7/12. (b) (3/4)X, 27/4.
+    (c) 3M/4.
+    Teacher explains: (a) The marginal of X is f_X(x) = ∫₀¹(x + y) dy =
+    x + ½, and ∫₀¹ y(x + y) dy = x/2 + 1/3. So
+       E[Y | X = x] = (x/2 + 1/3)/(x + 1/2) = (3x + 2)/(6x + 3).
+    Check: E h(X) = ∫₀¹ ((x/2 + 1/3)/(x + ½))(x + ½) dx = ∫₀¹(x/2 + 1/3) dx
+    = 1/4 + 1/3 = 7/12, and EY = ∫₀¹ y(y + ½) dy = 1/3 + 1/4 = 7/12 ✓.
+    (b) Put Y = aX + W with W = Y − aX; choose a so Cov(X, W) = 0: a =
+    3/4. For jointly Gaussian vectors, uncorrelated means INDEPENDENT, so
+    E[Y | X] = aX + EW = (3/4)X and Var(Y | X) = Var W = 9 − (3/4)²·4 =
+    9 − 9/4 = 27/4, a constant. (c) Given M = m, either X is the max
+    (probability ½, X = m) or Y is (X uniform on [0, m]). So E[X | M] =
+    ½M + ½(M/2) = 3M/4. Check: EM = 2/3 and E(3M/4) = 1/2 = EX ✓.
+    Common mistakes: forgetting to divide by the marginal density; in
+    (b), using Cov/Var Y instead of Cov/Var X; in (c), treating X as
+    uniform on [0, M] without the atom at M. Now you try: X, Y i.i.d.
+    Exp(1); find E[X | X + Y]. ((X + Y)/2)
+
+D4. Let ξ₁, ξ₂, ... be i.i.d. with P(ξ = 1) = P(ξ = −1) = ½, Sₙ = ξ₁ +
+    ... + ξₙ, ℱₙ = σ(ξ₁, ..., ξₙ). Show that (a) Sₙ, (b) Sₙ² − n,
+    (c) e^{θSₙ}/(cosh θ)ⁿ are martingales, and (d) Sₙ² is a
+    submartingale; give its Doob decomposition. (e) A Pólya urn starts
+    with one red and one blue ball; each draw returns the ball with one
+    more of the same colour. Show the red proportion Rₙ is a martingale.
+    Answer: in each case compute E[· | ℱₙ] using that ξₙ₊₁ ⫫ ℱₙ;
+    Sₙ² = (Sₙ² − n) + n.
+    Teacher explains: The recipe: write Mₙ₊₁ in terms of ℱₙ-measurable
+    quantities and ξₙ₊₁, take out what is known, use independence.
+    (a) E[Sₙ + ξₙ₊₁ | ℱₙ] = Sₙ + Eξ = Sₙ. (b) (Sₙ + ξ)² = Sₙ² + 2Sₙξ + 1,
+    so E[Sₙ₊₁² − (n + 1) | ℱₙ] = Sₙ² + 2Sₙ · 0 + 1 − n − 1 = Sₙ² − n.
+    (c) E[e^{θ(Sₙ+ξ)} | ℱₙ] = e^{θSₙ}E e^{θξ} = e^{θSₙ}cosh θ; divide by
+    (cosh θ)ⁿ⁺¹. (d) By (b), Sₙ² = Mₙ + Aₙ with Mₙ = Sₙ² − n a martingale
+    and Aₙ = n predictable increasing: that IS the Doob decomposition.
+    Integrability: |Sₙ| ≤ n, so all moments are finite. (e) After n draws
+    there are n + 2 balls, of which r = Rₙ(n + 2) are red. The next draw
+    is red with probability Rₙ, giving (r + 1)/(n + 3); otherwise r/(n +
+    3). So E[Rₙ₊₁ | ℱₙ] = (Rₙ(r + 1) + (1 − Rₙ)r)/(n + 3) = (r + Rₙ)/(n +
+    3) = Rₙ(n + 3)/(n + 3) = Rₙ ✓. Common mistakes: forgetting to check
+    E|Mₙ| < ∞; conditioning on the wrong σ-algebra (Rₙ is adapted to the
+    draws, not to the number of balls alone). Now you try: show Sₙ³ −
+    3nSₙ is a martingale. (expand (Sₙ + ξ)³; Eξ² = 1, Eξ³ = 0)
+
+D5. (a) State the optional stopping theorem. (b) A symmetric walk starts
+    at 0 and stops at τ, the first hit of b > 0 or −a < 0. Find P(S_τ = b)
+    and Eτ. (c) A gambler with 2 units bets 1 unit each time, winning with
+    probability p = 0.4, until he has 5 or 0. Find the probability he
+    reaches 5 and the expected duration. (d) Show that optional stopping
+    fails for τ = inf{n : Sₙ = 1}.
+    Answer: (b) a/(a + b), Eτ = ab. (c) 40/211 ≈ 0.18957, 1110/211 ≈
+    5.26066. (d) E S_τ = 1 ≠ 0 = S₀.
+    Teacher explains: (a) If M is a martingale and τ a stopping time,
+    E M_τ = E M₀ provided τ is bounded, or M_{τ∧n} is dominated by an
+    integrable variable (e.g. bounded), or Eτ < ∞ with bounded increments.
+    Always prove P(τ < ∞) = 1 first. (b) |S_{τ∧n}| ≤ max(a, b), so OST
+    applies to Sₙ: 0 = bP + (−a)(1 − P) ⇒ P = a/(a + b). Now Sₙ² − n:
+    E S²_{τ∧n} = E(τ ∧ n); let n → ∞ (bounded convergence on the left,
+    MCT on the right): Eτ = b²P + a²(1 − P) = (b²a + a²b)/(a + b) = ab.
+    (c) Here q = 0.6 and the martingale is r^{Sₙ} with r = q/p = 3/2
+    (E r^ξ = p·r + q/r = 0.6 + 0.4 = 1). Start 2, absorb at 0, 5:
+       r² = P·r⁵ + (1 − P)·1 ⇒ P = (r² − 1)/(r⁵ − 1) = (5/4)/(211/32)
+         = 40/211 ≈ 0.18957.
+    For the duration use Sₙ − n(p − q) = Sₙ + 0.2n: E S_τ + 0.2Eτ = 2, and
+    E S_τ = 5 · 40/211 = 200/211, so Eτ = (2 − 200/211)/0.2 = 1110/211
+    ≈ 5.26066. (d) The symmetric walk is recurrent, so τ < ∞ a.s. and
+    S_τ = 1. But Eτ = ∞ and S_{τ∧n} is not bounded below, so none of the
+    hypotheses holds — the "doubling strategy" paradox. Common mistakes:
+    using the symmetric formula a/(a + b) for a biased walk; forgetting
+    to justify n → ∞. Now you try: in (b) with a = 3, b = 7, find Eτ and
+    P(S_τ = −3). (21, 7/10)
+
+D6. (a) State and prove Doob's maximal inequality for a non-negative
+    submartingale. (b) Deduce Kolmogorov's inequality. (c) For simple
+    random walk, bound P(max_{k≤100}|S_k| ≥ 30) and E max_{k≤100} S_k².
+    Answer: (a) λP(max_{k≤n} X_k ≥ λ) ≤ E[Xₙ; max ≥ λ] ≤ E Xₙ.
+    (c) ≤ 1/9; ≤ 400.
+    Teacher explains: (a) Let τ = min{k ≤ n : X_k ≥ λ} (τ = n if none) and
+    A = {max_{k≤n} X_k ≥ λ} = {X_τ ≥ λ}. On A, X_τ ≥ λ; so
+       λP(A) ≤ E[X_τ; A] = ∑_{k≤n} E[X_k; τ = k] ≤ ∑_{k≤n} E[Xₙ; τ = k]
+             = E[Xₙ; A] ≤ E Xₙ,
+    where E[X_k; τ = k] ≤ E[Xₙ; τ = k] because {τ = k} ∈ ℱ_k and
+    E[Xₙ | ℱ_k] ≥ X_k. (b) If Sₙ is a sum of independent mean-0 L²
+    variables, Sₙ² is a non-negative submartingale (Jensen), so P(max
+    |S_k| ≥ λ) = P(max S_k² ≥ λ²) ≤ E Sₙ²/λ² = Var Sₙ/λ². (c) E S₁₀₀² =
+    100, so P(max|S_k| ≥ 30) ≤ 100/900 = 1/9. Doob's L² inequality: E max
+    S_k² ≤ (2/(2 − 1))² E S₁₀₀² = 4 · 100 = 400. Compare Chebyshev for
+    the single time 100: the MAXIMUM costs nothing extra in (b). The
+    proof pattern (stop at the first time the event happens) is worth
+    memorising. Common mistakes: applying the maximal inequality to a
+    submartingale that takes negative values (use |M| or M² or M⁺);
+    thinking Doob's L¹ version (p = 1) holds — it fails without an
+    L log L condition. Now you try: a non-negative martingale with M₀ = 1;
+    bound P(sup_n Mₙ ≥ 10). (1/10, letting n → ∞)
+
+D7. (a) State Doob's martingale convergence theorem and sketch the
+    upcrossing proof. (b) Let Mₙ = ξ₁⋯ξₙ with ξᵢ i.i.d., P(ξ = 0) =
+    P(ξ = 2) = ½. Show Mₙ → 0 a.s. but not in L¹. (c) Same with ξ = ½ or
+    3/2. (d) Find the limit law of the Pólya urn proportion of D4(e).
+    Answer: (a) L¹-bounded (sub)martingales converge a.s.; (b) Mₙ = 0 as
+    soon as one ξᵢ = 0, but E Mₙ = 1; (c) → 0 a.s. since E ln ξ =
+    ½ln(3/4) ≈ −0.14384 < 0; (d) Uniform[0, 1].
+    Teacher explains: (a) THEOREM: if (Xₙ) is a submartingale with sup E Xₙ⁺
+    < ∞, then Xₙ → X∞ a.s. and E|X∞| < ∞. Proof idea: fix rationals a < b
+    and let Uₙ be the number of upcrossings of [a, b] by X₀, ..., Xₙ. Bet
+    one unit whenever the path has gone below a, until it exceeds b: the
+    gains form a martingale transform, and each completed upcrossing
+    earns ≥ b − a, giving (b − a)E Uₙ ≤ E(Xₙ − a)⁺ ≤ sup E Xₙ⁺ + |a|. By
+    MCT, U∞ < ∞ a.s. If Xₙ did not converge, lim inf < a < b < lim sup
+    for some rationals, forcing U∞ = ∞; countably many pairs (a, b), so
+    Xₙ converges a.s.; Fatou gives E|X∞| ≤ lim inf E|Xₙ| < ∞.
+    (b) E[Mₙ₊₁ | ℱₙ] = Mₙ Eξ = Mₙ; Mₙ ≥ 0 so E|Mₙ| = 1 (L¹-bounded).
+    P(Mₙ ≠ 0) = 2⁻ⁿ → 0, so Mₙ → 0 a.s. But E|Mₙ − 0| = 1 ↛ 0: the
+    martingale is NOT uniformly integrable (all the mass sits on an event
+    of probability 2⁻ⁿ with value 2ⁿ). (c) ln Mₙ = ∑ ln ξᵢ, and by the
+    SLLN (ln Mₙ)/n → E ln ξ = ½(ln ½ + ln 3/2) = ½ln(3/4) < 0, so ln Mₙ →
+    −∞ and Mₙ → 0 a.s. although E Mₙ = 1. (d) Rₙ ∈ [0, 1] is a bounded
+    martingale, hence converges a.s. AND in L¹ to R∞. One checks by
+    induction that after n draws the number of added red balls is
+    uniform on {0, 1, ..., n}; so Rₙ = (k + 1)/(n + 2) with probability
+    1/(n + 1) each, which converges weakly to U[0, 1]. So R∞ ~ U[0, 1] and
+    E R∞ = ½ = R₀ (UI!). Common mistakes: "a.s. convergence + martingale
+    ⇒ E M∞ = E M₀" (false: (b)); forgetting that non-negative
+    martingales are automatically L¹-bounded. Now you try: start the urn
+    with 2 red and 1 blue; find P(R∞ > ½). (R∞ ~ Beta(2, 1): 3/4)
+
+D8. Define standard Brownian motion. (a) Show it is the centred Gaussian
+    process with Cov(B_s, B_t) = min(s, t). (b) Compute Var(B₁ + B₂ + B₃)
+    and E[B₁²B₂²]. (c) Show P(B₁ > 0, B₂ > 0) = 3/8. (d) Prove that
+    W_t = tB_{1/t} (W₀ = 0) and c^{−1/2}B_{ct} are Brownian motions.
+    Answer: (b) 14 and 4. (c) 1/4 + arcsin(1/√2)/(2π) = 3/8. (d) same
+    covariance min(s, t); continuity of W at 0 from B_t/t → 0.
+    Teacher explains: DEFINITION: B₀ = 0; for 0 ≤ t₁ < ... < tₖ the
+    increments B_{t₂} − B_{t₁}, ..., B_{tₖ} − B_{tₖ₋₁} are independent;
+    B_t − B_s ~ N(0, t − s); t ↦ B_t is continuous a.s. (a) Any finite
+    vector (B_{t₁}, ..., B_{tₖ}) is a linear image of independent Gaussian
+    increments, hence Gaussian. For s ≤ t, Cov(B_s, B_t) = Cov(B_s, B_s
+    + (B_t − B_s)) = Var B_s = s. Conversely a Gaussian process with this
+    covariance has uncorrelated, hence independent, increments.
+    (b) Var(∑B_{tᵢ}) = ∑ᵢ∑ⱼ min(tᵢ, tⱼ) = (1 + 2 + 3) + 2(1 + 1 + 2) = 14.
+    Write B₂ = B₁ + Y, Y ⫫ B₁, Y ~ N(0, 1): E[B₁²(B₁ + Y)²] = E B₁⁴ +
+    2E[B₁³]E Y + E B₁² E Y² = 3 + 0 + 1 = 4. (c) (B₁, B₂/√2) is a standard
+    bivariate normal with correlation ρ = 1/√2. For such a pair, P(X > 0,
+    Y > 0) = 1/4 + arcsin(ρ)/(2π) (rotate to independent coordinates:
+    the quadrant becomes a wedge of angle π/2 + arcsin ρ). With arcsin
+    (1/√2) = π/4: 1/4 + 1/8 = 3/8. (d) Both are centred Gaussian. For W:
+    Cov(W_s, W_t) = st·min(1/s, 1/t) = st/t = s for s ≤ t. Continuity for
+    t > 0 is clear; at 0, W_t = B_u/u with u = 1/t → ∞, and B_u/u → 0
+    a.s. by the SLLN for B_n (plus a bound on oscillation between
+    integers). For scaling: Cov = c⁻¹ min(cs, ct) = min(s, t). Common
+    mistakes: writing Cov(B_s, B_t) = st or = |t − s|; forgetting to check
+    path continuity in (d). Now you try: Var(B₁ − 2B₃ + B₄)? (1 + 12 + 4
+    + 2(−2 + 1 − 6) = 3)
+
+D9. (a) Show that B_t² − t and exp(θB_t − θ²t/2) are martingales.
+    (b) For τ = exit time of (−a, b), prove P(B_τ = b) = a/(a + b) and
+    Eτ = ab. (c) For T_a = inf{t : B_t = a}, a > 0, show E e^{−λT_a} =
+    e^{−a√(2λ)}; deduce P(T_a < ∞) = 1 and E T_a = ∞. (d) With drift,
+    X_t = B_t + μt, μ > 0, find P(X ever reaches −a). Evaluate for μ = 1,
+    a = 2.
+    Answer: (c) E e^{−T₁/2} = e⁻¹ ≈ 0.36788. (d) e^{−2μa}; e⁻⁴ ≈
+    0.01832.
+    Teacher explains: (a) For s < t write B_t = B_s + Y, Y ⫫ ℱ_s, Y ~
+    N(0, t − s). E[B_t² | ℱ_s] = B_s² + 2B_s·0 + (t − s), so E[B_t² − t |
+    ℱ_s] = B_s² − s. E[e^{θB_t} | ℱ_s] = e^{θB_s}E e^{θY} = e^{θB_s}
+    e^{θ²(t−s)/2}; rearrange. (b) As in D5, now in continuous time:
+    |B_{τ∧t}| ≤ max(a, b) and τ < ∞ a.s., so 0 = bP − a(1 − P), and from
+    E B²_{τ∧t} = E(τ ∧ t) with t → ∞, Eτ = b²·a/(a + b) + a²·b/(a + b) =
+    ab. (c) Take θ = √(2λ) and M_t = exp(θB_t − λt). Up to T_a, B_t ≤ a,
+    so 0 ≤ M_{t∧T_a} ≤ e^{θa}: bounded. On {T_a < ∞}, M_{T_a} = e^{θa −
+    λT_a}; on {T_a = ∞}, M_t ≤ e^{θa − λt} → 0. Bounded convergence:
+       1 = E M₀ = e^{θa} E[e^{−λT_a}𝟙_{T_a<∞}] ⇒ E e^{−λT_a} = e^{−a√(2λ)}.
+    Let λ ↓ 0: P(T_a < ∞) = e⁰ = 1. The derivative d/dλ e^{−a√(2λ)} =
+    −(a/√(2λ))e^{−a√(2λ)} → −∞ as λ ↓ 0, so E T_a = ∞. With a = 1, λ =
+    1/2: e⁻¹. (d) exp(θX_t) is a martingale iff θμ + θ²/2 = 0: θ = −2μ.
+    Stop at hitting −a or b: e^{2μa}P + e^{−2μb}(1 − P) = 1, so P = (1 −
+    e^{−2μb})/(e^{2μa} − e^{−2μb}) → e^{−2μa} as b → ∞. With μ = 1, a = 2:
+    e⁻⁴ ≈ 0.01832. Common mistakes: applying OST to e^{θB_t} without the
+    compensator; using θ = −√(2λ) (then M is unbounded before T_a).
+    Now you try: E τ² for the exit time of (−a, a), using the martingale
+    B_t⁴ − 6tB_t² + 3t². (5a⁴/3)
+
+D10. (a) State and prove the reflection principle and deduce the law of
+     M_t = max_{s≤t} B_s. (b) Compute P(M₁ ≥ 1), the density of T_a and
+     the median of T₁. (c) Show ∑_{k=1}^{n} (B_{kt/n} − B_{(k−1)t/n})² → t
+     in L², and deduce that Brownian paths have infinite variation.
+     Answer: (a) P(M_t ≥ a) = 2P(B_t ≥ a), M_t ~ |B_t|.
+     (b) 2(1 − Φ(1)) ≈ 0.31731; a(2πt³)^{−1/2}e^{−a²/(2t)}; ≈ 2.19811.
+     (c) the sum has mean t and variance 2t²/n.
+     Teacher explains: (a) By the strong Markov property at T_a, (B_{T_a+s}
+     − a)_{s≥0} is a Brownian motion independent of ℱ_{T_a}, so it is
+     equally likely to be above or below 0 at the remaining time t − T_a:
+        P(M_t ≥ a, B_t < a) = P(M_t ≥ a, B_t > a) = P(B_t > a)
+     (the last because B_t > a forces M_t ≥ a). Adding, P(M_t ≥ a) =
+     2P(B_t ≥ a) = P(|B_t| ≥ a). (b) P(M₁ ≥ 1) = 2(1 − Φ(1)) = 0.31731.
+     Since {T_a ≤ t} = {M_t ≥ a}, P(T_a ≤ t) = 2(1 − Φ(a/√t)); differentiate
+     in t: f(t) = 2φ(a/√t)·a/(2t^{3/2}) = a(2πt³)^{−1/2}e^{−a²/(2t)}. The
+     density decays like t^{−3/2}, so E T_a = ∞ (consistent with D9).
+     Median: 2(1 − Φ(1/√t)) = ½ ⇒ 1/√t = Φ⁻¹(3/4) = 0.67449 ⇒ t ≈ 2.19811.
+     (c) Let Δₖ be the increments: independent N(0, t/n). So E∑Δₖ² = t
+     and Var ∑Δₖ² = n·2(t/n)² = 2t²/n → 0 (Var(Z²) = 2 for Z ~ N(0, 1)).
+     Hence Qₙ → t in L². If the path had finite variation V, then Qₙ ≤
+     max|Δₖ| · V → 0 by uniform continuity — contradicting Qₙ → t > 0
+     (along an a.s. convergent subsequence). Common mistakes: forgetting
+     the factor 2 in the reflection principle; "reflecting" at a
+     deterministic time instead of a stopping time. Now you try:
+     P(M₁ ≥ 1, B₁ ≤ 0)? (reflect: P(B₁ ≥ 2) = 1 − Φ(2) ≈ 0.02275)
+
+D11. (a) Define convergence in distribution and prove that, on R, it is
+     equivalent to Fₙ(x) → F(x) at continuity points of F. (b) Find the
+     limits in distribution of n·min(U₁, ..., Uₙ) (Uᵢ i.i.d. U[0, 1]) and
+     of max(E₁, ..., Eₙ) − ln n (Eᵢ i.i.d. Exp(1)). (c) Let Xₙ = n with
+     probability 1/n and 0 otherwise: find the weak limit and compare
+     E Xₙ. (d) State Slutsky's theorem and apply it to the t-statistic.
+     Answer: (b) Exp(1); Gumbel F(x) = exp(−e^{−x}). (c) δ₀, but E Xₙ = 1.
+     (d) √n(X̄ − μ)/Sₙ ⇒ N(0, 1).
+     Teacher explains: (a) Xₙ ⇒ X means E f(Xₙ) → E f(X) for all bounded
+     continuous f. (⇒) Given x with P(X = x) = 0 and ε > 0, take f ≤ 𝟙_{(−∞,
+     x]} ≤ g continuous, with f = 1 on (−∞, x − ε], g = 0 on [x + ε, ∞).
+     Then F(x − ε) ≤ E f(X) = lim E f(Xₙ) ≤ lim inf Fₙ(x) ≤ lim sup Fₙ(x)
+     ≤ lim E g(Xₙ) = E g(X) ≤ F(x + ε); let ε → 0 using continuity at x.
+     (⇐) Build Yₙ = Fₙ⁻¹(U), Y = F⁻¹(U) on one space (Skorokhod): Yₙ → Y
+     a.s., then use bounded convergence. (b) P(n min > x) = (1 − x/n)ⁿ →
+     e^{−x}: Exp(1). P(max − ln n ≤ x) = (1 − e^{−x}/n)ⁿ → exp(−e^{−x}).
+     (c) Fₙ(x) = 1 − 1/n → 1 for 0 ≤ x < n, so Xₙ ⇒ δ₀; yet E Xₙ = 1 ↛ 0:
+     the sequence is not UI (the mass n · 1/n "escapes to infinity").
+     (d) SLUTSKY: Xₙ ⇒ X and Yₙ → c in probability (c constant) ⇒ Xₙ + Yₙ
+     ⇒ X + c, XₙYₙ ⇒ cX, Xₙ/Yₙ ⇒ X/c (c ≠ 0). By the CLT √n(X̄ − μ)/σ ⇒
+     N(0, 1), and σ/Sₙ → 1 in probability (SLLN), so the product ⇒
+     N(0, 1). Common mistakes: requiring convergence at EVERY x (fails for
+     δ_{1/n} ⇒ δ₀ at x = 0); applying Slutsky when Yₙ converges only in
+     distribution to a NON-constant. Now you try: n(1 − max Uᵢ)?
+     (Exp(1))
+
+D12. (a) Compute the characteristic function of N(0, 1) and of Poisson(λ).
+     (b) Prove the CLT for i.i.d. variables with finite variance using
+     Lévy's continuity theorem. (c) Show Bin(n, λ/n) ⇒ Poisson(λ).
+     (d) Estimate P(S ≥ 60) for S = number of heads in 100 fair tosses.
+     (e) Show e^{−n}∑_{k=0}^{n} nᵏ/k! → ½.
+     Answer: (a) e^{−t²/2}, e^{λ(e^{it}−1)}. (b) φ(t/√n)ⁿ → e^{−t²/2}.
+     (c) (1 + λ(e^{it} − 1)/n)ⁿ → e^{λ(e^{it}−1)}. (d) ≈ 0.02872 (exact
+     0.02844). (e) CLT for Poisson(n).
+     Teacher explains: (a) φ(t) = ∫e^{itx}e^{−x²/2}dx/√(2π). Differentiate
+     under the integral (|ix e^{−x²/2}| is integrable) and integrate by
+     parts: φ′(t) = −tφ(t), φ(0) = 1, so φ(t) = e^{−t²/2}. Poisson:
+     ∑e^{−λ}λᵏe^{itk}/k! = e^{−λ}e^{λe^{it}}. (b) WLOG μ = 0, σ = 1.
+     Since EX² < ∞, φ(u) = 1 − u²/2 + o(u²) as u → 0. Then
+        φ_{Sₙ/√n}(t) = φ(t/√n)ⁿ = (1 − t²/(2n) + o(1/n))ⁿ → e^{−t²/2},
+     (use |aⁿ − bⁿ| ≤ n|a − b| for |a|, |b| ≤ 1). The limit is the ch.f. of
+     N(0, 1), continuous at 0, so by Lévy Sₙ/√n ⇒ N(0, 1). (c) The ch.f.
+     of Bin(n, p) is (1 − p + pe^{it})ⁿ = (1 + λ(e^{it} − 1)/n)ⁿ →
+     exp(λ(e^{it} − 1)). (d) ES = 50, sd = 5. With continuity correction,
+     P(S ≥ 59.5) ≈ 1 − Φ(9.5/5) = 1 − Φ(1.9) = 0.02872; the exact binomial
+     tail is 0.02844. (e) If Xₙ ~ Poisson(n) = sum of n i.i.d. Poisson(1),
+     the sum equals P(Xₙ ≤ n) = P((Xₙ − n)/√n ≤ 0) → Φ(0) = ½. Common
+     mistakes: expanding φ to second order without E X² < ∞; forgetting
+     that Lévy needs continuity of the limit AT 0 (N(0, n) has φₙ → 𝟙_{t=0},
+     no weak limit). Now you try: the ch.f. of Exp(1) and from it E X³.
+     (1/(1 − it); φ‴(0) = 6i³ ⇒ E X³ = 6)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Conditional expectation on discrete spaces. X is a fair die unless
+    stated; X₁, X₂ are two independent fair dice, S = X₁ + X₂. Give the
+    conditional expectation as a function (value on each block).
+    a) E[X | σ({X ≤ 3})]                b) E[X | σ({X even})]
+    c) E[X² | σ({X even})]              d) E[X | σ({1, 2}, {3, 4}, {5, 6})]
+    e) E[X | {∅, Ω}]                     f) E[X | 2^Ω]
+    g) E[X₁ | S]                         h) E[S | X₁]
+    i) E[X₁X₂ | X₁]                      j) E[max(X₁, X₂) | X₁ = 3]
+    k) E[X₁ | max(X₁, X₂) = 3]           l) Var(X | X even) on {X even}
+    m) Var(E[X | 𝒢]) for 𝒢 as in d)
+    n) Ω = [0, 1] with Lebesgue measure, 𝒢 = σ([0, ½)), X(ω) = ω²
+    o) same 𝒢, X(ω) = sin(πω)
+    p) N = number of heads in 10 fair tosses, I = 𝟙{first toss is H}:
+       E[I | N]
+    q) X ~ Poisson(2), Y ~ Poisson(3) independent: E[X | X + Y = 10]
+    r) X, Y i.i.d. Geometric on {1, 2, ...}: E[X | X + Y = 9]
+    Answers:
+      a) 2 on {1, 2, 3}, 5 on {4, 5, 6}    b) 4 on evens, 3 on odds
+      c) 56/3 on evens, 35/3 on odds       d) 1.5, 3.5, 5.5
+      e) 3.5 (a constant)                  f) X itself
+      g) S/2          h) X₁ + 3.5          i) 3.5X₁
+      j) 4 ((3 + 3 + 3 + 4 + 5 + 6)/6)
+      k) 12/5 (pairs (3,1), (3,2), (3,3), (1,3), (2,3))
+      l) 8/3 (56/3 − 16)                   m) 8/3
+      n) 1/12 on [0, ½), 7/12 on [½, 1]
+      o) 2/π on both halves (≈ 0.63662)    p) N/10
+      q) 4 (X | X + Y = n is Bin(n, 2/5))
+      r) 9/2 (given the sum, X is uniform on {1, ..., 8})
+
+M2. Conditional expectations with densities, Gaussians and symmetry.
+    a) f(x, y) = x + y on [0, 1]²: E[Y | X = x]; its value at x = 0, 1
+    b) f(x, y) = 2 on 0 < y < x < 1: E[Y | X] and E[X | Y]
+    c) f(x, y) = e^{−x} on 0 < y < x: E[Y | X] and E[X | Y]
+    d) (X, Y) Gaussian, means 0, Var X = 4, Var Y = 9, Cov = 3: E[X | Y]
+       and Var(X | Y)
+    e) X ~ N(1, 1), Z ~ N(0, 1) independent, Y = 2X + Z: E[X | Y],
+       Var(X | Y)
+    f) U ~ U[0, 1]: E[U | U²] and E[U | |U − ½|]
+    g) X ~ N(0, 1): E[X | X²], E[X⁺ | |X|], E[X² | X⁺]
+    h) N ~ Poisson(λ), given N, X ~ Bin(N, p): E[X | N], EX, Var X
+    i) random sum S = ξ₁ + ... + ξ_N, N ⫫ (ξᵢ), N geometric on {1, 2,
+       ...} with mean 4, Eξ = 2, Var ξ = 3: ES and Var S
+    j) Brownian motion: E[B₂ | B₁], E[B₁ | B₂]
+    k) E[B_t² | ℱ_s] and E[B_t³ | ℱ_s] for s < t
+    l) X, Y i.i.d. U[0, 1], M = max(X, Y): E[X | M]
+    m) X, Y i.i.d. Exp(1), m = min(X, Y): E[X | m]
+    n) X, Y i.i.d. N(0, 1): E[X | X + Y] and E[X² | X + Y]
+    Answers:
+      a) (3x + 2)/(6x + 3); 2/3 and 5/9
+      b) X/2 and (1 + Y)/2                c) X/2 and Y + 1
+      d) Y/3 and 4 − 1 = 3                e) 1 + (2/5)(Y − 2) and 1/5
+      f) U (σ(U²) = σ(U)) and ½ (U = ½ ± |U − ½| equally likely)
+      g) 0, |X|/2, X² on {X > 0} and 1 on {X ≤ 0} (E[X² | X < 0] = 1)
+      h) pN, pλ, pλ (X ~ Poisson(pλ))
+      i) 8 and 4·3 + 12·4 = 60 (Var N = (1 − p)/p² = 12, p = 1/4)
+      j) B₁ and B₂/2                     k) B_s² + (t − s); B_s³ + 3(t − s)B_s
+      l) 3M/4                             m) m + ½
+      n) (X + Y)/2 and (X + Y)²/4 + ½
+
+M3. Martingale (M), submartingale (sub), supermartingale (super) or
+    none? ξᵢ i.i.d. ±1 fair unless stated, Sₙ = ∑_{i≤n} ξᵢ, ℱₙ natural.
+    a) Sₙ                                b) Sₙ²
+    c) Sₙ² − n                           d) Sₙ when P(ξ = 1) = 0.6
+    e) (2/3)^{Sₙ} when P(ξ = 1) = 0.6    f) Sₙ − 0.2n when P(ξ = 1) = 0.6
+    g) |Sₙ|                              h) e^{θSₙ}/(cosh θ)ⁿ
+    i) Sₙ³ − 3nSₙ                        j) max_{k≤n} S_k
+    k) ∏_{i≤n}(1 + ξᵢ/2)                 l) 2ⁿ𝟙{ξ₁ = ... = ξₙ = 1}
+    m) e^{−Sₙ}                           n) nSₙ
+    o) −Sₙ²                              p) Zₙ/μⁿ (branching, mean μ)
+    q) B_t³ − 3tB_t                      r) B_t⁴ − 6tB_t² + 3t²
+    s) e^{B_t}                           t) e^{−t}B_t
+    u) E[X | ℱₙ] for a fixed X ∈ L¹     v) Sₙ/n (natural filtration)
+    Answers:
+      a) M      b) sub    c) M      d) sub    e) M      f) M
+      g) sub (convex of M)      h) M      i) M      j) sub
+      k) M (factors of mean 1)  l) M (double-or-nothing)
+      m) sub (E e^{−ξ} = cosh 1 > 1)
+      n) none (E[(n + 1)Sₙ₊₁ | ℱₙ] = (n + 1)Sₙ, which is above or below
+         nSₙ according to the sign of Sₙ)
+      o) super  p) M      q) M      r) M
+      s) sub (E[e^{B_t} | ℱ_s] = e^{B_s + (t−s)/2})
+      t) none (E[e^{−t}B_t | ℱ_s] = e^{−t}B_s)   u) M (Doob)
+      v) none (E[Sₙ₊₁/(n + 1) | ℱₙ] = Sₙ/(n + 1); it is a REVERSE
+         martingale for the backward filtration σ(Sₙ, Sₙ₊₁, ...))
+
+M4. Optional stopping and gambler's ruin. Walks move ±1; "p" is the
+    probability of +1.
+    a) p = ½, start 0, stop at +3 or −7: P(hit +3 first), Eτ
+    b) p = ½, start 5, absorb at 0 and 10: P(reach 10), Eτ
+    c) p = ½, start 0, exit (−5, 5): Eτ
+    d) p = 0.6, start 2, absorb at 0 and 5: P(reach 5)
+    e) the expected duration in d)
+    f) p = 0.4, start 2, absorb at 0 and 5: P(reach 5), Eτ
+    g) p = 0.6, start 3, no upper barrier: P(ever hit 0)
+    h) p = 0.6, start 0: expected time to reach +10
+    i) p = ½, τ = first hit of +1: P(τ < ∞), E S_τ, Eτ
+    j) p = ½, τ as in i): E s^τ for s = ½ (use e^{θSₙ}/(cosh θ)ⁿ)
+    k) Wald: roll a die until the first 6; expected total of all rolls
+    l) fair coin: expected tosses until HH, HT, HTH, HHH
+    m) monkey typing uniformly from 26 letters: expected time until
+       ABRACADABRA
+    n) p = ½, exit time of (−2, 4) from 0: E S_τ² and Eτ
+    Answers:
+      a) 7/10, 21         b) 1/2, 25          c) 25
+      d) 135/211 ≈ 0.63981 (r = q/p = 2/3: (1 − r²)/(1 − r⁵))
+      e) 1265/211 ≈ 5.99526 ((5 · 135/211 − 2)/0.2)
+      f) 40/211 ≈ 0.18957, 1110/211 ≈ 5.26066
+      g) (q/p)³ = 8/27 ≈ 0.29630        h) 10/0.2 = 50
+      i) 1, 1, ∞ (optional stopping fails: E S_τ ≠ S₀)
+      j) (1 − √(1 − s²))/s = 2 − √3 ≈ 0.26795
+      k) 3.5 × 6 = 21       l) 6, 4, 10, 14
+      m) 26¹¹ + 26⁴ + 26 = 3670344487444778
+      n) 8 and 8 (Eτ = ab = 2·4)
+
+M5. Convergence, uniform integrability, Doob's inequalities, branching.
+    a) Pólya urn, 1 red + 1 blue: law of R∞; P(R∞ ≤ 0.3)
+    b) urn with 2 red + 1 blue: law of R∞; P(R∞ ≤ 1/3)
+    c) urn with 1 red + 2 blue: E R∞
+    d) Mₙ = ∏ξᵢ, ξ = 0 or 2 equally likely: a.s. limit; L¹ limit?
+    e) ξ = ½ or 3/2 equally likely: a.s. limit of Mₙ = ∏ξᵢ
+    f) ξ ~ U[0, 2]: E ln ξ and the a.s. limit of ∏ξᵢ
+    g) ξ = e^{Z−1/2}, Z ~ N(0, 1): a.s. limit of ∏ξᵢ; is it UI?
+    h) simple random walk: Kolmogorov bound for P(max_{k≤100}|S_k| ≥ 20)
+    i) Doob L² bound for E max_{k≤25} S_k²
+    j) non-negative martingale, M₀ = 2: bound P(sup_n Mₙ ≥ 10)
+    k) branching process, offspring Poisson(2): extinction probability
+    l) offspring P(0) = P(1) = ¼, P(2) = ½: mean and extinction probability
+    m) offspring Bin(2, ½): extinction probability
+    n) UI or not? (i) n𝟙_(0,1/n) on [0, 1]; (ii) a sequence with sup E Xₙ²
+       < ∞; (iii) |Xₙ| ≤ Y ∈ L¹; (iv) Sₙ/√n for simple random walk;
+       (v) the martingale in d)
+    o) U ~ U[0, 1], ℱₙ generated by the dyadic intervals of length 2⁻ⁿ:
+       Mₙ = E[U | ℱₙ]; M₂ at U = 0.3; the a.s. limit
+    p) Doob decomposition of Sₙ² when ξ = ±2 fair: the predictable part
+    q) steps ±1 with p ≠ ½, m = p − q: the predictable part Aₙ in the
+       Doob decomposition Sₙ² = Mₙ + Aₙ
+    Answers:
+      a) U[0, 1]; 0.3          b) Beta(2, 1) (density 2x); 1/9
+      c) 1/3 (= R₀)            d) 0; no (E Mₙ = 1)
+      e) 0 (E ln ξ = ½ln(3/4) ≈ −0.14384 < 0)
+      f) ln 2 − 1 ≈ −0.30685; 0
+      g) 0 (E ln ξ = −½); not UI (E Mₙ = 1)
+      h) ≤ 100/400 = 1/4       i) ≤ 4 · 25 = 100
+      j) ≤ 2/10 = 1/5
+      k) q = e^{2(q−1)}: q ≈ 0.20319
+      l) μ = 5/4; 2q² − 3q + 1 = 0 ⇒ q = 1/2
+      m) 1 (μ = 1, critical)
+      n) (i) no; (ii) yes; (iii) yes; (iv) yes (E(Sₙ/√n)² = 1); (v) no
+      o) 3/8 (the interval [1/4, 1/2)); U (Lévy upward, a.s. and L¹)
+      p) Aₙ = 4n
+      q) Aₙ = n + 2m∑_{k<n} S_k (E[S²_{k+1} − S_k² | ℱ_k] = 2mS_k + 1)
+
+M6. Gaussian computations for standard Brownian motion.
+    a) Var(B₃ − B₁)                      b) Cov(B₂, B₅)
+    c) Var(B₁ + B₂)                      d) Var(2B₁ − B₃)
+    e) E[B₁B₂B₃B₄] (Wick/Isserlis)       f) E[(B₂ − B₁)²B₃²]
+    g) P(B₄ > 2)                         h) P(B₁ + B₂ > 3)
+    i) P(B₁ > 0, B₂ < 0)                 j) P(B₁ > 0, B₃ > 0)
+    k) the law of ∫₀¹ B_t dt              l) E[B_{1/4} | B₁ = 2], and the
+                                            conditional variance
+    m) Brownian bridge X_t = B_t − tB₁: Cov(X_{1/4}, X_{1/2})
+    n) E e^{B₂}, E e^{3B₁}               o) E|B₂|
+    p) Qₙ = ∑(ΔB)² over [0, 3] with n = 100 equal steps: EQₙ, Var Qₙ
+    q) Brownian motion or not? (i) B_{2t}/√2; (ii) √t Z, Z ~ N(0, 1);
+       (iii) (B_t + W_t)/√2, W an independent BM; (iv) B_{t+1} − B₁;
+       (v) B_t + t; (vi) 2B_{t/4}; (vii) (B_t + B_{2t})/√5
+    Answers:
+      a) 2       b) 2       c) 5       d) 4 + 3 − 4 = 3
+      e) 1·3 + 1·2 + 1·2 = 7             f) 1 + 3 + 1 = 5
+      g) 1 − Φ(1) ≈ 0.15866              h) 1 − Φ(3/√5) ≈ 0.08986
+      i) 1/8                             j) ¼ + arcsin(1/√3)/(2π) ≈ 0.34796
+      k) N(0, 1/3) (∬min(s, t) ds dt = 1/3)
+      l) 1/2 and (1/4)(3/4) = 3/16       m) (1/4)(1 − 1/2) = 1/8
+      n) e ≈ 2.71828 and e^{9/2} ≈ 90.01713
+      o) 2/√π ≈ 1.12838                  p) 3 and 2·9/100 = 0.18
+      q) (i) yes; (ii) no (increments dependent); (iii) yes; (iv) yes;
+         (v) no (mean t); (vi) yes; (vii) no (Var = 5t but increments
+         are not independent)
+
+M7. Brownian martingales, hitting times and the reflection principle.
+    M_t = max_{s≤t} B_s, T_a = inf{t : B_t = a}.
+    a) P(B hits 2 before −1); the expected exit time of (−1, 2)
+    b) exit time τ of (−3, 3): Eτ and Eτ²
+    c) P(M₁ ≥ 1)                         d) P(M₄ ≥ 1)
+    e) P(M₃ ≥ 2)                         f) E e^{−2T₁}
+    g) E e^{−T₃/18}                      h) the median of T₁
+    i) E M₁ and E M₁²                    j) P(M₁ ≥ 1, B₁ ≤ 0)
+    k) the density of T₁ at t = 1
+    l) X_t = B_t + t: P(X ever reaches −2)
+    m) X_t = B_t + t/2: P(X hits 1 before −1), and the expected exit time
+       of (−1, 1)
+    n) for which λ is exp(3B_t − λt) a martingale?
+    o) P(B has a zero in (1, 2)) (P(no zero in (s, t)) = (2/π)arcsin
+       √(s/t))
+    p) g = last zero of B before time 1: P(g ≤ 1/4) (arcsine law)
+    q) E T₁, and P(T₁ < ∞)
+    Answers:
+      a) 1/3; 2 (= ab)                   b) 9; 135 (= 5a⁴/3)
+      c) 2(1 − Φ(1)) ≈ 0.31731           d) 2(1 − Φ(1/2)) ≈ 0.61708
+      e) 2(1 − Φ(2/√3)) ≈ 0.24821        f) e^{−√4} = e⁻² ≈ 0.13534
+      g) e^{−3√(1/9)} = e⁻¹ ≈ 0.36788    h) 1/Φ⁻¹(3/4)² ≈ 2.19811
+      i) √(2/π) ≈ 0.79788 and 1 (M₁ ~ |B₁|)
+      j) 1 − Φ(2) ≈ 0.02275              k) e^{−1/2}/√(2π) ≈ 0.24197
+      l) e^{−4} ≈ 0.01832
+      m) e/(e + 1) ≈ 0.73106 (martingale e^{−X_t}); Eτ = E X_τ/μ =
+         2tanh(½) ≈ 0.92423
+      n) λ = 9/2         o) 1 − (2/π)arcsin(1/√2) = 1/2
+      p) (2/π)arcsin(1/2) = 1/3            q) ∞; 1
+
+M8. Find the weak limit (or say "no weak limit").
+    a) δ_{1/n}                           b) N(0, 1/n)
+    c) N(n, 1)                           d) N(0, n)
+    e) uniform on {1/n, 2/n, ..., 1}     f) Bin(n, 3/n)
+    g) (1/n)·Geometric(λ/n) (on {1, 2, ...})
+    h) n·min(U₁, ..., Uₙ), Uᵢ i.i.d. U[0, 1]
+    i) max(E₁, ..., Eₙ) − ln n, Eᵢ i.i.d. Exp(1)
+    j) n(1 − max(U₁, ..., Uₙ))           k) Student's t with n d.f.
+    l) (χ²ₙ − n)/√(2n)                   m) density 1 + sin(2πnx) on [0, 1]
+    n) max(C₁, ..., Cₙ)/n, Cᵢ i.i.d. standard Cauchy
+    o) XₙYₙ + Yₙ where Xₙ ⇒ N(0, 1) and Yₙ → 2 in probability
+    p) Xₙ = n with probability 1/n, else 0: the limit, and lim E Xₙ
+    q) (Poisson(n) − n)/√n
+    r) √n(Ū − ½)·√12, Ū the mean of n i.i.d. U[0, 1]
+    s) Sₙ/n for i.i.d. Cauchy Cᵢ
+    Answers:
+      a) δ₀       b) δ₀       c) none (not tight: mass escapes to ∞)
+      d) none (Fₙ(x) → ½ for every x; not a distribution function)
+      e) U[0, 1]  f) Poisson(3)           g) Exp(λ)
+      h) Exp(1)   i) Gumbel, F(x) = exp(−e^{−x})
+      j) Exp(1)   k) N(0, 1)              l) N(0, 1)
+      m) U[0, 1] (∫f·(1 + sin 2πnx) → ∫f by Riemann-Lebesgue, although the
+         densities do not converge)
+      n) Fréchet: P(limit ≤ x) = exp(−1/(πx)), x > 0
+      o) N(2, 4)  p) δ₀; E Xₙ = 1 for all n (not UI)
+      q) N(0, 1)  r) N(0, 1)
+      s) standard Cauchy (it is Cauchy for every n: no LLN)
+
+M9. Characteristic functions: compute φ(t) = E e^{itX}, or identify the
+    law from φ.
+    a) Bernoulli(p)                      b) Bin(n, p)
+    c) Poisson(λ)                        d) Geometric(p) on {1, 2, ...}
+    e) U[−a, a]                          f) U[0, 1]
+    g) Exp(λ)                            h) Gamma(k, λ)
+    i) N(μ, σ²)                          j) standard Cauchy
+    k) Laplace, density ½e^{−|x|}        l) X = ±1 with probability ½ each
+    m) φ(t) = cos²t                      n) φ(t) = e^{−t²}
+    o) φ(t) = 1/(1 − 2it)                p) φ(t) = (1/3 + (2/3)e^{it})⁵
+    q) φ(t) = exp(2(e^{it} − 1) − t²/2)  r) φ(t) = (1 − |t|)⁺
+    s) φ(t) = e^{3it − 2|t|}             t) φ(t) = ½ + ½e^{−t²/2}
+    Answers:
+      a) 1 − p + pe^{it}                 b) (1 − p + pe^{it})ⁿ
+      c) exp(λ(e^{it} − 1))              d) pe^{it}/(1 − (1 − p)e^{it})
+      e) sin(at)/(at)                    f) (e^{it} − 1)/(it)
+      g) λ/(λ − it)                      h) (λ/(λ − it))ᵏ
+      i) exp(iμt − σ²t²/2)               j) e^{−|t|}
+      k) 1/(1 + t²)                      l) cos t
+      m) values −2, 0, 2 with probabilities ¼, ½, ¼ (sum of two
+         independent ±1; cos²t = (1 + cos 2t)/2)
+      n) N(0, 2)                         o) Exp with mean 2 (λ = 1/2)
+      p) Bin(5, 2/3)
+      q) Poisson(2) + an independent N(0, 1)
+      r) density (1 − cos x)/(πx²) (Pólya)
+      s) 3 + 2C, C standard Cauchy (location 3, scale 2)
+      t) the mixture ½δ₀ + ½N(0, 1)
+
+M10. Moments, inversion, and "is it a characteristic function?"
+     a) φ = e^{−t²/2}: E X⁴ from φ⁽⁴⁾(0)
+     b) Poisson(λ): EX and EX² from φ′(0), φ″(0)
+     c) φ = (1 − it)⁻²: EX and EX²     d) φ = cos t: EX² and EX⁴
+     e) φ = 1/(1 + t²): Var X          f) is cos(t²) a ch.f.?
+     g) is e^{−t⁴} a ch.f.?            h) is e^{−|t|^{1/2}} a ch.f.?
+     i) is (1 + t)/2 a ch.f.?          j) is 1/(1 + t²) = |1/(1 − it)|² a
+                                          ch.f.? of what?
+     k) is sin t/t a ch.f.?            l) is 1/(2 − e^{it}) a ch.f.?
+     m) the density with φ = e^{−|t|}, by the inversion formula
+     n) integer-valued X with φ = cos²t: P(X = 0) = (1/2π)∫_{−π}^{π} φ
+     o) the density with φ = (sin t/t)²
+     p) ∫_R (sin t/t)² dt, via Plancherel and o)
+     q) the cumulants (coefficients of (it)ᵏ/k! in ln φ) of Poisson(λ)
+     r) E|X| for φ = e^{−|t|}? is φ differentiable at 0?
+     Answers:
+       a) 3        b) λ, λ + λ²        c) 2, 6        d) 1, 1
+       e) 2
+       f) no (cos t² = 1 − t⁴/2 + ... gives φ″(0) = 0, so EX² = 0, X = 0,
+          φ ≡ 1: contradiction)
+       g) no (same argument)            h) yes (symmetric ½-stable law)
+       i) no (φ(0) = ½ ≠ 1)
+       j) yes: X − X′ with X, X′ i.i.d. Exp(1), the Laplace law
+       k) yes (U[−1, 1])
+       l) yes: Geometric on {0, 1, ...} with P(X = k) = 2^{−k−1}
+       m) 1/(π(1 + x²))                 n) 1/2
+       o) (2 − |x|)/4 on [−2, 2] (sum of two independent U[−1, 1])
+       p) π (= 2π∫f², f = ½ on [−1, 1])
+       q) all equal to λ
+       r) E|X| = ∞; no (φ has a corner at 0)
+
+M11. CLT and related approximations (use Φ; continuity correction for
+     integer variables).
+     a) S = heads in 100 fair tosses: P(S ≥ 60)
+     b) 400 fair tosses: P(190 ≤ S ≤ 210)
+     c) sum of 48 i.i.d. U[0, 1]: P(S > 26)
+     d) sum of 100 fair dice: P(S ≥ 380)
+     e) X ~ Poisson(100): P(X ≤ 90)
+     f) smallest n with P(|Sₙ/n − ½| ≤ 0.01) ≳ 0.95 for fair tosses
+     g) X ~ χ²₂₀₀: P(X > 220)
+     h) lim e^{−n}∑_{k≤n} nᵏ/k!
+     i) delta method: limit law of √n(X̄ₙ² − 1) for i.i.d. Exp(1)
+     j) limit law of √n(ln X̄ₙ − ln λ) for i.i.d. Poisson(λ)
+     k) limit law of √n(2√X̄ₙ − 2√λ) for i.i.d. Poisson(λ)
+     l) sample median of n i.i.d. U[0, 1]: limit law of √n(med − ½)
+     m) independent X_k = ±k (prob ½ each): does Lindeberg hold? s_n²?
+     n) independent X_k = ±2ᵏ: does Lindeberg hold? lim max_k σ_k²/s_n²
+     o) independent Bernoulli(1/k), Nₙ = ∑_{k≤n}: centring and scaling
+        for a normal limit
+     Answers:
+       a) 1 − Φ(1.9) ≈ 0.02872 (exact 0.02844)
+       b) 2Φ(1.05) − 1 ≈ 0.70628 (exact 0.70629)
+       c) 1 − Φ(1) ≈ 0.15866 (mean 24, variance 4)
+       d) 1 − Φ(29.5/17.078) ≈ 0.04205 (exact 0.04203)
+       e) Φ(−0.95) ≈ 0.17106 (exact 0.17139)
+       f) 1.96 · 0.5/√n ≤ 0.01 ⇒ n ≥ 9604
+       g) 1 − Φ(1) ≈ 0.15866 (exact 0.15828)
+       h) 1/2      i) N(0, 4) (g(x) = x², g′(1)² · 1 = 4)
+       j) N(0, 1/λ)                     k) N(0, 1) (variance stabilising)
+       l) N(0, 1/4) (variance 1/(4f(½)²))
+       m) yes (|X_k| ≤ n = o(s_n)); s_n² = n(n + 1)(2n + 1)/6
+       n) no; 3/4 (the last term dominates; no CLT)
+       o) (Nₙ − Hₙ)/√(Hₙ − Hₙ⁽²⁾) ⇒ N(0, 1), Hₙ = ∑1/k ~ ln n (the
+          number of records)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) E[E[X | 𝒢]] = EX for X ∈ L¹.
+     b) If X ⫫ 𝒢 then E[X | 𝒢] = EX.
+     c) If E[X | Y] = EX then X and Y are independent.
+     d) E[X | 𝒢] = E[X | ℋ] a.s. whenever σ-algebras 𝒢 ⊆ ℋ.
+     e) Every L¹-bounded martingale converges in L¹.
+     f) Every UI martingale converges a.s. and in L¹.
+     g) E M_τ = E M₀ for every martingale and a.s. finite stopping time τ.
+     h) The last time before 10 that a random walk visits 0 is a
+        stopping time.
+     i) Brownian motion is a.s. differentiable at t = 0.
+     j) Brownian paths have finite total variation on [0, 1].
+     k) B_t² is a martingale.
+     l) Convergence in distribution implies convergence in probability.
+     m) Xₙ ⇒ X and Yₙ ⇒ Y imply Xₙ + Yₙ ⇒ X + Y.
+     n) A pointwise limit of characteristic functions is a ch.f.
+     o) If φₙ → φ pointwise and φ is a ch.f., then μₙ ⇒ μ.
+     p) If φ_X is real-valued then X is symmetric.
+     q) If φ_X is differentiable at 0 then E|X| < ∞.
+     r) Xₙ ⇒ X implies E Xₙ → EX.
+     s) Every tight sequence of laws on R has a weakly convergent
+        subsequence.
+     t) Xₙ ⇒ c (a constant) implies Xₙ → c in probability.
+     Answers:
+       a) T        b) T
+       c) F: Z ~ N(0, 1), X = Z, Y = Z²: E[X | Y] = 0 = EX, yet X and Y
+          are dependent
+       d) F: 𝒢 trivial, ℋ = ℱ gives EX versus X (the tower property
+          only says E[E[X | ℋ] | 𝒢] = E[X | 𝒢])
+       e) F: ∏ξᵢ with ξ ∈ {0, 2}      f) T
+       g) F: simple random walk stopped at the first hit of 1
+       h) F: deciding it requires the future path
+       i) F: B_t/t = W_{1/t} with W = time inversion, a BM, and
+          lim sup_{u→∞} W_u = +∞
+       j) F (quadratic variation 1 forces infinite variation)
+       k) F: E[B_t² | ℱ_s] = B_s² + t − s; B_t² − t is
+       l) F: X ~ N(0, 1), Xₙ = −X for all n: Xₙ ⇒ X but |Xₙ − X| = 2|X|
+       m) F: Xₙ = Z, Yₙ = −Z, Y = Z (sum 0, not 2Z)
+       n) F: e^{−nt²/2} → 𝟙_{t=0} (N(0, n))
+       o) T (Lévy)     p) T (φ_{−X} = conj φ_X = φ_X)
+       q) F: symmetric X with P(|X| > x) ~ 1/(x ln x) (only the converse
+          direction holds)
+       r) F: Xₙ = n w.p. 1/n (M8 p))     s) T (Helly-Prokhorov)
+       t) T
+
+TEACHING TIPS
+  Struggling: teach conditional expectation first on FINITE partitions
+  ("average over the block you are in"), and insist that E[X | 𝒢] is a
+  random variable; then treat the general definition as the same idea
+  with blocks replaced by events of 𝒢. For martingales, drill the one-line
+  check E[Mₙ₊₁ | ℱₙ] = Mₙ by writing Mₙ₊₁ via Mₙ and the new independent
+  step. Before every optional stopping argument, have the student WRITE
+  which hypothesis (bounded τ, bounded stopped process, Eτ < ∞ with
+  bounded increments) holds, and keep the doubling-strategy walk as the
+  warning example. For Brownian motion, reduce everything to Gaussian
+  vectors with covariance min(s, t), and draw the reflected path. For
+  weak convergence, always compute Fₙ(x) or φₙ(t) explicitly; keep δ_n
+  (not tight), N(0, n) (limit not continuous at 0) and "n w.p. 1/n"
+  (means do not converge) as the three standard pathologies. Harder:
+  construct Brownian motion by the Lévy-Ciesielski (Haar/Schauder)
+  series and prove Kolmogorov's continuity criterion; prove the strong
+  Markov property and the full reflection principle for the joint law
+  of (M_t, B_t); prove nowhere differentiability (Paley-Wiener-Zygmund)
+  and the law of the iterated logarithm; prove Lindeberg-Feller and the
+  Berry-Esseen bound; prove Prokhorov's theorem and Donsker's invariance
+  principle; establish the martingale central limit theorem and
+  Azuma-Hoeffding; and study backward martingales to prove the SLLN and
+  de Finetti's theorem.
+
+
