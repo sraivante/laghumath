@@ -12886,3 +12886,3073 @@ TEACHING TIPS
   read Maynard's bounded gaps proof as a multidimensional Selberg sieve.
 
 
+================================================================================
+TOPIC 12.17 — REPRESENTATION THEORY OF LIE GROUPS, ALGEBRAIC GROUPS AND
+QUANTUM GROUPS: COMPACT GROUPS, PETER-WEYL, HIGHEST WEIGHTS, WEYL CHARACTER
+FORMULA, REDUCTIVE GROUPS, U_q(sl₂)
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - REPRESENTATIONS: a continuous homomorphism π : G → GL(V) (V complex,
+    usually finite-dimensional). Subrepresentations, irreducibility,
+    intertwiners Hom_G(V, W), direct sums, tensor products V ⊗ W, duals V*
+    (g acts by π(g⁻¹)ᵀ), Sym^k V, Λ^k V. SCHUR'S LEMMA: an intertwiner
+    between irreducibles is 0 or an isomorphism; End_G(V) = C·id for V
+    irreducible (C algebraically closed). Hence irreps of ABELIAN groups are
+    1-dimensional; the centre acts by a scalar (central character).
+  - COMPACT GROUPS: a compact group has a unique bi-invariant HAAR
+    probability measure dg. AVERAGING ⟨v, w⟩_G = ∫⟨gv, gw⟩ dg gives an
+    invariant inner product, so every finite-dimensional representation is
+    UNITARISABLE and COMPLETELY REDUCIBLE (orthogonal complements of
+    subreps are subreps). Fails for non-compact groups: t ↦ (1 t; 0 1) of
+    R (or of the algebraic group G_a) is not completely reducible.
+  - CHARACTERS: χ_V(g) = tr π(g), a class function; χ_{V⊕W} = χ_V + χ_W,
+    χ_{V⊗W} = χ_Vχ_W, χ_{V*} = conj(χ_V). SCHUR ORTHOGONALITY: for
+    irreducible unitary π, π′, ∫ π_ij(g) conj(π′_kl(g)) dg = δ_{ππ′}δ_ik
+    δ_jl/dim π; so ⟨χ_V, χ_W⟩ = dim Hom_G(V, W), V is irreducible iff
+    ‖χ_V‖ = 1, and the multiplicity of an irrep U in V is ⟨χ_V, χ_U⟩.
+  - PETER-WEYL THEOREM (G compact): matrix coefficients of irreps are
+    uniformly dense in C(G); L²(G) = ⊕̂_{π∈Ĝ} V_π ⊗ V_π* as G × G-modules,
+    with ONB {√(dim π) π_ij}; characters form an ONB of the L² class
+    functions. Consequences: every compact Lie group has a faithful finite-
+    dimensional rep (is a closed subgroup of U(n)); |G| = ∑(dim π)² for G
+    finite; for G = U(1) it is Fourier series. For a closed subgroup K,
+    the multiplicity of V_π in L²(G/K) is dim V_π^K (FROBENIUS RECIPROCITY):
+    L²(S²) = ⊕_l ℋ_l, harmonics of degree l, dim 2l + 1.
+  - SU(2) AND SO(3): the irreps of SU(2) are Vₙ = homogeneous polynomials
+    of degree n in two variables, dim n + 1, one for each n ≥ 0, with
+    χₙ(diag(e^{iθ}, e^{−iθ})) = sin((n + 1)θ)/sin θ. CLEBSCH-GORDAN:
+    V_m ⊗ Vₙ = V_{m+n} ⊕ V_{m+n−2} ⊕ ... ⊕ V_{|m−n|}. The irreps of
+    SO(3) = SU(2)/{±1} are the Vₙ with n even (dims 1, 3, 5, ...; "integer
+    spin"). WEYL INTEGRATION on SU(2): ∫ f dg = (2/π)∫₀^π f(θ) sin²θ dθ for
+    class functions; on SO(3) the density of the rotation angle is
+    (1 − cos θ)/π.
+  - LIE ALGEBRA REPRESENTATIONS: a rep of G gives dπ of 𝔤 = Lie(G); for G
+    simply connected every rep of 𝔤 integrates to G. UNITARY TRICK: f.d.
+    reps of SU(n), SL(n, C) (holomorphic) and 𝔰𝔩(n, C) are "the same".
+    WEYL'S THEOREM: f.d. reps of a semisimple 𝔤 over C are completely
+    reducible.
+  - 𝔰𝔩₂ THEORY: basis e, f, h with [h, e] = 2e, [h, f] = −2f, [e, f] = h.
+    For each n ≥ 0 there is exactly one irrep V(n) of dim n + 1, basis
+    v₀, ..., vₙ with h vₖ = (n − 2k)vₖ, f vₖ = vₖ₊₁, e vₖ = k(n − k + 1)vₖ₋₁.
+    Weights are symmetric and unbroken strings; the CASIMIR Ω = h² + 2ef +
+    2fe acts on V(n) by n(n + 2).
+  - HIGHEST WEIGHT THEORY (𝔤 semisimple, Cartan 𝔥, roots Φ, positive roots
+    Φ⁺, simple roots αᵢ, coroots αᵢ∨, fundamental weights ωᵢ with ⟨ωᵢ,
+    αⱼ∨⟩ = δᵢⱼ, ρ = ½∑_{α>0} α = ∑ωᵢ, Weyl group W): every f.d. irrep has
+    a unique highest weight λ, which is DOMINANT INTEGRAL (λ = ∑aᵢωᵢ,
+    aᵢ ∈ Z≥0), and λ ↦ L(λ) is a bijection {dominant integral weights} ↔
+    {f.d. irreps}. The weights of L(λ) are W-invariant with multiplicities
+    and all lie in λ − Z≥0Φ⁺ inside the convex hull of Wλ.
+  - VERMA MODULES: M(λ) = U(𝔤) ⊗_{U(𝔟)} C_λ has a unique irreducible
+    quotient L(λ); ch M(λ) = e^λ/∏_{α>0}(1 − e^{−α}). For 𝔰𝔩₂, M(λ) is
+    irreducible iff λ ∉ Z≥0; for λ = n ≥ 0, f^{n+1}v is a singular vector
+    and L(n) = M(n)/M(−n − 2). DOT ACTION w·λ = w(λ + ρ) − ρ.
+  - WEYL CHARACTER FORMULA: ch L(λ) = ∑_{w∈W} ε(w)e^{w(λ+ρ)} / ∑_{w∈W}
+    ε(w)e^{wρ}, with DENOMINATOR IDENTITY ∑ε(w)e^{wρ} = e^ρ∏_{α>0}(1 −
+    e^{−α}). Equivalent: ch L(λ) = ∑_w ε(w) ch M(w·λ) (BGG resolution).
+    WEYL DIMENSION FORMULA: dim L(λ) = ∏_{α>0} ⟨λ + ρ, α∨⟩/⟨ρ, α∨⟩; for
+    𝔰𝔩₃, dim L(a, b) = (a + 1)(b + 1)(a + b + 2)/2. Multiplicities via
+    FREUDENTHAL or KOSTANT; for GLₙ they are Kostka numbers.
+  - COMPACT CONNECTED LIE GROUPS: maximal torus T, all maximal tori
+    conjugate, every element conjugate into T, W = N(T)/T. Irreps ↔
+    dominant weights in the character lattice X*(T) (THEOREM OF THE
+    HIGHEST WEIGHT); WEYL INTEGRATION FORMULA ∫_G f = (1/|W|)∫_T f(t)
+    |Δ(t)|² dt; BOREL-WEIL: L(λ)* = H⁰(G/B, ℒ_λ) (for SL₂: H⁰(P¹, O(n)) =
+    Vₙ). Non-compact simple groups such as SL(2, R) have NO non-trivial
+    finite-dimensional unitary reps; their unitary irreps are infinite-
+    dimensional (principal and discrete series).
+  - LINEAR ALGEBRAIC GROUPS over k = k̄: Zariski-closed subgroups of GLₙ.
+    Jordan decomposition; unipotent radical R_u(G) = largest connected
+    normal unipotent subgroup. G is REDUCTIVE if R_u(G) = 1 (GLₙ, SLₙ, PGLₙ,
+    SOₙ, Sp₂ₙ, tori G_mʳ), SEMISIMPLE if its radical is also trivial. NOT
+    reductive: G_a, the Borel B of upper triangular matrices, unipotent Uₙ.
+    In characteristic 0 reductive ⇔ every rational rep completely
+    reducible (linearly reductive).
+  - ROOT DATA: (X*(T), Φ, X_*(T), Φ∨) classifies connected reductive groups
+    up to isomorphism (Chevalley). GLₙ: X* = Zⁿ, roots eᵢ − eⱼ. SL₂: X* =
+    Z, α = 2, α∨ = 1; PGL₂: X* = Z, α = 1, α∨ = 2 — same root system, not
+    isomorphic groups. Irreducible rational reps ↔ dominant λ ∈ X*(T);
+    for GLₙ: λ₁ ≥ ... ≥ λₙ in Zⁿ; polynomial ones = partitions, dimension by
+    the HOOK-CONTENT formula; SCHUR-WEYL: (Cⁿ)^{⊗k} = ⊕_{λ⊢k} S_λ(Cⁿ) ⊗
+    Specht_λ as GLₙ × S_k-modules.
+  - CHARACTERISTIC p: complete reducibility FAILS; the Weyl module Sym^n(k²)
+    of SL₂ can be reducible (Sym^p ⊇ span{x^p, y^p}). STEINBERG TENSOR
+    PRODUCT: L(a₀ + a₁p + a₂p² + ...) = L(a₀) ⊗ L(a₁)^{[1]} ⊗ ... (Frobenius
+    twists), so for SL₂, dim L(n) = ∏(aᵢ + 1) over the base-p digits of n.
+  - QUANTUM GROUP U_q(𝔰𝔩₂) (q ∈ C^×, not a root of unity): generators E,
+    F, K^{±1} with KEK⁻¹ = q²E, KFK⁻¹ = q⁻²F, EF − FE = (K − K⁻¹)/(q −
+    q⁻¹). HOPF ALGEBRA: Δ(K) = K ⊗ K, Δ(E) = E ⊗ K + 1 ⊗ E, Δ(F) = F ⊗ 1 +
+    K⁻¹ ⊗ F, ε(E) = ε(F) = 0, ε(K) = 1, S(E) = −EK⁻¹, S(F) = −KF, S(K) =
+    K⁻¹. q-INTEGERS [n] = (qⁿ − q⁻ⁿ)/(q − q⁻¹) = q^{n−1} + ... + q^{1−n}.
+  - REPS OF U_q(𝔰𝔩₂): for each n ≥ 0 and σ = ±1 one irrep L(n, σ), basis
+    m₀, ..., mₙ, K mᵢ = σq^{n−2i}mᵢ, F mᵢ = mᵢ₊₁, E mᵢ = σ[i][n − i + 1]mᵢ₋₁;
+    all f.d. reps are completely reducible and tensor products obey
+    Clebsch-Gordan. QUANTUM CASIMIR C = EF + (q⁻¹K + qK⁻¹)/(q − q⁻¹)²;
+    QUANTUM DIMENSION tr(K) = [n + 1]. Δ is not cocommutative, but V ⊗ W
+    ≅ W ⊗ V via the universal R-MATRIX (braiding → knot invariants such as
+    the Jones polynomial). At a root of unity ([ℓ] = 0) the theory changes:
+    E^ℓ, F^ℓ, K^ℓ become central and non-semisimple reps appear.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove Schur's lemma and deduce that every irreducible f.d.
+    complex representation of an abelian group is 1-dimensional. (b) Prove
+    that every f.d. representation of a compact group G is unitarisable
+    and hence completely reducible. (c) Show that π(t) = (1 t; 0 1) of the
+    additive group R is not completely reducible.
+    Answer: (a) ker and image of an intertwiner are subreps; an eigenspace
+    of T ∈ End_G(V) is a subrep. (b) average an inner product with Haar
+    measure. (c) the line Ce₁ is invariant but has no invariant complement.
+    Teacher explains: (a) Let T : V → W intertwine irreducibles. ker T ⊆ V
+    and im T ⊆ W are invariant, so ker T = 0 or V and im T = 0 or W: T = 0
+    or T is bijective. If V = W is f.d. over C, T has an eigenvalue c, and
+    T − c·id is an intertwiner that is not injective, hence 0: T = c·id.
+    For G abelian, each π(g) commutes with all π(h), so π(g) ∈ End_G(V) =
+    C·id; then EVERY line is invariant, and irreducibility forces dim V =
+    1. (b) Take any inner product ⟨ , ⟩ on V and put
+       ⟨v, w⟩_G = ∫_G ⟨π(g)v, π(g)w⟩ dg.
+    It is positive definite (integral of a positive continuous function)
+    and, by LEFT INVARIANCE of dg, ⟨π(h)v, π(h)w⟩_G = ∫⟨π(gh)v, π(gh)w⟩dg =
+    ⟨v, w⟩_G (substitute g ↦ gh⁻¹; Haar measure on compact groups is also
+    right invariant). So each π(h) is unitary for ⟨ , ⟩_G. If U ⊆ V is
+    invariant, so is U^⊥: for u ∈ U, w ∈ U^⊥, ⟨u, π(h)w⟩ = ⟨π(h⁻¹)u, w⟩ =
+    0. Induct on dimension. (c) π(t)e₁ = e₁, so Ce₁ is a subrep. Any other
+    invariant line is spanned by an eigenvector common to all π(t); but
+    π(t) − 1 = (0 t; 0 0) has kernel Ce₁ only. So Ce₁ has no invariant
+    complement; π is indecomposable but reducible. Averaging fails because
+    R has no finite invariant measure. Common mistakes: applying Schur over
+    R (the rotation rep of SO(2) on R² is irreducible over R with End =
+    C); forgetting that Schur needs the vector space f.d. (or at least a
+    countable-dimension argument). Now you try: find all irreps of U(1).
+    (χₙ(z) = zⁿ, n ∈ Z)
+
+D2. (a) Prove Schur orthogonality ⟨χ_V, χ_W⟩ = ∫χ_V(g) conj(χ_W(g)) dg =
+    dim Hom_G(W, V) for a compact group G. (b) For the circle T = U(1)
+    and ρ(z) = diag(z², z⁻¹, 1), compute ⟨χ_ρ, χ_ρ⟩ and decompose ρ.
+    (c) For the standard 2-dimensional
+    representation of S₃ (a compact group!), verify ⟨χ, χ⟩ = 1.
+    Answer: (a) the average P = ∫π(g) dg is the projection onto the
+    invariants and tr P = dim V^G; apply it to Hom(W, V). (b) ⟨χ, χ⟩ = 3:
+    three distinct characters z², z⁻¹, 1. (c) (4 + 3·0 + 2·1)/6 = 1.
+    Teacher explains: (a) For any f.d. rep U put P = ∫_G π_U(g) dg. By
+    invariance π_U(h)P = P, so im P ⊆ U^G; and P = id on U^G. Hence P² = P
+    is a projection onto U^G and dim U^G = tr P = ∫χ_U(g) dg. Apply this
+    to U = Hom(W, V) ≅ V ⊗ W*, whose character is χ_V conj(χ_W) (unitary
+    eigenvalues satisfy λ⁻¹ = conj λ), and whose invariants are Hom_G(W,
+    V). So ∫χ_V conj(χ_W) = dim Hom_G(W, V); by Schur this is δ_{VW} for
+    irreducibles. (b) On U(1), Haar measure is dθ/2π, and ∫zᵐ z̄ⁿ = δ_mn.
+    So ⟨χ, χ⟩ = ∫|z² + z⁻¹ + 1|² = 1 + 1 + 1 = 3 (cross terms vanish): χ is
+    the sum of the three distinct irreducible characters χ₂, χ₋₁, χ₀.
+    (c) S₃ has classes {e} (size 1, χ = 2), transpositions (size 3, χ =
+    0), 3-cycles (size 2, χ = −1). With counting measure divided by 6:
+       ⟨χ, χ⟩ = (1·4 + 3·0 + 2·1)/6 = 1,
+    so the representation is irreducible. Common mistakes: forgetting the
+    complex conjugate (harmless for real characters, fatal on U(1));
+    weighting classes without their sizes. Now you try: on U(1) compute
+    the multiplicity of χ₀ in (z + z⁻¹)⁴. (∫(2 cos θ)⁴ dθ/2π = 6)
+
+D3. (a) Show that Vₙ = {homogeneous polynomials of degree n in x, y}, with
+    (g·p)(x, y) = p((x, y)g), is an irreducible representation of SU(2)
+    of dimension n + 1, and compute its character. (b) State the Weyl
+    integration formula for SU(2) and check that ⟨χ_m, χₙ⟩ = δ_mn.
+    Answer: (a) χₙ(t_θ) = ∑_{k=0}^n e^{i(n−2k)θ} = sin((n + 1)θ)/sin θ for
+    t_θ = diag(e^{iθ}, e^{−iθ}). (b) ∫f = (2/π)∫₀^π f(θ) sin²θ dθ for class
+    functions f.
+    Teacher explains: (a) The monomials x^{n−k}yᵏ (k = 0, ..., n) are a
+    basis: dim n + 1. The torus element t_θ sends x ↦ e^{iθ}x, y ↦ e^{−iθ}y,
+    so x^{n−k}yᵏ is an eigenvector with eigenvalue e^{i(n−2k)θ} — these n +
+    1 WEIGHTS are distinct (for generic θ). Irreducibility: let W ⊆ Vₙ be a
+    non-zero subrep. It is t_θ-stable, hence spanned by the monomials it
+    contains; say x^{n−k}yᵏ ∈ W. Apply r_φ = (c, −s; s, c) ∈ SU(2), c =
+    cos φ, s = sin φ: r_φ·x^{n−k}yᵏ = (cx + sy)^{n−k}(−sx + cy)ᵏ has
+    x^n-coefficient c^{n−k}(−s)ᵏ ≠ 0, so x^n ∈ W (W is spanned by
+    monomials); then r_φ·x^n = (cx + sy)^n has ALL coefficients non-zero,
+    so every monomial lies in W: W = Vₙ. Character: every element of
+    SU(2) is conjugate to some t_θ, θ ∈ [0, π], and
+       χₙ(t_θ) = e^{inθ} + e^{i(n−2)θ} + ... + e^{−inθ}
+               = (e^{i(n+1)θ} − e^{−i(n+1)θ})/(e^{iθ} − e^{−iθ})
+               = sin((n + 1)θ)/sin θ.
+    (b) The conjugacy class of t_θ is the "latitude sphere" tr = 2cos θ in
+    SU(2) ≅ S³, of area ∝ sin²θ, which gives the formula (the normalisation
+    (2/π)∫₀^π sin²θ dθ = 1 is correct). Then
+       ⟨χ_m, χₙ⟩ = (2/π)∫₀^π sin((m + 1)θ) sin((n + 1)θ) dθ = δ_mn,
+    by ordinary Fourier orthogonality of sines on [0, π]. The sin²θ weight
+    exactly cancels the denominators: this is the Weyl integration formula
+    |Δ|² at work. Since the χₙ are orthonormal and (by Peter-Weyl) span the
+    class functions, the Vₙ are ALL the irreps. Common mistakes: using
+    uniform measure dθ/π (then ⟨χ₀, χ₂⟩ ≠ 0); forgetting that θ and −θ are
+    conjugate (Weyl group Z/2). Now you try: χ₂ at θ = π/3. (sin π/sin(π/3)
+    = 0: indeed e^{2iπ/3} + 1 + e^{−2iπ/3} = 0)
+
+D4. (a) Prove the Clebsch-Gordan rule V_m ⊗ Vₙ ≅ ⊕_{k=0}^{min(m,n)}
+    V_{m+n−2k} for SU(2). (b) Decompose V₁^{⊗3}, Sym²V₂ and Λ²V₃. (c) Which
+    Vₙ factor through SO(3), and what are the irreps of SO(3)?
+    Answer: (a) compare characters. (b) V₁^{⊗3} = V₃ ⊕ 2V₁; Sym²V₂ = V₄ ⊕
+    V₀; Λ²V₃ = V₄ ⊕ V₀. (c) n even: SO(3) has one irrep of each odd
+    dimension 2l + 1.
+    Teacher explains: A rep of SU(2) is determined by its character, i.e.
+    by its multiset of WEIGHTS (exponents of e^{iθ}). (a) The weights of
+    V_m ⊗ Vₙ are the sums (m − 2i) + (n − 2j). Write it as a Laurent
+    polynomial in z = e^{iθ}: χ_mχₙ = (z^m + ... + z^{−m})(zⁿ + ... + z^{−n}).
+    Peel off the top: the highest weight m + n occurs once, so V_{m+n}
+    appears; remove its weights m + n, ..., −(m + n). The next highest
+    remaining weight is m + n − 2 (it had multiplicity 2), and so on; the
+    multiplicity of weight m + n − 2k is k + 1 for k ≤ min(m, n), so each
+    step removes exactly one copy. Dimension check: ∑_{k}(m + n − 2k + 1) =
+    (m + 1)(n + 1). (b) V₁ ⊗ V₁ = V₂ ⊕ V₀, so V₁^{⊗3} = (V₂ ⊕ V₀) ⊗ V₁ =
+    V₃ ⊕ V₁ ⊕ V₁ (8 = 4 + 2 + 2). Sym²V₂: weights of V₂ are 2, 0, −2;
+    pairwise sums with repetition: 4, 2, 0, 0, −2, −4, i.e. V₄ ⊕ V₀ (the
+    invariant is the quadratic form x² + y² + z² on R³!). Λ²V₃: weights 3,
+    1, −1, −3; sums of distinct pairs: 4, 2, 0, 0, −2, −4, so V₄ ⊕ V₀ (the
+    invariant is the symplectic form: V₃ is a quaternionic/symplectic rep).
+    (c) −1 ∈ SU(2) acts on Vₙ by (−1)ⁿ, since p(−x, −y) = (−1)ⁿp(x, y). So Vₙ
+    descends to SO(3) = SU(2)/{±1} iff n is even; writing n = 2l gives the
+    irreps D_l of SO(3), dim 2l + 1 (l = 1 is R³ ⊗ C). Common mistakes:
+    confusing dimension n + 1 with label n; "spin j" physicists' notation is
+    j = n/2 with dim 2j + 1. Now you try: decompose V₂ ⊗ V₂ ⊗ V₂. (V₆ ⊕
+    2V₄ ⊕ 3V₂ ⊕ V₀; 27 = 7 + 10 + 9 + 1)
+
+D5. State the Peter-Weyl theorem and give three consequences. Then
+    (a) describe the decomposition of L²(SU(2)) and match it with
+    harmonic polynomials on S³ ⊂ R⁴; (b) for g = (a, −b̄; b, ā) ∈ SU(2)
+    compute ∫|a|² dg and ∫|a|⁴ dg; (c) decompose L²(S²) under SO(3).
+    Answer: (a) L²(SU(2)) = ⊕̂ₙ Vₙ ⊗ Vₙ*, dims (n + 1)²; degree-n harmonics
+    on R⁴ have dim (n + 1)². (b) 1/2 and 1/3. (c) ⊕_{l≥0} ℋ_l, each SO(3)
+    irrep D_l exactly once.
+    Teacher explains: PETER-WEYL: for G compact, (i) the span of matrix
+    coefficients g ↦ ⟨π(g)v, w⟩ of f.d. irreps is dense in C(G) (sup norm)
+    and in L²(G); (ii) L²(G) ≅ ⊕̂_{π∈Ĝ} V_π ⊗ V_π* under (g, h)·f(x) =
+    f(g⁻¹xh), and the functions √(d_π) π_ij form an ONB; (iii) characters
+    form an ONB of the class functions in L²(G). Proof idea: convolution
+    by a continuous approximate identity is a compact self-adjoint operator
+    commuting with right translations; its eigenspaces are f.d. and
+    invariant. Consequences: a compact Lie group has a FAITHFUL f.d. rep
+    (finitely many irreps already separate points near e, so G ⊆ U(N)); a
+    finite group has |G| = ∑d_π²; every irrep occurs in L²(G) with
+    multiplicity equal to its dimension. (a) The matrix coefficients of Vₙ
+    are polynomials of degree n in a, b, ā, b̄ restricted to S³ = SU(2),
+    giving the (n + 1)²-dimensional block End(Vₙ). The space ℋₙ(R⁴) of
+    harmonic polynomials of degree n has dimension C(n + 3, 3) − C(n + 1,
+    3) = (n + 1)², and indeed L²(S³) = ⊕ℋₙ. (b) (a, b) is uniformly
+    distributed on S³ ⊂ C², so by symmetry E|a|² = E|b|² = 1/2 (Schur:
+    ∫|π_11|² = 1/dim = 1/2 for V₁). |a|² is uniform on [0, 1]
+    (Archimedes on S³), so E|a|⁴ = 1/3; equivalently a² = ⟨g·x², x²⟩ is
+    a matrix coefficient of V₂ and Schur gives 1/dim V₂ = 1/3. (c) S² = SO(3)/
+    SO(2); by Frobenius reciprocity D_l appears in L²(S²) with multiplicity
+    dim D_l^{SO(2)} = 1 (the weight-0 space), giving spherical harmonics
+    of degree l, dimension 2l + 1. Common mistakes: forgetting the closure
+    ⊕̂ (the sum is a Hilbert direct sum, not algebraic); multiplicity is
+    dim π, not 1. Now you try: dim ℋ₃(R³) and dim ℋ₃(R⁴). (7 and 16)
+
+D6. Integration over compact groups. (a) Compute ∫_{SU(2)} (tr g)^{2k} dg
+    for k = 1, 2, 3 in two ways: by the Weyl integration formula and by
+    counting invariants in V₁^{⊗2k}. (b) Derive the density of the
+    rotation angle θ of a Haar-random element of SO(3) and compute the mean
+    of tr g and of (tr g)². (c) Show ∫_{U(n)} |tr g|² dg = 1 for n ≥ 1.
+    Answer: (a) 1, 2, 5 (Catalan numbers C_k = C(2k, k)/(k + 1)).
+    (b) (1 − cos θ)/π on [0, π]; means 0 and 1. (c) Cⁿ is irreducible.
+    Teacher explains: (a) tr g = χ₁, so ∫χ₁^{2k} = ⟨χ₁^{2k}, χ₀⟩ = number
+    of copies of V₀ in V₁^{⊗2k}. Tensoring with V₁ moves Vₙ to V_{n+1} ⊕
+    V_{n−1}, so the multiplicities follow a lattice path from 0 back to 0
+    that never goes negative: Dyck paths, counted by Catalan numbers 1, 2,
+    5, 14, .... By Weyl integration: (2/π)∫₀^π (2cos θ)^{2k} sin²θ dθ; for
+    k = 1: (2/π)∫4cos²θ sin²θ = (2/π)∫sin²2θ = (2/π)(π/2) = 1 ✓; k = 2
+    gives 2 and k = 3 gives 5 (use cos²θ sin²θ = (1 − cos 4θ)/8 etc.).
+    (b) SO(3) = SU(2)/{±1}, and a unit quaternion with angle θ_q (from the
+    SU(2) formula) gives a rotation by θ = 2θ_q, folded into [0, π]. Push
+    (2/π) sin²θ_q dθ_q forward: sin²(θ/2) = (1 − cos θ)/2, dθ_q = dθ/2, and
+    both θ_q and π − θ_q give the same rotation angle, so the density is
+       2 · (2/π) · ((1 − cos θ)/2) · (1/2) = (1 − cos θ)/π.
+    (∫₀^π (1 − cos θ)/π dθ = 1 ✓.) The trace of a rotation by θ is 1 +
+    2cos θ = χ of D₁ (irreducible, non-trivial), so ∫tr g = 0 and ∫(tr g)² =
+    ⟨χ_{D₁}, χ_{D₁}⟩ = 1. Directly: (1/π)∫(1 + 2cos θ)(1 − cos θ) dθ =
+    (1/π)(π − π) = 0 ✓. Small angles are RARE: the density vanishes at θ =
+    0. (c) |tr g|² = χ conj(χ) for the standard rep Cⁿ, which is
+    irreducible (U(n) acts transitively on unit vectors, so any invariant
+    subspace is 0 or Cⁿ). So the integral is ⟨χ, χ⟩ = 1. Common mistakes:
+    using the uniform measure dθ/π on SO(3) (it is not Haar); ∫|tr g|⁴
+    over U(n) is 2 for n ≥ 2 but 1 for n = 1. Now you try: ∫_{SO(3)}(tr
+    g)⁴ dg. (3: D₁^{⊗4} contains the trivial rep 3 times)
+
+D7. Classify the finite-dimensional irreducible representations of 𝔰𝔩₂(C):
+    show that each has a basis v₀, ..., vₙ with h vₖ = (n − 2k)vₖ, f vₖ =
+    vₖ₊₁, e vₖ = k(n − k + 1)vₖ₋₁. Write the matrices for n = 2 and verify
+    the Casimir Ω = h² + 2ef + 2fe acts by n(n + 2).
+    Answer: one irrep V(n) for each n ≥ 0; for n = 2, Ω = 8·I.
+    Teacher explains: STEP 1 (weights move): if hv = μv then h(ev) = ([h,
+    e] + eh)v = (μ + 2)ev and h(fv) = (μ − 2)fv. STEP 2 (highest weight):
+    V is f.d., so h has an eigenvector, and applying e repeatedly must end:
+    there is v₀ ≠ 0 with hv₀ = λv₀, ev₀ = 0. STEP 3: put vₖ = fᵏv₀. By
+    induction e vₖ = k(λ − k + 1)vₖ₋₁: indeed e vₖ₊₁ = e f vₖ = (h + fe)vₖ
+    = (λ − 2k)vₖ + k(λ − k + 1)vₖ = (k + 1)(λ − k)vₖ. STEP 4 (integrality):
+    the non-zero vₖ have distinct h-eigenvalues λ − 2k, so they are
+    independent and some v_{n+1} = 0 with vₙ ≠ 0. Then 0 = e v_{n+1} = (n +
+    1)(λ − n)vₙ forces λ = n ∈ Z≥0. STEP 5: span{v₀, ..., vₙ} is stable
+    under e, f, h, hence equals V by irreducibility; conversely these
+    formulas define a rep for every n (ef − fe on vₖ is (k + 1)(n − k) −
+    k(n − k + 1) = n − 2k, the h-eigenvalue ✓). For n = 2 (the adjoint
+    representation):
+       h = diag(2, 0, −2),  f = (0 0 0; 1 0 0; 0 1 0),  e = (0 2 0; 0 0 2;
+       0 0 0).
+    On v₀: h² = 4, 2ef v₀ = 2e v₁ = 2·2v₀ = 4v₀, 2fe v₀ = 0, so Ω v₀ = 8v₀
+    = n(n + 2)v₀. Ω is central in U(𝔰𝔩₂), so by Schur it is 8·I on V(2).
+    In general Ω = n² + 2n on V(n); it separates the irreps and is the
+    "total angular momentum" 4j(j + 1) with j = n/2. Common mistakes:
+    normalising vₖ = fᵏv₀/k! and then using the unnormalised e-formula;
+    assuming the highest weight is real without first proving integrality.
+    Now you try: in V(4), compute e v₂ and the eigenvalue of Ω. (6v₁; 24)
+
+D8. (a) Define the Verma module M(λ) for 𝔰𝔩₂ and show it is irreducible
+    iff λ ∉ Z≥0. (b) For λ = n ∈ Z≥0 find the singular vector and show
+    L(n) = M(n)/M(−n − 2). (c) Use this to derive the Weyl character
+    formula for 𝔰𝔩₂ and explain the general form ch L(λ) = ∑_w ε(w)
+    ch M(w·λ).
+    Answer: (a) basis fᵏv, e fᵏv = k(λ − k + 1)f^{k−1}v; (b) f^{n+1}v has
+    weight −n − 2 and is killed by e; (c) ch L(n) = (e^{n} − e^{−n−2})/(1
+    − e^{−2}) = e^n + e^{n−2} + ... + e^{−n}.
+    Teacher explains: (a) M(λ) = U(𝔰𝔩₂) ⊗_{U(𝔟)} C_λ, 𝔟 = span(h, e), is
+    the "freest" module generated by v with hv = λv, ev = 0. By PBW, fᵏv (k
+    ≥ 0) is a basis, and the computation of D7 gives e fᵏv = k(λ − k +
+    1)f^{k−1}v, valid for ANY λ ∈ C. Every submodule is a sum of weight
+    spaces; if it contains fᵏv (k ≥ 1), applying e k times gives a non-zero
+    multiple of v unless some factor j(λ − j + 1), 1 ≤ j ≤ k, vanishes,
+    i.e. λ = j − 1 ∈ Z≥0. So for λ ∉ Z≥0 every non-zero submodule contains v
+    and is everything: M(λ) is irreducible (and infinite-dimensional). (b) If
+    λ = n, then e f^{n+1}v = (n + 1)(n − n)fⁿv = 0: w = f^{n+1}v is a
+    SINGULAR (highest weight) vector of weight n − 2(n + 1) = −n − 2, and
+    it generates a copy of M(−n − 2) (itself irreducible, since −n − 2 < 0).
+    The quotient has basis v, fv, ..., fⁿv: it is L(n) = V(n). Note −n − 2 =
+    s·n = s(n + 1) − 1 with ρ = 1 — the DOT ACTION of the reflection s.
+    (c) ch M(λ) = e^λ + e^{λ−2} + ... = e^λ/(1 − e^{−α}) with α = 2. So
+       ch L(n) = ch M(n) − ch M(s·n) = (e^{n+1} − e^{−(n+1)})/(e^1 − e^{−1}),
+    which is ∑ε(w)e^{w(λ+ρ)}/∑ε(w)e^{wρ} for W = {1, s}; at e^1 = e^{iθ} it
+    is sin((n + 1)θ)/sin θ (D3). In general the BGG resolution 0 → ... →
+    ⊕_{ℓ(w)=k} M(w·λ) → ... → M(λ) → L(λ) → 0 gives ch L(λ) = ∑_w ε(w)
+    ch M(w·λ), and dividing by the common denominator ∏(1 − e^{−α}) is
+    the WEYL CHARACTER FORMULA. Common mistakes: using the ordinary action
+    s(n) = −n instead of the dot action −n − 2; claiming M(λ) has a f.d.
+    quotient for non-integral λ. Now you try: for λ = −1, is M(λ)
+    irreducible? (yes; −1 ∉ Z≥0, and −1 = s·(−1) is the fixed point of the
+    dot action)
+
+D9. Highest weights for 𝔰𝔩₃(C). With 𝔥 = traceless diagonal matrices and
+    weights εᵢ (∑εᵢ = 0): (a) list roots, simple roots, fundamental
+    weights, ρ and W; (b) find the weights (with multiplicities) of the
+    adjoint representation and its highest weight; (c) prove dim L(aω₁ +
+    bω₂) = (a + 1)(b + 1)(a + b + 2)/2 and tabulate small cases;
+    (d) decompose C³ ⊗ C³ and C³ ⊗ (C³)*.
+    Answer: (a) Φ = {εᵢ − εⱼ}, α₁ = ε₁ − ε₂, α₂ = ε₂ − ε₃, ω₁ = ε₁, ω₂ = ε₁ +
+    ε₂, ρ = α₁ + α₂, W = S₃. (b) the 6 roots (mult 1) and 0 (mult 2);
+    highest weight ε₁ − ε₃ = ω₁ + ω₂. (c) 3, 3, 6, 8, 10, 15, 27. (d) 3 ⊗ 3
+    = 6 ⊕ 3̄ and 3 ⊗ 3̄ = 8 ⊕ 1.
+    Teacher explains: (a) E_ij (i ≠ j) satisfies [H, E_ij] = (hᵢ − hⱼ)E_ij,
+    so the roots are εᵢ − εⱼ; positive ones (i < j) are α₁, α₂, α₁ + α₂.
+    Coroots are αᵢ∨ = Eᵢᵢ − Eᵢ₊₁,ᵢ₊₁; ⟨ε₁, α₁∨⟩ = 1, ⟨ε₁, α₂∨⟩ = 0 so ω₁ = ε₁;
+    similarly ω₂ = ε₁ + ε₂ = −ε₃. ρ = ½(α₁ + α₂ + α₁ + α₂) = α₁ + α₂ = ω₁ +
+    ω₂. W = N(T)/T permutes the εᵢ: W ≅ S₃, order 6. (b) 𝔰𝔩₃ = 𝔥 ⊕
+    ⊕CE_ij: weight 0 with multiplicity dim 𝔥 = 2, each root once. The
+    highest (α₁ + α₂ + anything is not a root) is θ = ε₁ − ε₃ = ω₁ + ω₂:
+    adjoint = L(1, 1), dim 8 = 6 + 2. (c) λ + ρ = (a + 1)ω₁ + (b + 1)ω₂;
+    pairing with α₁∨, α₂∨, (α₁ + α₂)∨ = α₁∨ + α₂∨ gives a + 1, b + 1, a + b
+    + 2, and for ρ: 1, 1, 2. So dim = (a + 1)(b + 1)(a + b + 2)/2:
+       (1,0), (0,1): 3   (2,0): 6   (1,1): 8   (3,0): 10   (2,1): 15
+       (2,2): 27        (3,3): 64
+    (d) Weights of C³ ⊗ C³ are εᵢ + εⱼ: the highest 2ε₁ = 2ω₁ gives L(2, 0) =
+    Sym²C³ (dim 6), and the rest is Λ²C³ ≅ (C³)* = L(0, 1): 9 = 6 + 3.
+    C³ ⊗ (C³)* = End C³ = 𝔰𝔩₃ ⊕ C·I = L(1, 1) ⊕ L(0, 0): 9 = 8 + 1 (the
+    physicists' "meson octet and singlet"). Common mistakes: taking ρ =
+    α₁ + α₂ as "half the sum" of only the simple roots; forgetting the
+    multiplicity 2 of the zero weight (dimension count 6 + 1 = 7 ≠ 8).
+    Now you try: dim L(4, 1) and dim L(1, 3). (35 and 24)
+
+D10. (a) State the Weyl character formula and deduce the Weyl dimension
+     formula dim L(λ) = ∏_{α>0}⟨λ + ρ, α∨⟩/⟨ρ, α∨⟩. (b) For B₂ = 𝔰𝔬₅, with
+     simple roots α₁ = e₁ − e₂ (long) and α₂ = e₂ (short), find the
+     dimensions of L(aω₁ + bω₂). (c) Quote the G₂ answer and compute the two
+     fundamental dimensions.
+     Answer: (a) evaluate the formula at tρ and let t → 0. (b) dim =
+     (a + 1)(b + 1)(a + b + 2)(2a + b + 3)/6: 5, 4, 10, 14, 16. (c) 7, 14.
+     Teacher explains: (a) WCF: ch L(λ) = A_{λ+ρ}/A_ρ, A_μ = ∑_{w∈W} ε(w)
+     e^{wμ}, where ε(w) = det w = (−1)^{ℓ(w)}, and A_ρ = ∏_{α>0}(e^{α/2} −
+     e^{−α/2}) (DENOMINATOR IDENTITY). dim L(λ) = value of the character at
+     0, where both A's vanish, so evaluate along tρ: e^μ ↦ e^{t(μ, ρ)}.
+     Since (wμ, ρ) = (μ, w⁻¹ρ), A_μ(tρ) = A_ρ(tμ), and the denominator
+     identity gives A_μ(tρ) = ∏_{α>0}(e^{t(μ,α)/2} − e^{−t(μ,α)/2}). Hence
+        dim L(λ) = lim_{t→0} ∏_{α>0} (2 sinh(t(λ + ρ, α)/2))/(2 sinh(t(ρ,
+        α)/2)) = ∏_{α>0} (λ + ρ, α)/(ρ, α),
+     and (·, α) may be replaced by ⟨·, α∨⟩ (same factor 2/(α, α) top and
+     bottom). (b) Φ⁺ = {e₁ − e₂, e₂, e₁, e₁ + e₂}; ω₁ = e₁ (vector rep),
+     ω₂ = (e₁ + e₂)/2 (spin rep); ρ = (3/2, 1/2). With λ + ρ = (a + b/2 +
+     3/2, b/2 + 1/2), the coroots e₁ − e₂, 2e₂, 2e₁, e₁ + e₂ give
+        a + 1,  b + 1,  2a + b + 3,  a + b + 2;   for ρ: 1, 1, 3, 2.
+     So dim = (a + 1)(b + 1)(a + b + 2)(2a + b + 3)/6: (1, 0) → 5 (C⁵),
+     (0, 1) → 4 (spinors; Sp₄ = Spin₅), (0, 2) → 10 (adjoint), (2, 0) → 14
+     (traceless Sym²C⁵), (1, 1) → 16. (c) For G₂ (ω₁ short) dim L(a, b) =
+     (a + 1)(b + 1)(a + b + 2)(a + 2b + 3)(a + 3b + 4)(2a + 3b + 5)/120:
+     (1, 0) → 2·1·3·4·5·7/120 = 7 and (0, 1) → 1·2·3·5·7·8/120 = 14 (the
+     adjoint). Common mistakes: using ⟨λ, α∨⟩ without adding ρ (gives 0 for
+     λ = 0); mixing up long and short roots in B₂/C₂. Now you try: dim of
+     the G₂ representation L(1, 1), and |W(G₂)|. (64; 12)
+
+D11. Reductive algebraic groups (over k = k̄). (a) Show that G_a and the
+     Borel subgroup B ⊂ GL₂ of upper triangular matrices are not reductive,
+     while GLₙ is. (b) Compute the root data of SL₂, PGL₂ and GL₂, and read
+     off the centres and fundamental groups. (c) For GL₃ in characteristic
+     0, find dim S_{(2,1)}(k³) and check Schur-Weyl for (k³)^{⊗3}. (d) Show
+     Sym²(k²) is reducible for SL₂ when char k = 2, and find dim L(n) for
+     p = 3, n = 4, 5, 8.
+     Answer: (a) R_u(G_a) = G_a, R_u(B) = {(1 x; 0 1)}; R_u(GLₙ) = 1.
+     (b) SL₂: (Z, {±2}, Z, {±1}); PGL₂: (Z, {±1}, Z, {±2}); GL₂: (Z², {±(1,
+     −1)}, Z², {±(1, −1)}). Z(SL₂) = μ₂, π₁(PGL₂) = Z/2. (c) 8; 27 = 10 +
+     2·8 + 1. (d) span{x², y²}; dims 4, 6, 9.
+     Teacher explains: (a) G_a is itself connected unipotent (t ↦ (1 t; 0
+     1)), so R_u(G_a) = G_a ≠ 1; in char 0 its rep of D1(c) is not
+     completely reducible. In B the unipotent matrices U = {(1 x; 0 1)} form
+     a connected normal unipotent subgroup (B/U ≅ G_m²), so R_u(B) ⊇ U ≠ 1.
+     For GLₙ, R_u is normal and unipotent, so it fixes a non-zero vector
+     of kⁿ; the fixed space is GLₙ-stable, hence all of kⁿ, so R_u = 1.
+     (b) SL₂: T = {diag(t, t⁻¹)}, X*(T) = Zχ with χ(diag(t, t⁻¹)) = t;
+     conjugation scales e = E₁₂ by t², so α = 2χ; the coroot t ↦ diag(t,
+     t⁻¹) generates X_*(T), so α∨ = 1 and ⟨α, α∨⟩ = 2 ✓. PGL₂: T = image of
+     diag(t, 1); α(t) = t so α = 1, and α∨ : t ↦ diag(t, t⁻¹) = diag(t², 1)
+     is twice the generator: α∨ = 2. Same root system A₁, different root
+     data, non-isomorphic groups. The centre is read from X*/ZΦ (Z/2 for
+     SL₂, trivial for PGL₂) and π₁ from X_*/ZΦ∨ (trivial for SL₂, Z/2 for
+     PGL₂). GL₂: X* = Z² (diag(t₁, t₂) ↦ t₁^{m}t₂^{n}), α = e₁ − e₂ = α∨.
+     By CHEVALLEY's classification root data ↔ connected reductive groups;
+     irreducible reps ↔ dominant λ ∈ X*(T): for SL₂, λ = n ≥ 0; for GL₂, λ₁
+     ≥ λ₂ in Z (e.g. det = (1, 1), det⁻¹ ⊗ Sym² = (1, −1)). (c) HOOK-CONTENT:
+     dim S_λ(kⁿ) = ∏_{boxes}(n + c)/h, c = column − row. For λ = (2, 1),
+     n = 3: contents 0, 1, −1, hooks 3, 1, 1: (3·4·2)/3 = 8 (≅ 𝔰𝔩₃ ⊗ det:
+     highest weight (2, 1, 0) = (1, 0, −1) + (1, 1, 1)). Schur-
+     Weyl: (k³)^{⊗3} = S₍₃₎ ⊗ 1 ⊕ S₍₂,₁₎ ⊗ Specht₍₂,₁₎ ⊕ S₍₁,₁,₁₎ ⊗ sgn, dims
+     10·1 + 8·2 + 1·1 = 27 ✓. (d) In char 2, g·x² = (ax + by)² = a²x² + b²y²
+     (the cross term 2abxy vanishes), so span{x², y²} ≅ the Frobenius twist
+     V^{[1]} is a proper subrep of the 3-dimensional Weyl module. STEINBERG:
+     dim L(n) = ∏(dᵢ + 1) over base-p digits: 4 = 11₃ → 2·2 = 4; 5 = 12₃ →
+     2·3 = 6 (= dim Sym⁵: irreducible); 8 = 22₃ → 3·3 = 9 (Steinberg module,
+     p² − 1). Common mistakes: calling O₂ or a torus non-reductive (both
+     are reductive; tori have no roots); assuming complete reducibility for
+     reductive groups in char p. Now you try: the root datum of G_m. (X* =
+     X_* = Z, no roots)
+
+D12. The quantum group U_q(𝔰𝔩₂), q not a root of unity. (a) Verify that
+     K mᵢ = q^{n−2i}mᵢ, F mᵢ = mᵢ₊₁ (F mₙ = 0), E mᵢ = [i][n − i + 1]mᵢ₋₁
+     defines a representation L(n) of dimension n + 1. (b) Show that the
+     quantum Casimir C = EF + (q⁻¹K + qK⁻¹)/(q − q⁻¹)² acts on L(n) by
+     (q^{n+1} + q^{−n−1})/(q − q⁻¹)², and compute the quantum dimension
+     tr_{L(n)}(K). (c) Using Δ(E) = E ⊗ K + 1 ⊗ E, find the highest weight
+     vector of L(0) inside L(1) ⊗ L(1). (d) What changes at q = e^{2πi/3}?
+     Answer: (a) reduces to [i + 1][n − i] − [i][n − i + 1] = [n − 2i].
+     (b) [n + 1] = q^n + q^{n−2} + ... + q^{−n}. (c) m₁ ⊗ m₀ − q m₀ ⊗ m₁.
+     (d) [3] = q² + 1 + q⁻² = 0: the module with n = 3 becomes reducible.
+     Teacher explains: (a) KEK⁻¹ = q²E: E raises the K-eigenvalue from
+     q^{n−2i} to q^{n−2i+2} ✓; similarly for F. The key relation on mᵢ:
+        (EF − FE)mᵢ = ([i + 1][n − i] − [i][n − i + 1])mᵢ,
+     and (K − K⁻¹)/(q − q⁻¹) mᵢ = [n − 2i]mᵢ. The identity [a + 1][b] −
+     [a][b + 1] = [b − a] follows by multiplying out: (q − q⁻¹)² times the
+     left side is (q^{a+1} − q^{−a−1})(q^b − q^{−b}) − (q^a − q^{−a})(q^{b+1} −
+     q^{−b−1}) = −q^{a−b+1} − q^{b−a−1} + q^{a−b−1} + q^{b−a+1} = (q^{b−a} −
+     q^{a−b})(q − q⁻¹). Also E m₀ = [0][n + 1]m₋₁ = 0 and F mₙ = 0 cut the
+     string off. As q → 1, [k] → k and we recover V(n) of 𝔰𝔩₂ with e vᵢ =
+     i(n − i + 1)vᵢ₋₁ (D7). (b) On m₀: EF m₀ = [1][n]m₀ = [n]m₀, and
+        [n] + (q^{n−1} + q^{1−n})/(q − q⁻¹)²
+        = ((q^n − q^{−n})(q − q⁻¹) + q^{n−1} + q^{1−n})/(q − q⁻¹)²
+        = (q^{n+1} + q^{−n−1})/(q − q⁻¹)².
+     C is central (check against E, F, K), so it acts by this scalar on
+     the irreducible L(n). tr K = ∑ q^{n−2i} = [n + 1] → n + 1 as q → 1.
+     (c) Weights (K-eigenvalues) of L(1) ⊗ L(1) are q², 1, 1, q⁻²; so L(1) ⊗
+     L(1) = L(2) ⊕ L(0) as for 𝔰𝔩₂. The L(0) vector v = x m₀ ⊗ m₁ + y m₁ ⊗
+     m₀ must satisfy Δ(E)v = 0. Since E m₀ = 0, E m₁ = m₀, K m₀ = q m₀:
+        Δ(E)v = x(E m₀ ⊗ K m₁ + m₀ ⊗ E m₁) + y(E m₁ ⊗ K m₀ + m₁ ⊗ E m₀)
+              = (x + q y) m₀ ⊗ m₀,
+     so v = m₁ ⊗ m₀ − q m₀ ⊗ m₁: a q-DEFORMED antisymmetric tensor, which
+     shows that the flip V ⊗ W → W ⊗ V is NOT a module map (Δ is not
+     cocommutative); the R-matrix repairs it. (d) q = e^{2πi/3} gives q³ = 1
+     and [3] = q² + 1 + q⁻² = q² + 1 + q = 0. In the 4-dimensional module
+     with n = 3, E m₁ = [1][3]m₀ = 0, so span{m₁, m₂, m₃} is a proper
+     submodule: complete reducibility fails. Moreover E³, F³, K³ become
+     central (KE³K⁻¹ = q⁶E³ = E³), and irreps have dimension ≤ 3.
+     Common mistakes: using E ⊗ 1 + 1 ⊗ E as coproduct (not an algebra map
+     for q ≠ 1); forgetting the second family L(n, −) with K acting by
+     −q^{n−2i}. Now you try: at q = e^{πi/5}, compute [2]. (2cos(π/5) =
+     (1 + √5)/2, the golden ratio)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Characters and Schur orthogonality. Compute (Haar measure; for finite
+    groups the normalised counting measure).
+    a) U(1): multiplicity of the trivial rep in (z + z⁻¹)²
+    b) U(1): the same for (z + z⁻¹)⁴      c) U(1): ‖χ‖² for χ = z³ + 2z + 1
+    d) T² = U(1)²: ‖χ‖² for χ = z₁ + z₂ + z₁z₂
+    e) S₃: ⟨χ, χ⟩ for the 3-dim permutation rep (values 3, 1, 0)
+    f) S₃: multiplicity of the 2-dim irrep in the permutation rep
+    g) S₃: multiplicity of the 2-dim irrep in the regular rep
+    h) dimensions of the irreps of A₄     i) of S₄      j) of A₅
+    k) of the dihedral group D₄ of order 8
+    l) SU(2): ‖χ₁²‖²; is V₁ ⊗ V₁ irreducible?
+    m) SU(2): ‖χ₁³‖², and the decomposition it suggests
+    n) SO(3): multiplicity of D₁ in D₁ ⊗ D₁
+    o) U(2): ∫|tr g|⁴ dg                   p) U(2) and U(3): ∫|tr g|⁶ dg
+    q) U(1): ∫|tr g|⁶ dg                   r) SU(2): ∫tr(g²) dg
+    s) SO(3): ∫tr(g²) dg
+    Answers:
+      a) 2        b) 6        c) 6        d) 3
+      e) 2 ((9 + 3·1 + 2·0)/6)          f) 1        g) 2
+      h) 1, 1, 1, 3       i) 1, 1, 2, 3, 3      j) 1, 3, 3, 4, 5
+      k) 1, 1, 1, 1, 2    l) 2; no (V₂ ⊕ V₀)
+      m) 5 = 1² + 2²: V₃ ⊕ 2V₁          n) 1 (Λ²D₁ ≅ D₁: cross product)
+      o) 2       p) 5 and 6 = 3! (the value k! holds once n ≥ k)
+      q) 1       r) −1 (Frobenius-Schur indicator: V₁ is quaternionic)
+      s) +1 (D₁ is real)
+
+M2. Clebsch-Gordan: decompose into irreducibles Vₙ of SU(2).
+    a) V₁ ⊗ V₁        b) V₂ ⊗ V₁        c) V₂ ⊗ V₂        d) V₃ ⊗ V₂
+    e) V₄ ⊗ V₄        f) V₅ ⊗ V₁        g) V₁^{⊗4}         h) V₂^{⊗3}
+    i) V₁ ⊗ V₁ ⊗ V₂   j) Sym²V₃         k) Λ²V₃           l) Λ²V₄
+    m) Sym²V₄         n) Sym³V₂         o) Sym³V₃         p) Λ³V₃
+    q) Sym⁴V₂         r) the multiplicity of V₀ in V₁^{⊗8}
+    s) the multiplicity of V₀ in V₂^{⊗4}
+    t) which Vₙ occurring in a)-q) are reps of SO(3)?
+    Answers:
+      a) V₂ ⊕ V₀          b) V₃ ⊕ V₁           c) V₄ ⊕ V₂ ⊕ V₀
+      d) V₅ ⊕ V₃ ⊕ V₁     e) V₈ ⊕ V₆ ⊕ V₄ ⊕ V₂ ⊕ V₀      f) V₆ ⊕ V₄
+      g) V₄ ⊕ 3V₂ ⊕ 2V₀   h) V₆ ⊕ 2V₄ ⊕ 3V₂ ⊕ V₀        i) V₄ ⊕ 2V₂ ⊕ V₀
+      j) V₆ ⊕ V₂          k) V₄ ⊕ V₀           l) V₆ ⊕ V₂
+      m) V₈ ⊕ V₄ ⊕ V₀     n) V₆ ⊕ V₂           o) V₉ ⊕ V₅ ⊕ V₃
+      p) V₃ (Λ³V₃ ≅ V₃* ≅ V₃)                 q) V₈ ⊕ V₄ ⊕ V₀
+      r) 14 (Catalan C₄)  s) 3
+      t) exactly the even n (every even Vₙ above)
+
+M3. Haar integrals via the Weyl integration formula (SU(2): density
+    (2/π)sin²θ; SO(3): density (1 − cos θ)/π). g = (a, −b̄; b, ā) ∈ SU(2).
+    a) ∫_{SU(2)} tr g        b) ∫(tr g)²        c) ∫(tr g)⁶
+    d) ∫(tr g)⁸              e) ∫χ₂             f) ∫χ₁²χ₂
+    g) ∫χ₂³                  h) ∫χ₂⁴            i) E[θ] on SU(2)
+    j) P(tr g ≥ 0) on SU(2)  k) ∫|a|²           l) ∫|a|⁴ and ∫|a|⁶
+    m) ∫a and ∫a²            n) SO(3): P(rotation angle ≤ π/2)
+    o) SO(3): E[tr g], E[(tr g)²], E[(tr g)³], E[(tr g)⁴]
+    p) U(n): ∫|tr g|²        q) U(1): ∫z³ z̄³ and ∫z³ z̄²
+    r) SU(2): ∫χₙ(g)² dg for n = 0, 1, 2, ...
+    Answers:
+      a) 0       b) 1       c) 5       d) 14      e) 0
+      f) 1       g) 1       h) 3       i) π/2     j) 1/2
+      k) 1/2     l) 1/3 and 1/4 (|a|² is uniform on [0, 1])
+      m) 0 and 0 (non-trivial matrix coefficients integrate to 0)
+      n) (π/2 − 1)/π ≈ 0.18169        o) 0, 1, 1, 3
+      p) 1       q) 1 and 0            r) 1 for every n (χₙ is real)
+
+M4. Peter-Weyl, L² decompositions and Frobenius reciprocity.
+    a) the unitary dual of U(1) and the resulting ONB of L²(U(1))
+    b) the unitary dual of T² = U(1)²
+    c) dim of the span of matrix coefficients of V₃ of SU(2)
+    d) multiplicity of V₃ in L²(SU(2)) under left translation
+    e) dim ℋ_l(R³) for l = 0, 1, 2, 3, 4
+    f) dim ℋ_l(R⁴) for l = 2, 3, and why it is a square
+    g) dim ℋ₂(R⁵) from dim ℋ_l(Rⁿ) = C(l + n − 1, n − 1) − C(l + n − 3, n − 1)
+    h) multiplicity of D_l in L²(S²) = L²(SO(3)/SO(2))
+    i) multiplicity of Vₙ in L²(SU(2)/T)
+    j) S₃: check |G| = ∑d²; dihedral D₅ (order 10): the irreducible dims
+    k) the number of irreps of S₄
+    l) Fourier series of cos³θ on U(1)
+    m) character expansion on SU(2) of 4cos²θ
+    n) of (2cos θ)⁴               o) of 4sin²θ
+    p) does L²(R) contain an irreducible (1-dim) subrepresentation?
+    Answers:
+      a) χₙ(z) = zⁿ, n ∈ Z; ONB {e^{inθ}} (Fourier series)
+      b) z₁^m z₂ⁿ, (m, n) ∈ Z²     c) 16      d) 4
+      e) 1, 3, 5, 7, 9            f) 9, 16: L²(S³) = ⊕ End(Vₗ), (l + 1)²
+      g) 15 − 1 = 14              h) 1 (dim D_l^{SO(2)} = 1)
+      i) 1 if n is even, 0 if n is odd (the zero weight space)
+      j) 1 + 1 + 4 = 6; 1, 1, 2, 2 (1 + 1 + 4 + 4 = 10)     k) 5
+      l) (3/8)(e^{iθ} + e^{−iθ}) + (1/8)(e^{3iθ} + e^{−3iθ})
+      m) χ₂ + χ₀      n) χ₄ + 3χ₂ + 2χ₀      o) 3χ₀ − χ₂
+      p) no: e^{iξx} ∉ L²; Plancherel is a direct INTEGRAL, not a sum
+
+M5. 𝔰𝔩₂ computations (basis vₖ = fᵏv₀ of V(n), as in D7).
+    a) the weights of V(3)          b) e v₁, e v₂, e v₃ in V(3)
+    c) the Casimir Ω = h² + 2ef + 2fe on V(3) and on V(5)
+    d) the matrices of e, f, h on V(1)
+    e) eᵏfᵏv₀ in V(n); the case n = 4, k = 2
+    f) tr(h²) on V(n); values for n = 2, 3
+    g) is {2, 0, 0, −2} the h-spectrum of a f.d. rep? decompose
+    h) {1, 0, −1}          i) {2, 0}          j) {3, 1, 1, −1, −1, −3}
+    k) {1, 1, −1}          l) weights 4, 2, 2, 0, 0, 0, −2, −2, −4
+    m) dim of the zero weight space of V(n)
+    n) the eigenvalues of Ω on V(1) ⊗ V(1)
+    o) the 𝔰𝔩₂-module Sym²(V(1) ⊗ V(1))
+    p) the 𝔰𝔩₂-type of 𝔰𝔩₃ under the embedding in the top-left corner
+    Answers:
+      a) 3, 1, −1, −3       b) 3v₀, 4v₁, 3v₂       c) 15; 35
+      d) e = (0 1; 0 0), f = (0 0; 1 0), h = diag(1, −1)
+      e) ∏_{j=1}^{k} j(n − j + 1) v₀ = k!·n!/(n − k)! v₀; 24v₀
+      f) n(n + 1)(n + 2)/3; 8, 20       g) yes: V(2) ⊕ V(0)
+      h) yes: V(1) ⊕ V(0)   i) no (not symmetric)   j) yes: V(3) ⊕ V(1)
+      k) no (not symmetric)    l) V(4) ⊕ V(2) ⊕ V(0)
+      m) 1 if n even, 0 if n odd        n) 8 (on V(2)) and 0 (on V(0))
+      o) Sym²(V(2) ⊕ V(0)) = V(4) ⊕ V(0) ⊕ V(2) ⊕ V(0)
+      p) V(2) ⊕ 2V(1) ⊕ V(0) (8 = 3 + 2 + 2 + 1)
+
+M6. Verma modules, the dot action and partition functions.
+    a) 𝔰𝔩₂, M(3): the singular vector and its weight
+    b) is M(−3) irreducible?         c) is M(1/2) irreducible?
+    d) e f³v in M(λ)                 e) λ = 5: the k ≥ 1 with e fᵏv = 0
+    f) s·λ = −λ − 2: s·3, s·(−1), s·(−4)
+    g) ch M(λ) and ch L(4) as a difference of Verma characters
+    h) 𝔰𝔩₃: Kostant partition function p(α₁ + α₂)
+    i) p(2α₁ + α₂)          j) p(2α₁ + 2α₂)          k) p(3α₁)
+    l) dim of the weight space λ − α₁ − α₂ in M(λ) for 𝔰𝔩₃
+    m) 𝔰𝔩₃: the six weights w·0 (in terms of α₁, α₂)
+    n) Kostant: the multiplicity of 0 in L(ρ) = 𝔰𝔩₃ via ∑ε(w)p(w(2ρ) − ρ)
+    Answers:
+      a) f⁴v, weight −5 = s·3      b) yes (−3 ∉ Z≥0)      c) yes
+      d) 3(λ − 2)f²v               e) k = 6
+      f) −5, −1 (fixed point), 2
+      g) e^λ/(1 − e^{−α}); ch M(4) − ch M(−6) = e⁴ + e² + 1 + e⁻² + e⁻⁴
+      h) 2 (α₁ + α₂ as one root, or α₁ and α₂)
+      i) 2        j) 3        k) 1
+      l) 2 (basis f₁f₂v and f₁₂v)
+      m) 0, −α₁, −α₂, −2α₁ − α₂, −α₁ − 2α₂, −2α₁ − 2α₂
+      n) w = 1 gives p(ρ) = p(α₁ + α₂) = 2; all other terms vanish (their
+         arguments are not in Z≥0α₁ + Z≥0α₂): multiplicity 2 ✓
+
+M7. Root systems, Weyl groups and weights.
+    a) |W| for A₁, A₂, A₃, Aₙ          b) |W| for B₂, G₂, B₃, D₄
+    c) |Φ⁺| for A₂, B₂, G₂, A₃, B₃, D₄, E₈
+    d) ρ for 𝔰𝔩₃ and 𝔰𝔩₄ in ε-coordinates
+    e) 𝔰𝔩₃: is ε₁ − ε₃ dominant? is ε₂?
+    f) 𝔰𝔩₃: write ε₂, ε₃ and α₁ in terms of ω₁, ω₂
+    g) W-orbit sizes: ω₁ and ω₁ + ω₂ of 𝔰𝔩₃, ω₂ of 𝔰𝔩₄
+    h) 𝔰𝔩₃: the dominant weight in the W-orbit of −2ω₂
+    i) B₂ with α long, β short: ⟨α, β∨⟩ and ⟨β, α∨⟩
+    j) the highest root of B₂ and of G₂ (α₁ short)
+    k) index [P : Q] of the root lattice in the weight lattice for A₂, B₂,
+       G₂, E₈, Aₙ
+    l) 𝔰𝔩₃: for which L(a, b) is 0 a weight?
+    Answers:
+      a) 2, 6, 24, (n + 1)!             b) 8, 12, 48, 192
+      c) 3, 4, 6, 6, 9, 12, 120
+      d) (1, 0, −1); (3/2, 1/2, −1/2, −3/2)
+      e) yes (= ω₁ + ω₂); no (ε₂ = ω₂ − ω₁)
+      f) ε₂ = ω₂ − ω₁, ε₃ = −ω₂, α₁ = 2ω₁ − ω₂
+      g) 3, 6, 6        h) 2ω₁ (−2ω₂ = 2ε₃ ~ 2ε₁)      i) −2 and −1
+      j) α₁ + 2α₂ (= e₁ + e₂, α₂ short); 3α₁ + 2α₂
+      k) 3, 2, 1, 1, n + 1 (= |centre| of the simply connected group)
+      l) iff a ≡ b (mod 3), i.e. λ lies in the root lattice
+
+M8. Weyl dimension formula: compute dim L(λ).
+    𝔰𝔩₃ ((a + 1)(b + 1)(a + b + 2)/2):
+    a) (2, 0)   b) (3, 0)   c) (2, 1)   d) (4, 0)   e) (3, 1)   f) (2, 2)
+    g) (3, 3)   h) (4, 1)
+    𝔰𝔩₄ ((a+1)(b+1)(c+1)(a+b+2)(b+c+2)(a+b+c+3)/12):
+    i) (1, 0, 0), (0, 1, 0)    j) (2, 0, 0)    k) (1, 0, 1)    l) (0, 2, 0)
+    m) (1, 1, 0)               n) (1, 1, 1)
+    B₂ = 𝔰𝔬₅ (D10: (a + 1)(b + 1)(a + b + 2)(2a + b + 3)/6):
+    o) (1, 0), (0, 1)   p) (0, 2), (2, 0)   q) (1, 1)   r) (0, 3), (2, 1)
+    G₂ (formula of D10):
+    s) (2, 0)   t) (0, 2) and (3, 0)   u) (2, 1)
+    Others: v) B₃: the three fundamental reps   w) D₄: the three
+    reps L(ω₁), L(ω₃), L(ω₄) and the adjoint L(ω₂)
+    Answers:
+      a) 6    b) 10   c) 15   d) 15   e) 24   f) 27   g) 64   h) 35
+      i) 4, 6         j) 10   k) 15 (adjoint)   l) 20   m) 20   n) 64
+      o) 5, 4         p) 10, 14         q) 16   r) 20, 40
+      s) 27   t) 77 and 77 (distinct reps of equal dimension)   u) 189
+      v) 7, 21 (adjoint), 8 (spin)
+      w) 8, 8, 8 (triality permutes them), 28
+
+M9. 𝔰𝔩₃ weight multiplicities and tensor products (write 3 = L(1, 0),
+    3̄ = L(0, 1), 6 = L(2, 0), 8 = L(1, 1), 10 = L(3, 0), 15 = L(2, 1),
+    15′ = L(4, 0), 24 = L(3, 1), 27 = L(2, 2)).
+    a) the weights of 3 and of 3̄ in ε-coordinates
+    b) the weights of 6 (with multiplicities)
+    c) mult of 0 in 8        d) in 10        e) in 27        f) in L(3, 3)
+    g) mult of the weight ω₁ in 15, and the number of distinct weights of 15
+    h) 3 ⊗ 3        i) 3 ⊗ 3̄        j) 8 ⊗ 3        k) 6 ⊗ 3
+    l) 6 ⊗ 3̄        m) 6 ⊗ 6        n) 6 ⊗ 6̄        o) 8 ⊗ 8
+    p) 3 ⊗ 3 ⊗ 3    q) 8 ⊗ 6
+    r) Λ²3 and Λ³3  s) Sym³3
+    Answers:
+      a) ε₁, ε₂, ε₃; −ε₁, −ε₂, −ε₃      b) 2εᵢ and εᵢ + εⱼ (i < j), all mult 1
+      c) 2        d) 1        e) 3        f) 4
+      g) 2; 12 (6 + 3 + 3 weights, total mult 6 + 3 + 3·2 = 15)
+      h) 6 ⊕ 3̄     i) 8 ⊕ 1     j) 15 ⊕ 6̄ ⊕ 3     k) 10 ⊕ 8
+      l) 15 ⊕ 3    m) 15′ ⊕ 15 ⊕ 6̄ (36 = 15 + 15 + 6)
+      n) 27 ⊕ 8 ⊕ 1              o) 27 ⊕ 10 ⊕ 10̄ ⊕ 8 ⊕ 8 ⊕ 1
+      p) 10 ⊕ 8 ⊕ 8 ⊕ 1 (the baryon decuplet, two octets, singlet)
+      q) 24 ⊕ 15̄ ⊕ 6 ⊕ 3̄ (48 = 24 + 15 + 6 + 3; 15̄ = L(1, 2))
+      r) 3̄ and 1 (det)            s) 10
+
+M10. Algebraic groups: reductive (R) or not (N)? Then root data, centres,
+     GLₙ-dimensions and characteristic p.
+     a) GLₙ     b) SLₙ     c) G_a     d) the Borel Bₙ ⊂ GLₙ (n ≥ 2)
+     e) Uₙ (upper unitriangular)       f) O(n)     g) G_mʳ     h) G_a ⋊ G_m
+     i) PGLₙ    j) Sp₂ₙ    k) the centres of SLₙ, Sp₂ₙ, PGLₙ
+     l) the fundamental groups X_*/ZΦ∨ of SLₙ, PGLₙ, SO₃
+     m) dim R_u(Bₙ)
+     n) hook-content: dim S_λ(Cⁿ) for (λ, n) = ((2, 1), 2), ((2, 2), 3),
+        ((3, 1), 3), ((2, 1), 4), ((2, 2), 4), ((3, 2, 1), 3), ((1, 1), 5)
+     o) Schur-Weyl for (C²)^{⊗3}         p) (C³)^{⊗4}: the dims of S_λ(C³)
+        for λ = (4), (3, 1), (2, 2), (2, 1, 1) and a dimension check
+     q) SL₂ in char p: dim L(n) for p = 2 and n = 2, 3, 4, 7
+     r) p = 5 and n = 9, 12, 24
+     Answers:
+       a) R     b) R     c) N     d) N     e) N     f) R (disconnected)
+       g) R     h) N     i) R     j) R
+       k) μₙ, μ₂, 1       l) 1, Z/n, Z/2       m) n(n − 1)/2
+       n) 2, 6, 15, 20, 20, 8, 10
+       o) 8 = 4·1 + 2·2 (S₍₃₎ ⊗ triv ⊕ S₍₂,₁₎ ⊗ Specht₍₂,₁₎; Λ³C² = 0)
+       p) 15, 15, 6, 3 with Specht dims 1, 3, 2, 3: 15 + 45 + 12 + 9 = 81 ✓
+       q) 2, 4, 2, 8     r) 10 (= 14₅: 5·2), 9 (22₅), 25 (44₅, Steinberg)
+
+M11. U_q(𝔰𝔩₂) and q-integers.
+     a) [2], [3], [4] as Laurent polynomials     b) [2], [3], [4] at q = 2
+     c) [n] at q = e^{iπ/ℓ}; the values [2], [3], [4] for ℓ = 4
+     d) ℓ = 5: [2], [3], [5]         e) [3]! = [3][2] expanded
+     f) the quantum dimension of L(2)
+     g) E m₁ and E m₂ in L(3)        h) (EF − FE)m₀ in L(n)
+     i) the Casimir scalar on L(0) and on L(1)
+     j) Δ(K) on m₀ ⊗ m₁ in L(1) ⊗ L(1)
+     k) the K-eigenvalues on L(1) ⊗ L(2) and the decomposition
+     l) S²(E)        m) ε(EF)        n) is Δ cocommutative?
+     o) the number of 3-dimensional irreps (q generic)
+     p) verify [2]² = [3] + [1] and [2][3] = [4] + [2]; interpret
+     q) lim_{q→1} [n]
+     Answers:
+       a) q + q⁻¹; q² + 1 + q⁻²; q³ + q + q⁻¹ + q⁻³
+       b) 5/2, 21/4, 85/8      c) sin(nπ/ℓ)/sin(π/ℓ); √2, 1, 0
+       d) φ = (1 + √5)/2, φ, 0 e) q³ + 2q + 2q⁻¹ + q⁻³
+       f) [3] = q² + 1 + q⁻²   g) [3]m₀ and [2]²m₁
+       h) [n]m₀                i) (q + q⁻¹)/(q − q⁻¹)², (q² + q⁻²)/(q − q⁻¹)²
+       j) q·q⁻¹ = 1: weight 1   k) q³, q, q, q⁻¹, q⁻¹, q⁻³: L(3) ⊕ L(1)
+       l) q²E (S² = conjugation by K)          m) 0
+       n) no: Δ^{op}(E) = K ⊗ E + E ⊗ 1       o) 2: L(2, +), L(2, −)
+       p) both hold: quantum dimensions of L(1) ⊗ L(1) = L(2) ⊕ L(0) and
+          L(1) ⊗ L(2) = L(3) ⊕ L(1)          q) n
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every f.d. representation of a compact group is completely
+        reducible.
+     b) Every f.d. representation of (R, +) is completely reducible.
+     c) Every irreducible real representation of an abelian group is
+        1-dimensional.
+     d) Every irreducible unitary representation of a compact group is
+        finite-dimensional.
+     e) SL(2, R) has a non-trivial finite-dimensional unitary rep.
+     f) Characters determine f.d. reps of a compact group up to
+        isomorphism.
+     g) For dim V ≥ 2, V ⊗ V is never irreducible.
+     h) The highest weight of the adjoint rep of a simple 𝔤 is the highest
+        root.
+     i) Every Verma module is reducible.
+     j) Every f.d. representation of G_a over C is completely reducible.
+     k) SL₂ ≅ PGL₂ as algebraic groups over C.
+     l) For SL₂ in characteristic p, Sym^n(k²) is always irreducible.
+     m) Distinct dominant weights give non-isomorphic irreps, even when
+        their dimensions agree.
+     n) Δ on U_q(𝔰𝔩₂) is cocommutative.
+     o) Every compact Lie group is isomorphic to a closed subgroup of some
+        U(N).
+     p) SL(2, R) has finite total Haar measure.
+     q) The Weyl group acts simply transitively on the Weyl chambers.
+     r) Every representation of U_q(𝔰𝔩₂) is completely reducible at a
+        root of unity.
+     Answers:
+       a) T       b) F: t ↦ (1 t; 0 1)
+       c) F: rotations of R² by SO(2) (irreducible over R, dim 2)
+       d) T (Peter-Weyl)      e) F: every f.d. unitary rep is trivial
+       f) T       g) T (Sym²V and Λ²V are both non-zero subreps)
+       h) T       i) F: M(−1) for 𝔰𝔩₂ (M(λ) with λ ∉ Z≥0)
+       j) F: the same (1 t; 0 1)
+       k) F: centres μ₂ and 1 (same Lie algebra, different root data)
+       l) F: n = p, the subrep span{x^p, y^p}
+       m) T: e.g. G₂ L(0, 2) and L(3, 0), both of dim 77
+       n) F: Δ(E) = E ⊗ K + 1 ⊗ E ≠ K ⊗ E + E ⊗ 1
+       o) T       p) F: SL(2, R) has infinite Haar measure (only compact
+                     groups have finite Haar measure)
+       q) T       r) F: q = e^{2πi/3}, the module with n = 3 (D12)
+
+TEACHING TIPS
+  Struggling: reduce everything to WEIGHTS. A representation of SU(2) or
+  𝔰𝔩₂ is a symmetric unbroken multiset of integers; decomposing means
+  repeatedly peeling off the highest string, and a character is just this
+  multiset written as a Laurent polynomial. Draw the weight diagrams of
+  𝔰𝔩₃ (triangles for 3, 3̄; the hexagon with a doubled centre for 8) and
+  let students find tensor products by adding diagrams before touching
+  formulas. Always check a decomposition by dimension, and every Haar
+  integral by the normalisation ∫1 = 1. For U_q(𝔰𝔩₂), write everything
+  first at q = 1 and only then insert q-integers. Harder: prove Peter-Weyl
+  via compact convolution operators; derive the Weyl integration formula
+  from the map G/T × T → G and prove the Weyl character formula from it
+  (Weyl's original analytic proof); prove the denominator identity and
+  Kostant's multiplicity formula; show that Sym²V and Λ²V decide whether
+  an irrep is real, quaternionic or complex (Frobenius-Schur indicator);
+  prove Borel-Weil for SL₂ via H⁰(P¹, O(n)); verify Steinberg's tensor
+  product theorem for SL₂ in characteristic 3 up to n = 8; and construct
+  the R-matrix of U_q(𝔰𝔩₂) on L(1) ⊗ L(1) and check the Yang-Baxter
+  equation.
+
+
+================================================================================
+TOPIC 12.18 — HARMONIC ANALYSIS: FOURIER ANALYSIS ON GROUPS, SINGULAR
+INTEGRALS, CALDERÓN-ZYGMUND THEORY
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - CONVENTIONS used throughout: on R^n, f̂(ξ) = ∫ f(x) e^(−2πix·ξ) dx, so
+    (e^(−π|x|²))^ = e^(−π|ξ|²), ∂ⱼ ↔ 2πiξⱼ and Δ ↔ −4π²|ξ|²; on T = R/Z,
+    f̂(k) = ∫₀¹ f(x) e^(−2πikx) dx; on Z/N, f̂(k) = ∑ₙ f(n) e^(−2πikn/N).
+  - HAAR MEASURE AND CHARACTERS: every locally compact group G carries a
+    left-invariant Radon measure, unique up to a constant (dx on Rⁿ,
+    counting on Z, dx/|x| on R^×; left da db/a², right da db/a on the
+    ax + b group). Compact groups are unimodular. A CHARACTER of an
+    abelian G is a continuous homomorphism χ : G → T = {|z| = 1}; they
+    form the DUAL GROUP Ĝ. Standard duals: R̂ = R (x ↦ e^(2πixξ)),
+    T̂ = Z, Ẑ = T, (Z/N)^ ≅ Z/N, (G × H)^ = Ĝ × Ĥ, Q_p self-dual.
+  - PONTRYAGIN DUALITY: the evaluation map G → (Ĝ)^ is an isomorphism;
+    G compact ⇔ Ĝ discrete. FOURIER TRANSFORM f̂(χ) = ∫_G f(x) χ̄(x) dx;
+    (f ∗ g)^ = f̂ ĝ, Riemann-Lebesgue (f̂ ∈ C₀(Ĝ)), and with Haar measure
+    on Ĝ suitably normalised: INVERSION and PLANCHEREL ‖f̂‖₂ = ‖f‖₂.
+  - FINITE GROUPS: characters of a finite abelian G are orthonormal for
+    ⟨f, g⟩ = (1/|G|)∑ f ḡ, there are exactly |G| of them, and the DFT
+    satisfies f(n) = (1/N)∑ₖ f̂(k)e^(2πikn/N), ∑|f|² = (1/N)∑|f̂|²; the FFT
+    costs O(N log N). NONABELIAN (Peter-Weyl): f̂(π) = ∑ f(g)π(g)*, the
+    irreducible π satisfy ∑ d_π² = |G| (S₃: 1 + 1 + 4 = 6) and
+    f(e) = (1/|G|)∑ d_π tr f̂(π).
+  - FOURIER SERIES: Sₙf = Dₙ ∗ f with DIRICHLET kernel Dₙ(x) =
+    sin((2N + 1)πx)/sin(πx), ‖Dₙ‖₁ = (4/π²)ln N + O(1) → ∞, so (uniform
+    boundedness) some continuous f has a divergent Fourier series at 0
+    (du Bois-Reymond); Kolmogorov: some f ∈ L¹ diverges a.e.; CARLESON:
+    Sₙf → f a.e. for f ∈ L² (Hunt: Lᵖ, p > 1). FEJÉR kernel Fₙ =
+    (1/N)(sin(Nπx)/sin(πx))² ≥ 0: σₙf → f uniformly for continuous f and
+    in Lᵖ, 1 ≤ p < ∞. Sₙf → f in Lᵖ for 1 < p < ∞ (by boundedness of H).
+  - APPROXIMATE IDENTITIES φ_t(x) = t⁻ⁿφ(x/t) with ∫φ = 1: φ_t ∗ f → f in
+    Lᵖ (p < ∞); if φ has a radially decreasing integrable majorant then
+    sup_t |φ_t ∗ f| ≤ ‖ψ‖₁Mf (ψ the majorant) and φ_t ∗ f → f a.e.
+    Examples: Poisson P_t(x) = t/(π(t² + x²)), P̂_t = e^(−2πt|ξ|); heat kernel
+    (4πt)^(−n/2)e^(−|x|²/4t), transform e^(−4π²t|ξ|²).
+  - Rⁿ: Schwartz space 𝒮 is invariant under ^; PLANCHEREL extends ^ to a
+    unitary on L²; POISSON SUMMATION ∑ f(n) = ∑ f̂(k) (theta function
+    ∑e^(−πtn²) = t^(−1/2)∑e^(−πk²/t)); HEISENBERG ‖xf‖₂‖ξf̂‖₂ ≥
+    ‖f‖₂²/(4π), equality for Gaussians.
+  - INTERPOLATION: RIESZ-THORIN (complex method): if ‖T‖ ≤ M₀ on
+    L^p₀ → L^q₀ and M₁ on L^p₁ → L^q₁ then ‖T‖ ≤ M₀^(1−θ)M₁^θ on Lᵖ → L^q,
+    1/p = (1 − θ)/p₀ + θ/p₁, 1/q = (1 − θ)/q₀ + θ/q₁. Gives
+    HAUSDORFF-YOUNG ‖f̂‖_p′ ≤ ‖f‖_p (1 ≤ p ≤ 2) and YOUNG ‖f ∗ g‖_r ≤
+    ‖f‖_p‖g‖_q, 1 + 1/r = 1/p + 1/q. MARCINKIEWICZ: sublinear T of weak
+    types (p₀, p₀) and (p₁, p₁) is strong type (p, p) in between.
+  - WEAK Lᵖ: ‖f‖_{p,∞} = sup_λ λ|{|f| > λ}|^(1/p); |x|^(−n/p) ∈ L^{p,∞}
+    ∖ Lᵖ. Chebyshev: Lᵖ ⊆ L^{p,∞}.
+  - HARDY-LITTLEWOOD MAXIMAL FUNCTION Mf(x) = sup_r |B(x,r)|⁻¹∫_B |f|.
+    VITALI covering lemma (disjoint subfamily with 3× dilates covering)
+    ⇒ WEAK (1,1): |{Mf > λ}| ≤ 3ⁿ‖f‖₁/λ; trivially ‖Mf‖_∞ ≤ ‖f‖_∞; so
+    ‖Mf‖_p ≤ C_p‖f‖_p for 1 < p ≤ ∞, but Mf ∉ L¹ unless f = 0
+    (Mf ≳ |x|⁻ⁿ). Consequence: LEBESGUE DIFFERENTIATION THEOREM, a.e.
+    point is a Lebesgue point.
+  - HILBERT TRANSFORM Hf(x) = (1/π) p.v.∫ f(y)/(x − y) dy, multiplier
+    −i sgn ξ: H² = −I, H* = −H, ‖Hf‖₂ = ‖f‖₂, H cos = sin, f + iHf is the
+    boundary value of an analytic function on the upper half-plane
+    (conjugate function). H𝟙_[a,b] = (1/π)ln|(x − a)/(x − b)|, so H is
+    NOT bounded on L¹ or L^∞. M. RIESZ: ‖Hf‖_p ≤ A_p‖f‖_p, 1 < p < ∞,
+    sharp A_p = cot(π/2p*), p* = max(p, p′) (Pichorides).
+  - CALDERÓN-ZYGMUND DECOMPOSITION: for f ∈ L¹(Rⁿ), λ > 0 there are
+    disjoint dyadic cubes Qⱼ with λ < (1/|Qⱼ|)∫_Qⱼ |f| ≤ 2ⁿλ, |f| ≤ λ a.e.
+    off ⋃Qⱼ, ∑|Qⱼ| ≤ ‖f‖₁/λ; f = g + ∑bⱼ with ‖g‖_∞ ≤ 2ⁿλ, ‖g‖₁ ≤ ‖f‖₁,
+    supp bⱼ ⊆ Qⱼ, ∫bⱼ = 0, ‖bⱼ‖₁ ≤ 2∫_Qⱼ |f|.
+  - CALDERÓN-ZYGMUND THEOREM: let T be bounded on L²(Rⁿ) with Tf = K ∗ f
+    off supp f, where |K(x)| ≤ A|x|⁻ⁿ and the HÖRMANDER condition
+    ∫_{|x|>2|y|} |K(x − y) − K(x)| dx ≤ B holds (implied by |∇K| ≤
+    A|x|^(−n−1)). Then T is weak (1,1), bounded on Lᵖ for 1 < p < ∞ and
+    L^∞ → BMO. Model kernels K = Ω(x/|x|)/|x|ⁿ with Ω smooth and MEAN
+    ZERO on the sphere; 1/|x|ⁿ itself is not allowed.
+  - RIESZ TRANSFORMS Rⱼ: multiplier −iξⱼ/|ξ|, kernel cₙxⱼ/|x|^(n+1),
+    cₙ = Γ((n+1)/2)/π^((n+1)/2); ∑Rⱼ² = −I and ∂ⱼ∂ₖΔ⁻¹ = −RⱼRₖ, hence
+    ELLIPTIC Lᵖ ESTIMATE ‖∂ⱼ∂ₖu‖_p ≤ C_p‖Δu‖_p (1 < p < ∞, false at
+    p = 1, ∞). MIKHLIN-HÖRMANDER: |∂^α m(ξ)| ≤ C|ξ|^(−|α|) for |α| ≤
+    ⌊n/2⌋ + 1 ⇒ m is an Lᵖ multiplier, 1 < p < ∞. Counterexample to
+    naive hopes: the ball multiplier 𝟙_B (n ≥ 2) is bounded only on L²
+    (C. Fefferman).
+  - BMO: ‖f‖_* = sup_Q (1/|Q|)∫_Q |f − f_Q| < ∞; L^∞ ⊊ BMO (ln|x|, mean
+    oscillation 2/e on every [0, a]); JOHN-NIRENBERG: |{x ∈ Q : |f − f_Q|
+    > λ}| ≤ C|Q|e^(−cλ/‖f‖_*); FEFFERMAN: (H¹)* = BMO. A_p WEIGHTS:
+    sup_Q (⨍w)(⨍w^(−1/(p−1)))^(p−1) < ∞ ⇔ M (and H) bounded on Lᵖ(w);
+    |x|^a ∈ A_p(Rⁿ) ⇔ −n < a < n(p − 1).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove that every continuous character of R is x ↦ e^(2πixξ) for
+    a unique ξ ∈ R, and deduce T̂ = Z and Ẑ = T. (b) In G = Z/4 × Z/6
+    evaluate χ_(1,5)(3, 2), where χ_(a,b)(m, n) = e^(2πi(am/4 + bn/6)),
+    and say how many characters G has.
+    Answer: (a) χ′ = χ′(0)χ forces χ = e^(cx), |χ| = 1 ⇒ c = 2πiξ.
+    (b) e^(2πi·5/12) = e^(5πi/6); 24 characters.
+    Teacher explains: (a) Let χ : R → T be a continuous homomorphism. As
+    χ(0) = 1 and χ is continuous, choose δ > 0 with c = ∫₀^δ χ(t) dt ≠ 0
+    (the integral is ≈ δ for small δ). Then
+       χ(x)c = ∫₀^δ χ(x + t) dt = ∫ₓ^{x+δ} χ(s) ds,
+    and the right side is differentiable in x (FTC). So χ = (1/c)·(that)
+    is C¹, and differentiating χ(x + y) = χ(x)χ(y) in y at y = 0 gives
+    χ′(x) = χ′(0)χ(x), so χ(x) = e^(ax), a = χ′(0). |χ| = 1 forces a
+    purely imaginary: a = 2πiξ. Uniqueness is clear. For T = R/Z a
+    character is a character of R trivial on Z: e^(2πiξ) = 1 ⇔ ξ = k ∈ Z,
+    so T̂ = Z. For Z a character is determined by z = χ(1) ∈ T (χ(n) =
+    zⁿ), so Ẑ = T. Notice the pattern: compact T ↔ discrete Z. (b) The
+    exponent is 1·3/4 + 5·2/6 = 3/4 + 5/3 = 29/12 ≡ 5/12, so the value is
+    e^(5πi/6) = −√3/2 + i/2. A finite abelian group has |G| = 24
+    characters and Ĝ ≅ G (non-canonically). Common mistakes: forgetting
+    continuity (with the axiom of choice there are wild homomorphisms
+    R → T); confusing Ĝ ≅ G for finite G (non-canonical) with Pontryagin
+    duality G ≅ (Ĝ)^ (canonical). Now you try: list the characters of
+    Z/2 × Z/2. (four sign patterns: (m, n) ↦ (−1)^(am+bn), a, b ∈ {0, 1})
+
+D2. On Z/4 compute the DFT of f = (1, 2, 0, 1), verify Plancherel, and
+    prove the orthogonality relation ∑ₙ e^(2πi(k−l)n/N) = Nδ_{kl} and the
+    inversion formula. Then state the analogue for the nonabelian group
+    S₃.
+    Answer: f̂ = (4, 1 − i, −2, 1 + i); ∑|f|² = 6 = (16 + 2 + 4 + 2)/4.
+    Teacher explains: With ω = e^(−2πi/4) = −i, f̂(k) = ∑ₙ f(n)(−i)^(kn):
+       f̂(0) = 1 + 2 + 0 + 1 = 4,  f̂(1) = 1 − 2i + 0 + i = 1 − i,
+       f̂(2) = 1 − 2 + 0 − 1 = −2, f̂(3) = 1 + 2i + 0 − i = 1 + i.
+    (f is real, so f̂(3) = conj f̂(1): a free check.) Orthogonality: if
+    k = l every term is 1; otherwise z = e^(2πi(k−l)/N) ≠ 1 is an N-th
+    root of unity and ∑ₙ zⁿ = (z^N − 1)/(z − 1) = 0. Inversion: (1/N)∑ₖ
+    f̂(k)e^(2πikn/N) = (1/N)∑ₘ f(m)∑ₖ e^(2πik(n−m)/N) = f(n). Plancherel
+    follows the same way: ∑ₖ|f̂(k)|² = N∑|f(n)|². Here (1/4)(16 + 2 + 4 +
+    2) = 6 = 1 + 4 + 0 + 1 ✓. For S₃ the "frequencies" are the irreducible
+    representations: trivial, sign (dimension 1) and the 2-dimensional
+    standard one; ∑d_π² = 1 + 1 + 4 = 6 = |S₃|, f̂(π) = ∑_g f(g)π(g)* is a
+    d_π × d_π matrix, and Plancherel reads ∑|f(g)|² = (1/6)∑ d_π‖f̂(π)‖²_HS.
+    Common mistakes: sign of the exponent (forward −, inverse +);
+    forgetting the 1/N in exactly one of the two formulas. Now you try:
+    DFT of δ₀ and of (1, 1, 1, 1) on Z/4. ((1, 1, 1, 1) and (4, 0, 0, 0))
+
+D3. (a) Show Dₙ(x) = ∑_{|k|≤N} e^(2πikx) = sin((2N + 1)πx)/sin(πx) and
+    that the Fejér kernel Fₙ = (1/N)∑_{n<N} Dₙ equals (1/N)(sin Nπx/sin
+    πx)². (b) Prove Fejér's theorem for continuous f. (c) Use Parseval
+    for f(x) = x − 1/2 on [0, 1) to find ∑1/k².
+    Answer: (a) geometric sums; (b) Fₙ is a positive approximate
+    identity; (c) f̂(k) = i/(2πk), ∑1/k² = π²/6.
+    Teacher explains: (a) With z = e^(2πix), Dₙ = z^(−N)(z^(2N+1) − 1)/
+    (z − 1); multiply top and bottom by z^(−1/2) to get (z^(N+1/2) −
+    z^(−N−1/2))/(z^(1/2) − z^(−1/2)) = sin((2N + 1)πx)/sin πx. Summing,
+    sin πx·∑_{n<N} sin((2n + 1)πx) = ∑(cos 2nπx − cos 2(n + 1)πx)/2 =
+    (1 − cos 2Nπx)/2 = sin²Nπx, which gives the formula for Fₙ.
+    (b) Fₙ ≥ 0, ∫₀¹Fₙ = 1 (only k = 0 survives), and for δ ≤ |x| ≤ 1/2,
+    Fₙ(x) ≤ 1/(N sin²πδ) → 0. So with ω the modulus of continuity,
+       |σₙf(x) − f(x)| ≤ ∫ Fₙ(y)|f(x − y) − f(x)| dy
+                       ≤ ω(δ) + 2‖f‖_∞/(N sin²πδ),
+    uniformly in x: first pick δ, then N. The same argument FAILS for Dₙ
+    because ‖Dₙ‖₁ ~ (4/π²)ln N → ∞ (≈ 2.2234 for N = 10): Dₙ is not a
+    bounded approximate identity. (c) ∫₀¹ x e^(−2πikx) dx = −1/(2πik) =
+    i/(2πk) for k ≠ 0, and f̂(0) = 0. Parseval: ∑_{k≠0} 1/(4π²k²) =
+    ∫₀¹(x − 1/2)² dx = 1/12, so 2ζ(2)/(4π²) = 1/12, ζ(2) = π²/6. Common
+    mistakes: thinking Fourier series of continuous functions converge
+    (they need not; Fejér means do); forgetting k < 0 in Parseval. Now you
+    try: Parseval for 𝟙_[0,1/2) gives ∑_{k odd ≥ 1} 1/k² = ? (π²/8)
+
+D4. (a) Compute the Fourier transform of 𝟙_[−1/2,1/2] and use
+    Plancherel to evaluate ∫_R (sin x/x)² dx. (b) Prove the Poisson
+    summation formula for f ∈ 𝒮(R) and deduce the theta identity
+    ∑ e^(−πtn²) = t^(−1/2)∑ e^(−πk²/t). Check it numerically at t = 2.
+    Answer: (a) sin(πξ)/(πξ); ∫(sin x/x)² = π. (b) both sides ≈ 1.003735.
+    Teacher explains: (a) ∫_{−1/2}^{1/2} e^(−2πixξ) dx = (e^(πiξ) −
+    e^(−πiξ))/(2πiξ) = sin(πξ)/(πξ). Plancherel: ∫|sin πξ/(πξ)|² dξ =
+    ∫|𝟙|² = 1; substitute x = πξ: (1/π)∫(sin x/x)² dx = 1. (b) Periodise:
+    F(x) = ∑ₙ f(x + n) is smooth and 1-periodic (rapid decay makes the
+    series converge with all derivatives). Its Fourier coefficients are
+       F̂(k) = ∫₀¹ ∑ₙ f(x + n)e^(−2πikx) dx = ∫_R f(y)e^(−2πiky) dy = f̂(k),
+    so F(x) = ∑ₖ f̂(k)e^(2πikx) and x = 0 gives ∑f(n) = ∑f̂(k). This is
+    Fourier analysis on the pair Z ⊆ R with R/Z = T. For f = e^(−πtx²),
+    f̂(ξ) = t^(−1/2)e^(−πξ²/t) (scaling the self-dual Gaussian). At t = 2:
+    LHS = 1 + 2e^(−2π) + ... ≈ 1.003735, RHS = (1/√2)(1 + 2e^(−π/2) +
+    2e^(−2π) + ...) ≈ 1.003735 ✓. Common mistakes: using 1/(2π) normal-
+    isations inconsistently; applying Poisson to f with slow decay (e.g.
+    f = 𝟙_[0,1] where the endpoints give half values). Now you try:
+    ∑_{n∈Z} 1/(1 + n²) using (1/(1 + x²))^ = πe^(−2π|ξ|). (π coth π ≈
+    3.15335)
+
+D5. State the Riesz-Thorin theorem and use it to prove (a) the
+    Hausdorff-Young inequality ‖f̂‖_p′ ≤ ‖f‖_p for 1 ≤ p ≤ 2, and (b)
+    Young's inequality ‖f ∗ g‖_p ≤ ‖f‖₁‖g‖_p. (c) An operator has norm 2
+    on L¹ and norm 8 on L^∞. Bound its norm on L² and on L⁴.
+    Answer: (a) interpolate L¹ → L^∞ (norm 1) and L² → L² (norm 1);
+    (b) interpolate between p = 1 and p = ∞; (c) 4 and 4√2 ≈ 5.657.
+    Teacher explains: RIESZ-THORIN: T linear, ‖T‖_{p₀→q₀} ≤ M₀,
+    ‖T‖_{p₁→q₁} ≤ M₁ (1 ≤ pᵢ, qᵢ ≤ ∞, complex scalars) ⇒ for 0 < θ < 1
+    ‖T‖_{p_θ→q_θ} ≤ M₀^(1−θ)M₁^θ with 1/p_θ = (1 − θ)/p₀ + θ/p₁ and
+    similarly for q. The proof applies Hadamard's three-lines lemma to
+    z ↦ ∫(Tf_z)g_z, where f_z, g_z move the exponents analytically.
+    (a) |f̂(ξ)| ≤ ∫|f| gives ‖f̂‖_∞ ≤ ‖f‖₁; Plancherel gives ‖f̂‖₂ = ‖f‖₂.
+    For 1/p = (1 − θ)/1 + θ/2 = 1 − θ/2 the target exponent is 1/q =
+    (1 − θ)/∞ + θ/2 = θ/2 = 1 − 1/p, i.e. q = p′, and the constant is
+    1^(1−θ)1^θ = 1. E.g. p = 4/3: θ = 1/2, q = 4. (b) For fixed f ∈ L¹
+    the map g ↦ f ∗ g has norm ≤ ‖f‖₁ on L¹ (Fubini) and on L^∞
+    (trivial); interpolate. The general Young inequality 1 + 1/r = 1/p +
+    1/q follows by interpolating again. (c) L²: 1/2 = (1 − θ)/1 + θ/∞
+    gives θ = 1/2, bound 2^(1/2)8^(1/2) = 4. L⁴: 1/4 = 1 − θ gives θ =
+    3/4, bound 2^(1/4)8^(3/4) = 2^(1/4 + 9/4) = 2^(5/2) = 4√2. Common
+    mistakes: interpolating the exponents p instead of their RECIPROCALS;
+    believing Hausdorff-Young for p > 2 (f̂ need not even be a function).
+    Now you try: Young with p = q = 4/3 gives r = ? (2)
+
+D6. For f = 𝟙_[0,1] on R compute the centred maximal function Mf, the
+    measure of {Mf > λ}, and ‖Mf‖_{1,∞}. Then prove the Vitali covering
+    lemma and the weak (1,1) inequality |{Mf > λ}| ≤ 3ⁿ‖f‖₁/λ.
+    Answer: Mf = 1 on (0, 1), 1/(2x) for x ≥ 1, 1/(2(1 − x)) for x ≤ 0;
+    |{Mf > λ}| = 1/λ − 1 for 0 < λ < 1/2 (= 1 for 1/2 ≤ λ < 1);
+    ‖Mf‖_{1,∞} = 1; Mf ∉ L¹.
+    Teacher explains: For x ≥ 1 and radius r, the average is |[x − r,
+    x + r] ∩ [0, 1]|/(2r). For x − 1 ≤ r ≤ x it is (r − x + 1)/(2r),
+    increasing in r (derivative (x − 1)/(2r²) ≥ 0); for r ≥ x it is
+    1/(2r), decreasing. The maximum is at r = x: Mf(x) = 1/(2x). By
+    symmetry Mf(x) = 1/(2(1 − x)) for x ≤ 0, and Mf = 1 inside. For λ <
+    1/2: {Mf > λ} = (1 − 1/(2λ), 1/(2λ)), of length 1/λ − 1.
+    Hence λ|{Mf > λ}| = 1 − λ → 1 as λ → 0, and it equals λ < 1 on
+    [1/2, 1): the weak norm is 1 = ‖f‖₁, but ∫Mf = ∞ because of the tail
+    1/(2|x|). VITALI: from finitely many balls pick greedily the largest,
+    discard all balls meeting it, repeat. Any discarded ball B meets a
+    chosen B′ of radius ≥ its own, so B ⊆ 3B′. Thus the chosen disjoint
+    balls satisfy ∑|B′| ≥ 3⁻ⁿ|⋃B|. WEAK (1,1): if K ⊆ {Mf > λ} is
+    compact, each x ∈ K has a ball Bₓ with ∫_Bₓ|f| > λ|Bₓ|; cover K by
+    finitely many, extract disjoint B₁, ..., B_m:
+       |K| ≤ 3ⁿ∑|Bᵢ| < (3ⁿ/λ)∑∫_Bᵢ|f| ≤ 3ⁿ‖f‖₁/λ.
+    Inner regularity gives the claim. With ‖Mf‖_∞ ≤ ‖f‖_∞, Marcinkiewicz
+    gives ‖Mf‖_p ≤ C_p‖f‖_p for p > 1, C_p = O(p/(p − 1)). Common
+    mistakes: expecting M to be bounded on L¹; forgetting that sup over
+    uncountably many balls needs the lower semicontinuity of Mf for
+    measurability ({Mf > λ} is open). Now you try: Mf(3) for f =
+    𝟙_[−1,1]. (1/4, attained at r = 4)
+
+D7. Deduce the Lebesgue differentiation theorem from the maximal
+    inequality. Then for f = 𝟙_[0,1] compute the Poisson integral u(x, t)
+    = P_t ∗ f(x) and its limits as t → 0⁺ at x = 1/2, x = 0 and x = 2.
+    Explain the value at x = 0.
+    Answer: u = (1/π)(arctan(x/t) + arctan((1 − x)/t)); limits 1, 1/2, 0.
+    Teacher explains: Let Ω f(x) = lim sup_{r→0} |⨍_{B(x,r)} f − f(x)|.
+    For continuous compactly supported g, Ωg = 0, and Ω(f) ≤ Ω(f − g) ≤
+    M(f − g) + |f − g|. Given ε > 0 choose g with ‖f − g‖₁ < ε. Then
+       |{Ωf > 2λ}| ≤ |{M(f − g) > λ}| + |{|f − g| > λ}| ≤ (3ⁿ + 1)ε/λ.
+    As ε is arbitrary, Ωf = 0 a.e. (Same argument with |f(y) − f(x)|
+    shows a.e. x is a LEBESGUE POINT.) The pattern "a.e. convergence on a
+    dense class + weak-type maximal inequality ⇒ a.e. convergence for
+    all" is the central principle; it also proves P_t ∗ f → f a.e.,
+    because P_t is radially decreasing with ∫P_t = 1,
+    so sup_t |P_t ∗ f| ≤ Mf. Computation: ∫₀¹ t/(π(t² + (x − y)²)) dy =
+    (1/π)[arctan((y − x)/t)]₀¹ = (1/π)(arctan((1 − x)/t) + arctan(x/t)).
+    As t → 0⁺: at x = 1/2 both arctans → π/2: limit 1; at x = 2,
+    arctan(−1/t) + arctan(2/t) → −π/2 + π/2 = 0; at x = 0, arctan(1/t) →
+    π/2 and arctan 0 = 0: limit 1/2. The point 0 is not a Lebesgue point
+    of f: the symmetric averages are 1/2 there. The limit sees the
+    AVERAGE of the one-sided values. Common mistakes: claiming
+    convergence at every point; forgetting that u is harmonic in the
+    upper half-plane (it is the real part of an analytic function). Now
+    you try: which points are Lebesgue points of 𝟙_Q? (exactly the
+    irrationals)
+
+D8. Using Hf(x) = (1/π) p.v.∫ f(y)/(x − y) dy compute (a) H𝟙_[a,b],
+    (b) H(1/(1 + x²)) via analytic functions, (c) H(cos 2πx) via the
+    multiplier −i sgn ξ. (d) Deduce that H is bounded neither on L¹ nor
+    on L^∞, and that ‖Hf‖₂ = ‖f‖₂.
+    Answer: (a) (1/π)ln|(x − a)/(x − b)|; (b) x/(1 + x²); (c) sin 2πx.
+    Teacher explains: (a) For x ∉ [a, b], ∫_a^b dy/(x − y) = [−ln|x −
+    y|]_a^b = ln|x − a| − ln|x − b|; for x ∈ (a, b) the principal value
+    cuts (x − ε, x + ε), and the two log(ε) terms cancel, giving the same
+    formula. It has LOG SINGULARITIES at a and b (so it is unbounded:
+    not L^∞) and behaves like (b − a)/(πx) at infinity (so ∫|H𝟙| = ∞:
+    not L¹). (b) F(z) = i/(z + i) is analytic and decaying in Im z > 0;
+    on the real line F(x) = i(x − i)/(x² + 1) = (1 + ix)/(1 + x²). The
+    boundary value of an analytic function is f + iHf, so H(1/(1 + x²)) =
+    x/(1 + x²). (c) cos 2πx = (e^(2πix) + e^(−2πix))/2; the frequencies
+    ξ = ±1 get multiplied by ∓i: (−ie^(2πix) + ie^(−2πix))/2 = sin 2πx.
+    (d) Since |−i sgn ξ| = 1 a.e., Plancherel gives ‖Hf‖₂ = ‖f‖₂, and
+    (−i sgn ξ)² = −1 gives H² = −I. Common mistakes: sign of the kernel
+    (1/(x − y), not 1/(y − x), with this convention); taking H of a
+    constant to be a "constant" (it is 0 as a multiplier, while the
+    integral diverges). Now you try: H(x/(1 + x²)). (−1/(1 + x²), as
+    H² = −I)
+
+D9. Prove M. Riesz's theorem ‖Hf‖_p ≤ A_p‖f‖_p for 1 < p < ∞ by the
+    "squaring" method: show (Hf)² = f² + 2H(f·Hf) for real f ∈ 𝒮, derive
+    A_{2p} ≤ A_p + √(A_p² + 1), and compute the bounds obtained for p = 4
+    and p = 8. Then extend to all 1 < p < ∞.
+    Answer: A₄ ≤ 1 + √2 ≈ 2.41421 = cot(π/8), A₈ ≤ 5.02734 = cot(π/16)
+    (both sharp!); duality and Riesz-Thorin do the rest.
+    Teacher explains: For real f, F = f + iHf extends analytically to the
+    upper half-plane (it is the Poisson extension of the positive-
+    frequency part, doubled). Then F² = f² − (Hf)² + 2i f·Hf is also
+    analytic with the same decay, so its imaginary part is the Hilbert
+    transform of its real part: H(f² − (Hf)²) = 2f·Hf. Apply H and use
+    H² = −I: (Hf)² − f² = 2H(f·Hf) — COTLAR'S IDENTITY. Suppose ‖Hg‖_p ≤
+    A_p‖g‖_p. Taking L^p norms, with ‖(Hf)²‖_p = ‖Hf‖²_{2p} and Hölder
+    ‖f·Hf‖_p ≤ ‖f‖_{2p}‖Hf‖_{2p}:
+       ‖Hf‖²_{2p} ≤ ‖f‖²_{2p} + 2A_p‖f‖_{2p}‖Hf‖_{2p}.
+    With X = ‖Hf‖_{2p}/‖f‖_{2p}: X² − 2A_pX − 1 ≤ 0, so X ≤ A_p +
+    √(A_p² + 1). From A₂ = 1: A₄ ≤ 1 + √2 ≈ 2.41421 and A₈ ≤ 1 + √2 +
+    √(4 + 2√2) ≈ 5.02734. Remarkably these equal cot(π/8) and cot(π/16),
+    the sharp constants (the half-angle formula cot(θ/2) = cot θ +
+    √(cot²θ + 1) is exactly our recursion!). So H is bounded on L^(2^k)
+    for all k; by Riesz-Thorin on every 2 ≤ p < ∞; since H* = −H,
+    duality gives 1 < p ≤ 2 with A_p = A_p′. At p = 1 and ∞ it fails
+    (D8). Common mistakes: applying the identity to complex f (use real
+    and imaginary parts separately); forgetting to check that Hf ∈ L^{2p}
+    a priori (true for f ∈ 𝒮, then extend by density). Now you try: the
+    sharp constant for p = 3. (cot(π/6) = √3)
+
+D10. State and prove the Calderón-Zygmund decomposition. Carry it out in
+     one dimension for f = 6·𝟙_[0,1/4) at height λ = 2, starting from
+     the dyadic interval [0, 1), and write down g and b.
+     Answer: one selected interval Q = [0, 1/2), average 3 ∈ (2, 4];
+     g = 3𝟙_[0,1/2), b = 3𝟙_[0,1/4) − 3𝟙_[1/4,1/2).
+     Teacher explains: THEOREM: f ∈ L¹(Rⁿ), λ > 0. Partition Rⁿ into
+     dyadic cubes so large that ⨍_Q|f| ≤ ‖f‖₁/|Q| ≤ λ. Subdivide each cube
+     into its 2ⁿ children; STOP at a child Q if ⨍_Q|f| > λ (select it),
+     otherwise keep subdividing. The selected cubes Qⱼ are maximal, hence
+     disjoint; the parent Q̃ of Qⱼ was not selected, so
+        λ < ⨍_Qⱼ|f| ≤ (|Q̃|/|Qⱼ|)⨍_Q̃|f| ≤ 2ⁿλ.
+     Off ⋃Qⱼ, x lies in arbitrarily small cubes with averages ≤ λ, so
+     |f(x)| ≤ λ at Lebesgue points (a.e.). Also ∑|Qⱼ| < ∑λ⁻¹∫_Qⱼ|f| ≤
+     ‖f‖₁/λ. Put g = f off ⋃Qⱼ, g = ⨍_Qⱼ f on Qⱼ, and bⱼ = (f − ⨍_Qⱼ f)𝟙_Qⱼ.
+     Then |g| ≤ 2ⁿλ, ∫bⱼ = 0, ‖bⱼ‖₁ ≤ 2∫_Qⱼ|f|. Example: ⨍_[0,1) f =
+     6/4 = 1.5 ≤ 2: not selected. Children: ⨍_[0,1/2) f = (6/4)/(1/2) = 3
+     > 2: SELECTED; ⨍_[1/2,1) f = 0: subdivide for ever, never selected.
+     Check: 2 < 3 ≤ 2·2 ✓, |Q| = 1/2 ≤ ‖f‖₁/λ = 1.5/2 = 0.75 ✓. So g = 3
+     on [0, 1/2), 0 elsewhere (|g| ≤ 4 ✓), b = f − g = 3 on [0, 1/4) and −3
+     on [1/4, 1/2), which has integral 0 ✓. Common mistakes: selecting the
+     SMALLEST cubes with big average (they must be maximal); forgetting
+     the upper bound 2ⁿλ, which is what makes g bounded. Now you try: the
+     same f at height λ = 4. (Q = [0, 1/4), average 6 ∈ (4, 8])
+
+D11. State the Calderón-Zygmund theorem and prove the weak (1,1) bound
+     from L² boundedness and the Hörmander condition. Verify the
+     Hörmander condition for K(x) = 1/(πx), computing the constant
+     B = sup_y ∫_{|x|>2|y|} |K(x − y) − K(x)| dx exactly.
+     Answer: B = (ln 3)/π ≈ 0.34970.
+     Teacher explains: THEOREM: T bounded on L²(Rⁿ) with norm A₂, Tf(x) =
+     ∫K(x − y)f(y) dy for x ∉ supp f, and ∫_{|x|>2|y|}|K(x − y) − K(x)| dx
+     ≤ B. Then |{|Tf| > λ}| ≤ C(A₂ + B)‖f‖₁/λ, hence (Marcinkiewicz)
+     L^p-bounds for 1 < p ≤ 2, and by duality (the kernel K(−x) of T*
+     satisfies the same conditions) for 2 ≤ p < ∞. PROOF: decompose f =
+     g + ∑bⱼ at height λ (D10). Good part: by Chebyshev and L²,
+        |{|Tg| > λ/2}| ≤ 4A₂²‖g‖₂²/λ² ≤ 4A₂²(2ⁿλ‖g‖₁)/λ² ≤ 4·2ⁿA₂²‖f‖₁/λ.
+     Bad part: let Qⱼ* be the ball with centre cⱼ of Qⱼ and radius
+     diam Qⱼ, so |⋃Qⱼ*| ≤ Cₙ∑|Qⱼ| ≤ Cₙ‖f‖₁/λ. For x ∉ Qⱼ* and y ∈ Qⱼ we
+     have |x − cⱼ| > 2|y − cⱼ|; using ∫bⱼ = 0,
+        Tbⱼ(x) = ∫_Qⱼ (K(x − y) − K(x − cⱼ))bⱼ(y) dy,
+        ∫_{(Qⱼ*)ᶜ}|Tbⱼ| ≤ ∫|bⱼ(y)| ∫_{|x′|>2|y′|}|K(x′ − y′) − K(x′)| dx′ dy
+                        ≤ B‖bⱼ‖₁   (x′ = x − cⱼ, y′ = y − cⱼ).
+     Summing, ∫ off ⋃Qⱼ* of |Tb| ≤ 2B‖f‖₁, so |{|Tb| > λ/2} ∖ ⋃Qⱼ*| ≤
+     4B‖f‖₁/λ. Add the three pieces. The CANCELLATION ∫bⱼ = 0 is what turns
+     the non-integrable kernel into the integrable difference. For K =
+     1/(πx) and y = 1 (the integral is dilation invariant, and y ↦ −y is
+     symmetric): ∫_{|x|>2}|1/(x − 1) − 1/x| dx = ∫₂^∞ dx/(x(x − 1)) +
+     ∫₂^∞ dx/(x(x + 1)) = ln 2 + ln(3/2) = ln 3; divide by π. Common
+     mistakes: forgetting that L² boundedness is a HYPOTHESIS (K = 1/|x|
+     in one dimension satisfies Hörmander with the same constant ln 3 but
+     gives an unbounded operator); using the size condition alone. Now
+     you try: show |∇K(x)| ≤ A|x|^(−n−1) implies Hörmander. (MVT:
+     |K(x − y) − K(x)| ≤ A|y|(|x|/2)^(−n−1) for |x| > 2|y|; integrate:
+     B ≤ Cₙ A)
+
+D12. (a) Show that the Riesz transforms (multiplier −iξⱼ/|ξ|) satisfy
+     ∑Rⱼ² = −I and ∂ⱼ∂ₖu = −RⱼRₖΔu, and deduce ‖D²u‖_p ≤ C_p‖Δu‖_p for
+     u ∈ C_c^∞(Rⁿ), 1 < p < ∞. (b) Show it fails at p = ∞ with u =
+     x₁x₂ ln|x| near 0 in R². (c) Show ln|x| ∈ BMO(R) ∖ L^∞ by computing
+     its mean oscillation on [0, a], and explain why H(sgn) = (2/π)ln|x|
+     (modulo constants) fits "H : L^∞ → BMO".
+     Answer: (a) symbols; (b) Δu = 4x₁x₂/|x|² bounded, ∂₁∂₂u = ln|x| + 1 −
+     2x₁²x₂²/|x|⁴ unbounded; (c) mean oscillation 2/e ≈ 0.73576 on every
+     [0, a].
+     Teacher explains: (a) ∑(−iξⱼ/|ξ|)² = −∑ξⱼ²/|ξ|² = −1. ∂ⱼ∂ₖ has symbol
+     (2πiξⱼ)(2πiξₖ) = −4π²ξⱼξₖ and Δ has −4π²|ξ|², so ∂ⱼ∂ₖΔ⁻¹ has symbol
+     ξⱼξₖ/|ξ|² = −(−iξⱼ/|ξ|)(−iξₖ/|ξ|): ∂ⱼ∂ₖ = −RⱼRₖΔ. Each Rⱼ is a CZ
+     operator (kernel cₙxⱼ/|x|^(n+1): odd, so mean zero on spheres; L²
+     norm 1), hence bounded on L^p, and ‖∂ⱼ∂ₖu‖_p ≤ C_p²‖Δu‖_p. This is
+     the L^p theory behind elliptic regularity (Δu ∈ L^p ⇒ u ∈ W^{2,p}).
+     (b) With r = |x|: Δ(x₁x₂ ln r) = x₁x₂Δ ln r + 2∇(x₁x₂)·∇ ln r + 0 =
+     2(x₂, x₁)·(x₁, x₂)/r² = 4x₁x₂/r², bounded by 2, while a direct
+     computation gives ∂₁∂₂u = ln r + 1 − 2x₁²x₂²/r⁴ → −∞ as r → 0
+     (multiply by a cutoff to get compact support). (c) On [0, a],
+     ⨍ ln x = ln a − 1, and substituting x = at,
+        (1/a)∫₀^a |ln x − ln a + 1| dx = ∫₀¹|ln t + 1| dt
+          = −[t ln t]₀^{1/e} + [t ln t]_{1/e}^1 = 1/e + 1/e = 2/e.
+     By dilation the oscillation on [α, β] depends only on α/β, and it
+     stays bounded over all ratios (the supremum, ≈ 0.93, occurs for
+     slightly asymmetric intervals around 0), so ln|x| ∈ BMO although it
+     is unbounded. For sgn ∈ L^∞, the truncated integral (1/π)∫_{−R}^{R}
+     sgn(y)/(x − y) dy = (1/π)(2 ln|x| − ln|R² − x²|): as R → ∞ it
+     diverges only by the CONSTANT (2/π)ln R, so Hf is defined modulo
+     constants, exactly the way BMO is. Common mistakes: expecting
+     L^∞ → L^∞; forgetting BMO is a space modulo constants. Now you try:
+     the mean oscillation of 𝟙_[0,∞) on [−a, a]. (1/2)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Haar measures, characters and dual groups.
+    a) the dual of Z/5           b) the dual of Z        c) the dual of T
+    d) the dual of Rⁿ            e) the dual of Z/2 × Z/4, and its order
+    f) the number of characters of Z/12 of order exactly 4
+    g) χ(n) = e^(2πi·3n/8) on Z/8: the value χ(5)
+    h) the dual of the compact group (Z/2)^N (countable product)
+    i) the dual of Q_p            j) Haar measure on (0, ∞) under ×
+    k) Haar measure on R^× = R ∖ {0} under ×
+    l) left and right Haar measures on {x ↦ ax + b : a > 0}
+    m) characters of R trivial on Z (the annihilator of Z in R̂)
+    n) number of 1-dimensional representations of S₃
+    o) dimensions of the irreducible representations of S₄ (check ∑d²)
+    p) number of irreducible representations of the dihedral group D₄ of
+       order 8, and their dimensions
+    q) number of characters of T appearing in a trigonometric polynomial
+       of degree ≤ 3
+    r) is the dual of a discrete abelian group compact or discrete?
+    Answers:
+      a) Z/5       b) T         c) Z         d) Rⁿ
+      e) Z/2 × Z/4, 8 characters             f) φ(4) = 2
+      g) e^(2πi·15/8) = e^(−πi/4) = (1 − i)/√2
+      h) ⊕Z/2 (finitely supported sequences), discrete and countable
+      i) Q_p (self-dual)        j) dx/x       k) dx/|x|
+      l) left da db/a², right da db/a (not unimodular)
+      m) e^(2πikx), k ∈ Z (so R̂ ⊇ Z ≅ T̂)     n) 2 (S₃/A₃ ≅ Z/2)
+      o) 1, 1, 2, 3, 3; 1 + 1 + 4 + 9 + 9 = 24
+      p) 5: dimensions 1, 1, 1, 1, 2 (4 + 4 = 8)
+      q) 7 (k = −3, ..., 3)     r) compact
+
+M2. Discrete Fourier transform on Z/N, f̂(k) = ∑ₙ f(n)e^(−2πikn/N).
+    a) N = 2, f = (1, 3)                b) N = 3, f = (1, 0, 0)
+    c) N = 3, f = (0, 1, 0)             d) N = 4, f = (1, 1, 0, 0)
+    e) N = 4, f = (1, −1, 1, −1)        f) N = 4, f = (0, 1, 2, 3)
+    g) N = 6, f = (1, 1, 1, 0, 0, 0)
+    h) verify Plancherel ∑|f̂|² = N∑|f|² for g)
+    i) circular convolution on Z/4 of (1, 1, 0, 0) and (1, 0, 0, 1)
+    j) circular convolution on Z/4 of (1, 2, 3, 0) and (0, 1, 0, 1), and
+       the DFT of the result via the convolution theorem
+    k) inverse DFT of (4, 0, 0, 0) on Z/4
+    l) inverse DFT of (0, 4, 0, 0) on Z/4
+    m) DFT of f(n) = cos(2πn/8) on Z/8
+    n) f = 𝟙 of the subgroup {0, 3} of Z/6: f̂, and |supp f|·|supp f̂|
+    o) operations for N = 2¹⁰: N log₂ N (FFT) versus N² (direct)
+    Answers:
+      a) (4, −2)       b) (1, 1, 1)
+      c) (1, e^(−2πi/3), e^(−4πi/3)) = (1, (−1 − i√3)/2, (−1 + i√3)/2)
+      d) (2, 1 − i, 0, 1 + i)          e) (0, 0, 4, 0)
+      f) (6, −2 + 2i, −2, −2 − 2i)     g) (3, 1 − i√3, 0, 1, 0, 1 + i√3)
+      h) 9 + 4 + 0 + 1 + 0 + 4 = 18 = 6·3 ✓        i) (2, 1, 0, 1)
+      j) (2, 4, 2, 4); (6, −2 − 2i, 2, −2 + 2i)·(2, 0, −2, 0) =
+         (12, 0, −4, 0)
+      k) (1, 1, 1, 1)                  l) (1, i, −1, −i)
+      m) 4 at k = 1 and k = 7, 0 elsewhere
+      n) f̂ = (2, 0, 2, 0, 2, 0); 2·3 = 6 = N (equality in the uncertainty
+         principle |supp f||supp f̂| ≥ N, attained by subgroups)
+      o) 10240 versus 1048576 (≈ 100 times fewer)
+
+M3. Fourier series on T = R/Z, f̂(k) = ∫₀¹ f(x)e^(−2πikx) dx.
+    a) cos²(2πx)                  b) sin³(2πx)
+    c) f(x) = x on [0, 1)          d) 𝟙_[0,1/2)
+    e) |x| on [−1/2, 1/2)          f) x² on [−1/2, 1/2)
+    g) Parseval for c): the value of ∑_{k≥1} 1/k²
+    h) Parseval for f): the value of ∑_{k≥1} 1/k⁴
+    i) evaluate the series of f) at x = 1/2 to find ∑1/k²
+    j) evaluate the series of f) at x = 0 to find ∑(−1)^(k+1)/k²
+    k) rate of decay of |f̂(k)| for d), e) and for f ∈ C^∞(T)
+    l) Gibbs: lim_N max Sₙf for f = 𝟙_[0,1/2)
+    m) the Fejér mean σ₅f for f = e^(2πi·3x)
+    n) Sₙf → f in L^p for which p? uniformly for which f?
+    Answers:
+      a) f̂(0) = 1/2, f̂(±2) = 1/4, others 0
+      b) f̂(±1) = ∓3i/8, f̂(±3) = ±i/8 (sin³θ = (3 sin θ − sin 3θ)/4)
+      c) f̂(0) = 1/2, f̂(k) = i/(2πk)
+      d) f̂(0) = 1/2, f̂(k) = −i/(πk) for k odd, 0 for k even ≠ 0
+      e) f̂(0) = 1/4, f̂(k) = −1/(π²k²) for k odd, 0 for k even ≠ 0
+      f) f̂(0) = 1/12, f̂(k) = (−1)^k/(2π²k²)
+      g) π²/6        h) π⁴/90 (1/80 − 1/144 = 1/180 = ∑_{k≠0}1/(4π⁴k⁴))
+      i) 1/4 = 1/12 + (1/π²)∑1/k², so π²/6
+      j) 0 = 1/12 − (1/π²)∑(−1)^(k+1)/k², so π²/12
+      k) 1/k (jump), 1/k² (corner), faster than every k^(−m)
+      l) 1/2 + Si(π)/π ≈ 1.08949 (overshoot ≈ 8.9% of the jump)
+      m) (1 − 3/5)e^(6πix) = (2/5)e^(6πix)
+      n) 1 < p < ∞ (not p = 1, ∞); e.g. f ∈ C¹ or Hölder (Dini) suffices,
+         mere continuity does not
+
+M4. Fourier transforms on R, f̂(ξ) = ∫f(x)e^(−2πixξ) dx.
+    a) e^(−πx²)                   b) e^(−πax²), a > 0
+    c) 𝟙_[−1/2,1/2]               d) 𝟙_[0,1]
+    e) e^(−|x|)                   f) e^(−x)𝟙_(0,∞)
+    g) (1 − |x|)₊                 h) 1/(1 + x²)
+    i) f(x − 3) and f(2x) in terms of f̂
+    j) x e^(−πx²)
+    k) ∫_R (sin x/x)² dx          l) ∫_R dx/(1 + x²)², by Plancherel and h)
+    m) ∫_R (sin x/x)⁴ dx, by Plancherel and g)
+    n) ∑_{n∈Z} 1/(1 + n²), by Poisson summation
+    o) ∑_{n∈Z} e^(−πn²/4), by the theta identity
+    p) check equality in Heisenberg for e^(−πx²): (∫x²|f|²)(∫ξ²|f̂|²)
+       versus ‖f‖₂⁴/(16π²)
+    Answers:
+      a) e^(−πξ²)                b) a^(−1/2)e^(−πξ²/a)
+      c) sin(πξ)/(πξ)            d) e^(−πiξ) sin(πξ)/(πξ)
+      e) 2/(1 + 4π²ξ²)           f) 1/(1 + 2πiξ)
+      g) (sin(πξ)/(πξ))²         h) πe^(−2π|ξ|)
+      i) e^(−6πiξ)f̂(ξ) and (1/2)f̂(ξ/2)
+      j) −iξe^(−πξ²) (x f ↔ (i/2π) d/dξ)
+      k) π                       l) π²∫e^(−4π|ξ|) dξ = π/2
+      m) π∫(1 − |x|)₊² dx = 2π/3 ≈ 2.09440
+      n) π coth π ≈ 3.15335      o) 2∑e^(−4πk²) ≈ 2.0000139
+      p) both equal 1/(32π²)
+
+M5. Kernels and approximate identities.
+    a) D_N(0)                     b) D₃(1/2)
+    c) ∫₀¹ D_N                     d) F_N(0)
+    e) F₃(1/2)                    f) ‖D₁₀‖_{L¹(T)} (numerically) and the
+                                     asymptotic formula
+    g) is (D_N) an approximate identity? is (F_N)?
+    h) P_s ∗ P_t for Poisson kernels on R
+    i) Fourier transform of the heat kernel (4πt)^(−1/2)e^(−x²/4t)
+    j) (e^(−πx²)) ∗ cos(2πx)       k) P_t ∗ cos(2πx)
+    l) the Poisson kernel on T: ∑ r^|k| e^(2πikx) in closed form
+    m) the value of l) at x = 0 and x = 1/2 for r = 1/2
+    n) φ = 𝟙_[−1/2,1/2]: φ_t ∗ f(x) in words, and its limit as t → 0
+    o) sup_t |φ_t ∗ f| ≤ ? when |φ| ≤ ψ, ψ radial decreasing integrable
+    Answers:
+      a) 2N + 1       b) sin(7π/2)/sin(π/2) = −1       c) 1
+      d) N            e) (1/3)(sin(3π/2))² = 1/3
+      f) ≈ 2.2234; ‖D_N‖₁ = (4/π²)ln N + O(1)
+      g) no (L¹ norms unbounded, D_N changes sign); yes (F_N ≥ 0)
+      h) P_{s+t} (multipliers e^(−2πs|ξ|)e^(−2πt|ξ|))
+      i) e^(−4π²tξ²)             j) e^(−π)cos(2πx)
+      k) e^(−2πt)cos(2πx)        l) (1 − r²)/(1 − 2r cos 2πx + r²)
+      m) (3/4)/(1/4) = 3 and (3/4)/(9/4) = 1/3
+      n) the average of f over [x − t/2, x + t/2]; → f(x) at every
+         Lebesgue point          o) ‖ψ‖₁ Mf
+
+M6. Interpolation, Young, Hausdorff-Young, weak Lᵖ (on R unless stated).
+    a) Young ‖f ∗ g‖_r: p = 1, q = 2, find r
+    b) p = q = 2               c) p = q = 4/3
+    d) p = 3/2, q = 6/5        e) p = 2, q = 3/2
+    f) Hausdorff-Young target exponent for p = 4/3
+    g) for p = 6/5             h) for p = 1
+    i) ‖T‖_{1→1} = 2, ‖T‖_{∞→∞} = 8: Riesz-Thorin bounds on L² and L⁴
+    j) interpolate (1, ∞) and (2, 2) at θ = 1/3: the pair (p, q)
+    k) ‖|x|^(−1/2)‖_{L^{2,∞}(R)}; is |x|^(−1/2) ∈ L²?
+    l) is |x|^(−n/p) ∈ L^p(Rⁿ)? in L^{p,∞}?
+    m) Hardy-Littlewood-Sobolev I_α : L^p → L^q, 1/q = 1/p − α/n:
+       n = 3, α = 1, p = 2
+    n) n = 3, α = 2, p = 6/5
+    o) f ∈ L²(R), g ∈ L²(R): where does f ∗ g lie?
+    p) Marcinkiewicz with weak (1,1) and (∞,∞): which strong types?
+    Answers:
+      a) 2        b) ∞        c) 2        d) 2 (1 + 1/r = 2/3 + 5/6)
+      e) 6        f) 4        g) 6        h) ∞
+      i) 2^(1/2)8^(1/2) = 4 and 2^(1/4)8^(3/4) = 4√2 ≈ 5.65685
+      j) 1/p = 2/3 + 1/6 = 5/6, 1/q = 1/6: (6/5, 6)
+      k) |{|x|^(−1/2) > λ}| = 2/λ², so the quasinorm is √2; not in L²
+      l) no; yes          m) q = 6 (the Sobolev exponent in R³)
+      n) q = 6 (1/6 = 5/6 − 2/3)
+      o) C₀(R) (bounded, uniformly continuous, → 0 at ∞)
+      p) (p, p) for all 1 < p < ∞ (not p = 1)
+
+M7. Maximal functions on R: Mf(x) = sup_r (1/2r)∫_{x−r}^{x+r}|f| unless
+    stated. Let f = 𝟙_[0,1].
+    a) Mf(1/2)       b) Mf(3)       c) Mf(−1)       d) Mf(0)
+    e) |{Mf > 1/4}|  f) |{Mf > 1/10}|  g) |{Mf > 3/4}|
+    h) λ|{Mf > λ}| for λ = 1/4, and ‖Mf‖_{1,∞}
+    i) ‖Mf‖₂² and ‖Mf‖₃³
+    j) for g = 𝟙_[−1,1]: Mg(3)
+    k) the uncentred maximal function of f at x = 3
+    l) the dyadic maximal function of 𝟙_[0,1) at x ∈ [1, 2), at x ∈
+       [2, 4) and at x = −1/2
+    m) for h = n𝟙_[0,1/n]: Mh(x) for x ≥ 1/n; is Mh ∈ L¹?
+    n) for f = |x|^(−1/2): Mf(4) in terms of Mf(1)
+    o) the weak (1,1) constant given by the Vitali lemma in Rⁿ
+    p) show Mf(x) ≥ c/|x| for large |x| whenever f ≠ 0 in L¹(R)
+    Answers:
+      a) 1        b) 1/6       c) 1/4 (1/(2(1 − x)))        d) 1/2
+      e) 1/λ − 1 = 3           f) 9          g) 1 (the set (0, 1))
+      h) 3/4; 1 (supremum, not attained)
+      i) 1 + 2∫₁^∞ dx/(4x²) = 3/2; 1 + 2∫₁^∞ dx/(8x³) = 9/8
+      j) 1/4 (in general 1/(|x| + 1) for |x| ≥ 1)
+      k) 1/3 (the interval [0, 3]; uncentred Mf(x) = 1/x for x ≥ 1)
+      l) 1/2 ([0, 2)); 1/4 ([0, 4)); 0 (dyadic intervals containing −1/2
+         lie in (−∞, 0))
+      m) 1/(2x), the same as for 𝟙_[0,1] scaled; no, never
+      n) Mf(1)/2 (Mf is homogeneous of degree −1/2)
+      o) 3ⁿ
+      p) if ∫_{[−R,R]}|f| = a > 0, then for |x| > R the ball B(x, 2|x|)
+         gives Mf(x) ≥ a/(4|x|)
+
+M8. Hilbert transform, Hf(x) = (1/π) p.v.∫ f(y)/(x − y) dy, multiplier
+    −i sgn ξ.
+    a) H(cos 2πx)            b) H(sin 2πx)
+    c) H(1/(1 + x²))         d) H(x/(1 + x²))
+    e) H((1 − x²)/(1 + x²)²) (differentiate d), or use −1/(z + i)²)
+    f) H𝟙_[0,1] as a formula  g) its value at x = 2
+    h) its value at x = 1/2   i) its value at x = −1
+    j) H(sin x/x)             k) H² and H*
+    l) ‖H‖_{L²→L²}            m) sharp ‖H‖_p for p = 4, 4/3, 3, 3/2
+    n) |{|H𝟙_[0,1]| > λ}| (Stein-Weiss: 2|E|/sinh(πλ) for f = 𝟙_E) at
+       λ = 1, and lim_{λ→0} λ|{|H𝟙_[0,1]| > λ}|
+    o) H of the constant 1 (as a multiplier)
+    p) the conjugate of cos(2πkx), k ≥ 1, on T
+    q) is H𝟙_[0,1] in L¹? in L^{1,∞}? in L^p for 1 < p < ∞?
+    Answers:
+      a) sin 2πx         b) −cos 2πx        c) x/(1 + x²)
+      d) −1/(1 + x²)     e) 2x/(1 + x²)²
+      f) (1/π)ln|x/(x − 1)|                  g) (ln 2)/π ≈ 0.22064
+      h) 0               i) −(ln 2)/π ≈ −0.22064
+      j) (1 − cos x)/x   k) H² = −I, H* = −H
+      l) 1               m) 1 + √2 ≈ 2.41421 for both; √3 for both
+      n) 2/sinh π ≈ 0.17318; 2/π ≈ 0.63662
+      o) 0               p) sin(2πkx)
+      q) no (tail ~ 1/(πx)); yes; yes (log singularities are Lᵖ)
+
+M9. Calderón-Zygmund decomposition in one dimension, starting from the
+    dyadic interval [0, 1). f is given by its values on the eighths
+    [j/8, (j + 1)/8), j = 0, ..., 7. Find the selected intervals, their
+    averages and |⋃Qⱼ|.
+    a) f = (8, 0, 0, 0, 0, 0, 0, 0), λ = 2
+    b) the same f, λ = 1       c) the same f, λ = 5
+    d) the same f, λ = 8
+    e) f = (4, 4, 0, 0, 0, 0, 4, 4), λ = 2
+    f) f = (6, 2, 0, 0, 1, 1, 1, 1), λ = 1.5; write g and b₁ on Q₁
+    g) f = (0, 0, 0, 0, 0, 0, 0, 16), λ = 3
+    h) for a): g and b explicitly
+    i) the bounds on averages of selected cubes in R² and R³
+    j) f ∈ L¹(R³), ‖f‖₁ = 3, λ = 10: an upper bound for ∑|Qⱼ|
+    k) bounds for ‖g‖_∞, ‖g‖₁, ‖g‖₂² in terms of λ, n, ‖f‖₁
+    l) in e), an upper bound for |⋃2Qⱼ| (concentric doubles)
+    m) why must λ ≥ ⨍_[0,1)|f| at the start?
+    Answers:
+      a) [0, 1/4), average 4; 1/4
+      b) [0, 1/2), average 2; 1/2
+      c) [0, 1/8), average 8; 1/8
+      d) none (|f| ≤ λ everywhere)
+      e) [0, 1/4) and [3/4, 1), averages 4 and 4; 1/2 ≤ ‖f‖₁/λ = 1 ✓
+      f) [0, 1/2), average 2; g = 2 on [0, 1/2), f elsewhere; b₁ =
+         (4, 0, −2, −2) on the four eighths, ∫b₁ = 0
+      g) [1/2, 1), average 4 (∈ (3, 6]); 1/2
+      h) g = (4, 4, 0, 0, 0, 0, 0, 0), b = (4, −4, 0, 0, 0, 0, 0, 0)
+      i) λ < avg ≤ 4λ; λ < avg ≤ 8λ          j) 0.3
+      k) ‖g‖_∞ ≤ 2ⁿλ, ‖g‖₁ ≤ ‖f‖₁, ‖g‖₂² ≤ 2ⁿλ‖f‖₁
+      l) 2·(1/2) = 1
+      m) otherwise [0, 1) itself is selected and the upper bound 2λ,
+         which uses the unselected parent, is unavailable
+
+M10. Calderón-Zygmund kernels and Fourier multipliers.
+     a) the symbol of H            b) the symbol of Rⱼ on Rⁿ
+     c) ∑ⱼRⱼ²                      d) the symbol of ∂ⱼ∂ₖΔ⁻¹, via RⱼRₖ
+     e) the constant cₙ in the kernel cₙxⱼ/|x|^(n+1) for n = 1, 2, 3
+     f) is 1/|x|ⁿ a CZ kernel (defining an L²-bounded operator)?
+     g) Ω = x₁x₂/|x|² in R²: mean zero on the circle? CZ kernel?
+     h) Ω = x₁²/|x|²               i) Ω = (x₁² − x₂²)/|x|²
+     j) Mikhlin's condition for sgn ξ, |ξ|^(it), ξ²/(1 + ξ²), and for
+        e^(i|ξ|) on Rⁿ, n ≥ 2
+     k) is 𝟙_[−1,1](ξ) an L^p multiplier on R (1 < p < ∞)?
+     l) is 𝟙_{|ξ|≤1} an L^p multiplier on R² for p ≠ 2?
+     m) the Hörmander constant for K = 1/x, and for K = 1/|x| on R
+     n) the L² norm of f ↦ f ∗ p.v.(1/x)
+     o) is (−Δ)^(−1/2) (symbol (2π|ξ|)⁻¹) a CZ operator?
+     p) the symbol of (I − Δ)⁻¹∂ⱼ∂ₖ; is it a Mikhlin multiplier?
+     Answers:
+       a) −i sgn ξ       b) −iξⱼ/|ξ|        c) −I
+       d) ξⱼξₖ/|ξ|² = −(symbol of RⱼRₖ)
+       e) 1/π, 1/(2π), 1/π²   (cₙ = Γ((n+1)/2)/π^((n+1)/2))
+       f) no: no cancellation, the principal value diverges
+       g) yes (∫cos θ sin θ dθ = 0); yes
+       h) mean 1/2 ≠ 0: no
+       i) yes (cos 2θ); a multiple of the kernel of R₁² − R₂²
+       j) yes, yes, yes, no (derivatives do not decay; it is the wave
+          propagator, bounded on L^p only for p = 2)
+       k) yes (a combination of modulated Hilbert transforms), although
+          Mikhlin's theorem does not apply
+       l) no (C. Fefferman's ball multiplier theorem)
+       m) ln 3 for both (Hörmander alone does not give L² bounds)
+       n) π (symbol −iπ sgn ξ)
+       o) no: it is a fractional integral (L^p → L^q, q > p), not L^p →
+          L^p bounded
+       p) −4π²ξⱼξₖ/(1 + 4π²|ξ|²); yes
+
+M11. BMO and Muckenhoupt weights.
+     a) is ln|x| in BMO(R)? in L^∞?
+     b) the mean oscillation of ln x on [0, a]
+     c) the mean oscillation of ln|x| on [−a, a]
+     d) the mean oscillation of 𝟙_[0,∞) on [−a, a]
+     e) ‖c‖_* for a constant c
+     f) is |x|^(−1/2) in BMO(R)?
+     g) is sgn(x)ln|x| in BMO(R)?
+     h) John-Nirenberg for ln x on Q = [0, 1]: |{x ∈ Q : |ln x + 1| > λ}|
+        for λ ≥ 1
+     i) the dual of H¹(Rⁿ); the dual of L¹(Rⁿ)
+     j) |x|^a ∈ A_p(Rⁿ) iff ... ; for R, p = 2: is |x|^(1/2), |x|, |x|⁻¹
+        in A₂?
+     k) R², p = 3: is |x|³ ∈ A₃? is |x|⁴?
+     l) |x|^a ∈ A₁(Rⁿ) iff ...; is |x|^(−1/2) ∈ A₁(R)?
+     m) is eˣ ∈ A₂(R)?
+     n) for w = |x|^a on R, (⨍_[0,r]w)(⨍_[0,r]w⁻¹); the value for a = 1/2
+     o) is A₂ ⊆ A₃?
+     p) for which weights is M bounded on L^p(w), 1 < p < ∞?
+     Answers:
+       a) yes; no          b) 2/e ≈ 0.73576     c) 2/e (evenness)
+       d) 1/2              e) 0
+       f) no (the oscillation on [0, a] is ≈ a^(−1/2) → ∞ as a → 0)
+       g) no (on [−a, a] the mean oscillation ≈ |ln a| → ∞)
+       h) e^(−1−λ) (only ln x < −1 − λ is possible): exponential decay
+       i) BMO (C. Fefferman); L^∞ (not BMO: H¹ ⊊ L¹)
+       j) −n < a < n(p − 1); yes, no, no
+       k) yes (−2 < 3 < 4); no (4 is the endpoint)
+       l) −n < a ≤ 0; yes
+       m) no (not even doubling: ∫_{x−2r}^{x+2r}/∫_{x−r}^{x+r} ≈ eʳ)
+       n) 1/((1 + a)(1 − a)) = 1/(1 − a²); 4/3
+       o) yes (A_p increases with p)
+       p) exactly w ∈ A_p (Muckenhoupt); the same for H
+          (Hunt-Muckenhoupt-Wheeden)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) The dual of a compact abelian group is discrete.
+     b) The Fourier series of every continuous f on T converges at every
+        point.
+     c) The Fourier series of every f ∈ L²(T) converges a.e.
+     d) The Fourier series of every f ∈ L¹(T) converges a.e.
+     e) If f ∈ L¹(R) then f̂ is continuous and f̂(ξ) → 0 as |ξ| → ∞.
+     f) If f ∈ L¹(R) then f̂ ∈ L¹(R).
+     g) Every sequence (c_k) with c_k → 0 as |k| → ∞ is the sequence of
+        Fourier coefficients of some f ∈ L¹(T).
+     h) H is bounded on L¹(R).
+     i) H maps L^∞(R) into L^∞(R).
+     j) M is bounded on L¹(Rⁿ).
+     k) Mf ≥ |f| a.e.
+     l) The Hausdorff-Young inequality holds for p = 3.
+     m) f, g ∈ L²(R) ⇒ f ∗ g ∈ L^∞(R).
+     n) The ball multiplier is bounded on L⁴(R²).
+     o) An L²-bounded operator with a CZ kernel is bounded on L¹.
+     p) L^∞ ⊊ BMO.
+     q) Every bounded translation-invariant operator on L²(Rⁿ) is a
+        Fourier multiplier with m ∈ L^∞.
+     r) Haar measure on a compact group is both left and right invariant.
+     s) Haar measure on the ax + b group is bi-invariant.
+     t) Weak (1,1) plus L^∞ bounds imply boundedness on L¹.
+     Answers:
+       a) T
+       b) F: du Bois-Reymond (Fejér's explicit example; or ‖D_N‖₁ → ∞ and
+          the uniform boundedness principle)
+       c) T (Carleson)
+       d) F: Kolmogorov's example (even everywhere divergence)
+       e) T (Riemann-Lebesgue)
+       f) F: 𝟙_[−1/2,1/2], whose transform sin(πξ)/(πξ) is not in L¹
+       g) F: the sine series ∑_{k≥2} sin(2πkx)/ln k (for f ∈ L¹, odd
+          coefficients bₖ need ∑bₖ/k < ∞, but ∑1/(k ln k) = ∞)
+       h) F: H𝟙_[0,1] ~ 1/(πx) at ∞
+       i) F: H𝟙_[0,1] = (1/π)ln|x/(x − 1)| (it maps into BMO)
+       j) F: M𝟙_[0,1] ~ 1/(2|x|)
+       k) T (Lebesgue differentiation)
+       l) F: no inequality ‖f̂‖_q ≤ C‖f‖₃ holds for any q (Gaussians
+          with complex quadratic phases, or random series)
+       m) T (Cauchy-Schwarz; f ∗ g is even in C₀)
+       n) F: Fefferman (bounded only for p = 2)
+       o) F: the Hilbert transform (only weak (1,1))
+       p) T: ln|x|
+       q) T
+       r) T (compact groups are unimodular)
+       s) F: left da db/a², right da db/a
+       t) F: M (strong type only for 1 < p ≤ ∞)
+
+TEACHING TIPS
+  Struggling: fix ONE Fourier convention (e^(−2πixξ)) and make students
+  check every formula on the Gaussian e^(−πx²) and on 𝟙_[−1/2,1/2]
+  before trusting it. Teach characters through the chain Z/N → T → R
+  (roots of unity, then circles, then lines) and insist on the rule
+  "compact ↔ discrete". For singular integrals draw three pictures:
+  the kernel 1/(πx) with its cancelling left and right halves, the
+  function H𝟙_[0,1] with its two logarithmic spikes and its 1/(πx) tail
+  (explaining at once why L¹ and L^∞ fail), and the CZ stopping-time
+  tree of dyadic intervals with the selected ones shaded; have them run
+  the decomposition by hand on eight-cell vectors (M9) until the bounds
+  λ < avg ≤ 2ⁿλ feel inevitable. Repeat the slogan "weak-type maximal
+  inequality + dense class ⇒ a.e. convergence" every time it is used.
+  Harder: prove the Riesz-Thorin theorem via the three-lines lemma;
+  prove Pontryagin duality for finite and compact abelian groups and
+  Peter-Weyl for compact groups; prove Cotlar's lemma for almost-
+  orthogonal operators; prove the John-Nirenberg inequality with a
+  second CZ decomposition and the H¹-BMO duality via atoms; prove the
+  Mikhlin multiplier theorem with Littlewood-Paley square functions;
+  prove that A_p weights satisfy a reverse Hölder inequality; study the
+  T(1) theorem of David-Journé, Carleson's theorem via time-frequency
+  analysis, and Fefferman's Kakeya-set proof that the ball multiplier is
+  unbounded on L^p(R²), p ≠ 2.
+
+
+================================================================================
+TOPIC 12.19 — STOCHASTIC CALCULUS: ITO INTEGRAL, SDEs, APPLICATIONS TO
+FINANCE AND PHYSICS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - BROWNIAN MOTION (from 12.12): B₀ = 0, independent stationary Gaussian
+    increments B_t − B_s ~ N(0, t − s), continuous paths; E[B_sB_t] =
+    min(s, t). QUADRATIC VARIATION: for partitions of [0, t] with mesh → 0,
+    ∑(ΔB)² → t in L² (variance 2∑(Δt)²), so [B]_t = t; hence the TOTAL
+    VARIATION is infinite and paths are nowhere differentiable. Box rules:
+    dB·dB = dt, dB·dt = dt·dt = 0; independent B, W: dB·dW = 0.
+  - SETTING: a filtration (𝓕_t) satisfying the usual conditions, B an
+    (𝓕_t)-BM. H is ADAPTED if H_t is 𝓕_t-measurable; the class 𝓗²[0, T]
+    = progressively measurable H with E∫₀^T H_s² ds < ∞. SIMPLE processes
+    H = ∑ ξ_k 𝟙_(t_k, t_{k+1}] with ξ_k bounded and 𝓕_{t_k}-measurable are
+    dense in 𝓗².
+  - ITO INTEGRAL: ∫H dB = ∑ ξ_k (B_{t_{k+1}} − B_{t_k}) for simple H (LEFT
+    endpoint!). ITO ISOMETRY E[(∫₀^T H dB)²] = E∫₀^T H² ds extends the map
+    to all of 𝓗² as an L²-limit. Properties: linear, E∫H dB = 0,
+    Cov(∫H dB, ∫K dB) = E∫HK ds, t ↦ ∫₀ᵗ H dB is a continuous
+    L²-MARTINGALE with [∫H dB]_t = ∫₀ᵗ H² ds; for deterministic H it is
+    Gaussian N(0, ∫H²). With only ∫₀^T H² ds < ∞ a.s. the integral is a
+    LOCAL martingale (may fail to be a true martingale).
+  - THE CHOICE OF EVALUATION POINT MATTERS: left sums give ∫₀ᵗ B dB =
+    (B_t² − t)/2 (Ito), midpoint/trapezoid sums give B_t²/2
+    (STRATONOVICH ∫H∘dB = ∫H dB + ½[H, B]_t), right sums (B_t² + t)/2.
+    Ito integrals are martingales; Stratonovich integrals obey the ordinary
+    chain rule (Wong-Zakai: limits of smooth-noise ODEs are Stratonovich).
+  - ITO PROCESS dX = b dt + σ dB, [X]_t = ∫σ² ds. ITO'S FORMULA: for f ∈
+    C^{1,2}, df(t, X) = f_t dt + f_x dX + ½f_xx d[X] = (f_t + b f_x +
+    ½σ²f_xx) dt + σ f_x dB. Multidimensional: df(X) = ∑∂ᵢf dXⁱ +
+    ½∑∂ᵢⱼf d[Xⁱ, Xʲ]. PRODUCT RULE d(XY) = X dY + Y dX + d[X, Y].
+    TANAKA: d|B| = sgn(B) dB + dL⁰ (local time) since |x| ∉ C².
+  - STANDARD EXAMPLES: d(B²) = 2B dB + dt, d(B³) = 3B² dB + 3B dt, moments
+    E B_t^{2k} = (2k − 1)!! t^k via Ito; Hermite martingales B² − t,
+    B³ − 3tB, B⁴ − 6tB² + 3t²; EXPONENTIAL MARTINGALE exp(θB − θ²t/2);
+    stochastic exponential ℰ(X) = exp(X − ½[X]) solves dZ = Z dX.
+  - MARTINGALE TOOLS: LÉVY'S CHARACTERISATION (a continuous local
+    martingale M with M₀ = 0 and [M]_t = t is a BM); MARTINGALE
+    REPRESENTATION (every L²(𝓕_T^B) variable is E F + ∫₀^T H dB); Dambis-
+    Dubins-Schwarz (M = W_{[M]}); optional stopping with Ito formulas
+    (hitting times, E e^{−λτ_a} = e^{−a√(2λ)}).
+  - GIRSANOV: if θ is adapted and Z_t = exp(−∫₀ᵗθ dB − ½∫₀ᵗθ² ds) is a
+    martingale (NOVIKOV: E exp(½∫₀^Tθ²) < ∞ suffices), then under dQ =
+    Z_T dP the process B̃_t = B_t + ∫₀ᵗ θ ds is a Q-BM on [0, T]. Q ~ P on
+    𝓕_T but typically Q ⊥ P on 𝓕_∞. Cameron-Martin for deterministic θ.
+  - SDEs dX = b(t, X) dt + σ(t, X) dB, X₀ = ξ. STRONG solution: adapted
+    to the given B; WEAK solution: some (Ω, B, X). EXISTENCE AND
+    UNIQUENESS: Lipschitz |b(x) − b(y)| + |σ(x) − σ(y)| ≤ K|x − y| and
+    linear growth |b| + |σ| ≤ K(1 + |x|), E ξ² < ∞ ⇒ unique strong
+    solution, E sup_{t≤T} |X_t|² < ∞ (Picard iteration + Gronwall + Doob).
+    Yamada-Watanabe: in 1-d, σ Hölder-½ (e.g. √|x|) still gives pathwise
+    uniqueness; weak existence + pathwise uniqueness ⇒ strong solution.
+  - COUNTEREXAMPLES: dX = X² dt explodes (X = 1/(1 − t)), no linear
+    growth; dX = 3X^{2/3} dt, X₀ = 0 has solutions 0 and t³ (non-
+    Lipschitz); TANAKA's dX = sgn(X) dB has weak solutions but no strong
+    solution and no pathwise uniqueness.
+  - LINEAR SDEs: GBM dS = μS dt + σS dB ⇒ S_t = S₀exp((μ − σ²/2)t + σB_t),
+    E S_t = S₀e^{μt}, S_t → 0 a.s. if μ < σ²/2. ORNSTEIN-UHLENBECK dX =
+    −θX dt + σ dB ⇒ X_t = X₀e^{−θt} + σ∫₀ᵗe^{−θ(t−s)} dB_s, Gaussian,
+    stationary law N(0, σ²/(2θ)), covariance (σ²/2θ)e^{−θ|t−s|}.
+    Vasicek, Brownian bridge dX = −X/(1 − t) dt + dB; integrating factors.
+  - DIFFUSIONS AND PDEs: GENERATOR Lf = b f′ + ½σ²f″; DYNKIN E_x f(X_τ) =
+    f(x) + E_x∫₀^τ Lf(X) ds. EXIT PROBLEMS: P_x(hit b before a) solves Lu =
+    0, E_xτ solves Lw = −1 (for BM: (x − a)/(b − a) and (x − a)(b − x));
+    scale functions. FEYNMAN-KAC: u(t, x) = E[e^{−∫_t^T r ds} g(X_T) |
+    X_t = x] solves u_t + Lu − ru = 0, u(T) = g. KOLMOGOROV backward (in
+    x, t) and FORWARD/FOKKER-PLANCK p_t = −(bp)_x + ½(σ²p)_xx.
+  - FINANCE: Black-Scholes market dS = μS dt + σS dB, bond rate r.
+    Self-financing DELTA HEDGE Δ = C_S removes risk ⇒ BLACK-SCHOLES PDE
+    C_t + rSC_S + ½σ²S²C_SS − rC = 0 (μ disappears). Risk-neutral
+    measure Q via Girsanov with θ = (μ − r)/σ, price = e^{−rτ}E_Q[payoff].
+    C = SΦ(d₁) − Ke^{−rτ}Φ(d₂), d₁,₂ = [ln(S/K) + (r ± σ²/2)τ]/(σ√τ).
+    Put-call parity C − P = S − Ke^{−rτ}; Greeks Δ = Φ(d₁), Γ =
+    φ(d₁)/(Sσ√τ), vega = Sφ(d₁)√τ > 0.
+  - PHYSICS: LANGEVIN equation dV = −γV dt + σ dB; FLUCTUATION-
+    DISSIPATION σ² = 2γk_BT/m gives equipartition mE V² = k_BT; position
+    diffuses with EINSTEIN D = k_BT/(mγ) = k_BT/ζ, MSD ~ 2Dt per dimension
+    (ballistic for t ≪ 1/γ). Overdamped dX = −U′(X)/ζ dt + √(2D) dB has
+    Boltzmann stationary density ∝ e^{−U/k_BT}; Kramers escape rate
+    ∝ e^{−ΔU/k_BT}. Multiplicative noise: Ito vs Stratonovich differ by
+    the noise-induced drift ½σσ′.
+  - NUMERICS: EULER-MARUYAMA X_{n+1} = X_n + b h + σ ΔB (strong order ½,
+    weak order 1); MILSTEIN adds ½σσ′((ΔB)² − h) (strong order 1);
+    Monte Carlo error ∝ N^{−1/2}.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Let 0 = t₀ < t₁ < ... < t_n = t and Q_n = ∑(B_{t_{k+1}} − B_{t_k})².
+    (a) Show E Q_n = t and Var Q_n = 2∑(Δt_k)², so Q_n → t in L² as the
+    mesh → 0. (b) Deduce that Brownian paths have infinite total variation
+    on [0, t]. (c) For the uniform partition of [0, 1] with n = 100 find
+    Var Q_n and E∑|ΔB_k|.
+    Answer: (a) Var Q_n ≤ 2t·mesh → 0. (b) ∑|ΔB| ≥ Q_n / max|ΔB| → ∞.
+    (c) 0.02 (s.d. 0.1414) and √(200/π) ≈ 7.97885.
+    Teacher explains: Write Δ_k = B_{t_{k+1}} − B_{t_k} ~ N(0, Δt_k),
+    independent. Then E Δ_k² = Δt_k, so E Q_n = ∑Δt_k = t. For a Gaussian
+    Z ~ N(0, v), E Z⁴ = 3v², so Var Z² = 3v² − v² = 2v². By independence
+       Var Q_n = ∑ 2(Δt_k)² ≤ 2(max Δt_k)·∑Δt_k = 2t·mesh → 0,
+    and E(Q_n − t)² = Var Q_n → 0: this is the statement [B]_t = t.
+    (b) Suppose V = sup ∑|Δ_k| < ∞ on some path. Then Q_n ≤ (max_k |Δ_k|)·
+    ∑|Δ_k| ≤ V·max|Δ_k| → 0 by uniform continuity of the path. But Q_n → t
+    > 0 (along a subsequence a.s.), a contradiction. So a.s. paths are not
+    of bounded variation, which is why ∫H dB CANNOT be defined path by
+    path as a Riemann-Stieltjes integral. (c) Var Q_n = 2·100·(1/100)² =
+    0.02. E|Δ_k| = √(2Δt/π), so E∑|Δ_k| = n√(2/(πn)) = √(2n/π) ≈ 7.979,
+    growing like √n. Common mistakes: thinking (ΔB)² ≈ 0 because ΔB is
+    small — it is of order Δt, the same as the dt-terms, and that is the
+    origin of the extra ½f″ term in Ito's formula. Now you try: uniform
+    partition of [0, 2] with n = 50: Var Q_n? (2t²/n = 8/50 = 0.16)
+
+D2. Compute ∫₀ᵗ B_s dB_s directly as a limit of (a) left-endpoint,
+    (b) right-endpoint and (c) midpoint-average Riemann sums. Which is the
+    Ito integral and why is it the "right" choice for a martingale theory?
+    Relate (c) to the Stratonovich integral.
+    Answer: (a) (B_t² − t)/2 (Ito); (b) (B_t² + t)/2; (c) B_t²/2
+    (Stratonovich).
+    Teacher explains: Use the algebraic identity a(b − a) = ½(b² − a²) −
+    ½(b − a)². With a = B_{t_k}, b = B_{t_{k+1}}:
+       ∑B_{t_k}Δ_k = ½∑(B²_{t_{k+1}} − B²_{t_k}) − ½∑Δ_k² = ½B_t² − ½Q_n,
+    which tends in L² to ½B_t² − ½t by D1. Similarly b(b − a) = ½(b² − a²)
+    + ½(b − a)², so right sums give ½B_t² + ½Q_n → ½(B_t² + t). The
+    average ½(a + b)(b − a) = ½(b² − a²) telescopes EXACTLY to ½B_t².
+    For ordinary Stieltjes integrals the three limits would coincide; here
+    they differ by multiples of the quadratic variation. The left point is
+    chosen because the integrand B_{t_k} is then 𝓕_{t_k}-measurable and
+    independent of the increment Δ_k, so each term has mean 0 and the sum
+    is a martingale: indeed E[(B_t² − t)/2] = 0. The Stratonovich integral
+    ∫H∘dB = ∫H dB + ½[H, B]_t; for H = B, [B, B]_t = t gives (B_t² − t)/2
+    + t/2 = B_t²/2, matching the ordinary chain rule. Common mistakes:
+    writing ∫B dB = B²/2 "by calculus"; forgetting that the Stratonovich
+    integral is NOT a martingale (mean t/2). Now you try: find ∫₀ᵗ B² dB in
+    both senses. (Stratonovich B_t³/3; Ito B_t³/3 − ∫₀ᵗ B_s ds)
+
+D3. State and prove the Ito isometry for simple processes. Then, for T = 2,
+    compute (a) E[(∫₀^T B dB)²], (b) the law of X = ∫₀^T s dB_s, (c)
+    Cov(X, B_T) and Corr(X, B_T), and (d) show X = TB_T − ∫₀^T B_s ds.
+    Answer: (a) T²/2 = 2; (b) N(0, T³/3) = N(0, 8/3); (c) T²/2 = 2,
+    √3/2 ≈ 0.86603; (d) Ito product rule.
+    Teacher explains: For simple H = ∑ξ_k𝟙_(t_k,t_{k+1}], I = ∑ξ_kΔ_k and
+       E I² = ∑_k E[ξ_k²Δ_k²] + 2∑_{j<k} E[ξ_jξ_kΔ_jΔ_k].
+    Condition on 𝓕_{t_k}: ξ_k² is known and Δ_k is independent of 𝓕_{t_k},
+    so E[ξ_k²Δ_k²] = E[ξ_k²]Δt_k; for j < k, ξ_jξ_kΔ_j is 𝓕_{t_k}-
+    measurable and E[Δ_k | 𝓕_{t_k}] = 0, so the cross terms vanish. Thus
+    E I² = ∑E ξ_k² Δt_k = E∫H² ds. This isometry from simple processes
+    (dense in 𝓗²) into L²(Ω) extends uniquely by continuity: that IS the
+    definition of the Ito integral. (a) E∫₀^T B_s² ds = ∫₀^T s ds = T²/2 =
+    2. Check with D2: E[(B_T² − T)²]/4 = (3T² − 2T² + T²)/4 = T²/2 ✓.
+    (b) A deterministic integrand gives a Gaussian (L²-limit of Gaussian
+    sums) with variance ∫₀^T s² ds = T³/3 = 8/3. (c) B_T = ∫₀^T 1 dB, so
+    by polarization Cov = ∫₀^T s·1 ds = T²/2 = 2; Corr = (T²/2)/√(T³/3·T)
+    = √3/2 (independent of T). (d) d(tB_t) = B_t dt + t dB_t (d[t, B] = 0)
+    so TB_T = ∫B ds + ∫s dB. Common mistakes: applying the isometry to ds
+    integrals: E(∫₀¹B ds)² = 1/3, not ∫₀¹ E B² ds = 1/2. Now you try:
+    Var ∫₀¹ e^s dB_s. ((e² − 1)/2 ≈ 3.19453)
+
+D4. State Ito's formula for f(t, X_t) with dX = b dt + σ dB and sketch
+    the proof. Use it to (a) write B_t³ as an Ito integral plus a dt
+    integral, (b) compute E B_t⁴ and E B_t⁶ recursively, (c) show B_t⁴ −
+    6tB_t² + 3t² is a martingale.
+    Answer: (a) B_t³ = 3∫B² dB + 3∫B ds; (b) 3t², 15t³; (c) its dt-part
+    is zero.
+    Teacher explains: FORMULA: df = f_t dt + f_x dX + ½f_xx (dX)², and
+    (dX)² = σ² dt by the box rules. PROOF SKETCH (f ∈ C², X = B): Taylor on
+    a partition, f(B_t) − f(0) = ∑f′(B_{t_k})Δ_k + ½∑f″(B_{t_k})Δ_k² +
+    remainder. The first sum → ∫f′(B) dB (left points!), the second → ½∫
+    f″(B) ds because Δ_k² can be replaced by Δt_k (the error ∑f″(Δ_k² −
+    Δt_k) has L²-norm² ≈ 2∑(Δt_k)² → 0), and the remainder is bounded by
+    sup|ω(Δ)|·Q_n → 0. (a) f = x³: f′ = 3x², f″ = 6x, so d(B³) = 3B² dB +
+    3B dt. (b) Taking expectations kills the dB-term (a true martingale
+    since E∫B^{2k} < ∞): d(B⁴) = 4B³ dB + 6B² dt gives E B_t⁴ = 6∫₀ᵗ s ds
+    = 3t²; d(B⁶) = 6B⁵ dB + 15B⁴ dt gives E B_t⁶ = 15∫₀ᵗ 3s² ds = 15t³. In
+    general E B^{2k} = (2k − 1)!! t^k. (c) f = x⁴ − 6tx² + 3t²: f_t = −6x²
+    + 6t, ½f_xx = 6x² − 6t, so the drift f_t + ½f_xx = 0 and d f =
+    (4B³ − 12tB) dB. Common mistakes: forgetting the f_t term; using
+    (dB)² = 0. Now you try: E B_t⁸. (105t⁴)
+
+D5. Show that Z_t = exp(θB_t − θ²t/2) is a martingale and deduce E e^{θB_t}.
+    Using optional stopping, find the Laplace transform of the hitting
+    time τ_a = inf{t : B_t = a}, a > 0. Evaluate E e^{−2τ₁} and explain why
+    E τ_a = ∞.
+    Answer: dZ = θZ dB, E e^{θB_t} = e^{θ²t/2}; E e^{−λτ_a} = e^{−a√(2λ)};
+    E e^{−2τ₁} = e^{−2} ≈ 0.13534.
+    Teacher explains: With f(t, x) = exp(θx − θ²t/2): f_t = −(θ²/2)f,
+    f_x = θf, f_xx = θ²f, so dZ = (−θ²/2 + θ²/2)Z dt + θZ dB = θZ dB. Since
+    E∫₀ᵗ Z_s² ds = ∫e^{θ²s} ds < ∞, Z is a true martingale and E Z_t = 1,
+    i.e. E e^{θB_t} = e^{θ²t/2} (the Gaussian m.g.f. — a good check).
+    For θ > 0 the stopped martingale Z_{t∧τ_a} lies in (0, e^{θa}], so it
+    is bounded; τ_a < ∞ a.s. (recurrence) and on {τ_a = ∞} Z_t → 0 anyway.
+    Bounded convergence in E Z_{t∧τ_a} = 1 gives E exp(θa − θ²τ_a/2) = 1.
+    Put λ = θ²/2: E e^{−λτ_a} = e^{−a√(2λ)}. With a = 1, λ = 2: e^{−2}.
+    Differentiating at λ = 0⁺: −(d/dλ)e^{−a√(2λ)} = (a/√(2λ))e^{−a√(2λ)}
+    → ∞, so E τ_a = ∞ although τ_a < ∞ a.s. Common mistakes: using
+    optional stopping for θ < 0 (then Z_{t∧τ} is unbounded); forgetting
+    to prove the local martingale is a true martingale. Now you try:
+    E e^{−τ₂/8}. (e^{−2·½} = e^{−1} ≈ 0.36788)
+
+D6. Solve the geometric Brownian motion dS = μS dt + σS dB. For S₀ = 100,
+    μ = 0.1, σ = 0.2, T = 1 compute E S_T, the median of S_T, Var S_T and
+    P(S_T > 100). When does S_t → 0 a.s.?
+    Answer: S_t = S₀exp((μ − σ²/2)t + σB_t); 110.517, 108.329, 498.464
+    (s.d. 22.326), Φ(0.4) ≈ 0.65542; S_t → 0 iff μ < σ²/2.
+    Teacher explains: Apply Ito to Y = ln S: dY = dS/S − ½(dS)²/S² =
+    μ dt + σ dB − ½σ² dt. So Y_t = ln S₀ + (μ − σ²/2)t + σB_t and S_t is
+    lognormal. Using E e^{σB_t} = e^{σ²t/2}: E S_t = S₀e^{μt} = 110.517;
+    E S_t² = S₀²e^{(2μ+σ²)t}, so Var S_t = S₀²e^{2μt}(e^{σ²t} − 1) =
+    10⁴e^{0.2}(e^{0.04} − 1) ≈ 498.464. The median is where B_t = 0:
+    S₀e^{(μ−σ²/2)t} = 100e^{0.08} ≈ 108.329 < mean (lognormal skew).
+    P(S_T > K) = P(σB_T > ln(K/S₀) − (μ − σ²/2)T) = Φ((ln(S₀/K) + (μ −
+    σ²/2)T)/(σ√T)) = Φ(0.08/0.2) = Φ(0.4) ≈ 0.65542. Long run: B_t/t → 0
+    a.s., so (1/t)ln S_t → μ − σ²/2; if μ < σ²/2 then S_t → 0 a.s. even
+    though E S_t = S₀e^{μt} may explode — the mean is carried by rare huge
+    paths. Common mistakes: writing S_t = S₀e^{μt + σB_t} (forgetting the
+    Ito correction); confusing median and mean. Now you try: μ = 0, σ = 1:
+    what happens to S_t and to E S_t? (S_t → 0 a.s., E S_t = S₀: a
+    martingale that is not uniformly integrable)
+
+D7. Solve the Ornstein-Uhlenbeck SDE dX = −θX dt + σ dB, X₀ = x, θ > 0.
+    Find the mean, variance, the stationary distribution and the
+    stationary covariance. Evaluate for θ = 2, σ = 1, x = 3, t = 1.
+    Answer: X_t = xe^{−θt} + σ∫₀ᵗe^{−θ(t−s)}dB_s ~ N(xe^{−θt},
+    σ²(1 − e^{−2θt})/(2θ)); stationary N(0, σ²/(2θ)); covariance
+    (σ²/2θ)e^{−θ|t−s|}; numbers 0.40601 and 0.24542.
+    Teacher explains: Integrating factor, exactly as for the linear ODE:
+    d(e^{θt}X_t) = θe^{θt}X dt + e^{θt}dX = σe^{θt} dB (no Ito correction
+    because e^{θt} has zero quadratic variation). Integrate and multiply by
+    e^{−θt}. The stochastic integral has deterministic integrand, so X_t is
+    Gaussian with mean xe^{−θt} and, by the isometry, variance σ²∫₀ᵗ
+    e^{−2θ(t−s)} ds = σ²(1 − e^{−2θt})/(2θ). As t → ∞ the law tends to
+    N(0, σ²/(2θ)); starting from this law, the process is stationary. For
+    s < t, X_t = e^{−θ(t−s)}X_s + (independent noise), so Cov(X_s, X_t) =
+    e^{−θ(t−s)}Var X_s = (σ²/2θ)e^{−θ(t−s)}. Numbers: 3e^{−2} ≈ 0.40601,
+    (1 − e^{−4})/4 ≈ 0.24542 (close to the stationary value 1/4 already).
+    Mean reversion half-life: ln 2/θ ≈ 0.347. Common mistakes: variance
+    σ²t (that is BM); forgetting the factor 2 in e^{−2θ(t−s)}. Now you
+    try: θ = 1, σ = √2, x = 0: Var X₁. (1 − e^{−2} ≈ 0.86466)
+
+D8. State the existence and uniqueness theorem for SDEs and prove the
+    uniqueness part. Then show why each hypothesis matters: (a) dX = X² dt,
+    X₀ = 1; (b) dX = 3X^{2/3} dt, X₀ = 0; (c) Tanaka's dX = sgn(X) dB.
+    Answer: Lipschitz + linear growth ⇒ unique strong solution; (a)
+    explodes at t = 1; (b) two solutions 0 and t³; (c) weak solution but no
+    pathwise uniqueness, no strong solution.
+    Teacher explains: THEOREM: if |b(t,x) − b(t,y)| + |σ(t,x) − σ(t,y)| ≤
+    K|x − y|, |b(t,x)| + |σ(t,x)| ≤ K(1 + |x|) and X₀ ∈ L² is independent
+    of B, there is a unique continuous adapted X with E sup_{t≤T}X_t² < ∞.
+    UNIQUENESS: if X, Y are solutions, X_t − Y_t = ∫(b(X) − b(Y)) ds +
+    ∫(σ(X) − σ(Y)) dB. Using (a + b)² ≤ 2a² + 2b², Cauchy-Schwarz on the
+    ds-part and the Ito isometry on the dB-part,
+       φ(t) := E|X_t − Y_t|² ≤ 2(T + 1)K² ∫₀ᵗ φ(s) ds,
+    so Gronwall gives φ ≡ 0 (localize with stopping times if needed).
+    EXISTENCE: Picard iterates X^{n+1} = X₀ + ∫b(Xⁿ) + ∫σ(Xⁿ) dB satisfy
+    E sup|X^{n+1} − Xⁿ|² ≤ C(Ct)ⁿ/n! (Doob's inequality), summable, so they
+    converge a.s. uniformly (Borel-Cantelli). (a) b = x² is only locally
+    Lipschitz, no linear growth: X = 1/(1 − t) blows up at t = 1. (b) b =
+    3x^{2/3} is not Lipschitz at 0: both X ≡ 0 and X = t³ (dX/dt = 3t² =
+    3(t³)^{2/3}) solve it. (c) Given any BM W, X = W solves the SDE with
+    B := ∫sgn(W) dW, a BM by Lévy ([B]_t = t): a weak solution. But −X
+    solves it with the same B (sgn is odd, up to the null set {X = 0}),
+    so pathwise uniqueness fails, and B = |X| − L generates only the
+    filtration of |X|, so X is not adapted to B: no strong solution.
+    Common mistakes: thinking local Lipschitz alone prevents explosion.
+    Now you try: explosion time of dX = X² dt, X₀ = 2. (1/2)
+
+D9. State Girsanov's theorem. (a) For constant θ, with dQ/dP =
+    exp(θB_T − θ²T/2), find the Q-law of B_T and compute E_P[B_T
+    exp(θB_T − θ²T/2)] and E_P[B_T² exp(θB_T − θ²T/2)] for θ = 0.5, T = 2.
+    (b) Why are P and Q singular on 𝓕_∞?
+    Answer: (a) under Q, B_T ~ N(θT, T); 1 and 3. (b) B_t/t → 0 under P
+    but → θ under Q.
+    Teacher explains: GIRSANOV: let θ be adapted with Z_t = exp(∫₀ᵗθ dB −
+    ½∫₀ᵗθ² ds) a martingale (Novikov suffices) and dQ = Z_T dP. Then
+    B̃_t = B_t − ∫₀ᵗθ ds is a Q-Brownian motion on [0, T]. (Sign
+    convention: density exp(+∫θ dB) ADDS drift θ to B under Q.) Proof idea:
+    B̃Z is a P-martingale by the product rule, d(B̃Z) = Z dB̃ + B̃ dZ +
+    d[B̃, Z] = Z dB − θZ dt + B̃ dZ + θZ dt, so B̃ is a Q-martingale with
+    [B̃]_t = t; apply Lévy. (a) Under Q, B_T = B̃_T + θT ~ N(θT, T), so
+    E_P[B_T Z_T] = E_Q B_T = θT = 1, and E_P[B_T² Z_T] = E_Q B_T² = T +
+    θ²T² = 2 + 1 = 3. Check directly: E[Be^{θB}] = θTe^{θ²T/2} by Gaussian
+    integration by parts ✓. (b) By the strong law B_t/t → 0 P-a.s., while
+    B_t/t = B̃_t/t + θ → θ Q-a.s. These events are disjoint, so the
+    measures (extended to 𝓕_∞) are mutually singular: Girsanov is a
+    FINITE-HORIZON statement. Common mistakes: sign of the drift; using
+    Z_T with θ > 0 and claiming B + θt is the new BM. Now you try: θ = 1,
+    T = 1: E_P[B₁² e^{B₁ − 1/2}]. (1 + 1 = 2)
+
+D10. Derive the Black-Scholes PDE by delta hedging, state the Black-Scholes
+     formula and the risk-neutral interpretation, and price a European
+     call and put with S = 100, K = 100, r = 0.05, σ = 0.2, T = 1. Give Δ,
+     Γ and vega of the call.
+     Answer: C_t + rSC_S + ½σ²S²C_SS − rC = 0, C(T, S) = (S − K)⁺;
+     d₁ = 0.35, d₂ = 0.15; C ≈ 10.4506, P ≈ 5.5735; Δ ≈ 0.63683, Γ ≈
+     0.018762, vega ≈ 37.524.
+     Teacher explains: Model dS = μS dt + σS dB, bond dβ = rβ dt. Let C(t,
+     S) be the option price and form Π = C − ΔS, self-financing: dΠ = dC
+     − Δ dS. Ito: dC = (C_t + μSC_S + ½σ²S²C_SS) dt + σSC_S dB. With Δ =
+     C_S the dB-terms cancel and dΠ = (C_t + ½σ²S²C_SS) dt is riskless, so
+     no-arbitrage forces dΠ = rΠ dt = r(C − SC_S) dt, giving the PDE. The
+     drift μ has vanished: all investors agree on the price whatever they
+     believe about μ. RISK-NEUTRAL VIEW: Girsanov with θ = (μ − r)/σ makes
+     B^Q = B + θt a Q-BM and dS = rS dt + σS dB^Q; discounted prices
+     e^{−rt}S_t are Q-martingales and C = e^{−rτ}E_Q(S_T − K)⁺. Feynman-Kac
+     connects the two views. Computing the expectation of a lognormal:
+        C = SΦ(d₁) − Ke^{−rτ}Φ(d₂), d₁ = [ln(S/K) + (r + σ²/2)τ]/(σ√τ).
+     Here d₁ = (0 + 0.07)/0.2 = 0.35, d₂ = 0.15, Φ(d₁) ≈ 0.63683, Φ(d₂) ≈
+     0.55962, so C = 63.683 − 95.123·0.55962 ≈ 10.4506. Parity: P = C − S
+     + Ke^{−rT} = 10.4506 − 100 + 95.1229 ≈ 5.5735. Δ = Φ(d₁) ≈ 0.63683,
+     Γ = φ(d₁)/(Sσ√T) ≈ 0.018762, vega = Sφ(d₁)√T ≈ 37.524 (per unit of
+     σ). Common mistakes: using μ instead of r; forgetting to discount K;
+     taking d₂ = d₁ + σ√τ. Now you try: S = K = 100, r = 0, σ = 0.2, T =
+     1. (C = P ≈ 7.9656, close to the rule of thumb 0.4Sσ√T = 8)
+
+D11. For a diffusion dX = b(X) dt + σ(X) dB with generator L, explain Dynkin's
+     formula and use it to solve exit problems. For X = B on (a, b) find
+     u(x) = P_x(hit b before a) and w(x) = E_xτ; evaluate at a = 0, b = 3,
+     x = 1. For BM with drift μ = 0.5 (σ = 1) find u(1) on (0, 3). State
+     Feynman-Kac and check it on u(t, x) = E[B_T² | B_t = x].
+     Answer: u = (x − a)/(b − a) = 1/3, w = (x − a)(b − x) = 2; with drift
+     u(1) = (1 − e^{−1})/(1 − e^{−3}) ≈ 0.66524; u(t, x) = x² + T − t.
+     Teacher explains: For f ∈ C², Ito gives f(X_t) = f(x) + ∫Lf(X) ds +
+     martingale, Lf = bf′ + ½σ²f″. At a bounded stopping time (then let t →
+     ∞ with E τ < ∞) E_x f(X_τ) = f(x) + E_x∫₀^τ Lf(X_s) ds: DYNKIN. If Lu
+     = 0 with u(a) = 0, u(b) = 1, then u(x) = E_x u(X_τ) = P_x(X_τ = b). If
+     Lw = −1, w(a) = w(b) = 0, then 0 = w(x) − E_xτ. For BM L = ½d²/dx²:
+     u is linear, (x − a)/(b − a) = 1/3; w″ = −2 gives w = (x − a)(b − x) =
+     1·2 = 2. With drift μ: μu′ + ½u″ = 0 ⇒ u′ ∝ e^{−2μx} ⇒ u(x) = (1 −
+     e^{−2μ(x−a)})/(1 − e^{−2μ(b−a)}) = (1 − e^{−1})/(1 − e^{−3}) ≈ 0.66524
+     (up from 1/3: the drift pushes upward). The function s with Ls = 0 is
+     the SCALE FUNCTION. FEYNMAN-KAC: u(t, x) = E[e^{−∫_t^T r(X)ds}g(X_T) |
+     X_t = x] solves u_t + Lu − ru = 0, u(T, ·) = g. Check: B_T = x +
+     (B_T − B_t) gives u = x² + (T − t); u_t + ½u_xx = −1 + 1 = 0 ✓. The
+     density p(t, y) of X_t solves the FORWARD equation p_t = −(bp)_y +
+     ½(σ²p)_yy (adjoint of L). Common mistakes: using Lu = −1 for the
+     probability; forgetting that E τ < ∞ must be checked. Now you try: BM
+     on (−1, 2) from 0. (P(hit 2 first) = 1/3, E τ = 2)
+
+D12. A colloidal particle of mass m in a fluid obeys the Langevin equation
+     dV = −γV dt + σ dB. (a) Find the stationary E V² and the fluctuation-
+     dissipation relation forced by equipartition. (b) Show the position
+     X_t = ∫₀ᵗV ds satisfies E X_t² = 2D(t − (1 − e^{−γt})/γ) with D =
+     k_BT/(mγ). (c) For a sphere of radius 1 μm in water (ζ = 6πηa, η =
+     10⁻³ Pa·s, k_BT = 4.1·10⁻²¹ J) find D and the 1-D MSD after 10 s.
+     (d) Find the stationary density of the overdamped dX = −(U′/ζ) dt +
+     √(2D) dB.
+     Answer: (a) σ²/(2γ) = k_BT/m ⇒ σ² = 2γk_BT/m; (b) integrate the OU
+     covariance; (c) D ≈ 0.2175 μm²/s, MSD ≈ 4.35 μm²; (d) ∝ e^{−U/k_BT}.
+     Teacher explains: (a) V is OU (D7) with stationary variance σ²/(2γ).
+     Equipartition ½mE V² = ½k_BT forces σ² = 2γk_BT/m: the strength of
+     the noise is tied to the friction (both come from molecular kicks).
+     (b) In stationarity C(u) = E V₀V_u = (σ²/2γ)e^{−γ|u|} and
+        E X_t² = ∫₀ᵗ∫₀ᵗ C(s − r) dr ds = 2∫₀ᵗ (t − u)C(u) du
+               = (σ²/γ²)(t − (1 − e^{−γt})/γ).
+     With D = σ²/(2γ²) = k_BT/(mγ) this is the formula. For γt ≪ 1 it is ≈
+     (k_BT/m)t² (ballistic); for γt ≫ 1 it is ≈ 2Dt (diffusive): EINSTEIN'S
+     relation D = k_BT/ζ, ζ = mγ. (c) ζ = 6π·10⁻³·10⁻⁶ ≈ 1.885·10⁻⁸ N·s/m,
+     D ≈ 2.175·10⁻¹³ m²/s = 0.2175 μm²/s, and 2Dt ≈ 4.35 μm². (d) The
+     Fokker-Planck equation is p_t = ∂_x(U′p/ζ + Dp_x). Stationary with
+     zero flux: p′ = −U′p/(ζD) = −U′p/k_BT, so p ∝ e^{−U/k_BT}, Boltzmann.
+     If instead the noise is multiplicative, g(X)∘dB (physicists' white
+     noise limit is Stratonovich, by Wong-Zakai) equals the Ito g dB plus
+     the NOISE-INDUCED DRIFT ½gg′ dt. Common mistakes: using MSD 2Dt at
+     short times; choosing the Ito interpretation without justification.
+     Now you try: convert the Stratonovich dX = X∘dB to Ito and solve.
+     (dX = ½X dt + X dB; X_t = X₀e^{B_t})
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Brownian computations (B standard BM, 𝓕 its filtration, s < t).
+    a) E B₃                            b) Var(B₅ − B₂)
+    c) E[B₂B₅]                         d) E[B₁²B₂²]
+    e) E B₂⁴                           f) E e^{B₂}
+    g) E e^{3B₁ − 2}                   h) P(B₄ > 2)
+    i) E[B_t | 𝓕_s]                    j) E[B_t² | 𝓕_s]
+    k) E[B_t³ | 𝓕_s]                   l) Var ∑(ΔB)² for 10 equal steps on
+                                          [0, 3]
+    m) [B]₅ and [2B + 3t]_t            n) [B, W]_t (W independent), [B,
+                                          B + W]_t
+    o) P(max_{s≤1} B_s > 1)            p) E|B_t| at t = π/2
+    q) Var(B_t − tB₁) at t = 1/4       r) E∫₀¹ B_s² ds
+    s) Var ∫₀¹ B_s ds
+    Answers:
+      a) 0        b) 3        c) 2        d) 4        e) 12
+      f) e ≈ 2.71828          g) e^{2.5} ≈ 12.18249   h) 1 − Φ(1) ≈ 0.15866
+      i) B_s      j) B_s² + t − s          k) B_s³ + 3(t − s)B_s
+      l) 2t²/n = 1.8          m) 5; 4t     n) 0; t
+      o) 2(1 − Φ(1)) ≈ 0.31731 (reflection)   p) √(2t/π) = 1
+      q) t(1 − t) = 3/16      r) 1/2       s) 1/3
+
+M2. Ito integrals: means, variances, covariances (isometry).
+    a) E∫₀¹ B dB                       b) Var ∫₀² dB
+    c) Var ∫₀¹ s² dB_s                  d) Var ∫₀¹ B_s dB_s
+    e) Var ∫₀² B_s² dB_s                f) Var ∫₀¹ e^{B_s} dB_s
+    g) Var ∫₀^π sin s dB_s              h) Cov(∫₀¹ s dB, ∫₀¹ (1 − s) dB)
+    i) Cov(∫₀² B dB, B₂)               j) Cov(∫₀¹ B dB, ∫₀¹ B² dB)
+    k) E[B₁ ∫₀¹ B_s² dB_s]              l) E[∫₀² B dB | 𝓕₁]
+    m) ∫₀ᵗ s dB_s in terms of B         n) ∫₀ᵗ B_s² dB_s in terms of B
+    o) [M]_t for M = ∫₀ᵗ B dB           p) the law of ∫₀¹ (2s − 1) dB_s
+    q) Corr(∫₀¹ s dB_s, B₁)             r) ∫₀ᵗ B∘dB (Stratonovich)
+    s) E[(∫₀¹ B dB)(∫₀¹ s dB)]
+    Answers:
+      a) 0        b) 2        c) 1/5      d) 1/2      e) 8
+      f) (e² − 1)/2 ≈ 3.19453              g) π/2      h) 1/6
+      i) 0 (∫₀² E B_s ds)     j) 0 (E B³ = 0)          k) 1/2
+      l) (B₁² − 1)/2           m) tB_t − ∫₀ᵗ B_s ds
+      n) B_t³/3 − ∫₀ᵗ B_s ds   o) ∫₀ᵗ B_s² ds           p) N(0, 1/3)
+      q) √3/2 ≈ 0.86603        r) B_t²/2    s) 0 (∫₀¹ s E B_s ds)
+
+M3. Ito's formula: find dY_t (B, W independent BMs; B vector-valued in
+    q, r).
+    a) Y = B²                          b) Y = B³
+    c) Y = e^B                         d) Y = sin B
+    e) Y = tB                          f) Y = B² − t
+    g) Y = e^{t/2} cos B               h) Y = ln(1 + B²)
+    i) Y = arctan B                    j) Y = e^{2B − 2t}
+    k) Y = B³ − 3tB                    l) Y = (B + t)²
+    m) Y = B⁴ − 6tB² + 3t²             n) Y = e^{−t/2} cosh B
+    o) Y = BW                          p) Y = |B| (Tanaka)
+    q) Y = |B|², B in R³               r) Y = |B|, B in R³, B₀ ≠ 0
+    Answers:
+      a) 2B dB + dt            b) 3B² dB + 3B dt
+      c) e^B dB + ½e^B dt      d) cos B dB − ½ sin B dt
+      e) B dt + t dB           f) 2B dB
+      g) −e^{t/2} sin B dB     h) 2B/(1 + B²) dB + (1 − B²)/(1 + B²)² dt
+      i) dB/(1 + B²) − B/(1 + B²)² dt       j) 2Y dB
+      k) 3(B² − t) dB          l) 2(B + t) dB + (2B + 2t + 1) dt
+      m) (4B³ − 12tB) dB       n) e^{−t/2} sinh B dB
+      o) W dB + B dW (d[B, W] = 0)
+      p) sgn(B) dB + dL⁰_t (local time at 0)
+      q) 2B·dB + 3 dt          r) (B/|B|)·dB + dt/|B| (a Bessel(3)
+         process: dW̃ + dt/|B|)
+
+M4. Martingales, covariations and expectations via Ito.
+    a) c such that B_t² − ct is a martingale
+    b) c such that e^{3B_t − ct} is a martingale
+    c) c such that B_t³ − ctB_t is a martingale
+    d) λ such that e^{λt} sin B_t is a martingale
+    e) λ ≠ 0 such that e^{λX_t} is a martingale, X = 2t + 3B
+    f) E B₂⁶ via Ito
+    g) E[B₁²e^{B₁}]
+    h) [X, Y]_t for dX = 2 dt + 3 dB, dY = −dt + 5 dB
+    i) d(ln X) for dX = X(0.1 dt + 0.3 dB)
+    j) E X_t² for X = μt + σB_t
+    k) d(XY) for X = e^B, Y = e^{−B}
+    l) the largest T such that ∫₀^T E[e^{2B_s²}] ds < ∞
+    m) is ∫₀ᵗ sgn(B_s) dB_s a BM?
+    n) which are BMs: (B + W)/√2, (B + 2W)/√5, B + W?
+    o) is ∫₀ᵗ cos s dB_s + ∫₀ᵗ sin s dW_s a BM?
+    p) ∫₀ᵗ √(2s) dB_s has the same law as which time-changed BM?
+    Answers:
+      a) 1        b) 9/2      c) 3        d) 1/2      e) −4/9 (2λ + 9λ²/2
+         = 0)     f) 15·8 = 120          g) (t + t²)e^{t/2} at t = 1:
+         2√e ≈ 3.29744          h) 15t
+      i) 0.055 dt + 0.3 dB     j) μ²t² + σ²t
+      k) 0 (XY ≡ 1: the drifts ½ + ½ − 1 cancel, and so do the dB-parts)
+      l) T = 1/4 (E e^{2B_s²} = (1 − 4s)^{−1/2}; the integral is
+         (1 − √(1 − 4T))/2 ≤ 1/2)
+      m) yes (Lévy: [·]_t = t)
+      n) the first two; B + W has [·]_t = 2t (it is √2 × BM)
+      o) yes (cos² + sin² = 1)            p) B_{t²} ([·]_t = t²)
+
+M5. Solve the SDE explicitly.
+    a) dX = 2 dt + 3 dB, X₀ = 1
+    b) dX = X dB, X₀ = 1
+    c) dX = 0.05X dt + 0.2X dB
+    d) dX = X dt + 2X dB, X₀ = 3
+    e) dX = −X dt + dB, X₀ = x
+    f) dX = (a − bX) dt + σ dB (Vasicek)
+    g) dX = rX dt + e^{rt} dB
+    h) dX = −X dt + e^{−t} dB, X₀ = 0
+    i) dX = −X/(1 − t) dt + dB, X₀ = 0, t < 1 (Brownian bridge)
+    j) dX = ⅓X^{1/3} dt + X^{2/3} dB, X₀ = 1 (try X = f(B))
+    k) dX = ½X dt + X dB, X₀ = 1
+    l) dX = σX∘dB (Stratonovich), X₀ = x
+    m) dX = −Y dB, dY = X dB, (X₀, Y₀) = (1, 0): find X_t² + Y_t²
+    n) CIR dX = κ(θ − X) dt + σ√X dB: E X_t
+    o) dX = μX dt + σX dB with μ, σ functions of t
+    Answers:
+      a) 1 + 2t + 3B_t           b) e^{B_t − t/2}
+      c) X₀e^{0.03t + 0.2B_t}     d) 3e^{−t + 2B_t}
+      e) xe^{−t} + ∫₀ᵗe^{−(t−s)}dB_s
+      f) a/b + (X₀ − a/b)e^{−bt} + σ∫₀ᵗe^{−b(t−s)}dB_s
+      g) e^{rt}(X₀ + B_t)          h) e^{−t}B_t
+      i) (1 − t)∫₀ᵗ dB_s/(1 − s)    j) (1 + B_t/3)³
+      k) e^{B_t}                   l) xe^{σB_t}
+      m) e^t (d(X² + Y²) = (X² + Y²) dt)
+      n) θ + (X₀ − θ)e^{−κt}
+      o) X₀exp(∫₀ᵗ(μ − σ²/2) ds + ∫₀ᵗ σ dB)
+
+M6. Numerical moments of GBM, OU, Vasicek and bridge.
+    a) GBM S₀ = 50, μ = 0.08, σ = 0.3, T = 2: E S_T
+    b) its median                      c) P(S_T > 50)
+    d) Var S_T                         e) E ln S_T
+    f) OU θ = 0.5, σ = 1, X₀ = 2, t = 2: mean and variance
+    g) the stationary variance in f)
+    h) the stationary Cov(X_s, X_{s+3}) in f)
+    i) Vasicek dr = 0.5(0.1 − r) dt + 0.02 dB, r₀ = 0.04, t = 2: mean and
+       variance
+    j) half-life of the mean in f)
+    k) Brownian bridge on [0, 1]: Var X_{0.3}
+    l) GBM S₀ = 1, μ = 0.1, σ = 0.2: E S₁²
+    m) lim (1/t)ln S_t for μ = 0.05, σ = 0.4
+    n) for μ = 0.1, the σ above which E S_t → ∞ but S_t → 0 a.s.
+    Answers:
+      a) 50e^{0.16} ≈ 58.6755      b) 50e^{0.07} ≈ 53.6254
+      c) Φ(0.07/(0.3√2)) = Φ(0.16499) ≈ 0.56552
+      d) 2500e^{0.32}(e^{0.18} − 1) ≈ 678.984   e) ln 50 + 0.07 ≈ 3.98202
+      f) 2e^{−1} ≈ 0.73576; 1 − e^{−2} ≈ 0.86466
+      g) σ²/(2θ) = 1           h) e^{−1.5} ≈ 0.22313
+      i) 0.1 − 0.06e^{−1} ≈ 0.077927; 0.0004(1 − e^{−2}) ≈ 0.00034587
+      j) ln 2/0.5 ≈ 1.38629    k) 0.3·0.7 = 0.21
+      l) e^{(2μ + σ²)} = e^{0.24} ≈ 1.27125
+      m) μ − σ²/2 = −0.03 (so S_t → 0 a.s.)   n) √(2μ) = √0.2 ≈ 0.44721
+
+M7. Generators, exit problems, Feynman-Kac, Fokker-Planck.
+    a) generator of BM                  b) generator of GBM
+    c) generator of OU                  d) BM on (−2, 3) from 0: P(hit 3
+                                           first), E τ
+    e) BM on (0, 4) from 1: P(hit 4 first), E τ
+    f) dX = dt + dB on (0, 2) from 1: P(hit 2 first)
+    g) E τ for d-dim BM leaving the ball of radius r from 0; d = 3, r = 2
+    h) BM with drift μ = 2 from 0: E τ₅ (hitting 5)
+    i) BM with drift −0.5: P(ever hits 1)
+    j) E[B_T⁴ | B_t = x]                k) E[e^{B_T} | B_t = x]
+    l) the PDE for u(t, x) = E[e^{−r(T−t)}g(S_T) | S_t = x], S a GBM
+       with drift r
+    m) Fokker-Planck equation and stationary density for OU
+    n) scale function of GBM when 2μ = σ², and P(from 1 hit 2 before ½)
+    o) E τ for dX = √(2D) dB leaving (−L, L) from 0
+    Answers:
+      a) ½f″      b) μxf′ + ½σ²x²f″       c) −θxf′ + ½σ²f″
+      d) 2/5; 6    e) 1/4; 3
+      f) (1 − e^{−2})/(1 − e^{−4}) = 1/(1 + e^{−2}) ≈ 0.88080
+      g) r²/d = 4/3 (|B|² − dt is a martingale)   h) a/μ = 2.5
+      i) e^{−2·0.5·1} = e^{−1} ≈ 0.36788
+      j) x⁴ + 6x²(T − t) + 3(T − t)²      k) e^{x + (T − t)/2}
+      l) u_t + rxu_x + ½σ²x²u_xx − ru = 0, u(T, x) = g(x) (Black-Scholes)
+      m) p_t = θ(xp)_x + ½σ²p_xx; N(0, σ²/(2θ))
+      n) s(x) = ln x; (0 − ln ½)/(ln 2 − ln ½) = 1/2
+      o) L²/(2D)
+
+M8. Exponential martingales and Girsanov.
+    a) E e^{2B₃}                        b) E exp(∫₀¹ s dB_s)
+    c) E exp(∫₀¹ s dB_s − ½∫₀¹ s² ds)
+    d) the Q-law of B₁ if dQ/dP = e^{2B₁ − 2}
+    e) E_Q B₁ and E_Q B₁² in d)
+    f) the density dQ/dP on 𝓕_T making B_t + 3t a Q-BM
+    g) the market price of risk for μ = 0.1, r = 0.03, σ = 0.25
+    h) the Q-drift of a Black-Scholes stock
+    i) for θ_s = B_s, E exp(½∫₀^T B_s² ds) < ∞ exactly when T < ?
+    j) E_P[e^{θB_T − θ²T/2}𝟙{B_T > 0}] for θ = 1, T = 1
+    k) is Z_t = e^{B_t − t/2} uniformly integrable on [0, ∞)?
+    l) ℰ(X) for X = 2B + 3t, and E ℰ(X)₁
+    m) the Radon-Nikodym density of the law of (B_t + μt)_{t≤T} w.r.t.
+       Wiener measure
+    n) E_P[B_T e^{−θB_T − θ²T/2}] for θ = 2, T = 3
+    Answers:
+      a) e^{6} ≈ 403.429       b) e^{1/6} ≈ 1.18136     c) 1
+      d) N(2, 1)               e) 2; 5
+      f) exp(−3B_T − 9T/2)     g) (μ − r)/σ = 0.28      h) rS
+      i) π/2 (Cameron-Martin: E exp(λ∫₀^T B²) = cos(T√(2λ))^{−1/2})
+      j) Φ(θ√T) = Φ(1) ≈ 0.84134
+      k) no: Z_t → 0 a.s. but E Z_t = 1
+      l) exp(2B_t + t); e³ ≈ 20.0855   m) exp(μB_T − μ²T/2)
+      n) −θT = −6
+
+M9. Black-Scholes (r continuously compounded, Φ standard normal c.d.f.).
+    a) d₁, d₂ for S = K = 100, r = 0.05, σ = 0.2, T = 1
+    b) the call price in a)            c) the put price in a)
+    d) call: S = 100, K = 110, r = 0.05, σ = 0.2, T = 1
+    e) the put in d)                   f) call: S = 50, K = 45, r = 0.03,
+                                          σ = 0.3, T = 0.5
+    g) Δ of the call in a)             h) Γ in a)
+    i) vega in a)                      j) Θ (per year) of the call in a)
+    k) the forward price in a)         l) C − P in a) by parity
+    m) cash-or-nothing digital call (pays 1) in a)
+    n) the price of a claim paying S_T² in a)
+    o) the call with r = 0, S = K = 100, σ = 0.2, T = 1
+    p) number of shares to hedge 1000 short calls in a)
+    q) the Δ of the put in a)
+    Answers:
+      a) 0.35, 0.15            b) 10.4506     c) 5.5735
+      d) 6.0401 (d₁ ≈ −0.12655)             e) 10.6753
+      f) 7.4404 (d₁ ≈ 0.67345, d₂ ≈ 0.46132)
+      g) 0.63683    h) 0.018762    i) 37.524    j) −6.4140
+      k) 100e^{0.05} ≈ 105.127                l) 100 − 100e^{−0.05} ≈ 4.8771
+      m) e^{−0.05}Φ(0.15) ≈ 0.53232
+      n) S²e^{(r + σ²)T} = 10⁴e^{0.09} ≈ 10941.7
+      o) 7.9656 (≈ 0.4Sσ√T = 8)             p) buy ≈ 636.8 shares
+      q) Φ(d₁) − 1 ≈ −0.36317
+
+M10. Stochastic models in physics (k_BT = 4.1·10⁻²¹ J, water η = 10⁻³ Pa·s).
+     a) D for a sphere of radius 0.5 μm (ζ = 6πηa), in μm²/s
+     b) 3-D MSD after 1 s for a)
+     c) mean time for a) to leave (−1 μm, 1 μm) in 1-D, from 0
+     d) Langevin dV = −2V dt + dB: stationary E V²
+     e) fluctuation-dissipation: σ² for γ = 2, k_BT/m = 3
+     f) long-time D of X = ∫V ds in d)
+     g) exact MSD 2D(t − (1 − e^{−γt})/γ) for γ = 1, D = 1, t = 1
+     h) stationary variance of dX = −4X dt + √(2·2) dB
+     i) stationary density of dX = −X³ dt + √2 dB
+     j) U = (x² − 1)², dX = −U′ dt + √(2·0.1) dB: p(0)/p(1)
+     k) Kramers rate √(U″(1)|U″(0)|)/(2π)·e^{−ΔU/D} in j)
+     l) Ito form of dX = X∘dB           m) Ito form of dX = sin X∘dB
+     n) Stratonovich form of the Ito dX = X dB
+     o) power spectrum of the stationary OU velocity in d), convention
+        S(ω) = ∫C(t)e^{−iωt} dt
+     Answers:
+       a) ≈ 0.435 μm²/s (4.350·10⁻¹³ m²/s)   b) 6Dt ≈ 2.610 μm²
+       c) L²/(2D) ≈ 1.149 s        d) 1/4       e) 2γk_BT/m = 12
+       f) σ²/(2γ²) = 1/8           g) 2e^{−1} ≈ 0.73576
+       h) D/κ = 2/4 = 1/2          i) ∝ e^{−x⁴/4}
+       j) e^{−1/0.1} = e^{−10} ≈ 4.540·10⁻⁵
+       k) (√32/2π)e^{−10} ≈ 4.087·10⁻⁵
+       l) ½X dt + X dB             m) ½ sin X cos X dt + sin X dB
+       n) −½X dt + X∘dB            o) σ²/(γ² + ω²) = 1/(4 + ω²)
+          (Lorentzian)
+
+M11. Numerical schemes (h = step, ΔB = the given Brownian increment).
+     a) Euler-Maruyama (EM) for dX = 2 dt + 3 dB, X₀ = 1, h = 0.1,
+        ΔB = 0.2
+     b) EM for dX = 0.1X dt + 0.2X dB, X₀ = 100, h = 0.01, ΔB = 0.05
+     c) Milstein for b)                 d) the exact GBM value in b)
+     e) EM for dX = −2X dt + dB, X₀ = 1, h = 0.1, ΔB = 0.3 then −0.1
+     f) strong order of EM (multiplicative noise; additive noise)
+     g) weak order of EM                h) strong order of Milstein
+     i) factor by which h must shrink to cut the EM strong error by 10
+     j) paths needed to halve Monte Carlo error from N
+     k) EM stability for dX = −50X dt (+ noise): the bound on h
+     l) the Milstein correction term for CIR σ√X dB
+     m) law of B_{1/2} given B₀ = 0, B₁ = 1 (bridge sampling)
+     n) expected realized variance ∑(Δ ln S)² over 1 year for σ = 0.2
+     Answers:
+       a) 1.8 (exact, since coefficients are constant)
+       b) 101.1                  c) 101.1 + 0.5·0.2·20·(0.0025 − 0.01) =
+          101.085                d) 100e^{0.0108} ≈ 101.0859
+       e) 1.1, then 0.78          f) ½; 1       g) 1       h) 1
+       i) 100 (error ∝ h^{1/2})   j) 4N         k) h < 2/50 = 0.04
+       l) (σ²/4)((ΔB)² − h)       m) N(1/2, 1/4)
+       n) σ²T = 0.04 (converges to the quadratic variation of ln S)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) ∫₀ᵗ B dB = B_t²/2.
+     b) For H ∈ 𝓗²[0, T], t ↦ ∫₀ᵗ H dB is a martingale.
+     c) If ∫₀^T H² ds < ∞ a.s., then ∫H dB is a martingale.
+     d) Brownian paths have finite total variation on [0, 1].
+     e) For deterministic H ∈ L²[0, T], ∫₀^T H dB is Gaussian.
+     f) E e^{B_t} = 1.
+     g) The Stratonovich integral ∫₀ᵗ H∘dB has mean zero.
+     h) Lipschitz b, σ (time-independent) give a unique strong solution.
+     i) A non-Lipschitz σ always destroys pathwise uniqueness.
+     j) Every weak solution of an SDE is a strong solution.
+     k) GBM with μ > 0 tends to ∞ almost surely.
+     l) Under Girsanov with constant θ ≠ 0, P ~ Q on 𝓕_∞.
+     m) The Black-Scholes call price depends on the drift μ.
+     n) A continuous local martingale with [M]_t = t, M₀ = 0, is a BM.
+     o) EM has strong order 1 for every SDE with smooth coefficients.
+     p) The Black-Scholes call price is increasing in σ.
+     q) E(∫₀¹ B_s ds)² = E∫₀¹ B_s² ds.
+     r) An OU process with θ > 0 has a Gaussian stationary law.
+     s) Every positive local martingale is a supermartingale.
+     Answers:
+       a) F: (B_t² − t)/2        b) T
+       c) F: a strict local martingale, e.g. M = 1/|W| for 3-dim W, W₀ ≠
+          0 (= M₀ − ∫(W/|W|³)·dW, but E M_t ↓ 0)
+       d) F: infinite (D1)       e) T: N(0, ∫H²)
+       f) F: e^{t/2}              g) F: ∫B∘dB = B²/2, mean t/2
+       h) T (linear growth follows from Lipschitz)
+       i) F: σ = √|x| (Yamada-Watanabe: pathwise uniqueness holds)
+       j) F: Tanaka's dX = sgn(X) dB
+       k) F: S_t → 0 a.s. when μ < σ²/2 (e.g. μ = 0.1, σ = 0.6)
+       l) F: mutually singular (B_t/t → 0 versus → θ)
+       m) F: μ cancels in the hedge   n) T (Lévy)
+       o) F: ½ for GBM (T for additive noise)
+       p) T (vega = Sφ(d₁)√τ > 0)     q) F: 1/3 ≠ 1/2
+       r) T: N(0, σ²/(2θ))           s) T (Fatou)
+
+TEACHING TIPS
+  Struggling: drill the box calculus (dB·dB = dt, everything else 0) until
+  it is automatic, and make every Ito computation a three-column table
+  f_t, f_x, ½f_xx before writing df; check each answer by taking
+  expectations (the dB-part must vanish, e.g. E B_t⁴ = 3t²) or by
+  simulation. Always say which interpretation (Ito or Stratonovich) is
+  meant, and derive ∫B dB from left, right and midpoint sums at least once
+  by hand. For SDEs, look first for an integrating factor (linear), then a
+  log (multiplicative), then f(B) (try Y = f(X) with Ito). For finance,
+  derive the Black-Scholes PDE from the hedge before memorising d₁, d₂,
+  and check prices with put-call parity. Harder: construct the Ito
+  integral for all progressively measurable H with ∫H² < ∞ a.s. via
+  localisation; prove Lévy's characterisation and the martingale
+  representation theorem; prove Girsanov and Novikov; prove the Picard
+  existence theorem and Yamada-Watanabe; show Tanaka's SDE has no strong
+  solution; derive Tanaka's formula and the occupation-time formula for
+  local time; prove the Feynman-Kac formula with killing and use it for
+  the arcsine law; price barrier options by the reflection principle and
+  Girsanov; derive Kramers' escape rate by solving the mean exit-time
+  ODE asymptotically; and prove that Euler-Maruyama has strong order ½ and
+  Milstein order 1.
+
+
+================================================================================
+TOPIC 12.20 — ERGODIC THEORY: MEASURE-PRESERVING SYSTEMS, POINCARÉ
+RECURRENCE, ERGODICITY AND MIXING, BIRKHOFF AND VON NEUMANN THEOREMS,
+EXAMPLES, INVARIANT MEASURES, ENTROPY, ISOMORPHISM, NUMBER THEORY
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - MEASURE-PRESERVING SYSTEM (m.p.s.) (X, 𝔅, μ, T): μ a probability
+    measure, T : X → X measurable with μ(T⁻¹A) = μ(A) for all A ∈ 𝔅
+    (PREIMAGES, not images!). Equivalently ∫f∘T dμ = ∫f dμ for f ∈ L¹.
+    It suffices to check μ(T⁻¹A) = μ(A) on a π-system generating 𝔅
+    (e.g. intervals, cylinder sets). T need not be invertible.
+  - STANDARD EXAMPLES: circle rotation Rα(x) = x + α mod 1 (Lebesgue);
+    doubling map x ↦ 2x mod 1 and x ↦ kx mod 1 (Lebesgue); Bernoulli
+    shift σ on {1, ..., k}^N or ^Z with product measure (p₁, ..., p_k)^N;
+    Markov shift with stochastic P and stationary row vector π (πP = π);
+    toral automorphism x ↦ Ax mod Zᵈ, A ∈ GL(d, Z) (Haar measure);
+    Gauss map G(x) = {1/x} with Gauss measure dμ = dx/((1 + x) ln 2);
+    tent and logistic maps (4x(1 − x) with dx/(π√(x(1 − x)))).
+  - POINCARÉ RECURRENCE: if μ(A) > 0 then a.e. x ∈ A returns to A
+    infinitely often. Needs μ(X) < ∞ (x ↦ x + 1 on R fails). KAC: if T
+    is ergodic and μ(A) > 0 the first return time r_A satisfies
+    ∫_A r_A dμ = 1, i.e. the mean return time to A is 1/μ(A).
+  - ERGODICITY: T⁻¹A = A (mod μ) ⇒ μ(A) ∈ {0, 1}. Equivalent: every
+    invariant f ∈ L² (f∘T = f a.e.) is constant; (1/n)∑_{k<n} μ(T⁻ᵏA ∩ B)
+    → μ(A)μ(B) for all A, B. Rα is ergodic iff α ∉ Q (Fourier proof).
+  - MIXING HIERARCHY: STRONG MIXING μ(T⁻ⁿA ∩ B) → μ(A)μ(B); WEAK MIXING
+    (1/n)∑|μ(T⁻ᵏA ∩ B) − μ(A)μ(B)| → 0 (⇔ T × T ergodic ⇔ no non-constant
+    L² eigenfunctions); ERGODIC. Strong ⇒ weak ⇒ ergodic, both strict:
+    irrational rotations are ergodic but not weakly mixing (e^{2πix} is
+    an eigenfunction); Chacón's map is weakly but not strongly mixing.
+    Bernoulli shifts, the doubling map, mixing Markov chains and
+    hyperbolic toral automorphisms are (strongly) mixing.
+  - VON NEUMANN MEAN ERGODIC THEOREM: U an isometry of a Hilbert space H
+    (Koopman Uf = f∘T), P the orthogonal projection onto {f : Uf = f};
+    then (1/n)∑_{k<n} Uᵏf → Pf IN NORM. Proof: H = ker(U − I) ⊕
+    closure(range(U − I)); averages of coboundaries g − Ug telescope.
+  - BIRKHOFF POINTWISE ERGODIC THEOREM: for f ∈ L¹(μ), Aₙf(x) =
+    (1/n)∑_{k<n} f(Tᵏx) → f*(x) a.e. and in L¹, where f* = E(f | 𝓘) is
+    T-invariant and ∫f* = ∫f (𝓘 = σ-algebra of invariant sets). If T is
+    ergodic, f* = ∫f dμ: TIME AVERAGE = SPACE AVERAGE. Key lemma: the
+    MAXIMAL ERGODIC THEOREM ∫_{max_{n}Sₙf > 0} f dμ ≥ 0.
+  - INVARIANT MEASURES: M(T) = {T-invariant Borel probabilities} is
+    convex and weak* compact; KRYLOV-BOGOLYUBOV: M(T) ≠ ∅ for T
+    continuous on a compact metric space (limit points of
+    (1/n)∑δ_{Tᵏx}). Ergodic measures = EXTREME POINTS of M(T); distinct
+    ergodic measures are mutually singular. UNIQUELY ERGODIC: |M(T)| = 1
+    ⇔ Aₙf → constant UNIFORMLY for every continuous f (irrational
+    rotations; Furstenberg skew product (x, y) ↦ (x + α, y + x)).
+  - SHIFTS: cylinders [a₀ ... a_{n−1}] generate; Bernoulli measure of a
+    cylinder is the product p_{a₀}...p_{a_{n−1}}; Markov measure is
+    π_{a₀}P_{a₀a₁}...P. Markov shift is ergodic ⇔ P irreducible, mixing ⇔
+    P irreducible and aperiodic. Periodic points of the topological
+    Markov shift with 0-1 matrix M: #Fix(σⁿ) = tr(Mⁿ).
+  - TORAL AUTOMORPHISMS: T_A on Tᵈ preserves Haar measure (|det A| = 1);
+    T_A is ergodic ⇔ no eigenvalue of A is a root of unity (Fourier: the
+    character e^{2πi⟨m,x⟩} is sent to e^{2πi⟨Aᵗm,x⟩}; ergodic ⇔ no finite
+    Aᵗ-orbit of m ≠ 0); then it is even mixing. For A ∈ SL(2, Z):
+    ergodic ⇔ |tr A| > 2 (hyperbolic). #Fix(T_Aⁿ) = |det(Aⁿ − I)|.
+  - ENTROPY: H(ξ) = −∑μ(C) log μ(C) for a finite partition ξ; h(T, ξ) =
+    lim (1/n)H(ξ ∨ T⁻¹ξ ∨ ... ∨ T⁻⁽ⁿ⁻¹⁾ξ); h(T) = sup_ξ h(T, ξ).
+    KOLMOGOROV-SINAI: a (one-sided) generator ξ gives h(T) = h(T, ξ).
+    Values: Bernoulli (p) → −∑pᵢ log pᵢ; Markov → −∑πᵢPᵢⱼ log Pᵢⱼ;
+    x ↦ kx → log k; toral T_A → ∑_{|λ|>1} log|λ|; rotations, identity
+    and any system with discrete spectrum → 0. h(Tⁿ) = |n|h(T),
+    h(T × S) = h(T) + h(S).
+  - ISOMORPHISM PROBLEM: T ≅ S if there is an invertible m.p. map φ
+    (defined mod null sets) with φ∘T = S∘φ. Invariants: ergodicity,
+    mixing, SPECTRUM of the Koopman operator, entropy. HALMOS-VON
+    NEUMANN: ergodic systems with discrete spectrum are isomorphic iff
+    they have the same eigenvalue group (Rα ≅ Rβ ⇔ β = ±α mod 1).
+    Spectrum fails for Bernoulli shifts (all have countable Lebesgue
+    spectrum); KOLMOGOROV: entropy distinguishes B(½, ½) (log 2) from
+    B(⅓, ⅓, ⅓) (log 3); ORNSTEIN: two-sided Bernoulli shifts with equal
+    entropy are isomorphic (Meshalkin: B(¼,¼,¼,¼) ≅ B(½,⅛,⅛,⅛,⅛)).
+  - NUMBER THEORY: BOREL — a.e. x is NORMAL in every base (Birkhoff for
+    x ↦ bx); WEYL — {nα} is equidistributed for α ∉ Q (unique ergodicity
+    of Rα), and {p(n)} for a polynomial with an irrational non-constant
+    coefficient (skew products); BENFORD — the leading digit of 2ⁿ is d
+    with frequency log₁₀(1 + 1/d); CONTINUED FRACTIONS — for a.e. x the
+    digit k occurs with frequency log₂(1 + 1/(k(k + 2))), (a₁...aₙ)^(1/n)
+    → Khinchin's constant 2.68545..., (1/n) ln qₙ → π²/(12 ln 2);
+    FURSTENBERG's multiple recurrence theorem ⇒ SZEMERÉDI's theorem.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Show that the doubling map T(x) = 2x mod 1 preserves Lebesgue
+    measure m on [0, 1), and explain why the definition uses preimages.
+    (b) Show that the Gauss map G(x) = {1/x} preserves the Gauss measure
+    μ(A) = (1/ln 2)∫_A dx/(1 + x). (c) Compute μ([½, 1]) and interpret
+    it. (d) Is Lebesgue measure G-invariant?
+    Answer: (a) T⁻¹[a, b) has two pieces of length (b − a)/2. (b) the
+    preimage of [0, t) telescopes to measure log₂(1 + t). (c) log₂(4/3)
+    ≈ 0.41504 = μ{a₁ = 1}. (d) No: m(G⁻¹[0, ½)) = 2(1 − ln 2) ≈ 0.61371.
+    Teacher explains: By the π-λ theorem it is enough to test intervals.
+    (a) T⁻¹[a, b) = [a/2, b/2) ∪ [(a + 1)/2, (b + 1)/2), total length
+    (b − a)/2 + (b − a)/2 = b − a ✓. IMAGES do not work: T[0, ½) = [0, 1)
+    has measure 1, not ½. With preimages the identity ∫f∘T = ∫f holds
+    (check it on indicators: 𝟙_A∘T = 𝟙_{T⁻¹A}). (b) G(x) < t ⇔ 1/x ∈
+    [k, k + t) for some k ≥ 1 ⇔ x ∈ (1/(k + t), 1/k]. So
+       ln 2 · μ(G⁻¹[0, t)) = ∑_{k≥1} [ln(1 + 1/k) − ln(1 + 1/(k + t))]
+                          = ∑_{k≥1} [ln((k + 1)/(k + 1 + t)) − ln(k/(k + t))].
+    This telescopes: the partial sum up to N is ln((N + 1)/(N + 1 + t)) +
+    ln(1 + t) → ln(1 + t) = ln 2 · μ[0, t) ✓. (c) μ([½, 1]) = log₂(2/(3/2))
+    = log₂(4/3) ≈ 0.41504. Since x ∈ (½, 1] ⇔ the first continued-
+    fraction digit a₁(x) = 1, and (by Birkhoff, D12) the digit aₙ = a₁∘Gⁿ⁻¹,
+    about 41.5% of all partial quotients of a typical x equal 1.
+    (d) m(G⁻¹[0, ½)) = ∑(1/k − 1/(k + ½)) = ∑ 1/(k(2k + 1)) = 2∑(1/(2k) −
+    1/(2k + 1)) = 2(1 − ln 2) ≈ 0.61371 ≠ ½. Common mistakes: checking
+    μ(TA) = μ(A); forgetting that a non-invertible map has several
+    preimage branches. Now you try: show x ↦ 3x mod 1 preserves m.
+    (T⁻¹[a, b) is three intervals of length (b − a)/3)
+
+D2. State and prove the Poincaré recurrence theorem. Show that the
+    hypothesis μ(X) < ∞ is needed. Verify Kac's lemma for the doubling map
+    and A = [0, ½) by computing the distribution of the return time.
+    Answer: a.e. point of A returns to A infinitely often; x ↦ x + 1 on R
+    fails; P(r_A = k | A) = 2⁻ᵏ, mean 2 = 1/m(A).
+    Teacher explains: Let A have μ(A) > 0 and B = {x ∈ A : Tⁿx ∉ A for all
+    n ≥ 1}, the points that never come back. CLAIM: B, T⁻¹B, T⁻²B, ... are
+    pairwise disjoint. If x ∈ T⁻ᵐB ∩ T⁻ⁿB with m < n, then y = Tᵐx ∈ B and
+    T^{n−m}y = Tⁿx ∈ B ⊆ A, so y returns to A: contradiction. All have
+    measure μ(B) (invariance), so
+       ∑_{n≥0} μ(T⁻ⁿB) = ∑ μ(B) ≤ μ(X) = 1  ⇒  μ(B) = 0.
+    INFINITELY OFTEN: a point x ∈ A that visits A only finitely often has
+    a last visit time n ≥ 0, and then Tⁿx ∈ B, i.e. x ∈ T⁻ⁿB; but ⋃ₙT⁻ⁿB
+    is a countable union of null sets.
+    Infinite measure: T(x) = x + 1 preserves Lebesgue measure on R, but
+    no point of A = [0, 1) ever returns. KAC for T(x) = 2x mod 1: x ∈ A ⇔
+    binary digit d₁ = 0, and Tᵏx ∈ A ⇔ d_{k+1} = 0. So r_A(x) = k ⇔ d₂ =
+    ... = d_k = 1, d_{k+1} = 0, with m = ½ · 2⁻⁽ᵏ⁻¹⁾ · ½ = 2⁻ᵏ⁻¹. Hence
+       ∫_A r_A dm = ∑_{k≥1} k 2⁻ᵏ⁻¹ = ½ · 2 = 1,
+    and the conditional mean return time is 1/m(A) = 2 ✓. Common
+    mistakes: thinking EVERY point returns (under doubling, ¼ ∈ [¼, ½)
+    goes to ½, 0, 0, ... and never returns: a null exception); applying
+    the theorem without an invariant measure. Now you try: for the
+    doubling map, the mean return time to [0, ¼)? (4)
+
+D3. (a) Prove that Rα(x) = x + α mod 1 is ergodic iff α ∉ Q. (b) Prove that
+    T(x) = 2x mod 1 is ergodic. (c) For α = 2/5 exhibit an invariant set of
+    measure 1/5.
+    Answer: (a) Fourier coefficients of an invariant f satisfy cₙ(e^{2πinα}
+    − 1) = 0. (b) c_{2n} = cₙ and Riemann-Lebesgue. (c) ⋃_{j<5}[j/5,
+    j/5 + 1/25).
+    Teacher explains: USE: T is ergodic ⇔ every invariant f ∈ L²
+    (f∘T = f a.e.) is a.e. constant (take f = 𝟙_A for one direction; for
+    the other, the sets {f > c} are invariant). (a) Write f(x) = ∑ cₙ
+    e^{2πinx} in L². Then f∘Rα = ∑ cₙ e^{2πinα} e^{2πinx}, and by
+    uniqueness of Fourier coefficients cₙ = cₙe^{2πinα}. If α ∉ Q then
+    e^{2πinα} ≠ 1 for n ≠ 0, so cₙ = 0 for n ≠ 0: f = c₀ is constant. If
+    α = p/q then f(x) = e^{2πiqx} is invariant and non-constant.
+    (b) f(2x) = f(x) gives ∑ cₙ e^{2πi(2n)x} = ∑ cₘ e^{2πimx}; comparing
+    coefficients, c_{2n} = cₙ (and cₘ = 0 for m odd). Hence cₙ = c_{2n} =
+    c_{4n} = ... = c_{2ᵏn} → 0 as k → ∞ (∑|cₙ|² < ∞). So cₙ = 0
+    for n ≠ 0. (c) For α = 2/5 every point has period 5, and any set of
+    the form E ∪ (E + 1/5) ∪ ... ∪ (E + 4/5) is invariant (the rotation
+    permutes the translates since 2/5 generates Z/5). With E = [0, 1/25):
+    measure 5/25 = 1/5, neither 0 nor 1. Common mistakes: using pointwise
+    Fourier series (work in L²); forgetting the trivial invariant sets
+    are only defined mod null sets. Now you try: is the map x ↦ −x mod 1
+    ergodic? (No: [¼, ¾] is invariant, of measure ½)
+
+D4. (a) Define strong mixing, weak mixing and ergodicity and prove strong
+    ⇒ weak ⇒ ergodic. (b) Prove that T(x) = 2x mod 1 is mixing, computing
+    m(T⁻ⁿA ∩ A) for A = [0, ¼) and n = 1, 2, 3. (c) For Rα and A = [0, ½)
+    show m(Rα⁻ⁿA ∩ A) = ½ − ‖nα‖ (‖·‖ = distance to Z) and conclude that
+    Rα (α ∉ Q) is ergodic but not weakly mixing. Evaluate for α = √2 − 1,
+    n = 1, 2.
+    Answer: (b) 1/8, 1/16, 1/16 (exact independence from n = 2 on).
+    (c) ≈ 0.08579, ≈ 0.32843; the Cesàro mean → ¼ but |· − ¼| averages
+    to 1/8.
+    Teacher explains: Write aₙ = μ(T⁻ⁿA ∩ B) − μ(A)μ(B). Mixing: aₙ → 0;
+    weak mixing: (1/n)∑_{k<n}|aₖ| → 0; ergodic ⇔ (1/n)∑aₖ → 0 for all A, B.
+    aₙ → 0 ⇒ Cesàro means of |aₙ| → 0 ⇒ Cesàro means of aₙ → 0. And if
+    the last holds and T⁻¹A = A, take B = A: μ(A) − μ(A)² = 0, so μ(A) ∈
+    {0, 1}. (b) If A is a union of dyadic intervals of level j and B of
+    level k, T⁻ⁿA depends only on binary digits n + 1, ..., n + j of x
+    while B depends on digits 1, ..., k; for n ≥ k these are independent
+    fair coin flips, so m(T⁻ⁿA ∩ B) = m(A)m(B) EXACTLY. Dyadic sets
+    approximate every Borel set, giving mixing. For A = B = [0, ¼) =
+    {d₁ = d₂ = 0}: n = 1: {d₁ = d₂ = d₃ = 0} has measure 1/8; n = 2:
+    {d₁ = ... = d₄ = 0}: 1/16; n = 3: {d₁ = d₂ = d₄ = d₅ = 0}: 1/16 =
+    m(A)² ✓. (c) R⁻ⁿA ∩ A is the overlap of [0, ½) with its translate by
+    t = −nα; two half-circles at distance ‖t‖ overlap in length ½ − ‖t‖.
+    For α = √2 − 1 ≈ 0.41421: ‖α‖ = 0.41421 → 0.08579; 2α ≈ 0.82843,
+    ‖2α‖ = 0.17157 → 0.32843. The sequence ‖nα‖ is equidistributed on
+    [0, ½] (Weyl), so (1/n)∑(½ − ‖kα‖) → ½ − ¼ = ¼ = m(A)² (ergodic), yet
+    (1/n)∑|¼ − ‖kα‖| → mean of |¼ − u|, u uniform on [0, ½], = 1/8 ≠ 0:
+    not weakly mixing, and aₙ does not converge: not mixing. Abstractly:
+    f = e^{2πix} satisfies f∘Rα = e^{2πiα}f, an eigenfunction, which
+    weak mixing forbids. Common mistakes: believing ergodic systems
+    "mix"; testing only one pair A, B. Now you try: m(T⁻ⁿA ∩ A) for
+    T = doubling, A = [0, ½), n = 1. (¼)
+
+D5. State and prove von Neumann's mean ergodic theorem. For R_{1/2} on
+    [0, 1) and f(x) = x, find the L² limit of the averages and check
+    ∫Pf = ∫f.
+    Answer: (1/n)∑_{k<n}Uᵏf → Pf in H. Here Pf(x) = x + ¼ on [0, ½) and
+    x − ¼ on [½, 1); both integrals are ½.
+    Teacher explains: Let U be an isometry (‖Uf‖ = ‖f‖), I = {f : Uf = f}
+    and C = {g − Ug : g ∈ H}. STEP 1: I = C^⊥. If Uf = f then U*f = f too
+    (‖U*f − f‖² = ‖U*f‖² − 2Re⟨U*f, f⟩ + ‖f‖² ≤ 2‖f‖² − 2Re⟨f, Uf⟩ = 0),
+    so ⟨f, g − Ug⟩ = ⟨f − U*f, g⟩ = 0. Conversely if f ⊥ C then
+    ⟨U*f − f, g⟩ = 0 for all g, so U*f = f, and ‖Uf − f‖² = 2‖f‖² −
+    2Re⟨U*f, f⟩ = 0. Hence H = I ⊕ closure(C). STEP 2: on I the averages
+    are f. On C they TELESCOPE: (1/n)∑_{k<n}Uᵏ(g − Ug) = (g − Uⁿg)/n, of
+    norm ≤ 2‖g‖/n → 0. STEP 3: on closure(C) use ε/2: if ‖h − c‖ < ε with
+    c ∈ C, the averages of h are within ε of those of c, since each
+    average operator has norm ≤ 1. So Aₙf → Pf. For the Koopman operator
+    of an ergodic T, I = constants and Pf = ∫f dμ. EXAMPLE: R_{1/2} is
+    not ergodic; the invariant functions are those with period ½, and
+    for f(x) = x, A₂f = (f + f∘R)/2 = x + ¼ on [0, ½), x − ¼ on [½, 1);
+    A₂ₙf = A₂f and A_{2n+1}f → the same. ∫ = (1/8 + 1/8) + (3/8 − 1/8) = ½
+    = ∫x dx ✓. Common mistakes: expecting a.e. convergence from this
+    theorem (that is Birkhoff); forgetting that U need not be unitary.
+    Now you try: the limit for f(x) = cos(4πx) under R_{1/2}. (f itself:
+    it is invariant)
+
+D6. State Birkhoff's ergodic theorem, prove the maximal ergodic theorem
+    and deduce the a.e. convergence of Aₙf.
+    Answer: see below; key inequality Mₙ ≤ f + Mₙ∘T on {Mₙ > 0}.
+    Teacher explains: Let f ∈ L¹, Sₙ = ∑_{k<n} f∘Tᵏ (S₀ = 0) and Mₙ =
+    max(S₀, S₁, ..., Sₙ) ≥ 0. MAXIMAL ERGODIC THEOREM: ∫_{Mₙ>0} f dμ ≥ 0.
+    Proof (Garsia): for 1 ≤ k ≤ n, Sₖ = f + S_{k−1}∘T ≤ f + Mₙ∘T. On
+    {Mₙ > 0} we have Mₙ = max_{1≤k≤n} Sₖ ≤ f + Mₙ∘T. Integrate over
+    Eₙ = {Mₙ > 0}:
+       ∫_{Eₙ} f ≥ ∫_{Eₙ} Mₙ − ∫_{Eₙ} Mₙ∘T ≥ ∫_X Mₙ − ∫_X Mₙ∘T = 0,
+    using Mₙ = 0 off Eₙ, Mₙ∘T ≥ 0 and invariance of μ. Letting n → ∞:
+    ∫_E f ≥ 0 on E = {sup Sₙ > 0}; the same holds relative to any
+    invariant set. BIRKHOFF: put f̄ = lim sup Aₙf, f̲ = lim inf Aₙf; both
+    are T-invariant (Aₙf∘T = ((n + 1)/n)A_{n+1}f − f/n). For rationals a <
+    b let E = {f̲ < a < b < f̄}, an invariant set. On E, sup (Sₙ(f − b)) > 0,
+    so the maximal theorem for (f − b)𝟙_E gives ∫_E (f − b) ≥ 0; likewise
+    ∫_E (a − f) ≥ 0. Adding, (a − b)μ(E) ≥ 0, so μ(E) = 0. A countable
+    union over (a, b) shows f̲ = f̄ a.e.: Aₙf → f* a.e. Fatou gives
+    f* ∈ L¹; for bounded f DCT gives L¹ convergence, and bounded
+    functions are dense (each Aₙ contracts L¹), so Aₙf → f* in L¹ and
+    ∫f* = ∫f. f* is invariant, and for an invariant set A, ∫_A f* = ∫_A f,
+    so f* = E(f | 𝓘); if T is ergodic, f* = ∫f dμ. Common mistakes:
+    claiming convergence for EVERY x (only a.e.; the doubling map at a
+    periodic point gives other limits); forgetting f ∈ L¹. Now you try:
+    doubling map, f = 𝟙_[0,½), x = 1/3 (binary 0.0101...): limit? (½; the
+    orbit 1/3, 2/3 alternates)
+
+D7. Consider the two-state Markov shift on {0, 1}^N with P = (0.9 0.1;
+    0.2 0.8). (a) Find the stationary vector π and show the Markov measure
+    is shift invariant. (b) Compute μ([0 0 1]) and μ([0] ∩ σ⁻ⁿ[1]) exactly,
+    and deduce mixing. (c) Give the mean return time to [1]. (d) Why is
+    P = (0 1; 1 0) ergodic but not mixing?
+    Answer: (a) π = (2/3, 1/3). (b) 0.06; (2/9)(1 − 0.7ⁿ) → 2/9 = π₀π₁.
+    (c) 3. (d) the chain has period 2.
+    Teacher explains: The Markov measure of a cylinder is μ[a₀a₁...aₙ] =
+    π_{a₀}P_{a₀a₁}...P_{aₙ₋₁aₙ}. (a) πP = π: 0.1π₀ = 0.2π₁ with π₀ + π₁ =
+    1 gives π = (2/3, 1/3). Invariance on cylinders: σ⁻¹[a₀...aₙ] =
+    ⋃_b [b a₀...aₙ], of measure ∑_b π_bP_{ba₀}·(P's) = (πP)_{a₀}·(P's) =
+    μ[a₀...aₙ] ✓; cylinders form a π-system generating the σ-algebra.
+    (b) μ[001] = (2/3)(0.9)(0.1) = 0.06. Next μ([0] ∩ σ⁻ⁿ[1]) = π₀(Pⁿ)₀₁.
+    P has eigenvalues 1 and tr P − 1 = 0.7, and (Pⁿ)₀₁ = π₁(1 − 0.7ⁿ)
+    (check n = 1: (1/3)(0.3) = 0.1 ✓). So μ = (2/9)(1 − 0.7ⁿ) → 2/9 =
+    μ[0]μ[1]. The same argument for arbitrary cylinders (Pⁿ → the matrix
+    with rows π) gives MIXING; in general a Markov shift is mixing ⇔ P is
+    irreducible and aperiodic, ergodic ⇔ P is irreducible. (c) By Kac,
+    E(r | start in [1]) = 1/π₁ = 3 (the classical Markov chain formula).
+    (d) For P = (0 1; 1 0), π = (½, ½) and the measure lives on the two
+    points 0101... and 1010..., swapped by σ: ergodic (one orbit), but
+    μ([0] ∩ σ⁻ⁿ[0]) alternates ½, 0, ½, ... and does not tend to ¼.
+    Common mistakes: using the uniform vector instead of π; forgetting
+    the factor π_{a₀}. Now you try: entropy of the chain in (a),
+    −∑πᵢPᵢⱼ ln Pᵢⱼ. (≈ 0.38352 nats)
+
+D8. The cat map T(x) = Ax mod Z², A = (2 1; 1 1). (a) Show T preserves
+    Haar (Lebesgue) measure on T². (b) Prove T is ergodic and mixing.
+    (c) Find the eigenvalues and the entropy. (d) Count points of period
+    n = 1, 2, 3 and find a point of least period 2.
+    Answer: (b) Fourier: Aᵗ has no finite orbit on Z² ∖ {0}.
+    (c) (3 ± √5)/2 ≈ 2.61803, 0.38197; h = ln((3 + √5)/2) ≈ 0.96242.
+    (d) 1, 5, 16; e.g. (3/5, 1/5) ↦ (2/5, 4/5) ↦ (3/5, 1/5).
+    Teacher explains: (a) det A = 1 and A⁻¹ = (1 −1; −1 2) is also integer,
+    so T is a bijection of T² which is locally the linear map A with
+    |det A| = 1: it preserves area. (b) Characters χₘ(x) = e^{2πi⟨m,x⟩},
+    m ∈ Z², form an orthonormal basis, and χₘ∘T = χ_{Aᵗm}. If f = ∑cₘχₘ is
+    invariant then c_{Aᵗm} = cₘ, so cₘ is constant along the orbit of m;
+    ∑|cₘ|² < ∞ forces cₘ = 0 unless the orbit is finite. A finite orbit
+    means (Aᵗ)ᵏm = m, so Aᵏ has eigenvalue 1: impossible because the
+    eigenvalues λ^{±1} are real ≠ ±1. MIXING: ⟨χₘ∘Tⁿ, χₖ⟩ = 1 iff
+    (Aᵗ)ⁿm = k, which for m ≠ 0 happens for at most one n since
+    ‖(Aᵗ)ⁿm‖ → ∞; so correlations of trigonometric polynomials are
+    eventually exactly 0, and density gives mixing. (c) λ² − 3λ + 1 = 0,
+    λ = (3 ± √5)/2 = φ^{±2}. Entropy = ∑_{|λ|>1} ln|λ| = ln φ² ≈ 0.96242.
+    (d) x is fixed by Tⁿ iff (Aⁿ − I)x ∈ Z², and the number of solutions
+    in T² is |det(Aⁿ − I)| = λⁿ + λ⁻ⁿ − 2: n = 1: 3 − 2 = 1 (only 0);
+    n = 2: 7 − 2 = 5; n = 3: 18 − 2 = 16. So there are 4 points of least
+    period 2 (two 2-cycles). A² − I = (4 3; 3 1) has inverse
+    −(1/5)(1 −3; −3 4), so these points lie in (1/5)Z²; indeed A(3/5,
+    1/5)ᵗ = (7/5, 4/5) ≡ (2/5, 4/5) and A(2/5, 4/5)ᵗ = (8/5, 6/5) ≡
+    (3/5, 1/5) ✓. Common mistakes: thinking det A = ±1 alone gives
+    ergodicity ((1 1; 0 1) is not ergodic: eigenvalue 1); counting
+    periodic points in R² instead of T². Now you try: is (0 1; −1 0)
+    ergodic? (No: A⁴ = I, every point has period dividing 4)
+
+D9. (a) Prove the Krylov-Bogolyubov theorem. (b) Show that ergodic
+    measures are the extreme points of M(T) and that two distinct ergodic
+    measures are mutually singular. (c) Find M(T) for T(x) = x² on [0, 1].
+    (d) Show that T(x) = x/2 (x > 0), T(0) = 1 on [0, 1] has NO invariant
+    probability measure. (e) Why is Rα (α ∉ Q) uniquely ergodic?
+    Answer: (a) weak* limits of empirical measures. (c) {aδ₀ + (1 − a)δ₁ :
+    0 ≤ a ≤ 1}. (d) T is not continuous. (e) Fourier coefficients of an
+    invariant measure vanish.
+    Teacher explains: (a) X compact metric, T continuous. Put μₙ =
+    (1/n)∑_{k<n} δ_{Tᵏx}. The probability measures on X are weak* compact
+    (Riesz + Banach-Alaoglu, C(X) separable), so μ_{n_j} → μ. For f ∈ C(X),
+    |∫f∘T dμₙ − ∫f dμₙ| = |f(Tⁿx) − f(x)|/n ≤ 2‖f‖∞/n → 0, and f∘T is
+    continuous, so ∫f∘T dμ = ∫f dμ: μ ∈ M(T). (b) If μ is not ergodic,
+    take invariant A with 0 < μ(A) < 1; then μ = μ(A)μ_A + μ(Aᶜ)μ_{Aᶜ}
+    (conditional measures, both invariant) is a non-trivial convex
+    combination. Conversely if μ ergodic and μ = tν₁ + (1 − t)ν₂, then
+    ν₁ ≪ μ and dν₁/dμ is invariant, hence constant = 1: ν₁ = μ. If μ ≠ ν
+    are ergodic, pick continuous f with ∫f dμ ≠ ∫f dν; the Birkhoff sets
+    {Aₙf → ∫f dμ} and {Aₙf → ∫f dν} are disjoint and have full μ-,
+    resp. ν-measure: μ ⊥ ν. (c) For 0 < x < 1, x^{2ⁿ} → 0, so the empirical
+    measures from any x < 1 converge to δ₀. If μ is invariant and
+    [a, b] ⊂ (0, 1), every orbit starting in [a, b] decreases and leaves
+    [a, b] for ever, so by Poincaré recurrence μ([a, b]) = 0; hence
+    μ((0, 1)) = 0 and M(T) = {aδ₀ + (1 − a)δ₁}, with ergodic measures δ₀
+    and δ₁. (d) μ{0} = μ(T⁻¹{0}) = μ(∅) = 0; μ{1} = μ(T⁻¹{1}) = μ{0} = 0;
+    and Iₖ = (2⁻ᵏ⁻¹, 2⁻ᵏ] satisfies T⁻¹Iₖ = I_{k−1}, so all Iₖ (k ≥ 0,
+    I₀ = (½, 1]) have the same measure, which must be 0 since they are
+    disjoint: μ = 0, contradiction. (e) If μ is Rα-invariant, μ̂(n) =
+    ∫e^{−2πinx}dμ satisfies μ̂(n) = e^{−2πinα}μ̂(n), so μ̂(n) = 0 for n ≠ 0:
+    μ = Lebesgue. Unique ergodicity implies Aₙf(x) → ∫f UNIFORMLY in x for
+    f ∈ C(T) — for EVERY x, not just a.e. Common mistakes: forgetting
+    compactness (x ↦ x + 1 on R has no invariant probability) or
+    continuity (part (d)). Now you try: list the ergodic measures of the
+    identity map. (the Dirac measures δₓ)
+
+D10. Define the Kolmogorov-Sinai entropy and compute it for (a) the
+     Bernoulli shift B(p₁, ..., p_k), in particular B(⅓, ⅔); (b) the
+     doubling map; (c) a Markov shift (π, P); (d) an irrational rotation.
+     Answer: (a) −∑pᵢ ln pᵢ; B(⅓, ⅔): ln 3 − (2/3) ln 2 ≈ 0.63651 nats
+     ≈ 0.91830 bits. (b) ln 2. (c) −∑πᵢPᵢⱼ ln Pᵢⱼ. (d) 0.
+     Teacher explains: For a finite partition ξ, H(ξ) = −∑_{C∈ξ} μ(C) ln
+     μ(C), and ξⁿ = ξ ∨ T⁻¹ξ ∨ ... ∨ T⁻⁽ⁿ⁻¹⁾ξ (common refinement). The
+     sequence H(ξⁿ) is subadditive, so h(T, ξ) = lim H(ξⁿ)/n exists;
+     h(T) = sup_ξ h(T, ξ). KOLMOGOROV-SINAI: if ξ is a GENERATOR (the
+     partitions ξⁿ generate 𝔅 mod μ; for invertible T use T^{±k}), then
+     h(T) = h(T, ξ). (a) ξ = {[1], ..., [k]} (first coordinate) is a
+     generator and ξⁿ = cylinders of length n with measures p_{a₀}...
+     p_{aₙ₋₁}; since coordinates are independent, H(ξⁿ) = nH(p), so
+     h = H(p). For (⅓, ⅔): −⅓ ln ⅓ − ⅔ ln ⅔ = ln 3 − ⅔ ln 2 ≈ 0.63651.
+     (b) The partition {[0, ½), [½, 1)} is a generator whose ξⁿ is the 2ⁿ
+     dyadic intervals of length 2⁻ⁿ: H(ξⁿ) = n ln 2, so h = ln 2 (the
+     doubling map IS the one-sided B(½, ½)). (c) H(ξⁿ) = H(π) + (n − 1)
+     ∑ᵢπᵢH(Pᵢ₁, ..., P_{ik}) by the chain rule, giving h = −∑πᵢPᵢⱼ ln Pᵢⱼ.
+     (d) ξ = {[0, ½), [½, 1)}: ξⁿ is cut by the 2n points R⁻ʲ0, R⁻ʲ(½),
+     j < n, so it has at most 2n atoms and H(ξⁿ) ≤ ln(2n); h(Rα, ξ) =
+     lim ln(2n)/n = 0. As ξ generates (the endpoints' orbit is dense),
+     h(Rα) = 0. Common mistakes: forgetting the sup over ξ (a bad ξ, e.g.
+     the trivial partition, gives 0 for every T); mixing logs to base 2
+     and e. Now you try: h of x ↦ 10x mod 1 and of T² for the doubling
+     map. (ln 10 ≈ 2.30259; ln 4 = 2h(T))
+
+D11. The isomorphism problem. (a) Why are the two-sided shifts B(½, ½) and
+     B(⅓, ⅓, ⅓) not isomorphic although they are spectrally isomorphic?
+     (b) Check that B(¼, ¼, ¼, ¼) and B(½, ⅛, ⅛, ⅛, ⅛) have equal entropy.
+     What does Ornstein's theorem say? (c) Prove, using eigenvalues, that
+     for irrational α, β: Rα ≅ Rβ ⇒ β = ±α mod 1. (d) Show the doubling
+     map is isomorphic to the one-sided shift B(½, ½).
+     Answer: (a) entropies ln 2 ≠ ln 3. (b) both ln 4 ≈ 1.38629; they are
+     isomorphic. (c) eigenvalue groups must coincide. (d) binary digits.
+     Teacher explains: An ISOMORPHISM is a measure-preserving φ : X → Y,
+     invertible mod null sets, with φ∘T = S∘φ. Anything defined from
+     (X, μ, T) alone is an invariant: ergodicity, mixing, the Koopman
+     spectrum, entropy. (a) Every non-trivial Bernoulli shift has
+     COUNTABLE LEBESGUE SPECTRUM on L²₀ (the orthogonal complement of
+     constants), so their Koopman operators are unitarily equivalent: the
+     spectral invariants, the main tool before 1958, cannot separate
+     them. Kolmogorov's entropy can: h = ln 2 ≈ 0.69315 vs ln 3 ≈
+     1.09861. (b) H(¼, ¼, ¼, ¼) = ln 4; H(½, ⅛×4) = ½ ln 2 + 4·⅛ ln 8 =
+     ½ ln 2 + (3/2) ln 2 = 2 ln 2 = ln 4 ≈ 1.38629. ORNSTEIN (1970): two
+     two-sided Bernoulli shifts are isomorphic ⇔ they have the same
+     entropy (Meshalkin had built this particular isomorphism by hand).
+     Entropy is a COMPLETE invariant within the Bernoulli class, which
+     also contains mixing Markov shifts and hyperbolic toral
+     automorphisms. (c) If φ∘Rα = Rβ∘φ, then g(x) = e^{2πiφ(x)} satisfies
+     g∘Rα = e^{2πiβ}g: an eigenfunction of Rα with eigenvalue e^{2πiβ}. The
+     eigenvalues of Rα are exactly {e^{2πinα} : n ∈ Z} (Fourier), so β ≡
+     nα, and symmetrically α ≡ mβ ≡ mnα mod 1; α ∉ Q forces mn = 1, i.e.
+     n = ±1. (Halmos-von Neumann gives the converse: discrete spectrum
+     systems with equal eigenvalue groups are isomorphic; Rα ≅ R₋α via
+     x ↦ −x.) (d) φ(x) = (d₁, d₂, ...) (binary digits) is a bijection off
+     the null set of dyadic rationals; the cylinder [a₁...aₙ] corresponds
+     to a dyadic interval of length 2⁻ⁿ = its Bernoulli measure, and
+     φ(2x mod 1) = σφ(x) since doubling deletes the first digit. Common
+     mistakes: thinking equal spectra imply isomorphism; applying Ornstein
+     to ONE-sided shifts (these are rigid: isomorphic only when the
+     probability vectors agree up to order). Now you try: can the cat map
+     be isomorphic to B(½, ½)? (No: 0.96242 ≠ 0.69315; it is isomorphic to
+     a Bernoulli shift of entropy ln φ²)
+
+D12. Applications to number theory. (a) Prove Borel's theorem: a.e. x ∈
+     [0, 1) is normal in base 10. (b) Prove that the leading digit of 2ⁿ
+     is d with frequency log₁₀(1 + 1/d); give the frequency of 1 and of 7,
+     and check the first 10 powers. (c) For a.e. x find the frequency of
+     the continued-fraction digit aₙ = k, for k = 1, 2, 3. (d) State
+     Furstenberg's multiple recurrence theorem and its consequence.
+     Answer: (a) Birkhoff for x ↦ 10x. (b) {n log₁₀ 2} is equidistributed;
+     1: ≈ 0.30103, 7: ≈ 0.05799; first ten: 2,4,8,1,3,6,1,2,5,1 (three 1's).
+     (c) log₂(4/3) ≈ 0.41504, log₂(9/8) ≈ 0.16993, log₂(16/15) ≈ 0.09311.
+     (d) Szemerédi: dense sets of integers contain long APs.
+     Teacher explains: (a) T(x) = 10x mod 1 preserves m and is ergodic (as
+     in D3), and the k-th decimal digit of x is d₁(Tᵏ⁻¹x). For a block w =
+     w₁...w_ℓ, let f = 𝟙_{I_w}, I_w the interval of numbers beginning
+     0.w: then #{k ≤ n : digits k..k+ℓ−1 equal w}/n = Aₙf(x) → m(I_w) =
+     10⁻ℓ for a.e. x. There are countably many blocks (and bases), so a.e.
+     x is (absolutely) normal. Explicit examples are harder: Champernowne
+     0.123456789101112... is normal in base 10. (b) 2ⁿ has leading digit
+     d ⇔ d·10ʲ ≤ 2ⁿ < (d + 1)10ʲ ⇔ {n log₁₀ 2} ∈ [log₁₀ d, log₁₀(d + 1)).
+     Since log₁₀ 2 ∉ Q (2ⁿ = 10ᵐ is impossible), R_{log₁₀2} is UNIQUELY
+     ergodic, so the orbit of the SPECIFIC point 0 is equidistributed
+     (Weyl) — an a.e. statement would not suffice. Frequency log₁₀((d +
+     1)/d): d = 1: 0.30103; d = 7: log₁₀(8/7) ≈ 0.05799 (first at 2⁴⁶ =
+     70368744177664). Powers 2¹..2¹⁰: 2, 4, 8, 16, 32, 64, 128, 256, 512,
+     1024: three 1's in ten (and 301 in the first 1000). (c) The Gauss map
+     is ergodic for μ (it is even exact/mixing), aₙ(x) = a₁(Gⁿ⁻¹x), and
+     a₁ = k ⇔ x ∈ (1/(k + 1), 1/k]. Birkhoff gives frequency μ(1/(k + 1),
+     1/k] = log₂((1 + 1/k)/(1 + 1/(k + 1))) = log₂(1 + 1/(k(k + 2))).
+     k = 1: log₂(4/3), k = 2: log₂(9/8), k = 3: log₂(16/15). Applying
+     Birkhoff to ln a₁ (in L¹(μ)) gives KHINCHIN's constant (a₁...aₙ)^(1/n)
+     → 2.68545...; for −ln x one gets LÉVY's (1/n) ln qₙ → π²/(12 ln 2) ≈
+     1.18657. (d) FURSTENBERG: if μ(A) > 0 and k ≥ 1, there is n ≥ 1 with
+     μ(A ∩ T⁻ⁿA ∩ T⁻²ⁿA ∩ ... ∩ T⁻ᵏⁿA) > 0. Via the CORRESPONDENCE
+     PRINCIPLE (a set E ⊆ Z of positive upper density yields a system and
+     a set A with μ(A) = d̄(E)), this gives SZEMERÉDI's theorem: E contains
+     arithmetic progressions of every length. (k = 1 is Poincaré
+     recurrence.) Common mistakes: applying Birkhoff to a specific point
+     such as 0 or √2 (Birkhoff says nothing about a given x; unique
+     ergodicity does); taking Lebesgue measure for the Gauss map. Now you
+     try: frequency with which 2ⁿ begins with the digits 10. (log₁₀(11/10)
+     ≈ 0.04139)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Does T preserve μ? (Y/N; where asked, compute the number.)
+    a) x ↦ 2x mod 1, Lebesgue           b) x ↦ x² on [0, 1], Lebesgue
+    c) x ↦ 1 − x on [0, 1], Lebesgue     d) tent map 1 − |2x − 1|, Lebesgue
+    e) x ↦ 2x mod 1, δ₀                  f) x ↦ 2x mod 1, δ_{1/3}
+    g) x ↦ 2x mod 1, ½(δ_{1/3} + δ_{2/3})
+    h) x ↦ 4x(1 − x), Lebesgue: compute m(T⁻¹[0, ¾))
+    i) x ↦ 4x(1 − x), density 1/(π√(x(1 − x)))
+    j) Gauss map, Lebesgue                k) Gauss map, Gauss measure
+    l) x ↦ x + α mod 1, Lebesgue          m) (x, y) ↦ (x + y, y) on T²
+    n) (x, y) ↦ (2x, y) on T², Haar       o) x ↦ x/2 on [0, 1], δ₀
+    p) x ↦ x/2 on [0, 1], Lebesgue        q) shift σ, product measure
+                                             (p, 1 − p)^N
+    r) x ↦ x², Lebesgue: m(T⁻¹[0, ½))    s) Gauss map: μ(G⁻¹[0, ½)) for
+                                             the Gauss measure μ
+    t) Boole's map x ↦ x − 1/x on R, Lebesgue (infinite) measure
+    Answers:
+      a) Y     b) N (m(T⁻¹[0, t)) = √t)     c) Y     d) Y     e) Y
+      f) N (T⁻¹{1/3} = {1/6, 2/3} ∌ 1/3)  g) Y
+      h) N: 1 − √(1 − ¾) = ½ ≠ ¾           i) Y     j) N (D1 d))
+      k) Y     l) Y     m) Y (det 1)     n) Y (every preimage is two
+         strips of half the area)          o) Y     p) N (m(T⁻¹[0, ½))
+         = 1)  q) Y     r) √½ ≈ 0.70711     s) log₂(3/2) ≈ 0.58496
+      t) Y (each preimage of an interval has two pieces of total length
+         equal to its length)
+
+M2. Recurrence and Kac's lemma (T ergodic unless stated): mean return time
+    to A, or the quantity asked.
+    a) doubling map, A = [0, ⅛)         b) doubling map, A = [¼, ½)
+    c) doubling map, A = [0, ⅓)         d) R_{1/5}, A = [0, 1/5): the
+                                           return time of each point
+    e) Rα (α ∉ Q), m(A) = 0.1           f) Markov chain of D7, state 0
+    g) Markov chain of D7, state 1      h) B(⅓, ⅔), p(1) = ⅔: cylinder [1]
+    i) B(⅓, ⅔): cylinder [11]           j) B(½, ½): cylinder [01]
+    k) doubling map, A = [0, ½): P(r_A = 3 | A)
+    l) cat map, A a disc of area 0.01   m) Gauss map, A = {a₁ = 1}
+    n) R_{√2−1}, x = 0: the least n ≥ 1 with Rⁿ0 ∈ [0, 0.1)
+    o) x ↦ x + 1 on R, A = [0, 1): does recurrence hold?
+    p) x ↦ x² on [0, 1], A = [¼, ½]: do points return? Why no
+       contradiction with Poincaré?
+    Answers:
+      a) 8     b) 4     c) 3     d) 5 (for every point)     e) 10
+      f) 3/2   g) 3     h) 3/2   i) 9/4   j) 4     k) 1/8
+      l) 100   m) 1/log₂(4/3) ≈ 2.40942    n) 5 (5α ≈ 0.07107)
+      o) no (infinite measure)
+      p) no point returns; Lebesgue measure is not invariant (and the
+         invariant measures δ₀, δ₁ give A measure 0)
+
+M3. Ergodic? weakly mixing? mixing? (answer three Y/N)
+    a) R_{√2}                            b) R_{3/7}
+    c) x ↦ 2x mod 1                      d) Bernoulli B(⅓, ⅔)
+    e) Markov P = (0 1; 1 0), π = (½, ½) f) Markov P = I, π = (½, ½)
+    g) Markov P = (0.9 0.1; 0.2 0.8)     h) the cat map (2 1; 1 1)
+    i) (1 1; 0 1) on T²                  j) (x, y) ↦ (x + α, y + β), 1, α, β
+                                            rationally independent
+    k) (x, y) ↦ (x + √2, y + √8)         l) (x, y) ↦ (x + α, y + x), α ∉ Q
+    m) T × T, T the doubling map          n) Rα × Rα, α ∉ Q
+    o) tent map                           p) Gauss map with Gauss measure
+    q) identity on [0, 1], Lebesgue      r) x ↦ −x mod 1
+    s) Chacón's transformation           t) x ↦ 2x mod 1 with δ₀
+    Answers:
+      a) Y N N    b) N N N    c) Y Y Y    d) Y Y Y    e) Y N N
+      f) N N N    g) Y Y Y    h) Y Y Y    i) N N N (f(x, y) = e^{2πiy}
+         is invariant)          j) Y N N    k) N N N (√8 = 2√2:
+         e^{2πi(2x − y)} is invariant)      l) Y N N (e^{2πix} is an
+         eigenfunction)         m) Y Y Y    n) N N N (e^{2πi(x − y)})
+      o) Y Y Y    p) Y Y Y    q) N N N    r) N N N
+      s) Y Y N    t) Y Y Y (a Dirac measure at a fixed point: all sets
+         have measure 0 or 1)
+
+M4. Birkhoff averages: find lim (1/n)∑_{k<n} f(Tᵏx).
+    a) Rα (α ∉ Q), f = cos 2πx, any x   b) Rα (α ∉ Q), f = 𝟙_[0,⅓), any x
+    c) Rα (α ∉ Q), f = x², x = 0        d) R_{1/3}, f = 𝟙_[0,½), x = 0
+    e) R_{1/3}, f = x, x = 0.1           f) R_{1/2}, f = x, x = 0.3
+    g) doubling, f = x, a.e. x           h) doubling, f = x², x = 1/3
+    i) doubling, f = x, x = 1/7          j) doubling, f = 𝟙_[0,½), x = 1/7
+    k) doubling, f = x, x = 0            l) doubling, f = sin²(2πx), a.e. x
+    m) Gauss, f = x, a.e. x              n) Gauss, f = 𝟙{a₁ = 1}, a.e. x
+    o) Gauss, f = 𝟙{a₁ = 1}, x = √2 − 1 p) Gauss, f = x, x = (√5 − 1)/2
+    q) Gauss, f = ln a₁, a.e. x          r) cat map, f = cos 2πx · cos 2πy,
+                                            a.e. (x, y)
+    s) Markov chain of D7, fraction of time in state 1, a.e. path
+    t) same chain: frequency of the transition 0 → 1
+    u) x ↦ x² on [0, 1], f = x, x = 0.9
+    Answers:
+      a) 0       b) ⅓       c) ⅓       d) ⅔ (orbit 0, ⅓, ⅔)
+      e) 13/30 ≈ 0.43333 (orbit 0.1, 0.4333, 0.7667)
+      f) 0.55 (= x + ¼: the conditional expectation)     g) ½
+      h) 5/18 (orbit ⅓, ⅔)       i) ⅓ (orbit 1/7, 2/7, 4/7)
+      j) ⅔       k) 0       l) ½
+      m) 1/ln 2 − 1 ≈ 0.44270    n) log₂(4/3) ≈ 0.41504
+      o) 0 (√2 − 1 = [0; 2, 2, 2, ...]: an exceptional point)
+      p) (√5 − 1)/2 ≈ 0.61803 (a fixed point of G)
+      q) ln 2.68545 ≈ 0.98785 (Khinchin)             r) 0
+      s) ⅓       t) π₀P₀₁ = 1/15       u) 0
+
+M5. Correlations μ(T⁻ⁿA ∩ B); compare with μ(A)μ(B).
+    a) doubling, A = B = [0, ½), n = 1
+    b) doubling, A = [0, ½), B = [½, 1), n = 1
+    c) doubling, A = B = [0, ¼), n = 1    d) same, n = 2
+    e) doubling, A = B = [0, ⅓), n = 1, 2, 3, 5 and the limit
+    f) R_{0.3}, A = B = [0, ½), n = 1, 2
+    g) Markov chain of D7, A = B = [1], n = 1, 2 and the limit
+    h) B(⅓, ⅔), p(0) = ⅓: A = B = [0], n = 1; A = B = [00], n = 1
+    i) Markov P = (0 1; 1 0): A = B = [0], n odd / n even
+    j) cat map: ⟨χₘ∘Tⁿ, χₘ⟩ for m = (1, 0), n ≥ 1
+    k) Rα: ⟨f∘Rαⁿ, f⟩ for f = e^{2πix}
+    l) Rα (α ∉ Q), A = [0, ½): Cesàro limit of μ(R⁻ⁿA ∩ A)
+    m) same: Cesàro limit of |μ(R⁻ⁿA ∩ A) − ¼|
+    n) R_{1/2}, A = B = [0, ½): Cesàro limit; does this prove ergodicity?
+    Answers:
+      a) ¼ = ¼     b) ¼ = ¼     c) 1/8 vs 1/16     d) 1/16 = 1/16
+      e) 1/6, 1/6, 1/8, 11/96 ≈ 0.11458; limit 1/9 (mixing)
+      f) 0.2, 0.1 (= ½ − ‖0.3n‖)
+      g) (1/3)(0.8) ≈ 0.26667, (1/3)(0.66) = 0.22; limit 1/9
+         (π₁(Pⁿ)₁₁ = (1/3)(1/3 + (2/3)0.7ⁿ))
+      h) 1/9 = 1/9; μ[000] = 1/27 vs 1/81 (overlapping cylinders)
+      i) 0 / ½ (never converges to ¼)
+      j) 0 (orbit of (1, 0) under Aᵗ never returns)
+      k) e^{2πinα}, of modulus 1 for all n: not weakly mixing
+      l) ¼       m) 1/8
+      n) ¼ (values ½, 0, ½, 0, ...); NO: ergodicity needs all pairs,
+         and A = [0, ¼) ∪ [½, ¾) is invariant of measure ½
+
+M6. Shifts and Markov chains.
+    a) full 2-shift: #Fix(σ³)          b) full 3-shift: points of least
+                                           period 2
+    c) full 2-shift: points of least period 4; number of such orbits
+    d) full 2-shift: orbits of least period 5
+    e) golden mean shift (no "11"): admissible words of length 5
+    f) golden mean shift: #Fix(σ⁶)      g) its topological entropy
+    h) Parry measure for the golden mean shift: P and π
+    i) Markov P = (½ ½; 1 0): π and entropy
+    j) P = (0.9 0.1; 0.2 0.8): μ[0110]
+    k) P = (0 1 0; 0 0 1; 1 0 0): π; ergodic? mixing?
+    l) P = (0 1; ½ ½): π; mixing?
+    m) P = (½ ½ 0; ½ ½ 0; 0 0 1): the stationary vectors; ergodic ones
+    n) B(½, ½): μ[0110];  B(⅓, ⅔) with p(0) = ⅓: μ[0110]
+    Answers:
+      a) 8       b) 9 − 3 = 6       c) 16 − 4 = 12; 3 orbits
+      d) (32 − 2)/5 = 6            e) F₇ = 13
+      f) tr M⁶ = L₆ = 18           g) ln φ ≈ 0.48121
+      h) P = (1/φ 1/φ²; 1 0), π = (φ², 1)/(φ² + 1) ≈ (0.72361, 0.27639);
+         its entropy is ln φ (maximal)
+      i) π = (⅔, ⅓), h = ⅔ ln 2 ≈ 0.46210 < ln φ
+      j) (⅔)(0.1)(0.8)(0.2) = 4/375 ≈ 0.01067
+      k) (⅓, ⅓, ⅓); ergodic Y (irreducible), mixing N (period 3)
+      l) (⅓, ⅔); Y (irreducible, P₁₁ > 0 so aperiodic)
+      m) t(½, ½, 0) + (1 − t)(0, 0, 1); ergodic: t = 0 or 1
+      n) 1/16; (⅓)(⅔)(⅔)(⅓) = 4/81
+
+M7. Toral automorphisms and endomorphisms x ↦ Ax mod Zᵈ: ergodic (Y/N)
+    and entropy; periodic-point counts where asked.
+    a) (2 1; 1 1)                        b) (1 1; 1 0)
+    c) (1 1; 0 1)                        d) (0 1; −1 0)
+    e) (0 1; −1 1)                       f) (0 −1; 1 −1)
+    g) (3 1; 2 1)                        h) (−2 1; 1 −1)
+    i) (1 2; 1 1)                        j) diag(2, 3) (endomorphism)
+    k) (0 1 0; 0 0 1; 1 1 0) on T³ (characteristic polynomial λ³ − λ − 1)
+    l) (2 1; 1 1): #Fix(Tⁿ) for n = 4, 5
+    m) (1 1; 1 0): #Fix(Tⁿ) for n = 1, 2, 3, 4
+    n) (3 1; 2 1): #Fix(T), #Fix(T²); list the fixed points
+    o) entropy of T⁻¹ for (2 1; 1 1)
+    Answers:
+      a) Y, ln((3 + √5)/2) ≈ 0.96242    b) Y (det −1, tr ≠ 0), ln φ ≈
+         0.48121                         c) N (eigenvalue 1), 0
+      d) N (A⁴ = I), 0                   e) N (A⁶ = I: eigenvalues
+         e^{±iπ/3}), 0                    f) N (A³ = I), 0
+      g) Y, ln(2 + √3) ≈ 1.31696         h) Y (|tr| = 3 > 2), ≈ 0.96242
+      i) Y (eigenvalues 1 ± √2), ln(1 + √2) ≈ 0.88137
+      j) Y, ln 6 ≈ 1.79176
+      k) Y (real root ρ ≈ 1.32472, complex pair of modulus ≈ 0.86884; no
+         root of unity), h = ln ρ ≈ 0.28120
+      l) 45, 121 (λⁿ + λ⁻ⁿ − 2)          m) 1, 1, 4, 5 (|(−1)ⁿ − Lₙ + 1|)
+      n) 2 and 12; fixed points 0 and (½, 0) (A(½, 0) = (3/2, 1) ≡ (½, 0))
+      o) 0.96242 (h(T⁻¹) = h(T))
+
+M8. Kolmogorov-Sinai entropy (natural logarithms).
+    a) B(½, ½)             b) B(⅓, ⅓, ⅓)           c) B(¼, ¼, ½)
+    d) B(0.9, 0.1)         e) B(½, ⅛, ⅛, ⅛, ⅛)     f) x ↦ 3x mod 1
+    g) Rα                  h) the identity         i) Markov chain of D7
+    j) Markov (½ ½; 1 0)   k) Markov (0 1; 1 0)    l) doubling × tripling
+    m) T³, T the doubling map                      n) the cat map
+    o) tent map            p) logistic 4x(1 − x) with its arcsine measure
+    q) Gauss map (Rohlin: h = ∫ ln|G′| dμ)
+    r) x ↦ x² on [0, 1] with δ₀
+    s) which p maximises h(B(p, 1 − p))? Its value in bits?
+    t) T × T for T = B(⅓, ⅔)
+    Answers:
+      a) ln 2 ≈ 0.69315    b) ln 3 ≈ 1.09861    c) (3/2) ln 2 ≈ 1.03972
+      d) ≈ 0.32508         e) ln 4 ≈ 1.38629    f) ln 3
+      g) 0                 h) 0                 i) ≈ 0.38352
+      j) ⅔ ln 2 ≈ 0.46210  k) 0                 l) ln 6 ≈ 1.79176
+      m) ln 8 ≈ 2.07944    n) ≈ 0.96242         o) ln 2
+      p) ln 2 (conjugate to the tent map)
+      q) π²/(6 ln 2) ≈ 2.37314 (|G′| = 1/x², ∫−2 ln x dμ = 2 · π²/(12 ln 2))
+      r) 0                 s) p = ½; 1 bit     t) 2 × 0.63651 ≈ 1.27303
+
+M9. Invariant and ergodic measures.
+    a) identity on {1, 2, 3}: M(T) and the ergodic measures
+    b) the cycle 1 → 2 → 3 → 1          c) the permutation (1 2)(3)
+    d) R_{1/4}: the ergodic measures    e) Rα, α ∉ Q
+    f) x ↦ x² on [0, 1]                  g) x ↦ x/2 on [0, 1]
+    h) four distinct ergodic measures of the doubling map
+    i) doubling map: ergodic measures on orbits of least period 3
+    j) x ↦ x + 1 on R                    k) x ↦ x/2 (x > 0), 0 ↦ 1
+    l) the invariant density of the Gauss map; of 4x(1 − x)
+    m) weak* limit of (1/n)∑δ_{Tᵏx}, doubling map, x = 1/5
+    n) the same for Rα, α ∉ Q, any x
+    o) is the doubling map uniquely ergodic?
+    p) is (x, y) ↦ (x + α, y + x) (α ∉ Q) uniquely ergodic?
+    q) is Rα × Rα uniquely ergodic?
+    Answers:
+      a) all probability vectors; δ₁, δ₂, δ₃
+      b) only (⅓, ⅓, ⅓)           c) t·½(δ₁ + δ₂) + (1 − t)δ₃; the two
+                                     extremes are ergodic
+      d) (1/4)∑_{j<4} δ_{x+j/4}, x ∈ [0, ¼)           e) Lebesgue only
+      f) aδ₀ + (1 − a)δ₁          g) δ₀ only
+      h) e.g. δ₀, ½(δ_{1/3} + δ_{2/3}), Lebesgue, the image of B(⅓, ⅔)
+         under binary expansion (all mutually singular)
+      i) two: uniform on {1/7, 2/7, 4/7} and on {3/7, 6/7, 5/7}
+      j) none (no invariant probability; Lebesgue is infinite)
+      k) none (T is not continuous: D9 d))
+      l) 1/((1 + x) ln 2); 1/(π√(x(1 − x)))
+      m) ¼(δ_{1/5} + δ_{2/5} + δ_{4/5} + δ_{3/5})       n) Lebesgue
+      o) no              p) yes (Furstenberg)
+      q) no (each circle y − x = c carries an invariant measure)
+
+M10. Number theory: give the frequency (limit density) asked.
+     a) digit 7 in the decimal expansion of a.e. x
+     b) block "12" in base 10, a.e. x     c) block "101" in base 2, a.e. x
+     d) leading digit 1 of 2ⁿ             e) leading digit 9 of 2ⁿ
+     f) leading digit 2 of 3ⁿ             g) leading digit 1 of 10ⁿ
+     h) leading digits 99 of 2ⁿ           i) leading base-3 digit 1 of 2ⁿ
+     j) n with {n√2} < ¼                  k) n with {n²√2} < ⅓
+     l) n with {n/3} < ½                  m) aₖ = 1, a.e. x
+     n) aₖ = 4, a.e. x                    o) aₖ ≥ 2, a.e. x
+     p) aₖ = 1 for x = √2
+     q) lim (a₁...aₙ)^(1/n) and lim qₙ^(1/n), a.e. x
+     r) lim (a₁ + ... + aₙ)/n, a.e. x
+     Answers:
+       a) 1/10     b) 1/100    c) 1/8      d) log₁₀ 2 ≈ 0.30103
+       e) log₁₀(10/9) ≈ 0.04576            f) log₁₀(3/2) ≈ 0.17609
+       g) 1 (log₁₀ 10 ∈ Q: no equidistribution)
+       h) log₁₀(100/99) ≈ 0.00436          i) log₃ 2 ≈ 0.63093
+       j) ¼        k) ⅓ (Weyl, via skew products)
+       l) ⅔ ({n/3} ∈ {0, ⅓, ⅔})            m) log₂(4/3) ≈ 0.41504
+       n) log₂(25/24) ≈ 0.05889            o) log₂(3/2) ≈ 0.58496
+       p) 0 (√2 = [1; 2, 2, 2, ...])
+       q) 2.68545 (Khinchin); e^{π²/(12 ln 2)} ≈ 3.27582 (Lévy)
+       r) ∞ (a₁ ∉ L¹(μ): ∑k log₂(1 + 1/(k(k + 2))) diverges)
+
+M11. Isomorphic? (Y/N and the reason; Bernoulli shifts two-sided unless
+     stated.)
+     a) B(½, ½) and B(⅓, ⅓, ⅓)            b) B(¼, ¼, ¼, ¼), B(½, ⅛, ⅛, ⅛, ⅛)
+     c) B(½, ½) and B(¼, ¼, ¼, ¼)         d) B(½, ½) × B(½, ½), B(¼, ¼, ¼, ¼)
+     e) B(⅓, ⅔) and B(⅔, ⅓)               f) Rα and R₋α
+     g) Rα and R₂α (α ∉ Q)                h) R_{√2} and R_{√2+1}
+     i) cat map and B(p) with H(p) = ln φ²  j) cat map and B(½, ½)
+     k) doubling map and tent map          l) doubling map and x ↦ 3x
+     m) Rα and the doubling map            n) Rα and Rα × Rα
+     o) one-sided B(½, ½) and two-sided B(½, ½)
+     p) golden mean Markov shift (Parry measure) and B(p), H(p) = ln φ
+     q) doubling map and 4x(1 − x) with the arcsine measure
+     r) Markov (0 1; 1 0) and R_{1/2} restricted to the orbit {0, ½}
+     Answers:
+       a) N (ln 2 ≠ ln 3)      b) Y (Ornstein, both ln 4)
+       c) N (ln 2 ≠ ln 4)      d) Y (the product is B(¼, ¼, ¼, ¼))
+       e) Y (relabel symbols)  f) Y (x ↦ −x)
+       g) N (eigenvalue groups differ)     h) Y (same rotation mod 1)
+       i) Y (hyperbolic toral automorphisms are Bernoulli)
+       j) N (0.96242 ≠ 0.69315)            k) Y (both one-sided B(½, ½))
+       l) N (ln 2 ≠ ln 3)      m) N (entropy 0 vs ln 2; mixing)
+       n) N (Rα × Rα is not ergodic)       o) N (invertible vs 2-to-1)
+       p) Y (mixing Markov shifts are Bernoulli; Ornstein)
+       q) Y (conjugate to the tent map by x = sin²(πy/2))
+       r) Y (both are the cyclic permutation of two points)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every m.p. map of a probability space is recurrent (Poincaré).
+     b) Poincaré recurrence holds for infinite invariant measures.
+     c) Every ergodic system is mixing.
+     d) Mixing implies ergodic.
+     e) T ergodic ⇒ T² ergodic.
+     f) T weakly mixing ⇒ T² and T × T are ergodic.
+     g) T ergodic ⇒ T × T ergodic.
+     h) Every continuous map of a compact metric space has an invariant
+        Borel probability measure.
+     i) The Birkhoff averages of f ∈ L¹ converge at every point.
+     j) If T is uniquely ergodic, Aₙf → ∫f uniformly for continuous f.
+     k) For Rα (α ∉ Q), Aₙ𝟙_A(x) → m(A) for every x and every Borel A.
+     l) Spectrally isomorphic systems are isomorphic.
+     m) Positive entropy implies ergodic.
+     n) An irrational rotation is weakly mixing.
+     o) Every A ∈ SL(2, Z) with |tr A| > 2 gives a mixing automorphism.
+     p) The Gauss map preserves Lebesgue measure.
+     q) Two distinct ergodic invariant measures are mutually singular.
+     r) h(T × T) = h(T)².
+     s) Entropy is an isomorphism invariant.
+     t) An ergodic measure-preserving map on a finite set is a cyclic
+        permutation of the support of μ.
+     Answers:
+       a) T              b) F: x ↦ x + 1 on R
+       c) F: Rα, α ∉ Q   d) T
+       e) F: the swap of two points (T² = identity)
+       f) T              g) F: Rα (e^{2πi(x−y)} is T × T-invariant)
+       h) T (Krylov-Bogolyubov)
+       i) F: doubling map, f = 𝟙_[0,½), x with binary digits in blocks
+          of 0's and 1's of lengths 1!, 2!, 3!, ...: Aₙf(x) oscillates
+       j) T              k) F: A = the orbit of x (measure 0, Aₙ𝟙_A = 1)
+       l) F: B(½, ½) and B(⅓, ⅓, ⅓)
+       m) F: the doubling map on two disjoint copies of [0, 1)
+       n) F: e^{2πix} is an eigenfunction      o) T
+       p) F: D1 d)       q) T (Birkhoff)
+       r) F: h(T × T) = 2h(T) (doubling: 2 ln 2, not (ln 2)²)
+       s) T              t) T
+
+TEACHING TIPS
+  Struggling: begin every problem by drawing the map (graph of 2x mod 1,
+  the rotation as a clock hand, the cat map stretching a square) and by
+  asking three questions in order: "which measure is preserved?" (always
+  test PREIMAGES of intervals or cylinders), "what are the invariant
+  functions?" (use Fourier series for rotations, doubling and toral maps,
+  and look for finite orbits of frequencies) and "do correlations decay?"
+  (compute μ(T⁻ⁿA ∩ B) for dyadic sets or cylinders, where the answer is
+  exact). Keep the three model examples in mind: rotation (ergodic, zero
+  entropy, not mixing), doubling map/Bernoulli shift (mixing, entropy
+  ln 2), and x ↦ x² (no interesting invariant measure). Stress that
+  Birkhoff is an a.e. statement and that unique ergodicity is what lets
+  us talk about SPECIFIC orbits (Weyl, Benford). Harder: prove Kac's
+  lemma and the ergodic decomposition; show that weak mixing is
+  equivalent to the absence of non-constant eigenfunctions and to
+  ergodicity of T × T; prove Weyl's polynomial equidistribution via
+  Furstenberg's skew products and van der Corput; prove the
+  Kolmogorov-Sinai theorem and Rohlin's formula for the Gauss map;
+  compute the entropy of a hyperbolic toral automorphism with Markov
+  partitions; study Ornstein's theory and the Halmos-von Neumann
+  theorem; and read Furstenberg's proof of Szemerédi's theorem via the
+  correspondence principle and multiple recurrence.
+
+
