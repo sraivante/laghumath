@@ -9706,3 +9706,3183 @@ TEACHING TIPS
   de Finetti's theorem.
 
 
+================================================================================
+TOPIC 12.13 — PARTIAL DIFFERENTIAL EQUATIONS (GRADUATE): SOBOLEV SPACES,
+ELLIPTIC REGULARITY, WEAK SOLUTIONS, PARABOLIC AND HYPERBOLIC EQUATIONS,
+VARIATIONAL METHODS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - WEAK DERIVATIVES: for u, v ∈ L¹_loc(Ω), v = ∂ᵅu weakly if ∫u ∂ᵅφ =
+    (−1)^|α| ∫vφ for every φ ∈ C_c^∞(Ω). Weak derivatives are unique a.e.
+    and agree with classical ones for C^|α| functions. Examples: |x|′ =
+    sgn x on (−1, 1); the Heaviside function H has NO weak derivative (its
+    distributional derivative is δ ∉ L¹_loc). In one variable u ∈ W^{1,1}
+    iff u agrees a.e. with an absolutely continuous function (so the
+    Cantor function is not weakly differentiable).
+  - SOBOLEV SPACES: W^{k,p}(Ω) = {u ∈ Lᵖ : ∂ᵅu ∈ Lᵖ for |α| ≤ k}, norm
+    ‖u‖ = (∑_{|α|≤k} ‖∂ᵅu‖ₚᵖ)^{1/p}; a Banach space, reflexive for 1 < p
+    < ∞, and Hᵏ = W^{k,2} is a Hilbert space. MEYERS-SERRIN: C^∞ ∩ W^{k,p}
+    is dense in W^{k,p}(Ω) (1 ≤ p < ∞). W₀^{k,p}(Ω) = closure of C_c^∞(Ω);
+    W₀^{k,p}(Rⁿ) = W^{k,p}(Rⁿ) but H₀¹(Ω) ≠ H¹(Ω) for bounded Ω.
+  - POWER-FUNCTION TEST on the unit ball B ⊂ Rⁿ: |x|^(−a) ∈ Lᵖ(B) iff ap <
+    n, and ∈ W^{1,p}(B) iff (a + 1)p < n. ln ln(4/|x|) ∈ W^{1,n}(B) is
+    UNBOUNDED for n ≥ 2 (W^{1,n} ⊄ L^∞).
+  - SOBOLEV EMBEDDINGS: (i) p < n: GAGLIARDO-NIRENBERG-SOBOLEV ‖u‖_{p*} ≤
+    C‖∇u‖ₚ on W^{1,p}(Rⁿ), p* = np/(n − p) (forced by scaling u(λx));
+    (ii) p = n: W^{1,n} ⊂ L^q for all q < ∞; (iii) p > n: MORREY W^{1,p} ⊂
+    C^{0,γ}, γ = 1 − n/p. Iterating: W^{k,p} ⊂ L^q with 1/q = 1/p − k/n
+    if kp < n, and Hᵏ(Rⁿ) ⊂ C⁰ if k > n/2. On bounded Lipschitz Ω the same
+    holds, and RELLICH-KONDRACHOV makes W^{1,p} ⊂ L^q COMPACT for q < p*
+    (not at q = p*, and never on all of Rⁿ: translations).
+  - TRACES AND POINCARÉ: for bounded C¹ (or Lipschitz) Ω the TRACE map T :
+    W^{1,p}(Ω) → Lᵖ(∂Ω) is bounded, Tu = u|∂Ω for continuous u, and ker T
+    = W₀^{1,p}(Ω). POINCARÉ: ‖u‖ₚ ≤ C‖∇u‖ₚ on W₀^{1,p}(Ω), Ω bounded; on
+    (0, L) with p = 2 the best constant is L/π. Poincaré-Wirtinger: ‖u −
+    ū‖ₚ ≤ C‖∇u‖ₚ on W^{1,p}(Ω), Ω connected Lipschitz.
+  - FRACTIONAL SPACES VIA FOURIER: Hˢ(Rⁿ) = {u : (1 + |ξ|²)^{s/2}û ∈ L²},
+    ‖u‖²_{Hˢ} = (2π)⁻ⁿ∫(1 + |ξ|²)ˢ|û|² dξ. Hˢ ⊂ C_b for s > n/2; δ ∈ Hˢ iff
+    s < −n/2; 𝟙_[−1,1] ∈ Hˢ(R) iff s < 1/2. H⁻¹(Ω) = (H₀¹(Ω))′.
+  - WEAK SOLUTIONS OF ELLIPTIC PROBLEMS: for Lu = −∂ᵢ(aᵢⱼ∂ⱼu) + bᵢ∂ᵢu +
+    cu, UNIFORMLY ELLIPTIC (aᵢⱼξᵢξⱼ ≥ θ|ξ|², θ > 0) with bounded
+    coefficients, u ∈ H₀¹(Ω) is a weak solution of Lu = f, u = 0 on ∂Ω,
+    if B[u, v] = ∫(aᵢⱼ∂ⱼu∂ᵢv + bᵢ∂ᵢu v + cuv) = ⟨f, v⟩ for all v ∈
+    H₀¹. Neumann conditions are NATURAL (built into the form on H¹);
+    Dirichlet conditions are ESSENTIAL (built into the space).
+  - LAX-MILGRAM: B bounded (|B[u, v]| ≤ M‖u‖‖v‖) and COERCIVE (B[u, u] ≥
+    α‖u‖²) on a Hilbert space H ⇒ for every f ∈ H′ a unique u with B[u, v]
+    = f(v) ∀v, and ‖u‖ ≤ ‖f‖/α. Symmetry is NOT needed (symmetric case =
+    Riesz). GÅRDING: B[u, u] ≥ (θ/2)‖∇u‖² − γ‖u‖², so B + γ is coercive.
+  - FREDHOLM ALTERNATIVE AND SPECTRUM: since H₀¹ ⊂ L² is compact, either
+    Lu = f has a unique weak solution for every f, or Lu = 0 has non-zero
+    solutions, and then Lu = f is solvable iff f ⊥ ker L* (finite-
+    dimensional). The Dirichlet Laplacian has eigenvalues 0 < λ₁ < λ₂ ≤
+    ... → ∞ with an L²-orthonormal basis of eigenfunctions; λ₁ = min ∫|∇u|²
+    /∫u² (RAYLEIGH), simple, eigenfunction of one sign. On (0, L): λₖ =
+    (kπ/L)²; on the square (0, π)²: m² + n².
+  - ELLIPTIC REGULARITY: interior: aᵢⱼ ∈ C¹, f ∈ L² ⇒ u ∈ H²_loc with
+    ‖u‖_{H²(V)} ≤ C(‖f‖_{L²} + ‖u‖_{L²}) (difference quotients); f ∈ Hᵏ,
+    aᵢⱼ ∈ C^{k+1} ⇒ u ∈ H^{k+2}_loc; smooth data ⇒ u ∈ C^∞. Up to the
+    boundary if ∂Ω ∈ C²: u ∈ H² ∩ H₀¹, ‖u‖_{H²} ≤ C‖f‖_{L²}. Other scales:
+    SCHAUDER f ∈ C^{0,α} ⇒ u ∈ C^{2,α}; CALDERÓN-ZYGMUND f ∈ Lᵖ ⇒ u ∈
+    W^{2,p} (1 < p < ∞). FAILURES: f ∈ C⁰ does not give u ∈ C²; at a
+    corner of angle ω the solution behaves like r^{π/ω} sin(πθ/ω), not in
+    H² when ω > π (L-shaped domain: r^{2/3}). WEYL: weakly harmonic ⇒
+    smooth.
+  - MAXIMUM PRINCIPLES: weak: Lu ≤ 0 (no zero-order term) in Ω ⇒ max_Ω̄ u
+    = max_∂Ω u; strong: an interior maximum forces u constant (Ω
+    connected); HOPF boundary lemma. Harmonic functions satisfy the MEAN
+    VALUE property. Comparison: −Δu = f with 0 ≤ f ≤ M sandwiches u.
+    Classification of au_xx + 2bu_xy + cu_yy: b² − ac < 0 ELLIPTIC, = 0
+    PARABOLIC, > 0 HYPERBOLIC.
+  - VARIATIONAL METHODS: a minimiser of E(u) = ∫F(x, u, ∇u) satisfies the
+    EULER-LAGRANGE equation −div(F_p) + F_u = 0 weakly (Dirichlet
+    principle: ∫½|∇u|² − fu ↦ −Δu = f; p-Laplacian; minimal surface).
+    DIRECT METHOD: coercive (E(u) ≥ α‖u‖^q − β) + weakly lower semi-
+    continuous (F convex in ∇u) on a reflexive space ⇒ minimiser exists.
+    Failures: non-convex integrands (Bolza ∫((u′)² − 1)² + u²: inf 0 not
+    attained) and non-coercive ones (Weierstrass ∫x²(u′)²). Critical
+    points that are not minima: MOUNTAIN PASS (Palais-Smale) for −Δu =
+    u³ in bounded Ω ⊂ R³ (subcritical: 3 < 2* − 1 = 5).
+  - PARABOLIC (HEAT) EQUATION: u_t − Δu = f. On Rⁿ, u = Φ(·, t) * g with
+    HEAT KERNEL Φ(x, t) = (4πt)^(−n/2) e^(−|x|²/(4t)), ∫Φ = 1: infinite
+    speed of propagation, instant C^∞ SMOOTHING, maximum principle on the
+    parabolic boundary. On a bounded domain: u = ∑ gₖ e^(−λₖt) wₖ and
+    ENERGY ESTIMATE d/dt ½‖u‖² = −‖∇u‖² ≤ −λ₁‖u‖², so ‖u(t)‖ ≤ e^(−λ₁t)
+    ‖g‖. WEAK SOLUTION: u ∈ L²(0, T; H₀¹), u′ ∈ L²(0, T; H⁻¹) (hence u ∈
+    C([0, T]; L²)), ⟨u′, v⟩ + B[u, v] = (f, v); built by GALERKIN
+    approximation + energy estimates + weak compactness. The BACKWARD heat
+    equation is ILL-POSED (Hadamard).
+  - HYPERBOLIC (WAVE) EQUATION: u_tt − c²Δu = 0. D'ALEMBERT (n = 1): u =
+    ½(g(x + ct) + g(x − ct)) + (1/(2c))∫_{x−ct}^{x+ct} h; KIRCHHOFF (n = 3),
+    POISSON (n = 2, by descent). ENERGY E(t) = ½∫(u_t² + c²|∇u|²) is
+    CONSERVED; FINITE SPEED: u(x₀, t₀) depends only on data in B(x₀, ct₀);
+    HUYGENS' principle (sharp fronts) in odd n ≥ 3, not in n = 2. No
+    smoothing: singularities travel along characteristics x ± ct = const.
+    Weak solution: u ∈ L²(0, T; H₀¹), u′ ∈ L²(0, T; L²), u″ ∈ L²(0, T;
+    H⁻¹), again by Galerkin.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Show that u(x) = |x| has weak derivative sgn x on (−1, 1).
+    (b) Show that the Heaviside function H = 𝟙_(0,1) on (−1, 1) has no
+    weak derivative. (c) For which p is u(x) = |x|^{1/2} in W^{1,p}(−1, 1)?
+    Answer: (a) integrate by parts on each half; (b) the derivative would
+    have to be δ; (c) 1 ≤ p < 2.
+    Teacher explains: (a) For φ ∈ C_c^∞(−1, 1), split the integral:
+       ∫₋₁¹ |x|φ′ dx = ∫₋₁⁰ (−x)φ′ + ∫₀¹ xφ′
+                     = [−xφ]₋₁⁰ + ∫₋₁⁰ φ + [xφ]₀¹ − ∫₀¹ φ
+                     = −∫₋₁¹ sgn(x) φ dx,
+    because the boundary terms vanish (φ(±1) = 0 and x = 0 at the joint).
+    That is exactly the definition ∫uφ′ = −∫vφ with v = sgn x ∈ L^∞, so
+    |x| ∈ W^{1,p}(−1, 1) for every p ≤ ∞. (b) Suppose v ∈ L¹_loc with
+    ∫Hφ′ = −∫vφ. The left side is ∫₀¹ φ′ = −φ(0). So ∫vφ = φ(0) for all
+    φ. Taking φ supported in (0, 1) or in (−1, 0) gives v = 0 a.e. there,
+    hence ∫vφ = 0 for every φ, contradicting φ(0) ≠ 0. The distributional
+    derivative δ is not a function. (c) The same splitting shows the weak
+    derivative is the classical one, v = ½ sgn(x)|x|^{−1/2} (the boundary
+    term |x|^{1/2}φ vanishes at 0). ∫|v|ᵖ = 2·2⁻ᵖ∫₀¹ x^{−p/2} dx < ∞ iff
+    p/2 < 1. So u ∈ W^{1,p} iff p < 2, although u is continuous. Common
+    mistakes: thinking "differentiable a.e." suffices (H′ = 0 a.e., but H
+    is not weakly differentiable; the Cantor function is the same trap);
+    forgetting to check the boundary term at the singular point. Now you
+    try: the weak derivative of max(x, 0) on (−1, 1). (H = 𝟙_(0,1))
+
+D2. Let B be the unit ball in Rⁿ and u(x) = |x|^(−a), a > 0. Prove that u
+    ∈ W^{1,p}(B) iff (a + 1)p < n. Decide whether |x|^(−1/2) ∈ H¹(B) for
+    n = 3, and show that w = ln ln(4/|x|) ∈ H¹(B) for n = 2 although w is
+    unbounded.
+    Answer: need ∫_B |x|^(−(a+1)p) < ∞; n = 3, a = ½: (3/2)·2 = 3 ⊀ 3, so
+    NOT in H¹; ∫|∇w|² = 2π∫₀¹ dr/(r ln²(4/r)) < ∞.
+    Teacher explains: Away from 0, u is smooth with ∇u = −a|x|^(−a−2)x, so
+    |∇u| = a|x|^(−a−1). In polar coordinates ∫_B |x|^(−β) dx = ωₙ₋₁∫₀¹
+    r^(n−1−β) dr is finite iff β < n. Hence |∇u| ∈ Lᵖ iff (a + 1)p < n,
+    and u ∈ Lᵖ iff ap < n (weaker). It remains to show the classical
+    gradient is the WEAK one. Cut out B_ε: for φ ∈ C_c^∞(B),
+       ∫_{B∖B_ε} u ∂ᵢφ = −∫_{B∖B_ε} ∂ᵢu φ − ∫_{∂B_ε} uφνᵢ dS,
+    and |∫_{∂B_ε} uφνᵢ| ≤ ‖φ‖_∞ ε^(−a)·ωₙ₋₁εⁿ⁻¹ → 0 since a < n − 1
+    (implied by (a + 1)p < n). Let ε → 0 (DCT, both integrands L¹). For n
+    = 3, a = ½, p = 2: (a + 1)p = 3 = n, borderline, so |∇u|² ~ r⁻³ and
+    ∫r⁻³r² dr = ∞: NOT in H¹. (|x|^(−1/4) is: 2.5 < 3.) For n = 2: ∇w =
+    −x/(|x|² ln(4/|x|)), so |∇w| = 1/(r ln(4/r)) and
+       ∫_B |∇w|² = 2π∫₀¹ dr/(r ln²(4/r)) = 2π[1/ln(4/r)]₀¹ = 2π/ln 4,
+    finite, and ∫w² < ∞ too; yet w(x) → ∞ as x → 0. So H¹ ⊄ L^∞ in R²:
+    the Morrey case needs p > n strictly. Common mistakes: forgetting the
+    boundary term (for a ≥ n − 1 it does not vanish); confusing the
+    conditions for u and ∇u. Now you try: for which a is |x|^(−a) ∈ H¹ of
+    the unit ball in R⁵? (a < 3/2)
+
+D3. (a) Use scaling to show that an inequality ‖u‖_{L^q(Rⁿ)} ≤ C‖∇u‖_{Lᵖ}
+    for all u ∈ C_c^∞(Rⁿ) can only hold if q = p* = np/(n − p). (b) State
+    the Sobolev, Morrey and Rellich-Kondrachov theorems and apply them to
+    H¹ and H² in dimension n = 3.
+    Answer: (a) scaling gives λ^{−n/q} = λ^{1−n/p}; (b) H¹(Ω) ⊂ L⁶,
+    compactly into L^q for q < 6; H² ⊂ C^{0,1/2}.
+    Teacher explains: (a) Put u_λ(x) = u(λx). Then ‖u_λ‖_q = λ^(−n/q)‖u‖_q
+    and ∇u_λ = λ(∇u)(λx), so ‖∇u_λ‖ₚ = λ^(1−n/p)‖∇u‖ₚ. The inequality for
+    u_λ reads λ^(−n/q)‖u‖_q ≤ Cλ^(1−n/p)‖∇u‖ₚ for all λ > 0; letting λ → 0
+    or ∞ gives a contradiction unless −n/q = 1 − n/p, i.e. 1/q = 1/p −
+    1/n, q = np/(n − p). (b) GNS: for 1 ≤ p < n, ‖u‖_{p*} ≤ C‖∇u‖ₚ on
+    W^{1,p}(Rⁿ); on bounded Lipschitz Ω, W^{1,p}(Ω) ⊂ L^q for q ≤ p*.
+    MORREY: p > n ⇒ |u(x) − u(y)| ≤ C|x − y|^{1−n/p}‖∇u‖ₚ, so W^{1,p} ⊂
+    C^{0,1−n/p}. RELLICH-KONDRACHOV: bounded sequences in W^{1,p}(Ω) have
+    subsequences converging in L^q for q < p* (Ω bounded Lipschitz). In n
+    = 3, p = 2: 2* = 6/1 = 6, so H¹(Ω) ⊂ L⁶(Ω), compact into L², L⁴,
+    L^{5.9} but NOT into L⁶ (concentrating bubbles u(λx) rescaled keep the
+    L⁶ norm). For H²: ∇u ∈ H¹ ⊂ L⁶, so u ∈ W^{1,6}, and 6 > 3 gives
+    Morrey exponent 1 − 3/6 = ½: H²(Ω) ⊂ C^{0,1/2}(Ω̄). Common mistakes:
+    applying GNS when p ≥ n (p* is then negative or infinite); claiming
+    compactness at the critical exponent or on unbounded domains. Now you
+    try: W^{2,2}(R⁵) ⊂ L^q for which q? (1/q = 1/2 − 2/5, q = 10)
+
+D4. Prove the Poincaré inequality ∫₀ᴸ u² ≤ (L/π)²∫₀ᴸ (u′)² for u ∈
+    H₀¹(0, L), show the constant is sharp, and check it on u = x(1 − x)
+    with L = 1. Why is there no such inequality on H¹(0, L)?
+    Answer: expand in sine series; equality for sin(πx/L); 1/30 ≤ (1/π²)
+    (1/3); constants violate it on H¹.
+    Teacher explains: The functions sₖ = √(2/L) sin(kπx/L), k ≥ 1, form an
+    orthonormal basis of L²(0, L), and so do the cosines √(2/L)cos(kπx/L)
+    (with 1/√L) — they are used for u′. For u ∈ H₀¹ write u = ∑aₖsₖ.
+    Integration by parts (valid because u(0) = u(L) = 0) gives the cosine
+    coefficients of u′ as (kπ/L)aₖ, so by Parseval
+       ∫(u′)² = ∑(kπ/L)²aₖ² ≥ (π/L)²∑aₖ² = (π/L)²∫u².
+    Equality iff aₖ = 0 for k ≥ 2, i.e. u = c sin(πx/L): sharp. This is
+    the statement λ₁ = (π/L)² for −u″ = λu, u(0) = u(L) = 0. Check: u =
+    x(1 − x): ∫u² = ∫(x² − 2x³ + x⁴) = 1/3 − 1/2 + 1/5 = 1/30, ∫(u′)² =
+    ∫(1 − 2x)² = 1/3, and 1/30 ≈ 0.0333 ≤ (1/π²)(1/3) ≈ 0.0338 ✓ (very
+    close, since x(1 − x) is nearly a multiple of sin πx). On H¹(0, L)
+    the constant u = 1 has u′ = 0 but ∫u² = L > 0, so no inequality; the
+    right replacement is Poincaré-Wirtinger ∫(u − ū)² ≤ (L/π)²∫(u′)²
+    (Neumann λ₁ = (π/L)²). Common mistakes: using the inequality without
+    zero boundary values; getting the constant as L/(2π) or L². Now you
+    try: the best constant C in ‖u‖₂ ≤ C‖u′‖₂ on H₀¹(0, 3). (3/π)
+
+D5. State the Lax-Milgram theorem and use it to prove that −u″ + u = f,
+    u(0) = u(1) = 0 has a unique weak solution u ∈ H₀¹(0, 1) for every f ∈
+    L²(0, 1) (indeed every f ∈ H⁻¹). Solve it explicitly for f = 1 and
+    compute u(½).
+    Answer: B[u, v] = ∫(u′v′ + uv) is the H¹ inner product;
+    u = 1 − cosh(x − ½)/cosh(½), u(½) = 1 − sech(½) ≈ 0.11318.
+    Teacher explains: WEAK FORM: multiply by v ∈ C_c^∞ (or H₀¹) and
+    integrate the u″ term by parts; the boundary term u′v vanishes because
+    v(0) = v(1) = 0:
+       B[u, v] := ∫₀¹ (u′v′ + uv) dx = ∫₀¹ fv dx =: F(v)   ∀v ∈ H₀¹.
+    Conversely a smooth weak solution is a classical one (integrate back).
+    LAX-MILGRAM: H Hilbert, B bilinear with |B[u, v]| ≤ M‖u‖‖v‖ and
+    B[u, u] ≥ α‖u‖², F ∈ H′ ⇒ there is exactly one u with B[u, v] = F(v)
+    for all v, and ‖u‖ ≤ ‖F‖/α. Here H = H₀¹ with the H¹ norm, B is the
+    inner product itself, so M = α = 1, and |F(v)| ≤ ‖f‖₂‖v‖₂ ≤ ‖f‖₂‖v‖_{H¹}
+    by Cauchy-Schwarz. So there is a unique weak solution with ‖u‖_{H¹} ≤
+    ‖f‖₂. (Since B is symmetric, this is just the Riesz representation
+    theorem; Lax-Milgram is needed when a first-order term makes B
+    non-symmetric.) For f = 1: the general solution of u″ = u − 1 is u = 1
+    + A cosh(x − ½) + C sinh(x − ½). Symmetry about ½ forces C = 0, and u(0)
+    = 0 gives A = −1/cosh(½). So
+       u(x) = 1 − cosh(x − ½)/cosh(½),  u(½) = 1 − 1/cosh(½) ≈ 0.11318.
+    Common mistakes: putting the boundary condition into F instead of into
+    the space; forgetting that coercivity must be in the FULL H¹ norm (here
+    automatic; for −u″ alone it needs Poincaré). Now you try: the weak
+    solution of −u″ = 1, u(0) = u(1) = 0, and its value at ½.
+    (x(1 − x)/2; 1/8)
+
+D6. Let Lu = −u″ + bu′ + cu on (0, 1) with constants b, c and Dirichlet
+    conditions. (a) For which c is the bilinear form coercive on H₀¹?
+    (b) Prove the Gårding inequality for Lu = −∂ᵢ(aᵢⱼ∂ⱼu) + bᵢ∂ᵢu + cu.
+    (c) Use the Fredholm alternative to decide when −u″ − π²u = f,
+    u(0) = u(1) = 0, is solvable; solve it for f = sin 2πx.
+    Answer: (a) c > −π² (any b); (b) B[u, u] ≥ (θ/2)‖∇u‖² − γ‖u‖²;
+    (c) iff ∫₀¹ f sin πx = 0; u = sin(2πx)/(3π²) + C sin πx.
+    Teacher explains: (a) B[u, v] = ∫(u′v′ + bu′v + cuv). For v = u the
+    middle term is b∫u′u = (b/2)[u²]₀¹ = 0. So B[u, u] = ∫(u′)² + c∫u².
+    If c ≥ 0 this is ≥ ∫(u′)². If −π² < c < 0, Poincaré ∫u² ≤ π⁻²∫(u′)²
+    gives B[u, u] ≥ (1 + c/π²)∫(u′)², and ∫(u′)² controls the H¹ norm
+    (again by Poincaré). If c ≤ −π², take u = sin πx: B[u, u] = (π² + c)/2
+    ≤ 0, not coercive. (b) Ellipticity gives ∫aᵢⱼ∂ⱼu∂ᵢu ≥ θ‖∇u‖². The
+    lower-order terms: |∫bᵢ∂ᵢu u| ≤ ‖b‖_∞‖∇u‖‖u‖ ≤ (θ/2)‖∇u‖² +
+    (‖b‖²_∞/(2θ))‖u‖² (Young), and |∫cu²| ≤ ‖c‖_∞‖u‖². So
+       B[u, u] ≥ (θ/2)‖∇u‖² − γ‖u‖²,   γ = ‖b‖²_∞/(2θ) + ‖c‖_∞,
+    and B + γ(·, ·) is coercive: L + γ is uniquely solvable (Lax-Milgram).
+    (c) Write L = L₀ − γ with L₀ invertible; L₀⁻¹ : L² → H₀¹ ⊂ L² is
+    COMPACT (Rellich), so the Fredholm alternative for I − γL₀⁻¹ applies.
+    Here ker L = span{sin πx} (π² is the first eigenvalue) and L is
+    symmetric, so −u″ − π²u = f is solvable iff ∫₀¹ f(x) sin πx dx = 0.
+    For f = sin 2πx the condition holds (orthogonality). Try u = A sin 2πx:
+    −u″ − π²u = (4π² − π²)A sin 2πx, so A = 1/(3π²), plus any C sin πx.
+    For f = 1: ∫ sin πx = 2/π ≠ 0, NO solution (resonance). Common
+    mistakes: thinking uniqueness fails ⇒ existence fails for every f;
+    forgetting that the kernel adds a free constant C. Now you try: is
+    −u″ − 4π²u = 1, u(0) = u(1) = 0 solvable? (yes: ∫₀¹ sin 2πx = 0)
+
+D7. (a) For u ∈ C_c^∞(Rⁿ) prove ∫|D²u|² = ∫(Δu)², and explain how the
+    difference-quotient method turns this into interior H² regularity for
+    weak solutions of −Δu = f ∈ L². (b) On the L-shaped (re-entrant
+    corner) domain show that u = r^{2/3} sin(2θ/3) is harmonic, vanishes
+    on the edges θ = 0 and θ = 3π/2, lies in H¹ near 0 but not in H².
+    Answer: (a) integrate by parts twice; (b) |D²u| ~ r^(−4/3) and
+    ∫r^(−8/3) r dr = ∞.
+    Teacher explains: (a) ∫(Δu)² = ∑ᵢ,ⱼ∫∂ᵢᵢu ∂ⱼⱼu. Move one ∂ᵢ from ∂ᵢᵢu
+    onto ∂ⱼⱼu and then one ∂ⱼ back (no boundary terms, compact support):
+       ∫∂ᵢᵢu ∂ⱼⱼu = −∫∂ᵢu ∂ᵢⱼⱼu = ∫∂ᵢⱼu ∂ᵢⱼu.
+    Summing: ∫(Δu)² = ∑∫(∂ᵢⱼu)² = ∫|D²u|². So ALL second derivatives are
+    controlled by the Laplacian alone. For a weak solution we cannot
+    differentiate twice, so we use DIFFERENCE QUOTIENTS Dₖʰu(x) = (u(x +
+    heₖ) − u(x))/h. Test the weak equation with v = −Dₖ⁻ʰ(ζ²Dₖʰu), ζ a
+    cut-off equal to 1 on V ⊂⊂ Ω; after "discrete integration by parts"
+    one gets ∫ζ²|∇Dₖʰu|² ≤ C(‖f‖² + ‖u‖²_{H¹}) uniformly in h. A uniform
+    bound on ‖Dₖʰ∇u‖_{L²(V)} implies ∂ₖ∇u ∈ L²(V) (weak compactness), so u
+    ∈ H²_loc with ‖u‖_{H²(V)} ≤ C(‖f‖₂ + ‖u‖₂). Iterating gives f ∈ Hᵏ ⇒
+    u ∈ H^{k+2}_loc, and f ∈ C^∞ ⇒ u ∈ C^∞ (Sobolev embedding). (b) In
+    polar coordinates Δ = ∂ᵣ² + r⁻¹∂ᵣ + r⁻²∂_θ², and for rᵅ sin(αθ):
+    (α(α − 1) + α − α²)r^{α−2} sin αθ = 0 ✓. With α = 2/3, sin(2θ/3) = 0 at
+    θ = 0 and θ = 3π/2 ✓. |∇u| ~ r^(−1/3): ∫r^(−2/3) r dr < ∞, so u ∈ H¹.
+    |D²u| ~ r^(−4/3): ∫r^(−8/3) r dr = ∫r^(−5/3) dr = ∞, so u ∉ H². Thus
+    −Δ(ζu) = f ∈ L² (ζ a cut-off; f vanishes near 0) with u ∉ H²: global H²
+    regularity FAILS without a smooth (or convex) boundary. In general rᵅ,
+    α = π/ω, is in H² iff α > 1 iff ω < π (convex corners are fine).
+    Common mistakes: claiming the interior argument works up to any
+    boundary; thinking f ∈ C⁰ gives u ∈ C² (false even in the interior: u
+    = (x² − y²)√(−ln r) has continuous Δu but u_xx → ∞). Now you try: for
+    the slit domain ω = 2π, which Hˢ contains r^{1/2} sin(θ/2) near 0?
+    (s < 3/2)
+
+D8. (a) Show that a minimiser of the Rayleigh quotient R(u) = ∫|∇u|²/∫u²
+    over H₀¹(Ω) ∖ {0} is a weak eigenfunction −Δu = λ₁u, and that it can be
+    taken non-negative. (b) Find all Dirichlet eigenvalues of (0, π)² and
+    the multiplicity of 50. (c) Bound λ₁ of the unit square with the trial
+    function u = xy(1 − x)(1 − y).
+    Answer: (a) differentiate R(u + εv) at ε = 0; |u| is also a minimiser;
+    (b) m² + n², m, n ≥ 1; 50 has multiplicity 3; (c) λ₁ ≤ 20 (exact
+    2π² ≈ 19.739).
+    Teacher explains: (a) The infimum λ₁ is attained: normalise ∫u² = 1,
+    a minimising sequence is bounded in H₀¹, so a subsequence converges
+    weakly in H₀¹ and STRONGLY in L² (Rellich), ∫u² = 1 survives, and ∫|∇u|²
+    is weakly lower semicontinuous. At the minimiser, for each v the
+    function ε ↦ R(u + εv) has a minimum at ε = 0, so
+       0 = d/dε R = (2∫∇u·∇v − 2λ₁∫uv)/∫u²,
+    i.e. ∫∇u·∇v = λ₁∫uv ∀v: the weak form of −Δu = λ₁u. Since |∇|u|| =
+    |∇u| a.e., R(|u|) = R(u), so |u| is a minimiser too, hence an
+    eigenfunction, and by the strong maximum principle (Harnack) |u| > 0
+    in Ω: the first eigenfunction does not change sign and λ₁ is simple.
+    (b) Separate: sin mx sin ny gives λ = m² + n². 50 = 1 + 49 = 49 + 1 =
+    25 + 25: (m, n) = (1, 7), (7, 1), (5, 5): multiplicity 3. The first
+    ones: 2, 5 (×2), 8, 10 (×2), 13 (×2). (c) u′ factors: ∫₀¹(1 − 2x)² dx =
+    1/3 and ∫₀¹ x²(1 − x)² dx = 1/30. So ∫|∇u|² = 2·(1/3)(1/30) = 1/45,
+    ∫u² = (1/30)² = 1/900, and R(u) = 900/45 = 20 ≥ λ₁ = 2π² ≈ 19.739 ✓:
+    any trial function gives an UPPER bound. Common mistakes: using trial
+    functions that do not vanish on the boundary (they are not in H₀¹ and
+    the bound is wrong); forgetting the multiplicity from swapping m, n.
+    Now you try: the Rayleigh quotient of 1 − r² on the unit disc, and
+    compare with λ₁ = j₀,₁² ≈ 5.7832. (6)
+
+D9. (a) Prove by the DIRECT METHOD that E(u) = ∫_Ω (½|∇u|² − fu) has a
+    minimiser on H₀¹(Ω) (Ω bounded, f ∈ L²), and that it is the weak
+    solution of −Δu = f. Compute min E for Ω = (0, 1), f = 1. (b) Show
+    that the Bolza functional J(u) = ∫₀¹ (((u′)² − 1)² + u²) dx on
+    W₀^{1,4}(0, 1) has infimum 0 but no minimiser. Which hypothesis of the
+    direct method fails?
+    Answer: (a) coercive + weakly l.s.c. + reflexive; min E = −1/24.
+    (b) sawtooth functions with slopes ±1; the integrand is not convex in
+    u′.
+    Teacher explains: (a) THREE STEPS. (1) Coercive: by Cauchy-Schwarz and
+    Poincaré (‖u‖₂ ≤ C_P‖∇u‖₂), ∫fu ≤ ‖f‖C_P‖∇u‖ ≤ ¼‖∇u‖² + C_P²‖f‖², so
+    E(u) ≥ ¼‖∇u‖² − C_P²‖f‖²: E is bounded below and minimising sequences
+    are bounded in H₀¹. (2) Compactness: H₀¹ is a Hilbert space, so a
+    bounded sequence has a weakly convergent subsequence uₖ ⇀ u. (3) Lower
+    semicontinuity: ‖∇u‖² ≤ lim inf ‖∇uₖ‖² (norms are weakly l.s.c.; more
+    generally ∫F(∇u) is weakly l.s.c. when F is CONVEX), and u ↦ ∫fu is a
+    continuous linear functional, so E(u) ≤ lim inf E(uₖ) = inf E: u is a
+    minimiser. EULER-LAGRANGE: 0 = d/dε E(u + εv)|₀ = ∫∇u·∇v − ∫fv for
+    all v, the weak form of −Δu = f (the Dirichlet principle). Strict
+    convexity gives uniqueness. For (0, 1), f = 1: u = x(1 − x)/2, ∫(u′)²
+    = ∫(½ − x)² = 1/12, ∫u = 1/12, so min E = 1/24 − 1/12 = −1/24. (Using
+    the equation, min E = −½∫fu in general.) (b) J ≥ 0. Let uₖ be the
+    sawtooth with slopes ±1 and 2k teeth of height 1/(2k): then (u′ₖ)² = 1
+    a.e. and |uₖ| ≤ 1/(2k), so J(uₖ) ≤ 1/(4k²) → 0: inf J = 0. If J(u) =
+    0 then u = 0 AND |u′| = 1 a.e., impossible. The minimising sequence is
+    bounded in W^{1,4} and uₖ ⇀ 0, but J(0) = 1 > 0 = lim J(uₖ): J is
+    NOT weakly l.s.c., because p ↦ (p² − 1)² is not convex (its convex
+    envelope is ((p² − 1)₊)², whose relaxed problem has minimiser 0).
+    Common mistakes: forgetting to check coercivity (Weierstrass: ∫₋₁¹
+    x²(u′)² with u(±1) = ±1 has inf 0, not attained); assuming weak limits
+    preserve nonlinear quantities. Now you try: minimise ∫₀¹ ((u′)² + u²)
+    with u(0) = 0, u(1) = 1. (u = sinh x/sinh 1, min = coth 1 ≈ 1.31304)
+
+D10. Solve u_t = u_xx on (0, π), u(0, t) = u(π, t) = 0, u(x, 0) = x(π − x)
+     by separation of variables and compute u(π/2, 1). Prove the energy
+     estimate ‖u(t)‖₂ ≤ e^(−t)‖u(0)‖₂ and deduce uniqueness. What is the
+     weak formulation, and why is the backward problem ill-posed?
+     Answer: u = ∑_{k odd} (8/(πk³)) e^(−k²t) sin kx; u(π/2, 1) ≈ 0.93679.
+     Teacher explains: Separation u = X(x)T(t) gives −X″ = λX, X(0) =
+     X(π) = 0, so X = sin kx, λ = k², and T = e^(−k²t). Expand the data:
+        bₖ = (2/π)∫₀^π x(π − x) sin kx dx = 4(1 − (−1)ᵏ)/(πk³),
+     i.e. 8/(πk³) for k odd and 0 for k even. So u(x, t) = ∑_{k odd}
+     8/(πk³) e^(−k²t) sin kx. At (π/2, 1): (8/π)(e⁻¹ − e⁻⁹/27 + e⁻²⁵/125 −
+     ...) ≈ 0.93680 − 0.00001 ≈ 0.93679. The factors e^(−k²t) kill high
+     modes: u(·, t) is C^∞ (even analytic) for every t > 0 — SMOOTHING.
+     ENERGY: multiply by u and integrate: d/dt ½∫u² = ∫u u_xx = −∫u_x²
+     (boundary terms vanish) ≤ −∫u² by Poincaré on (0, π) (λ₁ = 1). So
+     d/dt ‖u‖² ≤ −2‖u‖², ‖u(t)‖ ≤ e^(−t)‖u(0)‖. If u, w solve the same
+     problem, u − w has zero data, so ‖u − w‖ ≡ 0: uniqueness. WEAK FORM:
+     u ∈ L²(0, T; H₀¹), u′ ∈ L²(0, T; H⁻¹), ⟨u′, v⟩ + ∫u_x v_x = ⟨f, v⟩ for
+     all v ∈ H₀¹ and a.e. t, u(0) = g; Galerkin approximations uₘ =
+     ∑_{k≤m} dₖ(t) sin kx satisfy the same energy estimates uniformly in m,
+     and a weak limit is the solution. BACKWARD: for u_t = −u_xx take
+     uₙ = n⁻¹ e^(n²t) sin nx: data ‖uₙ(0)‖_∞ = 1/n → 0 but at t = 1 the
+     amplitude eⁿ²/n → ∞: no continuous dependence (Hadamard). Common
+     mistakes: using the Neumann eigenfunctions for Dirichlet data;
+     dropping the sign in ∫u u_xx = −∫u_x². Now you try: u_t = u_xx on
+     (0, π) with Neumann conditions and u(x, 0) = cos²x. (u = ½ +
+     ½e^(−4t)cos 2x → ½)
+
+D11. (a) Derive d'Alembert's formula for u_tt = c²u_xx on R and compute
+     u(1, 2) for c = 1, u(x, 0) = 1/(1 + x²), u_t(x, 0) = cos x.
+     (b) Prove conservation of energy and FINITE SPEED OF PROPAGATION:
+     if the data vanish on [x₀ − t₀, x₀ + t₀] then u(x₀, t₀) = 0 (c = 1).
+     (c) Contrast with the heat equation.
+     Answer: (a) u(1, 2) = 0.3 + cos 1 sin 2 ≈ 0.79129; (b) the energy in
+     the backward cone is non-increasing.
+     Teacher explains: (a) In characteristic variables ξ = x + ct, η =
+     x − ct the equation becomes u_ξη = 0, so u = F(x + ct) + G(x − ct).
+     Fitting u(x, 0) = g, u_t(x, 0) = h gives
+        u(x, t) = ½(g(x + ct) + g(x − ct)) + (1/(2c))∫_{x−ct}^{x+ct} h(s) ds.
+     Here g-part: ½(g(3) + g(−1)) = ½(1/10 + 1/2) = 0.3; h-part: ½(sin 3 −
+     sin(−1)) = ½(sin 3 + sin 1) = cos 1 sin 2 ≈ 0.49129. Total ≈ 0.79129.
+     (b) E(t) = ½∫(u_t² + u_x²) dx: E′ = ∫(u_t u_tt + u_x u_xt) = ∫(u_t u_xx
+     + u_x u_xt) = ∫(u_x u_t)_x dx = 0 for decaying (or Dirichlet/Neumann)
+     solutions. For the CONE, let e(t) = ½∫_{x₀−(t₀−t)}^{x₀+(t₀−t)} (u_t² +
+     u_x²) dx. Differentiating (Leibniz rule; the interval shrinks at speed
+     1 at both ends)
+        e′(t) = [u_x u_t]_{ends} − ½(u_t² + u_x²)|_{right} − ½(u_t² +
+                u_x²)|_{left} ≤ 0,
+     since |u_x u_t| ≤ ½(u_t² + u_x²). As e(0) = 0 and e ≥ 0, e ≡ 0, so u
+     is constant in the cone, and it is 0 at t = 0: u(x₀, t₀) = 0. The same
+     argument in Rⁿ shows u(x₀, t₀) depends only on data in B(x₀, ct₀).
+     (c) The heat kernel is positive everywhere, so heat data supported in
+     [−1, 1] give u > 0 at every x for every t > 0: INFINITE speed, but
+     smoothing. The wave equation has FINITE speed but NO smoothing: a kink
+     in g travels along x ± ct forever. In R³ (Kirchhoff) u(x, t) depends
+     only on data on the SPHERE |y − x| = ct (Huygens), in R² on the whole
+     disc (waves leave a "tail"). Common mistakes: writing 1/c instead of
+     1/(2c) in front of the integral; forgetting the boundary terms in e′.
+     Now you try: c = 1, g = 0, h = 𝟙_[−1,1]: u(0, 5) and u(3, 1). (1 and 0)
+
+D12. For u ∈ L²(Rⁿ) with û(ξ) = ∫e^(−ix·ξ)u(x) dx define ‖u‖²_{Hˢ} =
+     (2π)⁻ⁿ∫(1 + |ξ|²)ˢ|û|² dξ. (a) Check ‖u‖²_{H¹} = ∫(u² + |∇u|²) and
+     compute it for u = e^(−|x|) on R both ways. (b) Prove Hˢ(Rⁿ) ⊂
+     C_b(Rⁿ) for s > n/2. (c) For which s are δ, 𝟙_[−1,1] and e^(−|x|) in
+     Hˢ(R)?
+     Answer: (a) 2; (b) û ∈ L¹ by Cauchy-Schwarz; (c) s < −1/2, s < 1/2,
+     s < 3/2.
+     Teacher explains: (a) ∂ⱼu has transform iξⱼû, so by Plancherel
+     (2π)⁻ⁿ∫(1 + |ξ|²)|û|² = ‖u‖² + ‖∇u‖². For u = e^(−|x|): u′² = u², and
+     ∫e^(−2|x|) = 1, so ‖u‖²_{H¹} = 1 + 1 = 2. In Fourier: û = 2/(1 + ξ²),
+     so (1/2π)∫(1 + ξ²)·4/(1 + ξ²)² dξ = (2/π)∫dξ/(1 + ξ²) = (2/π)π = 2 ✓.
+     (b) By Cauchy-Schwarz,
+        ∫|û| = ∫(1 + |ξ|²)^{−s/2}·(1 + |ξ|²)^{s/2}|û|
+             ≤ (∫(1 + |ξ|²)^{−s} dξ)^{1/2}·(2π)^{n/2}‖u‖_{Hˢ},
+     and ∫(1 + |ξ|²)^{−s} dξ < ∞ iff 2s > n. So û ∈ L¹, and u(x) =
+     (2π)⁻ⁿ∫e^{ix·ξ}û(ξ) dξ is continuous (DCT), bounded by C‖u‖_{Hˢ}, and
+     → 0 at ∞ (Riemann-Lebesgue). (c) The rule: if |û| ~ |ξ|^(−β) at ∞
+     then u ∈ Hˢ(R) iff 2s − 2β < −1, i.e. s < β − ½. δ̂ = 1 (β = 0): s <
+     −½. (𝟙_[−1,1])^ = 2 sin ξ/ξ (β = 1): s < ½ — a jump costs half a
+     derivative. (e^(−|x|))^ = 2/(1 + ξ²) (β = 2): s < 3/2; the kink costs
+     another half. In Rⁿ, δ ∈ Hˢ iff s < −n/2, so δ ∈ H⁻¹(R) (point loads
+     on a string are fine) but δ ∉ H⁻¹(R²) (a point load on a membrane
+     has infinite energy: the solution is ln r ∉ H¹). Common mistakes:
+     forgetting the (2π)⁻ⁿ normalisation; treating s = n/2 as enough (ln
+     ln(4/|x|) ∈ H¹(R²) is unbounded). Now you try: for which s is the
+     hat function (1 − |x|)₊ in Hˢ(R)? (û = 4 sin²(ξ/2)/ξ², s < 3/2)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Find the weak derivative (or gradient) on the given domain, or say
+    "none" if it does not exist in L¹_loc.
+    a) |x| on (−1, 1)                  b) x|x| on (−1, 1)
+    c) max(x, 0) on (−1, 1)            d) H = 𝟙_(0,1) on (−1, 1)
+    e) sgn x on (−1, 1)                f) |x|^{1/2} on (−1, 1)
+    g) min(1, |x|) on (−2, 2)          h) |x₁| on the unit disc in R²
+    i) |x| (Euclidean norm) on Rⁿ      j) ln|x| on (−1, 1)
+    k) ln|x| on the unit disc in R²    l) x₁/|x| on the unit disc in R²
+    m) the Cantor function on (0, 1)   n) x² sin(1/x) on (−1, 1)
+    o) x sin(1/x) on (−1, 1)           p) distributional derivative of H
+    q) second distributional derivative of |x| on (−1, 1)
+    r) (1 − |x|)₊ on R: first and second distributional derivatives
+    Answers:
+      a) sgn x          b) 2|x|           c) H = 𝟙_(0,1)       d) none (δ)
+      e) none (2δ)      f) ½ sgn(x)|x|^(−1/2) (∈ Lᵖ for p < 2)
+      g) sgn(x)𝟙_{|x|<1}                  h) (sgn x₁, 0)
+      i) x/|x|          j) none (1/x ∉ L¹_loc; distributionally p.v. 1/x)
+      k) x/|x|² (∈ Lᵖ for p < 2)          l) (x₂², −x₁x₂)/|x|³
+      m) none (not absolutely continuous; classical derivative 0 a.e.)
+      n) 2x sin(1/x) − cos(1/x) (value 0 at 0): bounded, u ∈ W^{1,∞}
+      o) none (infinite variation near 0)  p) δ
+      q) 2δ             r) −sgn(x)𝟙_{|x|<1}; δ₋₁ − 2δ₀ + δ₁
+
+M2. Membership: is u in the given space? (B = unit ball of Rⁿ.)
+    a) |x|^(−1/2) ∈ H¹(B), n = 3        b) |x|^(−1/4) ∈ H¹(B), n = 3
+    c) |x|⁻¹ ∈ W^{1,1}(B), n = 3         d) |x|⁻¹ ∈ H¹(B), n = 3
+    e) |x|⁻¹ ∈ H¹(B), n = 5              f) |x|^(−a) ∈ H¹(B), n = 4: which a?
+    g) |x|^(−a) ∈ W^{1,p}(B), n = 10, p = 4: which a?
+    h) ln|x| ∈ H¹(B), n = 2              i) ln|x| ∈ W^{1,p}(B), n = 2: which p?
+    j) ln ln(4/|x|) ∈ H¹(B), n = 2       k) ln ln(4/|x|) ∈ L^∞(B)
+    l) x₁/|x| ∈ H¹(B), n = 2             m) x₁/|x| ∈ H¹(B), n = 3
+    n) |x|^{1/2} ∈ W^{1,p}(−1, 1): which p?
+    o) 𝟙_{x₁>0} ∈ H¹(B), any n           p) the constant 1 ∈ H₀¹(B)
+    q) x(1 − x) ∈ H₀¹(0, 1)               r) sin(πx) ∈ H²(0, 1) ∩ H₀¹(0, 1)
+    s) e^(−|x|) ∈ H²(R)                  t) |x|^b ∈ W^{1,p}(B), b > 0: which p?
+    Answers:
+      a) no ((a + 1)p = 3 = n)        b) yes (2.5 < 3)     c) yes (2 < 3)
+      d) no (4 > 3)                    e) yes (4 < 5)       f) a < 1
+      g) a < 3/2 ((a + 1)·4 < 10)      h) no (∫r⁻²r dr = ∞)  i) p < 2
+      j) yes (∫|∇u|² = 2π/ln 4)        k) no (unbounded)
+      l) no (|∇u| = 1/r, p < 2 only)   m) yes (∫r⁻² r² dr < ∞)
+      n) 1 ≤ p < 2                     o) no (jump across x₁ = 0)
+      p) no (trace 1 ≠ 0)              q) yes     r) yes
+      s) no (u″ = u − 2δ)              t) (1 − b)p < n: all p if b ≥ 1
+
+M3. Sobolev exponents and embeddings.
+    a) p* for n = 3, p = 2             b) p* for n = 2, p = 1
+    c) p* for n = 3, p = 1             d) p* for n = 4, p = 2
+    e) p* for n = 5, p = 3             f) p* for n = 10, p = 2
+    g) Morrey exponent for W^{1,4}(R³)  h) Morrey exponent for W^{1,4}(R²)
+    i) H¹(R) ⊂ C^{0,γ}: γ = ?          j) W^{1,∞}: which Hölder class?
+    k) H²(R³) ⊂ C^{0,γ}: γ = ?         l) W^{2,2}(R⁵) ⊂ L^q: q = ?
+    m) W^{2,3}(R⁴) ⊂ C^{0,γ}: γ = ?    n) smallest integer k with
+                                          Hᵏ(R⁴) ⊂ C⁰
+    o) smallest k with Hᵏ(R³) ⊂ C¹      p) scaling: ‖u‖_q ≤ C‖∇u‖_{3/2} on
+                                          R³ forces q = ?
+    q) is H¹(Ω) ⊂ L⁶(Ω) compact (Ω ⊂ R³ bounded, smooth)?
+    r) is H¹(Ω) ⊂ L⁵(Ω) compact (same Ω)?
+    s) is H¹(R³) ⊂ L²(R³) compact?     t) is W^{1,1}(0, 1) ⊂ C[0, 1]?
+    Answers:
+      a) 6       b) 2       c) 3/2     d) 4       e) 15/2    f) 5/2
+      g) 1/4     h) 1/2     i) 1/2     j) Lipschitz (γ = 1)   k) 1/2
+      l) 10      m) 2/3 (W^{2,3} ⊂ W^{1,12}, 1/12 = 1/3 − 1/4; 1 − 4/12)
+      n) 3       o) 3 (k − 1 > 3/2)   p) 3
+      q) no (critical)                 r) yes (5 < 6)
+      s) no (translates of a bump)     t) yes (absolutely continuous)
+
+M4. Fractional Sobolev spaces (û(ξ) = ∫e^(−ixξ)u dx, ‖u‖²_{Hˢ} =
+    (2π)⁻ⁿ∫(1 + |ξ|²)ˢ|û|²). For which s is u ∈ Hˢ? Compute where asked.
+    a) δ on R                          b) δ on R²
+    c) δ on R³                         d) 𝟙_[−1,1] on R
+    e) e^(−x)𝟙_{x>0} on R              f) e^(−|x|) on R
+    g) (1 − |x|)₊ on R                 h) e^(−x²) on R
+    i) 1/(1 + x²) on R (û = πe^(−|ξ|))  j) δ′ on R
+    k) smallest s with Hˢ(R²) ⊂ C_b (strict inequality: s > ?)
+    l) ‖e^(−|x|)‖²_{H¹(R)}             m) ‖δ‖²_{H⁻¹(R)}
+    n) ‖e^(−x²/2)‖²_{L²(R)} via Fourier (û = √(2π) e^(−ξ²/2))
+    o) ‖sin πx‖²_{H¹(0,1)} (= ∫u² + u′²)
+    p) is Hˢ(R) an algebra (closed under products) for s = 1? for s = ¼?
+    q) the trace of H¹(R²) on the line x₂ = 0 lies in Hˢ(R): s = ?
+    Answers:
+      a) s < −1/2      b) s < −1        c) s < −3/2      d) s < 1/2
+      e) s < 1/2 (|û|² = 1/(1 + ξ²))    f) s < 3/2       g) s < 3/2
+      h) all s         i) all s         j) s < −3/2      k) s > 1
+      l) 2             m) 1/2 ((1/2π)∫dξ/(1 + ξ²))       n) √π
+      o) (1 + π²)/2 ≈ 5.43480           p) yes (s > 1/2); no
+      q) s = 1/2 (loss of half a derivative)
+
+M5. Dirichlet eigenvalues and Rayleigh quotients R(u) = ∫|∇u|²/∫u².
+    a) −u″ = λu on (0, 1), u(0) = u(1) = 0: λₖ
+    b) the same on (0, 2): λ₁
+    c) Neumann on (0, 1): all eigenvalues
+    d) u(0) = 0, u′(1) = 0 on (0, 1): all eigenvalues
+    e) (0, π)²: the four smallest distinct eigenvalues
+    f) multiplicity of the eigenvalue 5 on (0, π)²
+    g) (0, 2) × (0, 1): λ₁            h) the cube (0, π)³: λ₁ and λ₂
+    i) R(x(1 − x)) on (0, 1)           j) R(tent 1 − |2x − 1|) on (0, 1)
+    k) R(sin πx) on (0, 1)             l) R(x(1 − x)²) on (0, 1)
+    m) best Poincaré constant C, ‖u‖₂ ≤ C‖u′‖₂, on H₀¹(0, 3)
+    n) the unit disc: λ₁ (j₀,₁ ≈ 2.40483)
+    o) R(1 − r²) on the unit disc      p) λ₁ of the disc of radius 2
+    q) number of eigenvalues ≤ 50 of (0, π)², counted with multiplicity
+    r) Weyl's law N(λ) ≈ |Ω|λ/(4π): its prediction for q)
+    Answers:
+      a) k²π²        b) π²/4 ≈ 2.46740                 c) k²π², k ≥ 0
+      d) (k − ½)²π², k ≥ 1              e) 2, 5, 8, 10     f) 2
+      g) 5π²/4 ≈ 12.33701                h) 3; 6 (multiplicity 3)
+      i) 10          j) 12              k) π² ≈ 9.86960
+      l) 14 (∫u′² = 2/15, ∫u² = 1/105)  m) 3/π ≈ 0.95493
+      n) 5.78319     o) 6 (2π/(π/3))     p) 5.78319/4 ≈ 1.44580
+      q) 33          r) π·50/4 ≈ 39.3 (with the boundary term
+                        −|∂Ω|√λ/(4π) = −√50: ≈ 32.2)
+
+M6. Weak formulations and Lax-Milgram (Ω bounded, smooth; I = (0, 1)).
+    a) −Δu = f, u = 0 on ∂Ω: space and bilinear form
+    b) −Δu + u = f, ∂u/∂ν = g on ∂Ω: space, form and right-hand side
+    c) −Δu = f, ∂u/∂ν = 0: condition on f for solvability
+    d) −u″ + cu on H₀¹(0, π): coercive for which constants c?
+    e) −u″ + bu′ on H₀¹(I), b constant: coercive for which b?
+    f) is B[u, v] = ∫(u′v′ − 10uv) coercive on H₀¹(I)? and with −9?
+    g) −u″ = 1 on I, u(0) = u(1) = 0: u and u(½)
+    h) −u″ = δ_{1/2} on I, Dirichlet: u
+    i) −u″ = 𝟙_(0,1/2) on I, Dirichlet: u(½)
+    j) −u″ + u = 1 on I, Dirichlet: u(½)
+    k) −u″ + u = 1 on I, Neumann: u
+    l) −u″ − 4π²u = 1 on I, Dirichlet: solvable?
+    m) −u″ − 4π²u = x on I, Dirichlet: solvable?
+    n) −u″ − π²u = 1 on I, Dirichlet: solvable?
+    o) Lax-Milgram bound ‖u‖_{H₀¹} ≤ ‖f‖/α for −((1 + x)u′)′ = f on H₀¹(I)
+       with the norm ‖u′‖₂: α = ?
+    p) the minimum of E(u) = ∫₀¹ (½u′² − u) over H₀¹(I)
+    Answers:
+      a) H₀¹(Ω), B[u, v] = ∫∇u·∇v, F(v) = ∫fv
+      b) H¹(Ω), B = ∫(∇u·∇v + uv), F(v) = ∫fv + ∫_{∂Ω} gv dS
+      c) ∫_Ω f = 0 (then u is unique up to constants)
+      d) c > −1         e) every b (∫u′u = 0)
+      f) no (π² < 10: B[sin πx, sin πx] < 0); yes (α = 1 − 9/π² ≈ 0.088)
+      g) x(1 − x)/2, 1/8
+      h) x/2 on [0, ½], (1 − x)/2 on [½, 1] (Green's function)
+      i) 1/16 (u = 3x/8 − x²/2 on [0, ½], (1 − x)/8 on [½, 1])
+      j) 1 − sech(½) ≈ 0.11318           k) u ≡ 1
+      l) yes (∫₀¹ sin 2πx = 0); u not unique (+ C sin 2πx)
+      m) no (∫₀¹ x sin 2πx = −1/(2π) ≠ 0)
+      n) no (∫₀¹ sin πx = 2/π ≠ 0)       o) 1 (since 1 + x ≥ 1)
+      p) −1/24
+
+M7. Elliptic regularity: −Δu = f (or Lu = f) with u a weak solution.
+    State the best standard conclusion.
+    a) f ∈ L², ∂Ω ∈ C², u ∈ H₀¹         b) f ∈ H³(Ω), ∂Ω smooth
+    c) f ∈ C^∞(Ω̄), ∂Ω smooth            d) f ∈ C^{0,α}, 0 < α < 1
+    e) f ∈ C⁰ only                      f) f ∈ Lᵖ, 1 < p < ∞
+    g) f ∈ L², Ω ⊂ R³: Hölder class of u
+    h) f ∈ L², Ω ⊂ R²: Hölder class of u
+    i) Ω ⊂ R³: smallest integer k with f ∈ Hᵏ ⇒ u ∈ C²
+    j) corner of angle 3π/2 (L-shape): singular exponent and Hˢ range
+    k) slit (angle 2π): exponent and Hˢ range
+    l) corner of angle π/2: the singular function
+    m) convex corner of angle 3π/4: exponent; is u ∈ H²?
+    n) u ∈ L¹_loc, ∫uΔφ = 0 ∀φ ∈ C_c^∞ (Weyl)
+    o) Lu = −∂ᵢ(aᵢⱼ∂ⱼu) = 0 with aᵢⱼ merely bounded measurable, elliptic
+    p) sup_{h} ‖Dₖʰu‖_{L²(V)} ≤ C for small h: conclusion
+    q) −u″ = 𝟙_(0,1/2) on (0, 1): regularity of u
+    r) −u″ = δ_{1/2} on (0, 1): regularity of u
+    Answers:
+      a) u ∈ H² ∩ H₀¹, ‖u‖_{H²} ≤ C‖f‖₂  b) u ∈ H⁵     c) u ∈ C^∞(Ω̄)
+      d) u ∈ C^{2,α} (Schauder)
+      e) u ∈ W^{2,p} for all p < ∞, C^{1,α} for all α < 1; NOT necessarily
+         C² (u = (x² − y²)√(−ln r))
+      f) u ∈ W^{2,p} (Calderón-Zygmund; fails for p = 1, ∞)
+      g) C^{0,1/2}     h) C^{0,α} for every α < 1 (not Lipschitz in general)
+      i) k = 2 (k + 2 > 2 + 3/2)
+      j) 2/3; r^{2/3}sin(2θ/3) ∈ Hˢ iff s < 5/3 (so ∉ H²)
+      k) 1/2; s < 3/2                     l) r² sin 2θ = 2xy (smooth)
+      m) 4/3; yes (s < 7/3)               n) u is a.e. a smooth harmonic
+                                             function
+      o) u ∈ C^{0,α} for some α > 0 (De Giorgi-Nash-Moser)
+      p) ∂ₖu ∈ L²(V) with ‖∂ₖu‖ ≤ C
+      q) u ∈ W^{2,∞} ⊂ C¹, not C² (u″ jumps at ½)
+      r) u Lipschitz (W^{1,∞}), u′ jumps: u ∈ Hˢ iff s < 3/2, not H²
+
+M8. Variational methods: Euler-Lagrange equations and minimum values.
+    a) ∫(½|∇u|² − fu)                   b) ∫(½|∇u|² + ½cu²)
+    c) ∫(1/p)|∇u|ᵖ                      d) ∫√(1 + |∇u|²)
+    e) ∫(½|∇u|² − ¼u⁴)                  f) ∫½a(x)|∇u|²
+    g) min ∫₀¹ (u′² + u²), u(0) = 0, u(1) = 1: minimiser and value
+    h) min ∫₀¹ u′², u(0) = 0, u(1) = 1
+    i) min ∫₀¹ u′² over u ∈ H₀¹(0, 1) with ∫u² = 1
+    j) min ∫₀¹ (½u′² − u) over H₀¹(0, 1)
+    k) min ∫₀¹ (½u′² − xu) over H₀¹(0, 1): minimiser and value
+    l) Bolza ∫₀¹ ((u′² − 1)² + u²), u(0) = u(1) = 0: inf; attained?
+    m) Weierstrass ∫₋₁¹ x²u′², u(−1) = −1, u(1) = 1: inf; attained?
+    n) is ∫|∇u|² − ∫u⁴ bounded below on H₀¹(Ω)?
+    o) critical exponent 2* − 1 for −Δu = |u|^{q−1}u in R³, R⁴, R⁵
+    p) minimise ∫₀¹ (½u′² − fu) over all of H¹(0, 1): natural boundary
+       conditions and the condition on f
+    q) weakly l.s.c. on W^{1,4}(0, 1)? ∫(u′)⁴; ∫((u′)² − 1)²
+    r) −Δu = u³, u ∈ H₀¹(Ω), Ω ⊂ R³ bounded: does a non-zero solution
+       exist?
+    Answers:
+      a) −Δu = f       b) −Δu + cu = 0     c) −div(|∇u|^{p−2}∇u) = 0
+      d) div(∇u/√(1 + |∇u|²)) = 0 (minimal surface)
+      e) −Δu = u³      f) −div(a∇u) = 0
+      g) sinh x/sinh 1; coth 1 ≈ 1.31304 (= u′(1), integrate by parts)
+      h) u = x, 1       i) π² ≈ 9.86960    j) −1/24
+      k) (x − x³)/6; −1/90 (= −½∫xu)
+      l) 0; no (sawtooth minimising sequence)
+      m) 0; no (u = arctan(x/ε)/arctan(1/ε) gives values → 0; limit is a
+         jump)
+      n) no: E(tφ) = t²∫|∇φ|² − t⁴∫φ⁴ → −∞
+      o) 5, 3, 7/3
+      p) u′(0) = u′(1) = 0; ∫₀¹ f = 0 (else E is unbounded below)
+      q) yes (convex); no (Bolza)
+      r) yes: mountain pass, Palais-Smale holds since 4 < 2* = 6
+
+M9. Heat equation.
+    a) u_t = u_xx on (0, π), Dirichlet, u(x, 0) = sin x
+    b) same, u(x, 0) = sin x + 3 sin 2x: u(π/2, 1)
+    c) same, u(x, 0) = 1: the series and u(π/2, 1)
+    d) Neumann on (0, π), u(x, 0) = cos²x: u and lim_{t→∞} u
+    e) Φ(0, 1) for the heat kernel on R
+    f) on R, u(x, 0) = e^(−x²): u(x, t) and u(0, 1)
+    g) on R, u(x, 0) = 𝟙_{x>0}: u(0, t)
+    h) on R, u(x, 0) = x²: u(x, t)
+    i) on R, u(x, 0) = cos x: u(x, t)
+    j) decay rate of ‖u(t)‖₂ on (0, L), Dirichlet
+    k) d/dt ½∫_Ω u² for u_t = Δu, u = 0 on ∂Ω
+    l) Dirichlet data 0, 0 ≤ u(x, 0) ≤ 1: bounds for u (max principle)
+    m) backward heat u_t = −u_xx: uₙ = n⁻¹e^{n²t} sin nx at n = 10, t = 1
+    n) regularity in time of a weak solution (u ∈ L²H₀¹, u′ ∈ L²H⁻¹)
+    o) smoothing: bound ‖u_x(t)‖₂² by ‖g‖₂² for u_t = u_xx, Dirichlet
+    p) u_t = u_xx + 1 on (0, π), Dirichlet, u(x, 0) = 0: lim u(π/2, t)
+    q) u_t = u_xx on R, u(x, 0) = 𝟙_[−1,1]: is u(10, 0.01) > 0?
+    Answers:
+      a) e^(−t) sin x                   b) e⁻¹ ≈ 0.36788
+      c) (4/π)∑_{k odd} e^(−k²t) sin(kx)/k; ≈ 0.46835
+      d) ½ + ½e^(−4t) cos 2x; ½ (the mean)
+      e) 1/√(4π) ≈ 0.28209
+      f) (1 + 4t)^(−1/2) e^(−x²/(1+4t)); 1/√5 ≈ 0.44721
+      g) ½ for all t > 0 (u = ½(1 + erf(x/(2√t))))
+      h) x² + 2t        i) e^(−t) cos x     j) e^(−π²t/L²)
+      k) −∫|∇u|² ≤ −λ₁∫u²                 l) 0 ≤ u ≤ 1
+      m) amplitude e^{100}/10 ≈ 2.7 × 10⁴² from data of size 0.1
+      n) u ∈ C([0, T]; L²)
+      o) ‖u_x(t)‖² ≤ ‖g‖²/(2t) (‖u_x‖ decreases, ∫₀ᵗ‖u_x‖² ≤ ½‖g‖²)
+      p) π²/8 ≈ 1.23370 (steady state x(π − x)/2)
+      q) yes (tiny but positive: infinite speed)
+
+M10. Wave equation u_tt = c²u_xx (c = 1 unless stated).
+     a) u(x, 0) = 1/(1 + x²), u_t(x, 0) = 0: u(1, 2)
+     b) u(x, 0) = 0, u_t(x, 0) = cos x: u and u(0, π/2)
+     c) c = 2, u(x, 0) = sin x, u_t = 0: u and u(π/2, π/2)
+     d) u(x, 0) = 0, u_t = 𝟙_[−1,1]: u(0, ½), u(0, 5), u(3, 1), u(3, 3)
+     e) domain of dependence of the point (2, 3) for c = 1 and for c = 2
+     f) data supported in [−1, 1]: support of u(·, 4)
+     g) energy ½∫₀^π(u_t² + u_x²) of u = sin x cos t
+     h) string on (0, π), fixed ends, u(x, 0) = sin 2x, u_t = 0: u, period
+     i) same string, u(x, 0) = 0, u_t = sin 3x: u and its energy
+     j) plucked string u(x, 0) = x(π − x), u_t = 0: u(π/2, π)
+     k) R³, data supported in B(0, 1): times t at which u(x, t) can be
+        non-zero for |x| = 5
+     l) the same question in R²
+     m) characteristics of u_tt = 9u_xx
+     n) damped u_tt + u_t = u_xx (Dirichlet): dE/dt
+     o) Klein-Gordon u_tt − u_xx + m²u = 0: conserved energy
+     p) g ∈ H₀¹, h ∈ L²: regularity class of the weak solution
+     q) g with a kink at x = 0, h = 0: where is u(·, t) not smooth?
+     Answers:
+       a) 0.3 (½(1/10 + 1/2))            b) cos x sin t; 1
+       c) sin x cos 2t; −1               d) ½, 1, 0, ½
+       e) [−1, 5]; [−4, 8]               f) ⊆ [−5, 5]
+       g) π/4 (constant in t)            h) sin 2x cos 2t; π
+       i) (1/3) sin 3x sin 3t; π/4
+       j) −π²/4 ≈ −2.46740 (u(x, π) = −g(x) for this symmetric g)
+       k) only 4 ≤ t ≤ 6 (Huygens: sharp front and back)
+       l) all t ≥ 4 (no sharp back edge in even dimensions)
+       m) x + 3t = const and x − 3t = const
+       n) −∫u_t² ≤ 0                     o) ½∫(u_t² + u_x² + m²u²)
+       p) u ∈ C([0, T]; H₀¹), u′ ∈ C([0, T]; L²)
+       q) at x = ±t only (the kink travels, it is never smoothed)
+
+M11. Type, maximum principle and harmonic functions.
+     Classify (E = elliptic, P = parabolic, H = hyperbolic):
+     a) u_xx + u_yy                     b) u_xx − u_yy
+     c) u_xx − u_y                      d) u_xx + 4u_xy + 4u_yy
+     e) u_xx + 2u_xy + 5u_yy            f) u_xy = 0
+     g) u_xx − 2u_xy − 3u_yy            h) yu_xx + u_yy (Tricomi type)
+     i) u_xx + xu_yy
+     Compute:
+     j) Δu = 0 in the unit disc, u = x² on the circle: u, u(0), max u
+     k) Δu = 0 in the unit disc, u = cos 3θ on the circle: u(½, 0)
+     l) −Δu = 1 in the unit disc, u = 0: u and max u
+     m) −Δu = 1 in the unit ball of R³, u = 0: max u
+     n) 0 ≤ −Δu ≤ 2 in the unit disc, u = 0 on ∂: bounds for u(0)
+     o) u harmonic in R², u(0) = 5: the mean of u over |x| = 7
+     p) u_t = u_xx on (0, 1) × (0, T], u(x, 0) = sin πx, u = 0 at the ends:
+        max u and where it is attained
+     q) a bounded harmonic function on R²
+     Answers:
+       a) E      b) H      c) P      d) P (b² − ac = 4 − 4 = 0)
+       e) E (1 − 5 < 0)    f) H      g) H (1 + 3 > 0)
+       h) E for y > 0, H for y < 0, P on y = 0
+       i) E for x > 0, H for x < 0, P on x = 0
+       j) ½ + ½(x² − y²); ½; 1 (at (±1, 0), on the boundary)
+       k) r³cos 3θ: 1/8                  l) (1 − r²)/4; ¼
+       m) 1/6 ((1 − r²)/6)               n) 0 ≤ u(0) ≤ ½ (compare with
+                                            (1 − r²)/2)
+       o) 5 (mean value property)         p) 1, at (½, 0) — on the
+                                             parabolic boundary
+       q) constant (Liouville)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every u ∈ W^{1,1}(0, 1) has a continuous representative.
+     b) Every u ∈ H¹ of the unit disc in R² is bounded.
+     c) C_c^∞(Ω) is dense in H¹(Ω) for bounded Ω.
+     d) H₀¹(Rⁿ) = H¹(Rⁿ).
+     e) ‖u‖₂ ≤ C‖∇u‖₂ holds on H¹(Ω) for bounded Ω.
+     f) H¹(Ω) ⊂ L²(Ω) is compact for EVERY bounded open Ω.
+     g) H₀¹(Ω) ⊂ L²(Ω) is compact for every bounded open Ω.
+     h) If −Δu = f with f continuous then u ∈ C².
+     i) Lax-Milgram requires B to be symmetric.
+     j) For every f ∈ H⁻¹(Ω) (Ω bounded), −Δu = f has a unique weak
+        solution u ∈ H₀¹(Ω).
+     k) The heat equation has finite speed of propagation.
+     l) The wave equation smooths rough initial data.
+     m) The backward heat equation is well-posed in L².
+     n) A bounded sequence in H₀¹(Ω) has a weakly convergent subsequence.
+     o) ∫F(∇u) always attains its infimum over u ∈ W₀^{1,p} if F ≥ 0 is
+        continuous.
+     p) Huygens' principle holds for the wave equation in R².
+     q) The first Dirichlet eigenfunction of a connected domain does not
+        change sign.
+     r) δ ∈ H⁻¹(R²).
+     s) The energy ½∫(u_t² + |∇u|²) of the wave equation with Dirichlet
+        boundary conditions is conserved.
+     t) For p > n and Ω bounded Lipschitz, every u ∈ W^{1,p}(Ω) is Hölder
+        continuous (after modification on a null set).
+     Answers:
+       a) T (absolutely continuous)        b) F: ln ln(4/|x|)
+       c) F: its closure is H₀¹; u = 1 has trace 1 ≠ 0
+       d) T                                e) F: u = 1 (constants)
+       f) F: needs a regular boundary ("rooms and passages" domains)
+       g) T (extend by 0 to a ball)        h) F: (x² − y²)√(−ln r)
+       i) F: only bounded + coercive (e.g. −u″ + u′ on H₀¹)
+       j) T (Riesz/Lax-Milgram with Poincaré)
+       k) F: the heat kernel is positive everywhere
+       l) F: kinks travel along x ± ct    m) F: n⁻¹e^{n²t} sin nx
+       n) T (Hilbert spaces are reflexive)
+       o) F: Bolza (u′² − 1)² type integrands (non-convex)
+       p) F: holds only in odd n ≥ 3     q) T
+       r) F: δ ∈ Hˢ(R²) iff s < −1 (borderline fails)
+       s) T                               t) T (Morrey, γ = 1 − n/p)
+
+TEACHING TIPS
+  Struggling: keep a single "exponent card" on the board — |x|^(−a) ∈
+  W^{1,p}(B ⊂ Rⁿ) iff (a + 1)p < n; p* = np/(n − p) from scaling; Morrey
+  γ = 1 − n/p; Hˢ ⊂ C⁰ iff s > n/2 — and make students derive each from
+  a one-line polar-coordinates or scaling computation instead of
+  memorising. For every boundary-value problem insist on the same four
+  written lines: (1) multiply by v and integrate by parts, (2) name the
+  space (Dirichlet in the space, Neumann in the form), (3) check bounded +
+  coercive (Poincaré!), (4) quote Lax-Milgram or Fredholm. For evolution
+  equations, always compute the energy identity first and solve one
+  separation-of-variables example by hand, contrasting e^(−k²t) (heat:
+  smoothing, decay) with cos kt (wave: no smoothing, conservation). Harder:
+  prove the Gagliardo-Nirenberg-Sobolev inequality for p = 1 and bootstrap
+  it to all p < n; prove Morrey's estimate via averages over balls; prove
+  the trace theorem on a half-space; carry out the full difference-
+  quotient proof of boundary H² regularity after flattening the boundary;
+  construct weak solutions of the heat and wave equations by Galerkin
+  approximation with all energy estimates; prove the mountain pass theorem
+  from the deformation lemma and apply it to −Δu = |u|^{p−1}u for 1 < p <
+  (n + 2)/(n − 2); and show via Pohozaev's identity that there is no
+  non-trivial solution in a star-shaped domain at the critical exponent.
+
+
+================================================================================
+TOPIC 12.14 — ALGEBRAIC GEOMETRY: VARIETIES, SCHEMES, SHEAVES, SHEAF
+COHOMOLOGY, CURVES AND SURFACES, RIEMANN-ROCH
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - AFFINE VARIETIES (k = k̄): V(J) = {x ∈ Aⁿ : f(x) = 0 ∀f ∈ J} and
+    I(Z) = {f : f|_Z = 0}. The V(J) are the closed sets of the ZARISKI
+    TOPOLOGY (noetherian, not Hausdorff; on A¹ the closed sets are the
+    finite sets and A¹). HILBERT'S NULLSTELLENSATZ: I(V(J)) = √J, so
+    radical ideals ↔ closed sets, primes ↔ irreducible closed sets,
+    maximal ideals ↔ points (fails over R: V(x² + 1) = ∅). Every closed
+    set is a finite union of irreducible components.
+  - REGULAR FUNCTIONS AND MORPHISMS: k[V] = k[x₁, ..., xₙ]/I(V); the
+    category of affine varieties is anti-equivalent to finitely generated
+    reduced k-algebras. DIMENSION = Krull dimension of k[V] = tr.deg of the
+    function field k(V); a hypersurface in Aⁿ has dimension n − 1. A
+    bijective morphism need not be an isomorphism: t ↦ (t², t³) onto the
+    cusp y² = x³ (k[t², t³] ≠ k[t]).
+  - PROJECTIVE VARIETIES: Pⁿ = (kⁿ⁺¹ ∖ 0)/k*, closed sets V(homogeneous
+    ideal); standard affine charts Uᵢ = {xᵢ ≠ 0} ≅ Aⁿ. Regular functions on
+    a connected projective variety are constant. VERONESE v_d : Pⁿ → P^N
+    (N = C(n+d, d) − 1, image of degree dⁿ) and SEGRE Pᵐ × Pⁿ → P^(mn+m+n)
+    (degree C(m+n, m)). HILBERT POLYNOMIAL P(t) = dim (S/I)ₜ for t ≫ 0:
+    leading term (deg/r!)tʳ, r = dim; arithmetic genus pₐ = 1 − P(0) for
+    curves. BÉZOUT: plane curves of degrees d, e without common component
+    meet in exactly de points counted with multiplicity.
+  - SMOOTHNESS: X = V(f₁, ..., fₘ) of dimension r is SMOOTH at p iff the
+    JACOBIAN (∂fᵢ/∂xⱼ)(p) has rank n − r, iff dim of the Zariski tangent
+    space m/m² equals r, iff O_{X,p} is a regular local ring. Examples:
+    node y² = x²(x + 1), cusp y² = x³, cone x² + y² = z²; the singular locus
+    is a proper closed subset.
+  - SCHEMES: Spec A = prime ideals with closed sets V(a), basic opens D(f),
+    structure sheaf with O(D(f)) = A_f and stalks O_p = A_p. A SCHEME is a
+    locally ringed space locally isomorphic to some Spec A; morphisms of
+    affine schemes ↔ ring maps backwards. Non-closed (GENERIC) points,
+    nilpotents (Spec k[ε]/(ε²) = a point with a tangent vector), arithmetic
+    schemes (Spec Z, Spec Z[x], Spec Z[i] → Spec Z with fibres over p).
+    Proj S for graded rings; fibre products exist (A ⊗_C B); properties:
+    reduced, integral, noetherian, separated, proper, finite type.
+  - SHEAVES: presheaf F(U) with restrictions; SHEAF = locality + gluing.
+    STALK F_p = lim F(U), SHEAFIFICATION F⁺ (same stalks). A map of sheaves
+    is surjective iff surjective on stalks, NOT on sections (exp : O → O*
+    on C*). Global sections Γ is LEFT exact only. O_X-MODULES:
+    QUASI-COHERENT = locally M̃, COHERENT = locally M̃ with M finitely
+    generated; on Spec A, M ↦ M̃ is an equivalence (A-mod ≃ QCoh).
+  - LINE BUNDLES AND DIVISORS: invertible sheaves form PIC(X) under ⊗.
+    Weil divisors ∑nᵢYᵢ (codim-1 prime cycles), principal div(f), Cl(X) =
+    Div/Prin; Cartier divisors; Cl = Pic on smooth (locally factorial)
+    varieties. Pic Pⁿ = Z·O(1), Pic Aⁿ = 0, Pic(P¹ × P¹) = Z², Cl of the
+    cone xy = z² is Z/2 while its Pic is 0; Pic of a Dedekind ring = its
+    class group. H⁰(Pⁿ, O(d)) = forms of degree d, dim C(n+d, n).
+  - SHEAF COHOMOLOGY: Hⁱ(X, F) = right derived functors of Γ (injective
+    resolutions); a short exact sequence of sheaves gives a LONG exact
+    sequence; ČECH cohomology of an affine open cover computes it on a
+    separated noetherian scheme for quasi-coherent F. GROTHENDIECK
+    VANISHING: Hⁱ = 0 for i > dim X. SERRE: X noetherian is affine iff
+    Hⁱ(F) = 0 for all quasi-coherent F and i > 0. Euler characteristic
+    χ(F) = ∑(−1)ⁱ hⁱ(F) is additive; coherent F on projective X has
+    finite-dimensional Hⁱ.
+  - COHOMOLOGY OF Pⁿ: Hⁱ(Pⁿ, O(d)) = 0 for 0 < i < n; h⁰ = C(n+d, n) for
+    d ≥ 0; hⁿ(O(d)) = h⁰(O(−d−n−1)) (nonzero only for d ≤ −n − 1); K_{Pⁿ}
+    = O(−n−1). SERRE VANISHING: F coherent, O(1) ample ⇒ Hⁱ(F(m)) = 0
+    (i > 0, m ≫ 0). SERRE DUALITY on smooth projective X of dim n:
+    Hⁱ(X, L) ≅ Hⁿ⁻ⁱ(X, K_X ⊗ L⁻¹)*.
+  - CURVES (smooth projective over k = k̄): equivalent to function fields
+    of transcendence degree 1. deg div(f) = 0. GENUS g = h¹(O_C) = h⁰(K_C).
+    Smooth plane curve of degree d: g = (d − 1)(d − 2)/2 (so no smooth
+    plane curve has g = 2); with δ nodes/cusps the normalization has genus
+    (d − 1)(d − 2)/2 − δ. Complete intersection in P³ of degrees a, b:
+    K = O(a + b − 4), 2g − 2 = ab(a + b − 4).
+  - RIEMANN-ROCH FOR CURVES: ℓ(D) − ℓ(K − D) = deg D + 1 − g, ℓ(D) =
+    h⁰(O(D)). Consequences: deg K = 2g − 2; ℓ(D) = deg D + 1 − g if deg D
+    > 2g − 2; D very ample if deg D ≥ 2g + 1; g = 0 ⇔ C ≅ P¹; genus 1 with
+    a point is a plane cubic (Weierstrass form from ℓ(nP) = n); CLIFFORD:
+    ℓ(D) ≤ deg D/2 + 1 for 0 ≤ deg D ≤ 2g − 2; WEIERSTRASS GAPS: exactly g
+    gaps at each point.
+  - MAPS OF CURVES: a non-constant f : X → Y is finite and surjective, deg
+    f = [k(X) : k(Y)] = ∑_{P ↦ Q} e_P. RIEMANN-HURWITZ (tame): 2g_X − 2 =
+    n(2g_Y − 2) + ∑(e_P − 1). Hyperelliptic y² = h(x), h squarefree of
+    degree 2g + 1 or 2g + 2, has genus g and 2g + 2 Weierstrass points;
+    every genus-2 curve is hyperelliptic. No non-constant map P¹ → curve
+    of genus ≥ 1. HURWITZ: |Aut C| ≤ 84(g − 1) for g ≥ 2 (Klein quartic:
+    168). CANONICAL EMBEDDING of a non-hyperelliptic curve in P^(g−1).
+  - SURFACES: intersection pairing C·D on Pic (Bézout on P², (a, b)·(c, d)
+    = ad + bc on P¹ × P¹); ADJUNCTION 2pₐ(C) − 2 = C·(C + K); RIEMANN-ROCH
+    χ(O(D)) = χ(O_X) + ½D·(D − K); NOETHER 12χ(O_X) = K² + e(X); HODGE
+    INDEX: the intersection form on NS(X) has signature (1, ρ − 1).
+  - BLOW-UPS AND EXAMPLES: blowing up a point p on a surface gives
+    exceptional E ≅ P¹, E² = −1, K = π*K + E, K² drops by 1, Pic gains Z.
+    CASTELNUOVO: a (−1)-curve E ≅ P¹ can be contracted smoothly. A smooth
+    cubic surface = P² blown up at 6 general points; its 27 lines are Eᵢ
+    (6), H − Eᵢ − Eⱼ (15), 2H − ∑_{k≠j}Eₖ (6). Degree-d surface in P³: K =
+    O(d − 4), K² = d(d − 4)², χ(O) = 1 + C(d − 1, 3); d = 4 gives K3
+    surfaces (K = 0, χ = 2, e = 24).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) State the Nullstellensatz and prove the strong form from the weak
+    form. (b) In C[x, y] find √J and V(J) for J = (x²y, xy²) and for J =
+    (y − x², y). (c) Find the irreducible components of V(xy, xz, yz) ⊆ A³.
+    (d) Show the statement fails over R.
+    Answer: (a) Rabinowitsch trick. (b) √(x²y, xy²) = (xy), V = both axes;
+    √(y − x², y) = (x, y), V = the origin. (c) the three coordinate axes.
+    (d) J = (x² + 1): V(J) = ∅ but √J = J ≠ R[x].
+    Teacher explains: WEAK NULLSTELLENSATZ: if k = k̄ and J ≠ (1) then
+    V(J) ≠ ∅ (because a maximal m ⊇ J has k[x]/m a finitely generated
+    k-algebra that is a field, hence = k by Zariski's lemma, so m =
+    (x₁ − a₁, ..., xₙ − aₙ)). STRONG: let f vanish on V(J). In k[x, t] the
+    ideal J + (1 − tf) has no zeros (where f = 0 the new generator is 1),
+    so 1 = ∑gᵢ(x, t)hᵢ + g(x, t)(1 − tf) with hᵢ ∈ J. Substitute t = 1/f
+    and multiply by f^N: f^N ∈ J. So I(V(J)) ⊆ √J; ⊇ is obvious.
+    (b) V(x²y, xy²) = {xy = 0}. xy ∉ J (J lives in degrees ≥ 3), but
+    (xy)² = x·(xy²) ∈ J, and (xy) is radical, so √J = (xy): the SAME set is
+    cut out by a non-radical ideal. For J = (y − x², y) = (y, x²): V is the
+    single point 0, √J = (x, y); the extra "x²" records that the parabola
+    is TANGENT to the line y = 0 — intersection multiplicity
+    dim C[x, y]/(y, x²) = 2, as Bézout predicts (2 · 1 = 2). (c) xy = xz =
+    yz = 0 means at least two coordinates vanish: V = {y = z = 0} ∪
+    {x = z = 0} ∪ {x = y = 0}, i.e. (x, y, z)-axes, and I = (y, z) ∩ (x, z)
+    ∩ (x, y), primes of dimension 1. Common mistakes: confusing V(J) = ∅
+    with J = 0; thinking every ideal with V(J) = point is maximal.
+    Now you try: √(x³, y²) ? ((x, y))
+
+D2. The twisted cubic C is the image of ν : P¹ → P³, [s : t] ↦ [s³ : s²t :
+    st² : t³]. (a) Show C = V(xz − y², xw − yz, yw − z²). (b) Compute the
+    Hilbert polynomial, degree and arithmetic genus. (c) Show that the
+    first two quadrics alone cut out C plus a line, and check Bézout.
+    Answer: (a) rank-1 condition on [[x, y, z], [y, z, w]]. (b) P(t) =
+    3t + 1, degree 3, pₐ = 0. (c) V(q₀, q₁) = C ∪ {x = y = 0}; 2·2 = 3 + 1.
+    Teacher explains: The three quadrics are the 2 × 2 minors of
+          ( x  y  z )
+          ( y  z  w ).
+    Points of ν(P¹) clearly satisfy them (xz = s⁴t² = y², etc.). Conversely
+    if the minors vanish the rows are proportional; if x ≠ 0 scale to x =
+    1: then z = y², w = yz = y³, so the point is ν([1 : y]); if x = 0 then
+    y² = xz = 0, z² = yw = 0, so the point is [0 : 0 : 0 : 1] = ν([0 :
+    1]). (b) The ring map k[x, y, z, w] → k[s, t] has kernel I = (q₀, q₁,
+    q₂), and the degree-t part of the image is ALL forms of degree 3t in s,
+    t, so dim (S/I)ₜ = 3t + 1. Leading coefficient 3 = degree (a general
+    plane a x + b y + c z + d w meets C where a cubic in s, t vanishes: 3
+    points). pₐ = 1 − P(0) = 0, consistent with C ≅ P¹. (c) If x = 0, q₀
+    forces y = 0 and then q₁ = 0 automatically: V(q₀, q₁) contains the
+    line L = {x = y = 0}. Off L it equals C. Two quadric surfaces meet in
+    a curve of degree 4 = deg C + deg L = 3 + 1 ✓. So C is NOT the
+    complete intersection of two of its quadrics. Common mistakes: using
+    the affine Hilbert function; forgetting the point at x = 0. Now you
+    try: the Hilbert polynomial of the rational normal curve of degree 4 in
+    P⁴. (4t + 1)
+
+D3. (a) State the Jacobian criterion. (b) Find the singular points of the
+    projective cubic y²z = x³ + x²z and the tangent lines there. (c) Show
+    that ν : A¹ → X = V(y² − x³), t ↦ (t², t³), is a bijective morphism
+    but not an isomorphism. (d) Compute the Zariski tangent space of the
+    cone x² + y² = z² at 0.
+    Answer: (b) only [0 : 0 : 1], a NODE with tangents y = ±x. (c) k[X] =
+    k[t², t³] ⊊ k[t]. (d) T₀ = k³, dimension 3 > 2 = dim.
+    Teacher explains: (a) X = V(f₁, ..., fₘ) ⊆ Aⁿ, I(X) = (fᵢ), X of pure
+    dimension r: p is smooth iff rank (∂fᵢ/∂xⱼ(p)) = n − r; for a
+    hypersurface V(F) ⊆ Pⁿ: singular points = common zeros of all ∂F/∂xᵢ
+    (Euler: ∑xᵢ∂F/∂xᵢ = (deg F)F). (b) F = y²z − x³ − x²z:
+       F_x = −3x² − 2xz,  F_y = 2yz,  F_z = y² − x².
+    F_y = 0 gives y = 0 or z = 0. If z = 0 then F_x = −3x² = 0, F_z = y² =
+    0: no point. If y = 0 then F_z gives x = 0, and z = 1: the point
+    [0 : 0 : 1]. Affinely y² = x² + x³: the lowest-order part y² − x² =
+    (y − x)(y + x) is the TANGENT CONE, two distinct lines: a node.
+    (c) ν is a morphism (polynomial) and bijective (t = y/x for x ≠ 0, t =
+    0 ↦ 0). Its pull-back ν* : k[X] = k[x, y]/(y² − x³) → k[t] has image
+    k[t², t³], which misses t; an isomorphism would need ν* onto. Also
+    X is singular at 0 (both partials vanish) while A¹ is smooth. ν is the
+    NORMALIZATION. (d) f = x² + y² − z² has df(0) = 0, so T₀ = V(linear
+    part) = k³. Common mistakes: forgetting the chart at infinity; saying
+    "the cusp is not a manifold" without proof (use m/m²: dim 2 > 1). Now
+    you try: singular locus of x² = y²z in A³. (the z-axis x = y = 0)
+
+D4. (a) Describe the points of Spec Z[x] and their closures. (b) Describe
+    the fibres of Spec Z[i] → Spec Z over (2), (3), (5) and (0). (c) Explain
+    why a map Spec k[ε]/(ε²) → X is a tangent vector.
+    Answer: (a) (0); (p); (f) with f irreducible in Z[x]; maximal (p, f)
+    with f̄ irreducible mod p. (b) 2: one non-reduced point (ramified); 3:
+    one point with residue field F₉ (inert); 5: two points (split); (0):
+    Spec Q(i). (c) it is a point plus a derivation O_p → k.
+    Teacher explains: (a) A prime P ⊆ Z[x] meets Z in (0) or (p). If P ∩
+    Z = (p): P corresponds to a prime of F_p[x] — (p) itself or (p, f)
+    with f̄ irreducible mod p (closed points, residue field F_{p^deg f}).
+    If P ∩ Z = 0: P becomes a prime of Q[x]: (0) or (f), f irreducible.
+    Closures: {(0)}‾ = everything (the GENERIC POINT); {(p)}‾ = the
+    "vertical line" V(p) ≅ Spec F_p[x]; {(f)}‾ = V(f) ≅ Spec Z[x]/(f), a
+    "horizontal curve"; (p, f) is closed. dim Spec Z[x] = 2 (chain 0 ⊂ (p)
+    ⊂ (p, x)). (b) The fibre over p is Spec Z[i]/(p) = Spec F_p[x]/(x² +
+    1). p = 2: x² + 1 = (x + 1)² in F₂[x], one point with a nilpotent —
+    RAMIFIED (2 = −i(1 + i)²). p = 3: x² + 1 irreducible (−1 is not a
+    square mod 3): one point, residue field F₉ — INERT. p = 5: x² + 1 =
+    (x − 2)(x + 2) mod 5: two points, 5 = (2 + i)(2 − i) — SPLIT. Generic
+    fibre Spec Q(i): one point. (c) A morphism Spec k[ε] → X is a local
+    homomorphism O_{X,p} → k[ε], a ↦ a(p) + εD(a); multiplicativity says D
+    is a derivation, i.e. an element of (m/m²)*. Common mistakes: listing
+    only closed points; thinking Spec k[ε] "is" Spec k (same space,
+    different sheaf). Now you try: how many points lie over 13 in
+    Spec Z[i]? (2, since 13 ≡ 1 mod 4)
+
+D5. (a) Define sheaf, stalk and sheafification. (b) Show that the
+    presheaf of constant Z-valued functions is not a sheaf. (c) Prove that
+    exp : O → O*, f ↦ e^(2πif), is a surjection of sheaves on X = C* but
+    not surjective on global sections. (d) Show that Γ(A² ∖ {0}, O) = k[x,
+    y] and deduce that A² ∖ {0} is not affine.
+    Answer: (b) on U = U₁ ⊔ U₂ the sections 0, 1 glue to nothing constant.
+    (c) z has no global logarithm. (d) Hartogs-type computation.
+    Teacher explains: (a) A presheaf F assigns groups F(U) with
+    restrictions; it is a SHEAF if (locality) s|_{Uᵢ} = 0 ∀i ⇒ s = 0, and
+    (gluing) compatible sᵢ ∈ F(Uᵢ) come from one s ∈ F(⋃Uᵢ). The stalk
+    F_p = lim_{U ∋ p} F(U) (germs). The sheafification F⁺ = compatible
+    families of germs; F → F⁺ is an iso on stalks and universal.
+    (b) Take U = U₁ ⊔ U₂ disjoint opens, s₁ = 0, s₂ = 1: compatible
+    (U₁ ∩ U₂ = ∅) but no constant function glues them. Its sheafification
+    is the sheaf of LOCALLY constant functions, with value Z² on U.
+    (c) On a small disc D around p ≠ 0 every g ∈ O*(D) has a logarithm
+    (D is simply connected), so exp is onto on stalks: a surjection of
+    sheaves, with kernel the constant sheaf Z. But g(z) = z on C* is not
+    e^(2πif) for any holomorphic f (its winding number around 0 is 1 ≠ 0).
+    Long exact sequence: 0 → Z → O(C*) → O*(C*) → H¹(C*, Z) = Z →
+    H¹(C*, O) = 0: the cokernel on sections is exactly H¹(C*, Z) ≅ Z.
+    (d) Cover X = A² ∖ 0 by D(x) and D(y): O(D(x)) = k[x, x⁻¹, y], O(D(y)) =
+    k[x, y, y⁻¹], and a global section lies in both; inside k[x^±, y^±]
+    their intersection is k[x, y]. If X were affine, X = Spec Γ(X, O) =
+    A², but the inclusion X → A² is not onto. Common mistakes: checking
+    surjectivity on global sections; forgetting that the ONE point lost has
+    codimension 2 (removing a curve adds functions: O(D(x)) ∋ 1/x). Now
+    you try: stalk of O_{A¹} at the generic point. (k(x))
+
+D6. (a) Describe O_{P¹}(d) by transition functions and compute
+    H⁰(Pⁿ, O(d)). (b) Show Pic Pⁿ ≅ Z. (c) How many independent conditions
+    define the cubics through 9 general points of P²?
+    Answer: (a) transition t^d; h⁰ = C(n + d, n) for d ≥ 0, 0 for d < 0.
+    (b) deg : Cl Pⁿ → Z is an iso. (c) h⁰(O(3)) = 10: a unique cubic.
+    Teacher explains: (a) On U₀ = {x₀ ≠ 0} and U₁ = {x₁ ≠ 0} of P¹ with t =
+    x₁/x₀, O(d) is trivial on each and glued by the unit t^d on U₀ ∩ U₁
+    (equivalently O(d)(U) = degree-d elements of the localized graded
+    ring). A global section is a homogeneous polynomial of degree d; the
+    monomials x^α, |α| = d, in n + 1 variables number C(n + d, n) ("stars
+    and bars"). For d < 0 there are none: O(−1) (the tautological line
+    bundle) has no non-zero section. (b) Pⁿ is smooth, so Pic = Cl. A prime
+    divisor is V(F) with F irreducible of degree e; define deg V(F) = e.
+    Principal divisors div(F/G), deg F = deg G, have degree 0, and any D of
+    degree 0 is div(∏Fᵢ^(nᵢ)) — so deg : Cl Pⁿ → Z is an isomorphism, with
+    O(1) = O(H) the generator. (c) h⁰(P², O(3)) = C(5, 2) = 10, so cubics
+    form P⁹; each point imposes one linear condition, 9 general points
+    leave a P⁰: exactly one cubic (Cayley-Bacharach territory: through 8
+    general points passes a pencil, whose 9 base points are forced).
+    Common mistakes: C(n + d, d) vs C(n + d − 1, d) (the latter counts
+    forms in n variables); thinking O(−1) has sections because Pⁿ has
+    lines through 0. Now you try: h⁰(P³, O(3)). (20)
+
+D7. Compute H⁰ and H¹ of O(d) on P¹ by Čech cohomology for the cover
+    U₀, U₁. Deduce h¹(O(−2)) = 1 and check Serre duality.
+    Answer: h⁰(O(d)) = d + 1 (d ≥ 0), h¹(O(d)) = −d − 1 (d ≤ −2), otherwise
+    0.
+    Teacher explains: With t = x₁/x₀, O(d)(U₀) = k[t] (sections f(t)x₀^d),
+    O(d)(U₁) = t^d k[t⁻¹] (sections g(1/t)x₁^d = g(1/t)t^d x₀^d), and
+    O(d)(U₀₁) = k[t, t⁻¹]. The Čech complex is
+       0 → k[t] ⊕ t^d k[t⁻¹] → k[t, t⁻¹] → 0,  (a, b) ↦ b − a.
+    KERNEL: a = b ∈ k[t] ∩ t^d k[t⁻¹] = span{tⁱ : 0 ≤ i ≤ d}: dim d + 1 if
+    d ≥ 0, else 0. COKERNEL: k[t^±] modulo span{tⁱ : i ≥ 0} + span{tⁱ :
+    i ≤ d}. The survivors are tⁱ with d < i < 0, i.e. i = d + 1, ..., −1:
+    there are −d − 1 of them when d ≤ −2. So H¹(O(−2)) = k·[t⁻¹], H¹(O(−3))
+    = span[t⁻¹], [t⁻²] (dim 2), and H¹(O(d)) = 0 for d ≥ −1. Čech =
+    derived-functor cohomology because the cover is affine and P¹ is
+    separated. SERRE DUALITY with K = O(−2): h¹(O(d)) = h⁰(O(−2 − d)) =
+    −d − 1 ✓; in particular h¹(O) = 0: g(P¹) = 0. Also χ(O(d)) = d + 1 for
+    every d, a polynomial as it must be (Riemann-Roch with g = 0).
+    Common mistakes: including t⁰ or t^d in the cokernel; forgetting that
+    Grothendieck vanishing kills H² automatically. Now you try: h¹(P¹,
+    O(−7)). (6)
+
+D8. (a) State the cohomology of O(d) on Pⁿ. (b) For a smooth plane curve C
+    of degree d prove g(C) = h¹(O_C) = (d − 1)(d − 2)/2. (c) For a smooth
+    quartic compute h⁰ and h¹ of O_C(1) and check Riemann-Roch.
+    Answer: (b) use 0 → O(−d) → O → O_C → 0. (c) h⁰ = 3, h¹ = 1;
+    3 − 1 = 4 + 1 − 3 ✓.
+    Teacher explains: (a) Hⁱ(Pⁿ, O(d)) = 0 for 0 < i < n and all d;
+    H⁰ = S_d (forms of degree d); Hⁿ(O(d)) ≅ H⁰(O(−d − n − 1))* (Serre
+    duality, K = O(−n − 1)), spanned by x^α with all exponents negative.
+    (b) Multiplication by the equation F gives 0 → O_{P²}(−d) → O_{P²} →
+    O_C → 0. Long exact sequence:
+       0 → H⁰(O(−d)) → H⁰(O) → H⁰(O_C) → H¹(O(−d)) → H¹(O) → H¹(O_C)
+         → H²(O(−d)) → H²(O) → 0.
+    Middle terms: H⁰(O(−d)) = 0, H⁰(O) = k, H¹(anything) = 0, H²(O) = 0. So
+    h⁰(O_C) = 1 (C connected) and h¹(O_C) = h²(O(−d)) = h⁰(O(d − 3)) =
+    C(d − 1, 2) = (d − 1)(d − 2)/2. d = 1, 2, 3, 4, 5: g = 0, 0, 1, 3, 6.
+    (c) Twist by 1, d = 4: 0 → O(−3) → O(1) → O_C(1) → 0 gives h⁰(O_C(1))
+    = h⁰(O(1)) = 3 and h¹(O_C(1)) = h²(O(−3)) = h⁰(O) = 1. Riemann-Roch:
+    deg O_C(1) = 4 (Bézout with a line), 3 − 1 = 4 + 1 − 3 ✓. In fact
+    K_C = O_C(d − 3) (adjunction), so for d = 4, O_C(1) = K_C: a plane
+    quartic is its own canonical embedding. Common mistakes: forgetting
+    h⁰(O_C) = 1 needs H¹(O(−d)) = 0; using h²(O(−d)) = h⁰(O(d)) (the
+    correct twist is d − 3). Now you try: g of a smooth plane sextic. (10)
+
+D9. (a) State Riemann-Roch for a smooth projective curve C of genus g and
+    prove it from Serre duality. Deduce deg K = 2g − 2. (b) Show that g = 0
+    implies C ≅ P¹. (c) Let (E, O) have genus 1. Compute ℓ(nO) and derive a
+    Weierstrass equation.
+    Answer: (a) ℓ(D) − ℓ(K − D) = deg D + 1 − g. (b) ℓ(P) = 2 gives a
+    degree-1 map to P¹. (c) ℓ(nO) = n (n ≥ 1); the 7 functions 1, x, y,
+    x², xy, y², x³ in L(6O) are dependent: y² + a₁xy + a₃y = x³ + a₂x² +
+    a₄x + a₆.
+    Teacher explains: (a) Put χ(D) = h⁰(O(D)) − h¹(O(D)). For D = 0: χ = 1
+    − g (definition of g = h¹(O)). For a point P the sequence 0 → O(D) →
+    O(D + P) → k_P → 0 (k_P the skyscraper) gives χ(D + P) = χ(D) + 1, and
+    similarly χ(D − P) = χ(D) − 1. Every D is reached from 0 by adding and
+    subtracting points, so χ(D) = deg D + 1 − g. SERRE DUALITY h¹(O(D)) =
+    h⁰(K − D) turns this into Riemann-Roch. For D = K: ℓ(K) − ℓ(0) = g − 1
+    = deg K + 1 − g, so deg K = 2g − 2. If deg D > 2g − 2 then deg(K − D)
+    < 0, ℓ(K − D) = 0 and ℓ(D) = deg D + 1 − g exactly. (b) g = 0: ℓ(P) = 1
+    + 1 − 0 = 2, so there is a non-constant f with at most a simple pole
+    at P; f : C → P¹ has degree 1, hence is an isomorphism. (c) g = 1,
+    2g − 2 = 0: ℓ(nO) = n for n ≥ 1 (and ℓ(O) = 1: only constants).
+    ℓ(2O) = 2 adds x with a double pole; ℓ(3O) = 3 adds y with a triple
+    pole. Pole orders at O: 1:0, x:2, y:3, x²:4, xy:5, y², x³:6. Seven
+    functions in the 6-dimensional L(6O) satisfy a linear relation; y²
+    and x³ are the only ones with pole order 6, so both appear, and after
+    scaling we get the Weierstrass form. (x, y) : E → P² embeds E as a
+    smooth cubic (3O is very ample, deg 3 ≥ 2g + 1). Common mistakes:
+    forgetting ℓ(O) = 1, not 2, on an elliptic curve (else E ≅ P¹);
+    applying ℓ(D) = deg D + 1 − g when deg D ≤ 2g − 2. Now you try: on a
+    curve of genus 3, ℓ(D) for deg D = 7. (5)
+
+D10. (a) State Riemann-Hurwitz. (b) Show that y² = h(x), h squarefree of
+     degree 2g + 1 or 2g + 2, has genus g. (c) Compute the genus of the
+     Fermat curve xⁿ + yⁿ + zⁿ = 0 by projection to P¹. (d) Prove that a
+     non-constant f : X → Y forces g_X ≥ g_Y, and that every map from P¹ to
+     an elliptic curve is constant.
+     Answer: (a) 2g_X − 2 = n(2g_Y − 2) + ∑(e_P − 1). (b) 2g + 2 branch
+     points. (c) (n − 1)(n − 2)/2. (d) from (a).
+     Teacher explains: (a) For f of degree n, separable (char 0), pull
+     back a meromorphic differential ω on Y: near P with e = e_P, f is
+     w = z^e, and dw = e z^(e−1) dz, so ord_P f*ω = e_P ord_Q ω + (e_P − 1).
+     Summing, K_X ∼ f*K_Y + R with deg R = ∑(e_P − 1); take degrees (deg
+     f*D = n deg D). (b) x : C → P¹ has degree 2. Over each root of h
+     there is ONE point (y = 0), e = 2. Over ∞: if deg h = 2g + 1 (odd),
+     y ~ x^(g + 1/2) is not single-valued, so ∞ is branched; if deg h =
+     2g + 2, y ~ ±x^(g+1): two points, unbranched. Either way there are
+     exactly 2g + 2 branch points: 2g_C − 2 = 2(−2) + (2g + 2) = 2g − 2 ✓.
+     These 2g + 2 points are the WEIERSTRASS POINTS (for g ≥ 2).
+     (c) [x : y : z] ↦ [x : y] has degree n (z is the n-th root of −xⁿ −
+     yⁿ) and is totally ramified (e = n) exactly over the n points with
+     xⁿ + yⁿ = 0. 2g − 2 = n(−2) + n(n − 1), g = (n² − 3n + 2)/2 =
+     (n − 1)(n − 2)/2 ✓ (agrees with D8). (d) If g_Y ≥ 1 then 2g_X − 2 ≥
+     n(2g_Y − 2) ≥ 2g_Y − 2. For X = P¹, Y = E: −2 = n·0 + (≥ 0) is
+     impossible. Common mistakes: counting ramification POINTS instead of
+     ∑(e_P − 1); forgetting the point(s) at infinity. Now you try: genus of
+     y³ = x⁴ − 1 (∞ is totally ramified since 3 ∤ 4). (3: 2g − 2 = −6 +
+     5·2)
+
+D11. Let Q = P¹ × P¹ with Pic Q = Z(1, 0) ⊕ Z(0, 1). (a) Compute K_Q, the
+     intersection form and the genus of a smooth curve of bidegree (a, b).
+     (b) Verify Riemann-Roch for surfaces for O(a, b), a, b ≥ 0, and
+     Noether's formula for Q and P². (c) For a smooth quartic X ⊆ P³ find
+     K_X, χ(O_X), e(X) and the genus of a smooth hyperplane section.
+     Answer: (a) K = (−2, −2), (a, b)·(c, d) = ad + bc, g = (a − 1)(b − 1).
+     (b) χ = (a + 1)(b + 1) = h⁰; 12 = 8 + 4 and 12 = 9 + 3. (c) K = 0,
+     χ = 2, e = 24, g = 3.
+     Teacher explains: (a) Fibres of the two projections: (1, 0)² = 0
+     (two fibres are disjoint), (1, 0)·(0, 1) = 1. So (a, b)·(c, d) = ad +
+     bc. K_Q = pr₁*K_{P¹} + pr₂*K_{P¹} = (−2, −2). ADJUNCTION for C = (a, b):
+        2g − 2 = C·(C + K) = (a, b)·(a − 2, b − 2) = 2ab − 2a − 2b,
+     so g = (a − 1)(b − 1): (2, 2) → 1, (3, 3) → 4, (1, b) → 0 (graphs of
+     maps P¹ → P¹ of degree b). (b) RIEMANN-ROCH: χ(D) = χ(O_Q) + ½D·(D −
+     K) = 1 + ½(a(b + 2) + b(a + 2)) = 1 + ab + a + b = (a + 1)(b + 1),
+     which is h⁰(O(a, b)) = h⁰(O(a))h⁰(O(b)) by Künneth (h¹ = h² = 0). NOETHER
+     12χ(O) = K² + e: for Q, K² = (−2, −2)² = 8, e = 4 (topologically S² ×
+     S²): 12 = 8 + 4 ✓; for P², K² = 9, e = 3 ✓. (c) Adjunction in P³: K_X =
+     (K_{P³} + X)|_X = O_X(−4 + 4) = O_X. From 0 → O(−4) → O → O_X → 0:
+     h⁰(O_X) = 1, h¹(O_X) = 0, h²(O_X) = h³(O_{P³}(−4)) = h⁰(O) = 1, so
+     χ(O_X) = 2 (a K3 SURFACE). Noether: e = 24 − 0 = 24. A hyperplane
+     section H has H² = 4 (Bézout), so 2g − 2 = H·(H + 0) = 4, g = 3 — a
+     plane quartic ✓. On a K3 every smooth curve has C² = 2g − 2. Common
+     mistakes: (1, 0)² = 1 (that is a line in P²); forgetting χ(O_X) = 1 −
+     q + p_g, not h⁰ alone. Now you try: genus of a smooth (3, 4) curve on
+     Q. (6)
+
+D12. (a) Blow up P² at a point p. Show E ≅ P¹, E² = −1, compute the strict
+     transform of a line through p and K of the blow-up. (b) For X = P²
+     blown up at 6 general points show K_X² = 3 and that −K_X embeds X as a
+     cubic surface. (c) Find all (−1)-classes and count the 27 lines. How
+     many lines meet a given line?
+     Answer: (a) L̃ = H − E, L̃² = 0, K = −3H + E, K² = 8. (b) (−K)² = 9 −
+     6 = 3, h⁰(−K) = 10 − 6 = 4. (c) Eᵢ, H − Eᵢ − Eⱼ, 2H − ∑_{k≠j}Eₖ: 6 +
+     15 + 6 = 27; each meets 10.
+     Teacher explains: (a) Locally Bl₀A² = {((x, y), [u : v]) : xv = yu};
+     the fibre over 0 is E = P¹ of tangent directions. Let H = π*(line);
+     a line L through p pulls back to π*L = L̃ + E. Moving L off p shows
+     π*L·E = 0; L̃ meets E once (one direction): L̃·E = 1. Hence E² =
+     (π*L − L̃)·E = 0 − 1 = −1 and L̃² = (H − E)² = 1 − 0 − 1 = 0 (the lines
+     through p become a pencil of disjoint curves: Bl_p P² → P¹).
+     K = π*K_{P²} + E = −3H + E, K² = 9 − 1 = 8. Check adjunction for E:
+     E·(E + K) = −1 − 1 = −2, g = 0 ✓. (b) Each blow-up lowers K² by one:
+     K² = 9 − 6 = 3. Sections of −K = 3H − ∑Eᵢ = cubics through the 6
+     points: 10 − 6 = 4, giving X → P³; the image has degree (−K)² = 3, a
+     CUBIC SURFACE. (c) A LINE ℓ on X ⊆ P³ has −K·ℓ = 1 and, being ≅ P¹,
+     ℓ² = 2g − 2 − K·ℓ = −2 + 1 = −1. Check: L_{ij} = H − Eᵢ − Eⱼ has L² =
+     1 − 2 = −1, K·L = −3 + 1 + 1 = −1; the conic Cⱼ = 2H − ∑_{k≠j}Eₖ has
+     C² = 4 − 5 = −1, K·C = −6 + 5 = −1; Eᵢ is clear. Count 6 + C(6, 2) + 6 =
+     27. E₁ meets L_{1j} (5) and Cⱼ for j ≠ 1 (5): 10 lines. CASTELNUOVO:
+     any (−1)-curve ≅ P¹ can be blown down to a smooth point; a surface
+     with none is MINIMAL (P² and P¹ × P¹ are both minimal rational: the
+     minimal model is not unique for rational surfaces). Common mistakes:
+     E² = +1; forgetting that the 6 points must be general (no 3 collinear,
+     not all 6 on a conic). Now you try: K² for P² blown up at 8 points.
+     (1)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Varieties and the Nullstellensatz (k = C unless stated). Find the
+    radical, the irreducible components, or the dimension as asked.
+    a) √(x³) in k[x]                    b) √(x²y³) in k[x, y]
+    c) √(x², y²)                         d) √((x − 1)²(x + 2)) in k[x]
+    e) components and dim of V(xy, xz) ⊆ A³
+    f) components of V(x² − yz, xz − x) ⊆ A³
+    g) V(y − x², y − 1)                  h) V(x² + y² − 1, x − 1) and √ of
+                                            the ideal
+    i) dim C[x, y]/(y − x³, y) as a vector space (intersection
+       multiplicity at 0)
+    j) Krull dim of k[x, y, z]/(xy − z²)  k) dim of k[x, y]/(x², xy); is
+                                            the ideal radical?
+    l) is V(y² − x³ + x) irreducible?    m) is V(x² − y²) irreducible?
+    n) I(V(J)) for J = (x² + 1) ⊆ R[x]
+    o) Zariski closure of Z ⊆ A¹, and of {(n, n) : n ∈ Z} ⊆ A²
+    p) Zariski closure of {(t, eᵗ) : t ∈ C} ⊆ A²
+    q) is the Zariski topology on A² the product topology of A¹ × A¹?
+    Answers:
+      a) (x)      b) (xy)      c) (x, y)      d) ((x − 1)(x + 2))
+      e) the plane x = 0 and the line y = z = 0; dim 2
+      f) the lines {x = y = 0}, {x = z = 0} and the parabola {z = 1, y =
+         x²}: three curves
+      g) {(1, 1), (−1, 1)}      h) {(1, 0)}; (x − 1, y²) is not radical,
+         its radical is (x − 1, y) (the line is tangent)
+      i) 3 (the ideal is (y, x³))                      j) 2
+      k) 1 (V = the line x = 0); not radical: √ = (x), with an embedded
+         point at 0 ((x², xy) = (x) ∩ (x², y))
+      l) yes (x³ − x is not a square)   m) no: {y = x} ∪ {y = −x}
+      n) R[x] (V = ∅), while √J = J: the Nullstellensatz needs k = k̄
+      o) A¹; the line y = x     p) A² (eᵗ is not algebraic over C(t))
+      q) no: the diagonal (or xy = 1) is closed in A² but not in the
+         product of cofinite topologies
+
+M2. Projective varieties: dimensions of linear systems, degrees, Hilbert
+    polynomials, Bézout.
+    a) dim of the space of cubic forms in 3 variables
+    b) dim of the space of quartic forms in 4 variables
+    c) the Veronese v₂ : P² → P^N: N and degree of the image
+    d) v₃ : P¹ → P^N                    e) v₂ : P³ → P^N
+    f) v₃ : P² → P^N                    g) Segre P¹ × P¹ → P^N: N, degree
+    h) Segre P¹ × P² → P^N              i) Segre P² × P² → P^N
+    j) Hilbert polynomial of a smooth plane conic
+    k) of a plane cubic                 l) of 3 non-collinear points in P²
+    m) of the twisted cubic             n) of a smooth quadric surface in P³
+    o) of the complete intersection of two quadrics in P³
+    p) of the Veronese surface v₂(P²) ⊆ P⁵
+    q) number of intersection points of a general conic and a general
+       cubic in P²
+    r) three general quadrics in P³ meet in how many points?
+    s) intersection multiplicity of y²z = x³ and the line z = 0 at [0 : 1
+       : 0]
+    t) how many general points determine a unique conic, cubic, quartic?
+    Answers:
+      a) 10       b) 35       c) N = 5, degree 4      d) N = 3, degree 3
+      e) N = 9, degree 8      f) N = 9, degree 9      g) N = 3, degree 2
+      h) N = 5, degree 3      i) N = 8, degree C(4, 2) = 6
+      j) 2t + 1   k) 3t       l) 3                    m) 3t + 1
+      n) (t + 1)²             o) 4t (degree 4, pₐ = 1)
+      p) 2t² + 3t + 1 (degree 2! · 2 = 4)
+      q) 6        r) 8        s) 3 (x³ = 0: a flex)
+      t) 5, 9, 14 (h⁰(O(d)) − 1 = 5, 9, 14)
+
+M3. Singularities and tangent spaces (char 0).
+    a) singular points of y² = x³ + x² in A²; type
+    b) y² = x³                          c) y² = x³ − x
+    d) x³ + y³ = xy                     e) y² = x⁵: type of the tangent cone
+    f) x³ + y³ + z³ = 0 in P²           g) xyz = 0 in P²
+    h) x³ + y³ + z³ − 3xyz = 0 in P² (hint: it factors)
+    i) the cone x² + y² = z² ⊆ A³: singular points, dim T₀
+    j) the Whitney umbrella x² = y²z ⊆ A³: singular locus
+    k) dim of the Zariski tangent space m/m² of k[x]/(x²), of
+       k[x, y]/(x², xy, y²), and of k[x, y]/(y − x²) at 0
+    l) the quadric xy − zw = 0 in P³    m) x³ + y³ + z³ + w³ = 0 in P³
+    n) xyz = w³ in P³
+    o) the multiplicity at 0 of y³ = x⁴ and of y² = x²(x + 1)
+    p) for which λ is x³ + y³ + z³ + λxyz = 0 singular? (λ ∈ C)
+    Answers:
+      a) (0, 0): node (tangents y = ±x)        b) (0, 0): cusp
+      c) smooth (x³ − x has distinct roots, and ∞ is smooth)
+      d) (0, 0): node (tangents x = 0, y = 0)
+      e) (0, 0); tangent cone y² = 0, a double line (an A₄ singularity)
+      f) smooth   g) [1 : 0 : 0], [0 : 1 : 0], [0 : 0 : 1] (three nodes)
+      h) = (x + y + z)(x + ωy + ω²z)(x + ω²y + ωz): singular at [1 : 1 :
+         1], [1 : ω : ω²], [1 : ω² : ω]
+      i) only 0; dim T₀ = 3      j) the whole z-axis x = y = 0
+      k) 1, 2, 1                 l) smooth     m) smooth
+      n) [1 : 0 : 0 : 0], [0 : 1 : 0 : 0], [0 : 0 : 1 : 0]
+      o) 3; 2
+      p) λ = −3, −3ω, −3ω² (λ³ = −27), where the curve is a triangle of
+         lines
+
+M4. Spectra of rings.
+    a) number of points of Spec Z[x]/(x² + 1) over p = 13, 7, 2
+    b) Spec Z[x]/(x² − 2) over p = 7, 5, 2
+    c) points of Spec Z/(12); is it reduced? its nilradical
+    d) points of Spec C[x]/(x³ − x)      e) points of Spec k[x]_(x)
+    f) points of Spec k[[x]] and of Spec Z_(p)
+    g) closed points of Spec R[x] (identify them)
+    h) dim Spec Z[x], dim Spec Z[i], dim Spec k[x, y]_(x, y)
+    i) the closure of the point (x) in Spec Z[x]
+    j) the closure of (2, x) and of (0) in Spec Z[x]
+    k) is Spec k[x, y]/(x², xy) irreducible? reduced?
+    l) number of points of Spec(C ⊗_R C)
+    m) number of points of Spec(F₄ ⊗_{F₂} F₄) and of Spec(Q(√2) ⊗_Q R)
+    n) a ring map A → B: the preimage of the prime (x − 1) of k[x] under
+       k[y] → k[x], y ↦ x²
+    o) the fibre of Spec k[x] → Spec k[y], y ↦ x², over y = 0 and over
+       y = 1
+    p) residue field of Spec Z[x] at (3, x² + 1) and at (x)
+    Answers:
+      a) 2, 1, 1 (non-reduced)          b) 2 (3² ≡ 2), 1, 1 (ramified)
+      c) (2), (3); not reduced; (6)      d) 3 points, reduced
+      e) 2: (0) and (x)                 f) 2 each: (0) and the maximal
+      g) (x − a), a ∈ R, and (x² + bx + c) with b² < 4c ↔ {z : Im z > 0};
+         plus the non-closed point (0)
+      h) 2, 1, 2         i) V(x) = {(x)} ∪ {(p, x)} ≅ Spec Z
+      j) itself (maximal); all of Spec Z[x]
+      k) irreducible (only minimal prime (x)); not reduced (x ≠ 0 but
+         x² = 0)
+      l) 2 (C ⊗_R C ≅ C × C)            m) 2 (F₄ × F₄); 2 (R × R)
+      n) (y − 1)                        o) Spec k[x]/(x²): one double
+         point; Spec k[x]/(x² − 1): two points
+      p) F₉; Q (Z[x]/(x) ≅ Z, whose fraction field is Q)
+
+M5. Sheaves: stalks, sections, exactness.
+    a) stalk of O_{A¹} at 0              b) stalk of O_{A¹} at the generic
+                                            point
+    c) stalk of the sheaf of holomorphic functions on C at 0
+    d) Γ(D(x), O) on Spec k[x]           e) Γ(A² ∖ {0}, O)
+    f) Γ(Pⁿ, O)                          g) Γ(U, Z_const) if U has 3
+                                            connected components
+    h) the constant PRESHEAF Z on two disjoint points {p, q}: its value
+       on {p, q}, and that of its sheafification
+    i) stalks of the skyscraper k_P at P and at a closed Q ≠ P
+    j) is 0 → Z → O → O* → 0 (f ↦ e^(2πif)) exact as sheaves on C*? on
+       global sections?
+    k) the kernel of d : O → Ω on a connected Riemann surface
+    l) Γ(D(f), M̃) and (M̃)_p for an A-module M
+    m) support of (Z/5)~ on Spec Z; of Q̃
+    n) is Q̃ quasi-coherent? coherent?
+    o) is U ↦ {bounded holomorphic functions on U} a sheaf on C?
+    p) is U ↦ {f ∈ O(U) : f has a square root on U} a sheaf on C*?
+    q) the sheaf O_{P¹} → O_Z for Z = {0, ∞}: surjective as sheaves?
+       on global sections?
+    Answers:
+      a) k[x]_(x)       b) k(x)      c) C{z} (convergent power series)
+      d) k[x, x⁻¹]      e) k[x, y]   f) k     g) Z³
+      h) Z; Z² (so the presheaf was not a sheaf)
+      i) k and 0
+      j) yes; no (z ∉ image; cokernel H¹(C*, Z) = Z)
+      k) the constant sheaf C          l) M_f and M_p
+      m) the closed point (5); all of Spec Z
+      n) yes; no (Q is not a finitely generated Z-module)
+      o) no (f(z) = z is locally bounded, not bounded: gluing fails)
+      p) no (z has local square roots but none on C*: not a sheaf)
+      q) yes; no: Γ(O) = k → k² = Γ(O_Z) (the obstruction is
+         H¹(O(−2)) = k)
+
+M6. Cohomology of line bundles: give (h⁰, h¹, ..., hⁿ).
+    a) P¹, O(3)          b) P¹, O(−1)          c) P¹, O(−2)
+    d) P¹, O(−5)         e) P², O(2)           f) P², O(−3)
+    g) P², O(−5)         h) P², O(−1) and O(−2)
+    i) P³, O(2)          j) P³, O(−6)
+    k) χ(P², O(d)) as a polynomial       l) χ(P³, O(−2)); χ(P³, O(−5))
+    m) P¹ × P¹, O(2, 3)                  n) P¹ × P¹, O(−2, −2)
+    o) P¹ × P¹, O(1, −2)                 p) P¹ × P¹, O(−3, 1)
+    q) H¹(A² ∖ {0}, O)
+    r) Hⁱ(X, F) for X affine, F quasi-coherent, i > 0
+    Answers:
+      a) (4, 0)          b) (0, 0)          c) (0, 1)
+      d) (0, 4)          e) (6, 0, 0)       f) (0, 0, 1)
+      g) (0, 0, 6)       h) all zero        i) (10, 0, 0, 0)
+      j) (0, 0, 0, 10) (= h⁰(O(2)))
+      k) (d + 1)(d + 2)/2 (valid for every d ∈ Z)
+      l) 0; −4 (h³(O(−5)) = h⁰(O(1)) = 4; the polynomial gives
+         (−4)(−3)(−2)/6 = −4)
+      m) (12, 0, 0)       n) (0, 0, 1)       o) (0, 2, 0)
+      p) (0, 4, 0)
+      q) infinite-dimensional (spanned by x⁻ⁱy⁻ʲ, i, j ≥ 1): A² ∖ {0}
+         is not affine
+      r) 0 (Serre)
+
+M7. Curves in projective space: degree, genus, cohomology.
+    a) genus of a smooth plane curve of degree 1, 2, 3, 4, 5, 6
+    b) smooth plane quartic C: h⁰(O_C(1)), h⁰(O_C(2)), h⁰(O_C(3))
+    c) smooth plane quintic: K_C and h⁰(K_C)
+    d) complete intersection of type (2, 2) in P³: degree, genus
+    e) type (2, 3)       f) type (3, 3)       g) type (2, 4)
+    h) type (2, 2, 2) in P⁴: degree, K_C, genus
+    i) the rational normal curve in Pⁿ: degree, genus, h⁰(O_C(1))
+    j) geometric genus of a plane quartic with 1 node; with 3 nodes; of a
+       plane sextic with 4 nodes and 1 cusp
+    k) arithmetic and geometric genus of the nodal cubic y²z = x³ + x²z
+    l) canonical model of a non-hyperelliptic curve of genus 3; genus 4;
+       general genus 5 (ambient space and degree)
+    m) deg K for g = 4, and the degree of the canonical map of a
+       hyperelliptic curve of genus g onto its image
+    n) a smooth hyperplane section of the Veronese surface v₂(P²) ⊆ P⁵:
+       degree and genus
+    Answers:
+      a) 0, 0, 1, 3, 6, 10               b) 3, 6, 10 (RR: 4k + 1 − 3 for
+                                            k ≥ 2)
+      c) O_C(2), h⁰ = 6 = g              d) 4, 1
+      e) 6, 4        f) 9, 10       g) 8, 9 (2g − 2 = ab(a + b − 4))
+      h) 8, O_C(1), 5 (2g − 2 = 8)
+      i) n, 0, n + 1                     j) 2; 0; 10 − 5 = 5
+      k) pₐ = 1, geometric genus 0 (normalization P¹)
+      l) quartic in P²; (2, 3) complete intersection in P³ (degree 6);
+         (2, 2, 2) complete intersection in P⁴ (degree 8)
+      m) 6; 2 (it factors through the double cover of a rational normal
+         curve of degree g − 1)
+      n) degree 4 (a conic embedded by O(2)), genus 0
+
+M8. Riemann-Roch on a smooth projective curve C of genus g: find ℓ(D).
+    a) g = 0, deg D = 5                  b) g = 0, deg D = −1
+    c) g = 1, deg D = 4                  d) g = 1, D = 0; D of degree 0,
+                                            not principal
+    e) g = 2, deg D = 3                  f) g = 2, D = K
+    g) g = 3, deg D = 5                  h) g = 3, deg D = 4, D ≁ K
+    i) g = 3, D = K                      j) g = 5, deg D = 20
+    k) g = 10, D = 2K                    l) g ≥ 1, D = P a point
+    m) elliptic (E, O): ℓ(nO) for n = 0, 1, 2, 3, 6
+    n) Weierstrass gaps at any point of an elliptic curve
+    o) g = 2: gaps at a Weierstrass point and at a general point
+    p) g = 3 plane quartic: gaps at a general point; at an ordinary flex
+       P (tangent line cuts 3P + Q); at a hyperflex (tangent cuts 4P)
+    q) Clifford: the largest ℓ(D) for deg D = 4 on a curve of genus 5
+    r) the least n such that every divisor of degree n is very ample,
+       g = 2
+    s) the least degree of a non-constant map C → P¹ when g = 2
+    Answers:
+      a) 6       b) 0       c) 4       d) 1; 0
+      e) 2       f) 2       g) 3       h) 2 (= 4 + 1 − 3, ℓ(K − D) = 0)
+      i) 3       j) 16      k) 27 (= 3g − 3)          l) 1
+      m) 1, 1, 2, 3, 6      n) {1}
+      o) {1, 3} (ℓ(2P) = 2: x has a double pole); {1, 2}
+      p) {1, 2, 3}; {1, 2, 4} (ℓ(3P) = 1 + ℓ(Q) = 2, ℓ(4P) = 2 + ℓ(Q − P)
+         = 2); {1, 2, 5} (ℓ(4P) = ℓ(K) = 3)
+      q) 3 (equality iff C is hyperelliptic)
+      r) 5 (= 2g + 1)       s) 2 (every genus-2 curve is hyperelliptic)
+
+M9. Riemann-Hurwitz and genus computations (char 0).
+    a) y² = x³ − x       b) y² = x⁵ − 1       c) y² = x⁶ − 1
+    d) y² = x⁷ + 1       e) y² = h(x), h squarefree of degree 10
+    f) y² = x(x − 1)(x − 2)···(x − 7)
+    g) y³ = h(x), h squarefree of degree 6
+    h) y³ = x⁴ − 1       i) the Fermat curves of degree 4 and 5
+    j) an unramified double cover of a genus-3 curve
+    k) an unramified degree-n cover of an elliptic curve
+    l) a degree-2 map from genus 2 to genus 1: number of branch points
+    m) a degree-3 map from genus g to P¹ with only simple ramification:
+       number of branch points
+    n) z ↦ z³ on P¹: ramification points and ∑(e_P − 1)
+    o) Hurwitz bound for |Aut C| when g = 2, 3, 7
+    p) geometric genus of y² = x³ + x²; of a plane quartic with one cusp
+    q) genus of smooth curves of bidegree (3, 3), (2, 5), (1, n) on
+       P¹ × P¹
+    Answers:
+      a) 1       b) 2       c) 2       d) 3       e) 4       f) 3
+      g) 4 (6 total ramification points, ∞ unramified: 2g − 2 = −6 + 12)
+      h) 3       i) 3, 6    j) 5 (2g − 2 = 2·4)       k) 1
+      l) 2 (2 = 2·0 + r)    m) 2g + 4
+      n) 0 and ∞, each e = 3; 4 = 2·3 − 2
+      o) 84, 168 (attained by the Klein quartic), 504 (attained by the
+         Fricke-Macbeath curve)
+      p) 0; 2               q) 4, 4, 0
+
+M10. Surfaces: intersection numbers, adjunction, RR, Noether.
+     a) on P²: conic · cubic; (line)²; K²
+     b) on Q = P¹ × P¹: (1, 0)², (1, 1)², (2, 3)·(1, 4), K_Q, K_Q²
+     c) Bl_p P²: E², K², (H − E)², (H − E)·E
+     d) P² blown up at r points: K², e, rank of Pic
+     e) smooth surface of degree d in P³: K², and its value for d = 3, 4, 5
+     f) quintic surface: χ(O), e, p_g, q
+     g) quartic (K3) surface: χ(O), e, p_g
+     h) genus of a smooth plane section of the quintic surface
+     i) a smooth curve C on a K3 with C² = 4; with C² = −2
+     j) χ(P², O(4)); χ(Q, O(2, 3)) by surface Riemann-Roch
+     k) arithmetic genus of curves in the classes 2H − E and 3H − 2E on
+        Bl_p P²
+     l) Hodge index on Q: signature of the form; D = (1, −1): D·(1, 1)
+        and D²
+     m) signature of the intersection form on Bl_r P²
+     n) degree of the del Pezzo surface Bl_r P² for r = 5, 6, 8
+     o) can a smooth rational curve with C² = −2 be contracted to a
+        smooth point?
+     Answers:
+       a) 6; 1; 9                b) 0, 2, 11, (−2, −2), 8
+       c) −1, 8, 0, 1            d) 9 − r, 3 + r, r + 1 (12 = K² + e ✓)
+       e) d(d − 4)²: 3, 0, 5
+       f) 5, 55, 4 (= h⁰(O_X(1))), 0 (χ = 1 − 0 + 4 ✓; 60 = 5 + 55 ✓)
+       g) 2, 24, 1               h) 6 (2g − 2 = H·2H = 10)
+       i) g = 3; g = 0 (a (−2)-curve)
+       j) 15; 1 + ½(2·5 + 3·4) = 12 = 3·4 ✓
+       k) 0 (conics through p); 0 (C² = 5, K·C = −7: nodal cubics at p
+          become smooth rational curves)
+       l) (1, 1); 0 and −2 < 0 ✓      m) (1, r)
+       n) 4 (two quadrics in P⁴), 3 (cubic surface), 1
+       o) no (Castelnuovo needs C² = −1); it contracts to an A₁ (cone)
+          singularity
+
+M11. Divisors and Picard groups.
+     a) div of (x − 1)²/(x(x − 2)) on P¹  b) div of x³ on P¹
+     c) div of (x − 1)/(x − 2)³ on P¹
+     d) Pic Pⁿ; Pic Aⁿ; Pic(A¹ ∖ {0})
+     e) Pic(P¹ × P¹); Pic(Bl_r P²)
+     f) Pic(P² ∖ L), L a line; Pic(P² ∖ conic); Pic(P² ∖ smooth cubic)
+     g) Pic(Spec Z); Pic(Spec Z[√−5])
+     h) Cl and Pic of the cone Spec k[x, y, z]/(xy − z²)
+     i) Pic⁰ of an elliptic curve E; of the nodal cubic; of the cuspidal
+        cubic
+     j) on E : y² = x³ − x (O at infinity): div(x), div(y)
+     k) is (1, 0) − O principal on that E? is 2((1, 0) − O)?
+     l) degree of O_C(1) on a plane curve of degree d
+     m) Pic of a smooth plane cubic
+     n) deg K_{P¹}; K_{Pⁿ}; K of a smooth hypersurface of degree d in Pⁿ
+     o) is every Weil divisor Cartier on a smooth variety?
+     Answers:
+       a) 2[1] − [0] − [2] (no zero or pole at ∞)   b) 3[0] − 3[∞]
+       c) [1] − 3[2] + 2[∞]        d) Z; 0; 0
+       e) Z²; Z^(r+1)              f) 0; Z/2; Z/3 (Cl(X ∖ Z) = Cl X/⟨Z⟩)
+       g) 0; Z/2 (the class of (2, 1 + √−5))
+       h) Cl = Z/2 (generated by the line x = z = 0, with 2·line =
+          div(x)); Pic = 0
+       i) E itself (P ↦ [P − O]); k* (multiplicative group); k (additive
+          group)
+       j) div(x) = 2[(0, 0)] − 2[O]; div(y) = [(0, 0)] + [(1, 0)] +
+          [(−1, 0)] − 3[O]
+       k) no (it corresponds to the non-zero point (1, 0) of E); yes:
+          div(x − 1)
+       l) d       m) Z ⊕ E(k) (degree, and Pic⁰ ≅ E)
+       n) −2; O(−n − 1); O(d − n − 1) (adjunction)
+       o) yes (local rings are UFDs)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every open subset of an affine variety is affine.
+     b) A bijective morphism of varieties is an isomorphism.
+     c) Every irreducible closed subset of a scheme has a unique generic
+        point.
+     d) A surjective map of sheaves is surjective on global sections.
+     e) Hⁱ(P¹, F) = 0 for every sheaf F of abelian groups and i ≥ 2.
+     f) Every regular function on a connected projective variety is
+        constant.
+     g) For every g ≥ 0 there is a smooth plane curve of genus g.
+     h) Every smooth projective curve of genus 2 is hyperelliptic.
+     i) Every smooth projective curve of genus 0 over C is ≅ P¹.
+     j) On a normal variety Pic = Cl.
+     k) If deg D > 0 then ℓ(D) > 0.
+     l) If deg D ≥ g then ℓ(D) > 0.
+     m) The intersection form on a smooth projective surface is positive
+        definite.
+     n) Spec k[x]/(x²) ≅ Spec k as schemes.
+     o) The underlying space of A² = A¹ × A¹ is the set product.
+     p) Every smooth cubic surface over C contains exactly 27 lines.
+     q) Every smooth projective surface has a unique minimal model.
+     r) The Nullstellensatz holds over every field.
+     s) A projective variety is affine only if it is a finite set of
+        points.
+     t) A non-constant map of curves X → Y implies g_X ≥ g_Y.
+     Answers:
+       a) F: A² ∖ {0} (D5)          b) F: A¹ → cusp (D3)
+       c) T (schemes are sober)     d) F: exp on C*; O → O_{0, ∞} on P¹
+       e) T (Grothendieck vanishing on a noetherian space of dim 1)
+       f) T                         g) F: genera are (d − 1)(d − 2)/2 =
+                                       0, 1, 3, 6, ...; 2 is missed
+       h) T (K gives a degree-2 map to P¹)       i) T (D9)
+       j) F: the cone xy = z² (Cl = Z/2, Pic = 0)
+       k) F: a general degree-1 divisor on a genus-2 curve (effective
+          classes of degree 1 form a curve in the surface Pic¹)
+       l) T (ℓ(D) ≥ deg D + 1 − g ≥ 1)
+       m) F: E² = −1 on a blow-up; (1, −1)² = −2 on P¹ × P¹
+       n) F: same space, but k[x]/(x²) ≇ k (a nilpotent)
+       o) F: A² has generic points of curves, e.g. (y − x²), not pairs
+       p) T        q) F: P² and P¹ × P¹ are minimal and birational
+       r) F: R, with x² + 1
+       s) T (if X is affine and projective, k[X] = Γ(X, O) is a finite
+          product of copies of k, so X is a finite set)
+       t) T (Riemann-Hurwitz, D10)
+
+TEACHING TIPS
+  Struggling: keep ONE dictionary on the board all term — ideals ↔ sets,
+  rings ↔ spaces, modules ↔ sheaves, divisors ↔ line bundles — and make
+  every abstract statement land on four test cases: A¹ (Spec k[x]), P¹,
+  the node/cusp, and Spec Z. Compute Čech cohomology of O(d) on P¹ by hand
+  until the "negative-exponent monomials" picture of Hⁿ(Pⁿ, O(d)) is
+  automatic; then every genus in the course comes from a short exact
+  sequence 0 → O(−d) → O → O_C → 0 plus Serre duality. For curves drill
+  the three inequalities ℓ(D) ≥ deg D + 1 − g, deg D > 2g − 2 ⇒ equality,
+  deg < 0 ⇒ ℓ = 0, and always ask "which points are ramified, and with
+  what e?" before quoting Riemann-Hurwitz. For surfaces, write K, C² and
+  K·C in a table and check adjunction every time. Harder: prove Serre's
+  vanishing and finiteness theorems via Čech cohomology on Proj; prove
+  Serre duality on curves via répartitions (adèles); prove that a curve
+  of genus g ≥ 2 has at most (g − 1)g(g + 1) Weierstrass points counted
+  with weight and that |Aut C| ≤ 84(g − 1); derive surface Riemann-Roch
+  from curve Riemann-Roch and adjunction; prove the Hodge index theorem
+  from Riemann-Roch; show every smooth cubic surface is P² blown up at 6
+  points and compute the incidence graph of its 27 lines (the
+  Schläfli graph, automorphism group W(E₆)); and study the scheme-
+  theoretic fibres of Spec Z[x]/(f) → Spec Z to see ramification as
+  geometry.
+
+
+================================================================================
+TOPIC 12.15 — ALGEBRAIC NUMBER THEORY: DEDEKIND DOMAINS, RAMIFICATION, CLASS
+GROUPS, DIRICHLET UNIT THEOREM, LOCAL FIELDS, p-ADIC NUMBERS, ADELES AND
+IDELES
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - NUMBER FIELD K: a finite extension of Q, [K : Q] = n = r₁ + 2r₂ (r₁
+    real embeddings, r₂ pairs of complex ones). RING OF INTEGERS O_K = the
+    elements whose monic minimal polynomial lies in Z[x] (the integral
+    closure of Z in K); O_K ≅ Zⁿ as a group. Quadratic K = Q(√d), d
+    squarefree: O_K = Z[√d] if d ≡ 2, 3 (mod 4), Z[(1 + √d)/2] if d ≡ 1
+    (mod 4); cyclotomic: O = Z[ζₘ]; Q(∛2): O = Z[∛2].
+  - TRACE, NORM, DISCRIMINANT: Tr(α) = ∑σᵢ(α), N(α) = ∏σᵢ(α) over the n
+    embeddings; disc(ω₁, ..., ωₙ) = det(Tr(ωᵢωⱼ)) = det(σᵢ(ωⱼ))². For an
+    integral basis this is d_K; disc(Z[α]) = disc(f) = [O_K : Z[α]]²·d_K.
+    d_K = d or 4d for Q(√d); disc(x³ + ax + b) = −4a³ − 27b²; d(Q(ζ_p)) =
+    (−1)^((p−1)/2) p^(p−2). STICKELBERGER: d_K ≡ 0, 1 (mod 4); sign of d_K
+    = (−1)^r₂. If disc(f) is squarefree, or f is Eisenstein at every
+    p with p² | disc(f), then O_K = Z[α].
+  - DEDEKIND DOMAIN: a Noetherian, integrally closed domain in which every
+    non-zero prime is maximal. O_K is Dedekind; so is every PID and the
+    coordinate ring of a smooth affine curve. MAIN THEOREM: every non-zero
+    ideal factors UNIQUELY as a product of prime ideals; the fractional
+    ideals form a free abelian group I_K on the primes; "to contain is to
+    divide" (𝔞 ⊇ 𝔟 ⇔ 𝔞 | 𝔟). Localisations O_𝔭 are DVRs. Dedekind + UFD ⇔
+    PID. Non-examples: Z[√−3] (not integrally closed: (2, 1 + √−3)² =
+    2(2, 1 + √−3)), k[x, y] (dimension 2).
+  - IDEAL NORM N(𝔞) = |O_K/𝔞|: multiplicative, N((α)) = |N(α)|, N(𝔭) = p^f
+    for 𝔭 | p. In Z[√−5]: 6 = 2·3 = (1 + √−5)(1 − √−5), but as ideals
+    (6) = 𝔭₂²𝔭₃𝔭₃′ with 𝔭₂ = (2, 1 + √−5), 𝔭₃ = (3, 1 + √−5), 𝔭₃′ =
+    (3, 1 − √−5): unique factorisation is restored at the level of ideals.
+  - SPLITTING OF PRIMES: pO_K = 𝔓₁^e₁ ··· 𝔓_g^e_g with ∑eᵢfᵢ = n (eᵢ =
+    RAMIFICATION index, fᵢ = [O_K/𝔓ᵢ : F_p] RESIDUE degree). p RAMIFIES
+    (some eᵢ > 1) ⇔ p | d_K (Dedekind), so only finitely many ramify.
+    DEDEKIND-KUMMER: if O_K = Z[α] (or just p ∤ [O_K : Z[α]]) and f ≡
+    ∏gᵢ^eᵢ (mod p) with gᵢ irreducible, then pO_K = ∏(p, gᵢ(α))^eᵢ with fᵢ =
+    deg gᵢ. Warning: Dedekind's field x³ + x² − 2x + 8 has 2 | [O_K : Z[α]]
+    for EVERY α.
+  - QUADRATIC AND CYCLOTOMIC LAWS: in Q(√d), p odd splits / is inert /
+    ramifies as (d/p) = 1 / −1 / 0; p = 2 splits if d ≡ 1 (mod 8), is inert
+    if d ≡ 5 (mod 8), ramifies if d ≡ 2, 3 (mod 4). In Q(ζₘ), p ∤ m: e = 1,
+    f = order of p mod m, g = φ(m)/f; (p) = (1 − ζ_p)^(p−1) is totally
+    ramified in Q(ζ_p).
+  - GALOIS CASE (HILBERT THEORY): Gal(L/K) permutes the 𝔓 | 𝔭
+    transitively, so all eᵢ = e, fᵢ = f and efg = n. DECOMPOSITION group
+    D_𝔓 = {σ : σ𝔓 = 𝔓} (order ef), INERTIA group I_𝔓 (order e), D/I ≅
+    Gal(F_𝔓/F_𝔭) cyclic, generated by FROBENIUS: Frob(x) ≡ x^N𝔭 mod 𝔓. For
+    Q(ζₘ), Frob_p = (ζ ↦ ζᵖ); for Q(i), Frob_p = conjugation iff p ≡ 3
+    (mod 4).
+  - CLASS GROUP Cl(K) = I_K/P_K (fractional ideals modulo principal ones);
+    h_K = |Cl(K)| is FINITE, and h_K = 1 ⇔ O_K is a PID ⇔ O_K is a UFD.
+    MINKOWSKI BOUND: every class contains an integral ideal of norm ≤ M_K =
+    (n!/nⁿ)(4/π)^r₂ √|d_K|; so Cl(K) is generated by primes of norm ≤ M_K.
+    Examples: h = 1 for Q(i), Q(√−2), Q(√−7), Q(√−163), Q(√2), Q(∛2),
+    Q(ζ₇); h = 2 for Q(√−5), Q(√10); h = 3 for Q(√−23); h = 4 (cyclic) for
+    Q(√−14); Cl ≅ (Z/2)² for Q(√−21). Imaginary quadratic h = 1 exactly for
+    d = −1, −2, −3, −7, −11, −19, −43, −67, −163 (Heegner-Stark-Baker).
+  - GEOMETRY OF NUMBERS: MINKOWSKI'S THEOREM: a convex, centrally symmetric
+    S ⊆ Rⁿ with vol(S) > 2ⁿ covol(Λ) contains a non-zero point of the
+    lattice Λ. O_K embeds as a lattice of covolume 2^(−r₂)√|d_K| in K ⊗ R ≅
+    R^r₁ × C^r₂. Consequences: finiteness of h_K, |d_K| > 1 for K ≠ Q
+    (so some prime ramifies), HERMITE: finitely many K with |d_K| ≤ X.
+  - DIRICHLET UNIT THEOREM: O_K^× ≅ μ_K × Z^(r₁+r₂−1), μ_K = roots of unity
+    in K (finite, cyclic). Proof via the LOG EMBEDDING ℓ(u) = (log|σᵢ(u)|
+    with weight 2 at complex places): kernel = μ_K, image a full lattice
+    in the hyperplane ∑xᵢ = 0. REGULATOR R_K = |det| of any (r₁ + r₂ − 1)
+    minor of the log matrix of fundamental units (R = log ε for real
+    quadratic). N(u) = ±1 for units.
+  - UNITS IN PRACTICE: imaginary quadratic: O^× = {±1}, except μ₄ in Q(i),
+    μ₆ in Q(√−3). Real quadratic: ε = fundamental solution of PELL x² − dy²
+    = ±1 (±4 when d ≡ 1 mod 4), found by the continued fraction of √d:
+    1 + √2, 2 + √3, (1 + √5)/2, 5 + 2√6, 8 + 3√7, 3 + √10, (3 + √13)/2.
+    Q(∛2): ε = 1 + ∛2 + ∛4 = 1/(∛2 − 1); x³ − x − 1: ε = α (≈ 1.32472).
+  - p-ADIC NUMBERS: vₚ(pᵏa/b) = k, |x|ₚ = p^(−vₚ(x)): NON-ARCHIMEDEAN
+    (|x + y|ₚ ≤ max(|x|ₚ, |y|ₚ), equality if |x|ₚ ≠ |y|ₚ; every triangle
+    is isosceles, every point of a ball is its centre). OSTROWSKI: every
+    non-trivial absolute value on Q is equivalent to |·|_∞ or some |·|ₚ.
+    Qₚ = completion; Zₚ = {|x|ₚ ≤ 1} = lim← Z/pᵏ, compact; x = ∑_{i≥k}
+    aᵢpⁱ uniquely (0 ≤ aᵢ < p); −1 = ∑(p − 1)pⁱ; ∑aₙ converges ⇔ aₙ → 0.
+    PRODUCT FORMULA: ∏_v |x|_v = 1 for x ∈ Q^×.
+  - HENSEL'S LEMMA: f ∈ Zₚ[x], f(a) ≡ 0, f′(a) ≢ 0 (mod p) ⇒ a unique root
+    α ∈ Zₚ with α ≡ a (strong form: |f(a)|ₚ < |f′(a)|ₚ²). Hence μ_(p−1) ⊆
+    Zₚ (TEICHMÜLLER lifts ω(a) = lim a^(pᵏ)); for p odd a unit u is a
+    square in Zₚ iff (u/p) = 1; a 2-adic unit is a square iff u ≡ 1
+    (mod 8). Qₚ^× ≅ Z × μ_(p−1) × (1 + pZₚ) and |Qₚ^×/Qₚ^×²| = 4 (p odd),
+    8 (p = 2).
+  - LOCAL FIELDS: fields complete for a discrete valuation with finite
+    residue field (equivalently, non-discrete locally compact fields ≠ R,
+    C): finite extensions of Qₚ, and F_q((t)). Data: O, uniformiser π,
+    residue field k, n = ef. For each n there is a UNIQUE unramified
+    extension of degree n (Qₚ(ζ_(pⁿ−1))); Eisenstein polynomials give the
+    totally ramified ones (Qₚ(ζₚ), Qₚ(ᵖ⁻¹√p)). Qₚ has 3 quadratic
+    extensions for p odd, 7 for p = 2.
+  - LOCAL-GLOBAL: K ⊗_Q Qₚ ≅ ∏_{𝔓|p} K_𝔓 with [K_𝔓 : Qₚ] = e_𝔓f_𝔓;
+    K ⊗ R ≅ R^r₁ × C^r₂. HASSE-MINKOWSKI: a quadratic form over Q is
+    isotropic iff it is isotropic over R and every Qₚ; fails for cubics
+    (Selmer: 3x³ + 4y³ + 5z³ = 0).
+  - ADELES: A_K = ∏′ K_v, the RESTRICTED product of all completions with
+    respect to O_v (all but finitely many coordinates integral), topology
+    generated by ∏_{v∈S} U_v × ∏_{v∉S} O_v. A_Q = Q + (Ẑ × R) with Q ∩
+    (Ẑ × R) = Z: K is DISCRETE in A_K and A_K/K is COMPACT (fundamental
+    domain Ẑ × [0, 1) for Q). STRONG APPROXIMATION: K is dense in the
+    adeles with any ONE place removed (for Q: Z is dense in Ẑ, CRT).
+  - IDELES: J_K = A_K^× = ∏′ K_v^× w.r.t. O_v^×, with the restricted
+    product topology (NOT the subspace topology of A_K: inversion would not
+    be continuous). CONTENT |a| = ∏|a_v|_v; K^× ⊆ J¹ = ker|·| by the product
+    formula, K^× discrete, and J¹/K^× is COMPACT (this one fact contains both
+    the finiteness of h_K and the unit theorem).
+    J_K → I_K, (a_v) ↦ ∏𝔭_v^(v(a_v)) is onto with kernel U_K = ∏_{v|∞} K_v^× ×
+    ∏O_v^×, so J_K/K^×U_K ≅ Cl(K). For Q: J_Q = Q^× × (R_{>0} × Ẑ^×) and
+    C_Q = J_Q/Q^× ≅ R_{>0} × Ẑ^×.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. Let K = Q(√d), d ≠ 0, 1 squarefree. Prove that O_K = Z[√d] if d ≡ 2, 3
+    (mod 4) and O_K = Z[ω], ω = (1 + √d)/2, if d ≡ 1 (mod 4), and compute
+    d_K. Is (3 + √−7)/2 an algebraic integer? What is [O_K : Z[√5]] in
+    Q(√5)?
+    Answer: d_K = 4d, respectively d. Yes (root of x² − 3x + 4). Index 2.
+    Teacher explains: Let α = a + b√d with a, b ∈ Q, b ≠ 0. Its minimal
+    polynomial is x² − 2a x + (a² − db²), so α ∈ O_K ⇔ 2a ∈ Z and a² − db²
+    ∈ Z. Write A = 2a ∈ Z. Then d(2b)² = A² − 4(a² − db²) ∈ Z; since d is
+    squarefree, a prime in the denominator of 2b would appear squared in
+    the denominator, so B = 2b ∈ Z. The condition becomes
+       A² − dB² ≡ 0 (mod 4).
+    Squares are 0 or 1 mod 4. If d ≡ 2 or 3 (mod 4), the only solution is
+    A, B both even, i.e. a, b ∈ Z: O_K = Z[√d]. If d ≡ 1 (mod 4) the
+    condition is A ≡ B (mod 2): a, b both integers or both halves of odd
+    integers, i.e. α ∈ Z + Zω. Discriminants: for the basis {1, √d},
+       det ( Tr 1    Tr √d  ) = det ( 2   0  ) = 4d;
+           ( Tr √d   Tr d   )       ( 0   2d )
+    for {1, ω}: Tr ω = 1 and ω² = ω + (d − 1)/4, so Tr ω² = 1 + (d − 1)/2
+    = (d + 1)/2 and the determinant is 2·(d + 1)/2 − 1² = d. For
+    (3 + √−7)/2: −7 ≡ 1 (mod 4) and A = 3, B = 1 are both odd, so it is
+    integral; indeed its trace is 3 and its norm (9 + 7)/4 = 4. In
+    Q(√5), disc(Z[√5]) = 20 = [O_K : Z[√5]]²·5, so the index is 2.
+    Common mistakes: thinking Z[√d] is always the ring of integers (it is
+    not integrally closed when d ≡ 1 mod 4: the golden ratio (1 + √5)/2 is
+    missing); forgetting d_K ≡ 0, 1 (mod 4). Now you try: find O_K and d_K
+    for Q(√−7) and for Q(√−6). (Z[(1 + √−7)/2], −7; Z[√−6], −24)
+
+D2. In R = Z[√−5]: (a) explain why R is a Dedekind domain but not a UFD;
+    (b) with 𝔭 = (2, 1 + √−5), 𝔮 = (3, 1 + √−5), 𝔮′ = (3, 1 − √−5), show
+    𝔭² = (2), 𝔮𝔮′ = (3), 𝔭𝔮 = (1 + √−5), and hence factor (6) into primes;
+    (c) show 𝔭 is not principal; (d) explain why Z[√−3] is NOT Dedekind.
+    Answer: (6) = 𝔭²𝔮𝔮′; the two factorisations 2·3 and (1 + √−5)(1 − √−5)
+    are regroupings (𝔭²)(𝔮𝔮′) = (𝔭𝔮)(𝔭𝔮′).
+    Teacher explains: (a) R = O_K for K = Q(√−5) (−5 ≡ 3 mod 4, D1), so it
+    is integrally closed; it is Zⁿ as a group, hence Noetherian; a non-zero
+    prime 𝔓 contains the integer N(α) = αᾱ for any α ≠ 0 in 𝔓, so R/𝔓 is
+    a finite domain, hence a field: dimension 1. It is not a UFD: 2, 3,
+    1 ± √−5 are irreducible (norms 4, 9, 6, 6, and no element has norm 2
+    or 3 since a² + 5b² ∉ {2, 3}) and not associates. (b) 𝔭² = (4, 2 + 2√−5,
+    (1 + √−5)²) = (4, 2 + 2√−5, −4 + 2√−5). Every generator is divisible by
+    2, and 2 = 6 − 4 = (2 + 2√−5) − (−4 + 2√−5) − 4 lies in 𝔭², so 𝔭² =
+    (2). Similarly 𝔮𝔮′ = (9, 3 ± 3√−5, 6) ∋ 9 − 6 = 3 and all generators
+    are multiples of 3: 𝔮𝔮′ = (3). 𝔭𝔮 = (6, 2 + 2√−5, 3 + 3√−5, −4 +
+    2√−5) contains (3 + 3√−5) − (2 + 2√−5) = 1 + √−5, and each generator
+    is a multiple of 1 + √−5 (6 = (1 + √−5)(1 − √−5)), so 𝔭𝔮 = (1 + √−5).
+    R/𝔭 ≅ F₂ and R/𝔮 ≅ F₃ (N(𝔭) = 2, N(𝔮) = 3), so these ideals are prime and
+    (6) = 𝔭²𝔮𝔮′. (c) If 𝔭 = (α) then |N(α)| = N(𝔭) = 2, i.e. a² + 5b² = 2:
+    impossible. (d) In Z[√−3], 𝔭 = (2, 1 + √−3) has (1 + √−3)² = −2 +
+    2√−3 ∈ 2𝔭, so 𝔭² = 2𝔭 with 𝔭 ≠ (2): cancellation fails, 𝔭 is not
+    invertible. The culprit: (1 + √−3)/2 is integral but not in Z[√−3].
+    Common mistakes: "irreducible = prime" (2 is irreducible but not prime
+    in R: 2 | 6 = (1 + √−5)(1 − √−5) but 2 divides neither factor); forgetting
+    to show the ideals are prime. Now you try: factor (3 + √−5). (𝔭·𝔭₇,
+    𝔭₇ = (7, 3 + √−5), since N = 14)
+
+D3. Let K = Q(α), α = ∛2. (a) Prove O_K = Z[α] and d_K = −108. (b) Factor
+    2, 3, 5, 7 and 31 in O_K, giving e, f, g, and check ∑eᵢfᵢ = 3.
+    Answer: (2) = (α)³; (3) = (α + 1)³; (5) = 𝔭₅𝔭₂₅ (f = 1, 2); (7) is
+    inert (f = 3); (31) = 𝔭𝔭′𝔭″ (f = 1 each).
+    Teacher explains: (a) disc(x³ − 2) = −27·4 = −108 = −2²·3³ and disc(Z[α])
+    = [O_K : Z[α]]²·d_K, so the index divides 6. KEY LEMMA: if the minimal
+    polynomial of α is Eisenstein at p, then p ∤ [O_K : Z[α]]. x³ − 2 is
+    Eisenstein at 2, and the minimal polynomial of α − 1 is (x + 1)³ − 2 =
+    x³ + 3x² + 3x − 1 — not Eisenstein; use α + 1 instead: (x − 1)³ − 2 =
+    x³ − 3x² + 3x − 3, Eisenstein at 3, and Z[α + 1] = Z[α]. So the index
+    is 1, O_K = Z[α], d_K = −108. (b) DEDEKIND-KUMMER applies to every p.
+    Mod 2: x³, so (2) = (2, α)³ = (α)³ (N(α) = 2). Mod 3: x³ − 2 ≡ (x + 1)³,
+    so (3) = (3, α + 1)³ = (α + 1)³, because N(α + 1) = 3 (constant term of
+    (x − 1)³ − 2). Mod 5: x³ − 2 ≡ (x + 2)(x² − 2x − 1): (5) = (5, α + 2)·
+    (5, α² − 2α − 1), e = 1, f = 1 + 2. Mod 7: the cubes mod 7 are 0, ±1,
+    so x³ − 2 has no root and, being a cubic, is irreducible: (7) is prime,
+    f = 3. Mod 31: 4³ = 64 ≡ 2, and 31 ≡ 1 (mod 3) gives three cube roots
+    of 2: 4, 7, 20 (7³ = 343 = 11·31 + 2): (31) = (31, α − 4)(31, α − 7)
+    (31, α − 20). In each case ∑eᵢfᵢ = 3. Ramified primes: 2 and 3, the
+    primes dividing −108. Common mistakes: applying Dedekind-Kummer
+    without checking p ∤ [O_K : Z[α]] (Dedekind's field x³ + x² − 2x + 8:
+    the polynomial gives x(x + 1)² mod 2 yet 2 splits completely);
+    thinking an irreducible cubic mod p can factor as 2 + 1 without a root.
+    Now you try: factor 11. (11 ≡ 2 mod 3, cubing is a bijection mod 11,
+    one root 7: (11) = 𝔭₁₁𝔭₁₂₁)
+
+D4. Prove the splitting law in K = Q(√d) (d squarefree): an odd prime p
+    splits, is inert or ramifies according as (d/p) = 1, −1, 0; p = 2
+    splits if d ≡ 1 (mod 8), is inert if d ≡ 5 (mod 8), ramifies if
+    d ≡ 2, 3 (mod 4). Deduce "p ramifies ⇔ p | d_K", and describe all
+    primes of Q(√−5).
+    Answer: apply Dedekind-Kummer to x² − d or x² − x − (d − 1)/4. In
+    Q(√−5): 2, 5 ramify; p splits iff p ≡ 1, 3, 7, 9 (mod 20); the split
+    primes above p are principal iff p ≡ 1, 9 (mod 20).
+    Teacher explains: For p odd, p ∤ [O_K : Z[√d]] ∈ {1, 2}, so factor
+    x² − d mod p: two distinct roots if d is a non-zero square (split, e =
+    f = 1, g = 2), irreducible if d is a non-residue (inert, f = 2), and
+    x² if p | d (ramified, (p) = (p, √d)²). For p = 2 and d ≡ 1 (mod 4) use
+    ω, root of x² − x − (d − 1)/4: mod 2 this is x(x − 1) if (d − 1)/4 is
+    even (d ≡ 1 mod 8) and x² + x + 1, irreducible, if it is odd (d ≡ 5
+    mod 8). If d ≡ 2, 3 (mod 4), x² − d ≡ x² or (x + 1)² mod 2: ramified.
+    Since d_K = d or 4d, the ramified primes are exactly those dividing
+    d_K. For d = −5 (d_K = −20): (−5/p) = (−1/p)(5/p) = (−1)^((p−1)/2)
+    (p/5) by reciprocity. Tabulate p mod 20:
+       p ≡ 1: (+)(+)  3: (−)(−)  7: (−)(−)  9: (+)(+)      → split
+       p ≡ 11: (−)(+) 13: (+)(−) 17: (+)(−) 19: (−)(+)     → inert.
+    Since h = 2 (D6), a split 𝔭 is principal, 𝔭 = (a + b√−5), iff p =
+    a² + 5b²; genus theory shows this happens iff p ≡ 1, 9 (mod 20): 29 =
+    3² + 5·2², 41 = 6² + 5·1², while 3, 7, 23 are not of this form (their
+    primes lie in the non-trivial class, like 𝔭 above 2). Common mistakes:
+    using (d/2) (the Legendre symbol is not defined at 2); forgetting that
+    for d ≡ 1 mod 4 one must use ω, not √d, at p = 2. Now you try: how do
+    13, 43 and 61 behave in Q(√−5)? (13 inert; 43 ≡ 3: split, non-principal;
+    61 ≡ 1: split, 61 = 4² + 5·3²)
+
+D5. Let ζ = ζₘ, K = Q(ζ), O_K = Z[ζ]. (a) For m = p prime show (p) =
+    (1 − ζ)^(p−1) and N(1 − ζ) = p. (b) For a prime q ∤ m show that q is
+    unramified with f = ord_m(q), g = φ(m)/f. (c) For m = 7 and q = 2,
+    describe the decomposition group, inertia group and Frobenius, and
+    identify the decomposition field.
+    Answer: (c) f = 3, g = 2, D = {1, σ₂, σ₄}, I = 1, Frob = σ₂ : ζ ↦ ζ²;
+    the decomposition field is Q(√−7).
+    Teacher explains: (a) Φ_p(x) = 1 + x + ... + x^(p−1) = ∏_{k=1}^{p−1}
+    (x − ζᵏ); put x = 1: p = ∏(1 − ζᵏ). Each (1 − ζᵏ)/(1 − ζ) = 1 + ζ + ...
+    + ζ^(k−1) ∈ O_K, and its inverse (1 − ζ)/(1 − ζᵏ) is of the same form
+    (ζ = (ζᵏ)ʲ with kj ≡ 1 mod p), so it is a unit. Hence (p) = (1 −
+    ζ)^(p−1). As ∑eᵢfᵢ = p − 1, (1 − ζ) is prime with e = p − 1, f = 1:
+    TOTALLY RAMIFIED, and N(1 − ζ) = Φ_p(1) = p. (b) q ∤ m ⇒ xᵐ − 1 is
+    separable mod q, so Φₘ mod q has distinct roots: e = 1. A primitive
+    m-th root of unity lies in F_(qᶠ) iff m | qᶠ − 1, i.e. iff ord_m(q) | f;
+    so every irreducible factor of Φₘ mod q has degree f = ord_m(q), and g
+    = φ(m)/f. (c) 2 has order 3 mod 7 (2³ = 8 ≡ 1), so (2) = 𝔓𝔓′ with f = 3.
+    Gal(K/Q) = {σ_a : ζ ↦ ζᵃ} ≅ (Z/7)^×. Since e = 1, I_𝔓 = 1 and D_𝔓 ≅
+    Gal(F₈/F₂) is generated by Frob_𝔓, the element acting as x ↦ x² on the
+    residue field: σ₂. D = ⟨σ₂⟩ = {1, σ₂, σ₄}, order ef = 3. Its fixed
+    field is generated by the Gauss period η = ζ + ζ² + ζ⁴, which satisfies
+    η² + η + 2 = 0, so η = (−1 + √−7)/2 and the decomposition field is
+    Q(√−7). Check: 2 splits in Q(√−7) (−7 ≡ 1 mod 8) and each factor is
+    then inert in the cubic extension K/Q(√−7). Common mistakes: using
+    ord_q(m) instead of ord_m(q); forgetting that the ramified prime of
+    Q(ζ₇) is 7 (not every prime dividing φ(7)). Now you try: how do 11 and
+    19 split in Q(ζ₅)? (11 ≡ 1: completely, 4 primes; 19 ≡ −1: f = 2, g = 2)
+
+D6. Compute the class group of K = Q(√−23) using the Minkowski bound, and
+    check that h(Q(√−5)) = 2.
+    Answer: Cl(Q(√−23)) ≅ Z/3, generated by 𝔭 = (2, ω), ω = (1 + √−23)/2,
+    with 𝔭³ = (ω − 2). Cl(Q(√−5)) ≅ Z/2.
+    Teacher explains: d_K = −23, n = 2, r₂ = 1, so M_K = (2/4)(4/π)√23 =
+    (2/π)√23 ≈ 3.053: Cl is generated by primes of norm 2 and 3. ω has
+    minimal polynomial x² − x + 6, and N(a + bω) = a² + ab + 6b². Mod 2
+    and mod 3, x² − x + 6 ≡ x(x − 1), so (2) = 𝔭𝔭̄ with 𝔭 = (2, ω) and
+    (3) = 𝔮𝔮̄ with 𝔮 = (3, ω). NON-PRINCIPAL: for b ≠ 0, a² + ab + 6b² =
+    (a + b/2)² + 23b²/4 ≥ 23/4 > 3, so there is no element of norm 2 or 3.
+    RELATIONS: N(ω) = 6 and ω ∈ 𝔭 ∩ 𝔮, so (ω) = 𝔭𝔮, i.e. [𝔮] = [𝔭]⁻¹.
+    Look for norm 8 = 2³: a = −2, b = 1 gives N(ω − 2) = 4 − 2 + 6 = 8, and
+    ω − 2 ∈ 𝔭 but ω − 2 ∉ (2), so (ω − 2) cannot contain 𝔭𝔭̄ = (2) as a
+    factor: (ω − 2) = 𝔭³. Thus [𝔭] has order exactly 3, [𝔭̄] = [𝔭]⁻¹,
+    [𝔮] = [𝔭]⁻¹, [𝔮̄] = [𝔭], and Cl(K) = ⟨[𝔭]⟩ ≅ Z/3. For Q(√−5): M =
+    (2/π)√20 ≈ 2.85, so only 𝔭₂ = (2, 1 + √−5) matters; it is not
+    principal (D2) and 𝔭₂² = (2), so h = 2. Common mistakes: using √d
+    instead of √|d_K| in M_K; concluding the order of [𝔭] from its norm
+    alone — always find an explicit principal power. Now you try: show
+    Cl(Q(√−14)) ≅ Z/4. (M ≈ 4.76; 𝔭₃ = (3, 1 + √−14) has 𝔭₃² non-principal
+    (no a² + 14b² = 9 except (3)), and (5 + 2√−14) = 𝔭₃⁴, norm 81)
+
+D7. State and prove Minkowski's convex body theorem. Use it (a) to prove
+    that every prime p ≡ 1 (mod 4) is a sum of two squares, and (b) to show
+    that |d_K| > 1 for every number field K ≠ Q, so that some prime
+    ramifies in K.
+    Answer: vol(S) > 2ⁿ covol(Λ) ⇒ S ∩ Λ ≠ {0}; (a) use the lattice
+    {(a, b) : b ≡ ua mod p}, u² ≡ −1; (b) 1 ≤ M_K forces √|d_K| ≥ π/2 > 1.
+    Teacher explains: BLICHFELDT: if T ⊆ Rⁿ is measurable with vol(T) >
+    covol(Λ), two distinct points of T differ by a lattice vector (project
+    T onto the torus Rⁿ/Λ of volume covol(Λ): the map cannot be injective,
+    or volumes would add up to at most covol(Λ)). Apply it to T = ½S:
+    x − y ∈ Λ with x, y ∈ ½S; by symmetry −y ∈ ½S, by convexity ½(2x) +
+    ½(−2y) = x − y ∈ S. □ (a) Pick u with u² ≡ −1 (mod p) (possible as
+    p ≡ 1 mod 4). Λ = {(a, b) ∈ Z² : b ≡ ua (mod p)} has index p in Z², so
+    covol p. The disc a² + b² < 2p has area 2πp > 4p, so it contains (a, b)
+    ≠ 0 of Λ; then a² + b² ≡ a²(1 + u²) ≡ 0 (mod p) and 0 < a² + b² < 2p,
+    hence a² + b² = p. Example: p = 13, u = 5 (25 ≡ −1): 13 = 2² + 3².
+    (b) Minkowski's theorem applied to O_K ⊆ R^r₁ × C^r₂ gives, in every
+    ideal class, an integral ideal of norm ≤ M_K; since norms are ≥ 1,
+       √|d_K| ≥ (nⁿ/n!)(π/4)^r₂ ≥ (nⁿ/n!)(π/4)^(n/2) =: bₙ.
+    b₂ = 2·π/4 ≈ 1.571, b₃ ≈ 3.13, and b_(n+1)/bₙ = (1 + 1/n)ⁿ√(π/4) ≥
+    2·0.886 > 1, so bₙ > 1 for all n ≥ 2. Thus |d_K| > 1, and a prime
+    dividing d_K ramifies. So Q has NO unramified extension — unlike most
+    number fields, e.g. Q(√−5) ⊆ Q(√−5, i) is unramified. Common mistakes:
+    forgetting that S must be CONVEX and SYMMETRIC (a thin annulus has large
+    volume and no lattice points); strict vs non-strict inequality (for
+    compact S, ≥ suffices). Now you try: write 29 as a sum of two squares
+    by this method. (u = 12: 29 = 2² + 5²)
+
+D8. State the Dirichlet unit theorem, sketch its proof, and apply it to
+    K = Q(∛2): find the unit rank, show ε = 1 + ∛2 + ∛4 is a unit, and
+    compute the regulator. Give the unit rank of Q(ζ₇), Q(√2, √3), Q(⁴√2).
+    Answer: O_K^× = {±1} × εᶻ, R_K = log ε ≈ 1.34738; ranks 2, 3, 2.
+    Teacher explains: THEOREM: O_K^× ≅ μ_K × Z^(r₁+r₂−1). Proof sketch:
+    define ℓ : O_K^× → R^(r₁+r₂), ℓ(u) = (log|σ₁u|, ..., log|σ_r₁ u|,
+    2log|τ₁u|, ..., 2log|τ_r₂ u|). It is a homomorphism into the hyperplane
+    H = {∑xᵢ = 0} (because |N(u)| = 1). (i) Kernel: units all of whose
+    conjugates have |·| = 1 form a finite set (bounded integer
+    coefficients of the minimal polynomial), hence a finite group = μ_K.
+    (ii) ℓ(O_K^×) is discrete, so a lattice of rank ≤ r₁ + r₂ − 1. (iii)
+    Full rank: Minkowski's theorem produces elements of bounded norm
+    that are small at all but one chosen place; finitely many principal
+    ideals of bounded norm give units whose log vectors span H. For
+    K = Q(∛2): r₁ = 1, r₂ = 1 (∛2 is real, the other two cube roots are
+    complex), so the rank is 1 + 1 − 1 = 1, and μ_K = {±1} (K is real).
+    ε·(∛2 − 1) = ∛8 − 1 = 1, so ε is a unit; ε ≈ 3.84732. It is
+    FUNDAMENTAL: Artin's inequality |d_K| < 4u³ + 24 for a unit u > 1 in a
+    complex cubic field gives u³ > (108 − 24)/4 = 21, u > 2.758 for the
+    fundamental unit u, and ε = uᵏ with k ≥ 2 would force ε ≥ 2.758² ≈
+    7.6. The regulator is log ε ≈ 1.34738. Ranks: Q(ζ₇) has r₁ = 0, r₂ =
+    3: rank 2; Q(√2, √3) is totally real of degree 4: rank 3; Q(⁴√2) has
+    r₁ = 2 (±⁴√2), r₂ = 1: rank 2. Common mistakes: counting complex
+    embeddings instead of complex PAIRS; forgetting μ_K (e.g. Q(ζ₇) has
+    μ = μ₁₄, 14 roots of unity). Now you try: the unit rank and μ_K of
+    Q(ζ₅)? (rank 1, generated with μ₁₀ by (1 + √5)/2)
+
+D9. (a) Find the fundamental unit of Q(√7) from the continued fraction of
+    √7 and describe all solutions of x² − 7y² = 1. (b) For Q(√13) show ε =
+    (3 + √13)/2 is the fundamental unit, has norm −1, and that ε³ is the
+    fundamental unit of the order Z[√13]; solve x² − 13y² = ±1.
+    Answer: (a) 8 + 3√7; x + y√7 = ±(8 + 3√7)ᵏ, k ∈ Z. (b) ε³ = 18 + 5√13;
+    x² − 13y² = −1: (18, 5), = +1: (649, 180) = ε⁶.
+    Teacher explains: For d ≡ 2, 3 (mod 4), units of Z[√d] are the x + y√d
+    with x² − dy² = ±1. A unit u > 1 has x, y > 0 (u, ±ū = ±1/u, their
+    signs force it), so the smallest unit > 1 is the one with smallest
+    y > 0 — and it generates (the units > 0 form the group εᶻ, by
+    discreteness: if εᵏ < u < εᵏ⁺¹ then 1 < uε⁻ᵏ < ε, contradiction).
+    Continued fraction: √7 = [2; 1, 1, 1, 4] (period 4), convergents 2/1,
+    3/1, 5/2, 8/3, and 8² − 7·3² = 1. So ε = 8 + 3√7 (norm +1; the even
+    period means no solution of x² − 7y² = −1 — consistent with −1 not
+    being a square mod 7). All solutions: ±(8 + 3√7)ᵏ; e.g. (8 + 3√7)² =
+    127 + 48√7. (b) 13 ≡ 1 (mod 4), so units are (x + y√13)/2 with x² −
+    13y² = ±4. y = 1: x² = 13 ± 4 = 9 gives x = 3 and norm (9 − 13)/4 =
+    −1. Smallest possible y, so ε = (3 + √13)/2 is fundamental. ε² = (11 +
+    3√13)/2, ε³ = 18 + 5√13 ∈ Z[√13]; one checks ε, ε² ∉ Z[√13] (halves),
+    so ε³ generates Z[√13]^× modulo ±1. x² − 13y² = −1: 18² − 13·5² = 324
+    − 325 = −1; = +1: ε⁶ = 649 + 180√13. Regulator log ε ≈ 1.19476. (Here
+    √13 = [3; 1, 1, 1, 1, 6] has ODD period 5, which is why −1 is a norm.)
+    Common mistakes: forgetting half-integer units when d ≡ 1 (mod 4);
+    assuming a unit of norm −1 exists whenever −1 is a square mod every
+    p | d (fails for d = 34). Now you try: the fundamental unit of Q(√6)
+    and of Q(√11). (√6 = [2; 2, 4]: 5 + 2√6; 10 + 3√11)
+
+D10. (a) Compute the 5-adic expansions of −1 and 1/3. (b) State and prove
+     Hensel's lemma. (c) Solve x² = −1 in Z₅ to 5 digits, and identify the
+     root as a Teichmüller lift. (d) State Ostrowski's theorem.
+     Answer: (a) −1 = 4 + 4·5 + 4·5² + ...; 1/3 = 2 + 3·5 + 1·5² + 3·5³ +
+     1·5⁴ + ... (c) x = 2 + 1·5 + 2·5² + 1·5³ + 3·5⁴ + ... = 2057 mod 5⁵.
+     Teacher explains: (a) ∑_{i≥0} 4·5ⁱ = 4/(1 − 5) = −1, the series
+     converging because |4·5ⁱ|₅ = 5⁻ⁱ → 0. For 1/3: 1/3 − 2 = −5/3, so
+     1/3 = 2 + 5·(−1/3); and −1/3 = 8/(1 − 25) = (3 + 1·5)(1 + 5² + 5⁴ +
+     ...), digits 3, 1, 3, 1, ... Hence 1/3 = 2 + 3·5 + 1·5² + 3·5³ + ...
+     (check: 3·(2 + 3·5) = 51 ≡ 1 mod 25). (b) HENSEL: f ∈ Zₚ[x], a ∈ Zₚ
+     with f(a) ≡ 0 and f′(a) ≢ 0 (mod p) ⇒ a unique α ∈ Zₚ, α ≡ a (mod p),
+     f(α) = 0. Proof (lift one digit at a time): if f(aₖ) ≡ 0 (mod pᵏ),
+     put aₖ₊₁ = aₖ + tpᵏ. Taylor: f(aₖ + tpᵏ) ≡ f(aₖ) + tpᵏf′(aₖ) (mod
+     pᵏ⁺¹), so we need t ≡ −(f(aₖ)/pᵏ)·f′(aₖ)⁻¹ (mod p): a unique t, since
+     f′(aₖ) ≡ f′(a) is a unit. The aₖ form a Cauchy sequence converging in
+     the complete ring Zₚ. (c) f = x² + 1, a₁ = 2, f′ = 2x. Mod 25: (2 +
+     5t)² + 1 ≡ 5 + 20t ⇒ 1 + 4t ≡ 0, t = 1, a₂ = 7. Mod 125: 7² + 1 = 50 =
+     25·2, 2 + 14t ≡ 0 (mod 5), t = 2, a₃ = 57. Mod 625: 57² + 1 = 3250 =
+     125·26, 26 + 114t ≡ 1 + 4t ≡ 0, t = 1, a₄ = 182. Mod 5⁵: 182² + 1 =
+     33125 = 625·53, 53 + 364t ≡ 3 + 4t ≡ 0, t = 3, a₅ = 2057. Since
+     μ₄ ⊆ Z₅ by Hensel applied to x⁴ − 1, this root is the TEICHMÜLLER lift
+     ω(2) = lim 2^(5ᵏ) (indeed 2^(5⁴) ≡ 2057 mod 5⁵). (d) OSTROWSKI: every
+     non-trivial absolute value on Q is equivalent to |·|_∞ or to |·|ₚ for
+     exactly one prime p (equivalent = a positive power of it).
+     Common mistakes: "carrying" in the wrong direction (p-adic digits
+     carry to the RIGHT, towards higher powers); applying Hensel when
+     f′(a) ≡ 0 (x² − 2 has no root in Z₂; x² − 17 does but needs the strong
+     form, |f(a)|₂ < |f′(a)|₂²). Now you try: the
+     first four 7-adic digits of the root of x² = 2 with x ≡ 3 (mod 7).
+     (3, 1, 2, 6: x ≡ 2166 mod 7⁴)
+
+D11. (a) Prove Qₚ^× ≅ Z × μ_(p−1) × (1 + pZₚ). (b) For p odd show that
+     Qₚ^×/Qₚ^×² has order 4 and list the three quadratic extensions of Qₚ
+     with their e and f. (c) What changes for p = 2? (d) Relate this to the
+     splitting of p in Q(√−5), computing Q(√−5) ⊗ Qₚ for p = 2, 3, 7, 13.
+     Answer: (b) classes 1, u, p, up (u a non-residue unit): Qₚ(√u) has
+     e = 1, f = 2; Qₚ(√p), Qₚ(√up) have e = 2, f = 1. (c) 8 classes {±1,
+     ±5, ±2, ±10}, 7 quadratic extensions. (d) ramified field, Q₃ × Q₃,
+     Q₇ × Q₇, the unramified quadratic extension of Q₁₃.
+     Teacher explains: (a) Every x ∈ Qₚ^× is pⁿu with n = vₚ(x), u ∈ Zₚ^×.
+     Reduction Zₚ^× → F_p^× is onto with kernel 1 + pZₚ, and it SPLITS:
+     xᵖ⁻¹ − 1 has p − 1 simple roots mod p, which lift by Hensel, so μ_(p−1)
+     ⊆ Zₚ maps isomorphically onto F_p^×. Hence u = ω(u)·⟨u⟩ with ⟨u⟩ ∈
+     1 + pZₚ. (b) For p odd every element a of 1 + pZₚ is a square (Hensel
+     on x² − a at x = 1: f′(1) = 2 is a unit), and μ_(p−1)/(squares) ≅ Z/2.
+     With the factor Z/2Z from pᶻ we get Qₚ^×/Qₚ^×² ≅ (Z/2)², classes
+     1, u, p, up. The three non-trivial classes give the three quadratic
+     extensions: Qₚ(√u) has residue field F_(p²) (x² − u is irreducible
+     mod p): UNRAMIFIED, e = 1, f = 2; x² − p and x² − up are Eisenstein:
+     TOTALLY RAMIFIED, e = 2, f = 1. (c) For p = 2, x² − a has f′ = 2x ≡ 0,
+     so Hensel needs |a − 1|₂ < |2|₂² = 1/4: a unit is a square iff a ≡ 1
+     (mod 8). Z₂^×/Z₂^×² ≅ (Z/8)^× = {±1, ±5}, and with 2ᶻ we get 8 classes,
+     7 quadratic extensions; the unramified one is Q₂(√5) = Q₂(√−3) =
+     Q₂(ζ₃). (d) Q(√−5) ⊗ Qₚ = Qₚ[x]/(x² + 5). p = 3: −5 ≡ 1 is a square mod
+     3, so √−5 ∈ Q₃ and the algebra is Q₃ × Q₃ (3 splits, D4). p = 7: −5 ≡ 2
+     ≡ 3² (mod 7): Q₇ × Q₇ (split). p = 13: −5 ≡ 8 is a non-residue mod 13
+     (squares 1, 4, 9, 3, 12, 10): the field Q₁₃(√−5), unramified of degree
+     2 (13 inert). p = 2: −5 ≡ 3 (mod 8) is in the class of −5 ≠ 5, so
+     Q₂(√−5) is ramified (2 | d_K = −20). This is the general rule K ⊗ Qₚ ≅
+     ∏_{𝔓|p} K_𝔓 with [K_𝔓 : Qₚ] = e_𝔓f_𝔓. Common mistakes: thinking Qₚ(√u)
+     depends on the choice of non-residue u (it does not: u/u′ is a
+     square); forgetting that √−1 ∈ Q₅ (so Q₅(i) is not an extension).
+     Now you try: are 7, −7 and 6 squares in Q₃? in Q₂? (Q₃: 7 yes,
+     −7 no, 6 no; Q₂: 7 no, −7 yes, 6 no)
+
+D12. (a) Define the adeles A_Q and prove A_Q = Q + (Ẑ × R) with Q ∩ (Ẑ ×
+     R) = Z; deduce that Q is discrete and A_Q/Q compact. Write a = (a_∞ =
+     π, a₂ = 1/4, a₃ = 1/3, aₚ = 0 otherwise) as r + b, b ∈ Ẑ × [0, 1). (b)
+     Prove J_Q = Q^× × (R_{>0} × Ẑ^×) and decompose the idele (a_∞ = 3, a₂ =
+     1/4, a₃ = 6, aₚ = 1 otherwise); find its content. (c) Explain why J_K
+     does not carry the subspace topology and how J_K sees Cl(K).
+     Answer: (a) r = 31/12, b_∞ = π − 31/12 ≈ 0.52493. (b) a = (3/4)·u with
+     u_∞ = 4, u₂ = 1/3, u₃ = 8, uₚ = 4/3; content |a| = 4.
+     Teacher explains: A_Q = {(a_∞, a₂, a₃, ...) : aₚ ∈ Zₚ for all but
+     finitely many p}, with basic open sets U_∞ × ∏_{p∈S} Uₚ × ∏_{p∉S} Zₚ;
+     Q sits inside diagonally (a rational is in Zₚ for all p not dividing
+     its denominator). (a) Given a, let S = {p : aₚ ∉ Zₚ}. For p ∈ S the
+     principal part rₚ ∈ Z[1/p] of aₚ satisfies aₚ − rₚ ∈ Zₚ, and rₚ ∈ Z_q
+     for q ≠ p; so r = ∑_{p∈S} rₚ ∈ Q has a − r ∈ Ẑ × R. Adjusting r by an
+     integer puts the real part in [0, 1). If r ∈ Q ∩ (Ẑ × R) then r ∈ Zₚ
+     for all p: r ∈ Z. Hence A_Q/Q ≅ (Ẑ × R)/Z, the continuous image of
+     the compact Ẑ × [0, 1]; and Q ∩ (Ẑ × (−½, ½)) = {0}, so Q is discrete.
+     For the example: r₂ = 1/4, r₃ = 1/3, r = 7/12; check 1/4 − 7/12 = −1/3
+     ∈ Z₂, 1/3 − 7/12 = −1/4 ∈ Z₃, −7/12 ∈ Zₚ (p ≥ 5). π − 7/12 ≈ 2.558, so
+     take r = 7/12 + 2 = 31/12, b_∞ = π − 31/12 ≈ 0.52493. (b) Ideles:
+     aₚ ∈ Zₚ^× for almost all p. Given a, put q = sign(a_∞)∏ₚ p^(vₚ(aₚ)) ∈
+     Q^× (a finite product); then q⁻¹a has positive real part and unit
+     p-parts. Uniqueness: a positive rational that is a p-adic unit for
+     every p is 1. Example: q = 2⁻²·3¹ = 3/4, u = a/q: u_∞ = 4, u₂ = (1/4)/
+     (3/4) = 1/3 ∈ Z₂^×, u₃ = 6·4/3 = 8 ∈ Z₃^×, uₚ = 4/3 ∈ Zₚ^× (p ≥ 5).
+     Content |a| = |3|·|1/4|₂·|6|₃ = 3·4·(1/3) = 4 = u_∞ (|q| = 1 by the
+     PRODUCT FORMULA ∏_v|q|_v = 1). So C_Q = J_Q/Q^× ≅ R_{>0} × Ẑ^×, and
+     C_Q¹ ≅ Ẑ^× is compact. (c) Let aₙ have pₙ (the n-th prime) at the
+     place pₙ and 1 elsewhere. In A_Q, aₙ → 1 (aₙ − 1 is integral
+     everywhere and 0 at any fixed finite set of places for large n), but
+     aₙ⁻¹ has 1/pₙ ∉ Z_(pₙ) and does not converge: inversion is not
+     continuous, so J_K gets the restricted product topology (equivalently,
+     embed a ↦ (a, a⁻¹) in A_K × A_K). The map J_K → I_K, a ↦ ∏𝔭^(v_𝔭(a_𝔭)),
+     is onto with kernel U_K = ∏_{v|∞}K_v^× × ∏O_𝔭^×; principal ideles go
+     to principal ideals, so J_K/(K^×U_K) ≅ Cl(K). Common mistakes:
+     treating A_Q as the full product ∏Qₚ × R (then Q would not be
+     discrete); thinking |a| = 1 for every idele (only for elements of J¹).
+     Now you try: the content of (a_∞ = 1/2, a₂ = 8, a₅ = 5, aₚ = 1 else).
+     (1/2 · 1/8 · 1/5 = 1/80)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Rings of integers and discriminants. Give d_K (a-j), disc(f) (k-n),
+    d_K (o-s), and answer t)-v).
+    a) Q(i)          b) Q(√2)         c) Q(√−3)        d) Q(√5)
+    e) Q(√−6)        f) Q(√15)        g) Q(√−19)       h) Q(√33)
+    i) Q(√12)        j) Q(√−18)
+    k) x³ − x − 1    l) x³ + x + 1    m) x³ − 3x + 1   n) x³ − 2
+    o) Q(ζ₅)         p) Q(ζ₇)         q) Q(ζ₈)         r) Q(ζ₁₂)
+    s) Q(ζ₉)
+    t) the sign of d_K for Q(⁴√2), Q(ζ₇), Q(∛2)
+    u) is O_K = Z[α] for α a root of x³ − x − 1? of x³ − 3x + 1?
+    v) can 12 or −15 be the discriminant of a number field? can 2?
+    Answers:
+      a) −4      b) 8       c) −3      d) 5       e) −24     f) 60
+      g) −19     h) 33      i) 12 (= Q(√3))       j) −8 (= Q(√−2))
+      k) −23     l) −31     m) 81 = 3⁴           n) −108
+      o) 125 = 5³           p) −7⁵ = −16807       q) 256 = 2⁸
+      r) 144                s) −3⁹ = −19683
+      t) −, −, − (sign (−1)^r₂ with r₂ = 1, 3, 1)
+      u) yes (disc −23 squarefree); yes (x ↦ x − 1 gives x³ − 3x² + 3,
+         Eisenstein at 3)
+      v) 12 yes (Q(√3)); −15 yes (Q(√−15)); 2 no (≢ 0, 1 mod 4)
+
+M2. Norms, traces, minimal polynomials, integrality.
+    a) N and Tr of 3 + 2√5              b) N, Tr, min poly of (1 + √−7)/2
+    c) N(1 + i), N(3 + 4i)              d) N(5 + 2√6)
+    e) min poly, N, Tr of √2 + √3       f) N(1 + ∛2), N(2 + ∛2)
+    g) N(a + b∛2 + c∛4) in general; then N(1 + ∛2 + ∛4)
+    h) Tr(∛2), Tr(∛4), Tr(∛2·∛4) in Q(∛2)
+    i) Tr_{Q(ζ₇)/Q}(ζ₇), N(1 − ζ₇), N(1 + ζ₇)
+    j) Is (1 + √3)/2 integral?          k) Is (1 + √5)/2 integral?
+    l) Is (3 + 4i)/5 integral?          m) Is (1 + √−3)/2 a root of unity?
+    n) Is (1 + ∛2 + ∛4)/3 integral?     o) disc(1, ∛2, ∛4)
+    p) Tr and N of ζ₅ + ζ₅⁻¹ in Q(√5)
+    Answers:
+      a) −11, 6              b) 2, 1, x² − x + 2        c) 2, 25
+      d) 1 (a unit)          e) x⁴ − 10x² + 1, 1, 0      f) 3, 10
+      g) a³ + 2b³ + 4c³ − 6abc; 1 (a unit)
+      h) 0, 0, 6             i) −1, 7, 1 (1 + ζ₇ is a unit: Φ₇(−1) = 1)
+      j) no (norm −1/2)      k) yes (x² − x − 1)
+      l) no (norm 1 but trace 6/5)                m) yes: ζ₆ (x² − x + 1)
+      n) no (norm 1/27)      o) −108
+      p) −1 and −1 (ζ₅ + ζ₅⁻¹ = (−1 + √5)/2, root of x² + x − 1)
+
+M3. Splitting in quadratic fields: split (S), inert (I) or ramified (R)?
+    Give the factorisation, by elements where the ideals are principal.
+    a) Q(i), 2       b) Q(i), 5       c) Q(i), 7       d) Q(i), 13
+    e) Q(√2), 7      f) Q(√2), 3      g) Q(√2), 17     h) Q(√−3), 7
+    i) Q(√−3), 5     j) Q(√−3), 3     k) Q(√−7), 2     l) Q(√5), 2
+    m) Q(√5), 11     n) Q(√5), 5      o) Q(√13), 3     p) Q(√17), 2
+    q) Q(√−23), 13   r) Q(√10), 3     s) Q(√−6), 5     t) Q(√−10), 7
+    Answers:
+      a) R: (1 + i)²              b) S: (2 + i)(2 − i)
+      c) I                        d) S: (3 + 2i)(3 − 2i)
+      e) S: (3 + √2)(3 − √2)      f) I (2 is not a square mod 3)
+      g) S: (5 + 2√2)(5 − 2√2)    h) S: 7 = N((5 + √−3)/2)
+      i) I                        j) R: (√−3)²
+      k) S: 2 = ((1 + √−7)/2)((1 − √−7)/2)
+      l) I (5 ≡ 5 mod 8)          m) S: 11 = N((7 + √5)/2)
+      n) R: (√5)²                 o) S: 3 = −((1 + √13)/2)((1 − √13)/2)
+      p) S: 2 = −((3 + √17)/2)((3 − √17)/2)
+      q) S ((−23/13) = 1; non-principal factors, 13 ≠ a² + ab + 6b²)
+      r) S, non-principal: (3, 1 + √10)(3, 1 − √10) (x² − 10y² ≠ ±3)
+      s) S, non-principal: (5, 2 + √−6)(5, 2 − √−6)
+      t) S, non-principal: (7, 2 + √−10)(7, 2 − √−10) (2² ≡ −10 mod 7)
+
+M4. Dedekind-Kummer and cyclotomic splitting: give (e, f, g) (or the
+    list of (eᵢ, fᵢ)) for each prime.
+    a) Q(∛2): p = 5, 7, 11, 13, 31
+    b) Q(α), α³ = α + 1 (d = −23): p = 2, 3, 5, 23, 59
+    c) Q(α), α³ = 3α − 1 (d = 81, cyclic): p = 2, 3, 7, 17
+    d) Q(ζ₅): p = 2, 5, 11, 19
+    e) Q(ζ₈): p = 2, 3, 17
+    f) Q(ζ₁₂): p = 2, 3, 5, 13
+    g) Q(ζ₁₁): p = 3, 23, 43
+    h) Q(ζ₁₃): p = 3, 5
+    i) Q(ζ₁₅): p = 2, 11
+    j) Q(√2, √3): p = 2, 3, 5, 23
+    k) Q(⁴√2): p = 3, 5, 7
+    l) Q(√5) with α = √5 at p = 2: what does x² − 5 mod 2 predict, and
+       what is true?
+    Answers:
+      a) 5: (1,1),(1,2); 7: (1,3); 11: (1,1),(1,2); 13: (1,3); 31: (1,1)×3
+      b) 2: (1,3); 3: (1,3); 5: (1,1),(1,2); 23: (1,1),(2,1); 59: (1,1)×3
+      c) 2: (1,3); 3: (3,1); 7: (1,3); 17: (1,1)×3 (p ≡ ±1 mod 9 split)
+      d) (1,4,1); (4,1,1); (1,1,4); (1,2,2)
+      e) (4,1,1); (1,2,2); (1,1,4)
+      f) (2,2,1); (2,2,1); (1,2,2); (1,1,4)
+      g) (1,5,2); (1,1,10); (1,2,5)
+      h) (1,3,4); (1,4,3)
+      i) (1,4,2); (1,2,4)
+      j) 2: (4,1,1); 3: (2,2,1); 5: (1,2,2); 23: (1,1,4)
+      k) 3: (1,2),(1,2); 5: (1,4); 7: (1,1),(1,1),(1,2)
+      l) prediction (x + 1)², "ramified"; truth: 2 is INERT (5 ≡ 5 mod 8)
+         — the index [O_K : Z[√5]] = 2 is divisible by p
+
+M5. Ideal arithmetic. In R = Z[√−5] let 𝔭 = (2, 1 + √−5), 𝔮 = (3, 1 +
+    √−5), 𝔮′ = (3, 1 − √−5), 𝔯 = (7, 3 + √−5). Compute:
+    a) N(𝔭), N(𝔮), N(𝔯)       b) 𝔭²             c) 𝔮𝔮′
+    d) 𝔭𝔮                     e) 𝔭𝔮′            f) 𝔮², 𝔮′²
+    g) 𝔭𝔯                     h) 𝔮𝔯             i) is 𝔭𝔮𝔯 principal?
+    j) 𝔭⁻¹                    k) (2) + (1 + √−5)
+    l) (2) ∩ (1 + √−5) as a product of primes, and its norm
+    m) the number of ideals of norm 4, 6, 9, 12
+    n) the factorisation of (21)
+    In Z[√−14]:
+    o) (2, √−14)²              p) (1 + √−14)
+    q) the order of [(3, 1 + √−14)] in Cl
+    Answers:
+      a) 2, 3, 7        b) (2)          c) (3)          d) (1 + √−5)
+      e) (1 − √−5)      f) (2 − √−5), (2 + √−5)          g) (3 + √−5)
+      h) (1 − 2√−5) (norm 21)           i) no ([𝔭]³ = [𝔭] ≠ 1)
+      j) ½𝔭 = Z + Z(1 + √−5)/2           k) 𝔭
+      l) 𝔭²𝔮 = 2𝔮, norm 12 (the lcm of 𝔭² and 𝔭𝔮)
+      m) 1 (𝔭²), 2 (𝔭𝔮, 𝔭𝔮′), 3 (𝔮², 𝔮𝔮′, 𝔮′²), 2 (𝔭²𝔮, 𝔭²𝔮′)
+      n) (21) = 𝔮𝔮′𝔯𝔯′ with 𝔯′ = (7, 3 − √−5)
+      o) (2)            p) (3, 1 + √−14)(5, 1 + √−14)    q) 4
+
+M6. Class numbers. Give the Minkowski bound M_K (2 decimals) and h_K.
+    a) Q(i)          b) Q(√−2)        c) Q(√−3)        d) Q(√−7)
+    e) Q(√−5)        f) Q(√−6)        g) Q(√−15)       h) Q(√−23)
+    i) Q(√−31)       j) Q(√−14)       k) Q(√−21)       l) Q(√−47)
+    m) Q(√−71)       n) Q(√−163)      o) Q(√2)         p) Q(√6)
+    q) Q(√10)        r) Q(√15)        s) Q(∛2)         t) Q(α), α³ = α + 1
+    u) Q(ζ₇)         v) the structure of Cl for j) and k)
+    Answers:
+      a) 1.27, 1      b) 1.80, 1      c) 1.10, 1      d) 1.68, 1
+      e) 2.85, 2      f) 3.12, 2      g) 2.47, 2      h) 3.05, 3
+      i) 3.54, 3      j) 4.76, 4      k) 5.83, 4      l) 4.36, 5
+      m) 5.36, 7      n) 8.13, 1 (every p < 8.13 is inert)
+      o) 1.41, 1      p) 2.45, 1 ((2 + √6)(2 − √6) = −2)
+      q) 3.16, 2      r) 3.87, 2 (x² − 15y² ≠ ±2, but 3² − 15 = −6)
+      s) 2.94, 1 ((2) = (∛2)³)        t) 1.36, 1        u) 4.13, 1
+      v) Z/4 (Q(√−14)); Z/2 × Z/2 (Q(√−21): genus theory, 3 primes
+         divide d = −84)
+
+M7. Units and the Dirichlet unit theorem.
+    a) unit rank of Q(√−7), Q(√11), Q(∛5), Q(ζ₈), Q(ζ₉), Q(ζ₁₂), Q(√2, √3),
+       Q(⁴√2), Q(α) with α⁵ = α + 1 (one real root)
+    b) |μ_K| for Q(i), Q(√−3), Q(√−2), Q(ζ₅), Q(ζ₈), Q(ζ₉), Q(ζ₁₂)
+    c) the fundamental unit of Q(√d) for d = 2, 3, 5, 6, 7, 10, 11, 13,
+       14, 15, 17, 19, 21, 29, 41
+    d) for which d in c) does a unit of norm −1 exist?
+    e) the smallest solution (x, y), y > 0, of x² − 2y² = 1, x² − 5y² = 1,
+       x² − 19y² = 1, x² − 61y² = −1 and x² − 61y² = 1
+    f) regulators: Q(√2), Q(√5), Q(√7), Q(∛2), Q(α) with α³ = α + 1
+    g) (1 + √2)³ and (1 + √2)⁻¹       h) is 3 + 2√2 fundamental in Z[√2]?
+    Answers:
+      a) 0, 1, 1, 1, 2, 1, 3, 2, 2 (r₁ = 1, r₂ = 2)
+      b) 4, 6, 2, 10, 8, 18, 12
+      c) 1 + √2; 2 + √3; (1 + √5)/2; 5 + 2√6; 8 + 3√7; 3 + √10;
+         10 + 3√11; (3 + √13)/2; 15 + 4√14; 4 + √15; 4 + √17;
+         170 + 39√19; (5 + √21)/2; (5 + √29)/2; 32 + 5√41
+      d) 2, 5, 10, 13, 17, 29, 41
+      e) (3, 2); (9, 4); (170, 39); (29718, 3805);
+         (1766319049, 226153980)
+      f) log(1 + √2) ≈ 0.88137; log((1 + √5)/2) ≈ 0.48121;
+         log(8 + 3√7) ≈ 2.76866; log(1 + ∛2 + ∛4) ≈ 1.34738;
+         log α ≈ 0.28120 (α ≈ 1.32472, the smallest cubic regulator)
+      g) 7 + 5√2; √2 − 1      h) no: (1 + √2)²
+
+M8. p-adic valuations, absolute values and expansions.
+    a) v₂(96)        b) v₃(−54/7)     c) v₅(0.04)      d) v₇(98/15)
+    e) |48|₂, |48|₃, |48|₅           f) |2/9|₃         g) |1/1000|₅
+    h) v₂(100!), v₅(100!)            i) v₃(2¹⁸ − 1)    j) v₂(3⁸ − 1)
+    k) 5-adic digits of 1/4          l) 3-adic digits of 1/2
+    m) 2-adic digits of 1/3          n) 7-adic digits of 2/3
+    o) the rational number 1 + 5 + 5² + ... ∈ Q₅
+    p) the rational with 3-adic digits 1, 2, 1, 2, 1, 2, ...
+    q) do ∑n!, ∑1/n, ∑pⁿ/n converge in Qₚ?
+    r) |x|₅ = 1/25, |y|₅ = 5: |x + y|₅       s) |28 − 1|₃
+    t) the 5-adic distance between 2 and 2057
+    u) ∏_v |x|_v for x = −90 (list each factor)
+    Answers:
+      a) 5       b) 3       c) −2      d) 2
+      e) 1/16, 1/3, 1              f) 9               g) 125
+      h) 97, 24 (Legendre: ∑⌊100/pᵏ⌋) i) 3 (LTE: 1 + v₃(9))
+      j) 5 (2⁵ ∥ 6560)
+      k) 4, 3, 3, 3, ... (4 + 15/(1 − 5) = 1/4)
+      l) 2, 1, 1, 1, ...           m) 1, 1, 0, 1, 0, 1, ...
+      n) 3, 2, 2, 2, ...           o) −1/4            p) −7/8
+      q) yes; no (|1/n|ₚ ↛ 0); yes (vₚ(pⁿ/n) ≥ n − log_p n → ∞)
+      r) 5 (isosceles rule)        s) 1/27            t) 1/5
+      u) 90 · (1/2) · (1/9) · (1/5) = 1 (|·|_∞, |·|₂, |·|₃, |·|₅)
+
+M9. Hensel's lemma and squares in Qₚ.
+    a) number of roots in Zₚ: x² − 2 (p = 7), x² + 1 (p = 3), x² + 1
+       (p = 13), x³ − 6 (p = 7), x³ − 3 (p = 7), x³ − 2 (p = 5), x⁴ − 2
+       (p = 7), x² − 17 (p = 2), x² − 3 (p = 2), x^(p−1) − 1, x² − p
+    b) squares in Q₃? 7, −2, 3, 63, 2
+    c) squares in Q₅? −1, 2, 6, 10, 1/4, 25·11, 125·11
+    d) squares in Q₂? 17, −7, 5, −1, 68, 2, 33, 41
+    e) first 5 digits of the root of x² + 1 in Z₅ with x ≡ 3
+    f) first 5 digits of the root of x² − 2 in Z₇ with x ≡ 4
+    g) first 4 digits of the cube root of 2 in Z₅
+    h) first 7 binary digits of the root of x² + 7 in Z₂ with x ≡ 1 mod 4
+    i) x mod 343 with x² ≡ 2, x ≡ 3 (mod 7)
+    j) the Teichmüller lift ω(3) in Z₅ (first 5 digits)
+    k) |Qₚ^×/Qₚ^×²| for p = 3 and p = 2; |Q₇^×/Q₇^×³|; |Q₅^×/Q₅^×³|
+    Answers:
+      a) 2, 0, 2, 3, 0 (3 is not a cube mod 7), 1 (cubing is bijective
+         mod 5), 2, 2 (strong Hensel), 0 (3 ≢ 1 mod 8), p − 1, 0
+      b) yes, yes, no, yes, no      c) yes, no, yes, no, yes, yes, no
+      d) yes, yes, no, no, yes, no, yes, yes
+      e) 3, 3, 2, 3, 1 (1068 mod 5⁵)   f) 4, 5, 4, 0, 5 (12240 mod 7⁵)
+      g) 3, 0, 2, 2 (303 mod 5⁴)       h) 1, 0, 1, 0, 1, 1, 0 (53 mod 2⁷)
+      i) 108                          j) 3, 3, 2, 3, 1 (= the root in e))
+      k) 4, 8; 9 (7 ≡ 1 mod 3: Z/3 × Z/3); 3
+
+M10. Local fields and their extensions. Give e and f (a-o); then p)-s).
+     a) Q₃(√2)       b) Q₃(√3)       c) Q₃(√−1)      d) Q₅(√−1)
+     e) Q₂(i)        f) Q₂(√−3)      g) Q₂(√5)       h) Q₂(√−7)
+     i) Q₇(ζ₃)       j) Q₅(ζ₃)       k) Q₂(ζ₈)       l) Q₇(ζ₇)
+     m) Q₃(∛2)       n) Q₂(ζ₅)       o) Q₁₁(ζ₅)
+     p) K ⊗_Q Qₚ as a product of fields: Q(i) ⊗ Q₅, Q(i) ⊗ Q₃, Q(∛2) ⊗ Q₅,
+        Q(∛2) ⊗ Q₃₁, Q(∛2) ⊗ R, Q(ζ₇) ⊗ Q₂
+     q) the number of: quadratic extensions of Q₅; of Q₂; unramified
+        extensions of Q₃ of degree 4; ramified quadratic extensions of Q₃
+     r) residue field and a uniformiser of Q₂(√2), Q₃(√2), Q₅(ζ₅), F₃((t))
+     s) is x³ + 3x + 3 irreducible over Q₃? what is the extension it
+        defines?
+     Answers:
+       a) 1, 2      b) 2, 1      c) 1, 2 (= Q₃(√2), since −2 is a square)
+       d) 1, 1 (i ∈ Q₅)          e) 2, 1      f) 1, 2 (= Q₂(ζ₃))
+       g) 1, 2 (= f))            h) 1, 1 (−7 ≡ 1 mod 8)
+       i) 1, 1 (7 ≡ 1 mod 3)     j) 1, 2      k) 4, 1     l) 6, 1
+       m) 3, 1 (x³ − 2 ≡ (x + 1)³ mod 3; (x − 1)³ − 2 is Eisenstein)
+       n) 1, 4 (ord₅ 2 = 4)      o) 1, 1 (11 ≡ 1 mod 5)
+       p) Q₅ × Q₅; Q₃(i); Q₅ × (unramified quadratic); Q₃₁ × Q₃₁ × Q₃₁;
+          R × C; U × U with U the unramified cubic extension of Q₂
+       q) 3; 7; 1; 2 (Q₃(√3), Q₃(√−3))
+       r) F₂, √2; F₉, 3; F₅, 1 − ζ₅; F₃, t
+       s) yes (Eisenstein at 3): totally ramified cubic, e = 3, f = 1
+
+M11. Adeles and ideles of Q.
+     a) adele? (i) aₚ = 1/p for all p (ii) aₚ = p for all p, a_∞ = 0
+        (iii) a₂ = 1/2, all others 0 (iv) aₚ = p! for all p
+     b) idele? (i) aₚ = p for all p (ii) a₂ = 2, all others 1 (iii) −1
+        at every place (iv) aₚ = 1 + p for all p, a_∞ = 1
+     c) content of: (a_∞ = 5, a₅ = 5, else 1); (a_∞ = 2, a₂ = 1/4,
+        a₃ = 3, else 1); the principal idele 7/12
+     d) write a = r + b, r ∈ Q, b ∈ Ẑ × [0, 1): (a_∞ = 0.3, a₅ = 6/5, else
+        0); (a_∞ = 0, a₂ = 1/8, a₃ = 2/9, else 0)
+     e) write a = q·u, q ∈ Q^×, u ∈ R_{>0} × Ẑ^×, for (a_∞ = −2, a₃ = 9,
+        a₇ = 1/7, else 1); check |a| = u_∞
+     f) the fractional ideal of the idele (a₂ = 12, a₅ = 1/25, a₇ = 7,
+        else 1)
+     g) dense or not: Q in A_Q; Q in ∏′_p Qₚ (finite adeles); Z in Ẑ;
+        Z in Z₂ × Z₃ × R; Q in Q₂ × Q₃ × R
+     h) x ∈ Z with x ≡ 3 (mod 4), x ≡ 1 (mod 9), x ≡ 2 (mod 5)
+     i) vol(A_K/K) = covol(O_K ⊆ K ⊗ R) for K = Q, Q(i), Q(√−5), Q(√2)
+     j) J_Q/Q^×; the order of J_K/K^×U_K for K = Q(√−5), Q(√−23)
+     k) the order of C_Q/(R_{>0} × ∏ₚ Uₚ⁽ᴺ⁾) with Uₚ⁽ᴺ⁾ = {u ∈ Zₚ^× : u ≡ 1
+        mod N} (the group of Q(ζ_N) in class field theory), N = 12
+     Answers:
+       a) no; yes; yes; yes          b) no; yes; yes; yes
+       c) 1; 8/3; 1 (product formula)
+       d) r = 1/5, b_∞ = 0.1; r = −47/72, b_∞ = 47/72 (b₂ = 7/9, b₃ = 7/8)
+       e) q = −9/7, u_∞ = 14/9, u₃ = −7, u₇ = −1/9, uₚ = −7/9 else;
+          |a| = 2·(1/9)·7 = 14/9
+       f) (28/25) = 2²·5⁻²·7
+       g) no (discrete); yes (strong approximation); yes; no (discrete);
+          yes (weak approximation)
+       h) 127 (mod 180)
+       i) 1; 1; √5 ≈ 2.23607; 2√2 ≈ 2.82843
+       j) R_{>0} × Ẑ^×; 2; 3
+       k) φ(12) = 4 = |(Z/12)^×| = [Q(ζ₁₂) : Q]
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every Dedekind domain is a UFD.
+     b) Every PID is a Dedekind domain.
+     c) Z[√−3] is the ring of integers of Q(√−3).
+     d) Every ring of integers O_K is of the form Z[α].
+     e) An irreducible element of O_K generates a prime ideal.
+     f) Every ideal of a Dedekind domain is generated by ≤ 2 elements.
+     g) If x² − d ≡ ∏gᵢ^eᵢ mod p, then p factors in Q(√d) as ∏(p, gᵢ(√d))^eᵢ.
+     h) Every number field K ≠ Q has a ramified prime.
+     i) Every real quadratic field has a unit of norm −1.
+     j) O_K^× is finite iff K = Q or K is imaginary quadratic.
+     k) If p splits completely in K then p ∤ d_K.
+     l) Decomposition groups are always cyclic.
+     m) Qₚ can be made into an ordered field.
+     n) Every |·|ₚ-Cauchy sequence in Q converges in Q.
+     o) Z is dense in Zₚ, and Zₚ is compact and open in Qₚ.
+     p) J_Q/Q^× is compact.
+     q) J_Q with the subspace topology of A_Q is a topological group.
+     r) The Hasse principle holds for all homogeneous cubic equations.
+     s) Cl(K) is trivial iff O_K is a UFD.
+     Answers:
+       a) F: Z[√−5]                  b) T
+       c) F: O_K = Z[(1 + √−3)/2]
+       d) F: Dedekind's field x³ + x² − 2x + 8 (2 divides every index)
+       e) F: 2 in Z[√−5]             f) T
+       g) F: d = 5, p = 2 ((x + 1)² mod 2, but 2 is inert)
+       h) T (Minkowski: |d_K| > 1)  i) F: Q(√3) (2 + √3 has norm 1)
+       j) T (r₁ + r₂ − 1 = 0)       k) T (e = 1 for every 𝔓 | p)
+       l) F: 2 in Q(ζ₈): D = (Z/8)^× ≅ Z/2 × Z/2 (only D/I is cyclic)
+       m) F: 1 − p is a square in Qₚ (p odd), −7 in Q₂, so −1 is a sum of
+          squares
+       n) F: the Hensel approximations 2, 7, 57, 182, 2057, ... to √−1
+          (5-adically)
+       o) T
+       p) F: the content maps it onto R_{>0}; J¹/Q^× ≅ Ẑ^× is compact
+       q) F: inversion is not continuous (D12)
+       r) F: Selmer's 3x³ + 4y³ + 5z³ = 0
+       s) T (a Dedekind domain is a UFD iff it is a PID)
+
+TEACHING TIPS
+  Struggling: make every abstract statement concrete in Z[√−5] and Z[i]
+  before generalising: draw the lattice O_K in the plane, shade an ideal
+  as a sublattice, and count cosets to see N(𝔞). Always check "is O_K =
+  Z[α]?" before Dedekind-Kummer, always write ∑eᵢfᵢ = n as a sanity
+  check, and for class groups follow the fixed recipe: Minkowski bound →
+  primes below it → which are principal (solve the norm equation) →
+  relations from elements of small composite norm. For p-adics, practise
+  digit-by-digit Hensel lifting by hand and think of Zₚ as "integers with
+  infinitely many digits to the left"; the isosceles rule answers most
+  |·|ₚ questions at once. Harder: prove that O_K is Dedekind and that
+  fractional ideals are invertible; prove finiteness of h_K and the full
+  unit theorem; prove Dedekind's discriminant theorem via the different;
+  compute Cl(Q(√−65)) ≅ Z/2 × Z/4 and Cl(Q(√79)) ≅ Z/3; show that
+  Z[ζ₂₃] is not a UFD (Kummer, h = 3); prove Ostrowski's theorem and
+  Krasner's lemma; show that A_K/K is compact and J¹/K^× is compact and
+  deduce both finiteness theorems from it; state the analytic class
+  number formula and check it for Q(i) (L(1, χ₋₄) = π/4); and read Tate's
+  thesis to see ζ-functions as integrals over the ideles.
+
+
+================================================================================
+TOPIC 12.16 — ANALYTIC NUMBER THEORY: RIEMANN ZETA FUNCTION, L-FUNCTIONS,
+SIEVE METHODS, CIRCLE METHOD
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - ARITHMETIC FUNCTIONS AND DIRICHLET SERIES: μ, φ, τ, σ, Λ (Λ(pᵏ) = log p,
+    else 0), Dirichlet convolution (f ∗ g)(n) = ∑_{d|n} f(d)g(n/d), with
+    μ ∗ 1 = ε, Λ ∗ 1 = log, φ ∗ 1 = id. F(s) = ∑ f(n)n⁻ˢ multiplies under
+    ∗: ∑τ(n)n⁻ˢ = ζ², ∑μ(n)n⁻ˢ = 1/ζ, ∑Λ(n)n⁻ˢ = −ζ′/ζ, ∑φ(n)n⁻ˢ =
+    ζ(s − 1)/ζ(s). PARTIAL (ABEL) SUMMATION and the DIRICHLET HYPERBOLA
+    METHOD: ∑_{n≤x} τ(n) = x log x + (2γ − 1)x + O(√x).
+  - RIEMANN ZETA: ζ(s) = ∑n⁻ˢ = ∏_p (1 − p⁻ˢ)⁻¹ for Re s > 1 (EULER
+    PRODUCT; so ζ(s) ≠ 0 there and ∑1/p = ∞). Continuation: ζ(s) =
+    s/(s − 1) − s∫₁^∞ {x}x⁻ˢ⁻¹ dx on Re s > 0, simple pole at s = 1 with
+    residue 1, ζ(s) = 1/(s − 1) + γ + O(s − 1); ζ(σ) < 0 on (0, 1).
+  - FUNCTIONAL EQUATION (via θ(1/t) = √t θ(t)): Λ(s) = π^(−s/2)Γ(s/2)ζ(s)
+    = Λ(1 − s); ξ(s) = ½s(s − 1)Λ(s) is entire of order 1. Asymmetric form
+    ζ(s) = 2ˢπˢ⁻¹ sin(πs/2)Γ(1 − s)ζ(1 − s). TRIVIAL ZEROS −2, −4, ...;
+    ζ(0) = −½, ζ(−n) = −Bₙ₊₁/(n + 1) (ζ(−1) = −1/12); NON-TRIVIAL ZEROS
+    ρ = β + iγ lie in 0 < β < 1, symmetric under ρ ↦ ρ̄, 1 − ρ.
+  - ZEROS: N(T) = (T/2π)log(T/2π) − T/2π + 7/8 + S(T) + O(1/T), S(T) =
+    O(log T) (RIEMANN-VON MANGOLDT). First zero ½ + 14.134725i. RIEMANN
+    HYPOTHESIS (RH): all β = ½. ζ(1 + it) ≠ 0 (3-4-1 inequality 3 + 4cos θ
+    + cos 2θ ≥ 0); de la Vallée Poussin ZERO-FREE REGION σ > 1 −
+    c/log(|t| + 2).
+  - CHEBYSHEV AND THE PNT: θ(x) = ∑_{p≤x} log p, ψ(x) = ∑_{n≤x} Λ(n) =
+    log lcm(1, ..., x); Chebyshev: ψ(x) ≍ x (via the binomial C(2n, n)).
+    PRIME NUMBER THEOREM: ψ(x) ~ x ⇔ π(x) ~ x/log x ⇔ M(x) = ∑_{n≤x} μ(n)
+    = o(x); with error π(x) = li(x) + O(x e^(−c√log x)). Mertens: ∑_{p≤x}
+    1/p = log log x + M + o(1), ∏_{p≤x}(1 − 1/p) ~ e^(−γ)/log x.
+  - EXPLICIT FORMULA (Perron + contour shift): ψ₀(x) = x − ∑_ρ x^ρ/ρ −
+    log 2π − ½log(1 − x⁻²). RH ⇔ ψ(x) = x + O(√x log²x) ⇔ π(x) = li(x) +
+    O(√x log x). Each zero is an "oscillation" of amplitude x^β/|ρ|.
+  - DIRICHLET CHARACTERS mod q: homomorphisms (Z/q)* → C*, extended by 0;
+    φ(q) of them; ORTHOGONALITY ∑_{χ} χ̄(a)χ(n) = φ(q)𝟙_{n≡a}; principal
+    χ₀; parity χ(−1) = ±1; CONDUCTOR and PRIMITIVE characters; real
+    (quadratic) characters are Kronecker symbols χ_D.
+  - L-FUNCTIONS: L(s, χ) = ∑χ(n)n⁻ˢ = ∏(1 − χ(p)p⁻ˢ)⁻¹; entire for χ ≠
+    χ₀. L(1, χ) ≠ 0 (complex χ: ∏_χ L(σ, χ) ≥ 1; real χ: ∑_{d|n}χ(d) ≥ 0
+    and Landau's theorem) ⇒ DIRICHLET'S THEOREM: ∑_{p≡a (q)} 1/p = ∞ for
+    (a, q) = 1. PNT in APs π(x; q, a) ~ li(x)/φ(q); SIEGEL-WALFISZ
+    (uniform for q ≤ (log x)ᴬ, ineffective); possible SIEGEL ZERO.
+  - GAUSS SUMS: τ(χ) = ∑_a χ(a)e(a/q), e(x) = e^(2πix); |τ(χ)| = √q for
+    primitive χ; τ(χ_p) = √p or i√p (p ≡ 1 or 3 mod 4). Functional
+    equation of L(s, χ) with root number τ(χ)/(iᵏ√q). PÓLYA-VINOGRADOV:
+    |∑_{n≤N} χ(n)| ≤ √q log q. CLASS NUMBER FORMULA h(−d) = w√d L(1,χ)/2π.
+  - SIEVES: S(𝒜, 𝒫, z) = #{n ∈ 𝒜 : (n, P(z)) = 1}. LEGENDRE/ERATOSTHENES:
+    S = ∑_{d|P(z)} μ(d)|𝒜_d|, error 2^π(z). BRUN'S pure sieve (truncated
+    Möbius): twin primes ≤ x are ≪ x(log log x)²/log²x, so ∑_{twin} 1/p <
+    ∞. SELBERG Λ² SIEVE: S ≤ X/G(z) + ∑_{d<z²}3^ω(d)|r_d|; gives π(x) ≤
+    (2 + o(1))x/log x, twin primes ≤ (8C₂ + o(1))x/log²x, BRUN-TITCHMARSH.
+  - LARGE SIEVE: ∑_{q≤Q}∑*_{a mod q} |∑_{n≤N} aₙ e(an/q)|² ≤ (N + Q²)∑|aₙ|².
+    BOMBIERI-VINOGRADOV: ∑_{q≤Q} max_{(a,q)=1}|ψ(x; q, a) − x/φ(q)| ≪
+    x(log x)⁻ᴬ for Q = √x(log x)⁻ᴮ ("GRH on average", level ½). PARITY
+    PROBLEM; Chen: every large even n = p + P₂.
+  - CIRCLE METHOD: r(n) = ∫₀¹ S(α)ˢ e(−nα) dα. MAJOR ARCS near a/q (small
+    q) give SINGULAR SERIES 𝔖(n) × SINGULAR INTEGRAL; MINOR ARCS are
+    bounded by WEYL/VINOGRADOV estimates for exponential sums. Ternary
+    Goldbach (Vinogradov 1937, Helfgott 2013): R₃(n) ~ ½𝔖(n)n² for odd n.
+    WARING: r_{s,k}(n) ~ (Γ(1 + 1/k)ˢ/Γ(s/k))𝔖(n)n^(s/k − 1) for s large;
+    g(2) = 4, g(3) = 9, g(4) = 19, G(4) = 16.
+  - EXPONENTIAL SUMS: ∑_{a mod q} e(an/q) = q𝟙_{q|n}; RAMANUJAN SUMS
+    c_q(n) = μ(q/(q,n))φ(q)/φ(q/(q,n)); quadratic Gauss sums |∑e(an²/p)| =
+    √p; WEYL'S INEQUALITY via squaring/differencing.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove the Euler product ζ(s) = ∏_p (1 − p⁻ˢ)⁻¹ for Re s > 1 and
+    deduce ζ(s) ≠ 0 there. (b) Deduce that ∑_p 1/p diverges. (c) Compute
+    ∏_{p≤5}(1 − p⁻²)⁻¹ and compare with ζ(2).
+    Answer: (a) unique factorisation; (b) log ζ(σ) = ∑_p p^(−σ) + O(1)
+    → ∞ as σ → 1⁺; (c) 900/576 = 1.5625 versus π²/6 ≈ 1.64493.
+    Teacher explains: (a) Fix σ = Re s > 1. Each factor is a geometric
+    series (1 − p⁻ˢ)⁻¹ = ∑_{k≥0} p^(−ks), absolutely convergent. Multiplying
+    the finitely many factors with p ≤ P and using UNIQUE FACTORISATION,
+       ∏_{p≤P}(1 − p⁻ˢ)⁻¹ = ∑_{n : all prime factors ≤ P} n⁻ˢ,
+    so |ζ(s) − ∏_{p≤P}| ≤ ∑_{n>P} n^(−σ) → 0 as P → ∞. The product
+    converges absolutely (∑|p⁻ˢ| < ∞) and no factor vanishes, so ζ(s) ≠ 0.
+    (b) Taking logarithms for real σ > 1,
+       log ζ(σ) = ∑_p ∑_{k≥1} p^(−kσ)/k = ∑_p p^(−σ) + E,
+    with 0 ≤ E ≤ ∑_p ∑_{k≥2} p⁻ᵏ = ∑_p 1/(p(p − 1)) ≤ 1. Since ζ(σ) ≥
+    ∫₁^∞ x^(−σ) dx = 1/(σ − 1) → ∞, ∑_p p^(−σ) → ∞; as p^(−σ) < 1/p,
+    ∑1/p = ∞. (This is Euler's analytic proof that there are infinitely
+    many primes; Mertens refines it to ∑_{p≤x} 1/p = log log x + 0.2615 +
+    o(1).) (c) (4/3)(9/8)(25/24) = 900/576 = 1.5625; the missing factors
+    p ≥ 7 bring it up to ζ(2) = π²/6. Common mistakes: taking logs of the
+    Euler product for Re s ≤ 1 (the product diverges there); forgetting
+    that "product converges" means the limit is NON-zero. Now you try:
+    compute ∏_{p≤3}(1 − p⁻²)⁻¹ and show ∑ μ(n)n⁻ˢ = 1/ζ(s) for Re s > 1.
+    (3/2; invert each Euler factor: 1/ζ = ∏(1 − p⁻ˢ))
+
+D2. (a) Show ζ(s) = s/(s − 1) − s∫₁^∞ {x}x⁻ˢ⁻¹ dx for Re s > 1 and use it
+    to continue ζ to Re s > 0 with a simple pole of residue 1 at s = 1.
+    (b) Show ζ(s) = 1/(s − 1) + γ + O(s − 1). (c) Using η(s) = ∑(−1)ⁿ⁻¹n⁻ˢ
+    prove ζ(σ) < 0 for 0 < σ < 1.
+    Answer: (a) partial summation with ⌊x⌋ = x − {x}; (b) 1 − ∫₁^∞ {x}x⁻²
+    dx = γ; (c) η(σ) > 0 and η = (1 − 2^(1−s))ζ with 1 − 2^(1−σ) < 0.
+    Teacher explains: (a) For Re s > 1, ∑_{n≤N} n⁻ˢ = ∫_{1⁻}^N x⁻ˢ d⌊x⌋.
+    Integrating by parts and letting N → ∞ (⌊N⌋N⁻ˢ → 0),
+       ζ(s) = s∫₁^∞ ⌊x⌋x⁻ˢ⁻¹ dx = s∫₁^∞ x⁻ˢ dx − s∫₁^∞ {x}x⁻ˢ⁻¹ dx
+            = s/(s − 1) − s∫₁^∞ {x}x⁻ˢ⁻¹ dx.
+    Since 0 ≤ {x} < 1, the last integral converges absolutely and locally
+    uniformly for Re s > 0, so it is holomorphic there: the formula gives
+    the continuation, and s/(s − 1) = 1 + 1/(s − 1) shows the only pole is
+    at 1, residue 1. (b) At s = 1 the regular part is 1 − ∫₁^∞ {x}x⁻² dx.
+    Now ∫₁^N {x}x⁻² dx = ∫₁^N x⁻¹dx − ∑_{n<N} n∫ₙ^(n+1) x⁻² dx = log N −
+    ∑_{n<N} 1/(n + 1) → 1 − γ. So the constant term is γ ≈ 0.57722.
+    (c) η(s) = (1 − 2·2⁻ˢ)ζ(s) for Re s > 1 (remove twice the even terms);
+    η converges for real σ > 0 as an alternating series with decreasing
+    terms, so by continuation the identity holds on (0, 1). There
+    η(σ) ≥ 1 − 2^(−σ) > 0 (group terms in pairs) and 1 − 2^(1−σ) < 0, so
+    ζ(σ) < 0: NO real zeros in (0, 1). Numerically ζ(½) = −1.46035 and
+    η(½) = (√2 − 1)·1.46035 ≈ 0.60490. Common mistakes: thinking ∑n⁻ˢ
+    itself converges for 0 < Re s < 1 (it never does); forgetting the
+    factor s in front of the integral. Now you try: evaluate ∫₁^∞ {x}x⁻²
+    dx. (1 − γ ≈ 0.42278)
+
+D3. Using θ(t) = ∑_{n∈Z} e^(−πn²t) and θ(1/t) = √t θ(t), prove that Λ(s)
+    = π^(−s/2)Γ(s/2)ζ(s) extends to C ∖ {0, 1} with Λ(s) = Λ(1 − s).
+    Deduce the trivial zeros, ζ(0), ζ(−1) and ζ(−3).
+    Answer: Λ(s) = −1/s − 1/(1 − s) + ∫₁^∞ ω(t)(t^(s/2) + t^((1−s)/2))
+    dt/t, ω = (θ − 1)/2; ζ(−2k) = 0, ζ(0) = −½, ζ(−1) = −1/12, ζ(−3) =
+    1/120.
+    Teacher explains: For Re s > 1, ∫₀^∞ e^(−πn²t) t^(s/2) dt/t =
+    π^(−s/2)Γ(s/2)n⁻ˢ; summing (Tonelli), Λ(s) = ∫₀^∞ ω(t)t^(s/2) dt/t with
+    ω(t) = ∑_{n≥1} e^(−πn²t). The theta relation reads ω(1/t) = √t ω(t) +
+    (√t − 1)/2. Split ∫₀^∞ = ∫₀¹ + ∫₁^∞ and put t ↦ 1/t in ∫₀¹:
+       ∫₀¹ ω(t)t^(s/2) dt/t = ∫₁^∞ ω(t)t^((1−s)/2) dt/t + 1/(s − 1) − 1/s.
+    Hence Λ(s) = 1/(s − 1) − 1/s + ∫₁^∞ ω(t)(t^(s/2) + t^((1−s)/2)) dt/t.
+    Because ω(t) = O(e^(−πt)), the integral is entire, and the whole
+    expression is visibly symmetric under s ↔ 1 − s. CONSEQUENCES:
+    (i) At s = −2k (k ≥ 1) Γ(s/2) has a pole while Λ is finite, so
+    ζ(−2k) = 0: the trivial zeros. (ii) Near s = 0, Λ(s) ~ −1/s and Γ(s/2)
+    ~ 2/s, so ζ(0)·2/s ~ −1/s: ζ(0) = −½. (iii) In the asymmetric form ζ(s)
+    = 2ˢπˢ⁻¹ sin(πs/2)Γ(1 − s)ζ(1 − s):
+       ζ(−1) = ½·π⁻²·sin(−π/2)·Γ(2)·ζ(2) = −(1/(2π²))(π²/6) = −1/12,
+       ζ(−3) = ⅛·π⁻⁴·sin(−3π/2)·Γ(4)·ζ(4) = 6/(8·90) = 1/120.
+    The non-trivial zeros are the zeros of ξ(s) = ½s(s − 1)Λ(s); they lie
+    in the critical strip and are symmetric about Re s = ½ and the real
+    axis. Also ξ(0) = ξ(1) = ½. Common mistakes: "ζ(−1) = −1/12 means
+    1 + 2 + 3 + ... = −1/12" (the series diverges; −1/12 is the value of the
+    continuation); forgetting sin(πs/2) at odd negative s. Now you try:
+    compute ζ(−5). (2⁻⁵π⁻⁶·(−1)·120·π⁶/945 = −1/252)
+
+D4. (a) Show ψ(n) = log lcm(1, 2, ..., n). (b) Prove Chebyshev's bounds
+    θ(x) ≤ x log 4 and ψ(2n) ≥ n log 4 − log(2n + 1), and deduce π(x) ≍
+    x/log x. (c) Compute ψ(30) and θ(30).
+    Answer: (a) v_p(lcm) = ⌊log n/log p⌋; (b) via C(2m + 1, m) ≤ 4ᵐ and
+    C(2n, n) ≥ 4ⁿ/(2n + 1); (c) ψ(30) = log 2329089562800 ≈ 28.4765,
+    θ(30) = log 6469693230 ≈ 22.5904.
+    Teacher explains: (a) The power of p in lcm(1, ..., n) is the largest
+    k with pᵏ ≤ n, i.e. the number of prime powers pᵏ ≤ n, and each such
+    pᵏ contributes Λ(pᵏ) = log p to ψ(n). (b) UPPER: N = C(2m + 1, m) equals
+    C(2m + 1, m + 1), both occur in (1 + 1)^(2m+1), so N ≤ 2^(2m) = 4ᵐ. Every
+    prime m + 1 < p ≤ 2m + 1 divides the numerator (2m + 1)!/(m + 1)! but
+    not m!, so ∏_{m+1<p≤2m+1} p ≤ 4ᵐ, i.e. θ(2m + 1) − θ(m + 1) ≤ m log 4.
+    Induction on n (split n = 2m + 1 or use θ(2m) = θ(2m − 1)) gives θ(n) ≤
+    n log 4. LOWER: C(2n, n) is the largest of 2n + 1 terms summing to
+    4ⁿ, so it is ≥ 4ⁿ/(2n + 1). Each prime power dividing C(2n, n) is
+    ≤ 2n (Legendre's formula: v_p = ∑_k (⌊2n/pᵏ⌋ − 2⌊n/pᵏ⌋), each term 0
+    or 1 and 0 once pᵏ > 2n), so C(2n, n) | lcm(1..2n) and ψ(2n) ≥ n log 4
+    − log(2n + 1). Since ψ(x) = θ(x) + O(√x log x), π(x) ≥ θ(x)/log x and
+    θ(x) ≥ (1 − ε)(log x)(π(x) − x^(1−ε)), one gets (log 2 − ε)x/log x ≤
+    π(x) ≤ (log 4 + ε)x/log x for large x. (c) lcm(1..30) =
+    2⁴·3³·5²·7·11·13·17·19·23·29 = 2329089562800 and 30# = 6469693230.
+    Common mistakes: confusing θ (one log p per prime) with ψ (one per
+    prime power); forgetting that the difference ψ − θ = θ(√x) + θ(x^(1/3))
+    + ... is only O(√x log x). Now you try: ψ(10) and θ(10). (log 2520 ≈
+    7.8320, log 210 ≈ 5.3471)
+
+D5. Prove that ζ(1 + it) ≠ 0 for real t ≠ 0, using 3 + 4cos θ + cos 2θ ≥
+    0. Explain how this leads to the prime number theorem.
+    Answer: |ζ(σ)³ζ(σ + it)⁴ζ(σ + 2it)| ≥ 1 for σ > 1; a zero at 1 + it
+    would force the left side → 0.
+    Teacher explains: For σ > 1, log ζ(s) = ∑_n (Λ(n)/log n) n⁻ˢ, so
+       log|ζ(σ + it)| = ∑_n (Λ(n)/log n) n^(−σ) cos(t log n).
+    Since 3 + 4cos θ + cos 2θ = 2(1 + cos θ)² ≥ 0, with θ = t log n,
+       3 log ζ(σ) + 4 log|ζ(σ + it)| + log|ζ(σ + 2it)| ≥ 0,
+    i.e. |ζ(σ)³ζ(σ + it)⁴ζ(σ + 2it)| ≥ 1. Suppose ζ(1 + it) = 0 with t ≠ 0.
+    As σ → 1⁺: ζ(σ)³ ~ (σ − 1)⁻³ (simple pole), ζ(σ + it)⁴ = O((σ − 1)⁴)
+    (a zero of order ≥ 1), and ζ(σ + 2it) stays bounded (1 + 2it is not
+    the pole). The product is O(σ − 1) → 0, contradicting ≥ 1. The weights
+    3, 4, 1 matter: 4 > 3 lets the zero beat the pole. ROUTE TO PNT: −ζ′/ζ
+    = ∑Λ(n)n⁻ˢ then has only the simple pole at s = 1 (residue 1) on the
+    closed half-plane Re s ≥ 1, and a Tauberian theorem (Wiener-Ikehara, or
+    Newman's contour argument) gives ψ(x) ~ x, hence π(x) ~ x/log x. The
+    quantitative version of the same inequality gives the zero-free region
+    σ > 1 − c/log(|t| + 2) and π(x) = li(x) + O(x exp(−c√log x)). Common
+    mistakes: using cos θ ≥ −1 alone (weights 1, 1 do not work); forgetting
+    that the method needs t ≠ 0 for boundedness of ζ(σ + 2it). Now you
+    try: evaluate 3 + 4cos θ + cos 2θ at θ = π and θ = 2π/3. (0 and ½)
+
+D6. (a) State the explicit formula for ψ(x) and explain why RH is
+    equivalent to ψ(x) = x + O(√x log²x). (b) Use the Riemann-von
+    Mangoldt formula to estimate N(100) and compare with the true value 29.
+    (c) Bound the contribution of the first pair of zeros at x = 100.
+    Answer: (a) ψ₀(x) = x − ∑_ρ x^ρ/ρ − log 2π − ½log(1 − x⁻²);
+    (b) ≈ 29.002; (c) ≤ 2·10/14.1347 ≈ 1.415.
+    Teacher explains: (a) PERRON: for c > 1, ψ₀(x) = (1/2πi)∫_{(c)}
+    (−ζ′/ζ)(s)xˢ ds/s (ψ₀ averages the jump at prime powers). Shift the
+    line of integration to the left: the residues are x at s = 1 (pole of
+    ζ), −x^ρ/ρ at each zero ρ, −(ζ′/ζ)(0) = −log 2π at s = 0, and
+    x^(−2k)/(2k) at the trivial zeros, which sum to −½log(1 − x⁻²). If all
+    β = ½ then |x^ρ| = √x, and the truncated formula ψ(x) = x −
+    ∑_{|γ|≤T} x^ρ/ρ + O(x log²(xT)/T) with T = √x and ∑_{|γ|≤T} 1/|ρ| ≪
+    log²T gives ψ(x) = x + O(√x log²x). Conversely, if ψ(x) − x = O(x^(½+ε))
+    then −ζ′(s)/ζ(s) − s/(s − 1) = s∫₁^∞ (ψ(x) − x)x⁻ˢ⁻¹ dx is holomorphic
+    for Re s > ½ + ε: no zeros there. (b) T/2π = 15.91549, log(T/2π) =
+    2.76729, so N(100) ≈ 44.0428 − 15.9155 + 0.875 = 29.0023; the true count
+    is 29 (S(100) is small). (c) The pair ρ = ½ ± 14.1347i contributes
+    −2Re(x^ρ/ρ), of size at most 2√x/|ρ| = 20/14.1347 ≈ 1.415. Compare ψ(100)
+    ≈ 94.045: the gap 100 − 94.045 needs many zeros plus log 2π ≈ 1.838.
+    Common mistakes: treating ∑x^ρ/ρ as absolutely convergent (it is not:
+    ∑1/|ρ| diverges; the sum is over |γ| ≤ T, T → ∞); forgetting that N(T)
+    counts zeros with 0 < γ ≤ T only. Now you try: estimate N(50) and
+    compare with the true value 10. (≈ 9.42)
+
+D7. (a) Write down all Dirichlet characters mod 5 and mod 8. (b) State and
+    check the orthogonality relation that detects n ≡ 2 (mod 5).
+    (c) Which characters are primitive, real, odd?
+    Answer: mod 5: χⱼ(2ᵏ) = iʲᵏ (j = 0..3); mod 8: four real characters
+    χ₀, χ₋₄, χ₈, χ₋₈; 𝟙_{n≡2} = ¼∑_χ χ̄(2)χ(n).
+    Teacher explains: (Z/5)* is cyclic, generated by 2 (2, 4, 3, 1), so a
+    character is fixed by χ(2), a 4th root of unity. With χⱼ(2) = iʲ:
+          a  :  1    2    3    4
+          χ₀ :  1    1    1    1
+          χ₁ :  1    i   −i   −1
+          χ₂ :  1   −1   −1    1     (the Legendre symbol (a/5))
+          χ₃ :  1   −i    i   −1
+    (b) ∑_{χ mod q} χ̄(a)χ(n) = φ(q) if n ≡ a, 0 otherwise (for (a, q) = 1).
+    Check a = 2, n = 3: ¼(1 + (−i)(−i) + (−1)(−1) + (i)(i)) = ¼(1 − 1 + 1 −
+    1) = 0; n = 2: ¼(1 + 1 + 1 + 1) = 1. (c) Mod 5 (prime) every χ ≠ χ₀ is
+    primitive; χ₂ is real and even (χ₂(4) = 1); χ₁, χ₃ = χ̄₁ are complex
+    and odd (χ(−1) = χ(4) = −1). (Z/8)* = {1, 3, 5, 7} ≅ (Z/2)², so all
+    four characters are real:
+          a   :  1    3    5    7
+          χ₀  :  1    1    1    1
+          χ₋₄ :  1   −1    1   −1    (induced from mod 4, conductor 4)
+          χ₈  :  1   −1   −1    1    ((2/n): even, primitive)
+          χ₋₈ :  1    1   −1   −1    ((−2/n): odd, primitive)
+    The number of primitive characters mod 8 is 2 = φ(8) − φ(4). WHY IT
+    MATTERS: π(x; q, a) = (1/φ(q))∑_χ χ̄(a)∑_{p≤x}χ(p) + O(1) turns primes
+    in progressions into sums over characters, and imprimitive χ can
+    always be replaced by the primitive character inducing them. Common
+    mistakes: forgetting χ(n) = 0 for (n, q) > 1; thinking a real character
+    must be even. Now you try: how many characters mod 7 are real, and
+    how many primitive characters are there mod 15? (2; 3 = 1·3)
+
+D8. Prove Dirichlet's theorem: for (a, q) = 1, ∑_{p≡a (mod q)} 1/p = ∞.
+    Include the proof that L(1, χ) ≠ 0 for complex and for real χ ≠ χ₀,
+    and check L(1, χ₋₄) numerically.
+    Answer: ∑_{p≡a} p^(−σ) = (1/φ(q))log(1/(σ − 1)) + O(1) as σ → 1⁺,
+    provided every L(1, χ) ≠ 0; L(1, χ₋₄) = 1 − ⅓ + ⅕ − ... = π/4.
+    Teacher explains: For σ > 1, by orthogonality,
+       ∑_{p≡a} p^(−σ) = (1/φ(q)) ∑_χ χ̄(a) ∑_p χ(p)p^(−σ),
+    and ∑_p χ(p)p^(−σ) = log L(σ, χ) + O(1). For χ₀ this is log ζ(σ) + O(1)
+    → ∞. For χ ≠ χ₀, L(s, χ) is holomorphic near 1 (partial summation:
+    the partial sums of χ are bounded), so log L(σ, χ) stays bounded IF
+    L(1, χ) ≠ 0. COMPLEX χ: ∑_χ log L(σ, χ) = φ(q)∑_{pᵏ≡1} 1/(k p^(kσ))
+    ≥ 0, so ∏_χ L(σ, χ) ≥ 1. If L(1, χ) = 0 with χ ≠ χ̄, then also
+    L(1, χ̄) = 0: two zeros against the single pole of L(s, χ₀), and the
+    product → 0 as σ → 1⁺. Contradiction. REAL χ: F(s) = ζ(s)L(s, χ) =
+    ∑ r(n)n⁻ˢ with r(n) = ∑_{d|n} χ(d) multiplicative, r(pᵏ) = 1 + χ(p)
+    + ... + χ(p)ᵏ ≥ 0, and r(m²) ≥ 1. If L(1, χ) = 0, the zero cancels the
+    pole and F is entire. LANDAU: a Dirichlet series with non-negative
+    coefficients is singular at its real abscissa of convergence, so F
+    would converge for all real s > 0; but F(½) ≥ ∑ r(m²)/m ≥ ∑1/m = ∞.
+    Contradiction. Numerically L(1, χ₋₄) = arctan 1 = π/4 ≈ 0.78540, and
+    r(n)·4 = r₂(n), the number of ways to write n as a sum of two squares.
+    Quantitatively π(x; q, a) ~ li(x)/φ(q); Siegel-Walfisz makes this
+    uniform for q ≤ (log x)ᴬ but with an ineffective constant, because a
+    real zero β very close to 1 (a SIEGEL ZERO) cannot be ruled out
+    effectively. Data: π(10⁴; 4, 1) = 609 and π(10⁴; 4, 3) = 619
+    (Chebyshev's bias). Common mistakes: forgetting that the real case
+    needs a separate argument (the ∏ ≥ 1 trick only gives one zero, which
+    the pole can absorb). Now you try: compute r(25) and r(9) for χ₋₄ and
+    compare with r₂(25) = 12, r₂(9) = 4. (3 and 1)
+
+D9. (a) Define the Gauss sum τ(χ) and prove |τ(χ)| = √q for primitive χ.
+    (b) Compute τ(χ) for the Legendre symbol mod 5 and mod 3. (c) Prove the
+    Pólya-Vinogradov inequality |∑_{M<n≤M+N} χ(n)| ≤ √q log q (q ≥ 3
+    prime). (d) Use the class number formula to find h(−23).
+    Answer: (a) Parseval; (b) √5 and i√3; (c) expand χ in additive
+    characters; (d) L(1, χ₋₂₃) = 3π/√23, so h = 3.
+    Teacher explains: (a) Put S(n) = ∑_{a mod q} χ(a)e(an/q). For (n, q) = 1
+    substitute a ↦ an⁻¹: S(n) = χ̄(n)τ(χ); for primitive χ also S(n) = 0
+    when (n, q) > 1. Parseval over n mod q gives ∑_n |S(n)|² = q∑_a |χ(a)|²
+    = qφ(q), while the left side is φ(q)|τ(χ)|². So |τ(χ)|² = q. (b) mod 5:
+    τ = e(1/5) − e(2/5) − e(3/5) + e(4/5) = 2cos(2π/5) − 2cos(4π/5) =
+    2(0.30902) + 2(0.80902) = 2.23607 = √5. mod 3: e(1/3) − e(2/3) =
+    2i sin(2π/3) = i√3. (Gauss: τ(χ_p) = √p if p ≡ 1, i√p if p ≡ 3 mod 4.)
+    (c) For χ primitive, χ(n) = (1/τ(χ̄))∑_{a mod q} χ̄(a)e(an/q). Summing
+    over M < n ≤ M + N and using |∑_n e(an/q)| ≤ 1/(2‖a/q‖),
+       |∑χ(n)| ≤ (1/√q)∑_{a=1}^{q−1} 1/(2‖a/q‖) ≤ (1/√q)·q∑_{1≤a≤q/2} 1/a
+    ≤ √q log q (with a little care in the harmonic sum). The bound is
+    independent of N: character sums are "square-root cancelled" on long
+    intervals. The same Gauss sum is the ROOT NUMBER in the functional
+    equation Λ(s, χ) = (τ(χ)/(iᵏ√q))Λ(1 − s, χ̄), Λ(s, χ) = (q/π)^((s+k)/2)
+    Γ((s + k)/2)L(s, χ), k = 0 (χ even) or 1 (χ odd). (d) h(−d) =
+    w√d L(1, χ₋d)/(2π) with w = 2 for d > 4: h(−23) = 2√23(3π/√23)/(2π)
+    = 3. Common mistakes: forgetting primitivity in S(n) = χ̄(n)τ(χ) (it
+    fails for (n, q) > 1 otherwise); taking |τ| = √q for imprimitive χ
+    (e.g. τ(χ₀ mod p) = μ(p) = −1). Now you try: h(−7) from L(1, χ₋₇) =
+    π/√7. (1)
+
+D10. (a) Derive Legendre's formula S(x, z) = ∑_{d|P(z)} μ(d)⌊x/d⌋ for
+     the number of n ≤ x with no prime factor ≤ z, and use it to compute
+     π(100). (b) Explain why the error term forces z to be tiny,
+     and how Brun's truncation gives ∑_{p, p+2 prime} 1/p < ∞.
+     Answer: (a) Φ(100; 2, 3, 5, 7) = 22, π(100) = 22 − 1 + 4 = 25;
+     (b) error up to 2^π(z); Brun: π₂(x) ≪ x(log log x)²/log²x.
+     Teacher explains: (a) Let P(z) = ∏_{p≤z} p. Since ∑_{d|m} μ(d) = 1 if
+     m = 1 and 0 otherwise, 𝟙_{(n,P)=1} = ∑_{d|(n,P)} μ(d); summing over n ≤
+     x gives S(x, z) = ∑_{d|P} μ(d)⌊x/d⌋. For x = 100, z = 10, P = 210:
+        100 − (50 + 33 + 20 + 14) + (16 + 10 + 7 + 6 + 4 + 2)
+            − (3 + 2 + 1 + 0) + 0 = 100 − 117 + 45 − 6 = 22.
+     These 22 numbers are 1 and the 21 primes 11..97; so π(100) = 22 − 1 +
+     π(10) = 25. (b) Writing ⌊x/d⌋ = x/d − {x/d} gives S = x∏_{p≤z}(1 −
+     1/p) + E with |E| ≤ 2^π(z). The main term ~ e^(−γ)x/log z (Mertens) is
+     only useful when 2^π(z) is smaller, i.e. z ≈ log x: π(x) ≪ x/log log x.
+     BRUN replaced μ(d) by μ(d)𝟙_{ω(d)≤2k} (Bonferroni: truncations at even
+     2k give upper bounds, odd give lower bounds). This allows z = x^(c/log
+     log x). For twin primes sieve 𝒜 = {n(n + 2) : n ≤ x}, where each odd p
+     removes 2 residue classes: main term x∏_{2<p≤z}(1 − 2/p) ≍ x/log²z,
+     giving π₂(x) ≪ x(log log x)²/log²x. By partial summation ∑_{twin p}
+     1/p = ∫ dπ₂(t)/t converges (Brun's constant ≈ 1.902). Data: π₂(10³) =
+     35, π₂(10⁵) = 1224 twin pairs. Common mistakes: counting 1 as a prime
+     or forgetting to add back the sieving primes themselves; believing a
+     sieve with z = √x immediately gives an asymptotic (the error term
+     2^π(z) is astronomically large). Now you try: compute Φ(120; 2, 3, 5,
+     7) by Legendre's formula and deduce π(120). (120 − 141 + 56 − 8 = 27;
+     π(120) = 27 − 1 + 4 = 30)
+D11. (a) Explain Selberg's Λ² upper-bound sieve and derive π(x) ≤ (2 +
+     o(1))x/log x. Evaluate the bound x/log z + z² at x = 10⁶, z =
+     √x/log x. (b) State the large sieve inequality and the
+     Bombieri-Vinogradov theorem, and explain the parity problem.
+     Answer: (a) S ≤ X/G(z) + ∑|λ_{d₁}λ_{d₂}r_{[d₁,d₂]}| with G(z) ≥ log z;
+     at x = 10⁶: z ≈ 72.38, bound ≈ 233537 + 5239 ≈ 238777 (true π(10⁶) =
+     78498). (b) see below.
+     Teacher explains: (a) For any real λ_d (d | P(z), d < z) with λ₁ = 1,
+        𝟙_{(n,P(z))=1} ≤ (∑_{d|(n,P(z))} λ_d)²,
+     since the right side is 1 when (n, P) = 1 and ≥ 0 always. Summing over
+     n ∈ 𝒜 with |𝒜_d| = Xg(d) + r_d (g multiplicative),
+        S(𝒜, z) ≤ X∑_{d₁,d₂} λ_{d₁}λ_{d₂}g([d₁, d₂])
+                  + ∑|λ_{d₁}λ_{d₂}||r_{[d₁,d₂]}|.
+     Minimising the quadratic form subject to λ₁ = 1 (diagonalise it) gives
+     the value 1/G(z) with G(z) = ∑_{d<z, d|P} μ²(d)∏_{p|d} g(p)/(1 − g(p)),
+     and the optimal λ satisfy |λ_d| ≤ 1. For 𝒜 = [1, x], g(p) = 1/p and
+     G(z) = ∑_{d<z} μ²(d)/φ(d) ≥ ∑_{n<z} 1/n ≥ log z (expand 1/φ(d) =
+     (1/d)∏(1 − 1/p)⁻¹ = ∑ 1/n over n with squarefree kernel d); |r_d| ≤
+     1. So π(x) ≤ z + x/log z + z². With z = √x/log x this is x/(½log x −
+     log log x) + O(x/log²x) = (2 + o(1))x/log x. At x = 10⁶: z = 72.382,
+     log z = 4.28196, so x/log z + z² ≈ 233537 + 5239 = 238777 — a true
+     but crude bound. For twin primes (g(p) = 2/p) the same machine gives
+     π₂(x) ≤ (8C₂ + o(1))x/log²x, four times the Hardy-Littlewood
+     prediction 2C₂x/log²x, C₂ = ∏_{p>2}(1 − (p − 1)⁻²) ≈ 0.66016; and
+     BRUN-TITCHMARSH π(x; q, a) ≤ (2 + o(1))x/(φ(q)log(x/q)).
+     (b) LARGE SIEVE: for any complex aₙ, M < n ≤ M + N,
+        ∑_{q≤Q} ∑*_{a mod q} |∑ₙ aₙ e(an/q)|² ≤ (N − 1 + Q²)∑|aₙ|²
+     (the points a/q are Q⁻²-spaced; duality + Sobolev/Gallagher). Combined
+     with Vaughan's identity it proves BOMBIERI-VINOGRADOV: for each A
+     there is B with ∑_{q≤√x(log x)⁻ᴮ} max_{(a,q)=1} |ψ(x; q, a) − x/φ(q)|
+     ≪ x(log x)⁻ᴬ — as good as GRH on average over moduli up to √x ("level
+     of distribution ½"; Elliott-Halberstam conjectures any level < 1).
+     PARITY PROBLEM (Selberg): sieve axioms cannot distinguish integers
+     with an even number of prime factors from those with an odd number,
+     so pure sieves give upper bounds for primes but no positive lower
+     bound; the best is Chen: every large even n = p + P₂ (P₂ having ≤ 2
+     prime factors). Zhang (2013) and Maynard used level > ½ (smooth
+     moduli) or multidimensional weights to get bounded gaps between
+     primes (liminf (p_{n+1} − pₙ) ≤ 246). Common mistakes: thinking λ_d
+     = μ(d) is optimal (that is Legendre, with huge error); forgetting
+     that the error sum runs over d up to z², so z ≈ √X at most. Now you
+     try: for g(p) = 1/p compute G(6) and compare with log 6. (d = 1, 2,
+     3, 5: 1 + 1 + ½ + ¼ = 2.75 ≥ 1.79)
+
+D12. (Ternary Goldbach by the circle method.) For odd n put R(n) =
+     ∑_{p₁+p₂+p₃=n} log p₁ log p₂ log p₃. (a) Write R(n) as an integral of
+     S(α) = ∑_{p≤n} log p e(pα). (b) Explain the major arc computation that
+     produces ½𝔖(n)n², with 𝔖(n) = ∏_{p|n}(1 − (p − 1)⁻²)∏_{p∤n}(1 + (p −
+     1)⁻³), and evaluate 𝔖(15). (c) Explain the minor arc bound and why the
+     binary problem fails. (d) Why is 𝔖(n) = 0 for even n?
+     Answer: (a) R(n) = ∫₀¹ S(α)³e(−nα) dα; (b) 𝔖(15) ≈ 1.41598;
+     (c) sup_𝔪|S| ≪ n(log n)⁻ᴬ and ∫|S|² ≪ n log n; (d) the p = 2 factor
+     is 1 − 1 = 0.
+     Teacher explains: (a) ∫₀¹ e(mα) dα = 1 if m = 0 and 0 otherwise, so
+     expanding S³ picks out exactly p₁ + p₂ + p₃ = n. (b) MAJOR ARCS: 𝔐 =
+     ⋃ {α : |α − a/q| ≤ (log n)ᴮ/n}, q ≤ (log n)ᴮ, (a, q) = 1. Near a/q,
+     split p by residue r mod q: ∑_{p≡r} log p e(pa/q)e(pβ) and Siegel-
+     Walfisz (primes equidistributed mod small q) give S(a/q + β) ≈
+     (μ(q)/φ(q))v(β), v(β) = ∑_{m≤n} e(mβ), because ∑*_{r mod q} e(ra/q) =
+     μ(q) (a Ramanujan sum). Integrating over the arcs,
+        ∫_𝔐 S³e(−nα) ≈ ∑_q (μ(q)/φ(q)³) c_q(n) · ∫_R v(β)³e(−nβ) dβ
+     and the SINGULAR INTEGRAL is #{m₁ + m₂ + m₃ = n} ≈ n²/2. The SINGULAR
+     SERIES ∑_q μ(q)c_q(n)/φ(q)³ is multiplicative: the factor at p is
+     1 − c_p(n)/(p − 1)³, and c_p(n) = p − 1 if p | n, −1 if p ∤ n. So p | n
+     gives 1 − 1/(p − 1)², p ∤ n gives 1 + 1/(p − 1)³. For n = 15: p = 2
+     gives 2, p = 3 gives ¾, p = 5 gives 15/16, and ∏_{p≥7}(1 + (p − 1)⁻³)
+     ≈ 1.00692; 𝔖(15) ≈ 2·0.75·0.9375·1.00692 ≈ 1.41598. For odd n,
+     𝔖(n) ≥ 2C₂ ≈ 1.32 > 0. (c) MINOR ARCS 𝔪 = [0, 1] ∖ 𝔐: VINOGRADOV
+     (today via Vaughan's identity and bilinear sums) gives sup_𝔪 |S(α)| ≪
+     n(log n)⁻ᴬ for any A (B chosen large), and Parseval gives ∫₀¹|S|² = ∑_{p≤n}
+     log²p ≪ n log n. Hence |∫_𝔪 S³e(−nα)| ≤ sup_𝔪|S|·∫|S|² = o(n²), and
+     R(n) = ½𝔖(n)n² + o(n²) > 0 for large odd n (Helfgott: all odd n ≥ 7
+     are sums of three primes). For TWO primes the main term is n but the
+     trivial minor-arc bound ∫_𝔪|S|² ≤ n log n is already bigger: one power
+     of S is not enough to exploit cancellation. (d) At p = 2, c₂(n) =
+     1 for n even, so the local factor is 1 − 1/(2 − 1)³ = 0: three odd
+     primes cannot sum to an even number (the local obstruction mod 2).
+     Common mistakes: forgetting the weights log p (the unweighted count is
+     ~ 𝔖(n)n²/(2log³n)); thinking the major arcs carry most of [0, 1] (they
+     have tiny measure but carry the main term). Now you try: the local
+     factor at p = 3 for n = 21, and for n = 25. (¾; 1 + ⅛ = 9/8)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Arithmetic functions and Dirichlet convolution: evaluate.
+    a) μ(1), μ(12), μ(30), μ(105)       b) φ(36), φ(97), φ(100)
+    c) τ(360), σ(12), σ(28)             d) Λ(1), Λ(8), Λ(12), Λ(49)
+    e) ω(360), Ω(360), λ(360) (Liouville)
+    f) ∑_{d|12} μ(d), ∑_{d|12} φ(d), ∑_{d|30} |μ(d)|
+    g) ∑_{d|36} Λ(d)                    h) (μ ∗ τ)(12)
+    i) (μ ∗ σ)(12)                      j) (μ ∗ log)(8), (μ ∗ log)(6)
+    k) τ₃(12) = (1 ∗ 1 ∗ 1)(12)          l) M(10) = ∑_{n≤10} μ(n)
+    m) M(100)                            n) #{n ≤ 100 squarefree} vs 600/π²
+    o) ψ(10) = ∑_{n≤10} Λ(n)             p) φ(30)/30 = ∏_{p|30}(1 − 1/p)
+    Answers:
+      a) 1, 0, −1, −1          b) 12, 96, 40        c) 24, 28, 56
+      d) 0, log 2, 0, log 7    e) 3, 6, +1
+      f) 0, 12 (∑_{d|n}φ(d) = n), 8 (= 2^ω(30))
+      g) log 36 (Λ ∗ 1 = log)  h) 1 (μ ∗ 1 ∗ 1 = 1)
+      i) 12 (μ ∗ σ = id)       j) log 2 = Λ(8); 0 = Λ(6)
+      k) 18                    l) −1              m) 1
+      n) 61 vs 60.79           o) log 2520 ≈ 7.8320   p) 8/30 = 4/15
+
+M2. Dirichlet series (Re s large): express in terms of ζ, then evaluate
+    where asked.
+    a) ∑_{n square} n⁻ˢ                  b) ∑τ(n)n⁻ˢ
+    c) ∑σ(n)n⁻ˢ                          d) ∑φ(n)n⁻ˢ
+    e) ∑μ(n)²n⁻ˢ                         f) ∑λ(n)n⁻ˢ
+    g) ∑2^ω(n)n⁻ˢ                        h) ∑τ(n)²n⁻ˢ
+    i) ∑(log n)n⁻ˢ                       j) ∑Λ(n)n⁻ˢ
+    k) ∑τ(n²)n⁻ˢ                         l) ∑_{(n,6)=1} n⁻ˢ
+    m) abscissae of absolute convergence of d) and of ∑μ(n)n⁻ˢ
+    n) ∑μ(n)/n², ∑τ(n)/n², ∑μ(n)²/n², ∑λ(n)/n² (numerically)
+    o) ∑σ(n)/n³, ∑φ(n)/n³
+    Answers:
+      a) ζ(2s)          b) ζ(s)²           c) ζ(s)ζ(s − 1)
+      d) ζ(s − 1)/ζ(s)  e) ζ(s)/ζ(2s)      f) ζ(2s)/ζ(s)
+      g) ζ(s)²/ζ(2s)    h) ζ(s)⁴/ζ(2s)     i) −ζ′(s)
+      j) −ζ′(s)/ζ(s)    k) ζ(s)³/ζ(2s)     l) (1 − 2⁻ˢ)(1 − 3⁻ˢ)ζ(s)
+      m) 2 and 1
+      n) 6/π² ≈ 0.60793, π⁴/36 ≈ 2.70581, 15/π² ≈ 1.51982, π²/15 ≈ 0.65797
+      o) ζ(2)ζ(3) ≈ 1.97730, ζ(2)/ζ(3) ≈ 1.36843
+
+M3. Special values of ζ (use the functional equation and Bernoulli
+    numbers where needed).
+    a) ζ(2), ζ(4), ζ(6), ζ(8)            b) ζ(0), ζ(−1), ζ(−2)
+    c) ζ(−3), ζ(−5), ζ(−7), ζ(−9)        d) ζ′(0)
+    e) residue of ζ at 1; constant term of its Laurent series
+    f) sign and value of ζ(½)           g) ζ(2) from ζ(−1) via the FE
+    h) ξ(0), ξ(1)                        i) η(0), η(1), η(2)
+    j) the order of the zero of ζ at s = −2
+    k) the number of zeros of ζ on the real interval [−20, 1)
+    l) Λ(s) = π^(−s/2)Γ(s/2)ζ(s): residues at s = 1 and s = 0
+    m) ζ(3) to 5 decimals (Apéry: irrational)
+    Answers:
+      a) π²/6 ≈ 1.64493, π⁴/90 ≈ 1.08232, π⁶/945 ≈ 1.01734, π⁸/9450 ≈
+         1.00408
+      b) −½, −1/12, 0          c) 1/120, −1/252, 1/240, −1/132
+      d) −½log 2π ≈ −0.91894   e) 1; γ ≈ 0.57722
+      f) negative, −1.46035    g) ζ(2) = −2π²ζ(−1) = π²/6
+      h) ½, ½                  i) ½, log 2, π²/12
+      j) 1 (simple)            k) 10 (−2, −4, ..., −20; none in (0, 1))
+      l) 1 and −1              m) 1.20206
+
+M4. Prime-counting functions. Compute or compare.
+    a) π(10), π(100), π(1000)
+    b) θ(10), ψ(10)                      c) θ(20), ψ(20)
+    d) θ(100), ψ(100), ψ(100) − θ(100)
+    e) x/log x, li(x), π(x) at x = 1000
+    f) the same at x = 10⁶, and the relative error of x/log x
+    g) Chebyshev: C(20, 10), 4¹⁰/21, and the lower bound for ψ(20)
+    h) p₁₀₀₀ versus n log n and n(log n + log log n − 1)
+    i) Mertens: ∏_{p≤100}(1 − 1/p) versus e^(−γ)/log 100
+    j) ∑_{p≤100} 1/p versus log log 100 + 0.26150
+    k) under RH (Schoenfeld) |π(x) − li(x)| < √x log x/(8π) for x ≥ 2657:
+       the bound at x = 10⁶ and the true difference
+    l) which is larger for all x ≤ 10¹⁹: π(x) or li(x)? Is it forever?
+    Answers:
+      a) 4, 25, 168             b) log 210 ≈ 5.3471, log 2520 ≈ 7.8320
+      c) log 9699690 ≈ 16.0876, log 232792560 ≈ 19.2657
+      d) 83.7284, 94.0453, 10.3169
+      e) 144.76, 177.61, 168
+      f) 72382.4, 78627.5, 78498; about 7.8% too small
+      g) 184756, 49932.2, ψ(20) ≥ 10 log 4 − log 21 ≈ 10.818 (true 19.266)
+      h) 7919 vs 6907.8 vs 7840.4
+      i) 0.120317 vs 0.121919   j) 1.80282 vs 1.78868
+      k) ≈ 549.7; |78498 − 78627.5| ≈ 129.5
+      l) li(x); no — Littlewood: π(x) − li(x) changes sign infinitely often
+         (first crossing below ≈ 1.4 × 10³¹⁶)
+
+M5. Partial summation and the hyperbola method: state the asymptotic and
+    compare with the value at the given x.
+    a) ∑_{n≤x} 1/n, x = 100              b) ∑_{n≤x} log n, x = 100
+    c) ∑_{n≤x} τ(n), x = 100             d) ∑_{n≤x} τ(n), x = 10, by
+                                            2∑_{d≤√x}⌊x/d⌋ − ⌊√x⌋²
+    e) ∑_{n≤x} σ(n), x = 100             f) ∑_{n≤x} φ(n), x = 100
+    g) ∑_{n≤x} φ(n)/n, x = 100           h) #squarefree n ≤ x, x = 100
+    i) ∑_{n≤x} Λ(n)/n, x = 100           j) ∑_{p≤x} (log p)/p, x = 100
+    k) (1/x)∑_{n≤x} ω(n), x = 1000        l) ∑_{n≤x} μ(n)/n, x = 100
+    m) from π(x) ~ x/log x deduce ∑_{p≤x} log p ~ x
+    n) from ∑_{p≤x}(log p)/p = log x + O(1) deduce ∑_{p≤x} 1/p = log log x
+       + O(1)
+    Answers:
+      a) log x + γ: 5.18738 vs 5.18239
+      b) x log x − x + O(log x): 363.739 vs 360.517
+      c) x log x + (2γ − 1)x: 482 vs 475.96
+      d) 2(10 + 5 + 3) − 9 = 27 (= 1+2+2+3+2+4+2+4+3+4)
+      e) π²x²/12: 8299 vs 8224.7          f) 3x²/π²: 3044 vs 3039.6
+      g) 6x/π²: 60.833 vs 60.793          h) 6x/π²: 61 vs 60.79
+      i) log x − γ: 3.9856 vs 4.0280
+      j) log x + E, E ≈ −1.33258: 3.3695 vs 3.2726
+      k) log log x + 0.26150: 2.126 vs 2.194
+      l) → 0 (equivalent to the PNT): 0.03113
+      m) θ(x) = π(x)log x − ∫₂ˣ π(t)/t dt = x + o(x)
+      n) ∑1/p = ∫ (1/log t) dA(t) with A(t) = ∑_{p≤t}(log p)/p; partial
+         summation gives A(x)/log x + ∫₂ˣ A(t)/(t log²t) dt = log log x +
+         O(1)
+
+M6. Zeros of ζ and the explicit formula.
+    a) the ordinates γ₁, γ₂, γ₃ of the first three zeros
+    b) N(T) from Riemann-von Mangoldt (without S(T)) for T = 50, 100, 1000;
+       the true values are 10, 29, 649
+    c) the average gap between zeros at height T = 10⁶ (2π/log(T/2π))
+    d) if ½ + 0.1 + 20i were a zero, list three more zeros
+    e) the classical zero-free region with c = 1/10 at |t| = 100
+    f) the amplitude bound 2x^β/|ρ| of the first pair at x = 10⁴
+    g) the constants in the explicit formula: log 2π and −½log(1 − x⁻²) at
+       x = 10
+    h) ∑_ρ 1/ρ (symmetric summation) = 1 + γ/2 − ½log 4π
+    i) convexity, Weyl and best known exponents μ in ζ(½ + it) ≪ t^(μ+ε)
+    j) the Lindelöf hypothesis value of μ; does RH imply it?
+    k) the order of ξ(s) as an entire function
+    l) which explicit-formula term is responsible for Chebyshev's bias?
+    Answers:
+      a) 14.13473, 21.02204, 25.01086
+      b) 9.42, 29.00, 648.62
+      c) ≈ 0.5246
+      d) 0.6 − 20i, 0.4 + 20i, 0.4 − 20i (ρ̄, 1 − ρ̄, 1 − ρ)
+      e) σ > 1 − 1/(10 log 102) ≈ 0.97838
+      f) 2·100/14.1347 ≈ 14.15
+      g) 1.83788 and 0.00503
+      h) ≈ 0.02310
+      i) ¼ (convexity), 1/6 (Weyl-Hardy-Littlewood), 13/84 (Bourgain)
+      j) μ = 0; yes, RH ⇒ Lindelöf
+      k) 1 (maximal order; ξ has infinitely many zeros, ∑1/|ρ| = ∞)
+      l) the prime squares: every odd p² ≡ 1 (mod 4), so θ(x; 4, 1) −
+         θ(x; 4, 3) ≈ −√x + (a sum over zeros of L(s, χ₋₄) with mean 0);
+         hence usually π(x; 4, 3) > π(x; 4, 1)
+
+M7. Dirichlet characters.
+    a) the number of characters mod 7, 12, 16, 100
+    b) the number of PRIMITIVE characters mod 2, 4, 7, 8, 9, 12, 15, 16, 25
+    c) the number of REAL characters mod 7, 8, 15, 16, 24
+    d) χ mod 7 with χ(3) = e(1/6) (3 is a generator): χ(2), χ(4), χ(6); is
+       χ even or odd?
+    e) χ₋₃(n) for n = 1, ..., 6
+    f) χ₈(7), χ₋₈(3), χ₋₄(99), χ₅(4)
+    g) ∑_{n=1}^{q} χ(n) for χ ≠ χ₀; ∑_{χ mod q} χ(n) for n ≢ 1
+    h) ∑_{χ mod 8} χ(3)χ(5)
+    i) the order of χ₁ mod 5 (χ₁(2) = i)
+    j) the conductor of χ₋₄ regarded mod 12, and of (·/3) regarded mod 12
+    k) the real non-principal character mod 9 (χ(2) = −1): primitive?
+    l) for which odd primes p is χ₈(p) = (2/p) = 1?
+    m) the modulus of a primitive character with χ(−1) = −1 of smallest
+       modulus
+    Answers:
+      a) 6, 4, 8, 40
+      b) 0, 1, 5, 2, 4, 1, 3, 4, 16
+      c) 2, 4, 4, 4 ((Z/16)* ≅ Z/2 × Z/4), 8
+      d) e(1/3), e(2/3), −1 (6 ≡ 3³); odd
+      e) 1, −1, 0, 1, −1, 0
+      f) 1, 1, −1, 1
+      g) 0; 0
+      h) 0 (∑_χ χ(15) = ∑_χ χ(7) and 7 ≢ 1 mod 8)
+      i) 4
+      j) 4; 3
+      k) no: it is induced by (·/3), conductor 3
+      l) p ≡ ±1 (mod 8)
+      m) 3 (χ₋₃)
+
+M8. L-values, Gauss sums and class numbers.
+    a) L(1, χ₋₄)          b) L(1, χ₋₃)          c) L(1, χ₋₈)
+    d) L(1, χ₋₇)          e) L(1, χ₅)           f) L(1, χ₈)
+    g) L(2, χ₋₄), L(3, χ₋₄)
+    h) L(0, χ₋₄), L(0, χ₋₃), L(0, χ₅), L(−1, χ₋₄), L(−2, χ₋₄)
+    i) h(−3), h(−4), h(−7), h(−8), h(−23) from h = w√d L(1, χ₋d)/(2π)
+    j) τ(χ) for the Legendre symbol mod 3, 5, 7, 13
+    k) τ(χ₋₄), τ(χ₈), τ(χ₋₈)
+    l) G(a; q) = ∑_{n mod q} e(an²/q): G(1; 5), G(1; 7), G(3; 7), G(1; 9),
+       G(1; 6), G(1; 4), G(1; 8), G(1; 12)
+    m) the root number τ(χ)/(iᵏ√q) of χ₋₄ and of χ₅
+    n) the Pólya-Vinogradov bound √q log q for q = 1009
+    o) τ(χ₀) for χ₀ mod 7; τ(χ)τ(χ̄) for primitive χ mod q
+    Answers:
+      a) π/4 ≈ 0.78540       b) π/(3√3) ≈ 0.60460   c) π/(2√2) ≈ 1.11072
+      d) π/√7 ≈ 1.18741      e) (2/√5)log((1 + √5)/2) ≈ 0.43041
+      f) log(1 + √2)/√2 ≈ 0.62323
+      g) Catalan's G ≈ 0.91597, π³/32 ≈ 0.96895
+      h) ½, ⅓, 0, 0, −½ (odd χ: zeros at −1, −3, ...; even χ ≠ χ₀: at 0,
+         −2, ...)
+      i) 1 (w = 6), 1 (w = 4), 1, 1, 3
+      j) i√3, √5, i√7, √13      k) 2i, 2√2, 2√2 i
+      l) √5, i√7, −i√7 (= (3/7)i√7), 3, 0, 2 + 2i, 2√2(1 + i), 2√3(1 + i)
+      m) 1; 1                   n) ≈ 219.7
+      o) μ(7) = −1; χ(−1)q
+
+M9. Primes in arithmetic progressions.
+    a) the proportion of primes ≡ 1 (mod 4), ≡ 1 (mod 10), ≡ 3 (mod 7)
+    b) the predicted π(1000; 10, a) for a = 1, 3, 7, 9, and the true values
+    c) π(10⁴; 4, 1) and π(10⁴; 4, 3)
+    d) π(1000; 3, 1) and π(1000; 3, 2)
+    e) the least prime ≡ 1 mod 5, 7, 11, 13, 23
+    f) the Brun-Titchmarsh bound 2x/(φ(q)log(x/q)) for π(10⁶; 3, 1), and
+       the true value
+    g) the GRH error term in ψ(x; q, a)
+    h) Siegel's theorem: the lower bound for L(1, χ₋d) and for h(−d)
+    i) the Siegel-Walfisz range of q, and the BV range of q, for x = 10¹⁰
+       (ignore log powers)
+    j) Linnik's theorem: the least prime ≡ a (mod q) is ≪ q^L; best L?
+    k) the Dirichlet density of {p : p ≡ 1 (mod 8)}
+    l) the natural density of primes p for which 2 is a quadratic residue
+    Answers:
+      a) ½, ¼, ⅙
+      b) about 166/4 = 41.5 each; true 40, 42, 46, 38
+      c) 609, 619 (bias to non-residues)    d) 80, 87
+      e) 11, 29, 23, 53, 47
+      f) ≈ 78636; true 39231 (the bound is off by the factor 2)
+      g) O(√x log²x), uniformly in q
+      h) L(1, χ₋d) ≫_ε d^(−ε), h(−d) ≫_ε d^(½−ε) (ineffective)
+      i) q ≤ (log x)ᴬ; q ≤ √x = 10⁵
+      j) L = 5 (Xylouris); GRH gives any L > 2
+      k) ¼                                   l) ½ (p ≡ ±1 mod 8)
+
+M10. Sieve computations.
+    a) Φ(30; 2, 3, 5)                    b) Φ(50; 2, 3, 5)
+    c) Φ(100; 2, 3, 5, 7) and π(100)     d) Φ(120; 2, 3, 5, 7) and π(120)
+    e) Φ(200; p ≤ 13) and π(200)         f) Φ(1000; p ≤ 31) and π(1000)
+    g) the Legendre main term x∏_{p≤7}(1 − 1/p) at x = 100 and the error
+       bound 2^π(7)
+    h) ∏_{p≤10}(1 − 1/p) versus e^(−γ)/log 10
+    i) the density of n with n(n + 2) coprime to 210
+    j) Selberg's G(10) = ∑_{d<10} μ²(d)/φ(d) versus log 10
+    k) the twin prime constant C₂ and the Hardy-Littlewood prediction
+       2C₂∫₂ˣ dt/log²t at x = 10⁵ (true count 1224)
+    l) the Selberg upper bound constant for twin primes, relative to the
+       conjecture
+    m) the number of unordered Goldbach representations of 10, 30, 100,
+       210, 1000
+    n) the binary singular series 2C₂∏_{p|n, p>2}(p − 1)/(p − 2) for n =
+       100, 30, 210
+    o) the sieve dimension κ for primes, twin primes, prime triples
+       (n, n + 2, n + 6)
+    Answers:
+      a) 8        b) 14 (1, 7, 49 and eleven primes)
+      c) 22; 25   d) 27; 30     e) 41; 41 − 1 + 6 = 46
+      f) 158; 158 − 1 + 11 = 168
+      g) 22.857 (true 22); 16
+      h) 8/35 ≈ 0.22857 vs 0.24384 (Mertens is asymptotic only)
+      i) ½·⅓·⅗·⁵⁄₇ = 1/14 (15 of 210 residues)
+      j) 1 + 1 + ½ + ¼ + ½ + ⅙ ≈ 3.4167 ≥ 2.3026
+      k) C₂ ≈ 0.66016; ≈ 1248.7
+      l) 4 (8C₂ versus 2C₂)
+      m) 2, 3, 6, 19, 28
+      n) 1.76043, 3.52086, 4.22504
+      o) 1, 2, 3
+
+M11. Exponential sums and the circle method.
+    a) ∑_{a=0}^{4} e(10a/5), ∑_{a=0}^{4} e(3a/5)
+    b) |∑_{n=1}^{10} e(n/3)| and the bound 1/(2‖α‖)
+    c) Ramanujan sums c₆(1), c₆(2), c₁₂(4), c₁₂(6), c₁₀(5), c₉(3), c₈(2),
+       c₇(0), c₃₀(1)
+    d) the ternary singular series 𝔖(15), 𝔖(21), 𝔖(101), and 𝔖(20)
+    e) the number of unordered representations of 9, 15, 21, 27, 33 as
+       sums of three primes
+    f) g(2), g(3), g(4), G(2), G(4); which n ≤ 300 need 9 cubes?
+    g) which n < 40 are NOT sums of three squares?
+    h) the exponent of n in r_{s,k}(n) for (s, k) = (5, 2), (9, 3), (17, 4)
+    i) Γ(1 + 1/k)ˢ/Γ(s/k) for (s, k) = (3, 2), (4, 2), (5, 2)
+    j) r₄(n) = 8∑_{d|n, 4∤d} d for n = 1, 2, 3, 5, 10, 12, 25
+    k) r₂(n) = 4∑_{d|n} χ₋₄(d) for n = 3, 5, 25, 65, 325
+    l) Dirichlet: find a/q with q ≤ 10 and |√2 − a/q| ≤ 1/(10q); does
+       10/7 work?
+    m) the Weyl saving exponent 1/2^(k−1) for k = 2, 3, 4, and Hardy-
+       Littlewood's s ≥ 2ᵏ + 1 for k = 3, 4
+    n) p(100) versus e^(π√(2n/3))/(4n√3) (Hardy-Ramanujan, the origin of
+       the circle method)
+    Answers:
+      a) 5, 0          b) 1 (= |e(1/3)|); 1.5
+      c) 1, −1, −2, −4, −4, −3, 0, 6, −1
+      d) ≈ 1.41598, 1.48449, 2.30073; 0 (n even)
+      e) 2, 3, 5, 7, 9 (e.g. 9 = 2 + 2 + 5 = 3 + 3 + 3)
+      f) 4, 9, 19, 4, 16; 23 and 239
+      g) 7, 15, 23, 28, 31, 39 (n = 4ᵃ(8b + 7))
+      h) n^(3/2), n², n^(13/4)
+      i) π/4, π²/16 ≈ 0.61685, π²/24 ≈ 0.41123
+      j) 8, 24, 32, 48, 144, 96, 248
+      k) 0, 8, 12, 16, 24
+      l) 7/5: |√2 − 1.4| ≈ 0.01421 ≤ 0.02; 10/7 fails (0.01436 > 1/70 ≈
+         0.01429)
+      m) ½, ¼, ⅛; 9, 17
+      n) 190569292 vs ≈ 1.99281 × 10⁸ (4.6% high)
+
+M12. True (T) or false (F)? Give a counterexample or reason for F.
+     a) ζ(s) ≠ 0 for Re s > 1.
+     b) ζ(s) has no zeros with Re s < 0.
+     c) ∑_p 1/p converges.
+     d) ∑ 1/p over twin primes p converges.
+     e) L(s, χ) has a pole at s = 1 for every χ mod q.
+     f) L(1, χ) = 0 is possible for a real character χ ≠ χ₀.
+     g) For a real primitive χ mod q, τ(χ)² = χ(−1)q.
+     h) |τ(χ)| = √q for every character mod q.
+     i) π(x) < li(x) for all x ≥ 3.
+     j) The PNT is equivalent to M(x) = ∑_{n≤x} μ(n) = o(x).
+     k) The Legendre sieve with z = √x gives π(x) ~ x/log x.
+     l) Selberg's sieve alone gives π(x) ≫ x/log x.
+     m) Every odd n ≥ 7 is a sum of three primes.
+     n) Bombieri-Vinogradov implies GRH.
+     o) The non-trivial zeros are symmetric about Re s = ½.
+     p) A Dirichlet series with non-negative coefficients can be analytic
+        at its real abscissa of convergence.
+     q) Siegel's theorem is effective.
+     r) The Euler product for ζ converges at s = ½.
+     s) RH implies ψ(x) = x + O(x^(½+ε)).
+     t) The Selberg sieve upper bound for twin primes matches the
+        Hardy-Littlewood conjecture.
+     Answers:
+       a) T (Euler product)       b) F: −2, −4, ...
+       c) F (Euler)               d) T (Brun)
+       e) F: only for χ₀; L(s, χ) is entire for χ ≠ χ₀
+       f) F (Dirichlet; the ζ·L trick with Landau)
+       g) T (τ(χ)τ(χ̄) = χ(−1)q)  h) F: τ(χ₀ mod 7) = −1
+       i) F: Littlewood, sign changes infinitely often
+       j) T                       k) F: x∏_{p≤√x}(1 − 1/p) ~ 2e^(−γ)x/log x
+                                     ≈ 1.123x/log x; the error dominates
+       l) F: parity problem (Selberg's λ(n) example)
+       m) T (Vinogradov for large n; Helfgott for all)
+       n) F: it is an average over q only
+       o) T (ξ(s) = ξ(1 − s) and ξ(s̄) = ξ(s)‾)
+       p) F (Landau's theorem)    q) F: the constant is ineffective
+       r) F: ∏(1 − p^(−½))⁻¹ diverges (∑p^(−½) = ∞)
+       s) T                       t) F: it is 4 times too large
+
+TEACHING TIPS
+  Struggling: keep ONE dictionary on the board — "primes ↔ Λ ↔ −ζ′/ζ,
+  squarefree ↔ μ² ↔ ζ(s)/ζ(2s), progressions ↔ characters ↔ L(s, χ)" —
+  and translate every question into it before computing. Drill partial
+  summation until it is automatic, since nearly every asymptotic in M5
+  is one line of it. For the functional equation, have students first
+  compute ζ(−1) and ζ(−3) mechanically, then see the theta proof. For
+  sieves, do Legendre by hand for x = 100 before any theory: the error
+  term 2^π(z) and Mertens' 2e^(−γ) then explain why smarter sieves exist.
+  For the circle method, start from ∫₀¹ e(mα) dα = 𝟙_{m=0} and compute
+  local factors p by p. Harder: prove the zero-free region
+  quantitatively and deduce the de la Vallée Poussin error term; prove
+  Siegel's theorem and explain its ineffectivity; derive the large sieve
+  via Gallagher's lemma and deduce Bombieri-Vinogradov from Vaughan's
+  identity; prove Selberg's G(z) ≥ log z carefully and the Brun-
+  Titchmarsh inequality; carry out Vinogradov's minor arc estimate; and
+  read Maynard's bounded gaps proof as a multidimensional Selberg sieve.
+
+
