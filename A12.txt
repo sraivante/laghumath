@@ -3336,3 +3336,3165 @@ TEACHING TIPS
   analytic hypersurface and across analytic sets of codimension ≥ 2.
 
 
+================================================================================
+TOPIC 12.5 — ABSTRACT ALGEBRA (GRADUATE): SOLVABLE AND NILPOTENT GROUPS,
+MODULES, TENSOR PRODUCTS, EXACT SEQUENCES, CATEGORY THEORY BASICS,
+INTRODUCTION TO HOMOLOGICAL ALGEBRA
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - TOOLS FROM GROUP THEORY: group actions, orbit-stabiliser, the CLASS
+    EQUATION |G| = |Z(G)| + ∑[G : C(xᵢ)], SYLOW THEOREMS (Sylow p-subgroups
+    exist, are conjugate, and n_p ≡ 1 (mod p), n_p | |G|/pᵃ). A finite
+    p-group has non-trivial centre. Standard use: counting elements to
+    show a group of order 30, 56, pq, ... has a normal Sylow subgroup.
+  - COMPOSITION SERIES 1 = G_n ◁ ... ◁ G_1 ◁ G_0 = G with SIMPLE factors
+    Gᵢ/Gᵢ₊₁. JORDAN-HÖLDER: any two composition series of a finite group
+    have the same factors up to order and isomorphism. The factors do NOT
+    determine G (Z/4 and Z/2 × Z/2; Z/6 and S₃). Z has none.
+  - SOLVABLE GROUPS: DERIVED SERIES G⁽⁰⁾ = G, G⁽ⁱ⁺¹⁾ = [G⁽ⁱ⁾, G⁽ⁱ⁾]; G is
+    solvable iff G⁽ⁿ⁾ = 1 for some n iff G has a subnormal series with
+    ABELIAN factors (finite G: iff all composition factors are Z/p). Closed
+    under subgroups, quotients and EXTENSIONS. G/N abelian ⇔ G′ ≤ N.
+    Examples: abelian groups, p-groups, S₃, S₄ (S₄ ▷ A₄ ▷ V₄ ▷ 1), GL₂(F₃),
+    upper triangular matrices. S_n (n ≥ 5), A₅, SL₂(F₅), free groups of
+    rank ≥ 2 are NOT solvable. Burnside: order pᵃqᵇ ⇒ solvable;
+    Feit-Thompson: odd order ⇒ solvable (statements only).
+  - NILPOTENT GROUPS: LOWER CENTRAL SERIES γ₁ = G, γᵢ₊₁ = [γᵢ, G]; UPPER
+    CENTRAL SERIES Z₀ = 1, Zᵢ₊₁/Zᵢ = Z(G/Zᵢ). G is nilpotent of class c iff
+    γ_{c+1} = 1 iff Z_c = G. Nilpotent ⇒ solvable (S₃ shows the converse
+    fails). Finite p-groups are nilpotent; D₈, Q₈ have class 2, D_{2^(k+1)}
+    has class k, the Heisenberg group UT₃(F_p) has class 2, UTₙ class n − 1.
+  - FINITE NILPOTENT GROUPS: TFAE (i) nilpotent, (ii) H < G ⇒ H < N_G(H)
+    ("normalisers grow"), (iii) every Sylow subgroup is normal, (iv) G is
+    the direct product of its Sylow subgroups, (v) every maximal subgroup
+    is normal. Subgroups and quotients of nilpotent groups are nilpotent,
+    but an extension of nilpotent by nilpotent need not be (S₃).
+  - SEMIDIRECT PRODUCTS N ⋊_φ H for φ : H → Aut(N); G ≅ N ⋊ H when N ◁ G,
+    H ≤ G, N ∩ H = 1, NH = G. Classification: groups of order pq (p < q)
+    are Z/pq, plus exactly one non-abelian group when p | q − 1. Small
+    counts: order 8: 5, order 12: 5 (Z/12, Z/2 × Z/6, A₄, D₁₂, Z/3 ⋊ Z/4),
+    order 16: 14, order p²: 2, order p³: 5.
+  - MODULES over a ring R: submodules, quotients, isomorphism theorems,
+    direct sums and products, FREE modules (bases, rank over commutative
+    R), torsion, annihilators. Abelian groups = Z-modules; a k[x]-module
+    = a k-vector space with one linear map T; a Z[G]-module = a
+    representation of G. Submodules of f.g. modules need not be f.g.
+    unless R is Noetherian.
+  - STRUCTURE THEOREM (f.g. modules over a PID R): M ≅ Rʳ ⊕ R/(d₁) ⊕ ... ⊕
+    R/(d_k) with d₁ | d₂ | ... | d_k non-units (INVARIANT FACTORS), or
+    Rʳ ⊕ ⊕R/(pᵢ^eᵢ) (ELEMENTARY DIVISORS), unique. Computed by SMITH NORMAL
+    FORM: dᵢ = Δᵢ/Δᵢ₋₁, Δᵢ = gcd of i × i minors. Consequences: f.g.
+    abelian groups; number of abelian groups of order ∏pᵢ^aᵢ is ∏p(aᵢ);
+    RATIONAL CANONICAL FORM (invariant factors of V_T; last one = minimal
+    polynomial, product = characteristic polynomial) and JORDAN FORM
+    (elementary divisors (x − λ)ᵉ).
+  - Hom AND TENSOR: Hom_R(M, N); M ⊗_R N defined by the UNIVERSAL PROPERTY
+    for R-bilinear maps, built as the free module on M × N modulo the
+    bilinearity relations. Key computations: R/I ⊗ M ≅ M/IM, Z/m ⊗ Z/n ≅
+    Z/gcd(m, n), Q ⊗ Z/n = 0, Q ⊗_Z Q ≅ Q, Rᵐ ⊗ Rⁿ ≅ Rᵐⁿ, ⊗ distributes
+    over ⊕, EXTENSION OF SCALARS S ⊗_R M, C ⊗_R C ≅ C × C, k[x] ⊗ k[y] ≅
+    k[x, y]. Not every element is a pure tensor m ⊗ n.
+  - EXACT SEQUENCES: exact at B means im = ker; SHORT exact 0 → A → B → C
+    → 0. SPLITTING LEMMA: retraction ⇔ section ⇔ B ≅ A ⊕ C compatibly.
+    Non-split: 0 → Z/2 → Z/4 → Z/2 → 0, 0 → Z → Z → Z/n → 0; sequences
+    ending in a free (projective) module split. FIVE LEMMA, SNAKE LEMMA
+    (ker α → ker β → ker γ → coker α → coker β → coker γ).
+  - EXACTNESS OF FUNCTORS: Hom_R(M, −) and Hom_R(−, N) are LEFT exact;
+    − ⊗_R N is RIGHT exact (it is a left adjoint: Hom(M ⊗ N, P) ≅ Hom(M,
+    Hom(N, P))). Failures: Hom(Z/2, −) and − ⊗ Z/2 on 0 → Z → Z → Z/2 → 0.
+  - PROJECTIVE (Hom(P, −) exact ⇔ direct summand of a free module),
+    INJECTIVE (Hom(−, I) exact; BAER'S CRITERION; over a PID ⇔ DIVISIBLE)
+    and FLAT (− ⊗ M exact; over a PID ⇔ torsion-free) modules. Free ⇒
+    projective ⇒ flat. Examples: Z/2 over Z/6 projective, not free; Q over
+    Z flat and injective, not projective; Q/Z injective, not flat; over a
+    PID (or local ring, f.g.) projective ⇔ free.
+  - CATEGORIES: objects, morphisms, composition, identities; Set, Grp,
+    Ab, R-Mod, Ring, Top, a poset, a group as a one-object category.
+    FUNCTORS (covariant/contravariant: forgetful, free, Hom(A, −), dual
+    V ↦ V*, abelianisation, π₁), NATURAL TRANSFORMATIONS (V → V** natural;
+    V ≅ V* not natural), equivalences, faithful/full.
+  - UNIVERSAL PROPERTIES: initial/terminal objects, products and
+    coproducts (Set: × and ⊔; Grp: × and free product *; Ab: ⊕; CRing: ×
+    and ⊗_Z; poset: inf and sup), kernels, pullbacks, limits and colimits
+    (Z_p = lim Z/pⁿ, Z[1/2] = colim(Z →2 Z →2 ...)). YONEDA LEMMA: Nat(
+    Hom(A, −), F) ≅ F(A). ADJUNCTIONS F ⊣ G: free ⊣ forgetful,
+    abelianisation ⊣ inclusion, − ⊗ N ⊣ Hom(N, −); LEFT ADJOINTS PRESERVE
+    COLIMITS, right adjoints preserve limits.
+  - HOMOLOGICAL ALGEBRA: chain complexes (d² = 0), HOMOLOGY Hₙ = ker dₙ /
+    im dₙ₊₁, chain maps and chain homotopies (homotopic maps induce the
+    same map on homology); a SHORT EXACT SEQUENCE OF COMPLEXES gives a LONG
+    EXACT SEQUENCE with connecting maps (snake lemma). PROJECTIVE
+    RESOLUTIONS (unique up to homotopy); Torₙ(A, B) = Hₙ(P_• ⊗ B),
+    Extⁿ(A, B) = Hⁿ(Hom(P_•, B)). Over Z: Tor₁(Z/m, Z/n) ≅ Ext¹(Z/m, Z/n)
+    ≅ Z/gcd(m, n), Tor₁(A, Z/n) ≅ A[n], Ext¹(Z/n, Z) ≅ Z/n, and Torᵢ =
+    Extⁱ = 0 for i ≥ 2. Ext¹(C, A) classifies extensions 0 → A → B → C → 0.
+    Over k[x]/(x²), Torₙ(k, k) = k for every n (infinite resolution).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Show that G is solvable (G⁽ⁿ⁾ = 1 for some n) iff G has a series
+    G = G₀ ▷ G₁ ▷ ... ▷ G_n = 1 with every Gᵢ/Gᵢ₊₁ abelian. (b) Prove that
+    subgroups, quotients and extensions of solvable groups are solvable.
+    (c) Find the derived series of S₄ and show S_n is not solvable for
+    n ≥ 5.
+    Answer: (a) induction G⁽ⁱ⁾ ≤ Gᵢ; (b) H⁽ⁱ⁾ ≤ G⁽ⁱ⁾, (G/N)⁽ⁱ⁾ = G⁽ⁱ⁾N/N;
+    (c) S₄ ▷ A₄ ▷ V₄ ▷ 1 (derived length 3); for n ≥ 5 the series
+    stops at A_n ≠ 1.
+    Teacher explains: The key lemma: for N ◁ G, G/N is abelian iff every
+    commutator [x, y] = x⁻¹y⁻¹xy lies in N, i.e. iff G′ ≤ N. (a) If the
+    series exists, Gᵢ/Gᵢ₊₁ abelian gives Gᵢ′ ≤ Gᵢ₊₁; by induction G⁽ⁱ⁾ ≤
+    Gᵢ (if G⁽ⁱ⁾ ≤ Gᵢ then G⁽ⁱ⁺¹⁾ = [G⁽ⁱ⁾, G⁽ⁱ⁾] ≤ Gᵢ′ ≤ Gᵢ₊₁), so G⁽ⁿ⁾ ≤ G_n
+    = 1. Conversely the derived series itself is such a series (each G⁽ⁱ⁾
+    is even characteristic in G). (b) Subgroup: H⁽ⁱ⁾ ≤ G⁽ⁱ⁾ by induction.
+    Quotient: commutators of cosets are cosets of commutators, so (G/N)⁽ⁱ⁾
+    = G⁽ⁱ⁾N/N. Extension: if N and G/N are solvable, (G/N)⁽ᵐ⁾ = 1 means
+    G⁽ᵐ⁾ ≤ N, hence G⁽ᵐ⁺ᵏ⁾ ≤ N⁽ᵏ⁾ = 1 for large k. (c) Every commutator is
+    an even permutation and S₄/A₄ ≅ Z/2 is abelian, so S₄′ ≤ A₄; the
+    commutator of (1 2) and (1 3) is a 3-cycle, and the 3-cycles generate
+    A₄, so S₄′ = A₄ (conjugating one 3-cycle in S₄ gives them all). A₄/V₄
+    ≅ Z/3 gives A₄′ ≤ V₄; two non-commuting 3-cycles have a non-trivial
+    commutator, which is then a double transposition, and conjugation
+    in A₄ moves it to all three, so A₄′ = V₄. V₄ is abelian: V₄′ = 1. For
+    n ≥ 5, A_n is simple and non-abelian, so A_n′ = A_n (a non-trivial
+    normal subgroup); the derived series S_n ▷ A_n = A_n = ... never
+    reaches 1. Common mistakes: "solvable means abelian"; claiming a
+    subgroup of a solvable group is normal in the series; forgetting that
+    S_n′ = A_n needs the 3-cycles. Now you try: the derived series of
+    GL₂(F₃). (GL₂(F₃) ▷ SL₂(F₃) ▷ Q₈ ▷ {±I} ▷ 1, orders 48, 24, 8, 2, 1;
+    derived length 4)
+
+D2. (a) Prove that a finite p-group has non-trivial centre and deduce that
+    it is nilpotent. (b) Compute the upper and lower central series of the
+    dihedral group D₈ = ⟨r, s | r⁴ = s² = 1, srs = r⁻¹⟩ and of Q₈, and find
+    the class of D₁₆. (c) Show that S₃ is solvable but not nilpotent.
+    Answer: (a) class equation; (b) D₈, Q₈: 1 < Z = γ₂ (order 2) < G,
+    class 2; D₁₆ has class 3; (c) Z(S₃) = 1 and γ₂ = γ₃ = A₃.
+    Teacher explains: (a) |G| = pⁿ. The class equation reads |G| = |Z(G)| +
+    ∑[G : C(xᵢ)], summing over non-central class representatives. Each
+    index [G : C(xᵢ)] divides pⁿ and is > 1, so it is divisible by p;
+    also p | |G|. Hence p | |Z(G)|, so Z(G) ≠ 1. Now induct on n: G/Z(G)
+    is a smaller p-group, hence nilpotent, so its upper central series
+    reaches G/Z(G); pulling back, Z_{i+1}(G) is the preimage of Zᵢ(G/Z(G)),
+    and the upper central series of G reaches G. (b) In D₈, r² commutes
+    with r and with s (s r² s = r⁻² = r²), and nothing else outside 1 does,
+    so Z = {1, r²}. D₈/Z has order 4, hence is abelian, so Z₂ = G: class 2.
+    Lower series: [r, s] = r⁻¹s⁻¹rs = r⁻¹ · r⁻¹ = r⁻², so γ₂ = ⟨r²⟩ (it
+    is normal and D₈/⟨r²⟩ ≅ V₄ is abelian), and γ₃ = [⟨r²⟩, G] = 1 since
+    r² is central. Q₈ = {±1, ±i, ±j, ±k}: Z = {±1}, [i, j] = i⁻¹j⁻¹ij =
+    (−i)(−j)ij = k · k = −1; since ij = k ≠ −k = ji, Q₈ is not abelian; γ₂ =
+    {±1} = Z, class 2. For D₁₆ (r⁸ = 1): Z = ⟨r⁴⟩, D₁₆/Z ≅ D₈ of class 2,
+    so D₁₆ has class 3; in general D_{2^(k+1)} has class k. (c) S₃ ▷ A₃ ▷
+    1 has abelian factors, so S₃ is solvable. But Z(S₃) = 1, so Z₁ = Z₀
+    and the upper series is stuck at 1. Lower: γ₂ = A₃ and γ₃ = [A₃, S₃]
+    contains [(1 2 3), (1 2)], a 3-cycle, so γ₃ = A₃ = γ₄ = ...
+    Common mistakes: using [γᵢ, γᵢ] (the derived series) instead of
+    [γᵢ, G]; thinking G/Z(G) cyclic is possible for non-abelian G (it
+    forces G abelian). Now you try: the nilpotency class of the
+    Heisenberg group UT₃(F_p) of upper unitriangular 3 × 3 matrices, and
+    its centre. (class 2; Z = γ₂ = matrices with only the corner entry,
+    order p)
+
+D3. Prove that for a finite group G the following are equivalent:
+    (i) G is nilpotent; (ii) every proper subgroup H satisfies H < N_G(H);
+    (iii) every Sylow subgroup is normal; (iv) G is the direct product of
+    its Sylow subgroups. Decide which groups of order 12 are nilpotent.
+    Answer: proof below; of the five groups of order 12 exactly Z/12 and
+    Z/2 × Z/6 are nilpotent.
+    Teacher explains: (i) ⇒ (ii): let i be maximal with Zᵢ ≤ H (Z₀ = 1 ≤
+    H and Z_c = G ⊄ H). Then Zᵢ₊₁ ⊄ H and [Zᵢ₊₁, H] ≤ [Zᵢ₊₁, G] ≤ Zᵢ ≤ H,
+    so for z ∈ Zᵢ₊₁, h ∈ H: z⁻¹hz = h[h, z] ∈ H. Thus Zᵢ₊₁ ≤ N_G(H), and
+    N_G(H) ⊋ H. (ii) ⇒ (iii): let P be a Sylow p-subgroup and N = N_G(P).
+    P is the unique Sylow p-subgroup of N (it is normal there). If g
+    normalises N, then gPg⁻¹ is a Sylow p-subgroup of N, so gPg⁻¹ = P and
+    g ∈ N. So N_G(N) = N; by (ii) N cannot be proper: N = G, P ◁ G.
+    (iii) ⇒ (iv): the Sylow subgroups P₁, ..., P_k for the distinct primes
+    are normal with pairwise trivial intersections (coprime orders). For
+    x ∈ Pᵢ, y ∈ Pⱼ (i ≠ j), [x, y] ∈ Pᵢ ∩ Pⱼ = 1, so they commute, and the
+    map P₁ × ... × P_k → G, (x₁, ..., x_k) ↦ x₁⋯x_k is an injective
+    homomorphism; comparing orders it is an isomorphism. (iv) ⇒ (i):
+    p-groups are nilpotent (D2) and Zᵢ(A × B) = Zᵢ(A) × Zᵢ(B), so a finite
+    product of nilpotent groups is nilpotent. Order 12 = 4 · 3: nilpotent
+    ⇔ G ≅ P₂ × P₃ with |P₂| = 4, |P₃| = 3; P₂ ∈ {Z/4, Z/2 × Z/2}, so G ≅
+    Z/12 or Z/2 × Z/6. A₄ (n₃ = 4), D₁₂ (n₂ = 3) and Z/3 ⋊ Z/4 (n₂ = 3)
+    are not. Common mistakes: "one normal Sylow subgroup suffices" (A₄
+    has V₄ normal); "nilpotent ⇒ abelian" (Q₈). Now you try: how many
+    nilpotent groups of order 72 = 8 · 9 are there? (5 · 2 = 10)
+
+D4. (a) State the Jordan-Hölder theorem. Find all composition series of
+    Z/12 and their factors. (b) Give the composition factors of S₄, S₅ and
+    GL₂(F₃). (c) Prove that every group of order 30 has a normal subgroup
+    of order 15, hence is solvable, and give its composition factors.
+    Answer: (a) 3 series, factors always Z/2, Z/2, Z/3; (b) S₄: Z/2, Z/3,
+    Z/2, Z/2; S₅: Z/2, A₅; GL₂(F₃): Z/2 (four times), Z/3; (c) counting
+    Sylow elements; factors Z/2, Z/3, Z/5.
+    Teacher explains: JORDAN-HÖLDER: any two composition series of a
+    finite group have the same length and the same multiset of simple
+    factors. (a) Subgroups of Z/12 correspond to divisors; a composition
+    series is a maximal chain of divisors 1 | a | b | 12 with prime
+    ratios. Orders (top to bottom): 12 > 6 > 3 > 1 (factors Z/2, Z/2,
+    Z/3), 12 > 6 > 2 > 1 (Z/2, Z/3, Z/2), 12 > 4 > 2 > 1 (Z/3, Z/2, Z/2).
+    Three series, same factors in different orders. In general Z/n has
+    (a₁ + ... + a_k)!/(a₁!⋯a_k!) composition series for n = ∏pᵢ^aᵢ.
+    (b) S₄ ▷ A₄ ▷ V₄ ▷ Z/2 ▷ 1 refines the derived series. S₅ ▷ A₅ ▷ 1 with
+    A₅ simple. GL₂(F₃) ▷ SL₂(F₃) ▷ Q₈ ▷ {±I} ▷ 1 has factors Z/2, Z/3,
+    Z/2 × Z/2, Z/2, and V₄ is refined into two Z/2's. (c) n₅ | 6, n₅ ≡ 1
+    (mod 5) ⇒ n₅ ∈ {1, 6}; n₃ | 10, n₃ ≡ 1 (mod 3) ⇒ n₃ ∈ {1, 10}. Distinct
+    subgroups of prime order meet trivially, so n₅ = 6 would give 24
+    elements of order 5 and n₃ = 10 would give 20 elements of order 3;
+    24 + 20 > 30, so one of P₅, P₃ is normal. Then H = P₃P₅ is a subgroup
+    of order 15, cyclic (3 ∤ 5 − 1), and of index 2, hence normal. The
+    series G ▷ H ▷ P₅ ▷ 1 has factors Z/2, Z/3, Z/5: G is solvable. Common
+    mistakes: counting elements of Sylow subgroups of non-prime order
+    (they may overlap); concluding G ≅ H × Z/2 (there are 4 groups of
+    order 30: Z/30, D₃₀, S₃ × Z/5, D₁₀ × Z/3). Now you try: show that a
+    group of order 20 is not simple. (n₅ | 4 and n₅ ≡ 1 mod 5 ⇒ n₅ = 1)
+
+D5. (a) Given φ : H → Aut(N), define N ⋊_φ H and show N is normal in it.
+    (b) Classify the groups of order pq, p < q primes. (c) Write down the
+    non-abelian group of order 21 by generators and relations.
+    Answer: (a) (n, h)(n′, h′) = (n φ_h(n′), hh′); (b) Z/pq, and one more
+    group iff p | q − 1; (c) ⟨x, y | x⁷ = y³ = 1, yxy⁻¹ = x²⟩.
+    Teacher explains: (a) On N × H put (n, h)(n′, h′) = (n·φ_h(n′), hh′).
+    Associativity uses φ_{hh′} = φ_h ∘ φ_{h′}; the identity is (1, 1) and
+    (n, h)⁻¹ = (φ_{h⁻¹}(n⁻¹), h⁻¹). The projection (n, h) ↦ h is a
+    homomorphism with kernel N × 1, so N ◁ G, and inside G we have h n h⁻¹
+    = φ_h(n): the action becomes conjugation. Conversely, if N ◁ G, H ≤ G,
+    N ∩ H = 1 and NH = G, then G ≅ N ⋊ H with φ = conjugation. (b) n_q ≡ 1
+    (mod q) and n_q | p < q force n_q = 1: Q ≅ Z/q is normal. Let P ≅ Z/p
+    be a Sylow p-subgroup; P ∩ Q = 1 and |PQ| = pq, so G ≅ Z/q ⋊_φ Z/p
+    with φ : Z/p → Aut(Z/q) ≅ (Z/q)^× ≅ Z/(q − 1). If p ∤ q − 1, φ is
+    trivial and G ≅ Z/q × Z/p ≅ Z/pq. If p | q − 1, the cyclic group
+    (Z/q)^× has a unique subgroup of order p, generated by some a; the
+    non-trivial φ send the generator y of P to aᵏ (1 ≤ k < p), and
+    replacing y by a suitable power yʲ shows all these give isomorphic
+    groups. So there are exactly two groups. (c) p = 3, q = 7: 3 | 6, and
+    a = 2 has order 3 mod 7 (2³ = 8 ≡ 1). So G = ⟨x, y | x⁷ = y³ = 1, yxy⁻¹
+    = x²⟩, of order 21, with trivial centre and n₃ = 7. Common mistakes:
+    counting different homomorphisms φ as different groups; forgetting
+    to check that the proposed "a" really has order p modulo q; applying
+    the argument when p = q. Now you try: how many groups have order 35,
+    55, 57, 91? (1, 2, 2, 1)
+
+D6. (a) State the structure theorem for finitely generated modules over a
+    PID in invariant-factor and elementary-divisor form. (b) Identify the
+    abelian group M = Z³/K, where K is spanned by the rows of
+        A = [  2   4   4 ]
+            [ −6   6  12 ]
+            [ 10   4  16 ].
+    (c) List all abelian groups of order 360 in both forms.
+    Answer: (b) M ≅ Z/2 ⊕ Z/2 ⊕ Z/156 (order 624); (c) six groups.
+    Teacher explains: (a) M ≅ Rʳ ⊕ R/(d₁) ⊕ ... ⊕ R/(d_k), d₁ | ... | d_k
+    non-zero non-units, r and the ideals (dᵢ) unique; equivalently M ≅ Rʳ
+    ⊕ ⊕ᵢ R/(pᵢ^eᵢ) with the prime powers unique up to order. Proof idea:
+    M ≅ Rⁿ/K with K ≤ Rⁿ free (R a PID), and a presentation matrix can be
+    brought by invertible row and column operations to the SMITH NORMAL
+    FORM diag(d₁, ..., d_k, 0, ...). (b) The quantities Δᵢ = gcd of all
+    i × i minors are unchanged by invertible operations, and Δᵢ = d₁⋯dᵢ.
+    Here Δ₁ = gcd of the entries = 2; the 2 × 2 minors have gcd Δ₂ = 4 (e.g.
+    2·6 − 4·(−6) = 36, 2·12 − 4·(−6) = 48, 4·12 − 4·6 = 24, 2·4 − 4·10 =
+    −32, ... all divisible by 4, and the gcd is exactly 4); Δ₃ = |det A| =
+    624 = 2⁴ · 3 · 13. So d₁ = 2, d₂ = 4/2 = 2, d₃ = 624/4 = 156 and
+       M ≅ Z/2 ⊕ Z/2 ⊕ Z/156,  elementary divisors 2, 2, 4, 3, 13.
+    (c) 360 = 2³ · 3² · 5, so the count is p(3)p(2)p(1) = 3 · 2 · 1 = 6:
+       elementary divisors        invariant factors
+       8, 9, 5                    Z/360
+       2, 4, 9, 5                 Z/2 ⊕ Z/180
+       2, 2, 2, 9, 5              Z/2 ⊕ Z/2 ⊕ Z/90
+       8, 3, 3, 5                 Z/3 ⊕ Z/120
+       2, 4, 3, 3, 5              Z/6 ⊕ Z/60
+       2, 2, 2, 3, 3, 5           Z/2 ⊕ Z/6 ⊕ Z/30
+    To pass from elementary divisors to invariant factors, multiply the
+    largest power of each prime to get d_k, then the next largest, etc.
+    Common mistakes: reading the answer off the diagonal after row
+    operations only (you need divisibility d₁ | d₂ | d₃); forgetting
+    "finitely generated" (Q is torsion-free but not free). Now you try:
+    Z²/⟨(4, 6), (6, 4)⟩. (Δ₁ = 2, Δ₂ = |16 − 36| = 20: Z/2 ⊕ Z/10)
+
+D7. A linear map T on a finite-dimensional k-vector space V makes V a
+    k[x]-module (x·v = Tv). (a) Explain how the structure theorem gives
+    the rational canonical and Jordan forms. (b) Find all Jordan forms and
+    invariant factors of 6 × 6 complex matrices with characteristic
+    polynomial (x − 1)⁴(x − 2)² and minimal polynomial (x − 1)²(x − 2).
+    (c) How many similarity classes have characteristic polynomial
+    (x − 1)⁴(x − 2)²? (d) Count similarity classes of 2 × 2 matrices over
+    F_q.
+    Answer: (b) two classes; (c) p(4)p(2) = 10; (d) q² + q.
+    Teacher explains: (a) V is f.g. and torsion over the PID k[x], so V ≅
+    k[x]/(f₁) ⊕ ... ⊕ k[x]/(f_m), f₁ | ... | f_m monic. On k[x]/(f), x acts
+    by the COMPANION MATRIX of f in the basis 1, x, ..., x^(deg f − 1). So
+    T is similar to a block diagonal of companion matrices (RATIONAL
+    CANONICAL FORM); f_m = minimal polynomial, f₁⋯f_m = characteristic
+    polynomial. Over C, the elementary divisors are (x − λ)ᵉ and on
+    k[x]/((x − λ)ᵉ) the basis (x − λ)^(e−1), ..., (x − λ), 1 gives a Jordan
+    block J_e(λ). Two matrices are similar iff their modules are
+    isomorphic iff they have the same invariant factors. (b) Eigenvalue 1:
+    block sizes form a partition of 4 with largest part 2: (2, 2) or
+    (2, 1, 1). Eigenvalue 2: a partition of 2 with largest part 1: (1, 1).
+       J₂(1) ⊕ J₂(1) ⊕ [2] ⊕ [2]:     f₁ = f₂ = (x − 1)²(x − 2)
+       J₂(1) ⊕ [1] ⊕ [1] ⊕ [2] ⊕ [2]: f₁ = x − 1, f₂ = (x − 1)(x − 2),
+                                       f₃ = (x − 1)²(x − 2)
+    (group the elementary divisors: f_m takes the largest power of each
+    prime, f_{m−1} the next largest, ...). Degrees add up to 6 in both.
+    (c) Any partition of 4 for λ = 1 and of 2 for λ = 2: 5 · 2 = 10.
+    (d) Either T is scalar aI (invariant factors x − a, x − a: q classes)
+    or V is cyclic with the single invariant factor any monic quadratic
+    (q² classes): q² + q in all (6 over F₂). Common mistakes: confusing
+    the number of Jordan blocks for λ (= dim ker(T − λ)) with the algebraic
+    multiplicity; thinking the minimal polynomial alone determines the
+    class. Now you try: how many conjugacy classes of nilpotent 5 × 5
+    matrices are there? (p(5) = 7)
+
+D8. (a) State the universal property of M ⊗_R N and sketch why it exists.
+    Prove (b) Z/m ⊗_Z Z/n ≅ Z/d, d = gcd(m, n); (c) Q ⊗_Z Z/n = 0;
+    (d) R/I ⊗_R M ≅ M/IM; (e) C ⊗_R C ≅ C × C as rings.
+    Answer: (b) (a, b) ↦ ab mod d and d(1 ⊗ 1) = 0; (c) q ⊗ a = (q/n) ⊗
+    na; (d) right exactness; (e) C[x]/(x² + 1) and the CRT.
+    Teacher explains: (a) M ⊗_R N (R commutative) is a module with a
+    bilinear map ⊗ : M × N → M ⊗ N such that every bilinear β : M × N → P
+    factors uniquely as β = β̃ ∘ ⊗ with β̃ linear. Uniqueness up to unique
+    isomorphism is formal. Existence: take the free module on the SET
+    M × N and divide by the submodule generated by (m + m′, n) − (m, n) −
+    (m′, n), (m, n + n′) − (m, n) − (m, n′), (rm, n) − r(m, n), (m, rn) −
+    r(m, n). (b) β(a, b) = ab mod d is well defined (d | m, d | n) and
+    bilinear, so β̃ : Z/m ⊗ Z/n → Z/d is onto (β̃(1 ⊗ 1) = 1). Every a ⊗ b =
+    ab(1 ⊗ 1), so the tensor is cyclic, generated by 1 ⊗ 1; and m(1 ⊗ 1) =
+    m ⊗ 1 = 0, n(1 ⊗ 1) = 1 ⊗ n = 0, so d(1 ⊗ 1) = 0 (d = um + vn). A cyclic
+    group of order ≤ d mapping onto Z/d is ≅ Z/d. (c) For q ∈ Q, a ∈ Z/n:
+    q ⊗ a = (q/n)·n ⊗ a = (q/n) ⊗ na = (q/n) ⊗ 0 = 0; pure tensors generate,
+    so Q ⊗ Z/n = 0. (Divisible ⊗ torsion = 0 by the same trick.)
+    (d) Tensor 0 → I → R → R/I → 0 with M; right exactness (D10) gives
+    I ⊗ M → M → R/I ⊗ M → 0 exact, and the image of I ⊗ M → M, i ⊗ m ↦
+    im, is IM. (e) C ≅ R[x]/(x² + 1), so C ⊗_R C ≅ C[x]/(x² + 1) =
+    C[x]/((x − i)(x + i)) ≅ C × C by the Chinese remainder theorem.
+    Explicitly (1 ⊗ 1 + i ⊗ i)(1 ⊗ 1 − i ⊗ i) = 1 ⊗ 1 − i² ⊗ i² = 0: zero
+    divisors, so it is not a field. Common mistakes: believing every
+    element is a pure tensor (e₁ ⊗ e₁ + e₂ ⊗ e₂ in R² ⊗ R² is not);
+    ignoring the ring: 2 ⊗ 1 = 1 ⊗ 2 = 0 in Z ⊗ Z/2, but 2 ⊗ 1 ≠ 0 in
+    2Z ⊗ Z/2 ≅ Z/2 (2 is not a multiple of 2 inside 2Z). Now you try:
+    Z/12 ⊗ Z/18 and Q ⊗_Z Q. (Z/6; Q: a/b ⊗ c/d = ac/(bd) ⊗ 1)
+
+D9. (a) Prove the splitting lemma: for a short exact sequence 0 → A →f B
+    →g C → 0 of R-modules, a retraction r (rf = 1_A) exists iff a section
+    s (gs = 1_C) exists iff B ≅ A ⊕ C compatibly with f and g. (b) Show
+    that 0 → Z/2 → Z/4 → Z/2 → 0 and 0 → Z →n Z → Z/n → 0 (n ≥ 2) do not
+    split, but every short exact sequence ending in a free module does.
+    (c) State the snake lemma and apply it to multiplication by n on a
+    short exact sequence of abelian groups.
+    Answer: (a) B = f(A) ⊕ ker r = f(A) ⊕ s(C); (b) Z/4 ≇ Z/2 ⊕ Z/2, Z ≇
+    Z ⊕ Z/n; lift a basis; (c) 0 → A[n] → B[n] → C[n] → A/nA → B/nB →
+    C/nC → 0.
+    Teacher explains: (a) Given r, write b = fr(b) + (b − fr(b)); the
+    second term lies in ker r since rf = 1. And f(A) ∩ ker r = 0: if
+    r(f(a)) = 0 then a = rf(a) = 0. So B = f(A) ⊕ ker r, and g maps ker r
+    isomorphically onto C (g is onto and kills f(A)); its inverse gives a
+    section. Given s, b − sg(b) ∈ ker g = f(A), so B = f(A) ⊕ s(C), and r
+    := f⁻¹ ∘ (projection to f(A)) is a retraction. The direct sum form
+    gives both maps at once. (b) If 0 → Z/2 → Z/4 → Z/2 → 0 split, Z/4 ≅
+    Z/2 ⊕ Z/2, but Z/4 has an element of order 4. If 0 → Z → Z → Z/n → 0
+    split, Z ≅ Z ⊕ Z/n would have torsion. If C is free on a basis {cᵢ},
+    choose bᵢ with g(bᵢ) = cᵢ and define s(cᵢ) = bᵢ; then gs = 1. (The same
+    works for projective C, by definition.) (c) SNAKE LEMMA: given a
+    commutative diagram with exact rows A → B → C → 0 and 0 → A′ → B′ → C′
+    and vertical maps α, β, γ, there is an exact sequence
+       ker α → ker β → ker γ →δ coker α → coker β → coker γ.
+    The connecting map: for c ∈ ker γ lift to b ∈ B; then β(b) maps to
+    γ(c) = 0 in C′, so β(b) = f′(a′) for a unique a′ ∈ A′; put δ(c) = [a′].
+    Another lift b + f(a) changes a′ by α(a), so δ is well defined. With
+    α, β, γ all = multiplication by n: ker = n-torsion A[n], coker =
+    A/nA. For 0 → Z →p Z → Z/p → 0 and n = p the six terms are 0, 0, Z/p,
+    Z/p, Z/p, Z/p with maps δ = iso, 0, iso. FIVE LEMMA: in a commutative
+    ladder of two exact rows of five terms, if the outer four vertical maps
+    are isomorphisms, so is the middle one. Common mistakes: thinking any
+    B ≅ A ⊕ C forces splitting (see M12 p)); forgetting to check that δ
+    is well defined. Now you try: the snake sequence for n = 2 on 0 → Z/2
+    → Z/4 → Z/2 → 0. (all six terms Z/2; maps iso, 0, iso, 0, iso)
+
+D10. (a) Show that Hom_R(M, −) is left exact but Hom_Z(Z/2, −) is not
+     exact. (b) Define projective, injective and flat modules; prove P is
+     projective iff it is a direct summand of a free module, and show Z/2
+     is a projective, non-free Z/6-module. (c) Using Baer's criterion show
+     that over Z injective = divisible; deduce Q and Q/Z are injective and
+     Z is not. (d) Show Q is flat but not projective over Z, and that
+     − ⊗ N is right exact.
+     Answer: (a) 0 → 0 → 0 → Z/2 is not onto at the end; (b) Z/6 ≅ Z/2 ⊕
+     Z/3; (c) extend nZ → I iff x = ny is solvable; (d) torsion-free but
+     not free; ⊗ is a left adjoint.
+     Teacher explains: (a) For 0 → A →f B →g C exact, 0 → Hom(M, A) →
+     Hom(M, B) → Hom(M, C) is exact: if f ∘ φ = 0 then φ = 0 (f injective);
+     if g ∘ ψ = 0 then ψ(M) ⊆ ker g = f(A), so ψ = f ∘ φ. Apply Hom(Z/2, −)
+     to 0 → Z →2 Z → Z/2 → 0: Hom(Z/2, Z) = 0, so we get 0 → 0 → 0 → Z/2,
+     not onto: the identity Z/2 → Z/2 does not lift to Z. (b) P is
+     PROJECTIVE if every map P → C lifts along every surjection B → C
+     (⇔ Hom(P, −) exact); I is INJECTIVE if every map A → I extends along
+     every injection A → B (⇔ Hom(−, I) exact); M is FLAT if − ⊗ M
+     preserves injections. Free modules are projective (define the lift
+     on a basis). If P is projective, choose a surjection F → P from a
+     free F; lifting 1_P gives a section, so F ≅ P ⊕ ker by D9. A summand
+     of a projective is projective (extend by zero). Over Z/6, Z/6 ≅ Z/2 ⊕
+     Z/3 (CRT), so Z/2 is projective, yet not free: free Z/6-modules have
+     order 6ᵏ. (c) BAER: I is injective iff every map from an ideal J → I
+     extends to R. Ideals of Z are nZ; a map nZ → I is n ↦ x and extends to
+     Z iff x = n·y for some y ∈ I. So injective ⇔ divisible. Q and Q/Z are
+     divisible; Z is not (2y = 1 has no solution). (d) Over a PID flat ⇔
+     torsion-free, or directly: Q = ⋃(1/n!)Z is a directed union of free
+     modules and ⊗ commutes with directed unions. Over a PID submodules of
+     free modules are free, so projective ⇒ free; but any two elements of
+     Q are Z-dependent (for a/b, c/d: bc·(a/b) − ad·(c/d) = 0), so a free Q
+     would be Z, which is not divisible. Right exactness: Hom(M ⊗ N, P) ≅
+     Hom(M, Hom(N, P)) and Hom(N, P) is left exact, so the contravariant
+     functor Hom(− ⊗ N, P) is left exact for every P, which means − ⊗ N
+     sends A → B → C → 0 to an exact sequence. Common mistakes:
+     "projective = free" (false over Z/6); "Z/n is never injective"
+     (it is injective over Z/n, though not over Z). Now you try: is Z/4 a
+     flat Z-module? (no: Z →2 Z ⊗ Z/4 gives Z/4 →2 Z/4, not injective)
+
+D11. (a) Define categories, functors and natural transformations; show
+     that ev : V → V**, v ↦ (φ ↦ φ(v)) is natural but that no natural
+     isomorphism V → V* exists. (b) Compute products and coproducts in Set,
+     Grp, Ab, CRing and the poset (N, |). (c) State the Yoneda lemma and
+     the definition of an adjunction, give three examples, and prove that
+     a left adjoint preserves coproducts.
+     Answer: (a) T** ∘ ev_V = ev_W ∘ T; the zero map kills naturality of
+     V → V*; (b) (×, ⊔), (×, *), (⊕, ⊕), (×, ⊗_Z), (gcd, lcm); (c) Hom(FX,
+     Y) ≅ Hom(X, GY).
+     Teacher explains: (a) A CATEGORY has objects, sets Hom(X, Y),
+     associative composition and identities. A FUNCTOR F sends objects to
+     objects and morphisms to morphisms preserving composition and
+     identities (contravariant ones reverse arrows). A NATURAL
+     TRANSFORMATION η : F ⇒ G is a family η_X : FX → GX with G(f) ∘ η_X =
+     η_Y ∘ F(f) for every f : X → Y. For T : V → W linear and ψ ∈ W*:
+        T**(ev_V(v))(ψ) = ev_V(v)(ψ ∘ T) = ψ(Tv) = ev_W(Tv)(ψ),
+     so ev is natural (an isomorphism for finite dimension). V ↦ V* is
+     contravariant, so naturality of η_V : V → V* would demand η_V = T* ∘
+     η_W ∘ T for every T : V → W; with T = 0 this forces η_V = 0, not an
+     isomorphism when V ≠ 0. (b) The PRODUCT X × Y has projections such
+     that maps Z → X, Z → Y correspond to one map Z → X × Y; the COPRODUCT
+     dually. Set: cartesian product and disjoint union. Grp: direct
+     product and FREE PRODUCT (Z/2 * Z/2 is the infinite dihedral group).
+     Ab and R-Mod: ⊕ is both (finitely many factors). CRing: R × S and R
+     ⊗_Z S (maps R → T and S → T combine to r ⊗ s ↦ f(r)g(s)). In (N, |),
+     a morphism a → b means a | b: product = gcd, coproduct = lcm, initial
+     object 1, terminal object 0. (c) YONEDA: for F : C → Set,
+     Nat(Hom(A, −), F) ≅ F(A) via η ↦ η_A(1_A); so Hom(A, −) ≅ Hom(B, −)
+     implies A ≅ B. An ADJUNCTION F ⊣ G is a bijection Hom_D(FX, Y) ≅
+     Hom_C(X, GY) natural in X and Y. Examples: free group ⊣ forgetful
+     Grp → Set; abelianisation ⊣ inclusion Ab → Grp; − ⊗_R N ⊣ Hom_R(N,
+     −). Proof for coproducts: for every Y,
+        Hom(F(X₁ ⊔ X₂), Y) ≅ Hom(X₁ ⊔ X₂, GY) ≅ Hom(X₁, GY) × Hom(X₂, GY)
+                          ≅ Hom(FX₁, Y) × Hom(FX₂, Y) ≅ Hom(FX₁ ⊔ FX₂, Y),
+     naturally in Y, so F(X₁ ⊔ X₂) ≅ FX₁ ⊔ FX₂ by Yoneda. The same argument
+     works for all colimits (cokernels included): hence ⊗ distributes over
+     ⊕ and is right exact, and the free group on S ⊔ T is F(S) * F(T).
+     Common mistakes: taking the direct product as the coproduct of
+     groups; expecting products to exist everywhere (fields: there is no
+     field mapping to both F₂ and F₃). Now you try: the coproduct of Z[x]
+     and Z[y] in CRing. (Z[x] ⊗_Z Z[y] ≅ Z[x, y])
+
+D12. (a) Compute the homology of the complex 0 → Z →d₂ Z² →d₁ Z → 0 with
+     d₂(a) = (2a, 2a), d₁(x, y) = 3x − 3y. (b) Explain how a short exact
+     sequence of complexes gives a long exact sequence in homology.
+     (c) Define Tor and Ext via projective resolutions and compute
+     Torᵢ^Z(Z/m, Z/n), Extⁱ_Z(Z/m, Z/n) and Ext¹(Z/n, Z). (d) Interpret
+     Ext¹(Z/p, Z/p). (e) Compute Torₙ^R(k, k) for R = k[x]/(x²).
+     Answer: (a) H₂ = 0, H₁ = Z/2, H₀ = Z/3; (b) snake lemma; (c) Tor₀ =
+     Tor₁ = Z/d, Ext⁰ = Ext¹ = Z/d, d = gcd(m, n), higher ones 0;
+     Ext¹(Z/n, Z) = Z/n; (d) p extension classes; (e) k for every n.
+     Teacher explains: (a) d₁d₂(a) = 6a − 6a = 0 ✓. H₂ = ker d₂ = 0. ker d₁
+     = {(x, x)} ≅ Z and im d₂ = {(2a, 2a)}, so H₁ ≅ Z/2. im d₁ = 3Z, so H₀
+     = Z/3. (Check: 1 − 2 + 1 = 0 = rank H₂ − rank H₁ + rank H₀.) (b) Given
+     0 → A_• → B_• → C_• → 0 exact in each degree, the snake lemma applied
+     to the maps dₙ between the cokernel and kernel rows gives
+        ... → Hₙ(A) → Hₙ(B) → Hₙ(C) →∂ Hₙ₋₁(A) → Hₙ₋₁(B) → ...
+     where ∂[c] = [a] with a the element whose image is d(b), b a lift of
+     c: "lift, apply d, pull back". (c) A PROJECTIVE RESOLUTION ... → P₁ →
+     P₀ → A → 0 is exact with Pᵢ projective; delete A, apply the functor,
+     take homology: Torₙ(A, B) = Hₙ(P_• ⊗ B), Extⁿ(A, B) = Hⁿ(Hom(P_•,
+     B)). Any two resolutions are chain homotopy equivalent (comparison
+     theorem), so the answer is independent of choices; Tor₀ = A ⊗ B and
+     Ext⁰ = Hom(A, B). For A = Z/m: 0 → Z →m Z → Z/m → 0. Tensoring with
+     Z/n: 0 → Z/n →m Z/n → 0, so Tor₀ = Z/n / m(Z/n) ≅ Z/d and Tor₁ =
+     ker(m on Z/n) = {x : n | mx} = (n/d)Z/nZ ≅ Z/d. Applying Hom(−, Z/n):
+     0 → Z/n →m Z/n → 0, so Hom = Z/d, Ext¹ = coker ≅ Z/d. Resolutions of
+     length 1 exist for every abelian group (subgroups of free are free),
+     so Torᵢ = Extⁱ = 0 for i ≥ 2. For Ext¹(Z/n, Z): 0 → Z →n Z → 0 has
+     cokernel Z/n. (d) Ext¹(C, A) is in bijection with equivalence classes
+     of extensions 0 → A → B → C → 0, the zero class being the split one.
+     Ext¹(Z/p, Z/p) = Z/p: the split class B = Z/p ⊕ Z/p, and p − 1
+     non-split classes, all with B ≅ Z/p² (they differ in the choice of
+     the map Z/p → Z/p², 1 ↦ kp). So p classes but only 2 middle groups.
+     (e) ... → R →x R →x R → k → 0 is a free resolution (ker x = im x =
+     (x)). Tensoring with k turns every x into 0, so Torₙ(k, k) = k for
+     all n ≥ 0: k has infinite projective dimension over R. Common
+     mistakes: forgetting to delete A before applying the functor;
+     confusing extension classes with isomorphism types of B; Tor₀ is the
+     tensor product, not Tor₁. Now you try: Tor₁^Z(Z/12, Z/18) and
+     Ext¹_Z(Z/4, Z/6). (Z/6; Z/2)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Classify each group: NS (nilpotent, hence solvable), S (solvable, not
+    nilpotent) or X (not solvable).
+    a) Z/60                 b) S₃                  c) Q₈
+    d) D₈ (order 8)         e) A₄                  f) S₄
+    g) S₅                   h) A₅ × Z/2            i) D₂₄ (order 24)
+    j) D₃₂ (order 32)       k) GL₂(F₃)             l) SL₂(F₃)
+    m) SL₂(F₅)              n) UT₃(Z) (Heisenberg) o) invertible upper
+                                                      triangular 2 × 2
+                                                      real matrices
+    p) any group of order 15                       q) any group of order p⁵
+    r) Z/3 ⋊ Z/4 (non-abelian)                     s) S₃ × S₃
+    t) the free group F₂    u) any group of order 45   v) S₃ × Z/5
+    Answers:
+      a) NS     b) S      c) NS     d) NS     e) S      f) S
+      g) X      h) X      i) S (12 is not a power of 2)             j) NS
+      k) S (centre of order 2, GL₂(F₃)/Z ≅ S₄ has trivial centre)
+      l) S (n₃ = 4)       m) X (SL₂(F₅)/{±I} ≅ A₅)      n) NS (class 2)
+      o) S (commutators are unipotent; the centre is the scalars and
+         the quotient ≅ {x ↦ ax + b} has trivial centre)
+      p) NS (cyclic)      q) NS     r) S (n₂ = 3)      s) S
+      t) X (F₂′ is free of infinite rank, the series never ends)
+      u) NS (abelian)     v) S
+
+M2. Commutator subgroups, centres, abelianisations and classes.
+    a) S_n′ (n ≥ 2)          b) A₄′                 c) A₅′
+    d) D_{2n}′ (order 2n)    e) Z(D_{2n})           f) Z(Q₈) and Q₈′
+    g) derived length of S₄  h) derived length of GL₂(F₃)
+    i) class of D₁₆          j) class of D_{2^(k+1)} (k ≥ 1)
+    k) class and |Z| of UT₃(F_p)                    l) class of UT₄(F_p)
+    m) S_n^ab (n ≥ 2)        n) D_{2n}^ab           o) Q₈^ab
+    p) SL₂(F₃)^ab            q) GL₂(F₃)^ab
+    r) the upper central series of S₃ × Z/2
+    s) Z(GL_n(F_q))          t) the abelianisation of ⟨a, b | a² = b³⟩
+    u) Z(S_n), n ≥ 3         v) |G′| for G = Z/7 ⋊ Z/3
+    Answers:
+      a) A_n     b) V₄      c) A₅
+      d) ⟨r²⟩: order n for n odd, n/2 for n even
+      e) 1 for n odd, {1, r^(n/2)} for n even       f) both {±1}
+      g) 3       h) 4       i) 3       j) k       k) 2, p     l) 3
+      m) Z/2     n) Z/2 × Z/2 (n even), Z/2 (n odd)  o) Z/2 × Z/2
+      p) Z/3 (SL₂(F₃)′ = Q₈)     q) Z/2 (via det)
+      r) 1 < Z/2 = Z₁ = Z₂ = ... (S₃ has trivial centre): never reaches G
+      s) the scalars, order q − 1
+      t) Z (Z²/⟨(2, −3)⟩ ≅ Z; the trefoil knot group)
+      u) 1       v) 7
+
+M3. Composition series and Jordan-Hölder.
+    a) composition factors of Z/72     b) number of composition series of
+                                          Z/72
+    c) number for Z/12                 d) number for Z/30
+    e) number for Z/360                f) number for Z/pᵏ
+    g) number for Z/p × Z/p            h) factors of S₄
+    i) factors of S₅                   j) factors of S₃ × S₃
+    k) factors of A₅ × Z/6             l) factors of SL₂(F₅)
+    m) factors of GL₂(F₃)              n) factors of D₃₀ (order 30)
+    o) composition length of an abelian group of order 360
+    p) composition length of A₆ (also of order 360)
+    q) two non-isomorphic groups with the same factors
+    r) composition length of S_n, n ≥ 5
+    s) does Z have a composition series?
+    t) factors of a group of order 2⁴ · 3
+    Answers:
+      a) Z/2 (three times), Z/3 (twice)
+      b) 5!/(3!2!) = 10    c) 3      d) 3! = 6
+      e) 6!/(3!2!1!) = 60  f) 1      g) p + 1 (one per line)
+      h) Z/2, Z/3, Z/2, Z/2          i) Z/2, A₅
+      j) Z/2, Z/2, Z/3, Z/3          k) A₅, Z/2, Z/3
+      l) Z/2, A₅                     m) Z/2 (four times), Z/3
+      n) Z/2, Z/3, Z/5               o) 6       p) 1 (A₆ is simple)
+      q) Z/4 and Z/2 × Z/2; Z/6 and S₃; Q₈ and D₈
+      r) 2 (S_n ▷ A_n ▷ 1)
+      s) no: the bottom factor would be nZ/0 ≅ Z, not simple
+      t) Z/2 (four times), Z/3 (Burnside: it is solvable)
+
+M4. Sylow theory and small classifications.
+    a) possible n₃, n₂ for |G| = 12      b) possible n₅, n₃ for |G| = 30
+    c) possible n₇, n₂ for |G| = 56; why is G not simple?
+    d) n₂, n₃ in S₄                      e) n₂, n₃, n₅ in S₅
+    f) n₂, n₃, n₅ in A₅                  g) n₂, n₃ in GL₂(F₃)
+    h) number of groups of order 15, 35, 77, 91
+    i) number of groups of order 21, 39, 55, 57, 203
+    j) number of groups of order p², p³
+    k) number of groups of order 8, 12, 16, 18, 20, 30
+    l) smallest order of a non-abelian group; of a non-solvable group
+    m) Aut(Z/7), Aut(Z/8), Aut(Z/2 × Z/2), |Aut(Z/pⁿ)|
+    n) number of Sylow 2-subgroups of D_{2n}, n odd
+    o) the number of elements of order 7 in a simple group of order 168
+    p) is every group of order 45 abelian?
+    Answers:
+      a) n₃ ∈ {1, 4}, n₂ ∈ {1, 3}      b) n₅ ∈ {1, 6}, n₃ ∈ {1, 10}
+      c) n₇ ∈ {1, 8}, n₂ ∈ {1, 7}; n₇ = 8 uses 48 elements of order 7,
+         leaving 8 elements, which must form the unique Sylow 2-subgroup
+      d) 3, 4      e) 15, 10, 6      f) 5, 10, 6      g) 3, 4
+      h) 1, 1, 1, 1 (p ∤ q − 1 each time)
+      i) 2, 2, 2, 2, 2 (3 | 6, 3 | 12, 5 | 10, 3 | 18, 7 | 28)
+      j) 2 (both abelian), 5 (3 abelian, 2 non-abelian)
+      k) 5, 5, 14, 5, 5, 4
+      l) 6 (S₃); 60 (A₅)
+      m) Z/6, Z/2 × Z/2, S₃, pⁿ⁻¹(p − 1)
+      n) n (the reflections)            o) 48 (n₇ = 8, 8 · 6)
+      p) yes (n₃ = n₅ = 1, G ≅ P₉ × P₅, and groups of order 9 are abelian)
+
+M5. Finitely generated abelian groups and Smith normal form.
+    a) number of abelian groups of order 72     b) of order 100
+    c) of order 1000                            d) of order 64
+    e) of order p⁵                              f) of order 2⁴ · 3³ · 5²
+    g) invariant factors of Z/4 ⊕ Z/6 ⊕ Z/10
+    h) invariant factors of Z/12 ⊕ Z/18
+    i) invariant factors of Z/6 ⊕ Z/10 ⊕ Z/15
+    j) is Z/6 ⊕ Z/10 ≅ Z/2 ⊕ Z/30?
+    k) Z²/⟨(4, 6), (6, 4)⟩
+    l) Z³/K, K spanned by (2, 1, 0), (1, 2, 1), (0, 1, 2)
+    m) Z³/K, K spanned by (6, 4, 2), (4, 6, 2)
+    n) Z³/K, K spanned by (1, 2, 3), (4, 5, 6), (7, 8, 9)
+    o) Z²/⟨(2, 2), (2, −2)⟩                     p) Z²/⟨(0, 2), (3, 0)⟩
+    q) number of elements of order 2 in Z/2 ⊕ Z/4 ⊕ Z/8
+    r) number of subgroups of order p in Z/p ⊕ Z/p
+    s) the torsion subgroup and rank of Z³/⟨(2, 4, 6)⟩
+    t) is Z/2 ⊕ Z/2 ⊕ Z/4 ≅ Z/4 ⊕ Z/4?
+    Answers:
+      a) 6        b) 4        c) 9        d) 11 (p(6))
+      e) 7        f) p(4)p(3)p(2) = 5 · 3 · 2 = 30
+      g) Z/2 ⊕ Z/2 ⊕ Z/60     h) Z/6 ⊕ Z/36     i) Z/30 ⊕ Z/30
+      j) yes (both have elementary divisors 2, 2, 3, 5)
+      k) Z/2 ⊕ Z/10           l) Z/4 (Δ₁ = Δ₂ = 1, det = 4)
+      m) Z/2 ⊕ Z/2 ⊕ Z        n) Z/3 ⊕ Z (det = 0, Δ₂ = 3)
+      o) Z/2 ⊕ Z/4            p) Z/6
+      q) 7 (the 2-torsion is (Z/2)³)            r) p + 1
+      s) Z/2, rank 2 ((2, 4, 6) = 2(1, 2, 3) with (1, 2, 3) primitive)
+      t) no (the 2-torsion has order 8 versus 4)
+
+M6. Modules over k[x]: canonical forms.
+    a) nilpotent 4 × 4 matrices up to similarity   b) nilpotent 5 × 5
+    c) similarity classes of complex 6 × 6 matrices with characteristic
+       polynomial (x − 1)⁴(x − 2)²
+    d) the same with minimal polynomial (x − 1)²(x − 2)
+    e) 4 × 4 with char. poly (x − 3)⁴ and min. poly (x − 3)²
+    f) char. poly (x − 2)⁵, dim ker(A − 2) = 2, dim ker(A − 2)² = 4,
+       dim ker(A − 2)³ = 5: the Jordan blocks
+    g) invariant factors of J₂(1) ⊕ J₁(1) ⊕ J₁(2)
+    h) rational canonical form of diag(1, 1, 2)
+    i) Q[x]/(x² − 1) as a direct sum of cyclic modules
+    j) similarity classes of 2 × 2 matrices over F₂; over F₃
+    k) are [1 1; 0 1] and [1 0; 1 1] similar?
+    l) invariant factors x − 1, (x − 1)(x + 1), (x − 1)(x + 1)²: the
+       minimal and characteristic polynomials and the dimension
+    m) similarity classes of 3 × 3 rational matrices with char. poly
+       x³ − 2
+    n) is every square matrix similar to its transpose?
+    o) Z[i]/(3) and Z[i]/(2 + i) as abelian groups
+    p) the number of Jordan blocks of a matrix whose invariant factors
+       are x, x², x²(x − 1)
+    Answers:
+      a) 5        b) 7        c) 10       d) 2       e) 2 ((2, 2), (2, 1, 1))
+      f) sizes 3 and 2 (blocks of size ≥ k: 2, 2, 1)
+      g) x − 1, (x − 1)²(x − 2)
+      h) [1] ⊕ companion(x² − 3x + 2) = [1] ⊕ [0 −2; 1 3]
+      i) Q[x]/(x − 1) ⊕ Q[x]/(x + 1) (CRT)
+      j) 6; 12 (q² + q)       k) yes (both ≅ J₂(1))
+      l) (x − 1)(x + 1)², (x − 1)³(x + 1)³, dimension 6
+      m) 1 (x³ − 2 is irreducible, so V is cyclic)
+      n) yes (xI − A and xI − Aᵀ have the same gcds of minors)
+      o) (Z/3)² (Z[i]/(3) ≅ F₉), Z/5
+      p) 4 (x, x², x², x − 1)
+
+M7. Compute the tensor product or Hom (over Z unless stated).
+    a) Z/12 ⊗ Z/18           b) Z/5 ⊗ Z/7            c) Q ⊗ Z/n
+    d) Q ⊗ Q                 e) Q/Z ⊗ Q/Z            f) Z² ⊗ Z³
+    g) (Z ⊕ Z/4) ⊗ (Z ⊕ Z/6)                         h) Z[x] ⊗ Z/2
+    i) Z[i] ⊗ Z/5            j) Z[i] ⊗ Z/3           k) Z[i] ⊗ Z/2
+    l) C ⊗_R C               m) Q(√2) ⊗_Q Q(√3)
+    n) Q(∛2) ⊗_Q Q(∛2)       o) k[x] ⊗_k k[y]        p) M₂(R) ⊗_R C
+    q) F₄ ⊗_{F₂} F₄          r) Hom(Z/12, Z/18)      s) Hom(Q, Z)
+    t) Hom(Z/n, Q/Z)         u) Hom(Q, Q)            v) Hom(Z/n, Z)
+    Answers:
+      a) Z/6      b) 0        c) 0        d) Q        e) 0 (divisible ⊗
+         torsion)                         f) Z⁶
+      g) Z ⊕ Z/6 ⊕ Z/4 ⊕ Z/2              h) F₂[x]
+      i) F₅[x]/(x² + 1) ≅ F₅ × F₅ (x² + 1 = (x − 2)(x + 2) mod 5)
+      j) F₉ (x² + 1 irreducible mod 3)    k) F₂[x]/((x + 1)²), not reduced
+      l) C × C    m) Q(√2, √3), a field of degree 4
+      n) Q(∛2) × Q(∛2, ω) (x³ − 2 = (x − ∛2)(x² + ∛2x + ∛4); dims 3 + 6)
+      o) k[x, y]  p) M₂(C)    q) F₄ × F₄    r) Z/6    s) 0
+      t) Z/n      u) Q        v) 0
+
+M8. Exact sequences.
+    a) all abelian G with 0 → Z/3 → G → Z/4 → 0
+    b) all groups G with a normal subgroup Z/3 and G/Z/3 ≅ Z/4
+    c) all abelian G with 0 → Z/2 → G → Z/2 → 0
+    d) all abelian G with 0 → Z/2 → G → Z/4 → 0
+    e) all abelian G with 0 → Z → G → Z/n → 0
+    f) 0 → Q² → Q⁵ → V → Q³ → 0 exact: dim V
+    g) the cokernel of Z/4 → Z/8, 1 ↦ 2
+    h) does 0 → Z →(2,1) Z ⊕ Z → C → 0 split? Identify C.
+    i) does 0 → 2Z → Z → Z/2 → 0 split?
+    j) ker and coker of multiplication by 4 on Z/12
+    k) ker and coker of Z/6 → Z/9, 1 ↦ 3
+    l) the snake sequence for ×3 on 0 → Z/3 → Z/9 → Z/3 → 0
+    m) apply Hom(−, Z) to 0 → Z →n Z → Z/n → 0
+    n) apply − ⊗ Z/n to 0 → Z →n Z → Z/n → 0
+    o) apply Hom(Z/n, −) to 0 → Z →n Z → Z/n → 0
+    p) exact 0 → Z/2 → A → Z → 0: must it split?
+    Answers:
+      a) Z/12 only           b) Z/12 and Z/3 ⋊ Z/4
+      c) Z/4, Z/2 ⊕ Z/2      d) Z/8, Z/2 ⊕ Z/4
+      e) Z ⊕ Z/k for each k | n (e.g. 1 ↦ (n/k, 1) in Z ⊕ Z/k)
+      f) 6 (2 − 5 + dim V − 3 = 0)          g) Z/2
+      h) yes; C ≅ Z via (x, y) ↦ x − 2y (free quotient)
+      i) no (Z has no element of order 2)
+      j) ker = {0, 3, 6, 9} ≅ Z/4, coker ≅ Z/4
+      k) ker = {0, 3} ≅ Z/2, coker ≅ Z/3
+      l) all six terms Z/3; maps iso, 0, iso, 0, iso
+      m) 0 → 0 → Z →n Z → Ext¹(Z/n, Z) ≅ Z/n → 0
+      n) 0 → Tor₁(Z/n, Z/n) ≅ Z/n → Z/n →0 Z/n → Z/n → 0
+      o) 0 → 0 → 0 → Z/n → Ext¹(Z/n, Z) ≅ Z/n → 0 (the connecting map is
+         an isomorphism)
+      p) yes: the quotient Z is free, so A ≅ Z ⊕ Z/2
+
+M9. Projective? Injective? Flat? (answer three Y/N)
+    a) Z over Z              b) Q over Z             c) Q/Z over Z
+    d) Z/n over Z (n ≥ 2)    e) Z/n over Z/n         f) Z/2 over Z/6
+    g) Z/2 over Z/4          h) Z^N over Z           i) k[x] over k[x]
+    j) Z[1/2] over Z         k) k over k[x]/(x²)     l) k[x]/(x²) over
+                                                        itself
+    m) a vector space over a field                   n) Z_(p) over Z
+    o) Q[x] over Z[x]        p) Z ⊕ Q over Z
+    Answers:
+      a) Y N Y    b) N Y Y    c) N Y N    d) N N N    e) Y Y Y
+      f) Y Y Y (Z/6 ≅ Z/2 × Z/3)          g) N N N (Baer: 2 ↦ 1 on
+         2Z/4 does not extend)
+      h) N N Y (Baer-Specker: Z^N is not free)
+      i) Y N Y (not divisible by x)
+      j) N N Y    k) N N N (over a self-injective ring projective ⇔
+         injective)                       l) Y Y Y     m) Y Y Y
+      n) N N Y (divisible by primes ≠ p only)
+      o) N N Y (a localisation of Z[x])   p) N N Y
+
+M10. Categories, functors, universal properties.
+     a) product and coproduct in Set, Grp, Ab, CRing, Top
+     b) product and coproduct in (N, |) and in (P(X), ⊆)
+     c) initial and terminal objects in Set, Grp, CRing, Fields, Top, (N, |)
+     d) Z/2 * Z/2: finite or infinite?
+     e) covariant or contravariant: Hom(A, −), Hom(−, B), V ↦ V*,
+        (X, x₀) ↦ π₁(X, x₀), X ↦ C(X, R), G ↦ G^ab
+     f) left adjoint of the forgetful functor Grp → Set; Ab → Set;
+        R-Mod → Set
+     g) left and right adjoints of the forgetful functor Top → Set
+     h) left adjoint of the inclusion Ab → Grp
+     i) right adjoint of − ⊗_R N; right adjoint of the group ring
+        functor Grp → Ring, G ↦ Z[G]
+     j) natural or not: V → V**; V → V*; G → G^ab; det : GL_n(R) → R^×
+     k) Nat(Hom(A, −), Hom(B, −)) by Yoneda
+     l) lim Z/pⁿ; colim(Z →2 Z →2 ...); colim(Z/p ⊂ Z/p² ⊂ ...)
+     m) equaliser and coequaliser of f, g : A → B in Ab
+     n) pullback of f : X → Z, g : Y → Z in Set; of two subsets A, B ⊆ Z
+     o) is the forgetful functor Grp → Set faithful? full?
+     p) does the product of F₂ and F₃ exist in the category of fields?
+     Answers:
+       a) Set: ×, ⊔; Grp: ×, free product *; Ab: ⊕, ⊕; CRing: ×, ⊗_Z;
+          Top: product topology, disjoint union
+       b) gcd, lcm; A ∩ B, A ∪ B
+       c) Set: ∅, point; Grp: trivial group (both, a zero object); CRing:
+          Z, zero ring; Fields: neither; Top: ∅, point; (N, |): 1, 0
+       d) infinite (the infinite dihedral group)
+       e) cov, contra, contra, cov, contra, cov
+       f) free group F(S); free abelian group Z^(S); free module R^(S)
+       g) discrete topology (left), indiscrete topology (right)
+       h) abelianisation G ↦ G/G′      i) Hom_R(N, −); units R ↦ R^×
+       j) natural; not natural; natural; natural (in R)
+       k) Hom(B, A)
+       l) the p-adic integers Z_p; Z[1/2]; the Prüfer group Z/p^∞
+       m) ker(f − g), coker(f − g)
+       n) {(x, y) : f(x) = g(y)}; A ∩ B
+       o) faithful, not full (not every map of sets is a homomorphism)
+       p) no (no field maps to both: different characteristics)
+
+M11. Homology, Tor and Ext (over Z unless stated).
+     a) Tor₁(Z/12, Z/18)      b) Tor₁(Z/5, Z/7)       c) Tor₁(Z/n, Q)
+     d) Tor₁(Z/n, Q/Z)        e) Tor₁(A, Z/n)         f) Tor₂(A, B)
+     g) Ext¹(Z/4, Z/6)        h) Ext¹(Z/n, Z)         i) Ext¹(Z/n, Q)
+     j) Ext¹(Z ⊕ Z/6, Z/4)    k) Ext¹(Z/n, Q/Z)       l) Ext¹(Z, M)
+     m) Torₙ^{k[x]/(x²)}(k, k)                        n) Torₙ^{Z/4}(Z/2, Z/2)
+     o) Torᵢ^{k[x,y]}(k, k), i = 0, 1, 2, 3
+     p) homology of 0 → Z →2 Z →0 Z →3 Z → 0 (degrees 3, 2, 1, 0)
+     q) homology of 0 → Z → Z² → Z → 0, a ↦ (a, a), (x, y) ↦ x − y
+     r) projective dimension of Z/n over Z; of Z/2 over Z/4; of k over
+        k[x, y]
+     s) number of extension classes in Ext¹(Z/p, Z/p) and number of
+        isomorphism types of the middle group
+     t) Euler characteristic of 0 → Q³ → Q⁵ → Q⁴ → 0
+     Answers:
+       a) Z/6      b) 0        c) 0        d) Z/n      e) A[n]
+       f) 0        g) Z/2      h) Z/n      i) 0 (Q injective)
+       j) Z/2      k) 0        l) 0 (Z projective)
+       m) k for every n ≥ 0    n) Z/2 for every n ≥ 0
+       o) k, k², k, 0 (Koszul complex)
+       p) H₃ = 0, H₂ = Z/2, H₁ = 0, H₀ = Z/3
+       q) all zero (the complex is exact)
+       r) 1; ∞; 2
+       s) p; 2 (Z/p ⊕ Z/p and Z/p²)
+       t) 3 − 5 + 4 = 2 = the alternating sum of dims of homology
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) Every nilpotent group is abelian.
+     b) Every solvable group is nilpotent.
+     c) Subgroups and quotients of nilpotent groups are nilpotent.
+     d) An extension of a nilpotent group by a nilpotent group is
+        nilpotent.
+     e) A finite group all of whose Sylow subgroups are abelian is abelian.
+     f) A finite group whose composition factors are all cyclic is
+        solvable.
+     g) If N ◁ G with N and G/N abelian, then G is abelian.
+     h) Every f.g. torsion-free Z-module is free.
+     i) Every torsion-free abelian group is free.
+     j) Every projective module is free.
+     k) Every flat module is projective.
+     l) If f is injective then f ⊗ 1_N is injective.
+     m) If M ⊗ N = 0 then M = 0 or N = 0.
+     n) Every element of M ⊗ N has the form m ⊗ n.
+     o) Hom_R(M, −) is exact for every M.
+     p) If 0 → A → B → C → 0 is exact and B ≅ A ⊕ C, then it splits.
+     q) The coproduct in Grp is the direct product.
+     r) Left adjoints preserve colimits.
+     s) Tor₁^Z(A, B) = 0 whenever A is torsion-free.
+     t) Every group of order p²q (p, q distinct primes) is solvable.
+     Answers:
+       a) F: Q₈       b) F: S₃      c) T      d) F: S₃ (Z/3 by Z/2)
+       e) F: S₃       f) T          g) F: S₃
+       h) T (structure theorem)     i) F: Q
+       j) F: Z/2 over Z/6           k) F: Q over Z
+       l) F: Z →2 Z becomes Z/2 →0 Z/2 after ⊗ Z/2
+       m) F: Z/2 ⊗ Z/3 = 0          n) F: e₁ ⊗ e₁ + e₂ ⊗ e₂ in R² ⊗ R²
+       o) F: Hom(Z/2, −) on 0 → Z → Z → Z/2 → 0
+       p) F: B = ⊕_N (Z/2 ⊕ Z/4), A = Z/2 = 2·(first Z/4); then B/A ≅ B ≅
+          A ⊕ B/A, but A ⊆ 2B, while a direct summand Z/2 cannot lie in 2B
+       q) F: Z/2 * Z/2 is infinite   r) T
+       s) T (torsion-free = flat over Z)
+       t) T (Sylow counting; also Burnside's pᵃqᵇ theorem)
+
+TEACHING TIPS
+  Struggling: keep a small zoo on the board and test every statement on
+  it: S₃ (solvable, not nilpotent), Q₈ and D₈ (nilpotent, not abelian),
+  A₄ (a normal Sylow 2 but not nilpotent), A₅ (simple), Z/2 over Z/6
+  (projective, not free), Q over Z (flat and injective, not projective),
+  0 → Z →2 Z → Z/2 → 0 (the sequence that breaks Hom(Z/2, −) and − ⊗
+  Z/2). For modules over a PID always compute Δᵢ = gcd of i × i minors
+  first; for tensor products always ask "what does 1 ⊗ 1 generate and
+  what kills it?"; for Tor and Ext write the resolution 0 → Z →m Z →
+  Z/m → 0, DELETE Z/m, apply the functor and take homology. In category
+  theory, draw the universal-property triangle before naming the object.
+  Harder: prove the Schreier refinement theorem and deduce Jordan-Hölder;
+  prove that a finite group is nilpotent iff all maximal subgroups are
+  normal (via the Frattini argument); prove Burnside's pᵃqᵇ theorem with
+  characters; prove the structure theorem via Smith normal form over a
+  Euclidean ring and then a PID; prove the snake lemma and the long exact
+  sequence of Tor and Ext; show Ext¹ classifies extensions (Baer sum);
+  prove that every module embeds in an injective one (Q/Z-duality); and
+  prove the Yoneda lemma and the adjoint functor characterisation of
+  limits.
+
+
+================================================================================
+TOPIC 12.6 — HOMOLOGICAL ALGEBRA: EXT, TOR, DERIVED FUNCTORS, DERIVED
+CATEGORIES (INTRODUCTION)
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - CHAIN COMPLEXES over a ring R (or in an abelian category): C• with
+    dₙ : Cₙ → Cₙ₋₁, d ∘ d = 0, HOMOLOGY Hₙ = ker dₙ / im dₙ₊₁ (cohomological
+    indexing Hⁿ with dⁿ : Cⁿ → Cⁿ⁺¹). Chain maps induce maps on Hₙ;
+    CHAIN HOMOTOPIC maps (f − g = dh + hd) induce the SAME map. A
+    QUASI-ISOMORPHISM is a chain map inducing isomorphisms on all Hₙ.
+  - EXACTNESS TOOLS: the SNAKE LEMMA (a map of short exact sequences gives
+    0 → ker a → ker b → ker c →δ coker a → coker b → coker c → 0), the
+    FIVE LEMMA, and the LONG EXACT HOMOLOGY SEQUENCE of a short exact
+    sequence of complexes 0 → C′ → C → C″ → 0:
+    ... → Hₙ(C′) → Hₙ(C) → Hₙ(C″) →δ Hₙ₋₁(C′) → ...
+  - PROJECTIVE modules (Hom(P, −) exact ⇔ direct summand of a free
+    module), INJECTIVE modules (Hom(−, I) exact; BAER'S CRITERION: enough
+    to extend maps from ideals), FLAT modules (− ⊗ M exact). Free ⇒
+    projective ⇒ flat. Over a PID: projective = free, flat = torsion-free,
+    injective = DIVISIBLE (Q, Q/Z, Z/p^∞). Every module has a projective
+    and an injective RESOLUTION ("enough projectives/injectives").
+  - COMPARISON THEOREM: a map M → N lifts to a chain map between
+    projective resolutions P• → Q•, unique up to homotopy. HORSESHOE
+    LEMMA: resolutions of M′ and M″ combine into one of M for
+    0 → M′ → M → M″ → 0. Hence derived functors are well defined.
+  - DERIVED FUNCTORS: for F right exact (e.g. − ⊗ N), LₙF(M) = Hₙ(F(P•));
+    for F left exact (Hom(M, −), Hom(−, N), fixed points), RⁿF(M) =
+    Hⁿ(F(I•)) (covariant) or Hⁿ(F(P•)) (contravariant in M). L₀F = F,
+    R⁰F = F, and a short exact sequence gives a LONG EXACT SEQUENCE.
+    They form UNIVERSAL δ-FUNCTORS (Grothendieck: effaceable ⇒ universal).
+    DIMENSION SHIFTING: if 0 → K → P → M → 0 with P projective then
+    Extⁿ⁺¹(M, N) ≅ Extⁿ(K, N) for n ≥ 1.
+  - TOR: Torₙᴿ(M, N) = Lₙ(− ⊗ N)(M), BALANCED (may resolve either
+    variable), symmetric. Tor₁ measures failure of left exactness of ⊗.
+    Over Z: Tor₁(Z/m, Z/n) ≅ Z/gcd(m, n), Tor₁(Z/n, A) ≅ A[n] = {a : na =
+    0}, Tor₁(Q/Z, A) ≅ torsion of A, Torₙ = 0 for n ≥ 2. General:
+    Tor₁ᴿ(R/I, M) = ker(I ⊗ M → M), Tor₁ᴿ(R/I, R/J) ≅ (I ∩ J)/IJ.
+  - FLATNESS via Tor: M flat ⇔ Tor₁(M, −) = 0 ⇔ Tor₁(R/I, M) = 0 for all
+    (finitely generated) ideals I ⇔ I ⊗ M → M injective. Q is flat not
+    projective over Z; Z/n is not flat; f.p. flat ⇒ projective.
+  - EXT: Extⁿᴿ(M, N) = Rⁿ Hom(M, −)(N), computable from a projective
+    resolution of M OR an injective resolution of N. Over Z: Ext¹(Z/n, A)
+    ≅ A/nA, Ext¹(Z/m, Z/n) ≅ Z/gcd(m, n), Ext¹(Z/n, Z) ≅ Z/n, Ext¹(Z, A) = 0,
+    Extⁿ = 0 for n ≥ 2, Ext¹(Q/Z, Z) ≅ Ẑ, Ext¹(Q, Z) ≅ Ẑ/Z ≠ 0 (although
+    Hom(Q, Z) = 0).
+  - EXT¹ CLASSIFIES EXTENSIONS: equivalence classes of 0 → N → E → M → 0
+    ↔ Ext¹(M, N), split extension ↔ 0, group law = BAER SUM. Yoneda:
+    Extⁿ ↔ n-fold exact sequences, composition = Yoneda product. E.g.
+    Ext¹(Z/2, Z/4) = Z/2: extensions Z/4 ⊕ Z/2 (split) and Z/8.
+  - HOMOLOGICAL DIMENSIONS: pd M = shortest projective resolution; id N;
+    gl.dim R = sup pd M = sup{n : Extⁿ ≠ 0}. Semisimple ⇔ gl.dim 0;
+    HEREDITARY (PID, Dedekind) ⇔ gl.dim ≤ 1; HILBERT SYZYGY THEOREM:
+    gl.dim k[x₁, ..., xₙ] = n; gl.dim Z/4 = gl.dim k[x]/(x²) = ∞ (periodic
+    resolutions ... → R →x R →x R → k → 0).
+  - KOSZUL COMPLEX: for x₁, ..., xₙ in R = k[x₁, ..., xₙ] it is a free
+    resolution of k with ranks C(n, i); hence Torᵢᴿ(k, k) ≅ k^C(n, i)
+    and Extⁱᴿ(k, k) ≅ k^C(n, i). For a REGULAR SEQUENCE it resolves R/I.
+  - APPLICATIONS: UNIVERSAL COEFFICIENT THEOREMS Hₙ(X; G) ≅ Hₙ(X) ⊗ G ⊕
+    Tor(Hₙ₋₁(X), G), Hⁿ(X; G) ≅ Hom(Hₙ(X), G) ⊕ Ext(Hₙ₋₁(X), G) (split,
+    not naturally); KÜNNETH Hₙ(X × Y) ≅ ⊕ Hᵢ(X) ⊗ Hⱼ(Y) ⊕ ⊕ Tor(Hᵢ, Hⱼ)
+    (i + j = n, resp. n − 1). GROUP COHOMOLOGY Hⁿ(G, M) = Extⁿ_ZG(Z, M),
+    Hₙ(G, M) = Torₙ^ZG(Z, M); for cyclic G periodic of period 2.
+  - HOMOTOPY CATEGORY K(A): complexes, maps modulo homotopy; TRIANGULATED
+    with shift X[1] (X[1]ⁿ = Xⁿ⁺¹, d ↦ −d) and MAPPING CONE Cone(f)ⁿ =
+    Xⁿ⁺¹ ⊕ Yⁿ; DISTINGUISHED TRIANGLES X → Y → Cone(f) → X[1] give long
+    exact cohomology sequences; f is a quasi-iso ⇔ Cone(f) is acyclic.
+  - DERIVED CATEGORY D(A) = K(A)[quasi-isos⁻¹] (Verdier localisation,
+    roofs X ← X′ → Y). A ↦ A[0] is fully faithful; Hom_D(M, N[n]) ≅
+    Extⁿ(M, N) (0 for n < 0); D(A) is triangulated but NOT abelian. Total
+    derived functors RF, LF (RHom, ⊗ᴸ) with Hⁱ(RHom(M, N)) = Extⁱ and
+    H⁻ⁱ(M ⊗ᴸ N) = Torᵢ. Over a hereditary ring every complex is ≅ ⊕
+    Hⁿ(X)[−n]. Quasi-iso ≠ homotopy equivalence: [Z →2 Z] ≅ Z/2 in D(Z)
+    but not in K(Z). Grothendieck spectral sequence R(G∘F) ⇐ RG ∘ RF.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) State and prove the snake lemma (construction of δ). (b) Apply
+    it to the map from 0 → Z →2 Z → Z/2 → 0 to itself given by
+    multiplication by 2 on all three terms; list all six groups and find
+    δ. (c) Deduce the long exact homology sequence.
+    Answer: (b) kernels 0, 0, Z/2; cokernels Z/2, Z/2, Z/2; δ is an
+    isomorphism, coker a → coker b is 0, coker b → coker c is an iso.
+    Teacher explains: Rows 0 → A →i B →p C → 0 and 0 → A′ →i′ B′ →p′ C′
+    → 0, verticals a, b, c. For z ∈ ker c: choose y ∈ B with p(y) = z
+    (p onto). Then p′(b(y)) = c(p(y)) = 0, so b(y) = i′(x′) for a unique
+    x′ ∈ A′ (exactness, i′ injective). Put δ(z) = [x′] ∈ coker a. Well
+    defined: another lift is y + i(x), which changes x′ by a(x), zero in
+    coker a. Exactness at each of the six spots is a diagram chase of the
+    same kind (e.g. δ(z) = 0 ⇔ x′ = a(x) ⇔ y − i(x) ∈ ker b maps to z).
+    (b) All verticals are "×2". On Z, ×2 is injective with cokernel Z/2;
+    on Z/2 it is 0, kernel = cokernel = Z/2. The snake reads
+       0 → 0 → 0 → Z/2 →δ Z/2 → Z/2 → Z/2 → 0.
+    Since ker b = 0, δ is injective, hence an iso; so coker a → coker b
+    is 0, so coker b → coker c is injective and onto. Explicitly: z = 1,
+    lift y = 1 ∈ Z, b(y) = 2 = i′(1), δ(1) = [1] ≠ 0 ✓. (c) For 0 → C′ →
+    C → C″ → 0 of complexes, apply the snake to the rows
+    Cₙ/im d → Z_{n−1} (cycles); the kernels are Hₙ and the cokernels
+    Hₙ₋₁, giving ... → Hₙ(C′) → Hₙ(C) → Hₙ(C″) →δ Hₙ₋₁(C′) → ... .
+    Common mistakes: defining δ without checking independence of the lift;
+    forgetting that the snake starts with 0 only if i is injective and
+    ends with 0 only if p′ is onto. Now you try: for the same rows with
+    verticals "×3", find the six groups. (0, 0, 0, Z/3, Z/3, 0)
+
+D2. (a) Prove that a Z-module is injective iff it is divisible, using
+    Baer's criterion. (b) Embed Z/n into an injective module and write a
+    minimal injective resolution of Z and of Z/n. (c) Show Z/2 is not
+    injective over Z/4 and not projective over Z/4, but is projective
+    over Z/6.
+    Answer: (b) 0 → Z → Q → Q/Z → 0; 0 → Z/n → Q/Z →·n Q/Z → 0 (1 ↦ 1/n).
+    (c) 0 → Z/2 → Z/4 → Z/2 → 0 does not split; Z/6 ≅ Z/2 × Z/3.
+    Teacher explains: BAER: I is injective iff every R-map f : J → I from
+    an ideal J extends to R. (a) Over Z an ideal is nZ. If I is divisible
+    and f : nZ → I, pick y with ny = f(n); then g(k) = ky extends f.
+    Conversely, if I is injective, a ∈ I and n ≠ 0, the map nZ → I,
+    n ↦ a extends to g : Z → I and a = g(n) = n g(1): divisible. (b) Q
+    and Q/Z are divisible, hence injective. 0 → Z → Q → Q/Z → 0 shows
+    id Z = 1 (Z itself is not divisible). For Z/n: 1 ↦ 1/n embeds Z/n in
+    Q/Z; the cokernel (Q/Z)/(⟨1/n⟩) ≅ Q/Z via x ↦ nx. Over a PID quotients
+    of divisible groups are divisible, so id ≤ 1 for every module:
+    gl.dim Z = 1. (c) Over Z/4 the sequence 0 → Z/2 →·2 Z/4 → Z/2 → 0 is
+    exact; if Z/2 were injective the injection would split, if projective
+    the surjection would split, and either would give Z/4 ≅ Z/2 ⊕ Z/2,
+    false. Over Z/6 = Z/2 × Z/3 the module Z/2 = (Z/6)·3 is a direct
+    summand of the free module, hence projective (and flat). Common
+    mistakes: "torsion-free ⇒ injective" (Z is torsion-free, not
+    injective); using divisible ⇔ injective over non-PIDs. Now you try: is
+    Q ⊕ Z/5 injective over Z? (no: Z/5 is not divisible)
+
+D3. Define left derived functors of a right exact functor F. Prove
+    (a) independence of the projective resolution, (b) L₀F ≅ F,
+    (c) LₙF(P) = 0 for P projective and n ≥ 1, and (d) dimension shifting:
+    if 0 → K → P → M → 0 with P projective then Lₙ₊₁F(M) ≅ LₙF(K), n ≥ 1.
+    Answer: comparison theorem + homotopy invariance; right exactness;
+    P is its own resolution; long exact sequence.
+    Teacher explains: Choose ... → P₁ → P₀ → M → 0 projective and set
+    LₙF(M) = Hₙ(F(P•)), deleting M. (a) If Q• is another resolution, the
+    comparison theorem gives chain maps f : P• → Q•, g : Q• → P• over
+    id_M, and gf, id both lift id_M, so gf ≃ id; likewise fg ≃ id. An
+    additive F preserves homotopies (F(dh + hd) = F(d)F(h) + F(h)F(d)), so
+    F(P•) ≃ F(Q•) and the homology agrees, canonically. (b) F right exact
+    applied to P₁ → P₀ → M → 0 gives F(P₁) → F(P₀) → F(M) → 0 exact, so
+    L₀F(M) = coker(F(P₁) → F(P₀)) ≅ F(M). (c) 0 → P → P → 0 is a
+    resolution. (d) The horseshoe lemma gives a short exact sequence of
+    resolutions and hence the LONG EXACT SEQUENCE
+       ... → Lₙ₊₁F(P) → Lₙ₊₁F(M) → LₙF(K) → LₙF(P) → ... → F(M) → 0.
+    For n ≥ 1 both outer terms vanish by (c), so Lₙ₊₁F(M) ≅ LₙF(K); for
+    n = 0: L₁F(M) = ker(F(K) → F(P)). The same story, with injective
+    resolutions, gives RⁿF for left exact F. The family (LₙF, δ) is a
+    UNIVERSAL δ-functor: any natural map F → G₀ of δ-functors extends
+    uniquely, because LₙF vanishes on projectives ("effaceable").
+    Common mistakes: resolving with non-projective modules; forgetting to
+    delete M before applying F; applying F to M itself in degree 0.
+    Now you try: for F = − ⊗ Z/2 and 0 → 2Z → Z → Z/2 → 0 compute
+    L₁F(Z/2). (ker(2Z ⊗ Z/2 → Z/2) = Z/2, the map being 0)
+
+D4. (a) Compute Torₙ^Z(Z/m, A) for all n and all abelian groups A.
+    (b) Deduce Tor₁(Z/m, Z/n) ≅ Z/gcd(m, n), and compute Tor₁(Z/12, Z/18),
+    Tor₁(Q/Z, A) and Tor₁(Q, A). (c) Verify balance: compute Tor₁(Z/4, Z/6)
+    by resolving the second variable.
+    Answer: (a) Tor₀ = A/mA, Tor₁ = A[m], Torₙ = 0 (n ≥ 2). (b) Z/6;
+    torsion subgroup of A; 0. (c) Z/2 both ways.
+    Teacher explains: (a) Resolve Z/m: 0 → Z →·m Z → Z/m → 0 (length 1,
+    so Torₙ = 0 for n ≥ 2). Delete Z/m, tensor with A: 0 → A →·m A → 0 in
+    degrees 1, 0. Hence Tor₀ = A/mA = Z/m ⊗ A and Tor₁ = ker(·m) = A[m].
+    (b) A = Z/n: the solutions of mx ≡ 0 (mod n) form the subgroup
+    generated by n/g, g = gcd(m, n), of order g, so Tor₁ ≅ Z/g; for
+    (12, 18) that is Z/6. Tor commutes with direct limits and Q/Z = lim
+    Z/m (divisibility order), so Tor₁(Q/Z, A) = lim A[m] = ⋃A[m] = A_tors.
+    Q is flat (a localisation of Z) so Tor₁(Q, A) = 0. Alternatively
+    apply − ⊗ A to 0 → Z → Q → Q/Z → 0: 0 → Tor₁(Q/Z, A) → A → Q ⊗ A,
+    and ker(A → Q ⊗ A) is exactly the torsion. (c) Resolve Z/6 instead:
+    0 → Z →·6 Z → Z/6 → 0; tensor with Z/4: Z/4 →·6 Z/4, kernel {0, 2} ≅
+    Z/2; resolving Z/4 instead gives Z/6[4] = {0, 3} ≅ Z/2: they agree.
+    Balance holds in general because both computations equal the
+    homology of the double complex P• ⊗ Q•. Common mistakes: writing
+    Tor₁(Z/m, Z/n) = Z/lcm; thinking Tor₁(Q/Z, Q/Z) = 0 (it is Q/Z).
+    Now you try: Tor₁(Z/4 ⊕ Z/9, Z/6). (Z/2 ⊕ Z/3 ≅ Z/6)
+
+D5. (a) Show Tor₁ᴿ(R/I, M) ≅ ker(I ⊗ M → M) and Tor₁ᴿ(R/I, R/J) ≅
+    (I ∩ J)/IJ. (b) Prove: over a PID, M is flat iff torsion-free.
+    (c) Compute Tor₁ for (R, I, J) = (Z, (4), (6)), (k[x, y], (x), (y)),
+    (k[x, y], (x, y), (x, y)); deduce that 𝔪 = (x, y) is not flat over
+    k[x, y] although it is torsion-free.
+    Answer: (c) Z/2; 0; 𝔪/𝔪² ≅ k² ≠ 0, i.e. Tor₂(k, k) = Tor₁(𝔪, k) ≠ 0.
+    Teacher explains: (a) Tensor 0 → I → R → R/I → 0 with M: since R is
+    flat, Tor₁(R, M) = 0 and the long exact sequence starts
+       0 → Tor₁(R/I, M) → I ⊗ M → M → M/IM → 0.
+    Take M = R/J: I ⊗ R/J = I/IJ and the map I/IJ → R/J has kernel
+    (I ∩ J)/IJ. (b) If M is flat, the injection R →·a R (a ≠ 0) stays
+    injective after ⊗M, so a·m = 0 ⇒ m = 0. Conversely a torsion-free
+    module is a direct limit of f.g. torsion-free = free modules, Tor
+    commutes with direct limits, so Tor₁(−, M) = 0. (Or: ideals are (a),
+    and (a) ⊗ M ≅ M →·a M is injective.) (c) Z: (4) ∩ (6) = (12), IJ =
+    (24): (12)/(24) ≅ Z/2 ✓ = Z/gcd. (x) ∩ (y) = (xy) = IJ: Tor₁ = 0 —
+    "transversal" intersections have no higher Tor (Serre's intersection
+    multiplicity starts from this). I = J = 𝔪: 𝔪/𝔪² has basis x̄, ȳ, so
+    Tor₁(k, k) = k². For 𝔪: from 0 → 𝔪 → R → k → 0, Tor₁(𝔪, k) ≅
+    Tor₂(k, k) = k (Koszul, D9) ≠ 0, so 𝔪 is not flat. Over a domain
+    flat ⇒ torsion-free, but the converse needs a Prüfer/PID ring.
+    Common mistakes: writing Tor₁(R/I, R/J) = I ∩ J; confusing
+    torsion-free with flat over non-PIDs. Now you try: Tor₁^Z(Z/8, Z/12)
+    via the formula. ((24)/(96) ≅ Z/4)
+
+D6. (a) Compute Extⁿ_Z(Z/m, A) for all n and A. (b) Find Ext¹(Z/12,
+    Z/18), Ext¹(Z/n, Z) — the latter both by a projective resolution of
+    Z/n and by an injective resolution of Z. (c) Compute Ext¹(Q/Z, Z) and
+    show Ext¹(Q, Z) ≠ 0 although Hom(Q, Z) = 0.
+    Answer: (a) Ext⁰ = A[m], Ext¹ = A/mA, Extⁿ = 0 (n ≥ 2). (b) Z/6; Z/n.
+    (c) Ẑ = lim Z/n; Ext¹(Q, Z) ≅ Ẑ/Z, uncountable.
+    Teacher explains: (a) Hom(−, A) on 0 → Z →·m Z gives 0 → A →·m A → 0
+    in degrees 0, 1: Ext⁰ = ker = A[m] = Hom(Z/m, A), Ext¹ = coker = A/mA.
+    (b) (Z/18)/12(Z/18): 12 generates the subgroup of order 18/6 = 3, so
+    the quotient has order 6: Z/6. Ext¹(Z/n, Z) = Z/nZ. Via 0 → Z → Q →
+    Q/Z → 0 (injective resolution of Z): Hom(Z/n, Q) = 0 → Hom(Z/n, Q/Z)
+    ≅ Z/n → 0, and Ext¹ is the H¹ = Z/n ✓ (BALANCE of Ext). (c) Apply
+    Hom(Q/Z, −) to 0 → Z → Q → Q/Z → 0: Hom(Q/Z, Q) = 0 and Ext¹(Q/Z, Q)
+    = 0 (Q injective), so Ext¹(Q/Z, Z) ≅ Hom(Q/Z, Q/Z) = End(Q/Z) =
+    lim Z/n = Ẑ ≅ ∏_p Z_p. Now apply Hom(−, Z) to the same sequence:
+       0 → Hom(Q, Z) = 0 → Hom(Z, Z) = Z → Ext¹(Q/Z, Z) → Ext¹(Q, Z)
+         → Ext¹(Z, Z) = 0,
+    so Ext¹(Q, Z) ≅ Ẑ/Z, uncountable (Ẑ is). Moral: Ext¹(Q, Z) ≠ 0 means
+    there is a non-split extension 0 → Z → E → Q → 0 — e.g. a suitable
+    subgroup of Q ⊕ Ẑ. Common mistakes: Ext¹(Z/n, Z) = 0 "because Z has no
+    torsion"; confusing A[m] (Ext⁰) with A/mA (Ext¹). Now you try:
+    Ext¹(Z/6, Z ⊕ Z/4). (Z/6 ⊕ Z/2)
+
+D7. (a) Describe the bijection Ext¹(M, N) ↔ {extensions 0 → N → E → M
+    → 0}/≅ via a projective presentation. (b) Classify extensions of Z/2
+    by Z/4 and of Z/p by Z/p. (c) Explain the Baer sum on the latter.
+    Answer: (b) Ext¹(Z/2, Z/4) = Z/2: E = Z/4 ⊕ Z/2 or Z/8. Ext¹(Z/p, Z/p)
+    = Z/p: p classes, one split, p − 1 with E ≅ Z/p². (c) addition in Z/p.
+    Teacher explains: (a) Take 0 → K →ι P → M → 0, P projective. The long
+    exact sequence gives Hom(P, N) →ι* Hom(K, N) → Ext¹(M, N) → 0. Given
+    φ : K → N, form the PUSHOUT E = (N ⊕ P)/{(φ(k), −ι(k))}; then 0 → N →
+    E → M → 0 is exact. Changing φ by ψ∘ι (ψ : P → N) gives an equivalent
+    extension, and φ extends to P iff E splits. Conversely an extension
+    gives φ by lifting P → M to P → E. (b) M = Z/2: K = 2Z ≅ Z, P = Z,
+    φ is determined by a = φ(2) ∈ Z/4, and ι* has image {2c} = 2Z/4. So
+    Ext¹ = (Z/4)/(2) ≅ Z/2. a = 0: split, E = Z/4 ⊕ Z/2. a = 1: E =
+    (Z/4 ⊕ Z)/⟨(1, −2)⟩; e = (0, 1) satisfies 2e = (1, 0), which has order
+    4, so e has order 8 and E ≅ Z/8 (0 → Z/4 →·2 Z/8 → Z/2 → 0). For Z/p
+    by Z/p: a ∈ Z/p, ι* has image p·(Z/p) = 0, so Ext¹ ≅ Z/p. For a ≠ 0,
+    e = (0, 1) has pe = (a, 0) ≠ 0 so E ≅ Z/p². The p − 1 non-split
+    classes have ISOMORPHIC middle terms but are inequivalent extensions:
+    equivalence demands commuting with the given maps. (c) BAER SUM of
+    E₁, E₂: take the pullback over the diagonal M → M ⊕ M of E₁ ⊕ E₂, then
+    push out along the sum N ⊕ N → N. In the φ-description it is φ₁ + φ₂,
+    i.e. a₁ + a₂ mod p; for p = 2 the sum of Z/4 with itself is split.
+    Common mistakes: counting isomorphism types of E instead of classes;
+    believing E ≅ N ⊕ M forces the split class (true for f.g. modules by
+    Miyata's theorem, false in general). Now you try: how many classes
+    and which middle groups for extensions of Z/3 by Z/2? (Ext¹ = 0: only
+    Z/6)
+
+D8. Let R = Z/4 and S = k[x]/(x²). (a) Write minimal free resolutions of
+    Z/2 over R and k over S. (b) Compute Torₙᴿ(Z/2, Z/2), Extⁿᴿ(Z/2, Z/2),
+    Extⁿᴿ(Z/2, R), and the analogues over S. (c) Deduce the global
+    dimensions and that R, S are self-injective.
+    Answer: (a) ... → R →·2 R →·2 R → Z/2 → 0; ... → S →x S →x S → k → 0.
+    (b) Z/2 (resp. k) for every n ≥ 0; Ext⁰(Z/2, R) = Z/2, Extⁿ = 0 for
+    n ≥ 1 (same over S). (c) gl.dim = ∞; Extⁿ(−, R) = 0 for n ≥ 1.
+    Teacher explains: (a) R → Z/2 has kernel 2R ≅ Z/2, which is again the
+    image of R →·2 R, whose kernel is again 2R: the resolution is
+    PERIODIC of period 1 and never stops. (b) Tensoring with Z/2 turns ·2
+    into 0: every term Z/2, every map 0, so Torₙ = Z/2 for all n. Hom(−,
+    Z/2) likewise gives Z/2 →0 Z/2 →0 ..., Extⁿ = Z/2. Hom(−, R) gives R
+    →·2 R →·2 R ...: Ext⁰ = ker = 2R ≅ Z/2 = Hom(Z/2, R) ✓, and Extⁿ =
+    ker/im = 2R/2R = 0. Over S replace 2 by x: identical results with k.
+    (c) pd Z/2 = ∞ since Torₙ ≠ 0 for all n, so gl.dim R = ∞, although R
+    is Artinian and "small". Since Extⁿ(Z/2, R) = 0 for n ≥ 1 and Z/2 is
+    the only simple module, Baer/induction on length gives Ext¹(−, R) = 0:
+    R is SELF-INJECTIVE (Frobenius). Contrast Z/6 ≅ Z/2 × Z/3: semisimple,
+    gl.dim 0. Common mistakes: stopping the
+    resolution after one step as over Z; thinking finite rings have finite
+    global dimension. Now you try: Torₙ^Z/9(Z/3, Z/9) for n ≥ 1. (0: Z/9
+    is free over itself)
+
+D9. Let R = k[x, y], 𝔪 = (x, y). (a) Show that the Koszul complex
+    0 → R →(−y, x)ᵀ R² →(x y) R → k → 0 is exact. (b) Compute Torᵢᴿ(k, k),
+    Extⁱᴿ(k, k) and Extⁱᴿ(k, R). (c) State Hilbert's syzygy theorem and
+    find gl.dim R, pd k, pd 𝔪, pd R/(x), pd R/(x², y³).
+    Answer: (b) k, k², k; k, k², k; 0, 0, k. (c) gl.dim k[x₁..xₙ] = n;
+    here 2; pd k = 2, pd 𝔪 = 1, pd R/(x) = 1, pd R/(x², y³) = 2.
+    Teacher explains: (a) (x y)∘(−y, x)ᵀ = −xy + yx = 0. The right map is
+    onto 𝔪 with cokernel k. If xf + yg = 0 then x | yg, so x | g (UFD):
+    g = xh, and then f = −yh, i.e. (f, g) = h(−y, x): exact in the middle.
+    h ↦ (−yh, xh) is injective (domain). (b) Tensor with k = R/𝔪: every
+    matrix entry lies in 𝔪, so all differentials become 0 and Torᵢ is the
+    i-th term: k, k², k (ranks C(2, i)). Hom(−, k) likewise: k, k², k.
+    Hom(−, R) gives R →(x, y)ᵀ R² →(−y x) R, which is again a Koszul
+    complex ("self-duality"): exact except at the end, H² = R/(x, y) = k,
+    H⁰ = H¹ = 0. This is the GORENSTEIN property (depth 2 = dim 2).
+    (c) SYZYGY THEOREM: every f.g. module over k[x₁, ..., xₙ] has a free
+    resolution of length ≤ n; gl.dim = n, attained by k because Torₙ(k, k)
+    = k ≠ 0 (Koszul in n variables has ranks C(n, i)). pd 𝔪 = pd k − 1 = 1
+    by dimension shifting (0 → 𝔪 → R → k → 0). R/(x): 0 → R →x R, pd 1.
+    x², y³ is a REGULAR SEQUENCE, so its Koszul complex 0 → R → R² → R →
+    R/(x², y³) → 0 is exact: pd 2, with Tor(R/(x², y³), k) = k, k², k.
+    Common mistakes: forgetting the sign in (−y, x); thinking the
+    Koszul complex is exact for any sequence (x, x fails: H₁ ≠ 0).
+    Now you try: Torᵢ(k, k) over k[x, y, z]. (k, k³, k³, k)
+
+D10. (a) Derive the universal coefficient theorem for cohomology from
+     a free chain complex C over Z. (b) Compute H*(RP²; Z), H*(RP²; Z/2)
+     and H*(K; Z), H_*(K; Z/2) for the Klein bottle K. (c) Use Künneth to
+     compute H_*(RP² × RP²; Z) and check with Z/2-coefficients.
+     Answer: (b) Z, 0, Z/2; Z/2, Z/2, Z/2; Z, Z, Z/2; Z/2, (Z/2)², Z/2.
+     (c) Z, (Z/2)², Z/2, Z/2, 0.
+     Teacher explains: (a) Let Zₙ, Bₙ be cycles, boundaries. Bₙ₋₁ ⊆ Cₙ₋₁
+     is free (subgroup of free over a PID), so 0 → Zₙ → Cₙ → Bₙ₋₁ → 0
+     splits. Applying Hom(−, G) and the long exact sequence of the
+     resulting short exact sequence of cochain complexes, one finds
+        0 → Ext¹(Hₙ₋₁, G) → Hⁿ(C; G) → Hom(Hₙ, G) → 0,
+     split (not naturally), using the free resolution 0 → Bₙ₋₁ → Zₙ₋₁ →
+     Hₙ₋₁ → 0. Rule of thumb for G = Z: FREE parts stay in degree n,
+     TORSION moves up one degree. (b) RP²: H₀ = Z, H₁ = Z/2, H₂ = 0. H⁰ =
+     Z; H¹ = Hom(Z/2, Z) ⊕ Ext(Z, Z) = 0; H² = Hom(0, Z) ⊕ Ext(Z/2, Z) =
+     Z/2. With Z/2: H⁰ = Z/2, H¹ = Hom(Z/2, Z/2) = Z/2, H² = Ext(Z/2, Z/2)
+     = Z/2. Klein bottle: H₀ = Z, H₁ = Z ⊕ Z/2, H₂ = 0, so H⁰ = Z, H¹ =
+     Hom(Z ⊕ Z/2, Z) = Z, H² = Ext(Z ⊕ Z/2, Z) = Z/2; homology UCT Hₙ(K;
+     Z/2) = Hₙ ⊗ Z/2 ⊕ Tor(Hₙ₋₁, Z/2) gives Z/2, (Z/2)², Tor(Z/2, Z/2) =
+     Z/2. (c) KÜNNETH: Hₙ(X × Y) = ⊕_{i+j=n} Hᵢ ⊗ Hⱼ ⊕ ⊕_{i+j=n−1}
+     Tor(Hᵢ, Hⱼ). With H(RP²) = (Z, Z/2, 0): H₀ = Z; H₁ = Z/2 ⊕ Z/2;
+     H₂ = H₁ ⊗ H₁ = Z/2; H₃ = Tor(H₁, H₁) = Z/2; H₄ = 0. Check: with Z/2
+     coefficients (a field) the ranks must be (1, 1, 1) * (1, 1, 1) =
+     (1, 2, 3, 2, 1); UCT from our answer gives 1, 2, 1 + 2, 1 + 1, 0 + 1 ✓.
+     Euler characteristic 1 = χ(RP²)² ✓. Common mistakes: putting
+     Ext(Hₙ, G) instead of Ext(Hₙ₋₁, G); forgetting the Tor term in
+     Künneth (it produces H₃ here!). Now you try: H*(RP³; Z) given H₀ =
+     Z, H₁ = Z/2, H₂ = 0, H₃ = Z. (Z, 0, Z/2, Z)
+
+D11. (a) Show Hⁿ(G, M) := Extⁿ_ZG(Z, M) can be computed for G = ⟨t⟩ ≅
+     Z/m from the periodic resolution ... → ZG →N ZG →(t−1) ZG → Z → 0,
+     N = 1 + t + ... + t^(m−1). (b) Compute Hⁿ(Z/m, Z), Hₙ(Z/m, Z) and
+     Hⁿ(Z/2, Z₋) (sign action). (c) Interpret H²(Z/2, Z) = Z/2 via group
+     extensions.
+     Answer: (b) Z, 0, Z/m, 0, Z/m, ...; Z, Z/m, 0, Z/m, 0, ...; 0, Z/2,
+     0, Z/2, ... (c) the central extensions Z × Z/2 and Z (0 → Z →2 Z).
+     Teacher explains: (a) Exactness: ker ε = augmentation ideal =
+     im(t − 1); ker(t − 1) = fixed elements of ZG = Z·N = im N; ker N =
+     {∑aᵢtⁱ : ∑aᵢ = 0} = im(t − 1). Applying Hom_ZG(−, M) (Hom(ZG, M) = M):
+        M →(t−1) M →N M →(t−1) M →N ... ,
+     so H⁰ = M^G, H^odd = ker N/(t − 1)M, H^even>0 = M^G/NM ("Tate
+     periodicity"). (b) M = Z trivial: t − 1 = 0, N = m. H⁰ = Z, H^odd =
+     ker(·m) = 0, H^even = Z/m. Homology uses ⊗: Z ← Z ←0 Z ←m Z ←0 ...,
+     H₀ = Z, H₁ = Z/m (= G^ab ✓), H₂ = ker(m) = 0, H₃ = Z/m, ... Sign
+     action on Z for m = 2: t − 1 = −2, N = 1 + t = 0: H⁰ = M^G = 0, H^odd
+     = Z/2Z, H^even = 0/0 = 0. (c) H²(G, A) classifies extensions 0 → A →
+     E → G → 0 inducing the given action. For A = Z trivial and G = Z/2
+     the classes are E = Z × Z/2 (split) and E = Z with A = 2Z (non-split:
+     twice a generator of E generates A). Also
+     H¹(G, M) = crossed homomorphisms / principal ones; = Hom(G, M) for
+     trivial action. Common mistakes: using the trivial-action formulas
+     for a non-trivial module; mixing up homology and cohomology degrees.
+     Now you try: Hⁿ(Z/3, Z/2) with trivial action. (Z/2 for n = 0, 0 for
+     n ≥ 1: N = 3 acts invertibly)
+
+D12. (a) Define K(A), D(A) and the mapping cone; show that f : X → Y is
+     a quasi-isomorphism iff Cone(f) is acyclic. (b) Show that
+     P = [Z →2 Z] (degrees −1, 0) is isomorphic to Z/2 in D(Z) but not in
+     K(Z). (c) Prove Hom_D(Z)(Z/2, Z[1]) ≅ Z/2 although every chain map
+     Z/2 → Z[1] is 0; identify the triangle Z →2 Z → Z/2 → Z[1].
+     Answer: (b) P → Z/2 is a quasi-iso; no homotopy inverse exists since
+     Hom(Z/2, Z) = 0. (c) Hom_D(Z/2, Z[1]) = Hom_K(P, Z[1]) = Ext¹(Z/2, Z).
+     Teacher explains: (a) K(A): complexes with chain maps modulo homotopy.
+     D(A): formally invert the quasi-isomorphisms; morphisms are roofs
+     X ← X′ → Y with X′ → X a quasi-iso. Cone(f)ⁿ = Xⁿ⁺¹ ⊕ Yⁿ, d(x, y) =
+     (−dx, f(x) + dy). There is a short exact sequence 0 → Y → Cone(f) →
+     X[1] → 0 whose connecting map is Hⁿ(f), so the long exact sequence
+     ... → Hⁿ(X) →f Hⁿ(Y) → Hⁿ(Cone f) → Hⁿ⁺¹(X) →f ... shows H(Cone f)
+     = 0 ⇔ all Hⁿ(f) are isomorphisms. (b) The map P → Z/2 (reduction in
+     degree 0) induces H⁻¹: 0 → 0 and H⁰: Z/2 → Z/2 iso: a quasi-iso,
+     hence invertible in D. A homotopy inverse would contain a chain map
+     g : Z/2 → P, i.e. Z/2 → Z in degree 0, which is 0; then the
+     composite Z/2 → P → Z/2 is 0 ≠ id on H⁰. (c) Chain maps between
+     Z/2 (degree 0) and Z[1] (degree −1) vanish for degree reasons. But
+     in D replace Z/2 by P: Hom_K(P, Z[1]) = maps Z (deg −1) → Z with
+     nothing to check, i.e. Z, modulo homotopies h : Z (deg 0) → Z (deg
+     −1 of Z[1]), which change the map by ·2: Z/2Z = Ext¹(Z/2, Z). This is
+     the general principle Hom_D(M, N[n]) = Extⁿ(M, N), with composition
+     = Yoneda product. The nonzero element is the connecting morphism of
+     the DISTINGUISHED TRIANGLE Z →2 Z → Z/2 → Z[1], which encodes the
+     non-split extension 0 → Z → Z → Z/2 → 0. D(A) is additive and
+     triangulated, but not abelian: in a triangulated category every
+     monomorphism splits, so an abelian one is semisimple; D(Z) is not.
+     Common mistakes: thinking D(A) morphisms are just chain maps;
+     believing quasi-isomorphic complexes are homotopy equivalent (true
+     for bounded-above complexes of PROJECTIVES only). Now you try:
+     compute H*(Cone(Z/4 → Z/2)). (Z/2 in degree −1 only: cone ≅ Z/2[1])
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Complexes, homology and exactness. Compute the requested groups.
+    a) H₁, H₀ of 0 → Z →·2 Z → 0 (degrees 1, 0)
+    b) H₁, H₀ of 0 → Z →·0 Z → 0
+    c) middle homology of Z/4 →·2 Z/4 →·2 Z/4
+    d) middle homology of Z/8 →·2 Z/8 →·4 Z/8
+    e) middle homology of Z/8 →·4 Z/8 →·4 Z/8
+    f) coker of Z² → Z² given by the matrix [[2, 0], [0, 3]]
+    g) coker of [[2, 4], [6, 8]]         h) coker of [[6, 4], [4, 6]]
+    i) coker and kernel of Z³ → Z², [[2, 4, 6], [0, 6, 12]]
+    j) coker and kernel of Z³ → Z², [[3, 6, 9], [6, 12, 18]]
+    k) all homology of 0 → Z →(1, 1)ᵀ Z² →(1 −1) Z → 0
+    l) snake lemma for 0 → Z →·3 Z → Z/3 → 0 mapped to itself by ·4: the
+       six groups
+    m) dim V if 0 → k² → k⁵ → V → k⁴ → k³ → 0 is exact
+    n) all A with 0 → Z/2 → A → Z/3 → 0 exact
+    o) all A with 0 → Z/3 → A → Z/3 → 0 exact
+    p) 0 → C′ → C → C″ → 0 exact, C′ and C″ acyclic: is C acyclic?
+    q) f ≃ g (homotopic) and f a quasi-iso: is g a quasi-iso?
+    r) is the zero map Z/2[0] → Z/2[0] homotopic to the identity?
+    Answers:
+      a) 0, Z/2     b) Z, Z      c) 0 (ker = im = {0, 2})     d) 0
+      e) Z/2 (ker 4 = {0,2,4,6}, im 4 = {0,4})   f) Z/6 (Smith 1, 6)
+      g) Z/2 ⊕ Z/4 (Smith 2, 4)   h) Z/2 ⊕ Z/10 (Smith 2, 10)
+      i) Z/2 ⊕ Z/6; kernel ≅ Z     j) Z ⊕ Z/3; kernel ≅ Z²
+      k) all 0 (exact)
+      l) kernels 0, 0, 0; cokernels Z/4, Z/4, 0 (·4 is bijective on Z/3)
+      m) 4 (alternating sum of dimensions is 0)   n) Z/6 only
+      o) Z/9 or Z/3 ⊕ Z/3          p) yes (long exact sequence)
+      q) yes (same map on homology)  r) no (homotopic maps agree on H₀)
+
+M2. Projective (P), injective (I), flat (F): list which hold (ring Z
+    unless stated).
+    a) Z               b) Q               c) Q/Z            d) Z/6
+    e) Z[1/2]          f) Z_(p) (localisation)             g) Z/p^∞
+    h) ∏_{n∈N} Z (Baer-Specker)          i) Q ⊕ Q/Z        j) ⊕_N Z
+    k) Z/4 over Z/4    l) Z/2 over Z/4    m) Z/2 over Z/6   n) Z/3 over Z/6
+    o) k(x) over k[x]  p) 𝔪 = (x, y) over k[x, y]          q) any module
+       over a field k   r) k[x]/(x²) over itself
+    s) Hom_Z(Z/n, Q/Z) (as a Z-module)   t) Mₙ(k)-module kⁿ (column vectors)
+    Answers:
+      a) P, F      b) F, I       c) I       d) none      e) F
+      f) F         g) I          h) F (torsion-free, not free: Specker)
+      i) I         j) P, F       k) P, I, F  l) none      m) P, I, F
+      n) P, I, F   o) F, I (divisible over a PID)  p) none (pd 𝔪 = 1)
+      q) P, I, F   r) P, I, F (self-injective)
+      s) none (≅ Z/n)            t) P, I, F (Mₙ(k) semisimple)
+
+M3. Long exact sequences, derived functors, dimension shifting.
+    a) Tensor 0 → Z → Q → Q/Z → 0 with Z/n: find Tor₁(Q/Z, Z/n) and
+       Q/Z ⊗ Z/n
+    b) Apply Hom(−, Z/6) to 0 → Z →·3 Z → Z/3 → 0: Hom(Z/3, Z/6),
+       Ext¹(Z/3, Z/6)
+    c) L₁F(Z/6) for F = − ⊗ Z/4       d) R¹F(Z/6) for F = Hom(Z/4, −)
+    e) R¹F(A) for F = Hom(Z/3, −) and A = Q ⊕ Z
+    f) RⁿF(I), n ≥ 1, I injective, F any additive left exact functor
+    g) 0 → A → P → C → 0, P projective, pd C = 3: pd A
+    h) same with pd C = 0: pd A     i) pd_Z of Z/n, of Q, of Z⁵
+    j) Ext²(M, N) in terms of K = ker(P → M), P projective
+    k) Hom(Z/2, −) on 0 → Z/2 → Z/4 → Z/2 → 0: is the connecting map
+       Hom(Z/2, Z/2) → Ext¹(Z/2, Z/2) zero or an isomorphism?
+    l) − ⊗ Z/2 on 0 → Z/2 → Z/4 → Z/2 → 0: the connecting map
+       Tor₁(Z/2, Z/2) → Z/2 ⊗ Z/2
+    m) Extⁿ(A, Q/Z) for n ≥ 1 and any abelian group A
+    n) if Tor₁(M, N) = 0 for all N, then Torₙ(M, N) = ? (n ≥ 1)
+    o) L₁F(Z/2) for F = − ⊗_Z Q
+    p) R¹F(Z) for F = Hom_Z(Q, −)
+    q) L₂F(k) for F = − ⊗_R k, R = k[x, y]
+    Answers:
+      a) Z/n, 0      b) Z/3, Z/3 (= (Z/6)/3(Z/6))
+      c) Tor₁(Z/6, Z/4) = Z/2      d) Ext¹(Z/4, Z/6) = (Z/6)/4(Z/6) = Z/2
+      e) (Q ⊕ Z)/3(Q ⊕ Z) = Z/3    f) 0
+      g) 2        h) A is projective (the sequence splits): 0
+      i) 1, 1, 0  j) Ext¹(K, N)
+      k) isomorphism (Hom(Z/2, Z/4) → Hom(Z/2, Z/2) is 0)
+      l) isomorphism                m) 0 (Q/Z injective)
+      n) 0 (M flat)                 o) 0 (Q flat)
+      p) Ext¹(Q, Z) ≅ Ẑ/Z ≠ 0       q) Tor₂(k, k) = k
+
+M4. Tensor products and Tor over Z.
+    a) Z/4 ⊗ Z/6        b) Z/12 ⊗ Z/18       c) Z/5 ⊗ Z/7
+    d) Q ⊗ Z/n          e) Q ⊗ Q             f) Q/Z ⊗ Q/Z
+    g) Z² ⊗ Z³          h) (Z ⊕ Z/6) ⊗ (Z/4 ⊕ Z/9)
+    i) Tor₁(Z/4, Z/6)   j) Tor₁(Z/12, Z/18)  k) Tor₁(Z/5, Z/7)
+    l) Tor₁(Z/n, Z)     m) Tor₁(Q, A)        n) Tor₁(Q/Z, Z/n)
+    o) Tor₁(Q/Z, Q/Z)   p) Tor₁(Z/8, Q/Z)    q) Tor₂(Z/4, Z/6)
+    r) Tor₁(Z/4 ⊕ Z/6, Z/10)                 s) Tor₁(Z/p^∞, Z/p²)
+    t) Tor₁(Z/9, Z ⊕ Z/3 ⊕ Z/27)             u) Tor₁(Z/n, Z/n) for n = 100
+    v) Tor₁(Q/Z, Z ⊕ Z/2 ⊕ Q)                w) |Tor₁(A, A)| for
+       A = Z/2 ⊕ Z/4
+    Answers:
+      a) Z/2      b) Z/6      c) 0        d) 0        e) Q
+      f) 0        g) Z⁶       h) Z/4 ⊕ Z/9 ⊕ Z/2 ⊕ Z/3 (order 216)
+      i) Z/2      j) Z/6      k) 0        l) 0        m) 0
+      n) Z/n      o) Q/Z      p) Z/8      q) 0        r) Z/2 ⊕ Z/2
+      s) Z/p²     t) Z/3 ⊕ Z/9            u) Z/100
+      v) Z/2 (torsion part)                w) 2·2·2·4 = 32
+
+M5. Hom and Ext over Z.
+    a) Hom(Z/4, Z/6)    b) Hom(Z/12, Z/18)   c) Hom(Z/n, Z)
+    d) Hom(Q, Z)        e) Hom(Z/n, Q/Z)     f) Hom(Q, Q)
+    g) Ext¹(Z/4, Z/6)   h) Ext¹(Z/12, Z/18)  i) Ext¹(Z/n, Z)
+    j) Ext¹(Z, A)       k) Ext¹(Z/n, Q)      l) Ext¹(Z/n, Q/Z)
+    m) Ext¹(Z/6, Z ⊕ Z/4)                    n) Ext²(A, B)
+    o) Ext¹(Q/Z, Z)     p) Ext¹(Q, Z)        q) Ext¹(Z/p^∞, Z)
+    r) Ext¹(Z/2 ⊕ Z/3, Z/6)                  s) Ext¹(Z³ ⊕ Z/5, Z/10)
+    t) Ext¹(Z/9, Z/3 ⊕ Z/27)                 u) Ext¹(Q, Z/n)
+    Answers:
+      a) Z/2      b) Z/6      c) 0        d) 0        e) Z/n
+      f) Q        g) Z/2      h) Z/6      i) Z/n      j) 0
+      k) 0        l) 0        m) Z/6 ⊕ Z/2            n) 0
+      o) Ẑ = ∏_p Z_p          p) Ẑ/Z (uncountable)    q) Z_p (p-adics)
+      r) Z/2 ⊕ Z/3 ≅ Z/6      s) Z/5      t) Z/3 ⊕ Z/9
+      u) 0 (×n is onto the divisible group Ext¹(Q, Z))
+
+M6. Extensions. Give |Ext¹(M, N)| and the possible middle terms E of
+    0 → N → E → M → 0 (up to isomorphism of groups).
+    a) M = Z/2, N = Z/4        b) M = Z/4, N = Z/2
+    c) M = Z/3, N = Z/2        d) M = Z/p, N = Z/p (number of classes
+       giving E ≅ Z/p²)        e) M = Z/2, N = Z
+    f) M = Z, N arbitrary      g) M = Z/2 ⊕ Z/2, N = Z/2 (number of
+       classes for each E)     h) M = Z/4, N = Z/4
+    i) M = Z/2, N = Z/2 ⊕ Z/2   j) M = k, N = k over k[x] (the
+       non-split E)            k) Baer sum in Ext¹(Z/5, Z/5) of the
+       classes a = 3 and a = 4 (notation of D7)
+    l) Baer sum of the non-split class of Ext¹(Z/2, Z/4) with itself
+    m) M = Q, N = Z: does a non-split extension exist?
+    Answers:
+      a) 2: Z/4 ⊕ Z/2, Z/8          b) 2: Z/2 ⊕ Z/4, Z/8
+      c) 1: Z/6                     d) p classes; p − 1 give Z/p²
+      e) 2: Z ⊕ Z/2, Z (0 → Z →2 Z → Z/2 → 0)      f) 1: N ⊕ Z only
+      g) 4: (Z/2)³ for 1 class, Z/4 ⊕ Z/2 for 3 classes
+      h) 4: Z/4 ⊕ Z/4 (a = 0), Z/16 (a = 1, 3), Z/8 ⊕ Z/2 (a = 2)
+      i) 4: (Z/2)³ for 1 class, Z/4 ⊕ Z/2 for 3 classes
+      j) Ext¹ = k; E = k[x]/(x²)    k) a = 2 (3 + 4 = 7 ≡ 2)
+      l) the split class            m) yes, Ext¹(Q, Z) ≠ 0
+
+M7. Resolutions over quotient rings. Compute (all n ≥ 0 unless stated).
+    a) Torₙ^Z/4(Z/2, Z/2)            b) Extⁿ_Z/4(Z/2, Z/2)
+    c) Extⁿ_Z/4(Z/2, Z/4)            d) Torₙ^Z/4(Z/2, Z/4)
+    e) Torₙ^Z/6(Z/2, Z/3)            f) Torₙ^Z/9(Z/3, Z/3)
+    g) Torₙ^Z/8(Z/2, Z/4)            h) Extⁿ_Z/8(Z/2, Z/4)
+    i) Torₙ^S(k, k) and Extⁿ_S(k, S) for S = k[x]/(x²)
+    j) the maps in the minimal resolution of k over T = k[x]/(x³)
+    k) Torₙ^T(k, k) and Torₙ^T(k, T/(x²)) for T = k[x]/(x³)
+    l) gl.dim of Z/4, k[x]/(x²), Z/6, Z/p, Z/30, Z/12
+    m) pd_Z/4(Z/2), pd_Z/12(Z/3), pd_Z/12(Z/2)
+    n) the Poincaré series ∑ dim Torₙ^S(k, k) tⁿ, S = k[x]/(x²)
+    o) Ext¹_Z/4(Z/2, Z/2) as extensions: the non-split E
+    Answers:
+      a) Z/2 for all n     b) Z/2 for all n    c) Z/2 (n = 0), 0 (n ≥ 1)
+      d) Z/2 (n = 0), 0 (n ≥ 1)                 e) 0 for all n (even n = 0)
+      f) Z/3 for all n     g) Z/2 for all n (maps alternate ·2, ·4)
+      h) Z/2 for all n     i) k for all n; k (n = 0), 0 (n ≥ 1)
+      j) ... → T →x² T →x T →x² T →x T → k → 0 (alternating)
+      k) k for all n; k for all n
+      l) ∞, ∞, 0, 0, 0 (squarefree), ∞ (Z/12 ≅ Z/4 × Z/3)
+      m) ∞, 0 (direct summand), ∞       n) 1/(1 − t)
+      o) E = Z/4 as a Z/4-module: 0 → Z/2 →·2 Z/4 → Z/2 → 0
+
+M8. Koszul complexes, syzygies, dimensions (k a field, R = k[x, y]
+    unless stated).
+    a) dim Torᵢ^k[x](k, k), i ≥ 0       b) dim Torᵢᴿ(k, k)
+    c) dim Torᵢ^k[x,y,z](k, k)           d) dim Torᵢ(k, k) over k[x₁..x₅]
+    e) dim Extⁱᴿ(k, k)                   f) Extⁱᴿ(k, R)
+    g) Torᵢᴿ(R/(x), R/(y))               h) Torᵢᴿ(R/(x), R/(x))
+    i) Tor₁ᴿ(R/(x²), R/(xy))             j) dim Torᵢᴿ(R/(x², y³), k)
+    k) Torᵢᴿ(R/(x, y), R/(x − 1))        l) Torᵢᴿ(k, R/(x))
+    m) pd of: k over k[x, y, z]; 𝔪 over k[x, y]; R/(x², y³); R/(xy);
+       𝔪 over k[x, y, z]
+    n) gl.dim of k[x₁, ..., xₙ], Z[x], Z, Q, k[[x]]
+    o) ∑(−1)ⁱ dim Torᵢ(k, k) over k[x, y, z]
+    p) Koszul homology H₁, H₂ of the sequence (x, x) in k[x]
+    q) the ranks of the Koszul resolution of R/(x, y, z) over k[x, y, z]
+    Answers:
+      a) 1, 1      b) 1, 2, 1      c) 1, 3, 3, 1     d) 1, 5, 10, 10, 5, 1
+      e) 1, 2, 1   f) 0, 0, k (i = 0, 1, 2)
+      g) k, 0, 0 ((x) ∩ (y) = (xy))
+      h) k[y], k[y], 0 ((x)/(x²) ≅ R/(x))
+      i) (x²y)/(x³y) ≅ R/(x) = k[y]      j) 1, 2, 1
+      k) all 0 (comaximal ideals, Tor₀ = R/(1) = 0)
+      l) k, k, 0 (resolve R/(x) by R →x R, tensor with k)
+      m) 3; 1; 2; 1; 2        n) n, 2, 1, 0, 1        o) 0
+      p) H₁ ≅ k[x]/(x) = k, H₂ = 0 (x, x is not regular)
+      q) 1, 3, 3, 1
+
+M9. Universal coefficients and Künneth. (H₀ = Z connected spaces.)
+    Let X have H₀ = Z, H₁ = Z ⊕ Z/3, H₂ = Z/2, Hₙ = 0 otherwise.
+    a) Hⁿ(X; Z), n = 0..3               b) Hⁿ(X; Z/2)
+    c) Hⁿ(X; Z/3)                       d) Hⁿ(X; Q)
+    e) Hₙ(X; Z/2)
+    f) H*(L(p, q); Z) and H*(L(p, q); Z/p), H(L) = Z, Z/p, 0, Z
+    g) H*(RP³; Z/2)
+    h) H*(RP⁴; Z), given H₀..₄ = Z, Z/2, 0, Z/2, 0
+    i) H_*(RP² × S¹)                    j) H_*(RP² × RP²)
+    k) H_*(S² × S²)                     l) H_*(L(3, 1) × L(3, 1))
+    m) Z/2-Betti numbers of the Klein bottle
+    n) torsion of H²(Y; Z) if H₁(Y) = Z² ⊕ Z/4
+    o) H_*(RP² × RP²; Q)
+    Answers:
+      a) Z, Z, Z/3, Z/2        b) Z/2, Z/2, Z/2, Z/2
+      c) Z/3, (Z/3)², Z/3, 0   d) Q, Q, 0, 0
+      e) Z/2, Z/2, Z/2, Z/2    f) Z, 0, Z/p, Z; Z/p in degrees 0..3
+      g) Z/2 in degrees 0..3   h) Z, 0, Z/2, 0, Z/2
+      i) Z, Z ⊕ Z/2, Z/2, 0    j) Z, (Z/2)², Z/2, Z/2, 0
+      k) Z, 0, Z², 0, Z
+      l) Z, (Z/3)², Z/3, Z² ⊕ Z/3, (Z/3)², 0, Z (degrees 0..6)
+      m) 1, 2, 1               n) Z/4          o) Q in degree 0 only
+
+M10. Group cohomology (trivial action unless stated).
+    a) Hⁿ(Z/5, Z), n = 0..4             b) Hₙ(Z/5, Z), n = 0..4
+    c) Hⁿ(Z/4, Z/2)                     d) Hⁿ(Z/3, Z/2)
+    e) Hⁿ(Z/2, Z₋), sign action, n = 0..3
+    f) H¹(Z/6, Z/4)                     g) H²(Z/6, Z/4)
+    h) Hⁿ(Z, Z), n = 0, 1, 2            i) H₁(S₃, Z)
+    j) H¹(G, Z) for finite G            k) H²(Z/2 × Z/2, Z)
+    l) exponent of H²(Z/6, Z)           m) Hⁿ(Z/m, Z/m)
+    n) Hⁿ(G, Z[G]) for finite G, n ≥ 1
+    o) number of extensions 0 → Z/3 → E → Z/3 → 0 up to equivalence,
+       with central Z/3 (= |H²(Z/3, Z/3)|)
+    p) H¹(Z/2, Z/3)                     q) cd(Z) and cd(Z/2)
+    Answers:
+      a) Z, 0, Z/5, 0, Z/5     b) Z, Z/5, 0, Z/5, 0
+      c) Z/2 for all n         d) Z/2 (n = 0), 0 (n ≥ 1)
+      e) 0, Z/2, 0, Z/2        f) Hom(Z/6, Z/4) = Z/2
+      g) (Z/4)/6(Z/4) = Z/2    h) Z, Z, 0
+      i) Z/2 (= S₃^ab)         j) Hom(G, Z) = 0
+      k) Hom(Z/2 × Z/2, Q/Z) = (Z/2)²     l) 6
+      m) Z/m for all n         n) 0 (Z[G] is induced)
+      o) 3 (E ≅ Z/9 for 2 classes, Z/3 × Z/3 split)
+      p) 0 (coprime orders)    q) 1 and ∞
+
+M11. Cones, triangles and the derived category (cohomological indexing;
+     a module M means M[0]; Cone(f) of f : X → Y in degree 0 has X in
+     degree −1 and Y in degree 0).
+    a) H*(Cone(Z →·3 Z))                 b) H*(Cone(Z →0 Z/2))
+    c) H*(Cone(Z/4 → Z/2)), projection   d) H*(Cone(Z/2 →·2 Z/4))
+    e) Cone(id_X) in D(A)                f) Hom_D(Z)(Z/2, Z[1])
+    g) Hom_D(Z)(Z/2, Z/2[1])             h) Hom_D(Z)(Z/2, Z/2[2])
+    i) Hom_D(Z)(Z[1], Z)                 j) Hom_D(Z)(Q, Z[1])
+    k) Hom_D(Z/4)(Z/2, Z/2[7])
+    l) over R = k[x, y]: Hom_D(k, k[1]), Hom_D(k, k[2]), Hom_D(k, R[1]),
+       Hom_D(k, R[2])
+    m) H*(Z/6 ⊗ᴸ Z/4)                    n) H*(RHom_Z(Z/6, Z/4))
+    o) Q ⊗ᴸ Z/5                          p) H*(k ⊗ᴸ_S k), S = k[x]/(x²)
+    q) H*(RHom_Z(Q, Z))
+    r) X = [Z →·2 Z →0 Z/3] in degrees −1, 0, 1: X ≅ ? in D(Z)
+    s) is [Z →·2 Z] ≅ Z/2 in K(Z)? in D(Z)?
+    t) Hom_K(Z)(Z/2, [Z →·2 Z])
+    u) complete the triangle Z/2 →·2 Z/4 → ? → Z/2[1]
+    v) Yoneda square of the non-zero class of Ext¹_S(k, k), S = k[x]/(x²):
+       zero or non-zero in Ext²?
+    Answers:
+      a) H⁻¹ = 0, H⁰ = Z/3         b) H⁻¹ = Z, H⁰ = Z/2
+      c) H⁻¹ = Z/2, H⁰ = 0 (cone ≅ Z/2[1])      d) H⁻¹ = 0, H⁰ = Z/2
+      e) 0 (acyclic)               f) Ext¹(Z/2, Z) = Z/2
+      g) Z/2       h) 0 (Ext² over Z vanishes)   i) 0 (negative Ext)
+      j) Ext¹(Q, Z) ≅ Ẑ/Z          k) Ext⁷_Z/4(Z/2, Z/2) = Z/2
+      l) k², k, 0, k               m) H⁰ = Z/2, H⁻¹ = Tor₁ = Z/2
+      n) H⁰ = Z/2, H¹ = Z/2        o) 0 (Q flat, Q ⊗ Z/5 = 0)
+      p) H⁻ⁿ = k for every n ≥ 0 (unbounded)    q) H⁰ = 0, H¹ = Ẑ/Z
+      r) Z/2 ⊕ Z/3[−1] (hereditary ring: X ≅ ⊕ Hⁿ(X)[−n])
+      s) no; yes                   t) 0 (Hom(Z/2, Z) = 0 in degree 0)
+      u) Z/2 (the quotient Z/4/(2)), connecting map = the class of Z/4
+      v) non-zero (Ext*_S(k, k) ≅ k[t], t in degree 1)
+
+M12. True or false? Give a proof sketch or a counterexample.
+    a) Every flat Z-module is projective.
+    b) Every projective module is flat.
+    c) Every injective Z-module is flat.
+    d) A ⊗ − is left exact.
+    e) Hom(M, −) is exact iff M is projective.
+    f) Submodules of free Z-modules are free.
+    g) Submodules of free modules are projective over every ring.
+    h) Over every integral domain, divisible ⇒ injective.
+    i) Extⁿ_Z(A, B) = 0 for all n ≥ 2.
+    j) Hom(A, B) = 0 ⇒ Ext¹(A, B) = 0.
+    k) Tor₁(A, B) ≅ Tor₁(B, A).
+    l) If 0 → A → B → C → 0 is exact and B ≅ A ⊕ C, it splits.
+    m) The global dimension of a finite ring is finite.
+    n) Quasi-isomorphic complexes are homotopy equivalent.
+    o) D(A) is an abelian category.
+    p) In D(Z) every complex X is isomorphic to ⊕ Hⁿ(X)[−n].
+    q) In D(Z/4) every complex X is isomorphic to ⊕ Hⁿ(X)[−n].
+    r) Hom_D(M, N[n]) ≅ Extⁿ(M, N) for modules M, N and n ≥ 0.
+    s) If Tor₁(M, Z/p) = 0 for every prime p, then M is flat over Z.
+    t) Every f.g. module over k[x, y] has a free resolution of length ≤ 2.
+    u) Tor₁(Z/m, Z/n) ≅ Z/lcm(m, n).
+    v) H¹(G, M) ≅ Hom(G, M) for every G-module M.
+    w) Tor^R commutes with direct limits (filtered colimits).
+    Answers:
+      a) F: Q            b) T: summand of free, and free is flat
+      c) F: Q/Z (torsion)                  d) F: Z →·2 Z, ⊗ Z/2 gives 0
+      e) T               f) T (PID)
+      g) F: 2Z/4 ≅ Z/2 ⊆ Z/4 is not projective over Z/4
+      h) F: K/R for R = k[x, y] (true exactly for Dedekind domains)
+      i) T (gl.dim Z = 1)                  j) F: Hom(Z/2, Z) = 0,
+         Ext¹(Z/2, Z) = Z/2
+      k) T (balance + symmetry of ⊗)
+      l) F: 0 → Z → Z ⊕ (Z/2)^(∞) → (Z/2)^(∞) → 0, n ↦ (2n, 0) (T for f.g.
+         modules, Miyata)
+      m) F: Z/4           n) F: [Z →·2 Z] and Z/2
+      o) F: triangulated + abelian forces semisimple; D(Z) is not
+      p) T (hereditary)
+      q) F: [Z/4 →·2 Z/4] has H⁻¹ = H⁰ = Z/2 but represents the non-zero
+         class in Ext²_Z/4(Z/2, Z/2)
+      r) T                s) T (M[p] = 0 for all p ⇒ torsion-free)
+      t) T (Hilbert syzygy theorem)        u) F: gcd, e.g. m = 2, n = 4
+      v) F: G = Z/2 on Z₋, Hom(G, Z) = 0 but H¹ = Z/2
+      w) T
+
+TEACHING TIPS
+  Struggling: drill the two "master computations" until automatic — for
+  M = Z/m resolve by 0 → Z →m Z → Z/m → 0 and read off Tor₁ = A[m], Ext¹ =
+  A/mA — and insist every answer comes from an explicit resolution, not
+  from memory ("resolve, delete, apply F, take homology"). Always write
+  the long exact sequence with all six or nine terms and label every map
+  before chasing; check answers by balance (resolve the other variable)
+  and by Euler characteristics. For extensions, draw the pushout and
+  compute the order of a lifted generator. For derived categories start
+  from the single example [Z →2 Z] ≅ Z/2 and the triangle Z → Z → Z/2 →
+  Z[1] before any abstraction. Harder: prove the horseshoe lemma and the
+  comparison theorem in full; prove Baer's criterion via Zorn; show that
+  Ext¹ classes form a group under the Baer sum and that Yoneda Ext agrees
+  with derived-functor Ext; prove Tor commutes with filtered colimits and
+  deduce flat = torsion-free over a PID; compute Ext*_k[x]/(x²)(k, k) as
+  a ring; build the Grothendieck spectral sequence and derive the Lyndon-
+  Hochschild-Serre and base-change spectral sequences; verify the
+  octahedral axiom for cones in K(A); prove Hom_D(M, N[n]) = Extⁿ(M, N)
+  via K-projective resolutions; and show that every triangulated category
+  that is abelian is semisimple.
+
+
+================================================================================
+TOPIC 12.7 — SHEAF THEORY: PRESHEAVES AND SHEAVES, STALKS, SHEAFIFICATION,
+MORPHISMS, DIRECT AND INVERSE IMAGES, EXACTNESS, FLASQUE/SOFT/FINE SHEAVES,
+SHEAF COHOMOLOGY (DERIVED FUNCTOR AND ČECH), LOCALLY CONSTANT SHEAVES
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - PRESHEAF of abelian groups on a space X: a group ℱ(U) for each open U
+    and restriction maps ρ_UV : ℱ(U) → ℱ(V) (written s ↦ s|_V) for V ⊆ U,
+    with ρ_UU = id and ρ_VW ∘ ρ_UV = ρ_UW; i.e. a functor Open(X)ᵒᵖ → Ab.
+    Elements of ℱ(U) are SECTIONS; Γ(U, ℱ) = ℱ(U), Γ(X, ℱ) = global
+    sections. A MORPHISM φ : ℱ → 𝒢 is a family φ_U commuting with the
+    restrictions (a natural transformation).
+  - SHEAF: a presheaf with (LOCALITY) if U = ⋃Uᵢ and s|_Uᵢ = 0 for all i
+    then s = 0, and (GLUING) if sᵢ ∈ ℱ(Uᵢ) agree on overlaps Uᵢ ∩ Uⱼ then
+    some s ∈ ℱ(U) has s|_Uᵢ = sᵢ. Equivalently ℱ(U) → ∏ℱ(Uᵢ) ⇉
+    ∏ℱ(Uᵢ ∩ Uⱼ) is an equalizer; in particular ℱ(∅) = 0. Sheaves:
+    continuous, C^∞, holomorphic (𝒪), harmonic functions, sections of a
+    bundle, locally constant functions (the CONSTANT SHEAF A_X, with
+    A_X(U) = A^{π₀(U)} for U locally connected). Non-sheaves: bounded
+    functions, constant functions, polynomials (gluing fails), the image
+    presheaf of exp : 𝒪 → 𝒪*.
+  - STALK ℱₓ = colim_{U ∋ x} ℱ(U): GERMS [U, s], two sections identified
+    if they agree on a smaller neighbourhood. 𝒪_{C,0} = C{z} (convergent
+    power series). For SHEAVES: a section is zero iff all its germs are
+    zero, and φ is injective / surjective / an isomorphism iff every φₓ
+    is. (False for presheaves: P(X) = Z, P(U) = 0 for U ≠ X has all
+    stalks 0 but P ≠ 0.)
+  - SHEAFIFICATION ℱ⁺: ℱ⁺(U) = functions s : U → ⊔ℱₓ, s(x) ∈ ℱₓ, locally
+    given by the germs of one section of ℱ. Universal: every morphism
+    from ℱ to a sheaf factors uniquely through ℱ → ℱ⁺, and (ℱ⁺)ₓ = ℱₓ.
+    Constant presheaf ↦ locally constant functions; bounded continuous ↦
+    all continuous; exp-image ↦ 𝒪*; U ↦ H^q(U; Z) (q ≥ 1, X a manifold)
+    ↦ 0.
+  - MORPHISMS AND EXACTNESS: the kernel presheaf of a morphism of sheaves
+    IS a sheaf; image and cokernel must be sheafified. Sh(X) is an
+    ABELIAN category and 0 → ℱ′ → ℱ → ℱ″ → 0 is EXACT iff it is exact on
+    every stalk. Γ(X, −) is LEFT exact, not right exact: the EXPONENTIAL
+    SEQUENCE 0 → 2πiZ → 𝒪 → 𝒪* → 0 is exact on C*, yet z ∈ 𝒪*(C*) has no
+    global logarithm (cokernel on global sections ≅ Z, winding number).
+  - DIRECT IMAGE (f_*ℱ)(V) = ℱ(f⁻¹V), left exact; f : X → pt gives
+    f_*ℱ = Γ(X, ℱ). INVERSE IMAGE f⁻¹𝒢 = sheafification of V ↦ colim_{W ⊇
+    f(V)} 𝒢(W); it is EXACT with (f⁻¹𝒢)ₓ = 𝒢_{f(x)}; f⁻¹A_Y = A_X.
+    ADJUNCTION Hom(f⁻¹𝒢, ℱ) ≅ Hom(𝒢, f_*ℱ). Stalks of f_* are NOT stalks
+    of ℱ in general: for j : R ∖ {0} → R, (j_*Z)₀ = Z²; for proper f,
+    (f_*ℱ)_y = Γ(f⁻¹(y), ℱ|) (proper base change for H⁰).
+  - OPEN/CLOSED DÉVISSAGE: for j : U → X open, i : Z = X ∖ U → X closed,
+    EXTENSION BY ZERO j_!ℱ (sections of ℱ on V ∩ U with support closed in
+    V; stalks ℱₓ on U, 0 on Z) and i_* (exact; stalks 0 off Z) give the
+    exact sequence 0 → j_!j⁻¹ℱ → ℱ → i_*i⁻¹ℱ → 0. SKYSCRAPER x_*A.
+  - FLASQUE (flabby): every restriction ℱ(X) → ℱ(U) is surjective.
+    Examples: skyscrapers, every sheaf on a discrete space, the constant
+    sheaf on an IRREDUCIBLE space, the GODEMENT sheaf U ↦ ∏_{x∈U} ℱₓ of
+    discontinuous sections, injective sheaves, f_* of a flasque sheaf.
+    Not flasque: Z_R, C⁰, C^∞, 𝒪. KEY LEMMA: if ℱ′ is flasque and 0 → ℱ′ →
+    ℱ → ℱ″ → 0 is exact then Γ(ℱ) → Γ(ℱ″) is onto; if also ℱ is flasque
+    so is ℱ″. Every sheaf embeds in a flasque one (Godement).
+  - SOFT: X paracompact Hausdorff and every section over a CLOSED set
+    (a germ of sections on a neighbourhood) extends to X. FINE: the sheaf
+    ℰnd(ℱ) admits partitions of unity. Fine ⇒ soft ⇒ Γ-acyclic; flasque
+    ⇒ soft. C⁰, C^∞, Ω^p, any C^∞-module (vector-bundle sections,
+    distributions) are fine; Z_R and 𝒪 are not soft.
+  - SHEAF COHOMOLOGY H^i(X, ℱ) = R^iΓ(X, ℱ) (Sh(X) has enough injectives):
+    H⁰ = Γ; a short exact sequence of sheaves gives a LONG exact sequence;
+    H^i can be computed by ANY Γ-acyclic resolution (flasque, soft on
+    paracompact, fine). DE RHAM: 0 → R_M → Ω⁰ → Ω¹ → ... is a fine
+    resolution, so H^i(M, R) ≅ H^i_dR(M). On a paracompact, locally
+    contractible X, H^i(X, A_X) ≅ singular cohomology H^i(X; A).
+    VANISHING: H^i = 0 for i > n on an n-manifold; H^i = 0 for i > 0 for
+    flasque/soft sheaves and for skyscrapers; Grothendieck: i > dim X on
+    a noetherian space.
+  - ČECH COHOMOLOGY of a cover 𝔘 = {Uᵢ}: Č^p = ∏_{i₀<...<i_p}
+    ℱ(U_{i₀...i_p}), (δc)_{i₀...i_{p+1}} = ∑_k (−1)^k c_{i₀..î_k..i_{p+1}}|.
+    Ȟ⁰(𝔘, ℱ) = Γ(X, ℱ). Ȟ^p(X, ℱ) = colim over refinements. Ȟ¹ = H¹
+    ALWAYS (torsors, e.g. Pic X = H¹(X, 𝒪_X*)); Ȟ^p = H^p on paracompact
+    Hausdorff X. LERAY: if H^q(U_{i₀...i_p}, ℱ) = 0 for q > 0 then Ȟ(𝔘, ℱ)
+    = H(X, ℱ). For A_X and a GOOD cover, Ȟ(𝔘) = simplicial cohomology of
+    the NERVE. On P¹: h⁰(𝒪(n)) = max(n + 1, 0), h¹(𝒪(n)) = max(−n − 1, 0).
+  - LOCALLY CONSTANT SHEAVES (LOCAL SYSTEMS): ℒ with X covered by opens on
+    which ℒ ≅ M_U. On X connected, locally path-connected, semilocally
+    simply connected: local systems with fibre M ↔ representations
+    ρ : π₁(X, x) → Aut(M) (MONODROMY), up to conjugacy. On a simply
+    connected space every local system is constant. Examples: the
+    orientation sheaf of the Möbius band (monodromy −1), f_*Z for a
+    covering (permutation monodromy), solutions of zf′ = αf on C*
+    (monodromy e^{2πiα}). On S¹ with monodromy T: H⁰ = ker(T − 1) =
+    M^T (invariants), H¹ = coker(T − 1) = M_T (coinvariants).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Define presheaf and sheaf. Decide which are sheaves on R, and
+    which axiom fails: (i) bounded continuous functions; (ii) constant
+    functions with values in Z; (iii) C^∞ functions; (iv) locally
+    constant Z-valued functions. (b) For X locally connected, show
+    Γ(U, Z_X) ≅ Z^{π₀(U)}, and compute it for U = R ∖ {0, 1} and U = R²
+    minus the unit circle.
+    Answer: (i), (ii) not sheaves (gluing fails); (iii), (iv) sheaves.
+    (b) Z³ and Z².
+    Teacher explains: The presheaf axioms only say restriction is
+    functorial. A sheaf is a presheaf where "local data determine and
+    produce global data". (i) Locality holds (a function that vanishes
+    locally vanishes), but gluing fails: on Uₙ = (n − 1, n + 1) the
+    functions sₙ(x) = x are bounded and agree on overlaps, yet the glued
+    function x on R is unbounded. Boundedness is a GLOBAL condition.
+    (ii) Take U = (0, 1) ∪ (2, 3) with s₁ = 0 on (0, 1), s₂ = 1 on (2, 3).
+    The overlap is empty, so they agree there vacuously, but no constant
+    function on U restricts to both. (iii) Smoothness is local: if f is
+    smooth on each Uᵢ, the glued function is smooth at each point, and it
+    is unique. (iv) Same argument; "locally constant" is a local
+    condition. (b) A locally constant function is constant on each
+    connected component (the set where it takes a given value is open
+    and closed). In a locally connected space the components of U are
+    open, so any assignment of an integer to each component is locally
+    constant: Γ(U, Z_X) = ∏_{π₀(U)} Z. R ∖ {0, 1} has 3 components: Z³.
+    R² minus the circle has 2 (inside and outside): Z². Common mistakes:
+    calling the constant PRESHEAF U ↦ Z the constant sheaf (it has
+    Γ(U) = Z for every non-empty U, and even Γ(∅) = Z); forgetting that
+    ℱ(∅) = 0 for a sheaf (glue the empty family). Now you try: Γ(U, Z_R)
+    for U = R ∖ Z. (∏_{n∈Z} Z, uncountable)
+
+D2. (a) Define the stalk ℱₓ and describe 𝒪_{C,0} and the stalk of C⁰_R
+    at 0. (b) Prove: for a sheaf ℱ, a section s ∈ ℱ(U) with sₓ = 0 for
+    all x ∈ U is 0; and a morphism of sheaves φ : ℱ → 𝒢 is an
+    isomorphism iff every φₓ is an isomorphism. (c) Show that (b) fails
+    for presheaves.
+    Answer: (a) 𝒪_{C,0} = C{z}, power series with positive radius;
+    C⁰-germs at 0. (b) locality, then gluing. (c) P(X) = Z, P(U) = 0 for
+    U ≠ X.
+    Teacher explains: (a) ℱₓ = colim_{U∋x} ℱ(U): an element is a pair
+    (U, s), with (U, s) ~ (V, t) if s|_W = t|_W for some x ∈ W ⊆ U ∩ V.
+    A holomorphic germ at 0 is its Taylor series, which converges on some
+    disc and determines f there (identity theorem): 𝒪_{C,0} ≅ C{z}.
+    Continuous germs have no such description: |x| and max(x, 0) differ
+    on every neighbourhood of 0, yet agree at 0. (b) If sₓ = 0 there is
+    an open Wₓ ∋ x with s|_Wₓ = 0; the Wₓ cover U, so s = 0 by locality.
+    Now let every φₓ be bijective. INJECTIVE: if φ_U(s) = 0 then φₓ(sₓ)
+    = 0, so sₓ = 0 for all x and s = 0. SURJECTIVE: given t ∈ 𝒢(U), for
+    each x pick (Wₓ, sˣ) with φ(sˣ) = t on a (smaller) Wₓ. On Wₓ ∩ W_y
+    the sections sˣ and sʸ have the same image under the injective φ, so
+    they agree; glue them to s ∈ ℱ(U). Then φ(s) and t agree locally, so
+    φ(s) = t. The converse (iso ⇒ stalk iso) is clear. Surjectivity used
+    GLUING in ℱ, injectivity used LOCALITY. (c) For X = R, the presheaf
+    P with P(R) = Z and P(U) = 0 otherwise has Pₓ = 0 (every x has a
+    neighbourhood U ≠ R), so P → 0 is an iso on stalks but not on
+    global sections. Common mistakes: believing "surjective on stalks ⇒
+    surjective on sections" (see D4). Now you try: the stalk at 0 of the
+    subsheaf ℐ ⊆ 𝒪_C of functions vanishing at 0. (zC{z})
+
+D3. (a) Construct the sheafification ℱ⁺ of a presheaf ℱ and state its
+    universal property. (b) Identify the sheafification of: the constant
+    presheaf A; the presheaf of bounded continuous functions on R; the
+    image presheaf U ↦ exp(𝒪(U)) ⊆ 𝒪*(U) on C*; the presheaf U ↦
+    H¹_dR(U) on a manifold.
+    Answer: (a) compatible families of germs. (b) the locally constant
+    sheaf A_X; C⁰_R; 𝒪*; the zero sheaf.
+    Teacher explains: (a) Put ℱ⁺(U) = {s : U → ⊔ₓℱₓ with s(x) ∈ ℱₓ, such
+    that every x ∈ U has a neighbourhood W and t ∈ ℱ(W) with s(y) = t_y
+    for all y ∈ W}. This is a sheaf because its sections are functions
+    defined by a LOCAL condition. The map θ : ℱ → ℱ⁺, t ↦ (y ↦ t_y), is
+    an iso on stalks, so (ℱ⁺)ₓ = ℱₓ. UNIVERSAL PROPERTY: every morphism
+    ℱ → 𝒢 with 𝒢 a sheaf factors uniquely as ℱ → ℱ⁺ → 𝒢 (define it on
+    germs; it glues because 𝒢 is a sheaf). θ is an iso iff ℱ is a sheaf.
+    (b) Constant presheaf: a section of ℱ⁺ is locally the germ of a
+    constant, i.e. a locally constant function: this is A_X. Bounded
+    functions: every continuous germ is the germ of a bounded function
+    (restrict to a small interval), so the stalks are all continuous
+    germs and ℱ⁺ = C⁰_R. exp-image: every non-vanishing f has a
+    logarithm on a small disc, so the stalks are 𝒪*ₓ and ℱ⁺ = 𝒪*: but
+    ℱ(C*) ≠ 𝒪*(C*) since z ∉ exp(𝒪(C*)). H¹_dR(U): by the Poincaré lemma
+    every closed form is exact on a small ball, so every stalk is 0 and
+    ℱ⁺ = 0 although H¹_dR(R² ∖ 0) = R. Common mistakes: sheafifying by
+    only adding gluings once (the Čech-H⁰ "plus construction" must in
+    general be applied TWICE; the germ construction works in one step).
+    Now you try: the sheafification of the presheaf of polynomial
+    functions on R, and its sections over (0, 1) ∪ (2, 3). (locally
+    polynomial functions; pairs of polynomials, R[x]²)
+
+D4. (a) Show that the kernel presheaf of a morphism of sheaves is a sheaf
+    and that exactness of sheaves is stalkwise. (b) Show that 0 → Z →
+    𝒪 → 𝒪* → 0 (f ↦ e^{2πif}) is exact on X = C*, but that 𝒪(X) → 𝒪*(X)
+    is not onto. Compute its cokernel, and the cokernel for X = C ∖ {0,
+    1}. (c) Deduce that Γ is not right exact.
+    Answer: (b) cokernel ≅ Z via f ↦ (1/2πi)∮_{|z|=1} f′/f; for C ∖ {0, 1}
+    it is Z². (c) exactly this example.
+    Teacher explains: (a) If φ : ℱ → 𝒢 and sᵢ ∈ ker φ(Uᵢ) are compatible,
+    glue them in ℱ to s; φ(s)|_Uᵢ = φ(sᵢ) = 0 so φ(s) = 0 by locality in
+    𝒢. So ker φ is a sheaf. The image presheaf need not be: im φ and
+    coker φ are the SHEAFIFICATIONS of U ↦ im φ_U and U ↦ coker φ_U.
+    Stalks commute with these constructions (filtered colimits are exact),
+    so 0 → ℱ′ → ℱ → ℱ″ → 0 is exact iff it is exact at every stalk.
+    (b) Stalk at a ∈ C*: a germ f with e^{2πif} = 1 is locally constant
+    with values in Z, so the kernel is Z. Surjective: a non-vanishing g
+    near a has a logarithm on a small disc, g = e^{2πif} with f =
+    (1/2πi)log g. So the sequence is exact. Globally, g = z would need
+    f′ = (1/2πi)g′/g = 1/(2πiz), but ∮_{|z|=1} dz/z = 2πi ≠ 0, so 1/z has
+    no primitive on C*. In general g ∈ 𝒪*(X) is e^{2πif} iff g′/g has a
+    primitive iff all its periods ∮g′/g vanish. On C* the only period is
+    over |z| = 1 and n(g) = (1/2πi)∮g′/g ∈ Z (winding number); n(zᵏ) = k.
+    So coker ≅ Z. On C ∖ {0, 1} there are two independent loops (around 0
+    and around 1): g = zᵃ(z − 1)ᵇ realises (a, b), so coker ≅ Z². The
+    cokernel is H¹(X, Z) (since H¹(X, 𝒪) = 0 on open subsets of C).
+    (c) The surjection of sheaves 𝒪 → 𝒪* is not surjective on Γ(X, −).
+    Common mistakes: checking surjectivity of a sheaf map on global
+    sections; forgetting that the kernel is the constant sheaf Z, not
+    the group Z. Now you try: is d/dz : 𝒪 → 𝒪 surjective on C*? on
+    global sections? (yes as sheaves; no: 1/z, cokernel ≅ C by residues)
+
+D5. (a) Define f_*ℱ and f⁻¹𝒢, state the adjunction, and prove
+    (f⁻¹𝒢)ₓ = 𝒢_{f(x)}. (b) For j : R ∖ {0} → R compute the stalks of
+    j_*Z. (c) For p : S¹ → S¹, z ↦ z², compute the stalks and global
+    sections of p_*Z and describe its monodromy.
+    Answer: (b) (j_*Z)ₓ = Z for x ≠ 0, (j_*Z)₀ = Z². (c) stalks Z²,
+    Γ = Z, monodromy swaps the two factors.
+    Teacher explains: (a) (f_*ℱ)(V) = ℱ(f⁻¹V): a sheaf on Y, since f⁻¹
+    preserves covers. f⁻¹𝒢 is the sheafification of U ↦ colim_{W ⊇ f(U)}
+    𝒢(W). The stalk at x of that presheaf is colim_{U∋x} colim_{W⊇f(U)}
+    𝒢(W) = colim_{W∋f(x)} 𝒢(W) = 𝒢_{f(x)} (every W ∋ f(x) contains f(U)
+    for U = f⁻¹W, and conversely), and sheafification keeps stalks. Hence
+    f⁻¹ is EXACT. ADJUNCTION: Hom_X(f⁻¹𝒢, ℱ) ≅ Hom_Y(𝒢, f_*ℱ), both sides
+    being compatible maps 𝒢(W) → ℱ(U) for f(U) ⊆ W; so f_* is left exact
+    (a right adjoint). (b) For x ≠ 0, small intervals around x avoid 0 and
+    are connected: stalk Z. At 0, (j_*Z)(−ε, ε) = Z((−ε, 0) ∪ (0, ε)) =
+    Z², independent of ε: stalk Z². So (j_*ℱ)₀ is not a stalk of ℱ.
+    (c) For a small arc A ⊂ S¹, p⁻¹(A) is two disjoint arcs, so
+    (p_*Z)(A) = Z² and every stalk is Z². Globally Γ(S¹, p_*Z) =
+    Γ(S¹, Z) = Z (connected). Going once around the base, a lift of a
+    point moves to the OTHER preimage: the two sheets swap, so the
+    monodromy is T = (0 1; 1 0). p_*Z is a rank-2 local system that is not
+    constant (a constant one would have Γ = Z²). Its invariants
+    ker(T − 1) = Z(1, 1) = Z match Γ. Common mistakes: thinking
+    (f_*ℱ)_{f(x)} = ℱₓ (true for closed embeddings, false in general);
+    writing f⁻¹𝒢(U) = 𝒢(f(U)) (f(U) need not be open). Now you try: stalks
+    of j_*Z for j : R² ∖ {x-axis} → R² at (0, 0) and at (0, 1). (Z², Z)
+
+D6. (a) Define flasque sheaves and show that skyscrapers, the Godement
+    sheaf and the constant sheaf on an irreducible space are flasque,
+    while Z_R and C⁰_R are not. (b) Prove: if 0 → ℱ′ → ℱ → ℱ″ → 0 is
+    exact and ℱ′ is flasque, then Γ(X, ℱ) → Γ(X, ℱ″) is surjective.
+    (c) Deduce that if ℱ′ and ℱ are flasque, so is ℱ″.
+    Answer: (b) Zorn's lemma on partial lifts; (c) apply (b) on each U.
+    Teacher explains: (a) Skyscraper x_*A: restriction is id_A or A → 0,
+    both onto. Godement 𝒢(U) = ∏_{x∈U} ℱₓ: restriction is a projection of
+    products, onto. Irreducible X: every non-empty open is connected
+    (and dense), so A_X(U) = A for all U ≠ ∅, restrictions are identities.
+    Z_R: Z = Γ(R) → Γ((0, 1) ∪ (2, 3)) = Z² is not onto. C⁰_R: 1/x on
+    (0, 1) is not the restriction of a continuous function on R.
+    (b) Let t ∈ ℱ″(X). Locally t lifts (stalk surjectivity). Consider
+    pairs (U, s), s ∈ ℱ(U) mapping to t|_U, ordered by extension. Chains
+    have upper bounds (glue), so by ZORN there is a maximal (U, s).
+    Suppose U ≠ X; pick x ∉ U and a lift s′ of t on a neighbourhood V of
+    x. On U ∩ V, s − s′ maps to 0, so s − s′ ∈ ℱ′(U ∩ V). FLASQUE: extend
+    it to r ∈ ℱ′(X). Then s and s′ + r agree on U ∩ V and glue to a lift
+    on U ∪ V ⊋ U: contradiction. So U = X. (c) Given u ∈ ℱ″(U), (b) on U
+    (ℱ′|_U is flasque) lifts u to s ∈ ℱ(U); extend s to X (ℱ flasque) and
+    push it to ℱ″(X): it restricts to u. Consequence (D7): flasque
+    sheaves are Γ-acyclic. Common mistakes: trying to lift t in one step
+    (lifts exist only locally); forgetting that the correction r lives in
+    ℱ′, which is where flasqueness is used. Now you try: show that a
+    sheaf on a discrete space is flasque. (ℱ(U) = ∏_{x∈U} ℱₓ)
+
+D7. (a) Define H^i(X, ℱ) as a derived functor, explain why Sh(X) has
+    enough injectives, and state the long exact sequence. (b) Show that
+    flasque sheaves are acyclic and that H^i may be computed from any
+    flasque resolution. (c) Use the sequence 0 → j_!Z_U → Z_R → i_*Z_K →
+    0 with U = (0, 1), K = R ∖ U to compute H^*(R, j_!Z_U).
+    Answer: (c) H⁰ = 0, H¹ = Z, H^i = 0 for i ≥ 2: a CONTRACTIBLE space
+    with non-zero H¹ for a non-constant sheaf.
+    Teacher explains: (a) Embed ℱ into ∏ₓ (iₓ)_*Iₓ with ℱₓ ⊆ Iₓ an
+    injective abelian group: this is injective (Hom(𝒢, ∏(iₓ)_*Iₓ) =
+    ∏Hom(𝒢ₓ, Iₓ), exact in 𝒢). Take an injective resolution 0 → ℱ → I⁰ →
+    I¹ → ... and set H^i(X, ℱ) = H^i(Γ(X, I^•)). H⁰ = Γ (left exactness).
+    A short exact sequence 0 → ℱ′ → ℱ → ℱ″ → 0 gives
+       0 → H⁰(ℱ′) → H⁰(ℱ) → H⁰(ℱ″) → H¹(ℱ′) → H¹(ℱ) → H¹(ℱ″) → H²(ℱ′) → ...
+    (b) Injectives are flasque (Hom(j_!Z_U, I) = I(U) and j_!Z_U ⊆ Z_X,
+    so I(X) → I(U) is onto). If ℱ is flasque,
+    embed it in an injective I, with quotient 𝒬: flasque by D6(c). The
+    long sequence and D6(b) give H¹(ℱ) = coker(Γ(I) → Γ(𝒬)) = 0 and
+    H^{i+1}(ℱ) = H^i(𝒬) for i ≥ 1; induction (𝒬 is flasque too) gives
+    H^i(ℱ) = 0 for all i > 0. The standard lemma then says that ANY
+    resolution by Γ-acyclics computes R^iΓ. (c) Stalks: on U the sequence
+    is 0 → Z → Z → 0 → 0, on K it is 0 → 0 → Z → Z → 0: exact. The
+    long exact sequence, with H^i(R, Z) = 0 (i > 0) and H^i(R, i_*Z_K) =
+    H^i(K, Z) = 0 (i > 0; K = (−∞, 0] ∪ [1, ∞) is two contractible
+    pieces):
+       0 → H⁰(j_!Z_U) → Z → Z² → H¹(j_!Z_U) → 0.
+    The middle map is the diagonal n ↦ (n, n). So H⁰ = 0 and H¹ ≅ Z²/Z ≅
+    Z. (This is H¹_c((0, 1)) = Z.) Common mistakes: "contractible ⇒
+    acyclic" — true only for constant (or locally constant) coefficients;
+    confusing i_*Z_K with a constant sheaf on R. Now you try: H^*([0, 1],
+    j_!Z_U) for U = [0, 1) (open in [0, 1]). (all 0: Z → Z(pt) is iso)
+
+D8. (a) Define soft and fine sheaves and prove that on a paracompact
+    Hausdorff space every fine sheaf is soft; show Z_R is not soft.
+    (b) Prove de Rham's theorem H^i(M, R) ≅ H^i_dR(M) and compute
+    H^*(R² ∖ {0}, R). (c) Using the fine sheaf C⁰_X of real functions,
+    show H¹(X, Z) ≅ C(X, S¹)/exp(2πi C(X, R)) for X paracompact, and get
+    H¹(S¹, Z) ≅ Z.
+    Answer: (a) extend with a partition of unity; the closed set {0, 1}.
+    (b) R, R, 0. (c) the class of g : X → S¹ is its "degree".
+    Teacher explains: (a) SOFT: every section over a closed set K
+    (= a section on some open V ⊇ K) extends to X, after shrinking. FINE:
+    for every locally finite open cover {Uᵢ} there are endomorphisms ηᵢ
+    of ℱ with supp ηᵢ ⊆ Uᵢ and ∑ηᵢ = id; e.g. multiplication by a
+    partition of unity on any C⁰- or C^∞-module. Fine ⇒ soft: given s on
+    V ⊇ K, cover X by V and X ∖ K, take η₁ + η₂ = id with supp η₁ ⊆ V,
+    supp η₂ ⊆ X ∖ K; then η₁(s) (extended by 0 outside supp η₁) is a global
+    section equal to s near K. Z_R: the section equal to 0 near 0 and 1
+    near 1 over K = {0, 1} does not extend to the connected R. Soft
+    sheaves on paracompact spaces are acyclic (same proof as D6/D7 with
+    closed sets). (b) The sequence 0 → R_M → Ω⁰ → Ω¹ → Ω² → ... is exact
+    by the POINCARÉ LEMMA (closed forms are locally exact; locally closed
+    0-forms are constants), and each Ω^p is fine. So H^i(M, R) =
+    H^i(Γ(Ω^•)) = H^i_dR(M). On R² ∖ 0, dθ is closed not exact, and
+    H¹_dR = R·[dθ], H² = 0 (non-compact surface): R, R, 0. (c) 0 → Z → C⁰
+    → C⁰_{S¹} → 0 (f ↦ e^{2πif}) is exact (local logarithms). H¹(X, C⁰) =
+    0 as C⁰ is fine, so H¹(X, Z) = coker(C(X, R) → C(X, S¹)). For X = S¹,
+    g ↦ deg g gives C(S¹, S¹)/exp ≅ Z (a map lifts iff degree 0).
+    Common mistakes: calling Z_R fine because R is paracompact — fineness
+    is about the sheaf, not the space; forgetting Poincaré's lemma is what
+    makes the de Rham complex a RESOLUTION. Now you try: H¹(T², Z) via (c).
+    (Z²: homotopy classes [T², S¹] ↔ pairs of degrees)
+
+D9. (a) Define the Čech complex of a cover 𝔘 and show Ȟ⁰(𝔘, ℱ) = Γ(X, ℱ).
+    (b) Compute Ȟ^*(𝔘, Z) for S¹ with 𝔘 = {U, V} two open arcs whose
+    intersection has two components, and for three arcs U₁, U₂, U₃ with
+    connected pairwise overlaps and empty triple overlap. (c) State
+    Leray's theorem and explain why the answers equal H^*(S¹, Z).
+    Answer: (b) both give Ȟ⁰ = Z, Ȟ¹ = Z, Ȟ^p = 0 for p ≥ 2.
+    Teacher explains: (a) Č^p(𝔘, ℱ) = ∏_{i₀<...<i_p} ℱ(U_{i₀} ∩ ... ∩
+    U_{i_p}) with (δc)_{i₀...i_{p+1}} = ∑_{k=0}^{p+1} (−1)^k
+    c_{i₀...î_k...i_{p+1}}|. In degree 0, (δc)_{ij} = c_j − c_i, so a
+    0-cocycle is a family agreeing on overlaps, i.e. (sheaf axioms)
+    exactly a global section. (b) Two arcs: Č⁰ = Z(U) × Z(V) = Z², Č¹ =
+    Z(U ∩ V) = Z² (two components W₁, W₂); δ(a, b) = (b − a, b − a). The
+    kernel is {a = b} ≅ Z = Ȟ⁰; the image is the diagonal, and Z²/diagonal
+    ≅ Z via (x, y) ↦ y − x: Ȟ¹ = Z. Three arcs: Č⁰ = Z³, Č¹ = Z³ (U₁₂,
+    U₁₃, U₂₃), Č² = 0; δ(a₁, a₂, a₃) = (a₂ − a₁, a₃ − a₁, a₃ − a₂) has
+    kernel the constants (Ȟ⁰ = Z) and rank 2 image, which is a SATURATED
+    sublattice (it contains (1, 1, 0) and (0, 1, 1)); so Ȟ¹ = Z³/Z² ≅ Z,
+    detected by x₁₂ − x₁₃ + x₂₃. The second cover is a GOOD cover: its
+    nerve is the boundary of a triangle, and Čech cohomology of Z on a
+    good cover is simplicial cohomology of the nerve. (c) LERAY: if ℱ has
+    no higher cohomology on every finite intersection of the cover, then
+    Ȟ^p(𝔘, ℱ) ≅ H^p(X, ℱ). Arcs and their intersections are disjoint
+    unions of intervals, acyclic for Z. Common mistakes: using ordered
+    tuples inconsistently (with alternating cochains only i₀ < ... < i_p
+    are needed); taking Č¹ = Z instead of Z² when the overlap is
+    disconnected. Now you try: Ȟ^*(𝔘, Z/2) for the two-arc cover. (Z/2,
+    Z/2)
+
+D10. (a) For S² covered by two open hemispheres (overlap an open band),
+     compute Ȟ^*(𝔘, Z) and explain why it is NOT H^*(S², Z). (b) Cover S²
+     by the four open sets obtained by thickening the faces of an
+     inscribed tetrahedron (all intersections contractible or empty,
+     quadruple overlap empty) and compute Ȟ^*(𝔘, Z). (c) Explain why
+     Ȟ¹(X, ℱ) = H¹(X, ℱ) always, and interpret H¹(X, 𝒪*) as line bundles.
+     Answer: (a) Z, 0, 0 (wrong in degree 2: the band has H¹ ≠ 0).
+     (b) ranks 4, 6, 4 and Ȟ⁰ = Z, Ȟ¹ = 0, Ȟ² = Z.
+     Teacher explains: (a) Č⁰ = Z², Č¹ = Z(band) = Z (connected), δ(a, b)
+     = b − a is onto: Ȟ⁰ = Z, Ȟ¹ = 0, and there is no Č². But H²(S², Z) =
+     Z. Leray fails: the band ≃ S¹ has H¹(band, Z) = Z ≠ 0. (In fact the
+     Mayer–Vietoris sequence shows H²(S²) ≅ H¹(band) — the missing class
+     lives there.) (b) The nerve is the boundary of a 3-simplex: 4
+     vertices, 6 edges, 4 triangles, so Č⁰ = Z⁴, Č¹ = Z⁶, Č² = Z⁴, Č³ = 0.
+     δ⁰ has kernel the constants, rank 3. δ¹ has rank 3 (its kernel
+     contains im δ⁰, and a direct Smith-form computation gives invariant
+     factors 1, 1, 1). Hence Ȟ⁰ = Z, Ȟ¹ = (6 − 3 − 3 = 0), and Ȟ² = Z⁴/im
+     δ¹ ≅ Z (no torsion, all invariant factors 1). Check: χ = 4 − 6 + 4 =
+     2 = χ(S²). (c) A Čech 1-cocycle (g_ij) with g_ij + g_jk = g_ik
+     describes gluing data; refining the cover never loses a class
+     (Ȟ¹(𝔘) → Ȟ¹(X) is injective), and every derived H¹ class is killed
+     on some cover, whence Ȟ¹ = H¹ on any space. For 𝒪*, cocycles g_ij ∈
+     𝒪*(U_ij) are TRANSITION FUNCTIONS of line bundles, coboundaries
+     g_ij = h_j/h_i change of trivialisations: H¹(X, 𝒪_X*) = Pic(X).
+     Common mistakes: trusting any cover; Euler characteristic alone does
+     not give the individual groups. Now you try: Ȟ^*(𝔘, Z/2) for the
+     tetrahedral cover. (Z/2, 0, Z/2)
+
+D11. Using the standard cover U₀ = {x₀ ≠ 0}, U₁ = {x₁ ≠ 0} of P¹ over a
+     field k, compute H⁰ and H¹ of 𝒪(n) by Čech cohomology for every
+     n ∈ Z; give h⁰, h¹ for n = 3, −1, −4, and verify χ = n + 1.
+     Answer: h⁰ = max(n + 1, 0), h¹ = max(−n − 1, 0); n = 3: (4, 0);
+     n = −1: (0, 0); n = −4: (0, 3).
+     Teacher explains: With t = x₁/x₀, 𝒪(n)(U₀) = k[t], 𝒪(n)(U₁) =
+     k[t⁻¹]·tⁿ (trivialise by x₀ⁿ), and 𝒪(n)(U₀₁) = k[t, t⁻¹]. The Čech
+     complex is
+        0 → k[t] ⊕ tⁿk[t⁻¹] → k[t, t⁻¹] → 0,   (a, b) ↦ b − a.
+     U₀, U₁, U₀₁ are affine, where quasi-coherent sheaves are acyclic, so
+     Leray applies. H⁰ = k[t] ∩ tⁿk[t⁻¹] = span{tᵐ : 0 ≤ m ≤ n}, of
+     dimension n + 1 if n ≥ 0, else 0. H¹ = k[t, t⁻¹]/(k[t] + tⁿk[t⁻¹]):
+     the monomials tᵐ NOT in either summand satisfy m < 0 and m > n, i.e.
+     n < m < 0, which is −n − 1 monomials when n ≤ −2, else none. n = 3:
+     1, t, t², t³: h⁰ = 4, h¹ = 0. n = −1: 0, 0. n = −4: t⁻¹, t⁻², t⁻³:
+     h¹ = 3. χ = h⁰ − h¹ = n + 1 in all cases (Riemann–Roch on P¹). Note
+     H¹(P¹, 𝒪(−2)) = k is dual to H⁰(𝒪) (Serre duality, ω = 𝒪(−2)).
+     Common mistakes: counting t⁰ or tⁿ in H¹ (they lie in k[t] or
+     tⁿk[t⁻¹]); forgetting that ČECH on this cover is exact because the
+     pieces are affine. Now you try: h⁰, h¹ of 𝒪(−2) ⊕ 𝒪(5). (6, 1)
+
+D12. (a) Define locally constant sheaves and explain the correspondence
+     with representations of π₁. (b) For a local system ℒ on S¹ with fibre
+     M and monodromy T, compute H⁰ and H¹ with the two-arc cover.
+     (c) Apply it to: the orientation sheaf of the Möbius band (M = Z,
+     T = −1); p_*Z for p(z) = z² (T = swap); and the sheaf of solutions of
+     zf′ = αf on C* (α ∈ C).
+     Answer: (b) H⁰ = ker(T − 1), H¹ = coker(T − 1). (c) (0, Z/2);
+     (Z, Z); (C, C) if α ∈ Z, (0, 0) otherwise.
+     Teacher explains: (a) ℒ is LOCALLY CONSTANT if every point has a
+     neighbourhood U with ℒ|_U ≅ M_U. Along a path γ from x to y, cover γ
+     by such U's and continue sections: this gives isomorphisms ℒₓ → ℒ_y
+     depending only on the homotopy class of γ. Loops give ρ : π₁(X, x) →
+     Aut(ℒₓ). Conversely, from ρ build ℒ = (X̃ × M)/π₁ (sections: locally
+     constant functions s on the universal cover with s(γx̃) = ρ(γ)s(x̃)).
+     These are inverse equivalences (X connected, locally path-connected,
+     semilocally simply connected). (b) Trivialise ℒ on U and V; on the
+     two components W₁, W₂ of U ∩ V glue by id and by T. Then Č⁰ = M², Č¹
+     = M² and δ(a, b) = (b − a, b − Ta). ker δ: b = a and a = Ta, so H⁰ =
+     ker(T − 1). For H¹, the map (x, y) ↦ y − x from M² to M/(T − 1)M is
+     onto and kills δ(a, b) since (b − Ta) − (b − a) = (1 − T)a; its
+     kernel is exactly im δ. So H¹ = M/(T − 1)M. (c) Möbius: T − 1 = −2 on
+     Z: H⁰ = 0 (no global orientation), H¹ = Z/2. p_*Z: T − 1 = (−1 1;
+     1 −1), kernel Z(1, 1), image Z(1, −1) saturated: (Z, Z) = H^*(S¹, Z),
+     as it must be since p is finite (p_* exact, H(S¹, p_*Z) = H(S¹, Z)).
+     Solutions of zf′ = αf are c·z^α locally; continuing around 0
+     multiplies by λ = e^{2πiα}: T = λ on C. If α ∈ Z, λ = 1: (C, C);
+     otherwise λ − 1 is invertible: (0, 0). Common mistakes: "stalks
+     isomorphic ⇒ sheaves isomorphic" (Möbius vs Z_{S¹}); computing H¹ as
+     ker instead of coker. Now you try: M = Z², T = (0 −1; 1 0). (H⁰ = 0,
+     H¹ = Z/2: det(T − 1) = 2)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Sections. Compute Γ(U, ℱ) (X locally connected; Z_X constant sheaf).
+    a) Γ(R, Z_R)                        b) Γ(R ∖ {0}, Z_R)
+    c) Γ(R ∖ {0, 1, 2}, Z_R)            d) Γ(R² ∖ {0}, Z)
+    e) Γ(R² ∖ x-axis, Z)                f) Γ(R² ∖ (both axes), Z)
+    g) Γ(R³ ∖ unit circle, Z)           h) Γ(S¹ ∖ {3 points}, Z)
+    i) Γ(R² ∖ unit circle, Z/2)         j) Γ(R ∖ Z, Z) (describe)
+    k) the constant PRESHEAF Z on (0, 1) ∪ (2, 3)
+    l) Γ(S¹, orientation sheaf of the Möbius band)
+    m) Γ(S¹, p_*Z), p(z) = z³; and over a small arc
+    n) Γ(R, j_!Z_U), U = (0, 1)         o) Γ(R, j_*Z_U), U = R ∖ {0}
+    p) Γ(C*, solutions of zf′ = f/2)     q) Γ(C*, solutions of zf′ = 3f)
+    r) Γ(R, x_*A) (skyscraper at x)      s) Γ(C, 𝒪*)/exp(Γ(C, 𝒪))
+    Answers:
+      a) Z        b) Z²       c) Z⁴       d) Z        e) Z²
+      f) Z⁴       g) Z (the complement of a circle in R³ is connected)
+      h) Z³       i) (Z/2)²   j) ∏_{n∈Z} Z (one integer per interval)
+      k) Z (vs Z² for the sheaf)           l) 0
+      m) Z; Z³    n) 0 (support of a section must be closed in R)
+      o) Z²       p) 0 (√z: monodromy −1)  q) C (c·z³)
+      r) A        s) 0 (C simply connected: every g ∈ 𝒪*(C) has a log)
+
+M2. Sheaf (S), presheaf but not sheaf (P), or not even a presheaf (N)
+    under restriction? For P name the failing axiom.
+    a) continuous functions on X      b) bounded continuous functions
+    c) constant real functions        d) U ↦ Z for all U, incl. ∅
+    e) L¹(U) (integrable functions)   f) L¹_loc(U)
+    g) C^∞ functions with compact support in U
+    h) polynomial functions on U ⊆ R  i) harmonic functions on U ⊆ R²
+    j) U ↦ H¹(U; Z) (U ⊆ R²)          k) U ↦ C⁰(U)/{constants}
+    l) sections of a vector bundle     m) real-analytic functions
+    n) holomorphic f on U with f ≠ 0 and a logarithm on U
+    o) continuous maps U → S¹ (group) p) holomorphic 1-forms that are exact
+    q) U ↦ {f ∈ 𝒪(U) : f′ = f}        r) meromorphic functions on U ⊆ C
+    Answers:
+      a) S      b) P (gluing)       c) P (gluing on disjoint opens)
+      d) P (locality/gluing: a sheaf has ℱ(∅) = 0)
+      e) P (gluing: 1 on R)          f) S
+      g) N (extension by zero, not restriction, is natural; restriction
+         of a compactly supported function need not be compactly
+         supported)
+      h) P (gluing on disconnected U)          i) S
+      j) P (locality: dθ ≠ 0 on R² ∖ 0 but 0 on small discs)
+      k) P (locality: on (0, 1) ∪ (2, 3) the class of 𝟙_{(2,3)} is
+         locally constant, hence locally 0, but it is not 0)
+      l) S      m) S      n) P (gluing: z on C*)       o) S
+      p) P (gluing: dz/z)            q) S (a local system: c·e^z)   r) S
+
+M3. Stalks. Compute ℱₓ.
+    a) (Z_R)₅                        b) (x_*A)_y, y ≠ x, X Hausdorff
+    c) (x_*A)ₓ                       d) 𝒪_{C,0}
+    e) ideal sheaf of {0} in 𝒪_C, at 0 and at 1
+    f) (j_!Z_U)₀ and (j_!Z_U)_{1/2}, U = (0, 1) ⊂ R
+    g) (j_*Z_U)₀ and (j_*Z_U)₂, U = (0, 1) ⊂ R
+    h) (j_*Z_U)₀, U = R ∖ {0}         i) (j_*Z_U)₀, U = R² ∖ {0}
+    j) (j_*Z_U)_{(0,0)}, U = R² ∖ x-axis
+    k) (j_*Z_U) at (0, 0) and at (1, 0), U = R² ∖ ([0, ∞) × {0})
+    l) (p_*Z)_y, p : S¹ → S¹, z ↦ z⁵
+    m) (p_*Z)_y, p : R → S¹, t ↦ e^{2πit}
+    n) (f_*Z_R)₀ and (f_*Z_R)₁, f : R → R constant 0
+    o) presheaf P(R) = Z, P(U) = 0 (U ≠ R), at any x
+    p) (C^∞_R / x·C^∞_R) at 0 and at 1
+    q) (f⁻¹𝒢)ₓ for f : X → Y, and (f⁻¹A_Y)ₓ
+    r) (i⁻¹𝒪_C)ₓ, i : R ↪ C, x ∈ R
+    Answers:
+      a) Z       b) 0       c) A       d) C{z}
+      e) zC{z}; C{z − 1} (all germs: ℐ = 𝒪 away from 0)
+      f) 0; Z    g) Z ((0, ε) connected); 0     h) Z²
+      i) Z (punctured disc connected)          j) Z²
+      k) Z (disc minus a radius is connected); Z² (disc cut in two)
+      l) Z⁵      m) ∏_{n∈Z} Z (preimage of an arc: Z copies)
+      n) Z (= Γ(R, Z)); 0 (small nbhd of 1 has empty preimage)
+      o) 0       p) R (f ↦ f(0); Hadamard: f(0) = 0 ⇒ f = xg); 0 (x is
+         invertible near 1)
+      q) 𝒢_{f(x)}; A                          r) C{z − x}
+
+M4. Sheafification. Identify ℱ⁺ (a known sheaf, or its stalks).
+    a) the constant presheaf Z on R     b) bounded continuous functions
+    c) polynomial functions on R; sections of ℱ⁺ over (0, 1) ∪ (2, 3)
+    d) U ↦ exp(𝒪(U)) ⊆ 𝒪*(U) on C*     e) U ↦ H¹_dR(U) on R² ∖ {0}
+    f) U ↦ Z^{π₀(U)} on R               g) P(R) = Z, P(U) = 0 (U ≠ R)
+    h) U ↦ Z if 0 ∈ U, 0 otherwise (identity restrictions)
+    i) X = {a, b} discrete, P(X) = P({a}) = P({b}) = Z, diagonal
+       restrictions: ℱ⁺(X)
+    j) U ↦ C^∞(U)/{constants} on R
+    k) U ↦ d(C^∞(U)) ⊆ Ω¹(U) (exact 1-forms) on R² ∖ {0}
+    l) U ↦ Z-valued locally constant functions with FINITE image, on R;
+       compare sections over R ∖ Z
+    m) U ↦ 𝒪(U)/z𝒪(U) on C            n) U ↦ H¹(U; Z) on S¹
+    o) U ↦ ℱ(U)/𝒢(U) for sheaves 𝒢 ⊆ ℱ
+    p) U ↦ ℱ(U) ⊗ Q for ℱ = Z_X
+    Answers:
+      a) Z_R (locally constant functions)   b) C⁰_R
+      c) locally polynomial functions (stalk R[x]); R[x]²
+      d) 𝒪*       e) 0 (Poincaré lemma)      f) already a sheaf, Z_R
+      g) 0 (all stalks 0)                   h) already a sheaf: 0_*Z
+      i) Z² (P was not a sheaf: gluing fails on {a} ∪ {b})
+      j) ≅ Ω¹_R via f ↦ df (kernel of d on germs = constants)
+      k) the sheaf 𝒵¹ of CLOSED 1-forms (dθ is locally exact)
+      l) Z_R; the presheaf gives finitely-valued sequences, the sheaf
+         gives all of ∏_{n∈Z} Z
+      m) the skyscraper C at 0 (stalk C{z}/zC{z} = C; z invertible off 0)
+      n) 0 (arcs are contractible)          o) the quotient sheaf ℱ/𝒢
+      p) Q_X
+
+M5. Exactness. For each map φ of sheaves say whether it is injective (I)
+    and surjective (S) as a sheaf map, and give the cokernel of φ on
+    GLOBAL sections.
+    a) ·2 : Z_X → Z_X, X = S¹         b) exp : 𝒪 → 𝒪* on C
+    c) exp : 𝒪 → 𝒪* on C*             d) exp on C ∖ {0, 1, 2}
+    e) exp on the annulus 1 < |z| < 2  f) d/dz : 𝒪 → 𝒪 on C ∖ {0, 1}
+    g) d/dx : C^∞ → C^∞ on R ∖ {0}     h) d : Ω⁰ → 𝒵¹ on R² ∖ {0}
+    i) d : Ω⁰ → 𝒵¹ on R² ∖ {2 points}  j) d : Ω⁰ → 𝒵¹ on T²
+    k) d : Ω⁰ → 𝒵¹ on S²              l) ·x : C^∞_R → C^∞_R
+    m) f ↦ f(0) : C⁰_R → 0_*R (skyscraper)
+    n) restriction Z_R → i_*Z_K, K = {0, 1}
+    o) R_X → (R/Z)_X (constant sheaves), X = S¹
+    p) C⁰ → C⁰_{S¹}, f ↦ e^{2πif}, on S¹, T² and S²
+    Answers:
+      a) I, not S (coker sheaf Z/2); Γ-coker Z/2
+      b) not I (kernel Z), S; 0                 c) S; Z (winding number)
+      d) S; Z³                 e) S; Z           f) S; C² (two residues)
+      g) S; 0 (antiderivative on each half-line; kernel R²)
+      h) S (Poincaré lemma); R (class of dθ)    i) S; R²
+      j) S; R²                 k) S; 0
+      l) I (xf = 0 ⇒ f = 0 off 0 ⇒ f = 0), not S; coker sheaf 0_*R
+      m) S; 0                  n) S; Z (Z → Z² diagonal)
+      o) S; 0 (Γ = R → R/Z onto)
+      p) S; Z, Z², 0 (H¹(X; Z), since C⁰ is fine)
+
+M6. Direct and inverse images. Compute.
+    a) f_*ℱ for f : X → pt            b) f⁻¹A for f : X → pt
+    c) stalks and Γ of i_*A, i : {0} ↪ R
+    d) i⁻¹Z_R for i : K ↪ R           e) i⁻¹C⁰_R for i : {0} ↪ R
+    f) i⁻¹j_*Z_U, U = R ∖ {0}, i : {0} ↪ R
+    g) j⁻¹j_*ℱ for j : U ↪ X open     h) i⁻¹i_*ℱ for i closed
+    i) the unit Z_R → j_*j⁻¹Z_R at 0, U = R ∖ {0}
+    j) p_*Z for p : S¹ → S¹, z ↦ z³: stalks, monodromy, Γ
+    k) p⁻¹Z_{S¹} for the same p
+    l) p_*Z for p : R → S¹, t ↦ e^{2πit}: Γ(S¹, p_*Z)
+    m) f_*Z_{R²} for the projection f : R² → R
+    n) f_*Z_X for X = {a, b} discrete, f : X → pt
+    o) Γ(R, j_!Z_U) and Γ(R, j_*Z_U) for U = (0, 1)
+    p) R^q f_*Z for f : T² → pt, q = 0, 1, 2
+    q) Hom(f⁻¹𝒢, ℱ) ≅ ?               r) (i_*ℱ)_{i(x)} for i closed
+    Answers:
+      a) the group Γ(X, ℱ)     b) the constant sheaf A_X
+      c) A at 0, 0 elsewhere; Γ = A      d) Z_K       e) C⁰-germs at 0
+      f) Z²       g) ℱ       h) ℱ       i) the diagonal Z → Z²
+      j) Z³; cyclic permutation of the three sheets; Z
+      k) Z_{S¹}   l) Z (= Γ(R, Z))
+      m) Z_R (preimages of intervals are connected strips)
+      n) Z²       o) 0; Z    p) Z, Z², Z (H^q(T², Z))
+      q) Hom(𝒢, f_*ℱ)          r) ℱₓ
+
+M7. For each sheaf decide: flasque (Fl), soft (So), fine (Fi) — answer
+    Y/N three times (spaces paracompact Hausdorff).
+    a) Z_R                             b) C⁰_R
+    c) C^∞_M                           d) 𝒪_C
+    e) Ω^p_M                           f) a skyscraper x_*A on R
+    g) the Godement sheaf of all Z-valued functions on R
+    h) any sheaf on a discrete space   i) distributions 𝒟′ on R
+    j) j_*Z_U, U = (0, ∞) ⊂ R          k) j_!Z_U, U = (0, ∞) ⊂ R
+    l) i_*C⁰_K, K ⊆ R closed           m) L¹_loc on R
+    n) the ideal sheaf ℐ₀ ⊆ C⁰_R of functions vanishing at 0
+    o) (Z/2)_C on the Cantor set C     p) smooth sections of a vector
+                                          bundle
+    Answers:
+      a) N N N (K = {0, 1})            b) N Y Y (1/x on (0, 1))
+      c) N Y Y     d) N N N (identity theorem)          e) N Y Y
+      f) Y Y Y     g) Y Y Y (indicator functions of a partition)
+      h) Y Y Y     i) N Y Y (e^{1/x} on (0, ∞) does not extend)
+      j) N N N (Z → Z² for (1, 2) ∪ (3, 4))
+      k) N N N (Γ(R) = 0 but Γ((1, 2)) = Z)
+      l) N Y Y (a C⁰_R-module; Fl fails e.g. for K = R)
+      m) N Y Y (1/x ∈ L¹_loc(0, 1))
+      n) N Y Y     o) N Y Y (clopen partitions of unity; flasque fails
+                    for values alternating towards a removed point)
+      p) N Y Y
+
+M8. Čech cohomology Ȟ^*(𝔘, ℱ) for the given cover (ranks of Č^p first).
+    a) S¹, two arcs, Z                  b) S¹, three arcs (good), Z
+    c) S¹, n ≥ 3 arcs in a cycle, Z     d) S¹, the cover {S¹}, Z
+    e) S², two hemispheres, Z           f) S², tetrahedral cover, Z
+    g) S³, five opens from the faces of a 4-simplex, Z
+    h) R, {(−∞, 1), (0, ∞)}, Z
+    i) S¹ ∨ S¹, good cover with nerve two hollow triangles sharing a
+       vertex
+    j) T², star cover of the 7-vertex triangulation (7, 21, 14 sets)
+    k) RP², star cover of the 6-vertex triangulation (6, 15, 10), Z and
+       Z/2
+    l) S¹, two arcs, Möbius orientation sheaf
+    m) any cover, skyscraper x_*A
+    n) P¹, standard cover, 𝒪(n): (h⁰, h¹) for n = 0, −2, −3, 5
+    o) P¹: h⁰ and h¹ of 𝒪(−2) ⊕ 𝒪(−3) ⊕ 𝒪(1)
+    Answers:
+      a) (2, 2): Z, Z           b) (3, 3): Z, Z       c) (n, n): Z, Z
+      d) (1): Z, 0 — wrong, S¹ is not acyclic
+      e) (2, 1): Z, 0, 0 — wrong in degree 2 (Leray fails)
+      f) (4, 6, 4): Z, 0, Z     g) (5, 10, 10, 5): Z, 0, 0, Z
+      h) (2, 1): Z, 0           i) (5, 6): Z, Z² (χ = −1)
+      j) χ = 0: Z, Z², Z        k) χ = 1: Z, 0, Z/2; Z/2, Z/2, Z/2
+      l) 0, Z/2                 m) A, 0, 0, ...
+      n) (1, 0), (0, 1), (0, 2), (6, 0)          o) 2 and 3
+
+M9. Sheaf cohomology H^i(X, A_X) of constant sheaves (list the non-zero
+    groups; X locally contractible unless stated).
+    a) a point        b) Rⁿ          c) S¹         d) Sⁿ (n ≥ 1)
+    e) T²             f) Σ_g         g) RP²        h) RP³
+    i) Klein bottle K j) RP² with A = Z/2          k) K with A = Q
+    l) CP²            m) R² ∖ {3 points}          n) S¹ ∨ S¹
+    o) Möbius band    p) S¹ × S², A = R           q) R³ ∖ unit circle
+    r) the Cantor set C (not locally connected)
+    s) A¹ with the Zariski topology, A = Z
+    t) H^i(M, ℱ) for i > n, M an n-manifold, ℱ arbitrary
+    Answers:
+      a) H⁰ = Z          b) H⁰ = Z      c) Z, Z        d) Z in 0 and n
+      e) Z, Z², Z        f) Z, Z^{2g}, Z               g) Z, 0, Z/2
+      h) Z, 0, Z/2, Z    i) Z, Z, Z/2   j) Z/2, Z/2, Z/2
+      k) Q, Q, 0         l) Z, 0, Z, 0, Z              m) Z, Z³
+      n) Z, Z²           o) Z, Z        p) R, R, R, R
+      q) Z, Z, Z (≃ S¹ ∨ S²)
+      r) H⁰ = C(C, Z), free of countable rank; H^i = 0 for i > 0
+         (singular H⁰ would be Z^C: the theories differ here)
+      s) Z, 0 (irreducible ⇒ Z_X flasque)       t) 0
+
+M10. Long exact sequences. Compute, using 0 → j_!Z_U → Z_X → i_*Z_K → 0
+     (K = X ∖ U), Mayer–Vietoris, or the exponential sequence.
+     a) H^*(S¹, j_!Z_U), U = S¹ ∖ {pt}
+     b) H^*(S¹, j_!Z_U), U = S¹ ∖ {2 points}
+     c) H^*([0, 1], j_!Z_U), U = (0, 1)
+     d) H^*([0, 1], j_!Z_U), U = [0, 1)
+     e) H^*(R, j_!Z_U), U = (0, 1)     f) H^*(R, j_!Z_U), U = (0, ∞)
+     g) H^*(R, j_!Z_U), U = R ∖ {0}
+     h) H^*(S², j_!Z_U), U = S² ∖ {pt}
+     i) H^*(S², Z) by Mayer–Vietoris on two hemispheres
+     j) H¹(S¹, (R/Z)_X) from 0 → Z → R → R/Z → 0 (constant sheaves)
+     k) H^*(S¹, Z/n) from 0 → Z →(·n) Z → Z/n → 0
+     l) Pic(P¹) = H¹(P¹, 𝒪*) (use H¹(𝒪) = H²(𝒪) = 0)
+     m) Pic(U) for U ⊆ C open (H¹(U, 𝒪) = 0)
+     n) Pic⁰ and Pic/Pic⁰ of a compact Riemann surface of genus g
+     o) H^i(X, x_*A), i > 0
+     p) H^*(T², j_!Z_U), U = T² ∖ {pt}
+     Answers:
+       a) 0, Z (H⁰: Z → Z iso)          b) 0, Z² (0 → Z → Z² → H¹ → Z → 0)
+       c) 0, Z                          d) 0, 0
+       e) 0, Z (Z → Z² diagonal)        f) 0, 0
+       g) 0, 0 (Z → Z iso; note ≠ H_c(U) since R is not compact)
+       h) 0, 0, Z                       i) Z, 0, Z (H²(S²) ≅ H¹(band))
+       j) R/Z (H¹(Z) = Z ↪ H¹(R) = R, cokernel R/Z)
+       k) Z/n, Z/n                      l) Z (degree; c₁ : Pic ≅ H²(P¹, Z))
+       m) 0 (H²(U, Z) = 0 too)
+       n) Pic⁰ ≅ H¹(X, 𝒪)/H¹(X, Z) ≅ Cᵍ/Z^{2g} (the Jacobian); Z (degree)
+       o) 0 (skyscrapers are flasque)
+       p) 0, Z², Z (Z → Z iso in H⁰; H¹(T²) → H¹(pt) = 0)
+
+M11. Locally constant sheaves. On S¹ with fibre M and monodromy T give
+     (H⁰, H¹) = (ker(T − 1), coker(T − 1)); then answer the other parts.
+     a) M = Z, T = 1                  b) M = Z, T = −1
+     c) M = Z², T = (0 1; 1 0)        d) M = Z², T = (1 1; 0 1)
+     e) M = Z², T = (1 2; 0 1)        f) M = Z², T = (2 1; 1 1)
+     g) M = Z², T = (0 −1; 1 0)       h) M = Z², T = −I
+     i) M = Z², T = (0 1; −1 −1)      j) M = Z³, T = cyclic permutation
+     k) M = Z², T = diag(3, 1)        l) M = Z/6, T = −1
+     m) M = Q, T = 2                  n) M = C, T = e^{2πi/3}
+     o) number of rank-1 Z-local systems (up to iso) on S¹, T², RP²,
+        K (Klein), Σ_g, S², S¹ ∨ S¹
+     p) rank-1 local systems with fibre F_p on S¹ (up to iso)
+     q) rank-1 C-local systems on C ∖ {3 points} (parameter space)
+     r) T², M = Z, monodromies (−1, 1): H⁰, H¹, H² (complex M → M² → M)
+     s) local systems on a simply connected space
+     Answers:
+       a) Z, Z          b) 0, Z/2        c) Z, Z          d) Z, Z
+       e) Z, Z ⊕ Z/2    f) 0, 0 (det(T − 1) = −1)       g) 0, Z/2
+       h) 0, (Z/2)²     i) 0, Z/3        j) Z, Z          k) Z, Z ⊕ Z/2
+       l) Z/2, Z/2      m) 0, 0          n) 0, 0
+       o) |Hom(π₁, {±1})| = |H¹(X; Z/2)|: 2, 4, 2, 4, 2^{2g}, 1, 4
+       p) p − 1 (Aut(F_p) = F_p* abelian: iso classes = Hom(Z, F_p*))
+       q) (C*)³ (monodromy around each puncture)
+       r) 0, Z/2, Z/2 (d⁰m = (−2m, 0), d¹(x, y) = 2y)
+       s) all constant
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) A presheaf all of whose stalks are 0 is the zero presheaf.
+     b) A sheaf all of whose stalks are 0 is the zero sheaf.
+     c) A morphism of sheaves that is surjective on every stalk is
+        surjective on global sections.
+     d) The kernel presheaf of a morphism of sheaves is a sheaf.
+     e) The image presheaf of a morphism of sheaves is a sheaf.
+     f) f⁻¹ is an exact functor.      g) f_* is an exact functor.
+     h) (f_*ℱ)_{f(x)} ≅ ℱₓ for every continuous f.
+     i) If ℱ′ and ℱ″ are flasque and 0 → ℱ′ → ℱ → ℱ″ → 0 is exact, then
+        ℱ is flasque.
+     j) The constant sheaf Z_R is flasque.
+     k) Every flasque sheaf is Γ-acyclic.
+     l) If X is contractible then H^i(X, ℱ) = 0 for every sheaf ℱ, i > 0.
+     m) The Čech cohomology of ANY open cover computes H^*(X, ℱ).
+     n) Ȟ¹(X, ℱ) ≅ H¹(X, ℱ) for every space X and sheaf ℱ.
+     o) On a simply connected, locally path-connected space every locally
+        constant sheaf is constant.
+     p) Two locally constant sheaves with isomorphic stalks are
+        isomorphic.
+     q) 𝒪_C is soft.
+     r) Fine sheaves on paracompact Hausdorff spaces are acyclic.
+     s) On an irreducible space H^i(X, A_X) = 0 for i > 0.
+     t) Γ(X, −) is right exact.
+     u) Every sheaf embeds in a flasque sheaf.
+     v) H^i(M, ℱ) = 0 for i > n for every sheaf on an n-manifold M.
+     w) φ is injective as a sheaf map iff every φ_U is injective.
+     x) φ is surjective as a sheaf map iff every φ_U is surjective.
+     y) Sheaf cohomology of Z_X equals singular cohomology for every X.
+     Answers:
+       a) F: P(R) = Z, P(U) = 0 (U ≠ R)       b) T
+       c) F: exp : 𝒪 → 𝒪* on C* (z has no log)  d) T
+       e) F: the exp-image on C*               f) T
+       g) F: f : C* → pt, f_* = Γ, exp sequence
+       h) F: j : R ∖ {0} → R, (j_*Z)₀ = Z²
+       i) T (lift, extend, correct by a section of ℱ′)
+       j) F: Z → Z² for (0, 1) ∪ (2, 3)         k) T
+       l) F: H¹(R, j_!Z_{(0,1)}) = Z            m) F: S² with hemispheres
+       n) T              o) T
+       p) F: Möbius orientation sheaf vs Z_{S¹} (both have stalks Z)
+       q) F: 0 near 0, 1 near 1 on K = {0, 1} (identity theorem)
+       r) T              s) T (A_X is flasque)  t) F: see c)
+       u) T (Godement)   v) T
+       w) T              x) F: exp on C* (only "⇐" holds)
+       y) F: the Cantor set (M9 r)); true for locally contractible
+          paracompact X
+
+TEACHING TIPS
+  Struggling: make every abstract statement concrete on three test cases
+  — the constant sheaf Z on R ∖ {0} (π₀ matters), the exponential sequence
+  on C* (surjective on stalks, not on sections), and j_*Z, j_!Z for j :
+  R ∖ {0} → R (stalks Z² and 0 at the origin). Always compute stalks
+  first: exactness, injectivity and isomorphism are stalkwise, while
+  global sections are where the topology lives. For Čech computations
+  draw the nerve, write the ranks of Č⁰, Č¹, Č², check χ, and ask
+  whether every intersection is acyclic (Leray) before trusting the
+  answer; for local systems on S¹ just remember ker(T − 1), coker(T − 1).
+  Harder: prove that injective sheaves are flasque and flasque sheaves
+  acyclic in full; prove soft ⇒ acyclic on paracompact spaces and derive
+  de Rham and Dolbeault (H^{p,q}(X) ≅ H^q(X, Ω^p)); prove Leray's theorem
+  via the Čech-to-derived spectral sequence and that Ȟ = H on paracompact
+  Hausdorff spaces; construct the equivalence between local systems and
+  π₁-representations and show H^*(X, ℒ_ρ) = H^*(π₁, M) for aspherical X;
+  compute H^*(T², ℒ) for any pair of commuting monodromies via the
+  Koszul complex; prove proper base change (f_*ℱ)_y = Γ(f⁻¹(y), ℱ) and
+  set up the Leray spectral sequence H^p(Y, R^q f_*ℱ) ⇒ H^{p+q}(X, ℱ);
+  and prove Grothendieck's vanishing theorem on noetherian spaces.
+
+
+================================================================================
+TOPIC 12.8 — COMMUTATIVE ALGEBRA: NOETHERIAN AND ARTINIAN RINGS, PRIMARY
+DECOMPOSITION, INTEGRAL EXTENSIONS, NULLSTELLENSATZ, DIMENSION THEORY,
+COMPLETIONS
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - Rings are commutative with 1. A module M is NOETHERIAN if it satisfies
+    the ascending chain condition (ACC) on submodules, equivalently every
+    submodule is finitely generated, equivalently every non-empty family of
+    submodules has a maximal element. For 0 → M′ → M → M″ → 0 exact, M is
+    Noetherian iff M′ and M″ are; a finitely generated module over a
+    Noetherian ring is Noetherian. Z, fields, PIDs, k[[x]] are Noetherian;
+    k[x₁, x₂, ...], the ring of all algebraic integers and C([0, 1]) are not.
+  - HILBERT BASIS THEOREM: A Noetherian ⇒ A[x] Noetherian (and A[[x]]).
+    Hence every finitely generated algebra over a field or over Z, and all
+    its quotients and localizations S⁻¹A, are Noetherian. A subring of a
+    Noetherian ring need not be: k[x, xy, xy², xy³, ...] ⊆ k[x, y].
+  - ARTINIAN = descending chain condition (DCC). In an Artinian ring every
+    prime is maximal, there are finitely many maximal ideals, and the
+    Jacobson radical (= nilradical) is nilpotent. AKIZUKI-HOPKINS: A is
+    Artinian ⇔ A is Noetherian of dimension 0. STRUCTURE THEOREM: an
+    Artinian ring is uniquely a finite product of Artinian LOCAL rings
+    (e.g. Z/360 ≅ Z/8 × Z/9 × Z/5). A module has finite LENGTH ℓ(M) iff it
+    is both Noetherian and Artinian; ℓ is additive on short exact sequences.
+    For a local k-algebra with residue field k, ℓ(A) = dim_k A.
+  - PRIMARY IDEALS: q ≠ A is primary if xy ∈ q, x ∉ q ⇒ yⁿ ∈ q for some n;
+    then p = √q is prime (q is p-primary). An ideal whose radical is a
+    MAXIMAL ideal is primary (so 𝔪ⁿ is 𝔪-primary), but a power of a prime
+    need not be primary, and an ideal with prime radical need not be
+    primary: (x², xy) has radical (x) yet is not primary.
+  - LASKER-NOETHER: in a Noetherian ring every ideal is a finite
+    intersection of primary ideals (via irreducible ideals). A MINIMAL
+    (irredundant) decomposition I = q₁ ∩ ... ∩ qᵣ has distinct radicals
+    pᵢ = √qᵢ and no qᵢ ⊇ ⋂_{j≠i} qⱼ. FIRST UNIQUENESS: the set Ass(A/I) =
+    {pᵢ} is unique; pᵢ are exactly the primes of the form (I : x). SECOND
+    UNIQUENESS: the components belonging to MINIMAL primes are unique;
+    EMBEDDED components are not: (x², xy) = (x) ∩ (x², y) = (x) ∩ (x², y +
+    ax) for every a. The zero-divisors of A/I are ⋃ Ass(A/I).
+  - INTEGRAL EXTENSIONS: b ∈ B ⊇ A is integral over A if bⁿ + a₁bⁿ⁻¹ + ...
+    + aₙ = 0, equivalently A[b] is a finitely generated A-module
+    (determinant trick). Integral elements form a subring (the INTEGRAL
+    CLOSURE); integrality is transitive. A domain is NORMAL if it is
+    integrally closed in its fraction field; UFDs are normal. The integral
+    closure of Z in Q(√d) (d squarefree) is Z[√d] if d ≡ 2, 3 mod 4 and
+    Z[(1 + √d)/2] if d ≡ 1 mod 4. k[t², t³] is not normal (closure k[t]).
+  - COHEN-SEIDENBERG for A ⊆ B integral: LYING OVER (every prime p of A is
+    q ∩ A for some prime q of B), GOING UP, INCOMPARABILITY (q ⊆ q′ over the
+    same p ⇒ q = q′), and q maximal ⇔ q ∩ A maximal; hence dim A = dim B.
+    GOING DOWN holds if in addition A is a normal domain and B is a domain
+    (or B is flat over A).
+  - NOETHER NORMALIZATION: a finitely generated k-algebra A contains
+    algebraically independent y₁, ..., y_d with A finite (integral) over
+    k[y₁, ..., y_d]; d = tr.deg_k Frac(A) for a domain = dim A. ZARISKI'S
+    LEMMA: if a field K is a finitely generated k-algebra then K/k is
+    finite.
+  - NULLSTELLENSATZ (k algebraically closed): WEAK form: the maximal ideals
+    of k[x₁, ..., xₙ] are exactly (x₁ − a₁, ..., xₙ − aₙ); a system of
+    polynomials f₁ = ... = f_m = 0 has no common zero iff 1 ∈ (f₁, ..., f_m).
+    STRONG form: I(V(I)) = √I (proof: RABINOWITSCH trick with an extra
+    variable y and 1 − yf). Hence V ↔ I is an inclusion-reversing bijection
+    between algebraic sets and radical ideals, irreducible sets ↔ primes,
+    points ↔ maximal ideals. Finitely generated k-algebras are JACOBSON:
+    the nilradical equals the Jacobson radical. Over R it fails:
+    (x² + 1) is maximal in R[x] with V = ∅.
+  - KRULL DIMENSION dim A = sup of lengths n of prime chains p₀ ⊊ ... ⊊ pₙ;
+    HEIGHT ht p = dim A_p. dim k[x₁, ..., xₙ] = n, dim Z = 1, dim Z[x] = 2,
+    dim of a field or Artinian ring = 0, dim A/I = max over the minimal
+    primes of I. For a finitely generated k-domain, ht p + dim A/p = dim A.
+    A Noetherian ring can have infinite dimension (Nagata's example), but a
+    Noetherian local ring has finite dimension.
+  - KRULL'S PRINCIPAL IDEAL THEOREM: in a Noetherian ring a minimal prime
+    over (f) has height ≤ 1 (= 1 if f is a non-zero-divisor); the HEIGHT
+    THEOREM: a minimal prime over (f₁, ..., f_r) has height ≤ r. In a
+    Noetherian local ring (A, 𝔪, k): dim A = least number of generators of
+    an 𝔪-primary ideal (SYSTEM OF PARAMETERS) = degree of the
+    HILBERT-SAMUEL polynomial of n ↦ ℓ(A/𝔪ⁿ), and dim A ≤ dim_k 𝔪/𝔪²
+    (embedding dimension). A is REGULAR if equality holds; regular local
+    rings are domains (and UFDs).
+  - HILBERT-SAMUEL: ℓ(A/𝔪ⁿ) = (e/d!)nᵈ + lower terms for n ≫ 0, d = dim A,
+    e = MULTIPLICITY (e = 1 for a regular local ring; e = the order of the
+    lowest-degree term for a plane curve singularity, e.g. e = 2 for the
+    cusp y² = x³ at the origin).
+  - COMPLETIONS: the I-adic completion Â = lim← A/Iⁿ; Z_p = lim← Z/pⁿ,
+    k[[x₁, ..., xₙ]] = completion of k[x₁, ..., xₙ] at (x₁, ..., xₙ). For A
+    Noetherian: Â is Noetherian, flat over A, M̂ = M ⊗ Â for finitely
+    generated M, completion is exact (ARTIN-REES LEMMA), and KRULL'S
+    INTERSECTION THEOREM ⋂ Iⁿ = 0 holds when A is a Noetherian domain or
+    local with I ⊆ 𝔪 (fails for C^∞ germs: e^(−1/x²) ∈ ⋂ 𝔪ⁿ).
+  - HENSEL'S LEMMA: in a complete local ring, a simple root mod 𝔪 of a
+    monic f (f(a) ∈ 𝔪, f′(a) a unit) lifts uniquely to a root, via Newton's
+    iteration a ↦ a − f(a)/f′(a). Units of k[[x]] are the series with
+    non-zero constant term; the node y² = x²(1 + x) is irreducible in
+    k[x, y] (localized) but splits into two branches in k[[x, y]].
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) Prove that the following are equivalent for an A-module M: ACC on
+    submodules; every submodule is finitely generated. (b) Prove the
+    Hilbert basis theorem. (c) Show that k[x₁, x₂, x₃, ...] and the subring
+    S = k[x, xy, xy², ...] of k[x, y] are not Noetherian.
+    Answer: (a) union of a chain is a submodule; (b) ideals of leading
+    coefficients; (c) explicit strictly increasing chains.
+    Teacher explains: (a) Suppose ACC and let N ⊆ M be a submodule that is
+    not finitely generated. Choose n₁ ∈ N, then n₂ ∈ N ∖ (n₁), n₃ ∈ N ∖
+    (n₁, n₂), ... ; the chain (n₁) ⊊ (n₁, n₂) ⊊ ... never stops. Conversely,
+    if N₁ ⊆ N₂ ⊆ ... then N = ⋃Nᵢ is a submodule (a chain!), generated by
+    finitely many elements, all lying in some N_k, so N_k = N_{k+1} = ... .
+    (b) Let I ⊆ A[x] be an ideal. For each d let L_d ⊆ A be the set of
+    leading coefficients of elements of I of degree d (together with 0).
+    Each L_d is an ideal and L₀ ⊆ L₁ ⊆ ... (multiply by x). By ACC the chain
+    stabilises at some N, and each L_d (d ≤ N) is finitely generated. Pick
+    for every d ≤ N and every generator of L_d a polynomial in I of degree
+    d with that leading coefficient: finitely many f₁, ..., f_s. Claim I =
+    (f₁, ..., f_s). If f ∈ I has degree d, its leading coefficient is an
+    A-combination of the leading coefficients of the chosen fⱼ of degree
+    min(d, N); subtract ∑aⱼ x^(d − deg fⱼ) fⱼ to kill the leading term, and
+    induct on the degree. (c) (x₁) ⊊ (x₁, x₂) ⊊ ... in the polynomial ring
+    in infinitely many variables. In S: xyⁿ⁺¹ ∉ (x, xy, ..., xyⁿ)S, since
+    every element of that ideal is a sum of terms xy^j·s with j ≤ n and s ∈
+    S; the monomials of S other than 1 all contain x, so the only way to
+    get xyⁿ⁺¹ is j ≤ n and s = yⁿ⁺¹⁻ʲ, which is not in S. So the chain
+    of ideals (x) ⊊ (x, xy) ⊊ (x, xy, xy²) ⊊ ... is strictly increasing,
+    although S ⊆ k[x, y] and k[x, y] is Noetherian. Common mistakes:
+    "subrings of Noetherian rings are Noetherian" (false; QUOTIENTS and
+    LOCALIZATIONS are); forgetting that finite generation of every ideal,
+    not just of the ring as an algebra, is needed. Now you try: is Z[1/2]
+    = Z[x]/(2x − 1) Noetherian? (yes: quotient of Z[x])
+
+D2. (a) Prove that in an Artinian ring every prime ideal is maximal and
+    there are only finitely many maximal ideals. (b) Decompose A = Z/360Z
+    as a product of local Artinian rings and compute ℓ_A(A). (c) Compute
+    the length (= dim over k) of R = k[x, y]/(x², xy, y³).
+    Answer: (a) A/p is an Artinian domain, hence a field; (b) Z/8 × Z/9 ×
+    Z/5, length 3 + 2 + 1 = 6; (c) basis 1, x, y, y²: length 4.
+    Teacher explains: (a) Let p be prime and 0 ≠ x ∈ D = A/p. The chain
+    (x) ⊇ (x²) ⊇ ... stops: xⁿ = xⁿ⁺¹y for some y, and cancelling xⁿ in the
+    domain gives xy = 1. So D is a field and p is maximal. If 𝔪₁, 𝔪₂, ...
+    were infinitely many distinct maximal ideals, 𝔪₁ ⊋ 𝔪₁𝔪₂ ⊋ 𝔪₁𝔪₂𝔪₃ ⊋
+    ... would be strictly decreasing: if 𝔪₁⋯𝔪ₙ = 𝔪₁⋯𝔪ₙ₊₁ ⊆ 𝔪ₙ₊₁, then
+    some 𝔪ᵢ ⊆ 𝔪ₙ₊₁ (prime avoidance for products), so 𝔪ᵢ = 𝔪ₙ₊₁. (b) 360 =
+    2³·3²·5 and the CRT gives Z/360 ≅ Z/8 × Z/9 × Z/5, each factor local
+    (maximal ideals (2), (3), (0)). A composition series of Z/8 is Z/8 ⊃
+    2Z/8 ⊃ 4Z/8 ⊃ 0, length 3. Length is additive over the product: 3 + 2 +
+    1 = 6 = the number of prime factors of 360 with multiplicity. (c) R is
+    spanned by the monomials not in (x², xy, y³): 1, x, y, y² (x² = xy = 0
+    kills every other monomial). A k-algebra of k-dimension 4 whose only
+    maximal ideal is (x, y) with residue field k has length 4; a
+    composition series is R ⊃ (x, y) ⊃ (x, y²) ⊃ (y²) ⊃ 0. Common mistakes:
+    counting generators instead of basis monomials; forgetting that length
+    counts composition factors (so ℓ(Z/8) = 3, not 1 or 8). Now you try:
+    the length of Z/1000 and of k[x]/(x⁵). (6; 5)
+
+D3. In A = k[x, y]: (a) show that I = (x², xy) is not primary although √I
+    = (x) is prime; (b) find a minimal primary decomposition and the
+    associated primes; (c) show that the embedded component is not unique
+    by proving I = (x) ∩ (x², y + ax) for every a ∈ k.
+    Answer: (a) xy ∈ I, x ∉ I, yⁿ ∉ I; (b) I = (x) ∩ (x², y), Ass = {(x),
+    (x, y)}; (c) below.
+    Teacher explains: (a) √I: x² ∈ I gives x ∈ √I, and I ⊆ (x) gives √I ⊆
+    (x); so √I = (x). But xy ∈ I with x ∉ I and no power yⁿ in I (every
+    element of I is divisible by x): not primary. (b) Always try to "split
+    off" a variable: I = x·(x, y), so I = (x) ∩ (x², y)? An element of the
+    intersection is xg with xg ∈ (x², y), i.e. g(0, 0) = 0 (set y = 0: x
+    g(x, 0) ∈ (x²)), so g ∈ (x, y) and xg ∈ (x², xy) ✓. (x) is prime, and
+    (x², y) has radical (x, y), which is maximal, so it is primary. The
+    radicals are distinct and neither component contains the other, so the
+    decomposition is minimal. Ass(A/I) = {(x), (x, y)}; (x) is MINIMAL,
+    (x, y) is EMBEDDED. Geometrically V(I) is the y-axis, but I remembers an
+    "embedded point" at the origin. Check via (I : f): (I : y) = (x) and
+    (I : x) = (x, y). (c) If xg ∈ (x², y + ax), substitute y = −ax: x g(x,
+    −ax) ∈ (x²), so g(0, 0) = 0 and xg ∈ I. Conversely x² ∈ both and xy =
+    x(y + ax) − ax² ∈ (x²,y + ax). And (x², y + ax) is (x, y)-primary
+    (its quotient is k[x]/(x²)). So there are infinitely many embedded
+    components, but the SET of radicals and the minimal component (x) are
+    unique — exactly the two uniqueness theorems. Common mistakes: thinking
+    "radical prime ⇒ primary" (only "radical maximal ⇒ primary" is true);
+    writing I = (x) ∩ (y) (that is (xy)). Now you try: decompose (xy, y²)
+    in k[x, y]. ((y) ∩ (x, y²); Ass = {(y), (x, y)})
+
+D4. Let R = k[x, y, z]/(xy − z²) and P = (x, z) ⊆ R. (a) Show P is prime.
+    (b) Show P² is not primary. (c) Find a primary decomposition of P² and
+    the symbolic power P⁽²⁾ = P²R_P ∩ R.
+    Answer: (a) R/P ≅ k[y]; (b) xy = z² ∈ P², x ∉ P², y ∉ P; (c) P² = (x) ∩
+    𝔪² with 𝔪 = (x, y, z), and P⁽²⁾ = (x).
+    Teacher explains: (a) R/P = k[x, y, z]/(xy − z², x, z) = k[y], a domain.
+    (b) In R, P² = (x², xz, z²). We have x·y = z² ∈ P². Is x ∈ P²? The
+    elements of P² are, modulo xy − z², combinations of monomials of degree
+    ≥ 2 in the grading deg x = deg y = deg z = 1 (xy − z² is homogeneous), so
+    x ∉ P². And no yⁿ lies in P² ⊆ P since y ∉ P = √(P²). So P² is not
+    primary. (c) Localize at P: y ∉ P is a unit in R_P, so x = z²/y ∈ P²R_P.
+    Hence P⁽²⁾ = P²R_P ∩ R ⊇ (x). Conversely (x) = (x, z²) since z² = xy,
+    and R/(x) = k[y, z]/(z²) has only associated prime (z) = P/(x), so (x)
+    is P-primary; it contains P² and is contained in P⁽²⁾, and P⁽²⁾ is the
+    smallest P-primary ideal containing P², so P⁽²⁾ = (x). The extra
+    component sits at the maximal ideal 𝔪 = (x, y, z): one checks
+       P² = (x) ∩ 𝔪²  (= (x) ∩ (x², y², z², xy, xz, yz)),
+    an intersection of a P-primary and an 𝔪-primary ideal (𝔪-primary since
+    √(𝔪²) = 𝔪 is maximal). Indeed an element of (x) ∩ 𝔪² is x·g with xg of
+    order ≥ 2, i.e. g ∈ 𝔪; and x·y = z² ∈ P², x·x, x·z ∈ P². So Ass(R/P²) =
+    {P, 𝔪}: the vertex of the cone is an embedded prime. Common mistakes:
+    believing powers of primes are primary (true for MAXIMAL ideals, and in
+    PIDs, false in general). Now you try: in Z, is (p)ⁿ primary? (yes:
+    radical (p) is maximal)
+
+D5. (a) Prove: b ∈ B is integral over A ⇔ A[b] is a finitely generated
+    A-module ⇔ b lies in a subring C ⊆ B that is a finitely generated
+    A-module. Deduce that the integral elements form a ring. (b) Find the
+    integral closure of Z in Q(√d), d squarefree. (c) Show that (1 + √5)/2
+    is integral over Z but (1 + √3)/2 is not, and that the integral closure
+    of k[t², t³] is k[t].
+    Answer: (a) determinant trick; (b) Z[√d] for d ≡ 2, 3 (mod 4),
+    Z[(1 + √d)/2] for d ≡ 1 (mod 4); (c) x² − x − 1 and x² − x − 1/2.
+    Teacher explains: (a) If bⁿ = −(a₁bⁿ⁻¹ + ... + aₙ), then A[b] is spanned
+    by 1, b, ..., bⁿ⁻¹. If C = Ac₁ + ... + Acₙ contains 1 and b, write bcᵢ =
+    ∑ aᵢⱼcⱼ; then (bI − (aᵢⱼ))c = 0 for the column c, and multiplying by the
+    adjugate gives det(bI − (aᵢⱼ))·cⱼ = 0 for all j, hence det(...)·1 = 0:
+    a monic equation for b. If b, b′ are integral, A[b, b′] is finitely
+    generated (spanned by bⁱb′ʲ), and it contains b ± b′ and bb′. (b) α = u
+    + v√d (u, v ∈ Q, v ≠ 0) has minimal polynomial x² − 2ux + (u² − dv²).
+    Since Z is a UFD, α is integral iff this has integer coefficients: 2u
+    ∈ Z and u² − dv² ∈ Z. If u ∈ Z then dv² ∈ Z, so v ∈ Z (d squarefree).
+    If u = m/2, m odd, then 4dv² ≡ m² ≡ 1 (mod 4) forces v = n/2 with n odd
+    and dn² ≡ 1 (mod 4), i.e. d ≡ 1 (mod 4). (c) (1 + √5)/2 has minimal
+    polynomial x² − x − 1 ∈ Z[x]: integral. (1 + √3)/2 has x² − x − 1/2:
+    not integral (3 ≢ 1 mod 4). For k[t², t³] ⊆ k[t]: t = t³/t² lies in the
+    fraction field and satisfies T² − t² = 0 with t² in the ring, so t is
+    integral; k[t] is a UFD, hence normal, and integral over k[t², t³], so
+    it is the integral closure (the normalization of the cusp y² = x³ via
+    x = t², y = t³). Common mistakes: claiming Z[√5] is the ring of
+    integers of Q(√5); forgetting that "integral" needs a MONIC polynomial
+    (every algebraic number satisfies some integer polynomial). Now you
+    try: the ring of integers of Q(√−7). (Z[(1 + √−7)/2]: −7 ≡ 1 mod 4)
+
+D6. Let A ⊆ B be an integral extension. (a) Prove: if B is a domain, A is
+    a field iff B is a field. (b) Deduce lying over and incomparability,
+    and that dim A = dim B. (c) Find all primes of Z[i] lying over 2, 3, 5
+    and check lying over and incomparability.
+    Answer: (a) invert via the minimal equation; (b) localize at p;
+    (c) over 2: (1 + i) only; over 3: (3); over 5: (2 + i), (2 − i).
+    Teacher explains: (a) If A is a field and 0 ≠ b ∈ B, take a monic
+    equation bⁿ + a₁bⁿ⁻¹ + ... + aₙ = 0 of least degree; aₙ ≠ 0 (else
+    cancel b in the domain), so b(bⁿ⁻¹ + ... + aₙ₋₁) = −aₙ and b⁻¹ = −aₙ⁻¹(
+    bⁿ⁻¹ + ... ) ∈ B. If B is a field and 0 ≠ a ∈ A, a⁻¹ ∈ B is integral:
+    a⁻ᵐ + c₁a⁻ᵐ⁺¹ + ... + c_m = 0; multiply by aᵐ⁻¹ to get a⁻¹ = −(c₁ +
+    c₂a + ... + c_m aᵐ⁻¹) ∈ A. Consequence: q ⊆ B prime is maximal iff q ∩ A
+    is maximal (apply (a) to A/(q ∩ A) ⊆ B/q). (b) LYING OVER: for p ⊆ A,
+    A_p ⊆ B_p is integral; B_p ≠ 0, take a maximal ideal n of B_p; n ∩ A_p
+    is maximal by (a), so it is pA_p, and q = n ∩ B lies over p.
+    INCOMPARABILITY: if q ⊊ q′ both lie over p, localize at p: then qB_p ⊊
+    q′B_p both contract to the maximal ideal pA_p, so both are maximal,
+    contradiction. GOING UP follows from lying over for A/p ⊆ B/q. So a
+    chain in A lifts to a chain in B (dim B ≥ dim A), and a chain in B
+    contracts to a chain with no equalities (dim A ≥ dim B). (c) Z[i] is a
+    PID; primes over p divide pZ[i]. 2 = −i(1 + i)²: only (1 + i)
+    (RAMIFIED). 3 is prime in Z[i] since 3 ≡ 3 (mod 4) is not a sum of two
+    squares: only (3) (INERT). 5 = (2 + i)(2 − i), two distinct primes
+    (SPLIT). Over (0) lies only (0). Each nonzero prime of Z[i] lies over
+    exactly one (p) and no two comparable primes lie over the same (p):
+    incomparability. Both rings have dimension 1. Common mistakes: forgetting
+    that lying over needs INTEGRALITY: Z ⊆ Q is not integral and (2) has no
+    prime of Q above it. Now you try: the primes of Z[i] over 13. ((3 + 2i),
+    (3 − 2i))
+
+D7. (a) Show that A = k[x, y]/(xy − 1) is finite over k[u], u = x + y,
+    but not over k[x]. (b) Sketch Noether normalization. (c) Prove Zariski's
+    lemma for k = C by a counting argument, and deduce the weak
+    Nullstellensatz: every maximal ideal of C[x₁, ..., xₙ] is (x₁ − a₁, ...,
+    xₙ − aₙ).
+    Answer: (a) x² − ux + 1 = 0; y = 1/x is not integral over k[x];
+    (b) change variables xᵢ ↦ xᵢ + xₙ^(rⁱ) to make f monic in xₙ;
+    (c) C(t) has uncountable C-dimension.
+    Teacher explains: (a) In A, x(u − x) = xy = 1, so x² − ux + 1 = 0 and
+    likewise y² − uy + 1 = 0: x and y are integral over k[u], hence A =
+    k[u][x] is generated by 1, x as a k[u]-module (u is transcendental,
+    since A has dimension 1). Over k[x], A = k[x, 1/x]; if 1/x were integral,
+    x⁻ⁿ + a₁x⁻ⁿ⁺¹ + ... + aₙ = 0 with aᵢ ∈ k[x]; multiply by xⁿ: 1 = −x(a₁ +
+    ... ) ∈ (x), impossible. Geometrically: projecting the hyperbola onto
+    the x-axis misses x = 0 (a finite map is surjective, by lying over),
+    while projecting onto the line x + y = u is finite. (b) For one
+    polynomial f ∈ k[x₁, ..., xₙ] with k infinite, a linear change xᵢ ↦ xᵢ
+    + cᵢxₙ (i < n) makes the top-degree part of f have non-zero xₙᵈ
+    coefficient; then f is monic in xₙ up to a constant and k[x]/(f) is
+    finite over k[x₁, ..., xₙ₋₁]. In general (any k) use xᵢ ↦ xᵢ + xₙ^(rⁱ)
+    with r large, and induct on the number of generators. (c) ZARISKI: if a
+    field K is a finitely generated C-algebra, then K = C. K has countable
+    C-dimension (spanned by the images of monomials). If t ∈ K ∖ C, t is
+    transcendental (C is algebraically closed), so C(t) ⊆ K; but the
+    elements 1/(t − a), a ∈ C, are linearly independent (partial fractions:
+    a relation ∑cᵢ/(t − aᵢ) = 0 multiplied by t − a₁ and evaluated at a₁
+    gives c₁ = 0) — uncountably many, contradiction. WEAK NSS: let 𝔪 be
+    maximal. K = C[x]/𝔪 is a field, finitely generated, so K = C and xᵢ ↦
+    some aᵢ ∈ C. Then xᵢ − aᵢ ∈ 𝔪, so (x₁ − a₁, ..., xₙ − aₙ) ⊆ 𝔪; the left
+    side is already maximal (quotient C), so equality. Common mistakes:
+    thinking every maximal ideal of R[x, y] is of this form ((x² + 1, y) is
+    maximal, with quotient C); confusing "finitely generated as an algebra"
+    with "finitely generated as a module" (Zariski says the first implies
+    the second for fields). Now you try: give a Noether normalization of
+    k[x, y]/(y² − x³). (k[x]: y is integral, y² = x³)
+
+D8. (a) Prove the strong Nullstellensatz I(V(I)) = √I from the weak one
+    (Rabinowitsch trick). (b) Find the least N with (x + y)ᴺ ∈ (x², y³) in
+    C[x, y]. (c) Find √(x²y, xy²) and V of it. (d) Show that xy − 1 and y²
+    have no common zero by writing 1 = g(xy − 1) + hy².
+    Answer: (a) below; (b) N = 4; (c) (xy), the union of the axes;
+    (d) 1 = x²y² − (xy + 1)(xy − 1).
+    Teacher explains: (a) "⊇" is trivial: if fᵐ ∈ I then fᵐ, hence f,
+    vanishes on V(I). "⊆": let I = (f₁, ..., f_m) (Hilbert basis) and f
+    vanish on V(I). In k[x₁, ..., xₙ, y] the polynomials f₁, ..., f_m, 1 −
+    yf have no common zero (where all fᵢ vanish, f vanishes, so 1 − yf = 1).
+    By the weak NSS, 1 = ∑gᵢ(x, y)fᵢ + g₀(x, y)(1 − yf). Substitute y = 1/f
+    (in the field k(x)) and clear denominators by fᴺ with N ≥ max deg_y gᵢ:
+       fᴺ = ∑ Gᵢ(x) fᵢ(x),   so f ∈ √I.
+    (b) (x + y)ᴺ = ∑ C(N, i) xⁱ yᴺ⁻ⁱ; a term lies in (x², y³) iff i ≥ 2 or N −
+    i ≥ 3 (monomial ideal!). The only bad terms have i ≤ 1 and N − i ≤ 2,
+    i.e. N ≤ 3 (e.g. 3xy² for N = 3). For N = 4 the terms are y⁴, 4xy³,
+    and terms with x²: all in the ideal. So N = 4 (in general for (xᵃ, yᵇ)
+    it is a + b − 1). (c) (xy)² = y·(x²y) ∈ I, so xy ∈ √I. And I ⊆ (xy),
+    which is radical (xy is squarefree in the UFD). So √I = (xy), V = {x =
+    0} ∪ {y = 0}. (d) Modulo xy − 1, xy ≡ 1 so x²y² ≡ 1; exactly x²y² − 1 =
+    (xy + 1)(xy − 1), so 1 = x²·y² − (xy + 1)(xy − 1). Geometrically y = 0
+    would force xy − 1 = −1 ≠ 0. The NSS guarantees such a certificate
+    whenever there is no common zero over C. Common mistakes: forgetting
+    the NSS needs k algebraically closed (over R, x² + y² + 1 has no zero
+    but 1 ∉ (x² + y² + 1)); thinking √I is generated by the square-free
+    parts of the generators of I (true for principal or monomial ideals).
+    Now you try: least N with (x + y)ᴺ ∈ (x³, y³). (5)
+
+D9. (a) Prove dim k[x₁, ..., xₙ] ≥ n and dim Z[x] ≥ 2 by exhibiting chains,
+    and quote the theorem giving equality. (b) Compute dim A for A =
+    k[x, y, z]/(xy, xz), find its minimal primes, and show that A has
+    maximal ideals of heights 1 and 2.
+    Answer: (a) (0) ⊊ (x₁) ⊊ ... ⊊ (x₁, ..., xₙ); (0) ⊊ (2) ⊊ (2, x);
+    (b) dim A = 2; minimal primes (x), (y, z); (x − 1, y, z) has height 1,
+    (x, y − 1, z) has height 2.
+    Teacher explains: (a) Each (x₁, ..., xᵢ) is prime (quotient k[xᵢ₊₁, ...,
+    xₙ]) and the inclusions are strict: a chain of length n. Equality: for
+    a finitely generated k-domain A, dim A = tr.deg_k Frac(A) (via Noether
+    normalization and dim A = dim B for A ⊆ B integral); here tr.deg = n.
+    In Z[x]: (2) is prime (Z[x]/(2) = F₂[x]) and (2, x) is maximal (quotient
+    F₂). In general dim A[x] = dim A + 1 for A Noetherian, so dim Z[x] = 2.
+    The maximal ideals of Z[x] are (p, f) with f irreducible mod p; (x) is
+    NOT maximal (quotient Z). (b) xy = xz = 0 means x(y, z) = 0: so (xy, xz)
+    = (x) ∩ (y, z) (both prime; x·(y, z) ⊆ intersection and conversely an
+    element of (x) ∩ (y, z) is xg with g ∈ (y, z) since x ∉ (y, z)). V(A) =
+    the plane x = 0 ∪ the line y = z = 0. dim A = max(dim k[y, z], dim k[x])
+    = max(2, 1) = 2. The point (1, 0, 0) lies only on the line: its local
+    ring is the local ring of the line, ht(x − 1, y, z) = 1. The point (0,
+    1, 0) lies only on the plane: height 2. So "ht 𝔪 = dim A for all
+    maximal 𝔪" needs A to be a domain (or equidimensional). Common
+    mistakes: adding the dimensions of components; thinking dim A[x] = dim
+    A + 1 for all rings (for non-Noetherian A it can be up to 2 dim A + 1).
+    Now you try: dim k[x, y, z]/(xz, yz). (2: plane z = 0 ∪ z-axis)
+
+D10. (a) State Krull's principal ideal theorem and the height theorem.
+     (b) In R = k[x, y, z, w]/(xw − yz), show P = (x, y) is a prime of
+     height 1 that is not principal; deduce R is not a UFD. (c) Decide
+     which of the local rings O = k[x, y]_(x,y)/(f) are regular: f = y − x²,
+     y² − x³, y² − x² − x³, x³ + y⁴, y − x² − y².
+     Answer: (b) R/P ≅ k[z, w] of dim 2 = 3 − 1; P needs 2 generators;
+     (c) regular iff f ∉ 𝔪²: y − x² and y − x² − y² regular, others not.
+     Teacher explains: (a) PIT: in a Noetherian ring, every prime minimal
+     over a principal ideal (f) has height ≤ 1. HEIGHT THEOREM: minimal over
+     (f₁, ..., f_r) ⇒ height ≤ r; conversely every prime of height r is
+     minimal over some ideal generated by r elements. (b) R/P = k[z, w]
+     (x = y = 0 kills xw − yz), a domain of dim 2. R is a 3-dimensional
+     domain (xw − yz is irreducible) finitely generated over k, so ht P =
+     dim R − dim R/P = 3 − 2 = 1. If P = (f), then since P, R and xw − yz
+     are graded with x, y of degree 1, the degree-1 part of P/𝔪P (𝔪 = (x,
+     y, z, w)) would be spanned by one element; but x and y are linearly
+     independent mod 𝔪P ⊆ 𝔪² + (xw − yz) (the relation has degree 2). So P
+     needs two generators. In a Noetherian UFD every height-1 prime is
+     principal (take an irreducible factor of a nonzero element), so R is
+     not a UFD — as also seen from xw = yz with x, y, z, w irreducible and
+     non-associate. (c) O is 1-dimensional, 𝔪/𝔪² is spanned by x, y, and it
+     is 1-dimensional exactly when f has a nonzero linear term. f = y − x²:
+     𝔪 = (x), regular (a smooth curve). y² − x³: cusp, dim 𝔪/𝔪² = 2 > 1, not
+     regular. y² − x² − x³: node, not regular. x³ + y⁴: not regular. y − x²
+     − y²: linear term y, regular. REGULAR = SMOOTH POINT (Jacobian
+     criterion). Common mistakes: deducing "height 1 ⇒ principal" in a
+     non-UFD; thinking PIT bounds the NUMBER of minimal primes. Now you
+     try: is k[x, y, z]_(x,y,z)/(x² + y² + z²) regular? (no: f ∈ 𝔪², embedding
+     dim 3 > dim 2)
+
+D11. Compute the Hilbert-Samuel function n ↦ ℓ(A/𝔪ⁿ), the dimension and
+     the multiplicity e for (a) A = k[x₁, ..., x_d] localized at the
+     origin; (b) the cusp A = k[x, y]_(x,y)/(y² − x³); (c) the cone A =
+     k[x, y, z]_(x,y,z)/(xy − z²).
+     Answer: (a) C(n + d − 1, d), e = 1; (b) 2n − 1, d = 1, e = 2; (c) n²,
+     d = 2, e = 2.
+     Teacher explains: For a quotient of a polynomial ring by f, localized
+     at the origin, A/𝔪ⁿ = k[x]/((f) + 𝔪ⁿ), and its dimension equals that
+     of k[x]/((f*) + 𝔪ⁿ), where f* is the LOWEST-degree form of f
+     (tangent cone; the associated graded ring is gr A = k[x]/(f*)). (a)
+     ℓ(A/𝔪ⁿ) = number of monomials of degree < n in d variables = C(n + d −
+     1, d) = nᵈ/d! + ..., so the leading coefficient is 1/d!: e = 1, dim d.
+     (b) f* = y². The graded piece of degree j of k[x, y]/(y²) has basis
+     xʲ, xʲ⁻¹y: dimension 2 for j ≥ 1 and 1 for j = 0. So ℓ(A/𝔪ⁿ) = 1 + 2(n −
+     1) = 2n − 1 (n ≥ 1): values 1, 3, 5, 7, ... . A polynomial of degree 1
+     = dim A, with leading coefficient 2 = e/1!: e = 2, the order of the
+     singularity. (c) f* = xy − z² itself. In degree j, the monomials of k[x,
+     y, z] number C(j + 2, 2) and the multiples of f number C(j, 2), so the
+     graded piece has dimension (j + 1)(j + 2)/2 − j(j − 1)/2 = 2j + 1.
+     Summing j = 0, ..., n − 1: ℓ = n². Degree 2 = dim A and n² = (e/2!)n²
+     gives e = 2 (a quadric cone). Common mistakes: using the highest-degree
+     form of f instead of the lowest; reading e as the leading coefficient
+     without the factor d!. Now you try: the node y² − x² − x³. (2n − 1 as
+     well: f* = y² − x² has order 2, e = 2)
+
+D12. (a) Show that a ∈ Z_p is a unit iff p ∤ a, and compute 1/3 in Z_5
+     modulo 125 and its 5-adic digits. (b) Use Hensel's lemma to find √2 in
+     Z_7 modulo 7³. (c) State Krull's intersection theorem and show that it
+     fails for the ring of C^∞ germs at 0. (d) Show that the node O =
+     k[x, y]_(x,y)/(y² − x² − x³) (char k ≠ 2) is a domain whose completion
+     is not.
+     Answer: (a) 1/3 ≡ 42 = 2 + 3·5 + 1·5² (mod 125); (b) 108 (the other
+     root is 235); (c) e^(−1/x²) ∈ ⋂𝔪ⁿ; (d) y² − x²(1 + x) = (y − x√(1 +
+     x))(y + x√(1 + x)) in k[[x, y]].
+     Teacher explains: (a) Z_p = lim← Z/pⁿ, elements = sequences (aₙ mod pⁿ)
+     compatible under reduction, or series ∑dᵢpⁱ with digits 0 ≤ dᵢ < p. If
+     p ∤ a, each aₙ is invertible mod pⁿ and the inverses are compatible; if
+     p | a, a·b ≡ 1 fails mod p. 3·42 = 126 ≡ 1 (mod 125) and 42 = 2 + 3·5 +
+     25. (In fact 1/3 = 2 + 3·5 + 1·5² + 3·5³ + 1·5⁴ + ..., periodic digits
+     3, 1.) (b) f(x) = x² − 2. Mod 7: 3² = 9 ≡ 2, and f′(3) = 6 ≢ 0: a simple
+     root. Lift x = 3 + 7t: 9 + 42t ≡ 2 (mod 49) ⇔ 7 + 42t ≡ 0 ⇔ 1 + 6t ≡ 0
+     (mod 7) ⇔ t = 1: x₂ = 10 (100 = 2·49 + 2 ✓). Lift x = 10 + 49s: 100 +
+     980s ≡ 2 (mod 343) ⇔ 98 + 980s ≡ 0 ⇔ 2 + 20s ≡ 0 (mod 7) ⇔ 6s ≡ 5 ⇔
+     s = 2: x₃ = 108; check 108² = 11664 = 34·343 + 2 ✓. Newton's step x ↦ x
+     − f(x)/f′(x) doubles the precision. (c) KRULL: for A Noetherian, I an
+     ideal and M finitely generated, ⋂Iⁿ M = {m : (1 + a)m = 0 for some a ∈
+     I}; so ⋂Iⁿ = 0 if A is a domain (I ≠ A) or local with I ⊆ 𝔪. Proof: N =
+     ⋂IⁿM satisfies IN = N by ARTIN-REES (Iⁿ M ∩ N = I^(n−c)(I^c M ∩ N)),
+     then use Nakayama. Hence A embeds in its I-adic completion. For C^∞
+     germs, 𝔪 = germs vanishing at 0, and 𝔪ⁿ = germs with vanishing
+     derivatives up to order n − 1 (Taylor/Hadamard). φ = e^(−1/x²) has all
+     derivatives 0 at 0, so φ ∈ ⋂𝔪ⁿ, φ ≠ 0: the ring is not Noetherian.
+     (d) y² − x² − x³ is irreducible in k[x, y] (as a polynomial in y it
+     would factor as (y − g(x))(y + g(x)) with g² = x²(1 + x), impossible in
+     k[x]), so O is a domain. In k[[x]], 1 + x has a square root √(1 + x) =
+     1 + x/2 − x²/8 + x³/16 − ... (Hensel: T² − (1 + x), root 1 mod x), so
+     in k[[x, y]] the equation factors into the two BRANCHES y = ±x√(1 + x)
+     and Ô = k[[x, y]]/(y² − x² − x³) has zero-divisors. Completion sees the
+     local analytic picture: two crossing branches. Common mistakes:
+     applying the basic Hensel lemma when f′(a) is not a unit (at p = 2,
+     f′ = 2x never is: x² − 17 needs the stronger form |f(a)| < |f′(a)|²);
+     forgetting that completion of a domain need not be a domain.
+     Now you try: √−1 in Z_5 modulo 25 starting from 2. (7: 49 = 50 − 1)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Noetherian? Artinian? Answer two letters (Y/N) for each ring.
+    a) Z                                b) Q
+    c) Z/12                             d) Z[x]
+    e) Q[x]/(x³)                        f) Q[x]/(x² − 1)
+    g) Z_(p) (localization at (p))      h) Z[1/6]
+    i) k[[x]]                           j) Z_p (p-adic integers)
+    k) k[x₁, x₂, x₃, ...]
+    l) k[x₁, x₂, ...]/(x₁, x₂, ...)² (= k ⊕ V, V² = 0, dim V = ∞)
+    m) C([0, 1]), continuous real functions
+    n) the ring of all algebraic integers
+    o) ∏_{n∈N} F₂                       p) k[x, xy, xy², xy³, ...]
+    q) Z[√−5]                           r) Z[x]/(2x, x²)
+    s) the ring of germs of holomorphic functions at 0 ∈ C
+    t) the ring of entire functions on C
+    Answers:
+      a) Y N      b) Y Y      c) Y Y      d) Y N      e) Y Y
+      f) Y Y (≅ Q × Q)        g) Y N      h) Y N      i) Y N (a DVR)
+      j) Y N      k) N N      l) N N (every subspace of V is an ideal)
+      m) N N      n) N N ((2) ⊊ (√2) ⊊ (2^(1/4)) ⊊ ...)
+      o) N N      p) N N      q) Y N (a Dedekind domain, dim 1)
+      r) Y N (contains Z, dim 1)                s) Y N (a DVR)
+      t) N N (Iₙ = functions vanishing at n, n + 1, n + 2, ... increase
+         strictly)
+
+M2. Artinian rings and length (k a field; dimensions over k).
+    a) ℓ_Z(Z/72)                        b) ℓ_Z(Z/pᵏ)
+    c) the number of maximal ideals of Z/360
+    d) Z/100 as a product of local rings
+    e) Q[x]/(x³ − x) as a product; its length
+    f) Q[x]/(x⁴ − 1) as a product of fields
+    g) Q[x]/((x − 1)²(x² + 1)): factors, length, dim_Q
+    h) dim k[x, y]/(x², y²)             i) dim k[x, y]/(x, y)³
+    j) dim k[x, y]/(x³, y⁴)             k) dim k[x, y]/(x², xy, y²)
+    l) C[x, y]/(y − x², x³): dim and structure
+    m) C[x, y]/(x² + y² − 1, x − y): dim, number of maximal ideals
+    n) C[x, y]/(y − x², y): dim, number of maximal ideals
+    o) C[x, y]/(y² − x³, y − x): dim and local lengths
+    p) the least k with 𝔪ᵏ = 0 in k[x, y]/(x², y³), 𝔪 = (x, y)
+    q) the Jacobson radical J of Z/360 and the least k with Jᵏ = 0
+    r) ℓ(Z/8 × Q[x]/(x²)) (over itself)
+    Answers:
+      a) 5 (72 = 2³3²)     b) k         c) 3 ((2), (3), (5))
+      d) Z/4 × Z/25        e) Q × Q × Q, length 3
+      f) Q × Q × Q(i)      g) Q[x]/((x − 1)²) × Q(i); length 3; dim 4
+      h) 4 (1, x, y, xy)   i) 6         j) 12        k) 3
+      l) 3; ≅ C[x]/(x³), local        m) 2; 2 (the points ±(1, 1)/√2)
+      n) 2; 1 (the parabola is tangent to y = 0)
+      o) 3 (x³ = x², so C[x]/(x²(x − 1))); length 2 at (0, 0), 1 at (1, 1)
+      p) 4 (xy² ≠ 0 has degree 3)
+      q) J = (30); J² = (900) = (180) ≠ 0, J³ = (27000) = 0: k = 3
+      r) 3 + 2 = 5
+
+M3. Find a minimal primary decomposition (k a field, char k ≠ 2).
+    a) (360) in Z                       b) (x² − 3x + 2) in Q[x]
+    c) (x³ − x²) in k[x]                d) (xy) in k[x, y]
+    e) (x², xy) in k[x, y]              f) (x²y, xy²) in k[x, y]
+    g) (xy, xz, yz) in k[x, y, z]       h) (x − y, xy) in k[x, y]
+    i) (xy, y² − y) in k[x, y]          j) (x², xy, xz) in k[x, y, z]
+    k) (x(y − 1), y(x − 1)) in k[x, y]  l) (6) in Z[x]
+    m) (4, 2x) in Z[x]                  n) (x² + 1) in F₅[x]
+    o) (x² + 1) in F₃[x]                p) (x² + 1) in F₂[x]
+    q) (x³, x²y², y³) in k[x, y]
+    Answers:
+      a) (8) ∩ (9) ∩ (5)                b) (x − 1) ∩ (x − 2)
+      c) (x²) ∩ (x − 1)                 d) (x) ∩ (y)
+      e) (x) ∩ (x², y) (embedded (x, y))
+      f) (x) ∩ (y) ∩ (x, y)² (or ∩ (x², y²); embedded (x, y))
+      g) (x, y) ∩ (x, z) ∩ (y, z) (the three axes)
+      h) already primary: = (x − y, x²), radical (x, y)
+      i) (y) ∩ (x, y − 1)
+      j) (x) ∩ (x², y, z) (embedded (x, y, z))
+      k) (x, y) ∩ (x − 1, y − 1) (the ideal is (x − y, x² − x))
+      l) (2) ∩ (3)                      m) (2) ∩ (4, x) (embedded (2, x))
+      n) (x − 2) ∩ (x − 3)              o) prime (−1 is not a square mod 3)
+      p) primary: (x + 1)², radical (x + 1)
+      q) already primary (radical (x, y) is maximal)
+
+M4. For I ⊆ A give Ass(A/I), mark embedded primes (E), and say whether I is
+    primary.
+    a) (4) in Z                         b) (12) in Z
+    c) (x²) in k[x, y]                  d) (x², xy) in k[x, y]
+    e) (x, y)² in k[x, y]               f) (x²y) in k[x, y]
+    g) (x²) in Z[x]                     h) (2x) in Z[x]
+    i) (x², 2x) in Z[x]                 j) (9, 3x, x²) in Z[x]
+    k) P² in k[x, y, z]/(xy − z²), P = (x, z)
+    l) (x³ − x) in k[x]
+    m) the zero-divisors of Z/360 and of k[x, y]/(x², xy)
+    n) (I : y) and (I : x) for I = (x², xy)
+    Answers:
+      a) {(2)}; primary         b) {(2), (3)}; not
+      c) {(x)}; primary         d) {(x), (x, y) E}; not
+      e) {(x, y)}; primary      f) {(x), (y)}; not (no embedded prime)
+      g) {(x)}; primary (zero-divisors of Z[x]/(x²) are multiples of x)
+      h) {(2), (x)}; not        i) {(x), (2, x) E}; not
+      j) {(3, x)}; primary (= (3, x)², radical maximal)
+      k) {P, (x, y, z) E}; not (D4)
+      l) {(x), (x − 1), (x + 1)}; not
+      m) (2) ∪ (3) ∪ (5) (mod 360); (x, y)
+      n) (x) and (x, y): exactly the associated primes
+
+M5. Integral over Z? (Y/N) Then integral closures.
+    a) √7                                b) 1/2
+    c) (1 + √7)/2                        d) (1 + √−3)/2
+    e) (1 + √13)/2                       f) ∛2 + √2
+    g) (√2 + √6)/2                       h) e^(2πi/5)
+    i) π                                 j) (3 + √5)/2
+    k) 1/√2                              l) cos(2π/7), 2cos(2π/7)
+    m) the integral closure of Z in Q(√−5), Q(√13), Q(√−3), Q(√12)
+    n) the normalization of k[x, y]/(y² − x²(x + 1))
+    o) the normalization of k[x, y]/(y² − x⁵)
+    p) Is k[x, y]/(y² − x) normal?       q) Is Z[√8] normal?
+    r) Is Z[x] integral over Z?
+    s) Is k[x, y]/(xy − 1) integral over k[x]? over k[x + y]?
+    Answers:
+      a) Y (x² − 7)       b) N        c) N (x² − x − 3/2)
+      d) Y (x² − x + 1)   e) Y (x² − x − 3)   f) Y (sum of integers)
+      g) Y (x⁴ − 4x² + 1: α² = 2 + √3)        h) Y (x⁴ + x³ + x² + x + 1)
+      i) N (transcendental)                   j) Y (x² − 3x + 1)
+      k) N (x² − 1/2)
+      l) N (8x³ + 4x² − 4x − 1); Y (x³ + x² − 2x − 1)
+      m) Z[√−5]; Z[(1 + √13)/2]; Z[(1 + √−3)/2]; Z[√3] (Q(√12) = Q(√3))
+      n) k[t], t = y/x, x = t² − 1, y = t(t² − 1)
+      o) k[t], t = y/x², x = t², y = t⁵
+      p) Y (≅ k[y])       q) N (√2 = √8/2 is integral, not in Z[√8])
+      r) N                s) N; Y
+
+M6. Primes lying over (Cohen-Seidenberg).
+    a) primes of Z[i] over 2, 3, 5, 7, 13, 17, 29, 41 (split S, inert I,
+       ramified R)
+    b) primes of Z[ω], ω = (−1 + √−3)/2, over 2, 3, 7, 13
+    c) primes of Z[√−5] over 2, 3, 5, 7, 11
+    d) primes of k[x, y]/(y² − x) (char k ≠ 2) over (x), (x − 1)
+    e) primes of R[x, y]/(y² − x) and C[x, y]/(y² − x) over (x + 1)
+    f) Z ⊆ Z[1/2]: primes over (2)? Why is lying over not violated?
+    g) the number of primes of Z[i] over (0); over (p)
+    h) A = k[x] ⊆ B = k[x] × k[x]/(x) (integral): primes of B over (x), and
+       does going down hold?
+    i) dim Z[i], dim Z[∛2], dim k[t] over k[t², t³]
+    Answers:
+      a) 2: (1 + i) R; 3: I; 5: (2 ± i) S; 7: I; 13: (3 ± 2i) S;
+         17: (4 ± i) S; 29: (5 ± 2i) S; 41: (5 ± 4i) S
+      b) 2: I (N(a + bω) = a² − ab + b² ≠ 2); 3: (1 − ω), R (3 = −ω²(1 −
+         ω)²); 7: (3 + ω), (3 + ω̄), S; 13: (4 + ω), (4 + ω̄), S
+      c) 2: (2, 1 + √−5), R; 3: (3, 1 ± √−5), S; 5: (√−5), R;
+         7: (7, 3 ± √−5), S; 11: I (−5 is not a square mod 11)
+      d) over (x): one, (x, y) (ramified); over (x − 1): (x − 1, y ∓ 1), two
+      e) over R: one, (x + 1, y² + 1) with residue field C; over C: two,
+         (x + 1, y ∓ i)
+      f) none; Z[1/2] is not integral over Z
+      g) one ((0)); one or two (at most [Q(i) : Q] = 2)
+      h) two: (x) × k[x]/(x) and k[x] × 0; the second is a minimal prime of
+         B lying over (x) and no prime inside it lies over (0): going down
+         FAILS (B is not a domain)
+      i) 1; 1; 1 (integral extensions preserve dimension)
+
+M7. Nullstellensatz, radicals and zero sets (over C unless stated).
+    a) the maximal ideals of C[x]      b) is (x² + 1) maximal in R[x]? in C[x]?
+    c) is (x² − 2, y) maximal in Q[x, y]? Is it of the form (x − a, y − b)?
+    d) √(x³) in k[x]                   e) √(x²y) in k[x, y]
+    f) √(x², y²)                       g) √((x − 1)²(x + 2)³) in k[x]
+    h) √(xy, y²)                       i) least N: (x + y)ᴺ ∈ (x³, y⁴)
+    j) least N: (x + y + z)ᴺ ∈ (x², y², z²)
+    k) V(x² + y² − 1, x − y)            l) V(x² + y² − 1, x² + y² − 4) and a
+                                           certificate 1 = g f₁ + h f₂
+    m) is x ∈ √(x² − y, y²)? least power in the ideal
+    n) is x + 1 ∈ √(x² + 1) in C[x]?   o) #V(y − x², y − 1)
+    p) V(y − x², y) and √(y − x², y)   q) I(V) for V = the union of the axes
+    r) (x² + y²) in R[x, y]: prime? V_R? I(V_R)?
+    s) nilradical and Jacobson radical of k[x] and of k[x]_(x)
+    t) 1 as a combination of x² − y and xy − 1, x (no common zero?)
+    Answers:
+      a) (x − a), a ∈ C                b) Y; N ((x − i)(x + i))
+      c) Y (quotient Q(√2)); N         d) (x)
+      e) (xy)      f) (x, y)           g) ((x − 1)(x + 2))
+      h) (y)       i) 6 (= 3 + 4 − 1)  j) 4 (xyz appears for N = 3)
+      k) {(1/√2, 1/√2), (−1/√2, −1/√2)}
+      l) ∅; 1 = (f₁ − f₂)/3            m) Y; x⁴ = (x² + y)(x² − y) + y²
+      n) N ((x² + 1) is radical)       o) 2: (±1, 1)
+      p) {(0, 0)}; (x, y) ≠ (y − x², y) = (y, x²)
+      q) (xy)
+      r) prime (irreducible over R); V_R = {0}; I(V_R) = (x, y) ≠
+         √(x² + y²) = (x² + y²): the NSS fails over R
+      s) both 0 for k[x] (a Jacobson ring); 0 and (x) for k[x]_(x) (not
+         Jacobson — not finitely generated over k)
+      t) no common zero (x = 0 forces xy − 1 = −1): 1 = y·x − (xy − 1)
+
+M8. Krull dimension.
+    a) Z          b) a field       c) Z/12        d) k[x, y, z]
+    e) Z[x]       f) Z[x, y]       g) k[x, y]/(xy)
+    h) k[x, y, z]/(xy, xz)         i) k[x, y, z]/(xy, z)
+    j) k[[x, y]]  k) Z_p           l) Z_(p)       m) Q[x]/(x²)
+    n) Z[i]       o) k[x, y, z, w]/(xw − yz)
+    p) k[x, y]_(x,y) and k[x, y]_(x)               q) Z[x]/(2x)
+    r) C[x, y, z]/(x² + y² + z² − 1, x)
+    s) R[x, y]/(x² + y² + 1)       t) Q[x, y]/(x², y²)
+    u) k[x₁, ..., xₙ]/(f), f non-constant
+    v) C[x, y, z]/((x, y) ∩ (z))   w) Z_(p)[x]
+    Answers:
+      a) 1       b) 0       c) 0       d) 3       e) 2       f) 3
+      g) 1       h) 2       i) 1       j) 2       k) 1       l) 1
+      m) 0       n) 1       o) 3       p) 2 and 1
+      q) 1 (Z[x]/(2) = F₂[x] and Z[x]/(x) = Z, both of dim 1)
+      r) 1 (the circle y² + z² = 1)
+      s) 1 (Krull dimension does not care that there are no real points)
+      t) 0       u) n − 1   v) 2 (plane z = 0 ∪ z-axis)
+      w) 2 (chain (0) ⊊ (p) ⊊ (p, x))
+
+M9. Heights, principal ideal theorem, regularity. For i)-q) give
+    (embedding dimension, dim, regular Y/N).
+    a) ht (x, y) in k[x, y, z]          b) ht (x², y³) in k[x, y]
+    c) ht (xy) in k[x, y]               d) ht (xy, xz) in k[x, y, z]
+    e) ht (2, x) in Z[x]                f) ht (x) and ht (2) in Z[x]
+    g) ht (x, y) in k[x, y, z, w]/(xw − yz)
+    h) ht (x, y, z, w) in the same ring
+    i) k[x, y]_(0)/(y² − x³)            j) k[x, y]_(0)/(y² − x² − x³)
+    k) k[x, y]_(0)/(y − x³)             l) k[x, y, z]_(0)/(xy − z²)
+    m) k[x, y, z]_(0)/(z − xy)          n) Z_(p)
+    o) Z[x]_(p,x)/(x² − p)              p) Z[√−3] at the prime (2, 1 + √−3)
+    q) k[x, y]_(0)/(x², y)
+    r) the least number of equations f₁, ..., f_r that can cut out a curve
+       set-theoretically in C³ (lower bound from the height theorem)
+    s) can V(f) ⊆ C³ (one equation) be a single point?
+    t) ht (px − 1) in Z_(p)[x], and dim Z_(p)[x]/(px − 1)
+    Answers:
+      a) 2       b) 2       c) 1
+      d) 1 (minimal primes (x) of ht 1 and (y, z) of ht 2)
+      e) 2       f) 1, 1    g) 1 (D10)                h) 3
+      i) (2, 1, N)          j) (2, 1, N)              k) (1, 1, Y)
+      l) (3, 2, N)          m) (2, 2, Y)              n) (1, 1, Y)
+      o) (1, 1, Y) (p = x² ∈ 𝔪², so 𝔪 = (x): a DVR)
+      p) (2, 1, N) (Z[√−3] is not normal)
+      q) (1, 0, N) (Artinian, 𝔪 = (x) ≠ 0)
+      r) at least 2 (a component of V(f₁) has dim ≥ 2)
+      s) no: every component of V(f) has dimension 2
+      t) 1 and 0 (the quotient is Q), although dim Z_(p)[x] = 2: ht p +
+         dim A/p = dim A FAILS here
+
+M10. Hilbert-Samuel functions ℓ(A/𝔪ⁿ) (or ℓ(A/Iⁿ)), dimension d and
+     multiplicity e; all rings localized at the origin (k a field).
+     a) k[x]                            b) k[x, y]
+     c) k[x, y, z]                      d) k[x, y]/(y − x²)
+     e) k[x, y]/(y² − x³)               f) k[x, y]/(y³ − x⁵)
+     g) k[x, y]/(xy(x − y))             h) k[x, y]/(x⁴ + y⁴ + x⁵)
+     i) k[x, y, z]/(xy − z²)            j) k[x, y, z]/(x³ + y³ + z³)
+     k) k[x, y]/(x², y²)                l) Z_(p)
+     m) A = k[x, y]_(0), I = (x², y²): ℓ(A/Iⁿ) and e(I)
+     n) A = k[x, y]_(0), I = (x, y²): e(I)
+     Answers:
+       a) n; d = 1, e = 1               b) n(n + 1)/2; 2, 1
+       c) n(n + 1)(n + 2)/6; 3, 1       d) n; 1, 1
+       e) 2n − 1 (n ≥ 1); 1, 2          f) 3n − 3 (n ≥ 2); 1, 3
+       g) 3n − 3 (n ≥ 2); 1, 3          h) 4n − 6 (n ≥ 3); 1, 4
+       i) n²; 2, 2                      j) 1 + 3n(n − 1)/2; 2, 3
+       k) 1, 3, 4, 4, ...; d = 0, e = 4 = ℓ(A)
+       l) n; 1, 1
+       m) 2n(n + 1) (= 4·C(n + 1, 2)); e(I) = 4 = ℓ(A/I)
+       n) 2
+
+M11. Completions and Hensel's lemma.
+     a) 1/2 in Z₃ modulo 27             b) the 5-adic digits of −1
+     c) 1/(1 − x) in k[[x]]             d) 1/(1 + x + x²) in k[[x]] to x⁵
+     e) is 2 + x a unit in Q[[x]]? in Z[[x]]? in Z₃[[x]]?
+     f) √(1 + x) in Q[[x]] to x³        g) √2 in Z₇ modulo 49
+     h) √−1 in Z₅ modulo 125            i) does 3 have a square root in Z₅?
+     j) √7 in Z₃ modulo 9               k) ∛2 in Z₅ modulo 25
+     l) the 2-adic digits of 1/3        m) the (6)-adic completion of Z
+     n) the (x(x − 1))-adic completion of k[x]
+     o) the completion of k[x, y]/(xy) at (x, y)
+     p) ⋂ₙ(2ⁿ) in Z; ⋂ₙ 2ⁿ(Z/12) in Z/12
+     q) the (2)-adic completion of Z/12
+     r) is Z_p flat over Z? Q ⊗_Z Z_p = ?
+     s) the (x² + 1)-adic completion of Q[x]
+     Answers:
+       a) 14 (2·14 = 28)                b) 4, 4, 4, ... (−1 = ∑4·5ⁱ)
+       c) ∑xⁿ                           d) 1 − x + x³ − x⁴ + ... ((1 − x)/(1 −
+                                           x³))
+       e) Y; N (2 is not a unit of Z); Y
+       f) 1 + x/2 − x²/8 + x³/16        g) 10 or 39
+       h) 57 or 68 (2 → 7 → 57)         i) N (3 is not a square mod 5)
+       j) 4 or 5                        k) 3 (unique: f′(3) = 27 ≢ 0)
+       l) 1, 1, 0, 1, 0, 1, 0, ... (1/3 = 1 + 2 + 2³ + 2⁵ + ...)
+       m) Z₂ × Z₃ (CRT at each level)   n) k[[x]] × k[[x − 1]]
+       o) k[[x, y]]/(xy)                p) 0; the ideal (4) = 4Z/12 (Krull:
+          elements killed by 1 + a, a ∈ (2): 4·(1 + 2) = 12 ≡ 0)
+       q) Z/4 (= lim Z/(12, 2ⁿ))
+       r) Y (completion of a Noetherian ring is flat); Q_p
+       s) Q(i)[[t]], t = x² + 1 (Hensel lifts a root of T² + 1)
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) A subring of a Noetherian ring is Noetherian.
+     b) A quotient or a localization of a Noetherian ring is Noetherian.
+     c) Every Artinian ring is Noetherian.
+     d) Every Artinian module is Noetherian.
+     e) Every Noetherian ring has finite Krull dimension.
+     f) A power of a prime ideal is primary.
+     g) An ideal whose radical is prime is primary.
+     h) An ideal whose radical is maximal is primary.
+     i) Minimal primary decompositions are unique.
+     j) The associated primes of A/I are uniquely determined by I.
+     k) If A ⊆ B is integral, B a domain and A a field, B is a field.
+     l) Going down holds for every integral extension A ⊆ B.
+     m) Every UFD is integrally closed.
+     n) Z[√−3] is integrally closed.
+     o) Every maximal ideal of Q[x, y] is (x − a, y − b) with a, b ∈ Q.
+     p) If k = k̄ and f vanishes on V(I), then f ∈ I.
+     q) dim A[x] = dim A + 1 for every Noetherian ring A.
+     r) In a Noetherian domain every height-1 prime is principal.
+     s) The completion of a Noetherian local domain is a domain.
+     t) ⋂𝔪ⁿ = 0 in every local ring (A, 𝔪).
+     u) Every regular local ring is a domain.
+     v) ht p + dim A/p = dim A for every prime p of a Noetherian domain A.
+     Answers:
+       a) F: k[x, xy, xy², ...] ⊆ k[x, y]          b) T
+       c) T (Akizuki-Hopkins)
+       d) F: the Prüfer group Z[1/p]/Z as a Z-module
+       e) F: Nagata's example (local rings have finite dimension)
+       f) F: P = (x, z) in k[x, y, z]/(xy − z²)    g) F: (x², xy)
+       h) T       i) F: (x) ∩ (x², y) = (x) ∩ (x², y + x)
+       j) T (first uniqueness theorem)             k) T
+       l) F: k[x] ⊆ k[x] × k[x]/(x) (M6 h)); true if A normal, B a domain
+       m) T       n) F: (1 + √−3)/2 is integral
+       o) F: (x² − 2, y)
+       p) F: I = (x²), f = x (only a power of f lies in I)
+       q) T       r) F: (x, y) in k[x, y, z, w]/(xw − yz)
+       s) F: the node y² − x² − x³ (D12)
+       t) F: C^∞ germs, e^(−1/x²) ∈ ⋂𝔪ⁿ (T for Noetherian local rings)
+       u) T       v) F: A = Z_(p)[x], p = (px − 1): 1 + 0 ≠ 2 (M9 t))
+
+TEACHING TIPS
+  Struggling: work first in k[x, y] with MONOMIAL ideals, where everything
+  can be drawn as a staircase: the length of k[x, y]/I is the number of
+  boxes under the staircase, the radical is read off from the axes, and
+  primary decomposition is "one piece per corner"; then move to Z and Z[i]
+  (primary decomposition = prime factorization, lying over = factoring p).
+  Always translate to geometry: primes ↔ irreducible subvarieties, embedded
+  primes ↔ fuzzy points, integral ↔ finite projection, dimension ↔ number
+  of parameters, completion ↔ looking through a microscope at one point.
+  Before quoting a theorem, check its hypotheses aloud (Noetherian?
+  integral? k algebraically closed? A normal?) — every standard
+  counterexample above breaks exactly one of them. Harder: prove
+  Lasker-Noether via irreducible ideals and the characterization Ass =
+  {primes of the form (I : x)}; prove the Artin-Rees lemma via the blow-up
+  algebra ⊕Iⁿ and deduce exactness of completion; prove Krull's principal
+  ideal theorem with symbolic powers and lengths; prove Noether
+  normalization over a finite field; prove that the Hilbert-Samuel
+  function is eventually a polynomial of degree dim A (the dimension
+  theorem dim = δ = d); show that regular local rings are domains and that
+  a Noetherian local ring is regular iff its completion is; and construct
+  Nagata's Noetherian ring of infinite dimension.
+
+
