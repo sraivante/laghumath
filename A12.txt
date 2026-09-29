@@ -22337,3 +22337,2379 @@ TEACHING TIPS
   viscosity solution of a degenerate HJB is the value function.
 
 
+================================================================================
+TOPIC 12.29 — INVERSE PROBLEMS AND UNCERTAINTY QUANTIFICATION: ILL-POSEDNESS,
+SVD AND THE PICARD CONDITION, TIKHONOV AND TRUNCATED SVD, PARAMETER CHOICE,
+BAYESIAN INVERSION, MCMC, MONTE CARLO, POLYNOMIAL CHAOS, SENSITIVITY,
+TOMOGRAPHY
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - WELL-POSEDNESS (HADAMARD): the problem Ax = b, A : X → Y, is well posed
+    if a solution EXISTS for every b, it is UNIQUE, and it depends
+    CONTINUOUSLY (stably) on b. Otherwise it is ILL-POSED. Standard ill-
+    posed problems: differentiation of noisy data, the backward heat
+    equation, deconvolution, Fredholm equations of the FIRST kind ∫k(x,
+    y)f(y)dy = g(x) with smooth kernel, computerised tomography.
+  - COMPACT OPERATORS ARE BAD TO INVERT: if A : X → Y is compact and
+    injective with infinite-dimensional range, then A⁻¹ : R(A) → X is
+    UNBOUNDED and R(A) is not closed. In finite dimensions the inverse is
+    always bounded, but the CONDITION NUMBER κ(A) = σ₁/σₙ can be huge:
+    ‖δx‖/‖x‖ ≤ κ(A)‖δb‖/‖b‖.
+  - SVD: A = UΣVᵀ = ∑σᵢuᵢvᵢᵀ, σ₁ ≥ σ₂ ≥ ... ≥ 0, Avᵢ = σᵢuᵢ, Aᵀuᵢ = σᵢvᵢ.
+    The MINIMUM-NORM LEAST-SQUARES solution is x† = A⁺b = ∑_{σᵢ>0}
+    (uᵢᵀb/σᵢ)vᵢ. A compact operator has a SINGULAR SYSTEM (σₙ; vₙ, uₙ)
+    with σₙ → 0. Example: Vf(x) = ∫₀ˣ f on L²(0, 1) has σₙ =
+    2/((2n − 1)π), vₙ = √2 cos((n − ½)πx), uₙ = √2 sin((n − ½)πx).
+  - PICARD CONDITION: for compact A, b ∈ R(A) (given b ∈ N(A*)^⊥) iff
+    ∑|⟨b, uₙ⟩|²/σₙ² < ∞; then x† = ∑(⟨b, uₙ⟩/σₙ)vₙ. The Fourier
+    coefficients of the data must decay FASTER than the singular values.
+    DISCRETE PICARD CONDITION: |uᵢᵀb| decays faster than σᵢ until the
+    noise level is reached; after that |uᵢᵀb| levels off at the noise
+    level and |uᵢᵀb|/σᵢ explodes. MILDLY ill-posed: σₙ ~ n^(−p);
+    SEVERELY ill-posed: σₙ ~ e^(−cn) (backward heat: σₙ = e^(−n²π²T)).
+  - REGULARISATION BY FILTERING: x_α = ∑ φ_α(σᵢ)(uᵢᵀb/σᵢ)vᵢ with filter
+    factors φ ∈ [0, 1], φ ≈ 1 for large σ, φ ≈ 0 for small σ. TRUNCATED
+    SVD (TSVD): φ = 1 for i ≤ k, 0 for i > k (k is the parameter).
+    TIKHONOV: minimise ‖Ax − b‖² + α‖x‖², solution (AᵀA + αI)x = Aᵀb,
+    φ = σ²/(σ² + α) (≈ ½ at σ = √α). Generalised Tikhonov: α‖Lx‖²,
+    normal equations (AᵀA + αLᵀL)x = Aᵀb. LANDWEBER iteration x_{k+1} =
+    x_k + ωAᵀ(b − Ax_k), 0 < ω < 2/σ₁², has φ = 1 − (1 − ωσ²)ᵏ; the
+    iteration count is the parameter (SEMI-CONVERGENCE, early stopping).
+  - ERROR SPLITTING for data ‖b^δ − b‖ ≤ δ: ‖x_α^δ − x†‖ ≤ ‖x_α − x†‖
+    (BIAS, → 0 as α → 0) + ‖x_α^δ − x_α‖ (NOISE, Tikhonov: ≤ δ/(2√α)).
+    Convergence needs α(δ) → 0 AND δ²/α(δ) → 0. SOURCE CONDITIONS give
+    rates: x† = A*w ⇒ bias ≤ (√α/2)‖w‖, α ~ δ gives error O(δ^(1/2));
+    x† = A*Aw ⇒ bias ≤ α‖w‖, α ~ δ^(2/3) gives O(δ^(2/3)), the
+    SATURATION rate of Tikhonov (TSVD and Landweber do not saturate).
+  - PARAMETER CHOICE. DISCREPANCY PRINCIPLE (Morozov): pick α with
+    ‖Ax_α^δ − b^δ‖ = τδ (τ ≥ 1; for TSVD the smallest k with residual ≤
+    τδ); the Tikhonov residual is continuous and strictly increasing in
+    α from ‖P b^δ‖ (P = projection onto R(A)^⊥) to ‖b^δ‖, so the choice
+    exists and is unique when ‖P b^δ‖ ≤ τδ < ‖b^δ‖. L-CURVE: the log-log
+    plot of (‖Ax_α − b‖, ‖x_α‖); choose α at the CORNER (maximum
+    curvature). GCV: minimise ‖r_α‖²/(trace(I − AA_α^#))²; needs no δ.
+  - BAYESIAN INVERSE PROBLEMS: unknown x and data y = G(x) + e are random;
+    POSTERIOR π(x|y) ∝ π(y|x)π₀(x) = likelihood × prior (Bayes). With e ~
+    N(0, Γ): π(x|y) ∝ exp(−½‖Γ^(−1/2)(y − G(x))‖² ) π₀(x). The posterior
+    is the SOLUTION; point estimates are the MAP (mode) and the
+    CONDITIONAL MEAN (CM), uncertainty is described by credible regions.
+    Under mild conditions the posterior is Lipschitz in y in the Hellinger
+    distance: the Bayesian problem is WELL POSED.
+  - LINEAR GAUSSIAN CASE: prior N(m₀, C₀), y = Ax + e, e ~ N(0, Γ)
+    independent. Posterior N(m, C) with C⁻¹ = C₀⁻¹ + AᵀΓ⁻¹A (precisions
+    add), m = C(AᵀΓ⁻¹y + C₀⁻¹m₀) = m₀ + C₀Aᵀ(AC₀Aᵀ + Γ)⁻¹(y − Am₀) (Kalman
+    form). MAP = CM = m. With Γ = σ²I, C₀ = γ²I, m₀ = 0 the MAP is the
+    TIKHONOV solution with α = σ²/γ². In infinite dimensions a Gaussian
+    prior needs a TRACE-CLASS covariance (e.g. eigenvalues k^(−s), s > 1).
+  - MCMC: build a Markov chain with the posterior π as invariant law.
+    METROPOLIS-HASTINGS: propose y ~ q(x, ·), accept with a(x, y) = min(1,
+    π(y)q(y, x)/(π(x)q(x, y))); DETAILED BALANCE π(x)P(x, y) = π(y)P(y,
+    x) ⇒ π is invariant. Random-walk Metropolis (a = min(1, π(y)/π(x))),
+    Gibbs sampling (full conditionals), MALA, and pCN y = √(1 − β²)x + βξ
+    with ξ ~ prior N(0, C₀), a = min(1, exp(Φ(x) − Φ(y))), whose
+    acceptance does not degenerate as the dimension grows. Diagnose
+    burn-in, autocorrelation; EFFECTIVE SAMPLE SIZE N/(1 + 2∑ρₖ), for an
+    AR(1) chain N(1 − ρ)/(1 + ρ).
+  - MONTE CARLO: Î_N = (1/N)∑f(Xᵢ), Xᵢ iid; unbiased, variance Var f/N, so
+    the error is O(N^(−1/2)) INDEPENDENT of the dimension; CLT gives the
+    95% interval Î_N ± 1.96 s/√N. VARIANCE REDUCTION: antithetic
+    variables, control variates (optimal c = Cov(f, g)/Var g), stratified
+    sampling, IMPORTANCE SAMPLING (E_p f = E_q[f p/q]) for rare events;
+    quasi-Monte Carlo O((log N)^d/N); multilevel Monte Carlo.
+  - POLYNOMIAL CHAOS (forward UQ): expand Y = f(ξ) = ∑cₖΨₖ(ξ) in
+    polynomials ORTHOGONAL for the law of ξ (Wiener-Askey: Gaussian →
+    Hermite Heₙ with E[HeₘHeₙ] = n!δₘₙ; uniform → Legendre, E[Pₙ²] =
+    1/(2n + 1); gamma → Laguerre; beta → Jacobi). cₖ = E[YΨₖ]/E[Ψₖ²];
+    MEAN = c₀, VARIANCE = ∑_{k≥1} cₖ²E[Ψₖ²]. Spectral convergence for
+    smooth f; number of terms of total degree ≤ p in d variables is
+    (d + p)!/(d! p!). Coefficients by projection (quadrature), regression,
+    or stochastic Galerkin (intrusive). Example: e^ξ = e^(1/2)∑Heₙ(ξ)/n!.
+  - SENSITIVITY ANALYSIS: LOCAL (∂Y/∂xᵢ at a nominal point, normalised
+    (xᵢ/Y)∂Y/∂xᵢ; misses interactions and non-linearity); GLOBAL (Sobol'):
+    for independent inputs the ANOVA decomposition Y = f₀ + ∑fᵢ(Xᵢ) +
+    ∑fᵢⱼ(Xᵢ, Xⱼ) + ... gives Var Y = ∑Vᵢ + ∑Vᵢⱼ + ...; FIRST-ORDER index
+    Sᵢ = Var(E[Y|Xᵢ])/Var Y, TOTAL index S_Tᵢ = E[Var(Y|X₋ᵢ)]/Var Y ≥ Sᵢ;
+    ∑Sᵢ ≤ 1 with equality iff the model is additive. Sobol' indices are
+    read off from a PCE by summing cₖ²E[Ψₖ²] over the relevant terms.
+  - TOMOGRAPHY: the RADON TRANSFORM Rf(θ, s) = ∫_{x·θ=s} f = ∫f(sθ + tθ⊥)dt
+    (line integrals; X-ray CT via Beer-Lambert I = I₀e^(−∫μ)). FOURIER
+    SLICE THEOREM: (Rf)^(θ, σ) = f̂(σθ). FILTERED BACKPROJECTION: f(x) =
+    (1/(2π))∫₀^π h_θ(x·θ) dθ where h_θ is Rf(θ, ·) filtered by |σ|
+    (Ram-Lak filter); plain backprojection R^#Rf = f * (1/|x|) blurs.
+    R smooths by half a derivative: mildly ill-posed of order ½
+    (singular values ~ m^(−1/2)); limited-angle CT is severely ill-posed.
+
+PART A — DESCRIPTIVE
+--------------------
+D1. (a) State Hadamard's definition of a well-posed problem and prove that
+    if A : X → Y is a compact injective operator between Banach spaces
+    with dim R(A) = ∞, then A⁻¹ : R(A) → X is unbounded. (b) Numerical
+    differentiation: f has |f″| ≤ M and we know f^δ with |f^δ − f| ≤ δ.
+    Bound the error of the forward difference (f^δ(x + h) − f^δ(x))/h,
+    find the best h and the best error. Evaluate for M = 1, δ = 10⁻⁶.
+    Answer: (b) error ≤ Mh/2 + 2δ/h, h* = 2√(δ/M), error 2√(Mδ); for the
+    numbers h* = 0.002 and error ≤ 0.002.
+    Teacher explains: WELL POSED means (i) existence for every b ∈ Y,
+    (ii) uniqueness, (iii) continuous dependence of the solution on b.
+    (a) Suppose A⁻¹ were bounded on R(A). Take the closed unit ball B of
+    X. Its image A(B) is relatively compact (A is compact). Every x ∈ B
+    is x = A⁻¹(Ax), so B = A⁻¹(A(B)) would be the image of a relatively
+    compact set under a bounded (continuous) linear map: relatively
+    compact. But the unit ball of X is compact only if dim X < ∞ (Riesz),
+    and dim X ≥ dim R(A) = ∞. Contradiction, so A⁻¹ is unbounded: there
+    are xₙ with ‖xₙ‖ = 1 and Axₙ → 0 — tiny data changes, big solution
+    changes. (b) Taylor: f(x + h) = f(x) + hf′(x) + (h²/2)f″(ξ). So
+       |D_h f^δ − f′| ≤ |D_h f − f′| + |D_h(f^δ − f)| ≤ Mh/2 + 2δ/h.
+    The first term (truncation) wants h small, the second (noise) wants h
+    large: h plays the role of a REGULARISATION PARAMETER. Minimising
+    E(h) = Mh/2 + 2δ/h: E′ = M/2 − 2δ/h² = 0 gives h* = 2√(δ/M) and E(h*)
+    = √(Mδ) + √(Mδ) = 2√(Mδ). With M = 1, δ = 10⁻⁶: h* = 0.002, error ≤
+    0.002 — only HALF the digits of the data survive (error ~ δ^(1/2)).
+    Why is differentiation ill-posed at all? f^δ = f + δ sin(kx/δ) has
+    |f^δ − f| ≤ δ but (f^δ)′ − f′ = k cos(kx/δ), as large as we like.
+    Common mistakes: taking h as small as possible ("h → 0 is more
+    accurate") — with noisy data the error then grows like δ/h; thinking
+    a bounded inverse on a finite grid means stability (the constant
+    blows up as the grid is refined). Now you try: for the central
+    difference the error is ≤ M₃h²/6 + δ/h. Find h* and the order of the
+    error. (h* = (3δ/M₃)^(1/3), error O(δ^(2/3)))
+
+D2. (a) Show that the integration operator Vf(x) = ∫₀ˣ f(t)dt on L²(0, 1)
+    has singular values σₙ = 2/((2n − 1)π) with vₙ = √2 cos((n − ½)πx),
+    uₙ = √2 sin((n − ½)πx). (b) State the Picard condition and use it to
+    decide whether Vf = g is solvable for g(x) = x and for g(x) = 1.
+    (c) For the backward heat equation on (0, 1) (recover u(·, 0) from
+    u(·, T), u_t = u_xx, u = 0 at x = 0, 1) find the singular values.
+    Answer: (b) g = x: yes, f = 1; g = 1: no (∑2 = ∞). (c) σₙ = e^(−n²π²T)
+    with sine modes: severely ill-posed.
+    Teacher explains: The adjoint is V*g(x) = ∫ₓ¹ g(t)dt (check ⟨Vf, g⟩ =
+    ∬_{t<x} f(t)g(x) = ⟨f, V*g⟩). Put ωₙ = (n − ½)π. Then
+       V vₙ(x) = √2 ∫₀ˣ cos(ωₙt)dt = √2 sin(ωₙx)/ωₙ = uₙ(x)/ωₙ,
+       V*uₙ(x) = √2 ∫ₓ¹ sin(ωₙt)dt = √2(cos(ωₙx) − cos ωₙ)/ωₙ = vₙ(x)/ωₙ,
+    since cos ωₙ = 0. Both {vₙ} and {uₙ} are orthonormal bases of L²(0, 1)
+    (eigenfunctions of −d²/dx² with mixed boundary conditions), so σₙ =
+    1/ωₙ = 2/((2n − 1)π) ≈ 0.637, 0.212, 0.127, ...: σₙ ~ 1/n, MILDLY
+    ill-posed of degree 1. PICARD: g ∈ R(V) iff ∑⟨g, uₙ⟩²/σₙ² < ∞, and
+    then f = ∑(⟨g, uₙ⟩/σₙ)vₙ. For g = x, integrate by parts with sin ωₙ =
+    (−1)^(n+1): ⟨x, uₙ⟩ = √2(−1)^(n+1)/ωₙ², so ⟨g, uₙ⟩/σₙ = √2(−1)^(n+1)/ωₙ
+    and ∑2/ωₙ² = (2/π²)∑1/(n − ½)² = (2/π²)(π²/2) = 1 < ∞. Solvable, with
+    ‖f‖ = 1: indeed f = 1. For g = 1: ⟨1, uₙ⟩ = √2/ωₙ, ratio √2, and ∑2 =
+    ∞: NOT in the range — correct, since every Vf vanishes at 0. The
+    Picard condition is a smoothness-plus-boundary condition on the data.
+    (c) Separation of variables: u(x, t) = ∑aₙe^(−n²π²t)√2 sin(nπx), so the
+    forward map u(·, 0) ↦ u(·, T) is diagonal with σₙ = e^(−n²π²T). With T
+    = 0.1 the third mode is damped by e^(−0.9π²) ≈ 1/7206: to go back we
+    must multiply the noise in that mode by 7206. Common mistakes:
+    writing σₙ as eigenvalues of V (V has NO eigenvalues: it is a
+    Volterra operator); forgetting that the Picard series uses the LEFT
+    singular vectors uₙ of the data space. Now you try: does g(x) = x²
+    satisfy the Picard condition for V? (yes: f = 2x)
+
+D3. A = UΣVᵀ with U = V = (1/√2)[[1, 1], [1, −1]] and Σ = diag(1, 0.01),
+    i.e. A = ½[[1.01, 0.99], [0.99, 1.01]]. (a) Solve Ax = b for b = (1, 1)
+    and for b^δ = (1.01, 0.99). Compare relative errors. (b) Compute the
+    TSVD solution with k = 1 and the Tikhonov solution with α = 10⁻⁴ for
+    the data b^δ.
+    Answer: (a) x = (1, 1), x^δ = (2, 0): data error 1%, solution error
+    100% (κ = 100). (b) TSVD: (1, 1); Tikhonov: ≈ (1.4999, 0.4999).
+    Teacher explains: Always work in the SVD coordinates. u₁ = v₁ = (1,
+    1)/√2, u₂ = v₂ = (1, −1)/√2. (a) u₁ᵀb = √2, u₂ᵀb = 0, so x = (√2/1)v₁
+    = (1, 1). The perturbation e = (0.01, −0.01) = 0.01√2 u₂ adds
+    (0.01√2/0.01)v₂ = √2 v₂ = (1, −1): x^δ = (2, 0). Relative data error
+    ‖e‖/‖b‖ = 0.01√2/√2 = 0.01; relative solution error ‖(1, −1)‖/‖(1,
+    1)‖ = 1. The bound κ(A) = σ₁/σ₂ = 100 is ATTAINED because the noise
+    lies exactly along the smallest singular vector. (b) TSVD with k = 1
+    keeps only the first component: x₁ = (u₁ᵀb^δ/σ₁)v₁ = (√2)v₁ = (1, 1),
+    the exact solution (we were lucky: x has no v₂ component). Tikhonov
+    uses x_α = ∑σᵢ/(σᵢ² + α)(uᵢᵀb^δ)vᵢ:
+       i = 1: 1/(1 + 10⁻⁴)·√2 ≈ 1.41407,  i = 2: 0.01/(2·10⁻⁴)·0.01√2
+       = 0.5√2 ≈ 0.70711,
+    so x_α ≈ (1.41407/√2)(1, 1) + 0.5(1, −1) = (1.49990, 0.49990). The
+    filter factor at σ₂ = √α is exactly ½: half the noise survives.
+    Tikhonov is a smooth version of TSVD; here a LARGER α = 10⁻² does
+    better (φ₂ ≈ 0.01). Common mistakes: judging a regularised solution by its
+    residual alone (x^δ has residual 0 but is useless); inverting A
+    directly and hoping rounding errors are harmless. Now you try: with
+    the same data use α = 10⁻² (φ₁ = 1/1.01, φ₂ = 1/101); find x_α.
+    (x_α = (1, 99/101) ≈ (1, 0.98020))
+
+D4. Tikhonov regularisation. Let A be a bounded linear operator between
+    Hilbert spaces, α > 0. (a) Prove that J(x) = ‖Ax − b‖² + α‖x‖² has
+    a unique minimiser x_α = (A*A + αI)⁻¹A*b. (b) For compact A write
+    x_α in the singular system. (c) Show ‖x_α^δ − x_α‖ ≤ δ/(2√α) if
+    ‖b^δ − b‖ ≤ δ, and if x† = A*w then ‖x_α − x†‖ ≤ (√α/2)‖w‖. (d)
+    Deduce the rate with α = cδ.
+    Answer: (b) x_α = ∑σₙ/(σₙ² + α)⟨b, uₙ⟩vₙ; (d) error ≤ (√c‖w‖ +
+    1/√c)√δ/2 = O(δ^(1/2)) (with ‖w‖ = 1, c = 1: √δ).
+    Teacher explains: (a) A*A + αI is self-adjoint with ⟨(A*A + αI)x, x⟩
+    = ‖Ax‖² + α‖x‖² ≥ α‖x‖², so it is boundedly invertible (Lax-Milgram).
+    Expanding J(x_α + h) = J(x_α) + 2Re⟨(A*A + αI)x_α − A*b, h⟩ + ‖Ah‖²
+    + α‖h‖², the middle term vanishes for x_α = (A*A + αI)⁻¹A*b and the
+    last terms are > 0 for h ≠ 0: unique minimiser. (b) A*A vₙ = σₙ²vₙ,
+    A*b = ∑σₙ⟨b, uₙ⟩vₙ, so x_α = ∑σₙ⟨b, uₙ⟩/(σₙ² + α) vₙ; filter φ =
+    σ²/(σ² + α). (c) NOISE: x_α^δ − x_α = ∑σₙ/(σₙ² + α)⟨b^δ − b, uₙ⟩vₙ,
+    and by AM-GM σ² + α ≥ 2σ√α, so σ/(σ² + α) ≤ 1/(2√α); by Parseval the
+    norm is ≤ δ/(2√α). BIAS: x_α − x† = −∑α/(σₙ² + α)⟨x†, vₙ⟩vₙ, and
+    ⟨x†, vₙ⟩ = ⟨w, Avₙ⟩ = σₙ⟨w, uₙ⟩, so each coefficient is
+    ασₙ/(σₙ² + α)·⟨w, uₙ⟩ with ασ/(σ² + α) ≤ √α/2. Hence ≤ (√α/2)‖w‖.
+    (d) Total ≤ (√α/2)‖w‖ + δ/(2√α); with α = cδ this is
+    (√c‖w‖ + 1/√c)√δ/2 = O(√δ). The best c is 1/‖w‖, giving √(δ‖w‖). With
+    the stronger source condition x† = A*Aw the bias is ≤ α‖w‖ and α ~
+    δ^(2/3) gives O(δ^(2/3)); no source condition gives better than
+    δ^(2/3) for Tikhonov (SATURATION). Without any source condition we
+    still get convergence if α → 0 and δ/√α → 0, but arbitrarily slowly.
+    Common mistakes: choosing α independent of δ (bias never vanishes);
+    α = δ² (noise term δ/(2√α) = ½ does not go to zero). Now you try:
+    with δ = 10⁻⁴ and ‖w‖ = 1, which α minimises the bound in (d), and
+    what is the bound? (α = 10⁻⁴, 0.01)
+
+D5. TSVD and the discrete Picard condition. A square system has singular
+    values σᵢ = 10^(−(i−1)), i = 1, ..., 5, and exact solution x = ∑vᵢ
+    (all coefficients 1), so uᵢᵀb = σᵢ. The data are b^δ with uᵢᵀb^δ =
+    σᵢ + 0.002 for every i. (a) Tabulate |uᵢᵀb^δ| and the Picard ratios
+    |uᵢᵀb^δ|/σᵢ. (b) Compute ‖x_k − x‖ for the TSVD solutions k = 1, ...,
+    5 and find the best k. (c) Which k does the discrepancy principle
+    (τ = 1) choose?
+    Answer: (a) coefficients 1.002, 0.102, 0.012, 0.003, 0.0021; ratios
+    1.002, 1.02, 1.2, 3, 21. (b) errors 2.000, 1.732, 1.428, 2.245,
+    20.10: best k = 3. (c) δ = ‖e‖ = 0.002√5 ≈ 0.004472; residuals for
+    k = 2, 3 are 0.01255, 0.003662, so k = 3.
+    Teacher explains: The TSVD solution is x_k = ∑_{i≤k}(uᵢᵀb^δ/σᵢ)vᵢ. By
+    orthonormality of the vᵢ, the squared error is
+       ‖x_k − x‖² = ∑_{i≤k}(0.002/σᵢ)²  +  ∑_{i>k} 1²
+                     (noise, grows with k)  (bias, shrinks with k).
+    k = 1: 4 + 4·10⁻⁶ → 2.000;  k = 2: 3 + 0.0004 → 1.732;
+    k = 3: 2 + 0.0404 → 1.428;  k = 4: 1 + 4.0404 → 2.245;
+    k = 5: 400 + 4.04 → 20.10.
+    The optimum k = 3 is exactly where σᵢ drops BELOW the noise level
+    0.002: σ₃ = 0.01 > 0.002 > σ₄ = 0.001. This is what the PICARD
+    PLOT shows: |uᵢᵀb^δ| follows σᵢ down to about 0.002 and then levels
+    off (0.003, 0.0021), so the ratios, which were ≈ 1, jump to 3 and 21.
+    Components after the "elbow" are noise and must be discarded.
+    (c) The residual of TSVD is ‖b^δ − Ax_k‖² = ∑_{i>k}(uᵢᵀb^δ)², and the
+    noise has norm δ = 0.002√5 = 0.004472. k = 2: √(0.012² + 0.003² +
+    0.0021²) = 0.01255 > δ; k = 3: √(0.003² + 0.0021²) = 0.003662 ≤ δ.
+    The discrepancy principle picks the smallest k with residual ≤ τδ,
+    i.e. k = 3 — here the optimal one. The logic: do not fit the data
+    more accurately than the noise level. Common mistakes: choosing the
+    k with the smallest residual (k = 5, the worst solution); reading
+    the Picard plot on a linear scale instead of a log scale. Now you
+    try: repeat (b) with noise 0.0005 in each coefficient. (errors² :
+    k = 3: 2.0025, k = 4: 1.2525, k = 5: 25.25; best k = 4)
+
+D6. Discrepancy principle and L-curve for Tikhonov. Let A = diag(1, 0.1)
+    (so uᵢ = vᵢ = eᵢ) and b^δ = (1, 0.2), noise level δ = 0.1. (a) Prove
+    that r(α) = ‖Ax_α − b^δ‖ is continuous and increasing and find its
+    limits as α → 0 and α → ∞. (b) Find α with r(α) = δ and the
+    corresponding x_α. (c) Tabulate (r(α), ‖x_α‖) for α = 10⁻⁴, ..., 1
+    and describe the L-curve.
+    Answer: (a) r(α)² = ∑(αβᵢ/(σᵢ² + α))², increasing from 0 to ‖b^δ‖ =
+    1.0198. (b) α ≈ 0.00990, x_α ≈ (0.9902, 1.0048), ‖x_α‖ ≈ 1.4107.
+    (c) see the table; corner near α ≈ 10⁻².
+    Teacher explains: (a) With βᵢ = uᵢᵀb^δ, b^δ − Ax_α has components
+    (1 − φᵢ)βᵢ = αβᵢ/(σᵢ² + α). Each function α ↦ α/(σᵢ² + α) =
+    1 − σᵢ²/(σᵢ² + α) is continuous, strictly increasing, → 0 as α → 0
+    (for σᵢ > 0) and → 1 as α → ∞. Hence r is continuous and increasing,
+    from ‖P b^δ‖ = 0 (A is invertible) to ‖b^δ‖ = √1.04 = 1.0198. Since 0 <
+    δ < 1.0198, the intermediate value theorem gives a UNIQUE α with r(α)
+    = δ. (b) Solve
+       g(α) = (α/(1 + α))² + (0.2α/(0.01 + α))² = 0.01.
+    At α = 0.01: 0.0099² + 0.1² = 0.010098 (slightly too big); at α =
+    0.0098: 0.00970² + 0.09899² = 0.009894. Bisection/Newton give α ≈
+    0.00990. Then x_α has components σᵢβᵢ/(σᵢ² + α): 1/1.0099 = 0.9902 and
+    0.02/0.0199 = 1.0048; ‖x_α‖ = 1.4107. (c) With ‖x_α‖² = ∑(σᵢβᵢ/(σᵢ² +
+    α))²:
+       α      10⁻⁴     10⁻³    10⁻²    10⁻¹    1
+       r      0.00198  0.0182  0.1005  0.2033  0.5378
+       ‖x_α‖  2.218    2.075   1.407   0.927   0.500
+    In log-log axes (log r horizontal, log ‖x‖ vertical) the points for
+    small α lie on a nearly flat branch (the residual drops a lot, the
+    norm hardly changes) and for large α on a descending branch
+    (solution shrinks towards 0). The corner, where the balance changes,
+    is near α ≈ 10⁻², in agreement with the discrepancy choice.
+    Common mistakes: using τδ with δ the noise per component instead of
+    the norm of the whole noise vector; expecting the L-curve to work
+    when the noise is very small or the solution very smooth (it can
+    fail to converge as δ → 0). Now you try: for the scalar problem σx =
+    b with σ = 1, b^δ = 1, δ = 0.1, find α by the discrepancy principle.
+    (α/(1 + α) = 0.1 ⇒ α = 1/9, x_α = 0.9)
+
+D7. (a) Linear Gaussian Bayesian inversion: prior x ~ N(m₀, C₀), data y =
+    Ax + e with e ~ N(0, Γ) independent of x. Derive the posterior by
+    completing the square. (b) Show that with m₀ = 0, C₀ = γ²I, Γ = σ²I
+    the MAP estimate is the Tikhonov solution with α = σ²/γ². (c)
+    Numerical: x ~ N(0, 4), y = 2x + e, e ~ N(0, 1), observed y = 3. Find
+    the posterior, the 95% credible interval, and compare with the
+    "naive inversion" y/2.
+    Answer: (a) N(m, C), C = (C₀⁻¹ + AᵀΓ⁻¹A)⁻¹, m = C(C₀⁻¹m₀ + AᵀΓ⁻¹y).
+    (c) N(24/17, 4/17) ≈ N(1.4118, 0.2353); interval [0.4610, 2.3625];
+    naive estimate 1.5.
+    Teacher explains: (a) Bayes: π(x|y) ∝ π(y|x)π₀(x) ∝ exp(−Φ(x)) with
+       2Φ(x) = (y − Ax)ᵀΓ⁻¹(y − Ax) + (x − m₀)ᵀC₀⁻¹(x − m₀).
+    The terms quadratic in x are xᵀ(AᵀΓ⁻¹A + C₀⁻¹)x = xᵀC⁻¹x; the linear
+    terms are −2xᵀ(AᵀΓ⁻¹y + C₀⁻¹m₀) = −2xᵀC⁻¹m. So 2Φ(x) = (x − m)ᵀC⁻¹(x
+    − m) + const: the posterior is Gaussian N(m, C). PRECISIONS ADD: data
+    information AᵀΓ⁻¹A is added to prior information C₀⁻¹, hence C ≤ C₀.
+    By the Sherman-Morrison-Woodbury identity, m = m₀ + K(y − Am₀) with
+    the KALMAN GAIN K = C₀Aᵀ(AC₀Aᵀ + Γ)⁻¹ and C = C₀ − KAC₀. (b) The MAP
+    maximises the density, i.e. minimises 2Φ(x) = ‖y − Ax‖²/σ² +
+    ‖x‖²/γ². Multiply by σ²: ‖Ax − y‖² + (σ²/γ²)‖x‖², Tikhonov with α =
+    σ²/γ² = (noise variance)/(prior variance). A big prior variance means
+    a weak prior and little regularisation. For a Gaussian posterior MAP
+    = CM = m. But the Bayesian answer gives MORE: the covariance C.
+    (c) Precision 1/C = 1/4 + 2²/1 = 17/4, so C = 4/17 ≈ 0.2353, sd ≈
+    0.4851. Mean m = C·(2·3/1) = 24/17 ≈ 1.4118. 95% credible interval m ±
+    1.96·0.4851 = [0.4610, 2.3625]. The naive y/2 = 1.5 is the maximum-
+    likelihood estimate; the prior pulls it slightly towards 0 (shrinkage
+    factor 16/17). Check with the Kalman form: K = 4·2/(4·4 + 1) = 8/17,
+    m = (8/17)·3 = 24/17 ✓, C = 4 − (8/17)·2·4 = 4/17 ✓. Common mistakes:
+    adding variances instead of precisions; forgetting the factor Aᵀ…A in
+    the data precision; reporting the MAP without uncertainty. Now you
+    try: prior N(1, 4), y = x + e, e ~ N(0, 1), y = 3. (N(2.6, 0.8))
+
+D8. (a) Describe the Metropolis-Hastings algorithm and prove that the
+    target π satisfies detailed balance, hence is invariant. (b) On the
+    states {1, 2, 3} with π = (0.2, 0.3, 0.5), propose each of the other
+    two states with probability ½. Write the transition matrix P and
+    check πP = π. (c) Explain why random-walk Metropolis degenerates in
+    high dimensions and how pCN fixes this. (d) A chain behaves like an
+    AR(1) process with lag-one correlation 0.9. How many effectively
+    independent samples are in N = 10 000 steps?
+    Answer: (b) rows (0, ½, ½), (⅓, ⅙, ½), (0.2, 0.3, 0.5). (d) ESS =
+    N(1 − ρ)/(1 + ρ) ≈ 526.
+    Teacher explains: (a) From x propose y ~ q(x, ·); accept (move to y)
+    with probability a(x, y) = min{1, π(y)q(y, x)/(π(x)q(x, y))}, else
+    stay at x. For y ≠ x the transition density is P(x, y) = q(x, y)a(x,
+    y), so
+       π(x)P(x, y) = min{π(x)q(x, y), π(y)q(y, x)},
+    which is SYMMETRIC in (x, y): π(x)P(x, y) = π(y)P(y, x). Summing (or
+    integrating) over x: ∑ₓπ(x)P(x, y) = π(y)∑ₓP(y, x) = π(y). So π is
+    invariant; with irreducibility and aperiodicity the chain converges
+    to π and ergodic averages converge (LLN for Markov chains). Crucially
+    only RATIOS π(y)/π(x) are needed: the normalising constant (the
+    evidence) is never computed. (b) The proposal is symmetric, so a =
+    min(1, πⱼ/πᵢ). From 1: to 2 w.p. ½·1, to 3 w.p. ½·1, stay 0. From 2:
+    to 1 w.p. ½·(0.2/0.3) = ⅓, to 3 w.p. ½, stay ⅙. From 3: to 1 w.p.
+    ½·0.4 = 0.2, to 2 w.p. ½·0.6 = 0.3, stay 0.5. Column 1 of πP: 0.2·0 +
+    0.3·⅓ + 0.5·0.2 = 0.2 ✓; column 2: 0.1 + 0.05 + 0.15 = 0.3 ✓; column 3:
+    0.1 + 0.15 + 0.25 = 0.5 ✓. (c) For a target in dimension d, the step
+    size of random-walk Metropolis must shrink like d^(−1/2) to keep a
+    fixed acceptance (optimal ≈ 0.234), so mixing slows down; for a
+    function-space posterior (d → ∞) it stops working. pCN proposes y =
+    √(1 − β²)x + βξ, ξ ~ N(0, C₀); this proposal is REVERSIBLE WITH
+    RESPECT TO THE PRIOR, so the prior cancels and a = min(1, exp(Φ(x) −
+    Φ(y))) with Φ the negative log-likelihood — well defined in infinite
+    dimensions, with dimension-independent acceptance. (d) For AR(1),
+    ρₖ = ρᵏ and 1 + 2∑ρᵏ = (1 + ρ)/(1 − ρ) = 19 (the integrated
+    autocorrelation time). ESS = 10 000/19 ≈ 526. Common mistakes:
+    forgetting to count the rejected step as a repeated sample (the chain
+    must STAY at x); using the Metropolis ratio with a non-symmetric
+    proposal without the q-correction. Now you try: π = (0.5, 0.25, 0.25)
+    with the same proposal: find the row of P for state 1. (¼, ¼, ½ to
+    states 2, 3, 1)
+
+D9. Monte Carlo and variance reduction for I = ∫₀¹ eᵘ du = e − 1. (a) Find
+    the variance of plain Monte Carlo and the N needed for a 95% error of
+    ±0.01. (b) Compute the variance with antithetic pairs (eᵁ + e^(1−U))/2
+    and with the control variate U. (c) Rare event: estimate p = P(X > 4),
+    X ~ N(0, 1), with 10% relative error, by plain Monte Carlo and by
+    importance sampling from N(4, 1).
+    Answer: (a) Var eᵁ = (e² − 1)/2 − (e − 1)² ≈ 0.24204, N ≈ 9299.
+    (b) antithetic: 0.0039125 per pair (about 31 times better per
+    function evaluation); control variate: c* ≈ 1.6903, variance ≈
+    0.0039402 (≈ 61 times better). (c) p ≈ 3.167·10⁻⁵; plain MC needs
+    N ≈ 3.16·10⁶, importance sampling N ≈ 452.
+    Teacher explains: (a) Î_N = (1/N)∑e^(Uᵢ) is unbiased with Var Î_N =
+    v/N, where v = E e^(2U) − (E eᵁ)² = (e² − 1)/2 − (e − 1)² = 3.19453 −
+    2.95249 = 0.24204. By the CLT the 95% half-width is 1.96√(v/N) ≤ 0.01
+    iff N ≥ (1.96·0.49197/0.01)² = 9298.04, so N = 9299. The RATE N^(−1/2)
+    does not depend on the dimension — the reason MC is used in UQ — but
+    it is slow: one more digit costs 100 times more samples. (b)
+    ANTITHETIC: U and 1 − U have the same law, and eᵁ, e^(1−U) are
+    negatively correlated: Cov = E[e] − (e − 1)² = 2.71828 − 2.95249 =
+    −0.23421. Var of the pair average = (v + Cov)/2 = 0.0039125. A pair
+    costs 2 evaluations, so compare 0.24204 with 2·0.0039125: factor ≈
+    30.9. CONTROL VARIATE: estimate E[eᵁ − c(U − ½)], still unbiased. Its
+    variance v − 2c Cov(eᵁ, U) + c² Var U is minimal at c* = Cov/Var U,
+    where Cov(eᵁ, U) = E[Ueᵁ] − (e − 1)/2 = 1 − 0.85914 = 0.14086 and
+    Var U = 1/12: c* = 1.6903, variance v − Cov²/Var U = 0.24204 −
+    0.23810 = 0.0039402 (factor ≈ 61). (c) PLAIN: the indicator has
+    variance p(1 − p), so the relative error is √((1 − p)/(Np)) = 0.1 iff
+    N ≈ 100/p ≈ 3.16·10⁶ — almost all samples miss the event. IMPORTANCE
+    SAMPLING: draw Xᵢ ~ q = N(4, 1) and average 𝟙{Xᵢ > 4}w(Xᵢ) with w =
+    φ(x)/φ(x − 4) = e^(8 − 4x). Its second moment is ∫₄^∞ φ²/φ(x − 4) dx
+    = e¹⁶P(Z > 8) ≈ 5.528·10⁻⁹, so the variance per sample is 5.528·10⁻⁹
+    − p² ≈ 4.525·10⁻⁹, relative variance 4.51, and N ≈ 4.51/0.01 ≈ 452.
+    About 7000 times cheaper. Common mistakes: forgetting the weight w
+    (the estimator is then biased); choosing q with lighter tails than
+    p·f (infinite variance). Now you try: estimate π by 4·𝟙{U₁² + U₂² ≤
+    1}; standard error for N = 10⁴? (√(16·(π/4)(1 − π/4)/10⁴) ≈ 0.0164)
+
+D10. Polynomial chaos. (a) Show that the probabilists' Hermite
+     polynomials He₀ = 1, He₁ = x, He₂ = x² − 1, He₃ = x³ − 3x satisfy
+     E[HeₘHeₙ] = n!δₘₙ for ξ ~ N(0, 1), and expand Y = e^ξ. Find the mean
+     and variance from the expansion and the fraction of variance
+     captured by degree 2. (b) Expand Y = X² and Y = X³ for X ~ U(−1, 1)
+     in Legendre polynomials. (c) Explain why the coefficient c₂ of Y =
+     ξ⁴ computed with the 3-point Gauss-Hermite rule is wrong.
+     Answer: (a) e^ξ = e^(1/2)∑Heₙ(ξ)/n!; mean e^(1/2) ≈ 1.64872, variance
+     e(e − 1) ≈ 4.67077; degree 2 captures 1.5/(e − 1) ≈ 87.3%. (b) X² =
+     ⅓ + ⅔P₂, X³ = ⅗P₁ + ⅖P₃. (c) it gives 3 instead of 6 (aliasing).
+     Teacher explains: (a) The generating function is e^(tx − t²/2) =
+     ∑Heₙ(x)tⁿ/n!. Then E[e^(sξ − s²/2)e^(tξ − t²/2)] = e^(−(s² + t²)/2)
+     E e^((s+t)ξ) = e^(st) = ∑(st)ⁿ/n!; comparing coefficients of sᵐtⁿ/
+     (m!n!) gives E[HeₘHeₙ] = n!δₘₙ. From the generating function with t
+     = 1: e^ξ = e^(1/2)e^(ξ − 1/2) = e^(1/2)∑Heₙ(ξ)/n!, so cₙ = e^(1/2)/n!
+     (1.64872, 1.64872, 0.82436, 0.27479, ...). MEAN = c₀ = e^(1/2) (check:
+     E e^ξ = e^(1/2) ✓). VARIANCE = ∑_{n≥1}cₙ²n! = e∑_{n≥1}1/n! = e(e − 1)
+     (check: E e^(2ξ) − e = e² − e ✓). Degree ≤ 2 captures e(1 + ½), a
+     fraction 1.5/(e − 1) ≈ 0.873; degree 3 adds 1/6 (→ 0.970): fast
+     (spectral) convergence since cₙ²n! = e/n!. (b) Legendre: P₁ = x, P₂
+     = (3x² − 1)/2, P₃ = (5x³ − 3x)/2, orthogonal for the uniform density
+     ½ on [−1, 1] with E[Pₙ²] = 1/(2n + 1). x² = ⅓ + ⅔P₂: mean ⅓,
+     variance (⅔)²·⅕ = 4/45 (direct: ⅕ − ⅑ = 4/45 ✓). x³ = ⅗P₁ + ⅖P₃:
+     variance (9/25)(⅓) + (4/25)(1/7) = 1/7 = E X⁶ ✓. (c) Exactly, ξ⁴ = He₄
+     + 6He₂ + 3, so c₂ = E[ξ⁴He₂]/2! = (15 − 3)/2 = 6. The 3-point rule
+     (nodes 0, ±√3, weights ⅔, ⅙, ⅙) is exact only up to degree 5, but
+     ξ⁴He₂ has degree 6: it gives E ξ⁶ ≈ 2·⅙·27 = 9 (true 15), E ξ⁴ = 3
+     ✓, so c₂ ≈ (9 − 3)/2 = 3. For NON-INTRUSIVE PROJECTION of a degree-p
+     model onto degree-p chaos, the rule must integrate degree 2p exactly
+     (here 4 points). Common mistakes: using the physicists' Hermite
+     Hₙ with weight e^(−x²) while sampling ξ ~ N(0, 1); forgetting the
+     norms E[Ψₖ²] in the variance formula. Now you try: mean and
+     variance of Y = 2 + 3ξ + ξ² from its chaos expansion. (Y = 3 + 3He₁
+     + He₂: mean 3, variance 9 + 2 = 11)
+
+D11. Sensitivity analysis. Let Y = X₁ + 2X₂ + 3X₁X₂ with X₁, X₂
+     independent N(0, 1). (a) Compute the local sensitivities at the mean
+     (0, 0). (b) Compute the ANOVA decomposition, the first-order Sobol'
+     indices S₁, S₂, the interaction index S₁₂ and the total indices.
+     (c) Show that for independent inputs ∑Sᵢ ≤ 1, with equality iff Y is
+     additive.
+     Answer: (a) ∂Y/∂X₁ = 1, ∂Y/∂X₂ = 2. (b) Var Y = 14; S₁ = 1/14, S₂ =
+     2/7, S₁₂ = 9/14, S_T1 = 5/7, S_T2 = 13/14.
+     Teacher explains: (a) ∂Y/∂X₁ = 1 + 3X₂ and ∂Y/∂X₂ = 2 + 3X₁ equal 1
+     and 2 at the origin: a local analysis ranks X₂ first and sees NO sign
+     of the dominant interaction. (b) ANOVA (Hoeffding) decomposition: f₀
+     = EY = 0; f₁(X₁) = E[Y|X₁] − f₀ = X₁; f₂(X₂) = 2X₂; f₁₂ = Y − f₀ − f₁ −
+     f₂ = 3X₁X₂. The terms are mutually orthogonal (each has zero mean in
+     each of its own variables), so Var Y = V₁ + V₂ + V₁₂ = 1 + 4 + 9 =
+     14. In chaos language Y = He₁(X₁) + 2He₁(X₂) + 3He₁(X₁)He₁(X₂): the
+     variance is the sum of squared coefficients. First order: S₁ =
+     Var(E[Y|X₁])/Var Y = 1/14 ≈ 0.071, S₂ = 4/14 ≈ 0.286; interaction
+     S₁₂ = 9/14 ≈ 0.643. Total: S_T1 = (V₁ + V₁₂)/Var Y = 10/14 ≈ 0.714,
+     S_T2 = 13/14 ≈ 0.929. Interpretation: fixing X₁ alone removes on
+     average only 7% of the variance, but fixing everything EXCEPT X₁
+     still leaves 71% on average: X₁ acts through the interaction.
+     (c) In general Var Y = ∑_{u≠∅}V_u over all subsets u of inputs,
+     with V_u ≥ 0 and Vᵢ = Var(E[Y|Xᵢ]). So ∑Sᵢ =
+     ∑Vᵢ/∑V_u ≤ 1, with equality iff V_u = 0 for |u| ≥ 2, i.e. all
+     interaction terms vanish, i.e. Y = f₀ + ∑fᵢ(Xᵢ) (additive). Similarly
+     S_Tᵢ = ∑_{u∋i}V_u/Var Y ≥ Sᵢ, and 1 − ∑Sᵢ measures interactions.
+     Estimators: pick-freeze (Saltelli/Jansen) with two sample matrices;
+     from a PCE for free. Common mistakes: ranking inputs by derivatives
+     at one point for a non-linear model; applying Sobol' indices to
+     correlated inputs (the decomposition is no longer orthogonal).
+     Now you try: Y = X₁X₂ with X₁, X₂ independent U(0, 1). Find S₁, S₂,
+     S₁₂. (Var Y = 7/144, V₁ = V₂ = 1/48: S₁ = S₂ = 3/7, S₁₂ = 1/7)
+
+D12. Tomography. (a) Compute the Radon transform of the indicator of the
+     disc |x| ≤ r and of f(x) = e^(−|x|²) in R². (b) Prove the Fourier
+     slice theorem (Rf)^(θ, σ) = f̂(σθ). (c) Derive the filtered
+     backprojection formula and explain why plain backprojection blurs.
+     (d) Why is CT only mildly ill-posed, while limited-angle CT is
+     severely ill-posed?
+     Answer: (a) 2√(r² − s²) for |s| ≤ r (0 otherwise); √π e^(−s²).
+     (c) f(x) = (1/(2π))∫₀^π h_θ(x·θ)dθ, ĥ_θ(σ) = |σ|(Rf)^(θ, σ)
+     (1-D transform in s); R^#Rf = f * (1/|x|).
+     Teacher explains: Parametrise the line {x·θ = s} as x = sθ + tθ⊥,
+     θ = (cos φ, sin φ), θ⊥ = (−sin φ, cos φ); Rf(θ, s) = ∫f(sθ + tθ⊥)dt.
+     (a) Disc: the chord at distance |s| ≤ r has length 2√(r² − s²). For
+     the Gaussian, |sθ + tθ⊥|² = s² + t², so Rf = e^(−s²)∫e^(−t²)dt =
+     √π e^(−s²), independent of θ (radial f). Check: ∫Rf ds = ∫f (both π
+     for these examples). (b) With f̂(ξ) = ∫f(x)e^(−ix·ξ)dx:
+        ∫Rf(θ, s)e^(−isσ)ds = ∬f(sθ + tθ⊥)e^(−isσ)ds dt = ∫f(x)e^(−iσx·θ)dx
+                             = f̂(σθ),
+     since (s, t) ↦ sθ + tθ⊥ is a rotation (Jacobian 1) and x·θ = s.
+     For the Gaussian: FT of √π e^(−s²) is π e^(−σ²/4) = f̂(σθ) ✓. So each
+     projection gives f̂ along one line through the origin; all angles
+     give f̂ everywhere, proving uniqueness. (c) Fourier inversion in
+     polar coordinates ξ = σθ, θ ∈ [0, π), σ ∈ R, dξ = |σ|dσ dθ:
+        f(x) = (1/(4π²))∫₀^π∫_R f̂(σθ)e^(iσx·θ)|σ|dσ dθ
+             = (1/(2π))∫₀^π h_θ(x·θ)dθ,
+     where h_θ(s) = (1/(2π))∫|σ|(Rf)^(θ, σ)e^(iσs)dσ is the projection
+     FILTERED with the ramp |σ|. The outer integral is the BACKPROJECTION
+     R^#g(x) = ∫₀^π g(θ, x·θ)dθ (smear each projection back along its
+     lines). Without the filter, R^#Rf(x) = ∫₀^π∫f(x + tθ⊥)dt dθ =
+     ∫f(x + y)/|y| dy (polar coordinates again): a convolution with 1/|x|,
+     i.e. multiplication of f̂ by 2π/|ξ| — high frequencies are damped,
+     the image is blurred. The ramp filter undoes this. (d) The factor
+     1/|ξ| says R smooths by HALF a derivative in each variable of R²
+     (‖Rf‖_{H^(s+1/2)} ≈ ‖f‖_{H^s}); on the unit disc the singular values
+     are √(4π/(m + 1)) (multiplicity m + 1), decaying like m^(−1/2):
+     MILDLY ill-posed, and the ramp filter amplifies noise only linearly
+     in frequency (so in practice it is cut off: Ram-Lak, Shepp-Logan
+     windows). With angles only in [0, φ₀] ⊊ [0, π), f̂ is known only in a
+     wedge; recovering it elsewhere is ANALYTIC CONTINUATION, and the
+     singular values decay exponentially: severely ill-posed. Common
+     mistakes: forgetting |σ| (the Jacobian of polar coordinates);
+     integrating θ over [0, 2π) without halving. Now you try: Rf(θ, s)
+     for the unit disc at s = 0.6, and for the disc of radius 2 at s = 1.
+     (1.6; 2√3 ≈ 3.4641)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Ill-posedness, conditioning and numerical differentiation.
+    a) κ₂(diag(5, 0.05))                 b) κ₂([[1, 1], [1, 1.001]])
+    c) κ₂([[1, 10], [0, 1]])              d) κ₂ of the 3×3 Hilbert matrix
+    e) κ = 10⁴, relative data error 10⁻⁶: bound on the relative solution
+       error
+    f) f^δ = f + δ sin(x/δ²): ‖f^δ − f‖∞ and ‖(f^δ)′ − f′‖∞ for δ = 10⁻³
+    g) forward difference, |f″| ≤ 2, δ = 10⁻⁸: optimal h and error bound
+    h) central difference, |f‴| ≤ 1, δ = 10⁻⁹: optimal h and error bound
+    i) backward heat on (0, 1): amplification of mode n = 1, T = 0.1
+    j) the same for n = 3, T = 0.1 and for n = 10, T = 0.01
+    k) Hadamard condition(s) failing: [[1, 2], [2, 4]]x = (1, 1)
+    l) the same for [[1, 2], [2, 4]]x = (1, 2)
+    m) the same for Vf = g, V the integration operator on L²(0, 1)
+    n) minimum-norm solution of x₁ + x₂ = 2  o) least squares: x = 1, x = 3
+    Answers:
+      a) 100       b) ≈ 4002        c) ≈ 101.99        d) ≈ 524.06
+      e) 10⁻²      f) 10⁻³ and 1/δ = 1000
+      g) h* = 2√(δ/M) ≈ 1.414·10⁻⁴, error 2√(Mδ) ≈ 2.828·10⁻⁴
+      h) h* = (3δ)^(1/3) ≈ 1.442·10⁻³, error ≈ 1.040·10⁻⁶
+      i) e^(0.1π²) ≈ 2.683          j) e^(0.9π²) ≈ 7206; e^(π²) ≈ 19334
+      k) existence and uniqueness   l) uniqueness only
+      m) stability (and existence: g must be in H¹ with g(0) = 0)
+      n) (1, 1)    o) 2
+
+M2. SVD and the Picard condition. (Singular values, pseudo-inverses; for
+    the Picard parts decide Y/N and give ‖x†‖ when Y.)
+    a) σ of [[3, 0], [0, −4]]            b) σ of [[1, 1], [1, 1]]
+    c) σ of [[2, 2], [−1, 1]]             d) σ of [[1, 2], [2, 1]]
+    e) σ of [[1, 0], [1, 1]]              f) σ of uvᵀ, u = (1, 2, 2), v = (3, 4)
+    g) A⁺ for [[1, 1], [1, 1]]
+    h) minimum-norm least-squares solution of [[1, 1], [1, 1]]x = (1, 3)
+    i) σ₁, σ₂ of the integration operator V on L²(0, 1)
+    j) σₙ of u(·, 0) ↦ u(·, T) for u_t = u_xx on (0, 1), Dirichlet
+    k) σₙ = 1/n, ⟨b, uₙ⟩ = 1/n²          l) σₙ = 1/n, ⟨b, uₙ⟩ = 1/n
+    m) σₙ = e^(−n), ⟨b, uₙ⟩ = e^(−2n)     n) σₙ = n⁻², ⟨b, uₙ⟩ = n^(−5/2)
+    o) σₙ = 1/n, ⟨b, uₙ⟩ = n⁻³            p) V, g(x) = x
+    q) V, g(x) = 1                        r) σₙ = e^(−n), ⟨b, uₙ⟩ = n⁻¹⁰
+    Answers:
+      a) 4, 3      b) 2, 0      c) 2√2, √2 (AᵀA = [[5, 3], [3, 5]])
+      d) 3, 1      e) (√5 + 1)/2 ≈ 1.618, (√5 − 1)/2 ≈ 0.618
+      f) 15 (‖u‖‖v‖ = 3·5), rank 1      g) ¼[[1, 1], [1, 1]]
+      h) (1, 1)    i) 2/π ≈ 0.6366, 2/(3π) ≈ 0.2122
+      j) e^(−n²π²T) (singular vectors √2 sin(nπx))
+      k) Y, ‖x†‖ = π/√6 ≈ 1.2825      l) N (∑1 = ∞)
+      m) Y, (e² − 1)^(−1/2) ≈ 0.3956   n) N (∑1/n = ∞)
+      o) Y, π²/√90 ≈ 1.0404           p) Y, ‖x†‖ = 1 (x† = 1)
+      q) N (ratios √2)                 r) N (eⁿn⁻¹⁰ → ∞)
+
+M3. Tikhonov regularisation (penalty α‖x‖², filter φ = σ²/(σ² + α)).
+    a) φ for σ = 1, α = 0.01           b) φ for σ = 0.1, α = 0.01
+    c) φ for σ = 0.01, α = 0.01        d) σ at which φ = ½
+    e) x_α for σx = b, σ = 0.1, b = 1, α = 0.01 (compare b/σ)
+    f) max_σ σ/(σ² + α) for α = 10⁻⁴
+    g) A = diag(1, 0.01), b = (1, 1), α = 10⁻⁴: x_α
+    h) A = (1, 1)ᵀ (2×1), b = (1, 3), α = 1: x_α
+    i) A = (1 1) (1×2), b = 2, α = 1: x_α; and the limit α → 0
+    j) A = I₂, b = (1, 3), L = (1 −1), α = 1: minimiser of ‖x − b‖² +
+       α‖Lx‖²
+    k) noise bound δ/(2√α) for δ = 10⁻³, α = 10⁻⁴
+    l) bias bound for x† = A*w, ‖w‖ = 1, α = 10⁻⁴
+    m) optimal α and error bound for (d) of D4 with δ = 10⁻⁴, ‖w‖ = 4
+    n) rate for x† = A*Aw with α ~ δ^(2/3); what is "saturation"?
+    o) does α = δ², α = δ, α = δ^(3/2), α = 1 give convergence (no source
+       condition)?
+    p) Landweber filter after k steps; value for ω = 1, σ = 0.1, k = 100
+    Answers:
+      a) 1/1.01 ≈ 0.9901    b) ½          c) 1/101 ≈ 0.0099
+      d) σ = √α              e) 5 (vs 10)  f) 1/(2√α) = 50
+      g) (0.99990, 50)       h) 4/3        i) (⅔, ⅔); (1, 1)
+      j) (5/3, 7/3) (solve [[2, −1], [−1, 2]]x = (1, 3))
+      k) 0.05                l) √α/2 = 0.005
+      m) α = δ/‖w‖ = 2.5·10⁻⁵, error √(δ‖w‖) = 0.02
+      n) O(δ^(2/3)); no smoothness gives a better rate for Tikhonov
+      o) δ²: no (noise term → ½); δ: yes; δ^(3/2): yes (δ/√α = δ^(1/4)
+         → 0); 1: no (bias stays)
+      p) 1 − (1 − ωσ²)ᵏ; 1 − 0.99¹⁰⁰ ≈ 0.6340
+
+M4. TSVD and the discrete Picard condition. Unless stated, σ = (1, 0.5,
+    0.1, 0.01, 0.001) and β = uᵀb^δ = (1, 0.4, 0.05, 0.003, 0.0012)
+    (square system, uᵢ = vᵢ = eᵢ).
+    a) coefficients of x₂ (TSVD, k = 2)  b) ‖x₂‖
+    c) residual ‖b^δ − Ax₂‖               d) the Picard ratios βᵢ/σᵢ
+    e) ‖x₅‖ (no regularisation)          f) residuals for k = 3 and k = 4
+    g) discrepancy choice of k for δ = 0.0015, τ = 1
+    h) the same for δ = 0.004, τ = 1
+    i) effective condition number σ₁/σₖ for k = 3
+    j) Tikhonov α whose filter is ½ at σ₃
+    k) σᵢ = 2⁻ⁱ, i = 1, ..., 10, exact coefficients cᵢ = 2⁻ⁱ, noise 10⁻³
+       in each data coefficient: squared error of TSVD as a function of k
+    l) optimal k in k)
+    m) Picard plot: |βᵢ| ≈ σᵢ² for i ≤ 20, then ≈ 10⁻⁶ while σ₂₀ = 10⁻³:
+       sensible k?
+    Answers:
+      a) (1, 0.8)    b) √1.64 ≈ 1.2806    c) √(0.05² + 0.003² + 0.0012²)
+         ≈ 0.05010
+      d) 1, 0.8, 0.5, 0.3, 1.2 (last one rises: noise)
+      e) √(1 + 0.64 + 0.25 + 0.09 + 1.44) = √3.42 ≈ 1.8493
+      f) √(0.003² + 0.0012²) ≈ 0.003231; 0.0012
+      g) k = 4       h) k = 3        i) 10        j) α = σ₃² = 0.01
+      k) ∑_{i>k}4⁻ⁱ + 10⁻⁶∑_{i≤k}4ⁱ   l) k = 4 (error² ≈ 0.001642;
+         k = 5 gives 0.001689, k = 3 gives 0.005292)
+      m) k ≈ 20 (after that |βᵢ|/σᵢ grows; noise at level 10⁻⁶)
+
+M5. Parameter choice.
+    a) σx = b, σ = 1, b^δ = 1, δ = 0.1: discrepancy α (Tikhonov)
+    b) general scalar case: α with residual δ (0 < δ < b^δ)
+    c) apply b) with σ = 0.1, b^δ = 0.5, δ = 0.05
+    d) scalar case with b^δ ≤ δ: what does the principle give?
+    e) A = diag(1, 0.1, 0), b^δ = (1, 1, 0.2): lim r(α) as α → 0, α → ∞
+    f) the same data, δ = 0.1: is the discrepancy equation solvable?
+    g) A = diag(1, 0.1), b^δ = (1, 0.2): r(α) and ‖x_α‖ at α = 10⁻²
+    h) GCV function G(α) = ‖r_α‖²/(trace(I − AA_α^#))² for g) at α = 0.01
+    i) which choices α(δ) give convergence: δ, δ², δ/|log δ|, 10⁻³?
+    j) rate of Tikhonov + discrepancy principle for x† = A*w
+    Answers:
+      a) α/(1 + α) = 0.1 ⇒ α = 1/9, x_α = 0.9
+      b) α = δσ²/(b^δ − δ)       c) 1/900 ≈ 0.001111
+      d) α = ∞, x = 0 (data indistinguishable from noise)
+      e) 0.2 (the part outside R(A)) and ‖b^δ‖ = √2.04 ≈ 1.4283
+      f) no: r(α) > 0.2 > δ for all α (need ‖P b^δ‖ ≤ τδ)
+      g) ≈ 0.1005, ≈ 1.4072      h) 0.010098/0.5099² ≈ 0.0388
+      i) δ, δ/|log δ|: yes (α → 0, δ²/α → 0); δ²: no; 10⁻³: no
+      j) O(δ^(1/2)) (order optimal; not δ^(2/3) even if x† = A*Aw)
+
+M6. Bayesian inversion, Gaussian case (e independent of x).
+    a) prior N(0, 1), y = x + e, e ~ N(0, 1), y = 2: posterior
+    b) prior N(1, 4), y = x + e, e ~ N(0, 1), y = 3
+    c) prior N(0, 4), y = 2x + e, e ~ N(0, 1), y = 3
+    d) prior N(0, 1), 9 observations yᵢ = x + eᵢ, eᵢ ~ N(0, 1), ȳ = 2
+    e) 95% credible interval in d)
+    f) Tikhonov α equivalent to prior N(0, γ²I), noise N(0, σ²I) with
+       σ = 0.1, γ = 2
+    g) prior N(0, I₂), y = x₁ + x₂ + e, e ~ N(0, 1), y = 3: mean and
+       covariance
+    h) posterior correlation of x₁, x₂ in g)
+    i) prior N(0, diag(1, 4)), same data as g)
+    j) prior N(0, I₂), observe only y = x₁ + e: posterior of x₂
+    k) marginal likelihood (evidence) p(y) in a) at y = 2
+    l) prior covariance with eigenvalues k^(−s) on L²(0, 1): trace class
+       for s = 2? s = 1?
+    m) Laplace prior ∝ e^(−λ|x|), y = x + e, e ~ N(0, 1): MAP for y = 3,
+       λ = 1, and for y = 0.5
+    Answers:
+      a) N(1, ½)       b) N(2.6, 0.8)       c) N(24/17, 4/17)
+      d) N(1.8, 0.1)   e) [1.1802, 2.4198]  f) α = σ²/γ² = 0.0025
+      g) m = (1, 1), C = [[⅔, −⅓], [−⅓, ⅔]]
+      h) −½            i) m = (0.5, 2), C = [[5/6, −⅔], [−⅔, 4/3]]
+      j) N(0, 1), unchanged
+      k) y ~ N(0, 2): e⁻¹/√(4π) ≈ 0.10378
+      l) s = 2: yes (∑k⁻² < ∞); s = 1: no
+      m) soft thresholding x = sign(y)max(|y| − λ, 0): 2 and 0
+
+M7. MCMC.
+    a) random-walk Metropolis, target N(0, 1): acceptance for x = 1 → y = 2
+    b) the same for x = 2 → y = 1        c) x = 0 → y = 3
+    d) target ∝ e^(−x⁴): x = 1 → y = 0.5 and x = 0.5 → y = 1
+    e) independence sampler, proposal N(0, 4), target N(0, 1): x = 0 → y = 2
+    f) π = (0.5, 0.25, 0.25), propose each other state w.p. ½: matrix P
+    g) pCN with Φ(x) = 2: acceptance if Φ(y) = 3; if Φ(y) = 1
+    h) pCN with β = 0.6: the proposal, and why it preserves N(0, 1)
+    i) ESS of N = 10⁴ steps of AR(1) with ρ = 0.9, 0.5, −0.5
+    j) integrated autocorrelation time (1 + ρ)/(1 − ρ) for ρ = 0.99
+    k) Gibbs for a standard bivariate normal with correlation 0.8: law of
+       x | y = 1
+    l) lag-one autocorrelation of the x-chain of that Gibbs sampler
+    m) asymptotically optimal acceptance rates: RWM, MALA
+    n) step-size scaling with the dimension d: RWM, MALA, pCN
+    Answers:
+      a) e^(−3/2) ≈ 0.2231          b) 1        c) e^(−4.5) ≈ 0.01111
+      d) 1; e^(−0.9375) ≈ 0.3916
+      e) min(1, π(2)q(0)/(π(0)q(2))) = e⁻²e^(1/2) = e^(−3/2) ≈ 0.2231
+      f) rows (½, ¼, ¼), (½, 0, ½), (½, ½, 0)
+      g) e⁻¹ ≈ 0.3679; 1
+      h) y = 0.8x + 0.6ξ; variance 0.64 + 0.36 = 1
+      i) ≈ 526, ≈ 3333, 30 000 (negative correlation helps)
+      j) 199             k) N(0.8, 0.36)        l) 0.64 (= ρ²)
+      m) ≈ 0.234, ≈ 0.574
+      n) d^(−1/2), d^(−1/3), independent of d
+
+M8. Monte Carlo.
+    a) plain MC for E[U²], U ~ U(0, 1): variance of U² and standard error
+       for N = 100
+    b) N for a 95% half-width 0.001 when estimating P(U < 0.3)
+    c) how many more samples to halve the error?
+    d) N for ∫₀¹ eᵘ du to ±0.01 (95%)
+    e) antithetic variance of the pair average for eᵁ
+    f) control variate U for eᵁ: c* and the reduced variance
+    g) π ≈ 4·(fraction in the quarter disc): standard error for N = 10⁴
+    h) plain MC for P(X > 4), X ~ N(0, 1), 10% relative error: N
+    i) importance weight for proposal N(4, 1) at x = 4 and x = 5
+    j) N with that proposal for 10% relative error
+    k) stratified sampling of ∫₀¹ u du, N equal strata, one point each:
+       variance for N = 10 (compare plain)
+    l) sample mean 2.5, sample sd 1.2, N = 400: 95% interval
+    Answers:
+      a) 4/45 ≈ 0.08889; ≈ 0.02981    b) (1.96/0.001)²·0.21 = 806 736
+      c) 4 times as many               d) 9299
+      e) ≈ 0.0039125                   f) c* ≈ 1.6903; ≈ 0.0039402
+      g) ≈ 0.01642                     h) ≈ 3.16·10⁶
+      i) e^(8−4x): e⁻⁸ ≈ 3.355·10⁻⁴, e⁻¹² ≈ 6.14·10⁻⁶
+      j) ≈ 452 (relative variance 4.51 per sample)
+      k) 1/(12N³) ≈ 8.33·10⁻⁵ vs 1/(12N) ≈ 8.33·10⁻³
+      l) 2.5 ± 0.1176 = [2.3824, 2.6176]
+
+M9. Polynomial chaos (Heₙ probabilists' Hermite, ξ ~ N(0, 1); Legendre Pₙ
+    for X ~ U(−1, 1)). Give the expansion, mean and variance.
+    a) ξ²             b) ξ³              c) ξ⁴             d) 2 + 3ξ + ξ²
+    e) e^ξ: c₀, ..., c₃                  f) fraction of Var e^ξ in degree ≤ 2
+    g) e^(ξ/2): mean and variance
+    h) X² (Legendre)                     i) X³ (Legendre)
+    j) number of terms of total degree ≤ p in d variables: (d, p) = (2, 3),
+       (5, 3), (10, 2), (10, 4)
+    k) ξ₁ξ₂ (independent)               l) ξ₁² + ξ₁ξ₂
+    m) orthogonal family for gamma, beta, Poisson inputs
+    n) c₂ of ξ⁴ by 2-point Gauss-Hermite (nodes ±1, weights ½)
+    o) c₂ of ξ⁴ by the 3-point rule, and the number of points needed
+    Answers:
+      a) He₂ + 1: 1, 2            b) He₃ + 3He₁: 0, 6 + 9 = 15
+      c) He₄ + 6He₂ + 3: 3, 24 + 72 = 96
+      d) 3 + 3He₁ + He₂: 3, 11
+      e) e^(1/2)/n!: 1.6487, 1.6487, 0.8244, 0.2748
+      f) 1.5/(e − 1) ≈ 0.8730
+      g) e^(1/8) ≈ 1.1331; e^(1/4)(e^(1/4) − 1) ≈ 0.3647
+      h) ⅓ + ⅔P₂: ⅓, 4/45        i) ⅗P₁ + ⅖P₃: 0, 1/7
+      j) 10, 56, 66, 1001
+      k) He₁(ξ₁)He₁(ξ₂): 0, 1     l) 1 + He₂(ξ₁) + He₁(ξ₁)He₁(ξ₂): 1, 3
+      m) Laguerre, Jacobi, Charlier
+      n) 0 (He₂(±1) = 0: aliasing; true 6)
+      o) 3; 4 points (exact to degree 7 ≥ 6)
+
+M10. Sensitivity analysis (independent inputs).
+     a) Y = X₁ + X₂, Var X₁ = 1, Var X₂ = 4: S₁, S₂
+     b) Y = 2X₁ + X₂, Xᵢ ~ U(0, 1)
+     c) Y = X₁ + X₂ + X₃ with standard deviations 1, 2, 3
+     d) Y = X₁ + 2X₂ + 3X₁X₂, Xᵢ ~ N(0, 1): S₁, S₂, S₁₂, S_T1, S_T2
+     e) Y = X₁X₂, Xᵢ ~ U(−1, 1)        f) Y = X₁X₂, Xᵢ ~ U(0, 1)
+     g) Y = ξ₁² + ξ₂, ξᵢ ~ N(0, 1): S₁
+     h) Y = 1 + 2He₁(ξ₁) + He₂(ξ₂) + He₁(ξ₁)He₁(ξ₂): all indices
+     i) Ishigami Y = sin X₁ + 7sin²X₂ + 0.1X₃⁴sin X₁, Xᵢ ~ U(−π, π): S₁,
+        S₂, S₃, S_T3 (V = a²/8 + bπ⁴/5 + b²π⁸/18 + ½)
+     j) local derivatives of Y = X₁²X₂ at (1, 2), and the elasticities
+        (xᵢ/Y)∂Y/∂xᵢ
+     k) Morris elementary effect of X₁ for Y = X₁²X₂ at (1, 2), Δ = 0.5
+     l) Y = X₁ + 0·X₂ + 5X₂X₃: S₂ and S_T2 (Xᵢ ~ N(0, 1))
+     Answers:
+       a) 0.2, 0.8         b) 0.8, 0.2         c) 1/14, 2/7, 9/14
+       d) 1/14, 2/7, 9/14, 5/7, 13/14
+       e) S₁ = S₂ = 0, S₁₂ = 1       f) 3/7, 3/7, 1/7
+       g) ⅔ (Var ξ₁² = 2)
+       h) Var 7: S₁ = 4/7, S₂ = 2/7, S₁₂ = 1/7, S_T1 = 5/7, S_T2 = 3/7
+       i) ≈ 0.3139, ≈ 0.4424, 0, ≈ 0.2437
+       j) 4 and 1; 2 and 1           k) (2.25·2 − 2)/0.5 = 5
+       l) 0 and 25/26 ≈ 0.9615
+
+M11. Radon transform and tomography (θ = (cos φ, sin φ)).
+     a) R𝟙_{|x|≤1} at s = 0, 0.6, 0.8, 1.5
+     b) disc of radius 2 at s = 1
+     c) unit disc centred at a = (1, 0): Rf at φ = 0, s = 1.5 and at φ =
+        π/2, s = 0.5
+     d) R e^(−|x|²) at s = 1
+     e) unit square [0, 1]² at φ = 0; at φ = π/4 for 0 ≤ s ≤ 1/√2
+     f) f = |x|²𝟙_{|x|≤1}: Rf(θ, 0)
+     g) (Rf)^(θ, σ) for f = e^(−|x|²) at σ = 2
+     h) backprojection R^#g(0) = ∫₀^π g(θ, 0)dθ for g = R𝟙_{|x|≤1}
+     i) the kernel of R^#R
+     j) Beer-Lambert: I/I₀ = 0.2; the line integral ∫μ
+     k) first singular values √(4π/(m + 1)) of R on the unit disc, m = 0, 3
+     l) degree of ill-posedness of R in R²
+     m) 2×2 images with row sums (1, 1) and column sums (1, 1): how many
+        0/1 images? Is the reconstruction unique?
+     Answers:
+       a) 2, 1.6, 1.2, 0        b) 2√3 ≈ 3.4641
+       c) 2√(1 − (s − a·θ)²): √3 ≈ 1.7321 both
+       d) √π/e ≈ 0.6520
+       e) 1 for 0 ≤ s ≤ 1; 2s
+       f) 2/3 (in general 2s²w + 2w³/3, w = √(1 − s²))
+       g) π e⁻¹ ≈ 1.1557        h) 2π
+       i) 1/|x| (R^#Rf = f * 1/|x|)
+       j) ln 5 ≈ 1.6094         k) √(4π) ≈ 3.5449, √π ≈ 1.7725
+       l) ½ (Sobolev smoothing of order ½)
+       m) 2 ([[1, 0], [0, 1]] and [[0, 1], [1, 0]]); not unique
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) The inverse of a compact injective operator on L²(0, 1) is
+        bounded.
+     b) The least-squares solution of Ax = b is always unique.
+     c) If b ∈ R(A) for compact A, the Picard series converges.
+     d) Smaller Tikhonov α always gives a smaller error.
+     e) The Tikhonov residual ‖Ax_α − b^δ‖ is increasing in α.
+     f) The solution with the smallest residual is the best solution.
+     g) TSVD with k = n and noisy data is a good estimate.
+     h) With Gaussian prior and noise and linear A, MAP = conditional
+        mean.
+     i) The MAP estimate is always the posterior mean.
+     j) Metropolis-Hastings needs the normalising constant of π.
+     k) The Monte Carlo error rate N^(−1/2) depends on the dimension.
+     l) The first-order Sobol' indices always sum to 1.
+     m) Local sensitivities rank inputs correctly for every model.
+     n) The Radon transform of f ∈ C_c(R²) determines f.
+     o) Plain backprojection R^#Rf recovers f.
+     p) Tikhonov regularisation can reach any rate δ^μ under smoothness.
+     Answers:
+       a) F: V (integration), since R(V) is not closed
+       b) F: [[1, 1], [1, 1]] (add any kernel vector)
+       c) T (it is the Picard condition)
+       d) F: D3 (α = 10⁻⁴ is worse than 10⁻²)
+       e) T (strictly, when b^δ has components along some σᵢ > 0)
+       f) F: D5 (k = 5 has residual 0 and error 20.1)
+       g) F: D5 (error 20.1 vs 1.43)
+       h) T
+       i) F: a skewed posterior, e.g. Gamma(2, 1): mode 1, mean 2
+       j) F: only ratios
+       k) F: Var f/N for any dimension
+       l) F: Y = X₁X₂, Xᵢ ~ U(−1, 1) has S₁ = S₂ = 0
+       m) F: Y = X₁X₂ + 0.1X₃, Xᵢ ~ N(0, 1): at 0 the derivatives in X₁,
+          X₂ vanish, yet S_T1 = S_T2 = 1/1.01 ≈ 0.99
+       n) T (Fourier slice theorem)
+       o) F: it gives f * 1/|x| (blurred)
+       p) F: saturation at δ^(2/3)
+
+TEACHING TIPS
+  Struggling: always go to SVD coordinates first — write every problem
+  as "coefficient uᵢᵀb divided by σᵢ" and ask what happens to the
+  noise in each coefficient; draw the Picard plot (log |uᵢᵀb| and log
+  σᵢ against i) and let the student find the elbow by eye. Present
+  every regularisation method as a filter φ(σ) and compare the graphs
+  of TSVD, Tikhonov and Landweber filters on a log axis. For the
+  Bayesian part insist on the slogan "precisions add" and check every
+  scalar posterior with the Kalman gain; for MCMC run the 3-state
+  example by hand before any continuous one. Harder: prove the
+  convergence-rate theory of general spectral filters and the
+  order optimality of the discrepancy principle; prove the saturation
+  of Tikhonov; show Hellinger well-posedness of the Bayesian posterior
+  (Stuart's theorem) and that the pCN kernel is prior-reversible;
+  prove the Feldman-Hájek theorem to see why random-walk proposals
+  fail in function space; derive Sobol' indices from a multivariate
+  PCE; prove the Radon inversion formula in Rⁿ with the Riesz
+  potential and compute the SVD of the Radon transform on the disc
+  using Zernike polynomials.
+
+
+================================================================================
+TOPIC 12.30 — ALGORITHMS AND COMPUTATIONAL COMPLEXITY (GRADUATE): ASYMPTOTICS
+AND RECURRENCES, AMORTISED ANALYSIS, GRAPH ALGORITHMS, DYNAMIC PROGRAMMING,
+NETWORK FLOWS AND LP DUALITY, RANDOMISED AND APPROXIMATION ALGORITHMS, P, NP,
+NP-COMPLETENESS, SPACE COMPLEXITY, HIERARCHY THEOREMS, BPP, THE POLYNOMIAL
+HIERARCHY, INTERACTIVE PROOFS AND PCP
+================================================================================
+WHAT THE CHILD MUST LEARN
+  - ASYMPTOTIC NOTATION: f = O(g) if f ≤ cg for n ≥ n₀; Ω, Θ (both), and
+    o, ω (limit f/g = 0, ∞). Limit test: f/g → L ∈ (0, ∞) ⇒ f = Θ(g). Scale:
+    log log n ≪ log n ≪ 2^√(log n) ≪ n^ε ≪ n ≪ n log n ≪ n^k ≪ n^(log n) ≪
+    2ⁿ ≪ n! ≪ nⁿ; log(n!) = Θ(n log n) (Stirling); ∑1/k = Θ(log n).
+  - RECURRENCES: T(n) = aT(n/b) + f(n), a ≥ 1, b > 1, critical exponent
+    c* = log_b a. MASTER THEOREM: (1) f = O(n^(c*−ε)) ⇒ Θ(n^(c*)); (2) f =
+    Θ(n^(c*) logᵏ n), k ≥ 0 ⇒ Θ(n^(c*) logᵏ⁺¹ n); (3) f = Ω(n^(c*+ε)) and
+    REGULARITY af(n/b) ≤ cf(n) with c < 1 ⇒ Θ(f). Proof: recursion tree,
+    level j costs aʲf(n/bʲ). Beyond it: substitution (guess and induct),
+    change of variables (n = 2ᵐ), AKRA-BAZZI ∑aᵢbᵢᵖ = 1 ⇒ T = Θ(nᵖ(1 +
+    ∫₁ⁿ f(u)/u^(p+1) du)); T(n) = T(n/5) + T(7n/10) + n is Θ(n).
+  - AMORTISED ANALYSIS: aggregate, accounting (credits) and POTENTIAL
+    methods: amortised cost ĉᵢ = cᵢ + Φ(Dᵢ) − Φ(Dᵢ₋₁) with Φ ≥ Φ(D₀), so
+    ∑cᵢ ≤ ∑ĉᵢ. Examples: doubling dynamic array (≤ 3 per insert), binary
+    counter (≤ 2 flips), multipop stack, union-find with rank and path
+    compression O(α(n)), splay trees O(log n), Fibonacci heaps (insert,
+    decrease-key O(1), extract-min O(log n)).
+  - GRAPH ALGORITHMS: BFS/DFS in O(V + E); DFS gives topological sort,
+    cycle detection (back edges), strongly connected components. DIJKSTRA
+    (weights ≥ 0) O((V + E) log V) with a binary heap, O(E + V log V) with a
+    Fibonacci heap; BELLMAN-FORD O(VE), detects negative cycles; FLOYD-
+    WARSHALL O(V³). MST: CUT PROPERTY (the lightest edge across any cut is
+    in some MST); Kruskal O(E log V), Prim; Cayley: K_n has nⁿ⁻² spanning
+    trees.
+  - DYNAMIC PROGRAMMING: optimal substructure + overlapping subproblems;
+    write the recurrence, the table, the order of evaluation. LCS and edit
+    distance O(mn); 0/1 knapsack O(nW) (PSEUDO-polynomial: W is exponential
+    in its bit length); matrix-chain O(n³); rod cutting, coin change, LIS.
+  - NETWORK FLOWS: flow conservation, capacity constraints, residual graph.
+    MAX-FLOW MIN-CUT: the maximum flow value equals the minimum s-t cut
+    capacity (f max ⇔ no augmenting path). Ford-Fulkerson (integer
+    capacities: terminates, INTEGRAL max flow), Edmonds-Karp (shortest
+    augmenting paths) O(VE²). Applications: bipartite matching, König
+    (max matching = min vertex cover in bipartite graphs), Hall, Menger.
+  - LINEAR PROGRAMMING AND DUALITY: primal max cᵀx, Ax ≤ b, x ≥ 0; dual
+    min bᵀy, Aᵀy ≥ c, y ≥ 0. WEAK duality cᵀx ≤ bᵀy; STRONG duality (equal
+    optima if either is feasible and bounded); COMPLEMENTARY SLACKNESS.
+    Simplex is exponential in the worst case (Klee-Minty) but ellipsoid
+    (Khachiyan) and interior-point (Karmarkar) are polynomial. Totally
+    unimodular constraint matrices give integral vertices; the dual of
+    max-flow is (fractional) min-cut.
+  - RANDOMISED ALGORITHMS: LAS VEGAS (always correct, random time) vs
+    MONTE CARLO (bounded time, small error). Tools: linearity of
+    expectation, Markov, Chernoff-Hoeffding P(|X − μ| ≥ δn) ≤ 2e^(−2δ²n).
+    Quicksort: E[comparisons] = 2(n + 1)Hₙ − 4n ≈ 2n ln n; Karger min cut
+    succeeds with probability ≥ 1/C(n, 2); SCHWARTZ-ZIPPEL: a nonzero
+    polynomial of degree d vanishes at a random point of Sⁿ with
+    probability ≤ d/|S|; Miller-Rabin; Freivalds.
+  - APPROXIMATION ALGORITHMS: ratio α = ALG/OPT (≥ 1 for minimisation).
+    Vertex cover 2 (maximal matching, or LP rounding at 1/2); greedy set
+    cover Hₙ ≤ 1 + ln n; metric TSP 2 (MST doubling) and 3/2 (Christofides);
+    general TSP has NO constant approximation unless P = NP; knapsack FPTAS;
+    MAX-CUT 1/2 (random) and 0.878 (Goemans-Williamson); MAX-3SAT 7/8.
+  - P AND NP: P = ⋃DTIME(nᵏ); NP = languages with polynomial-time VERIFIERS
+    (x ∈ L ⇔ ∃ certificate y, |y| ≤ poly(|x|), V(x, y) = 1) = ⋃NTIME(nᵏ);
+    coNP; P ⊆ NP ∩ coNP ⊆ NP ⊆ EXP. Search reduces to decision for
+    NP-complete problems (self-reducibility).
+  - NP-COMPLETENESS: Karp (polynomial many-one) reductions A ≤ₚ B; B is NP-
+    hard if every A ∈ NP reduces to B, NP-complete if also B ∈ NP. COOK-
+    LEVIN: SAT (and 3SAT) is NP-complete. Chain: 3SAT ≤ INDEPENDENT SET ≤
+    VERTEX COVER, CLIQUE; 3SAT ≤ 3-COLOUR, HAM-CYCLE ≤ TSP, 3SAT ≤ SUBSET-SUM
+    ≤ KNAPSACK, PARTITION. 2SAT, HORN-SAT, 2-colouring, matching are in P.
+    LADNER: if P ≠ NP there are NP-intermediate problems.
+  - SPACE COMPLEXITY: L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXP; SPACE(s) ⊆
+    TIME(2^(O(s))) (count configurations). SAVITCH: NSPACE(s) ⊆ SPACE(s²)
+    for s ≥ log n, so NPSPACE = PSPACE. IMMERMAN-SZELEPCSÉNYI: NSPACE(s) =
+    coNSPACE(s), so NL = coNL. PATH (directed s-t connectivity) is
+    NL-complete; undirected connectivity is in L (Reingold). TQBF and
+    generalised geography are PSPACE-complete.
+  - HIERARCHY THEOREMS (diagonalisation): TIME: f time-constructible and
+    g log g = o(f) ⇒ DTIME(g) ⊊ DTIME(f). SPACE: f space-constructible,
+    g = o(f) ⇒ SPACE(g) ⊊ SPACE(f). Hence P ⊊ EXP, L ⊊ PSPACE, NL ⊊
+    PSPACE, NP ⊊ NEXP. BAKER-GILL-SOLOVAY: oracles with P^A = NP^A and
+    P^B ≠ NP^B, so relativising arguments cannot settle P vs NP.
+  - PROBABILISTIC CLASSES: BPP (two-sided error ≤ 1/3), RP (one-sided,
+    no false positives), coRP, ZPP = RP ∩ coRP (expected polynomial time,
+    zero error). AMPLIFICATION: majority of k runs has error ≤ e^(−k/18).
+    P ⊆ ZPP ⊆ RP ⊆ BPP; BPP ⊆ Σ₂ᵖ ∩ Π₂ᵖ (SIPSER-GÁCS-LAUTEMANN); BPP ⊆
+    P/poly (ADLEMAN). PIT ∈ coRP; PRIMES ∈ P (AKS). Conjecture: P = BPP.
+  - POLYNOMIAL HIERARCHY: Σₖᵖ = languages {x : ∃y₁∀y₂...Qyₖ R(x, y)} with
+    R ∈ P and |yᵢ| ≤ poly; Πₖᵖ = coΣₖᵖ; Σ₁ᵖ = NP, Σₖ₊₁ᵖ = NP^(Σₖᵖ). PH =
+    ⋃Σₖᵖ ⊆ PSPACE. COLLAPSE: Σₖᵖ = Πₖᵖ ⇒ PH = Σₖᵖ (P = NP ⇒ PH = P).
+    KARP-LIPTON: NP ⊆ P/poly ⇒ PH = Σ₂ᵖ. TODA: PH ⊆ P^(#P).
+  - INTERACTIVE PROOFS: IP = languages with a probabilistic polynomial-time
+    verifier talking to an all-powerful prover, completeness ≥ 2/3,
+    soundness ≤ 1/3. Graph non-isomorphism ∈ IP (even AM); SUMCHECK
+    protocol; IP = PSPACE (Lund-Fortnow-Karloff-Nisan, Shamir); MIP = NEXP.
+  - PCP THEOREM: NP = PCP(O(log n), O(1)): proofs checkable by reading O(1)
+    random bits of the proof. Equivalent to NP-hardness of GAP versions of
+    MAX-3SAT; Håstad: MAX-3SAT cannot be approximated beyond 7/8 + ε unless
+    P = NP (so the random assignment is optimal).
+
+PART A — DESCRIPTIVE
+--------------------
+D1. State the master theorem and prove it by the recursion tree (for n a
+    power of b). Solve (a) T(n) = 9T(n/3) + n, (b) T(n) = 2T(n/2) + n log n,
+    (c) T(n) = 3T(n/4) + n log n, (d) Strassen T(n) = 7T(n/2) + Θ(n²),
+    (e) T(n) = 2T(n/2) + n/log n. Also find T(n) exactly for T(n) = 2T(n/2)
+    + n, T(1) = 1, and check at n = 8.
+    Answer: (a) Θ(n²); (b) Θ(n log² n); (c) Θ(n log n); (d) Θ(n^(log₂7)) ≈
+    Θ(n^2.807); (e) Θ(n log log n) (outside the master theorem);
+    T(n) = n log₂ n + n, T(8) = 32.
+    Teacher explains: Unroll the recursion into a tree: the root costs
+    f(n), it has a children each costing f(n/b), and at depth j there are
+    aʲ nodes each costing f(n/bʲ). The depth is log_b n and there are
+    a^(log_b n) = n^(log_b a) = n^(c*) leaves. So
+       T(n) = Θ(n^(c*)) + ∑_{j=0}^{log_b n − 1} aʲ f(n/bʲ).
+    Case 1: if f(m) ≤ C m^(c*−ε), the level sums grow GEOMETRICALLY towards
+    the leaves (ratio b^ε > 1), so the leaves dominate: Θ(n^(c*)). Case 2:
+    if f = Θ(n^(c*)), every level costs Θ(n^(c*)) (aʲ(n/bʲ)^(c*) = n^(c*)),
+    and there are log_b n levels: Θ(n^(c*) log n); with an extra logᵏ the
+    sum is ∑ logᵏ(n/bʲ) = Θ(logᵏ⁺¹ n). Case 3: regularity says each level is
+    at most c times the one above, so the sum is ≤ f(n)/(1 − c): Θ(f(n)).
+    (a) c* = log₃9 = 2 and n = O(n^(2−ε)): case 1, Θ(n²). (b) c* = 1 and f =
+    n log n: case 2 with k = 1, Θ(n log² n). (c) c* = log₄3 ≈ 0.793 and f =
+    Ω(n^(0.793+ε)); regularity: 3(n/4) log(n/4) ≤ (3/4) n log n: case 3,
+    Θ(n log n). (d) c* = log₂7 ≈ 2.807 > 2: case 1, beating the naive n³.
+    (e) level j costs 2ʲ(n/2ʲ)/log(n/2ʲ) = n/(log n − j); summing over j,
+    n(1/log n + ... + 1/1) = n H_(log n) = Θ(n log log n). Exact: with n =
+    2ᵐ and S(m) = T(2ᵐ)/2ᵐ we get S(m) = S(m − 1) + 1, S(0) = 1, so S = m + 1
+    and T(n) = n log₂ n + n; T(8) = 8·3 + 8 = 32 (check: T(2) = 4, T(4) =
+    12, T(8) = 24 + 8 = 32). Common mistakes: applying case 2 to f =
+    n/log n (k = −1 is not allowed); forgetting the regularity check in
+    case 3; comparing f with n^(c*) by "bigger" instead of by a polynomial
+    factor n^ε (n log n vs n is NOT case 3). Now you try: T(n) = 4T(n/2) +
+    n^2.5. (Θ(n^2.5); regularity constant 4/2^2.5 ≈ 0.707)
+
+D2. (a) Using the potential Φ = 2·num − cap, show that inserting into a
+    dynamic array that doubles when full costs at most 3 amortised per
+    insertion. (b) Starting from capacity 1, compute the exact total cost
+    of 16 insertions (1 per write plus 1 per element copied). (c) Show
+    that a binary counter incremented from 0 to n performs fewer than 2n
+    bit flips and compute the exact number for n = 16. (d) Why must the
+    array shrink at 1/4 full rather than 1/2 full?
+    Answer: (a) ĉ = 3 in both cases; (b) 31 ≤ 48; (c) 31 < 32; (d) to avoid
+    Θ(n) cost per operation when alternating insert/delete at the boundary.
+    Teacher explains: The potential method charges each operation its
+    actual cost plus the change in a stored "energy" Φ ≥ 0 (with Φ(D₀) = 0),
+    so the total actual cost is at most the total amortised cost.
+    (a) Without expansion: actual cost 1, num rises by 1, so ΔΦ = 2 and ĉ =
+    3. With expansion: num = cap = k before; actual cost k + 1 (copy k,
+    write 1); after, num = k + 1, cap = 2k, so ΔΦ = (2k + 2 − 2k) − (2k − k)
+    = 2 − k and ĉ = k + 1 + 2 − k = 3. Also Φ ≥ 0 because the array is
+    always at least half full after the first insertion. (b) Copies happen
+    when inserting the 2nd, 3rd, 5th and 9th element (copying 1, 2, 4, 8),
+    so the total is 16 + 15 = 31 ≤ 3·16 = 48. (c) Bit j flips every 2ʲ
+    increments, so the total is ∑_j ⌊n/2ʲ⌋ < n(1 + 1/2 + 1/4 + ...) = 2n. For
+    n = 16: 16 + 8 + 4 + 2 + 1 = 31. In potential language, Φ = number of
+    1 bits: an increment that clears t trailing ones costs t + 1 and changes
+    Φ by 1 − t, so ĉ = 2. (d) If we halve at 1/2 full, then at num = cap an
+    insert doubles (cost Θ(n)) and the next delete halves again (cost
+    Θ(n)); alternating gives Θ(n) per operation. Halving at 1/4 full leaves
+    the new array half full, so Θ(n) cheap operations separate expensive
+    ones. Common mistakes: confusing amortised with average-case (no
+    probability is involved: the bound holds for EVERY sequence); choosing
+    a potential that can become negative. Now you try: a stack with PUSH,
+    POP and MULTIPOP(k): the cost of n operations from empty? (≤ 2n: each
+    element is popped at most once after being pushed)
+
+D3. Run Dijkstra from s on the directed graph s→a 4, s→b 1, b→a 2, a→c 1,
+    b→c 5, c→d 3, b→d 8. Prove that Dijkstra is correct for non-negative
+    weights, show it fails with the negative edge set s→a 2, s→b 3, b→a −2,
+    and state the cut property of minimum spanning trees.
+    Answer: extraction order s, b, a, c, d with d = 0, 1, 3, 4, 7.
+    Teacher explains: Dijkstra keeps tentative distances d(v), repeatedly
+    extracts the unfinished vertex with the smallest d and relaxes its
+    out-edges: d(v) ← min(d(v), d(u) + w(u, v)). Run: start d(s) = 0.
+    Extract s: d(a) = 4, d(b) = 1. Extract b (1): d(a) = min(4, 1 + 2) = 3,
+    d(c) = 6, d(d) = 9. Extract a (3): d(c) = min(6, 4) = 4. Extract c (4):
+    d(d) = min(9, 7) = 7. Extract d (7). Final distances s 0, b 1, a 3, c 4,
+    d 7; shortest path to d is s→b→a→c→d. CORRECTNESS (invariant: when u is
+    extracted, d(u) = δ(s, u)): suppose u is the first vertex extracted
+    with d(u) > δ(s, u). On a shortest path s ⇝ u let y be the first
+    unfinished vertex and x its finished predecessor; x was correct when
+    extracted and relaxed (x, y), so d(y) = δ(s, y) ≤ δ(s, u) < d(u) (weights
+    ≥ 0 are used here: the rest of the path from y to u is non-negative).
+    Then y, not u, has the smaller key: contradiction. NEGATIVE EDGES: s→a 2,
+    s→b 3, b→a −2: Dijkstra finalises a at 2, but s→b→a costs 1. Use
+    Bellman-Ford: V − 1 rounds of relaxing every edge; a further improvement
+    in round V proves a negative cycle. CUT PROPERTY: for any partition
+    (S, V ∖ S), a lightest edge crossing it belongs to some MST (exchange
+    argument: add it to an MST, the cycle created crosses the cut again at
+    an edge no lighter, remove that one). Kruskal and Prim are both
+    repeated applications. Common mistakes: "re-weighting by adding a
+    constant to every edge fixes negative weights" (it penalises paths
+    with many edges); forgetting that Dijkstra's bound uses the heap
+    (O((V + E) log V)). Now you try: add the edge d→a of weight −5. What
+    does Bellman-Ford report? (the negative cycle a→c→d→a of weight −1)
+
+D4. (a) Set up the dynamic programme for the longest common subsequence
+    and compute LCS(ABCBDAB, BDCABA). (b) Compute the edit distance from
+    "kitten" to "sitting". (c) Solve 0/1 knapsack with capacity W = 7 and
+    items (weight, value) = (1, 1), (3, 4), (4, 5), (5, 7). (d) Why is the
+    O(nW) knapsack algorithm not a polynomial-time algorithm?
+    Answer: (a) 4 (e.g. BCBA); (b) 3; (c) 9 (items 2 and 3); (d) W is
+    exponential in the length ⌈log₂ W⌉ of the input.
+    Teacher explains: A DP needs (i) a family of subproblems, (ii) a
+    recurrence, (iii) an evaluation order, (iv) reconstruction. (a) Let
+    L[i][j] = LCS of the prefixes x₁..xᵢ and y₁..yⱼ. Then L[i][0] = L[0][j]
+    = 0 and
+       L[i][j] = L[i−1][j−1] + 1              if xᵢ = yⱼ,
+               = max(L[i−1][j], L[i][j−1])    otherwise.
+    Fill row by row in O(mn) time; the table for ABCBDAB × BDCABA ends at
+    L[7][6] = 4, and tracing back diagonal moves gives BCBA. (b) E[i][j] =
+    min(E[i−1][j] + 1, E[i][j−1] + 1, E[i−1][j−1] + [xᵢ ≠ yⱼ]) with E[i][0] =
+    i, E[0][j] = j. kitten → sitten (substitute k→s) → sittin (e→i) →
+    sitting (insert g): 3, and the table confirms no 2-step edit exists.
+    (c) K[i][w] = max(K[i−1][w], vᵢ + K[i−1][w − wᵢ]). Candidates of weight
+    ≤ 7: {2, 3} weight 7 value 9; {1, 4} weight 6 value 8; {1, 2} value 5;
+    {4} value 7. Maximum 9. Note greedy by value/weight (7/5 = 1.4 first,
+    then 4/3) gives {4, 1}: 8, not optimal. (d) Input size is about n log W
+    bits, and nW = n·2^(log W) is exponential in it: PSEUDO-polynomial.
+    Knapsack is NP-hard (from SUBSET-SUM), but only "weakly": it is easy
+    when numbers are written in unary. Common mistakes: defining the DP on
+    substrings instead of prefixes (wrong recurrence); calling the knapsack
+    DP polynomial. Now you try: the edit distance from "sunday" to
+    "saturday". (3: insert a, insert t, substitute n→r)
+
+D5. (a) Find a maximum flow and a minimum cut in the network with arcs
+    s→a 10, s→b 10, a→b 2, a→t 4, a→c 8, b→c 9, c→t 10. (b) Show on the
+    "diamond" s→a, s→b, a→b, a→t, b→t (all capacity 1) why back edges of
+    the residual graph are needed. (c) Prove weak LP duality and verify
+    strong duality and complementary slackness for max 3x₁ + 2x₂ subject
+    to x₁ + x₂ ≤ 4, x₁ + 3x₂ ≤ 7, x₁ ≤ 3, x ≥ 0.
+    Answer: (a) 14, cut S = {s, a, b, c}; (b) greedy s-a-b-t blocks, the
+    residual path s-b-a-t fixes it: value 2; (c) x = (3, 1), y = (2, 0, 1),
+    both optima 11.
+    Teacher explains: (a) Augment: s→a→t (4), s→a→c→t (6), s→b→c→t (4).
+    Total 14. Now the arcs a→t (4) and c→t (10) into t are saturated, so
+    the cut S = {s, a, b, c}, T = {t} has capacity 4 + 10 = 14. Any flow ≤
+    any cut (the flow must cross the cut), so 14 is maximal and this cut
+    is minimal: MAX-FLOW = MIN-CUT. (b) If we first push 1 along s→a→b→t,
+    no s-t path with spare capacity remains in the original graph, yet the
+    maximum is 2. In the RESIDUAL graph the arc a→b has a reverse arc b→a
+    of capacity 1, and s→b→a→t augments: the flow on a→b is cancelled,
+    giving s→a→t and s→b→t. The theorem: f is maximum ⇔ the residual graph
+    has no s-t path; the set S reachable from s is then a minimum cut.
+    (c) WEAK DUALITY for max cᵀx, Ax ≤ b, x ≥ 0 and min bᵀy, Aᵀy ≥ c, y ≥ 0:
+       cᵀx ≤ (Aᵀy)ᵀx = yᵀ(Ax) ≤ yᵀb,
+    using x ≥ 0 in the first step and y ≥ 0 in the second. Here the dual
+    is min 4y₁ + 7y₂ + 3y₃ subject to y₁ + y₂ + y₃ ≥ 3, y₁ + 3y₂ ≥ 2, y ≥ 0.
+    At x = (3, 1): constraints 1 and 3 are tight, constraint 2 has slack
+    (6 < 7), so COMPLEMENTARY SLACKNESS forces y₂ = 0; x₁, x₂ > 0 force both
+    dual constraints to be tight: y₁ + y₃ = 3, y₁ = 2, so y = (2, 0, 1).
+    Dual value 8 + 0 + 3 = 11 = primal value 9 + 2: both are optimal.
+    Max-flow is an LP whose dual is a fractional min cut; its constraint
+    matrix is totally unimodular, which is why min-cut is integral.
+    Common mistakes: counting arcs from T back to S in the cut capacity;
+    forgetting the sign conditions in the dual. Now you try: the maximum
+    number of edge-disjoint s-t paths in K₄. (3 = the minimum edge cut)
+
+D6. (a) Show that randomised quicksort makes 2(n + 1)Hₙ − 4n comparisons
+    in expectation and evaluate for n = 4. (b) Show that Karger's
+    contraction algorithm returns a given minimum cut with probability at
+    least 2/(n(n − 1)), and find how many independent runs on n = 10
+    vertices push the failure probability below 1%.
+    Answer: (a) 29/6 ≈ 4.83 for n = 4; (b) at least 205 runs.
+    Teacher explains: (a) Let z₁ < ... < zₙ be the sorted keys. zᵢ and zⱼ
+    are compared iff the first pivot chosen from {zᵢ, ..., zⱼ} is zᵢ or zⱼ;
+    all j − i + 1 are equally likely, so P = 2/(j − i + 1). By LINEARITY of
+    expectation (no independence needed),
+       E[C] = ∑_{i<j} 2/(j − i + 1) = 2(n + 1)Hₙ − 4n ≈ 2n ln n.
+    n = 4: 2·5·(25/12) − 16 = 125/6 − 96/6 = 29/6 (directly: three pairs at
+    distance 1 give 3·1, two at distance 2 give 2·(2/3), one at distance 3
+    gives 1/2; total 3 + 4/3 + 1/2 = 29/6). This is LAS VEGAS: always
+    correct, random running time. (b) Let C be a min cut of size k. Every
+    vertex has degree ≥ k, so a multigraph with m vertices has ≥ mk/2
+    edges, and a random edge lies in C with probability ≤ 2/m. The
+    algorithm contracts until 2 vertices remain; C survives with
+    probability ≥ ∏_{m=3}^{n}(1 − 2/m) = ∏ (m − 2)/m = 2/(n(n − 1)).
+    (This also proves a graph has at most C(n, 2) minimum cuts.) For
+    n = 10, p ≥ 1/45; after k runs failure ≤ (44/45)ᵏ ≤ 0.01 needs k ≥
+    ln 100/ln(45/44) ≈ 204.9, so 205 runs. In general C(n, 2) ln n runs give
+    failure ≤ 1/n. This is MONTE CARLO. Common mistakes: assuming the
+    events "zᵢ compared with zⱼ" are independent (not needed); using
+    (1 − p)ᵏ ≤ e^(−pk) in the wrong direction. Now you try: E[comparisons]
+    for n = 3. (8/3)
+
+D7. (a) Prove that taking both endpoints of a maximal matching is a
+    2-approximation for vertex cover, and that the bound is tight. (b) Run
+    greedy set cover on U = {1, ..., 6}, S₁ = {1, 2, 3, 4}, S₂ = {1, 2, 5},
+    S₃ = {3, 4, 6}. (c) Prove the MST-doubling algorithm is a
+    2-approximation for metric TSP and that general TSP has no
+    polynomial-time α-approximation for any constant α unless P = NP.
+    Answer: (a) |C| = 2|M| ≤ 2 OPT; tight on K_(n,n). (b) greedy uses 3
+    sets, OPT = 2. (c) cost ≤ 2 MST ≤ 2 OPT; reduction from Hamiltonian
+    cycle.
+    Teacher explains: (a) Let M be a maximal matching and C its 2|M|
+    endpoints. C is a cover: an uncovered edge could be added to M,
+    contradicting maximality. Any cover must contain an endpoint of each
+    edge of M, and these edges are disjoint, so OPT ≥ |M|. Hence |C| ≤
+    2 OPT. On K_(n,n) a perfect matching gives 2n while OPT = n. (b) Greedy
+    picks the set covering the most uncovered elements: S₁ (4 new), then S₂
+    covers {5} and S₃ covers {6}: 3 sets. OPT = {S₂, S₃}. In general greedy
+    is within Hₙ ≤ 1 + ln n (charge each element 1/(number newly covered));
+    by Dinur-Steurer (1 − ε) ln n is NP-hard, so greedy is essentially best.
+    (c) Deleting an edge of the optimal tour gives a spanning tree, so
+    MST ≤ OPT. Walk around the doubled MST (cost 2 MST) and SHORTCUT
+    repeated vertices; the triangle inequality says shortcuts never
+    increase cost, so the tour costs ≤ 2 OPT. Without the triangle
+    inequality: given a graph G on n vertices, give its edges weight 1 and
+    non-edges weight αn + 1. If G has a Hamiltonian cycle, OPT = n;
+    otherwise every tour costs > αn. An α-approximation would distinguish
+    the cases, deciding HAM-CYCLE. (Christofides adds a minimum perfect
+    matching on odd-degree vertices instead of doubling: ratio 3/2.) Common
+    mistakes: bounding ALG against an unknown OPT without a LOWER BOUND
+    (matching, MST, LP value); using a greedy "highest degree vertex"
+    rule for vertex cover (ratio Θ(log n)). Now you try: the LP relaxation
+    of vertex cover on K_n: the LP value and OPT. (n/2 with all x = 1/2; OPT
+    = n − 1)
+
+D8. Define P, NP and NP-completeness. Show INDEPENDENT SET is NP-complete
+    by reducing 3SAT to it, apply the reduction to φ = (x ∨ y ∨ z) ∧ (¬x ∨ ¬y
+    ∨ z) ∧ (x ∨ ¬y ∨ ¬z), and deduce that VERTEX COVER and CLIQUE are
+    NP-complete.
+    Answer: graph with 9 vertices, 9 triangle edges + 6 conflict edges;
+    φ satisfiable (x = T, y = F) ⇔ independent set of size 3.
+    Teacher explains: P: decidable in time O(nᵏ). NP: L ∈ NP iff there is a
+    polynomial-time verifier V and polynomial p with x ∈ L ⇔ ∃y, |y| ≤
+    p(|x|), V(x, y) = 1. B is NP-complete if B ∈ NP and A ≤ₚ B for every A ∈
+    NP; by transitivity it suffices to reduce ONE known NP-complete problem
+    to B (Cook-Levin gives SAT, and 3SAT by splitting clauses). IS ∈ NP:
+    the certificate is the set, checked in O(n²). REDUCTION: for a 3CNF with
+    m clauses make a triangle per clause (one vertex per literal) and join
+    every literal vertex to every vertex labelled with its negation; ask
+    for an independent set of size k = m. (⇒) From a satisfying assignment
+    choose one true literal per clause: one vertex per triangle, and no
+    x–¬x pair since both are not true. (⇐) An independent set of size m has
+    one vertex per triangle; set those literals true (no conflicts, so
+    consistent); every clause is satisfied. For φ: 3 triangles (9 edges);
+    conflicts x(c1)–¬x(c2), x(c3)–¬x(c2), y(c1)–¬y(c2), y(c1)–¬y(c3),
+    z(c1)–¬z(c3), z(c2)–¬z(c3): 6 edges. x = T, y = F gives {x(c1), ¬y(c2),
+    x(c3)}, an independent set of size 3. Then: S is independent ⇔ V ∖ S is
+    a vertex cover ⇔ S is a clique in the complement graph; so IS(G, k) ↔
+    VC(G, n − k) ↔ CLIQUE(Ḡ, k), all polynomial reductions. Common
+    mistakes: reducing in the wrong direction (to show B hard, reduce a
+    known hard problem TO B); forgetting to show membership in NP; an
+    exponential-size reduction. Now you try: the same construction maps
+    2SAT to IS; does this make 2SAT hard? (no: it reduces 2SAT TO the hard
+    problem, which proves nothing; 2SAT ∈ P via SCCs of the implication
+    graph)
+
+D9. (a) Prove Savitch's theorem NSPACE(s) ⊆ SPACE(s²) for s ≥ log n.
+    (b) Show TQBF is in PSPACE and explain why it is PSPACE-hard.
+    (c) Evaluate ∀x∃y [(x ∨ y) ∧ (¬x ∨ ¬y)] and ∃y∀x [(x ∨ y) ∧ (¬x ∨ ¬y)].
+    Answer: (a) REACH(c, c′, 2ⁱ) by midpoint recursion, depth O(s), frames of
+    size O(s); (b) recursive evaluation in O(n) space; (c) true, false.
+    Teacher explains: (a) An NTM using space s has at most 2^(O(s))
+    configurations (state, head positions, tape contents). Define
+    REACH(c₁, c₂, t): "c₂ is reachable from c₁ in ≤ t steps". For t > 1,
+       REACH(c₁, c₂, t) ⇔ ∃ c_mid: REACH(c₁, c_mid, ⌈t/2⌉) ∧
+                                   REACH(c_mid, c₂, ⌊t/2⌋),
+    trying every c_mid deterministically and REUSING the space of the
+    first call for the second. Start with t = 2^(O(s)): the recursion depth
+    is log t = O(s), each frame stores c₁, c₂, c_mid, t in O(s) bits, total
+    O(s²). (Time is exponential, but space is what matters.) Hence NPSPACE
+    = PSPACE and NL ⊆ SPACE(log² n). (b) TQBF: is a fully quantified
+    Boolean formula true? Evaluate ∃x ψ as ψ[x=0] ∨ ψ[x=1] recursively
+    (∀ with ∧): depth = number of variables, each level stores one bit and
+    a pointer, so space O(n). Hardness: for M in space nᵏ, the formula
+    φ_(c₁,c₂,t) = ∃m ∀(a, b) ∈ {(c₁, m), (m, c₂)}: φ_(a,b,t/2) expresses
+    reachability with only ONE recursive copy (the ∀ reuses it), so its
+    size is O(s·log t) = poly(n): the same midpoint trick. (c) For each x,
+    choose y = ¬x: exactly one of x, y true satisfies both clauses: TRUE.
+    Swapping quantifiers asks for one y working for both x = 0 and x = 1:
+    y = 0 fails at x = 0 (x ∨ y false) and y = 1 fails at x = 1: FALSE.
+    Quantifier order matters, which is exactly the Σ/Π alternation. Common
+    mistakes: storing both recursive calls at once (space s·t); thinking
+    Savitch gives NP ⊆ P (it is about space; time blows up). Now you try:
+    by Immerman-Szelepcsényi, is the complement of PATH in NL? (yes: NL =
+    coNL)
+
+D10. State and prove the deterministic time hierarchy theorem and derive
+     P ⊊ EXP. What does the space hierarchy theorem give for L, NL and
+     PSPACE? Explain why diagonalisation alone cannot resolve P vs NP.
+     Answer: g log g = o(f) ⇒ DTIME(g) ⊊ DTIME(f); P ⊆ DTIME(2ⁿ) ⊊
+     DTIME(2^(2n)) ⊆ EXP; L ⊊ PSPACE and NL ⊊ PSPACE; relativisation.
+     Teacher explains: Let f be time-constructible. Build D: on input w of
+     length n, if w = ⟨M⟩10ᵏ for a TM M, simulate M on w for f(n)/log f(n)
+     steps (a universal machine simulates t steps in O(t log t) time, so D
+     runs in O(f(n))); if M accepts within the budget, REJECT, otherwise
+     ACCEPT. So L(D) ∈ DTIME(f). Suppose L(D) = L(M) for some M running in
+     time g with g = o(f/log f) (Sipser's form; essentially g log g =
+     o(f)). Simulating M costs c_M steps of the budget per step of M, with
+     c_M depending on M only, so for k large c_M g(n) < f(n)/log f(n): the
+     simulation finishes and D does the OPPOSITE of M on w = ⟨M⟩10ᵏ.
+     Contradiction, so L(D) ∉
+     DTIME(g). (The padding 10ᵏ makes the input long enough; this is
+     Cantor's diagonal argument with a clock.) P ⊊ EXP: every nᵏ ≤ 2ⁿ, so
+     P ⊆ DTIME(2ⁿ) ⊊ DTIME(2^(2n)) ⊆ EXP. SPACE hierarchy (no log loss,
+     since space is reusable): g = o(f) ⇒ SPACE(g) ⊊ SPACE(f). So SPACE(log
+     n) ⊊ SPACE(n) gives L ⊊ PSPACE, and by Savitch NL ⊆ SPACE(log² n) ⊊
+     SPACE(n) ⊆ PSPACE. Consequence: in L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE at least
+     one inclusion is strict, though nobody knows which. LIMITS:
+     Baker-Gill-Solovay give oracles A (a PSPACE-complete language) with
+     P^A = NP^A and B with P^B ≠ NP^B. Simulation-and-flip arguments work
+     relative to every oracle, so they cannot separate P from NP. Common
+     mistakes: claiming DTIME(n²) ⊊ DTIME(n² log n) follows (it needs
+     g log g = o(f): 2n² log n is not o(n² log n)); forgetting
+     constructibility. Now you try: does the theorem give DTIME(n²) ⊊
+     DTIME(n³)? (yes: n² log n² = o(n³))
+
+D11. Define BPP, RP and ZPP. (a) Compute the success probability of the
+     majority vote of 3 and of 5 independent runs of an algorithm that is
+     correct with probability 2/3. (b) Using Hoeffding, how many runs make
+     the error at most 2⁻¹⁰⁰? (c) Show ZPP = RP ∩ coRP and sketch why
+     BPP ⊆ Σ₂ᵖ.
+     Answer: (a) 20/27 ≈ 0.741 and 64/81 ≈ 0.790; (b) 1248 (e^(−k/18) ≤
+     2⁻¹⁰⁰); (c) run both, answer when certain; Lautemann's shifts.
+     Teacher explains: BPP: a polynomial-time randomised algorithm with
+     P(correct) ≥ 2/3 on EVERY input. RP: x ∈ L ⇒ accept with probability
+     ≥ 1/2; x ∉ L ⇒ never accept. ZPP: zero error, EXPECTED polynomial time.
+     (a) Majority of 3: p³ + 3p²(1 − p) = 8/27 + 12/27 = 20/27. Of 5: ∑_{k≥3}
+     C(5, k)(2/3)ᵏ(1/3)^(5−k) = (80 + 80 + 32)/243 = 192/243 = 64/81.
+     (b) The number X of correct runs has mean ≥ 2k/3; the majority is
+     wrong only if X ≤ k/2, a deviation of k/6. Hoeffding: P ≤
+     exp(−2k(1/6)²) = e^(−k/18). Need k/18 ≥ 100 ln 2, k ≥ 1247.7: 1248 runs.
+     The constant 2/3 is arbitrary: any 1/2 + 1/poly(n) works. (c) If L ∈
+     RP ∩ coRP, run the RP algorithm A (never wrong when it accepts) and
+     the coRP algorithm B (never wrong when it rejects) alternately until
+     one gives a certain answer; each round succeeds with probability
+     ≥ 1/2, so the expected number of rounds is ≤ 2: ZPP. Conversely, stop
+     a ZPP algorithm after twice its expected time (Markov: fails with
+     probability ≤ 1/2) and output "reject" on timeout: RP; symmetrically
+     coRP. SIPSER-GÁCS-LAUTEMANN: amplify so that the accepting random
+     strings A_x ⊆ {0,1}ᵐ form ≥ 1 − 2⁻ⁿ of all strings when x ∈ L and
+     ≤ 2⁻ⁿ when x ∉ L. If x ∈ L there are shifts s₁, ..., s_m with
+     ⋃(A_x ⊕ sᵢ) = {0,1}ᵐ (random shifts work by a union bound); if x ∉ L,
+     m shifts of a tiny set cover at most m2⁻ⁿ2ᵐ < 2ᵐ strings. So x ∈ L ⇔
+     ∃s₁..s_m ∀r ⋁ᵢ [r ⊕ sᵢ ∈ A_x]: a Σ₂ᵖ formula. BPP is closed under
+     complement, so also BPP ⊆ Π₂ᵖ. Common mistakes: amplifying BPP by "OR
+     of runs" (that works for RP only); thinking BPP ⊆ NP is known (it is
+     open). Now you try: for an RP algorithm, how many runs give error
+     ≤ 10⁻⁶? (20, since 2⁻²⁰ ≈ 9.5 × 10⁻⁷)
+
+D12. (a) Define Σₖᵖ and Πₖᵖ and prove that Σₖᵖ = Πₖᵖ implies PH = Σₖᵖ.
+     (b) Give the interactive proof for GRAPH NON-ISOMORPHISM and compute
+     its soundness after 10 rounds. (c) State IP = PSPACE and the PCP
+     theorem, and explain how PCP gives the 7/8 hardness of MAX-3SAT.
+     Answer: (a) induction via one quantifier merge; (b) soundness 2⁻¹⁰ ≈
+     9.8 × 10⁻⁴; (c) NP = PCP(log n, 1), gap-3SAT is NP-hard.
+     Teacher explains: (a) L ∈ Σₖᵖ iff x ∈ L ⇔ ∃y₁∀y₂...Qₖyₖ R(x, y₁, ..., yₖ)
+     with R ∈ P and polynomially bounded yᵢ; Πₖᵖ starts with ∀. Example:
+     MIN-FORMULA ("no shorter formula is equivalent to φ": ∀ψ shorter ∃x
+     ψ(x) ≠ φ(x)) is in Π₂ᵖ. Suppose Σₖᵖ = Πₖᵖ and L ∈ Σₖ₊₁ᵖ: x ∈ L ⇔ ∃y₁ [(x,
+     y₁) ∈ L′] with L′ ∈ Πₖᵖ = Σₖᵖ. Replace L′ by its Σₖ form; the leading ∃
+     merges with ∃y₁, giving a Σₖᵖ formula. So Σₖ₊₁ᵖ = Σₖᵖ, and by induction
+     every level equals Σₖᵖ. In particular P = NP ⇒ PH = P. (b) Input G₀,
+     G₁ on n vertices. Verifier: pick b ∈ {0, 1} and a random permutation π,
+     send H = π(G_b). Prover: answer b′. Accept iff b′ = b. If G₀ ≇ G₁,
+     H is isomorphic to exactly one of them and the unbounded prover finds
+     b: completeness 1. If G₀ ≅ G₁, H is a uniformly random copy
+     independent of b, so any prover succeeds with probability exactly
+     1/2; 10 independent rounds give 2⁻¹⁰ = 1/1024 ≈ 9.8 × 10⁻⁴. The coins
+     are PRIVATE (Goldwasser-Sipser convert to public-coin AM). Since GNI
+     ∈ AM, GI being NP-complete would collapse PH to Σ₂ᵖ. (c) IP = PSPACE:
+     arithmetise a TQBF and run the SUMCHECK protocol, whose soundness is
+     ≤ (number of variables × degree)/|F|. PCP THEOREM: every L ∈ NP has
+     a verifier using O(log n) random bits and reading O(1) proof bits,
+     accepting a correct proof always and any proof for x ∉ L with
+     probability ≤ 1/2. Equivalently there is a polynomial reduction from
+     SAT to 3CNF formulas such that satisfiable ↦ satisfiable, and
+     unsatisfiable ↦ at most (1 − ε) of clauses satisfiable. An algorithm
+     with ratio better than 1 − ε would separate the cases. Håstad
+     sharpened ε: for every δ > 0, distinguishing "satisfiable" from "at
+     most 7/8 + δ satisfiable" is NP-hard, matching the random assignment
+     (each clause true with probability 7/8). Common mistakes: "IP means
+     NP with interaction" (without randomness IP = NP); thinking PCP
+     proofs are short (they are polynomially LONGER; only the checking is
+     local). Now you try: what is PCP(0, poly(n))? (NP: no randomness, read
+     the whole certificate)
+
+PART B — MATHEMATICAL ONLY
+--------------------------
+M1. Asymptotics and the master theorem: solve with Θ, or rank.
+    a) T(n) = 2T(n/2) + 1              b) T(n) = 2T(n/2) + n
+    c) T(n) = 2T(n/2) + n²             d) T(n) = 4T(n/2) + n
+    e) T(n) = 4T(n/2) + n²             f) T(n) = 4T(n/2) + n³
+    g) T(n) = T(n/2) + 1               h) T(n) = 3T(n/2) + n
+    i) T(n) = 7T(n/2) + n²             j) T(n) = 16T(n/4) + n² log n
+    k) T(n) = 5T(n/3) + n²             l) T(n) = √2 T(n/2) + log n
+    m) T(n) = 2T(n/4) + √n             n) T(n) = 6T(n/3) + n² log n
+    o) T(n) = 2T(n/2) + n/log n        p) T(n) = (1/2)T(n/2) + 1/n
+    q) rank: n^1.01, n log² n, 2^√(log n), (log n)^(log n), n!, 2ⁿ, √n
+    r) is 2ⁿ⁺¹ = O(2ⁿ)? is 2²ⁿ = O(2ⁿ)?
+    s) log(n!)                          t) ∑_{k=1}^{n} k² and ∑_{k=1}^{n} 1/k
+    Answers:
+      a) Θ(n)         b) Θ(n log n)          c) Θ(n²)        d) Θ(n²)
+      e) Θ(n² log n)  f) Θ(n³)               g) Θ(log n)
+      h) Θ(n^(log₂3)) ≈ Θ(n^1.585)           i) Θ(n^(log₂7)) ≈ Θ(n^2.807)
+      j) Θ(n² log² n)                        k) Θ(n²) (log₃5 ≈ 1.465)
+      l) Θ(√n)        m) Θ(√n log n)         n) Θ(n² log n) (log₃6 ≈ 1.631)
+      o) Θ(n log log n) (not covered: gap between cases 1 and 2)
+      p) master theorem does not apply (a < 1)
+      q) 2^√(log n) ≪ √n ≪ n log² n ≪ n^1.01 ≪ (log n)^(log n) ≪ 2ⁿ ≪ n!
+      r) yes (factor 2); no (2²ⁿ/2ⁿ = 2ⁿ → ∞)
+      s) Θ(n log n)   t) Θ(n³) (n(n + 1)(2n + 1)/6); Θ(log n)
+
+M2. Recurrences outside the master theorem (Θ, or the exact value).
+    a) T(n) = T(n − 1) + n              b) T(n) = 2T(n − 1) + 1, T(0) = 0
+    c) T(n) = T(n − 1) + T(n − 2)       d) T(n) = T(n/3) + T(2n/3) + n
+    e) T(n) = T(n/5) + T(7n/10) + n     f) T(n) = T(n/2) + T(n/4) + T(n/8) + n
+    g) T(n) = 2T(√n) + log n            h) T(n) = √n T(√n) + n
+    i) T(n) = T(√n) + 1                 j) T(n) = 4T(n/2) + n²/log n
+    k) T(n) = T(n/4) + T(3n/4) + 1      l) T(n) = T(n/2) + T(n/3) + n
+    m) T(n) = T(n − 1) + log n          n) T(n) = T(n/2) + log n
+    o) exact: T(n) = 3T(n/3) + n, T(1) = 1, at n = 81
+    p) exact: T(n) = 2T(n/2) + n², T(1) = 1: formula and T(8)
+    q) exact: T(n) = 4T(n/2) + n, T(1) = 1: formula and T(16)
+    r) Karatsuba multiplications M(n) = 3M(n/2), M(1) = 1, at n = 1024,
+       compared with the schoolbook n²
+    Answers:
+      a) Θ(n²) (n(n + 1)/2 + T(0))        b) 2ⁿ − 1
+      c) Θ(φⁿ), φ = (1 + √5)/2            d) Θ(n log n) (recursion tree)
+      e) Θ(n) (1/5 + 7/10 < 1; median of medians)
+      f) Θ(n) (1/2 + 1/4 + 1/8 < 1)
+      g) Θ(log n log log n) (m = log n: S(m) = 2S(m/2) + m)
+      h) Θ(n log log n) (T(n)/n = T(√n)/√n + 1)
+      i) Θ(log log n)      j) Θ(n² log log n)
+      k) Θ(n) (Akra-Bazzi p = 1, g = 1)
+      l) Θ(n) (p ≈ 0.788 < 1 so g = n dominates)
+      m) Θ(n log n) (= log n! + T(0))     n) Θ(log² n)
+      o) n log₃n + n = 405               p) 2n² − n; T(8) = 120
+      q) 2n² − n; T(16) = 496            r) 3¹⁰ = 59049 vs 1048576
+
+M3. Amortised analysis (cost 1 per write or copy, arrays start at
+    capacity 1 unless stated).
+    a) total cost of 32 inserts with doubling
+    b) total cost of 33 inserts with doubling
+    c) bit flips of a binary counter counting 0 → 8, 0 → 10, 0 → 100
+    d) amortised flips per increment (bound)
+    e) Φ = 2·num − cap when num = 5, cap = 8
+    f) with Φ = number of 1 bits, amortised cost of an increment that
+       clears t trailing ones
+    g) growth by factor 3 instead of 2: bound on amortised cost per insert
+    h) growth by +10 slots each time: total cost of n inserts
+    i) halve at 1/2 full, double at full: worst total for n operations
+    j) n operations on a stack with PUSH, POP, MULTIPOP from empty
+    k) queue from two stacks: stack operations per element over its life
+    l) counter with INCREMENT and DECREMENT, k bits: worst for n operations
+    m) union by rank only: maximum tree height with n = 1000 elements
+    n) union by rank + path compression, m operations: bound
+    o) Fibonacci heap: amortised insert, decrease-key, extract-min
+    p) Dijkstra with a Fibonacci heap
+    q) splay tree: amortised cost per access
+    Answers:
+      a) 32 + 31 = 63     b) 33 + 63 = 96
+      c) 15, 18, 197 (always 2n − (number of 1s in n))
+      d) < 2              e) 2               f) (t + 1) + (1 − t) = 2
+      g) < 2.5 (copies 1 + 3 + 9 + ... < 3n/2)  h) Θ(n²)
+      i) Θ(n²) (thrash at the boundary)   j) ≤ 2n    k) 4 (in and out
+         of each stack), so O(1) amortised
+      l) Θ(nk) (alternate 011...1 ↔ 100...0)  m) ⌊log₂1000⌋ = 9
+      n) O(m α(n)); α(n) ≤ 4 for any practical n
+      o) O(1), O(1), O(log n)             p) O(E + V log V)
+      q) O(log n)
+
+M4. Graph algorithms.
+    a) BFS/DFS time with adjacency lists; with an adjacency matrix
+    b) edges in a tree on 50 vertices
+    c) number of topological orders of a→b, a→c, b→d, c→d
+    d) number of topological orders of the two chains a→b and c→d
+    e) number of topological orders of 4 vertices with no edges
+    f) MST weight of K₄ with ab 1, bc 2, ac 3, ad 4, bd 5, cd 6
+    g) number of spanning trees of K₅
+    h) Dijkstra from s: s→a 7, s→b 2, b→a 3, a→c 1, b→c 8, c→t 2, b→t 9;
+       distances and extraction order
+    i) SCCs of 1→2→3→1, 3→4, 4→5→4, with an isolated vertex 6
+    j) is C₅ bipartite? C₆?
+    k) rounds of Bellman-Ford needed on V vertices; how a negative cycle
+       is detected
+    l) Floyd-Warshall on V = 100: number of relaxation steps
+    m) Dijkstra with a binary heap on V = 10⁴, E = 10⁵: order of steps
+    n) maximum number of edges of a DAG on 10 vertices
+    o) edges of a 3-regular graph on 10 vertices
+    p) Euler circuit in K₅? in K₄?
+    q) all-pairs shortest paths with negative edges, no negative cycles,
+       sparse graph: algorithm and time
+    r) if all edge weights are distinct, is the MST unique?
+    Answers:
+      a) O(V + E); O(V²)    b) 49      c) 2 (abcd, acbd)
+      d) 6 (C(4, 2))        e) 24      f) 7 (ab, bc, ad)
+      g) 125 (Cayley 5³)
+      h) s 0, b 2, a 5, c 6, t 8; order s, b, a, c, t
+      i) 3: {1, 2, 3}, {4, 5}, {6}     j) no (odd cycle); yes
+      k) V − 1; an edge still relaxes in round V
+      l) 100³ = 10⁶         m) (V + E) log₂V ≈ 1.1·10⁵ · 13.3 ≈ 1.5·10⁶
+      n) 45 (all pairs oriented by a topological order)
+      o) 15 (handshake: 3·10/2)        p) yes (all degrees 4); no (3)
+      q) Johnson: Bellman-Ford reweighting + V Dijkstras, O(VE + V² log V)
+      r) yes
+
+M5. Dynamic programming: compute.
+    a) F₃₀ (memoised Fibonacci)         b) LCS(ABCBDAB, BDCABA)
+    c) LCS(AGGTAB, GXTXAYB)             d) edit(kitten, sitting)
+    e) edit(sunday, saturday)           f) edit(intention, execution)
+    g) knapsack W = 7: (1, 1), (3, 4), (4, 5), (5, 7)
+    h) knapsack W = 10: (5, 10), (4, 40), (6, 30), (3, 50)
+    i) fewest coins for 11 from {1, 2, 5}; for 6 from {1, 3, 4} (and
+       greedy's answer)
+    j) number of ways to make 10 from {1, 2, 5} (unordered)
+    k) matrix chain 10×30, 30×5, 5×60: best cost and the worse order
+    l) matrix chain 40×20, 20×30, 30×10, 10×30
+    m) number of parenthesisations of a product of 5 matrices
+    n) LIS of 10, 9, 2, 5, 3, 7, 101, 18
+    o) maximum subarray sum of −2, 1, −3, 4, −1, 2, 1, −5, 4
+    p) monotone lattice paths (0, 0) → (5, 5)
+    q) rod cutting, n = 8, prices 1, 5, 8, 9, 10, 17, 17, 20
+    r) time of: LCS, knapsack, matrix chain, Floyd-Warshall
+    Answers:
+      a) 832040        b) 4 (BCBA)       c) 4 (GTAB)       d) 3
+      e) 3             f) 5              g) 9              h) 90 (items 2, 4)
+      i) 3 (5 + 5 + 1); 2 (3 + 3), greedy 4 + 1 + 1 = 3
+      j) 10            k) 4500 ((AB)C); A(BC) costs 27000
+      l) 26000         m) 14 (Catalan C₄)                  n) 4 (2, 3, 7, 18)
+      o) 6 (4, −1, 2, 1)                 p) C(10, 5) = 252
+      q) 22 (2 + 6)    r) O(mn), O(nW), O(n³), O(V³)
+
+M6. Flows, matchings and LP duality.
+    a) max flow: s→a 3, s→b 2, a→b 1, a→t 2, b→t 3
+    b) max flow and min cut: s→a 10, s→b 10, a→b 2, a→t 4, a→c 8, b→c 9,
+       c→t 10
+    c) max flow and min cut: s→a 5, s→b 4, a→c 3, b→c 6, c→t 7, a→t 1
+    d) max flow (CLRS): s→a 16, s→c 13, a→b 12, c→a 4, b→c 9, c→d 14,
+       d→b 7, b→t 20, d→t 4; a minimum cut
+    e) maximum matching: 1–{a}, 2–{a}, 3–{a, b, c}, 4–{b, c}; which Hall
+       condition fails?
+    f) max matching and min vertex cover in K_(3,5)
+    g) edge-disjoint s-t paths in K₄
+    h) Edmonds-Karp and Dinic running times
+    i) max x + y: x + 2y ≤ 4, 3x + y ≤ 6, x, y ≥ 0; its dual and dual optimum
+    j) min 2x + 3y: x + y ≥ 2, x + 3y ≥ 3, x, y ≥ 0
+    k) optimum of max 3x₁ + 2x₂: x₁ + x₂ ≤ 4, x₁ + 3x₂ ≤ 7, x₁ ≤ 3, x ≥ 0
+    l) primal unbounded ⇒ dual is ?
+    m) an LP where primal and dual are both infeasible
+    n) dual of max cᵀx subject to Ax = b, x ≥ 0
+    o) is the incidence matrix of a bipartite graph totally unimodular?
+       of a triangle?
+    Answers:
+      a) 5 (cuts {s} and V ∖ {t} both have capacity 5)
+      b) 14; S = {s, a, b, c}      c) 8; S = {s, a} (4 + 3 + 1)
+      d) 23; S = {s, a, c, d} (a→b 12 + d→b 7 + d→t 4)
+      e) 3; N({1, 2}) = {a} has size 1 < 2
+      f) 3 and 3 (König)           g) 3 (Menger)
+      h) O(VE²); O(V²E)
+      i) 14/5 at (8/5, 6/5); dual min 4u + 6v, u + 3v ≥ 1, 2u + v ≥ 1,
+         u, v ≥ 0: (2/5, 1/5), also 14/5
+      j) 9/2 at (3/2, 1/2)         k) 11 at (3, 1); dual y = (2, 0, 1)
+      l) infeasible (weak duality)
+      m) max x₁ + x₂: x₁ − x₂ ≤ −1, −x₁ + x₂ ≤ −1 (sum gives 0 ≤ −2); its
+         dual y₁ − y₂ ≥ 1, −y₁ + y₂ ≥ 1 is also infeasible
+      n) min bᵀy subject to Aᵀy ≥ c, y FREE
+      o) yes (so bipartite matching LPs have integral optima); no
+         (determinant ±2)
+
+M7. Randomised algorithms: expectations and probabilities.
+    a) expected fixed points of a random permutation of n
+    b) expected quicksort comparisons, n = 3; n = 4; n = 10 (≈)
+    c) Karger's success lower bound for n = 5; for n = 10
+    d) runs of Karger (n = 10) for failure ≤ 1%
+    e) coupon collector, 6 coupons
+    f) expected pairs sharing a birthday among 23 people (365 days)
+    g) expected collisions hashing 100 keys into 1000 slots
+    h) Schwartz-Zippel: degree 10 polynomial, S of size 100
+    i) Miller-Rabin rounds for error ≤ 10⁻⁶ (error ≤ 1/4 per round)
+    j) Freivalds' test, 20 trials: error bound
+    k) random assignment of a 3CNF with 40 clauses (3 distinct variables
+       each): expected satisfied clauses
+    l) random cut of K₄: expected cut edges; the true max cut
+    m) expected left-to-right maxima of a random permutation of 4
+    n) majority of 5 runs, each correct with probability 2/3
+    o) Hoeffding runs for error 2⁻¹⁰⁰ from error 1/3
+    p) Markov: a Las Vegas algorithm with expected time T is stopped at
+       time 4T; failure probability bound
+    Answers:
+      a) 1           b) 8/3; 29/6 ≈ 4.833; ≈ 24.437 (2·11·H₁₀ − 40)
+      c) 1/10; 1/45  d) 205          e) 6H₆ = 14.7
+      f) C(23, 2)/365 = 253/365 ≈ 0.693    g) 4950/1000 = 4.95
+      h) ≤ 10/100 = 0.1             i) 10 (4⁻¹⁰ ≈ 9.5 × 10⁻⁷)
+      j) ≤ 2⁻²⁰ ≈ 9.5 × 10⁻⁷         k) 35 (each true with probability 7/8)
+      l) 3; 4                        m) H₄ = 25/12
+      n) 64/81 ≈ 0.790               o) 1248      p) ≤ 1/4
+
+M8. Approximation algorithms: ratios, bounds and instances.
+    a) maximal-matching vertex cover on K_(3,3): size vs OPT
+    b) the same on the star K_(1,5)
+    c) VC LP on K_n: LP value, OPT, integrality gap
+    d) greedy set cover bound H₁₀ (exact and decimal)
+    e) greedy on U = {1..6}, S₁ = {1, 2, 3, 4}, S₂ = {1, 2, 5},
+       S₃ = {3, 4, 6}: sets used vs OPT
+    f) metric TSP: MST doubling ratio; Christofides ratio
+    g) general (non-metric) TSP: best constant ratio
+    h) MAX-CUT: random cut ratio; Goemans-Williamson ratio
+    i) MAX-3SAT: random assignment ratio; best possible unless P = NP
+    j) Graham list scheduling on m = 4 machines; LPT on m = 4
+    k) knapsack FPTAS running time
+    l) bin packing: why no (3/2 − ε)-approximation unless P = NP
+    m) k-center (metric): greedy farthest-point ratio; best possible
+    n) vertex cover hardness known unconditionally in P ≠ NP; under UGC
+    o) set cover hardness
+    Answers:
+      a) 6 vs 3 (ratio 2, tight)          b) 2 vs 1
+      c) n/2, n − 1, 2(n − 1)/n → 2
+      d) 7381/2520 ≈ 2.929                e) 3 vs 2
+      f) 2; 3/2                           g) none (unbounded)
+      h) 1/2; ≈ 0.878                     i) 7/8; 7/8 (Håstad)
+      j) 2 − 1/4 = 7/4; 4/3 − 1/12 = 5/4
+      k) O(n³/ε) (round values to multiples of εv_max/n)
+      l) PARTITION: deciding whether 2 bins suffice is NP-hard
+      m) 2; 2 (better is NP-hard)
+      n) ≈ 1.36 (Dinur-Safra; √2 − ε by Khot-Minzer-Safra); 2 − ε
+      o) (1 − ε) ln n (Dinur-Steurer)
+
+M9. P, NP-complete (NPC) or other? Give the status (assume P ≠ NP where
+    relevant) and answer the reduction questions.
+    a) 2SAT             b) 3SAT             c) HORN-SAT
+    d) 2-colouring      e) 3-colouring      f) planar 3-colouring
+    g) planar 4-colouring (decision)        h) shortest simple path
+    i) longest simple path                  j) Euler circuit
+    k) Hamiltonian cycle                    l) bipartite matching
+    m) 3-dimensional matching               n) min cut
+    o) max cut          p) LP feasibility   q) 0/1 integer programming
+    r) SUBSET-SUM (binary); SUBSET-SUM (unary)
+    s) PRIMES           t) factoring (decision version)
+    u) graph isomorphism                    v) triangle (3-clique)
+    w) CLIQUE with k part of the input      x) vertex cover on trees
+    y) TQBF
+    z) a graph on 10 vertices has an independent set of size 4 iff it has
+       a vertex cover of size ? iff its complement has a clique of size ?
+    Answers:
+      a) P (NL-complete)  b) NPC   c) P (P-complete)   d) P    e) NPC
+      f) NPC    g) P (always yes)  h) P    i) NPC     j) P    k) NPC
+      l) P      m) NPC    n) P     o) NPC  p) P (ellipsoid)   q) NPC
+      r) NPC (weakly); P (DP in O(nS))    s) P (AKS)
+      t) NP ∩ coNP, not believed NPC      u) NP, quasi-polynomial
+         (Babai), not believed NPC        v) P (O(n³), or O(n^ω))
+      w) NPC    x) P (greedy/DP)          y) PSPACE-complete
+      z) 6; 4
+
+M10. Space complexity and hierarchy theorems: fill in or decide.
+     a) Savitch: NSPACE(n) ⊆ ?; NSPACE(n³) ⊆ ?; NL ⊆ ?
+     b) configurations of a machine with space s ≥ log n: order
+     c) SPACE(s) ⊆ TIME(?); consequence for L and for PSPACE
+     d) Immerman-Szelepcsényi: coNL = ?
+     e) complete problems: NL; PSPACE; EXP (generalised n × n chess)
+     f) undirected s-t connectivity: which class?
+     g) DTIME(n) ⊊ DTIME(n²)?          h) DTIME(n²) ⊊ DTIME(n² log n)?
+     i) SPACE(log n) ⊊ SPACE(log² n)?   j) NP ⊊ NEXP?
+     k) P ⊊ EXP?  L ⊊ PSPACE?  NL ⊊ PSPACE?  P ⊊ PSPACE?
+     l) which is known: L ≠ P or P ≠ PSPACE (at least one)?
+     m) EXP ≠ NL?
+     n) true or false: ∀x∃y (x ⊕ y); ∃x∀y (x ⊕ y); ∀x∃y∀z ((x ∨ z) ∨ (y ∧ ¬z))
+     o) space of evaluating a QBF with n variables and size m
+     p) oracles: P^A = NP^A for A = ?; what does this show?
+     Answers:
+       a) SPACE(n²); SPACE(n⁶); SPACE(log² n)
+       b) 2^(O(s)) (|Q|·n·s·|Γ|^s)
+       c) 2^(O(s)); L ⊆ P, PSPACE ⊆ EXP
+       d) NL                  e) PATH (or 2SAT); TQBF, geography; chess
+       f) L (Reingold 2005)   g) yes    h) not implied by the theorem
+       i) yes (space hierarchy)          j) yes (nondeterministic hierarchy)
+       k) yes; yes; yes; unknown
+       l) at least one is true (L ≠ PSPACE), unknown which
+       m) yes (NL ⊆ P ⊊ EXP)
+       n) true (y = ¬x); false; true (x = 0: take y = 1; then z = 0 gives
+          y ∧ ¬z, z = 1 gives x ∨ z; x = 1: x ∨ z is true)
+       o) O(m + n), polynomial   p) any PSPACE-complete A (P^A = NP^A =
+          PSPACE); relativising proofs cannot separate P from NP
+
+M11. BPP, PH, IP and PCP.
+     a) order P, ZPP, RP, BPP, NP by known inclusions
+     b) ZPP = ? ∩ ?        c) BPP ⊆ ? (two results)
+     d) is BPP closed under complement? is RP?
+     e) majority of 3 runs, each correct with probability 2/3
+     f) RP runs for error ≤ 10⁻⁶
+     g) Σ₁ᵖ, Π₁ᵖ, Σ₂ᵖ as oracle classes
+     h) MIN-FORMULA lies in which level?
+     i) P = NP ⇒ PH = ?   Σ₃ᵖ = Π₃ᵖ ⇒ PH = ?
+     j) NP ⊆ P/poly ⇒ ? (Karp-Lipton)
+     k) PH vs PSPACE; Toda's theorem
+     l) if PH has a complete problem under polynomial reductions then ?
+     m) IP = ?; MIP = ?; IP with a deterministic verifier = ?
+     n) GNI protocol: soundness per round; rounds for error ≤ 10⁻³
+     o) if GI is NP-complete then ?
+     p) sumcheck error bound, 10 variables, degree ≤ 3 in each,
+        |F| = 2³¹ − 1
+     q) PCP(0, 0), PCP(log n, 0), PCP(0, poly), PCP(poly, 0),
+        PCP(log n, 1)
+     r) with r = c log n random bits, how many random strings, and why is
+        the proof polynomially long?
+     s) Håstad's 3-query PCP: soundness; resulting MAX-3SAT threshold
+     t) NP ⊆ BPP implies ? (two consequences)
+     Answers:
+       a) P ⊆ ZPP ⊆ RP ⊆ NP and RP ⊆ BPP (BPP vs NP unknown)
+       b) RP ∩ coRP      c) Σ₂ᵖ ∩ Π₂ᵖ; P/poly
+       d) yes; unknown (complement is coRP)
+       e) 20/27 ≈ 0.741  f) 20
+       g) NP; coNP; NP^NP
+       h) Π₂ᵖ (∀ shorter ψ ∃x ψ(x) ≠ φ(x))
+       i) P; Σ₃ᵖ          j) PH = Σ₂ᵖ
+       k) PH ⊆ PSPACE; PH ⊆ P^(#P)
+       l) PH collapses to a finite level
+       m) PSPACE; NEXP; NP
+       n) 1/2; 10 (2⁻¹⁰ ≈ 9.8 × 10⁻⁴)
+       o) PH = Σ₂ᵖ (GNI ∈ AM)
+       p) ≤ 30/(2³¹ − 1) ≈ 1.4 × 10⁻⁸
+       q) P, P, NP, coRP, NP (the PCP theorem)
+       r) n^c strings × O(1) queries: only poly(n) proof bits are ever read
+       s) 1/2 + ε (linear tests); 7/8 + ε
+       t) NP = RP, and PH ⊆ BPP
+
+M12. True (T) or false (F)? Give a counterexample for F.
+     a) If f = O(g) then 2^f = O(2^g).
+     b) f = O(g) or g = O(f) for any two positive functions.
+     c) Every recurrence T(n) = aT(n/b) + f(n) falls under one of the three
+        master cases.
+     d) Amortised O(1) per operation means every operation is O(1).
+     e) Dijkstra is correct with negative edges if there are no negative
+        cycles.
+     f) If all capacities are integers then there is an integral maximum
+        flow.
+     g) Ford-Fulkerson always terminates.
+     h) The simplex method runs in polynomial time.
+     i) An O(nW) algorithm for knapsack shows P = NP.
+     j) A greedy algorithm is optimal for coin change with any coin set.
+     k) If A ≤ₚ B and B ∈ P then A ∈ P.
+     l) If A ≤ₚ B and A ∈ P then B ∈ P.
+     m) 2SAT is NP-complete.
+     n) NP = coNP is known to be false.
+     o) NPSPACE ≠ PSPACE.
+     p) DTIME(n²) ⊊ DTIME(n³).
+     q) P ⊊ PSPACE is known.
+     r) BPP ⊆ NP is known.
+     s) If Σ₂ᵖ = Π₂ᵖ then PH = Σ₂ᵖ.
+     t) IP = NP.
+     u) Metric TSP has a 2-approximation, so general TSP does too.
+     v) A Monte Carlo algorithm can be turned into a Las Vegas one if
+        answers can be verified quickly.
+     Answers:
+       a) F: f = 2n, g = n
+       b) F: f = n^(1 + sin n) and g = n oscillate
+       c) F: 2T(n/2) + n/log n
+       d) F: the doubling array has single Θ(n) inserts
+       e) F: s→a 2, s→b 3, b→a −2
+       f) T (integrality theorem)
+       g) F: irrational capacities (Zwick's example) may not terminate
+       h) F: Klee-Minty cubes (though LP is in P via the ellipsoid method)
+       i) F: pseudo-polynomial, W is exponential in its bit length
+       j) F: {1, 3, 4} and 6 (greedy 3 coins, optimum 2)
+       k) T    l) F: {0} ≤ₚ HALT (a language in P reduces to any
+          nontrivial B), and HALT is undecidable
+       m) F: 2SAT ∈ P (if it were NPC, P = NP)
+       n) F: it is open (it would follow from P = NP)
+       o) F: Savitch gives NPSPACE = PSPACE
+       p) T (time hierarchy)
+       q) F: open (only P ⊊ EXP and L ⊊ PSPACE are known)
+       r) F: open (BPP ⊆ Σ₂ᵖ ∩ Π₂ᵖ is known)
+       s) T (collapse lemma)
+       t) F: IP = PSPACE (NP ⊆ IP, equality would give NP = PSPACE)
+       u) F: no constant ratio unless P = NP (HAM-CYCLE gap reduction)
+       v) T (rerun until the verified answer appears)
+
+TEACHING TIPS
+  Struggling: for every recurrence, draw the recursion tree and write the
+  cost of the first three levels before naming a case; for every
+  amortised claim, first compute the total cost of a concrete sequence
+  (16 inserts, 16 increments), then find the potential. For DP insist on
+  the four-line template "subproblem, recurrence, order, answer" and fill
+  a small table by hand. For reductions, draw the arrow "known hard →
+  new problem" and check both directions of the "iff" on a tiny instance
+  (the 3-clause formula of D8). Keep a wall chart L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆
+  EXP with the known separations (L ≠ PSPACE, P ≠ EXP) in red. Harder:
+  prove Cook-Levin in full (tableau of configurations); prove the
+  integrality of max flow via total unimodularity; prove the Hₙ bound for
+  greedy set cover by LP duality (dual fitting); prove
+  Immerman-Szelepcsényi by inductive counting; prove Adleman's BPP ⊆
+  P/poly by a union bound; prove Karp-Lipton; work through the sumcheck
+  protocol for #SAT and the proof that IP ⊆ PSPACE; and show that the PCP
+  theorem is equivalent to NP-hardness of gap-MAX-3SAT.
+
+
+================================================================================
+MIXED REVISION TEST — STAGE 12
+================================================================================
+Two parts with the same number of questions: Part A is descriptive
+(proofs, explanations and worked problems, written with full working),
+Part B is mathematical only. Two questions from every topic in each part,
+in topic order (12.1, 12.1, 12.2, 12.2, ...). 1 mark each, 120 marks in
+all. Use it as four timed papers of 30 questions, like a qualifying exam.
+
+PART A — DESCRIPTIVE, 60 marks
+  1.  State the Radon-Nikodym theorem. For ν(E) = ∫_E 3x² dx on [0, 1]
+      show ν ≪ m and find dν/dm; explain why δ₀ is not absolutely
+      continuous with respect to m.
+  2.  State the Riesz representation theorem for C(X)*, X compact
+      Hausdorff. Find the measure representing Λf = f(0) + ∫₀¹ f dx on
+      C[0, 1], and find ‖Λ‖.
+  3.  Show that the standard basis eₙ of ℓ² converges weakly to 0 but not
+      in norm, and deduce that the closed unit ball of ℓ² is not norm
+      compact.
+  4.  Prove that 0 lies in the spectrum of every compact operator on an
+      infinite-dimensional Banach space. Find the spectrum and the
+      eigenvalues of the diagonal operator Teₙ = eₙ/n on ℓ².
+  5.  State the Riemann mapping theorem. Find conformal maps of the upper
+      half-plane and of the strip {0 < Im z < π} onto the unit disc.
+  6.  Write down the Weierstrass product for sin πz and, by comparing the
+      coefficients of z³, deduce that ∑ 1/n² = π²/6.
+  7.  State Hartogs' extension theorem and explain, using the Cauchy
+      integral in one variable, why a function holomorphic on C² ∖ {0}
+      extends to C². Contrast with 1/z on C ∖ {0}.
+  8.  Find the domains of convergence of ∑ z₁ᵐz₂ⁿ (m, n ≥ 0) and of
+      ∑ (z₁z₂)ⁿ, and show that each is a logarithmically convex Reinhardt
+      domain.
+  9.  Prove that every finite p-group is nilpotent, and show that S₃ is
+      solvable but not nilpotent.
+ 10.  Prove that Z/m ⊗_Z Z/n ≅ Z/gcd(m, n) and that Q ⊗_Z Z/n = 0.
+ 11.  Use the resolution 0 → Z → Z → Z/m → 0 (first map ·m) to compute
+      Torᵢ^Z(Z/m, Z/n) and Extⁱ_Z(Z/m, Z/n) for all i.
+ 12.  Show that Hom_Z(Z/n, Z) = 0 but Ext¹_Z(Z/n, Z) ≅ Z/n, and explain
+      how this measures the failure of Hom(−, Z) to be exact.
+ 13.  Show that the presheaf of constant functions on a disconnected space
+      is not a sheaf, and identify its sheafification.
+ 14.  On X = C ∖ {0} explain why exp : O → O* is surjective on stalks but
+      not on global sections, using the exponential sequence
+      0 → 2πiZ → O → O* → 0 and H¹(X, Z) ≅ Z.
+ 15.  Find a primary decomposition of I = (x², xy) in k[x, y], its
+      associated primes, and say which is embedded. Show the
+      decomposition is not unique.
+ 16.  State the weak and strong Nullstellensatz, and deduce that the
+      maximal ideals of C[x, y] are exactly (x − a, y − b).
+ 17.  Compute the homology of the torus from its cellular chain complex
+      (one 0-cell, two 1-cells, one 2-cell) and describe the cup product
+      on H*(T²; Z).
+ 18.  Use Mayer-Vietoris to compute H_*(Sⁿ), and deduce that Rⁿ and Rᵐ
+      are not homeomorphic for m ≠ n.
+ 19.  Show that ω = (x dy − y dx)/(x² + y²) is closed but not exact on
+      R² ∖ {0}, and deduce H¹_dR(R² ∖ {0}) ≅ R.
+ 20.  For the round sphere of radius R with metric R²(dθ² + sin²θ dφ²)
+      compute the Gaussian curvature and verify Gauss-Bonnet.
+ 21.  Find the roots of sl(3, C) with respect to the diagonal Cartan
+      subalgebra, a base of simple roots, the Cartan matrix, the Weyl
+      group and the Dynkin diagram.
+ 22.  Using weights, decompose V₁ ⊗ V₁ and V₁ ⊗ V₂ for sl(2, C) (Vₙ of
+      highest weight n) and state the Clebsch-Gordan rule.
+ 23.  For simple symmetric random walk Sₙ show that Sₙ² − n is a
+      martingale and use optional stopping to find the expected exit time
+      from (−a, b), starting at 0.
+ 24.  Outline the proof of the central limit theorem for i.i.d. variables
+      of mean 0 and variance 1 using characteristic functions and Lévy's
+      continuity theorem.
+ 25.  Give the weak formulation of −Δu = f in Ω, u = 0 on ∂Ω (Ω bounded,
+      f ∈ L²), and prove existence and uniqueness in H¹₀(Ω) with Poincaré
+      and Lax-Milgram.
+ 26.  Solve uₜ = uₓₓ on R with u(x, 0) = g(x) by the Fourier transform,
+      and explain "infinite speed of propagation".
+ 27.  Describe the points of Spec Z and Spec C[x], identify the closed
+      points and the generic point, and explain the topology.
+ 28.  Compute H⁰(P¹, O(d)) and H¹(P¹, O(d)) for all d with the Čech
+      complex of the standard cover {U₀, U₁}.
+ 29.  Use the Minkowski bound to prove that Q(√−2) has class number 1.
+ 30.  Use Hensel's lemma to show that 2 is a square in Z₇ and find a
+      square root of 2 modulo 7³.
+ 31.  Show that ζ(s) − 1/(s − 1) extends holomorphically to Re s > 0,
+      using ζ(s) = s/(s − 1) − s∫₁^∞ {t} t⁻ˢ⁻¹ dt, and find the residue at 1.
+ 32.  Outline Dirichlet's proof that there are infinitely many primes
+      p ≡ 1 (mod 4), using L(s, χ₄) and L(1, χ₄) = π/4 ≠ 0.
+ 33.  Construct the irreducible representations Vₙ of SU(2) on
+      homogeneous polynomials of degree n and compute their characters.
+ 34.  State the Weyl dimension formula for sl(3) and compute the
+      dimensions of V(1, 0), V(1, 1) and V(2, 0). Identify V(1, 1).
+ 35.  Define the Hilbert transform by its Fourier multiplier −i sgn ξ,
+      show it is an isometry of L²(R) with H² = −I, and compute H(cos).
+ 36.  Prove the weak (1, 1) inequality m{Mf > λ} ≤ 3‖f‖₁/λ for the
+      Hardy-Littlewood maximal function on R via the Vitali covering
+      lemma, and deduce the Lebesgue differentiation theorem.
+ 37.  Use Itô's formula to show ∫₀ᵗ B dB = (Bₜ² − t)/2, and find
+      E[(∫₀ᵗ B dB)²] by the Itô isometry.
+ 38.  Solve the Ornstein-Uhlenbeck SDE dX = −θX dt + σ dB (θ > 0) and find
+      the mean, variance and stationary distribution of Xₜ.
+ 39.  State and prove the Poincaré recurrence theorem.
+ 40.  Prove that rotation by irrational α on the circle is ergodic (via
+      Fourier series), and deduce Weyl equidistribution of {nα} from
+      Birkhoff's theorem (or directly).
+ 41.  Use the compactness theorem to construct a non-standard model of
+      arithmetic, and show that "the domain is finite" is not expressible
+      by any set of first-order sentences.
+ 42.  Prove that the halting problem is undecidable, and state Gödel's
+      first incompleteness theorem and the independence of CH from ZFC.
+ 43.  State and prove the Yoneda lemma, and deduce that a representing
+      object of a functor is unique up to unique isomorphism.
+ 44.  Show that the free group functor is left adjoint to the forgetful
+      functor Grp → Set, and prove that right adjoints preserve limits.
+ 45.  Prove Erdős's bound R(k, k) > 2^(k/2) for k ≥ 3 by the probabilistic
+      method.
+ 46.  Prove the LYM inequality and deduce Sperner's theorem on antichains
+      in the power set of {1, ..., n}.
+ 47.  Set up the piecewise-linear finite element method for −u″ = f on
+      (0, 1), u(0) = u(1) = 0, with uniform mesh h; find the stiffness
+      matrix, state Céa's lemma and the H¹ and L² error rates.
+ 48.  State the convergence bound for conjugate gradients in terms of the
+      condition number κ and compare it with steepest descent. How many
+      iterations reduce the error by 10⁻⁶ when κ = 10⁴?
+ 49.  Solve min x² + y² subject to x + y ≥ 1 with the KKT conditions, write
+      down the Lagrange dual problem and check strong duality (Slater).
+ 50.  Define the convex conjugate, prove the Fenchel-Young inequality, and
+      compute the conjugates of x²/2 and of |x|.
+ 51.  Find the MLE of λ for an i.i.d. Exp(λ) sample, its Fisher
+      information and the Cramér-Rao bound, and state the asymptotic
+      distribution of the MLE.
+ 52.  Show that the VC dimension of intervals in R is 2 and of half-planes
+      in R² is 3, and state the VC uniform convergence (PAC) bound.
+ 53.  Using a = (mωx + ip)/√(2mħω) with [x, p] = iħ, show [a, a†] = 1 and
+      derive the energy levels of the harmonic oscillator.
+ 54.  Prove Liouville's theorem (Hamiltonian flow preserves phase-space
+      volume, indeed ω = dq ∧ dp), and state Darboux's theorem.
+ 55.  Prove put-call parity C − P = S₀ − Ke⁻ʳᵀ by a no-arbitrage argument,
+      and state the Black-Scholes formula and the PDE it solves.
+ 56.  In a one-period binomial model show that no-arbitrage holds iff
+      d < 1 + r < u; price a call with S₀ = 100, u = 1.2, d = 0.8,
+      r = 0.05, K = 100 and find the replicating portfolio.
+ 57.  Explain Hadamard's well-posedness, why compact operators have
+      unbounded inverses, the Picard condition, and how Tikhonov
+      regularisation filters the singular value expansion.
+ 58.  For y = x + ε with prior x ~ N(0, τ²) and noise ε ~ N(0, σ²), find
+      the posterior, and show the MAP estimate is a Tikhonov solution.
+ 59.  Give a polynomial reduction from 3-SAT to INDEPENDENT SET and deduce
+      that INDEPENDENT SET (and CLIQUE, VERTEX COVER) are NP-complete.
+ 60.  State the master theorem and solve T(n) = 2T(n/2) + n and Strassen's
+      T(n) = 7T(n/2) + n²; prove the Ω(n log n) lower bound for
+      comparison sorting.
+
+PART B — MATHEMATICAL ONLY, 60 marks
+ 61.  ν = 2x dm on [0, 1]: dν/dm = __ ; ν([0, 1/2]) = __ ; total variation
+      of δ₀ − 2δ₁ = __
+ 62.  Lebesgue density of the upper half-plane at the origin = __ ; for
+      f = 1_[0,1], the centred maximal function Mf(2) = __
+ 63.  (Tf)(x) = x f(x) on L²[0, 1]: σ(T) = __ , eigenvalues = __ ;
+      spectral radius of the Volterra operator ∫₀ˣ on L²[0, 1] = __
+ 64.  Distributional derivatives: |x|′ = __ , |x|″ = __ ; for a > 0,
+      xᵃ ∈ H¹(0, 1) iff a __
+ 65.  Order of ℘ = __ ; zeros of ℘′ in a period parallelogram = __ ;
+      Γ(1/2) = __
+ 66.  Möbius map of the upper half-plane onto the disc with i ↦ 0 = __ ;
+      harmonic conjugate of x² − y² = __
+ 67.  Domain of convergence of ∑ z₁ᵐz₂ⁿ = __ ; of ∑ (z₁z₂)ⁿ = __
+ 68.  Levi form of ρ = |z₁|² + |z₂|² − 1 = __ ; complex Jacobian
+      determinant of (z₁ + z₂², z₂) = __
+ 69.  Derived series of S₄: S₄ ⊃ __ ⊃ __ ⊃ 1 ; the lower central series
+      of S₃ stops at __
+ 70.  Z/12 ⊗ Z/18 = __ ; Q ⊗_Z Z/5 = __ ; dim_R(R² ⊗ R³) = __
+ 71.  Tor₁^Z(Z/12, Z/18) = __ ; Ext¹_Z(Z/4, Z) = __ ; Ext¹_Z(Z/4, Z/6) = __
+ 72.  Tor₁^Z(Q, Z/5) = __ ; Torᵢ^(k[x])(k, k) for i = 0, 1, 2 = __
+      (k = k[x]/(x))
+ 73.  Stalk of O_C at 0 = __ ; H⁰ of the constant sheaf Z on a disjoint
+      union of 3 intervals = __ ; Hⁱ(S¹, Z) for i = 0, 1, 2 = __
+ 74.  Skyscraper sheaf A at p (X Hausdorff): stalk at p = __ , at q ≠ p
+      = __ ; dim H¹(P¹, O(−2)) = __
+ 75.  Krull dimension of k[x, y, z]/(xy) = __ , of Z[x] = __ , of
+      k[[x]] = __
+ 76.  Ass(k[x, y]/(x², xy)) = __ ; √(x³, y²) = __ ; length of
+      k[x, y]/(x², y³) = __
+ 77.  Hₙ(RP²; Z) for n = 0, 1, 2 = __ ; χ(RP²) = __ ; π₁(RP²) = __
+ 78.  π₃(S²) = __ ; Betti numbers of the closed orientable surface of
+      genus 3 = __ ; H*(CP²; Z) as a ring = __
+ 79.  ∫_{S¹} (x dy − y dx)/(x² + y²) = __ ; dims of Hᵏ_dR(T²) = __ ;
+      d(x dy ∧ dz) = __
+ 80.  Curvature of (dx² + dy²)/y² = __ ; Γ^θ_φφ for dθ² + sin²θ dφ² = __ ;
+      ∫ K dA over a closed surface of genus 2 = __
+ 81.  Number of roots of A₂, B₂, G₂, E₈ = __ ; dim E₈ = __
+ 82.  For sl(2): V₂ ⊗ V₃ = __ ; |W(A₃)| = __ , |W(B₂)| = __ ,
+      |W(G₂)| = __
+ 83.  X ~ N(0, 1): φ_X(t) = __ , E X⁴ = __ ; Brownian motion:
+      Cov(B_s, Bₜ) = __ , E[B₂² | F₁] = __
+ 84.  Simple random walk from 0, stopped at −3 or 5: P(hit 5 first) = __ ,
+      E τ = __ ; X ~ Poisson(λ): φ_X(t) = __
+ 85.  Sobolev exponent p* for W^{1,2}(R³) = __ ; Hˢ(R³) ⊂ C⁰ iff s __
+ 86.  Heat kernel on R = __ ; first Dirichlet eigenvalue of −Δ on (0, π)
+      = __ , on (0, π)² = __ ; best constant C in ‖u‖₂ ≤ C‖u′‖₂ on
+      H¹₀(0, 1) = __
+ 87.  h⁰(P¹, O(5)) = __ ; h¹(P¹, O(−3)) = __ ; h⁰(P², O(3)) = __
+ 88.  Genus 3 curve: deg K = __ , ℓ(D) for deg D = 7 = __ ; lines on a
+      smooth cubic surface = __ ; a conic meets a cubic in P² in __ points
+ 89.  disc Q(∛2) = __ ; Minkowski bound for Q(√−5) = __ ; fundamental
+      units of Q(√2) and Q(√3) = __
+ 90.  |12|₂ = __ , |12|₃ = __ ; square roots of 2 modulo 49 = __
+ 91.  ζ(0) = __ ; ζ(−1) = __ ; Res_{s=1} ζ = __ ; L(1, χ₋₄) = __
+ 92.  ψ(10) = __ ; θ(10) = __ ; M(10) = ∑_{n≤10} μ(n) = __
+ 93.  dim Vₙ for SU(2) = __ ; χ_{V₂}(diag(i, −i)) = __ ; Weyl dimensions
+      for sl(3): V(1, 1) = __ , V(2, 0) = __ , V(2, 1) = __
+ 94.  [3]_q = __ ; [4]_q at q = 1 = __ ; spin 1 ⊗ spin 1 for SO(3) = __
+ 95.  Fourier transform (∫ f(x)e^{−2πixξ} dx) of e^{−πx²} = __ ,
+      of 1_[−1/2,1/2] = __ ; H(cos) = __
+ 96.  Unnormalised DFT of (1, 1, 1, 1) on Z/4 = __ ; Pontryagin duals of
+      Z, Z/n, R = __
+ 97.  E[(∫₀ᵀ B dB)²] = __ ; d(Bₜ²) = __ ; E e^{Bₜ} = __ ; quadratic
+      variation [B]ₜ = __
+ 98.  Stationary variance of dX = −2X dt + dB = __ ; for dS = μS dt + σS dB:
+      Sₜ = __ , E Sₜ = __
+ 99.  Entropy of the (1/2, 1/2) and (1/3, 1/3, 1/3) Bernoulli shifts = __ ;
+      a.e. time average of 1_[0,1/2)(2ⁿx) = __
+100.  Kac: mean return time to A with μ(A) = 1/5 = __ ; asymptotic
+      frequency of {nα} ∈ [0, 1/3) for α irrational = __ ; is rotation
+      by 1/4 ergodic?
+101.  |P(N)| = __ ; ℵ₀ + ℵ₁ = __ ; number of computable functions = __ ;
+      1 + ω = __ , is it ω + 1?
+102.  2 · ω = __ ; ω · 2 = __ ; countable dense linear orders without
+      endpoints, up to isomorphism = __
+103.  Coproduct in Ab = __ , in Grp = __ ; initial object in Ring = __ ;
+      terminal object in Grp = __
+104.  Left adjoint of Grp → Set = __ ; |Hom_Set(2, 3)| = __ ; morphisms in
+      the poset category 1 < 2 < 3 = __
+105.  R(3, 3) = __ ; R(3, 4) = __ ; Erdős's bound gives R(10, 10) > __
+106.  Largest antichain in P({1, ..., 6}) = __ ; max edges of a
+      triangle-free graph on 11 vertices = __ ; edges of T(6, 3) = __
+107.  Eigenvalues of tridiag(−1, 2, −1) of size N = __ ; its condition
+      number for N = 3 = __
+108.  CG factor (√κ − 1)/(√κ + 1) for κ = 100 = __ ; 2-point Gauss-Legendre
+      nodes = __ , exact up to degree __
+109.  min x² + y² s.t. x + y = 2: value = __ , λ = __ ; conjugates of eˣ
+      and x²/2 = __
+110.  max x + y s.t. x + 2y ≤ 4, 3x + y ≤ 6, x, y ≥ 0 = __ ; LQR for ẋ = u,
+      cost ∫(x² + u²): P = __ , u = __
+111.  Exp(λ) sample 2, 3, 5: λ̂ = __ ; Fisher information per observation
+      = __ ; sample variance s² of 2, 4, 6 = __
+112.  VC dimension of intervals, half-planes, axis-parallel rectangles
+      = __ ; Hoeffding bound on P(|X̄ − p| ≥ 0.1), n = 500 = __
+113.  Oscillator: E₀ = __ , E₃ = __ ; σ_xσ_y = __ ; eigenvalues of σ_x = __
+114.  Schwarzschild radius of the Sun (M = 1.989×10³⁰ kg) = __ ; {q, p} = __
+      ; {L_x, L_y} = __
+115.  Binomial model of Q56: q = __ , call price = __ , Δ = __
+116.  Black-Scholes, S = K = 100, r = 0.05, σ = 0.2, T = 1: d₁ = __ ,
+      d₂ = __ , C = __ , P = __
+117.  cond([[1, 0], [0, 0.01]]) = __ ; Tikhonov filter σ²/(σ² + α),
+      α = 10⁻⁴, at σ = 0.01 = __ , at σ = 1 = __
+118.  Prior N(0, 4), noise N(0, 1), y = 5: posterior mean = __ , variance
+      = __ ; σₙ = 1/n, ⟨y, uₙ⟩ = n⁻ᵃ: Picard condition holds iff a __
+119.  T(n) = 2T(n/2) + n: __ ; 7T(n/2) + n²: __ ; 4T(n/2) + n²: __
+120.  Lower bound for comparisons sorting 5 items = __ ; Karatsuba
+      exponent = __ ; 2-SAT is __ , 3-SAT is __
+
+ANSWER KEY
+  Part A (accept any clear, correct method and reasoning)
+   1. σ-finite ν ≪ μ ⇒ ν(E) = ∫_E f dμ for a unique f ≥ 0 in L¹_loc(μ);
+      m(E) = 0 ⇒ ∫_E 3x² = 0, so ν ≪ m and dν/dm = 3x²; δ₀({0}) = 1 but
+      m({0}) = 0 (δ₀ ⊥ m)
+   2. every bounded Λ on C(X) is ∫ f dμ for a unique regular signed
+      (complex) Borel measure μ, ‖Λ‖ = |μ|(X); here μ = δ₀ + m, ‖Λ‖ = 2
+      (attained at f = 1)
+   3. ⟨eₙ, y⟩ = yₙ → 0 for every y ∈ ℓ² (Riesz: this is every functional),
+      but ‖eₙ − eₘ‖ = √2 for n ≠ m; so (eₙ) has no norm-convergent
+      subsequence in the unit ball
+   4. if 0 ∉ σ(T), T⁻¹ is bounded and I = T⁻¹T is compact, so the unit
+      ball is compact and dim < ∞; σ(T) = {1/n : n ≥ 1} ∪ {0},
+      eigenvalues 1/n only (T is injective)
+   5. every simply connected proper open U ⊊ C is biholomorphic to D;
+      z ↦ (z − i)/(z + i); strip: z ↦ eᶻ onto the upper half-plane, then
+      w ↦ (w − i)/(w + i)
+   6. sin πz = πz ∏ₙ (1 − z²/n²); the z³ coefficient is −π³/6 on the left
+      (Taylor) and −π∑1/n² on the right, so ∑ 1/n² = π²/6
+   7. if K ⊂ Ω ⊂ Cⁿ (n ≥ 2) is compact with Ω ∖ K connected, every f on
+      Ω ∖ K extends; F(z₁, z₂) = (1/2πi)∮_{|w|=r} f(z₁, w)/(w − z₂) dw is
+      holomorphic near {|z₂| < r}, equals f for z₁ ≠ 0 (one-variable
+      Cauchy), so F = f by the identity theorem; in C, 1/z does not
+      extend (isolated singularities are not removable)
+   8. ∑z₁ᵐz₂ⁿ = 1/((1 − z₁)(1 − z₂)) converges iff |z₁| < 1 and |z₂| < 1
+      (the bidisc); ∑(z₁z₂)ⁿ iff |z₁z₂| < 1; both invariant under
+      (e^{iα}z₁, e^{iβ}z₂); images under (log|z₁|, log|z₂|) are
+      {s < 0, t < 0} and {s + t < 0}, convex
+   9. class equation: |Z(P)| ≡ |P| ≡ 0 (mod p), so Z(P) ≠ 1; induct on
+      P/Z(P) to get an upper central series reaching P; S₃ ⊃ A₃ ⊃ 1 has
+      abelian factors, but Z(S₃) = 1, so the upper central series is stuck
+      at 1
+  10. tensor 0 → Z → Z → Z/m → 0 (·m) with Z/n: Z/n → Z/n (·m) has
+      cokernel Z/(m, n) = Z/gcd(m, n) (right exactness); in Q ⊗ Z/n,
+      q ⊗ a = (q/n) ⊗ na = 0
+  11. apply − ⊗ Z/n: Z/n →(·m) Z/n: Tor₀ = Z/d, Tor₁ = ker = Z/d
+      (d = gcd(m, n)), Torᵢ = 0 for i ≥ 2; Hom(−, Z/n): Z/n →(·m) Z/n:
+      Hom = Z/d, Ext¹ = coker = Z/d, Extⁱ = 0 for i ≥ 2
+  12. Z is torsion-free, so Hom(Z/n, Z) = 0; from 0 → Z → Z → Z/n → 0,
+      0 → Hom(Z/n, Z) → Z →(·n) Z → Ext¹(Z/n, Z) → 0, so Ext¹ = Z/n; the
+      surjection Z → Z/n does not give a surjection on Hom(−, Z) of the
+      injection Z → Z — Ext¹ is exactly the obstruction
+  13. on X = U ⊔ V, functions 0 on U and 1 on V are locally constant and
+      agree on U ∩ V = ∅, but glue to a non-constant function: gluing
+      fails; the sheafification is the sheaf of locally constant functions
+      (the constant sheaf)
+  14. near any point a non-vanishing g has a local logarithm, so O → O*
+      is onto on stalks; z ∈ O*(X) has no global logarithm (∮dz/z = 2πi
+      ≠ 0); the long exact sequence O(X) → O*(X) → H¹(X, 2πiZ) ≅ Z →
+      H¹(X, O) = 0 sends z to its winding number 1
+  15. (x², xy) = (x) ∩ (x², y) = (x) ∩ (x², xy, y²); (x) prime, (x², y) is
+      (x, y)-primary; Ass = {(x), (x, y)}, (x, y) embedded; two different
+      decompositions share the isolated component (x)
+  16. weak: every maximal ideal of C[x₁, ..., xₙ] is (x₁ − a₁, ...,
+      xₙ − aₙ), equivalently V(I) = ∅ ⇒ I = (1); strong: I(V(I)) = √I;
+      for m maximal, C[x, y]/m is a field finitely generated over C, hence
+      C (Zariski), so x ↦ a, y ↦ b and m = (x − a, y − b)
+  17. 0 → Z → Z² → Z → 0 with all boundaries 0 (each 2-cell edge word
+      aba⁻¹b⁻¹, each loop from the one vertex): H₀ = Z, H₁ = Z², H₂ = Z;
+      H* = Λ[α, β] with α, β ∈ H¹, α ⌣ β generates H², α² = β² = 0,
+      β ⌣ α = −α ⌣ β
+  18. Sⁿ = U ∪ V, U, V contractible, U ∩ V ≃ Sⁿ⁻¹: H̃ₖ(Sⁿ) ≅ H̃ₖ₋₁(Sⁿ⁻¹),
+      so H̃ₖ(Sⁿ) = Z for k = n and 0 otherwise; a homeomorphism Rⁿ ≅ Rᵐ
+      gives Rⁿ ∖ {p} ≅ Rᵐ ∖ {q}, i.e. Sⁿ⁻¹ ≃ Sᵐ⁻¹, so n = m
+  19. dω = 0 by direct computation (ω = dθ locally); ∮_{S¹} ω = 2π ≠ 0,
+      so ω ≠ df (Stokes); integration over S¹ is an isomorphism
+      H¹_dR(R² ∖ {0}) → R (R² ∖ {0} ≃ S¹), generated by [ω]
+  20. E = R², F = 0, G = R²sin²θ; K = −(√G)_θθ/√G = 1/R²; ∫K dA =
+      (1/R²)(4πR²) = 4π = 2πχ(S²)
+  21. roots eᵢ − eⱼ (i ≠ j) with root vectors Eᵢⱼ: 6 roots; base α₁ =
+      e₁ − e₂, α₂ = e₂ − e₃; Cartan matrix [[2, −1], [−1, 2]]; Weyl group
+      S₃ (permuting the eᵢ); Dynkin diagram A₂ (two nodes, one edge)
+  22. weights of V₁ ⊗ V₁: 2, 0, 0, −2 = V₂ ⊕ V₀; V₁ ⊗ V₂: 3, 1, 1, −1, −1,
+      −3 = V₃ ⊕ V₁; Vₘ ⊗ Vₙ = V_{m+n} ⊕ V_{m+n−2} ⊕ ... ⊕ V_{|m−n|}
+  23. E[S²ₙ₊₁ − (n + 1) | Fₙ] = Sₙ² + 1 − n − 1 = Sₙ² − n; τ = exit time
+      has finite mean, P(Sτ = b) = a/(a + b) from the martingale Sₙ; so
+      E τ = E Sτ² = b²a/(a + b) + a²b/(a + b) = ab
+  24. φ(t) = 1 − t²/2 + o(t²), so φ_{Sₙ/√n}(t) = φ(t/√n)ⁿ = (1 − t²/(2n) +
+      o(1/n))ⁿ → e^{−t²/2}, the characteristic function of N(0, 1); by
+      Lévy's continuity theorem Sₙ/√n ⇒ N(0, 1)
+  25. find u ∈ H¹₀ with ∫∇u·∇v = ∫fv for all v ∈ H¹₀; B(u, v) = ∫∇u·∇v is
+      bounded, and coercive since ‖u‖₂ ≤ C_P‖∇u‖₂ (Poincaré); v ↦ ∫fv is
+      bounded; Lax-Milgram (here Riesz) gives a unique u
+  26. û(ξ, t) = ĝ(ξ)e^{−ξ²t} (ξ-convention ∫e^{−ixξ}), so u = Φ(·, t) ∗ g
+      with Φ(x, t) = (4πt)^{−1/2}e^{−x²/4t}; if g ≥ 0, g ≢ 0 has compact
+      support then u(x, t) > 0 for all x and all t > 0
+  27. Spec Z = {(p) : p prime} ∪ {(0)}; Spec C[x] = {(x − a) : a ∈ C} ∪
+      {(0)}; the maximal ideals are closed points; (0) is the generic
+      point, dense (its closure is everything); closed sets are finite
+      sets of closed points and the whole space (cofinite topology on
+      closed points)
+  28. O(d)(U₀) = C[t], O(d)(U₁) = C[t⁻¹] (as tᵈ-twists), U₀₁: C[t, t⁻¹];
+      the Čech differential is C[t] ⊕ tᵈC[t⁻¹] → C[t, t⁻¹]; kernel:
+      monomials tᵏ with 0 ≤ k ≤ d, so h⁰ = d + 1 (d ≥ −1), else 0;
+      cokernel: tᵏ with d < k < 0, h¹ = −d − 1 for d ≤ −2, else 0
+  29. O_K = Z[√−2], d_K = −8, r₂ = 1, n = 2: M_K = (4/π)(2!/2²)√8 =
+      (2/π)√8 ≈ 1.80 < 2; every ideal class contains an ideal of norm
+      1, so h = 1
+  30. f(x) = x² − 2, f(3) = 7 ≡ 0 (mod 7), f′(3) = 6 ≢ 0 (mod 7): Hensel
+      gives a unique lift; mod 49: x = 3 + 7t, 7 + 42t ≡ 0 ⇒ t = 1, x = 10;
+      mod 343: x = 10 + 49s, 98 + 980s ≡ 0 (mod 343) ⇒ 2 + 20s ≡ 0 (mod 7)
+      ⇒ s = 2, x = 108 (108² = 11664 = 2 + 34 × 343)
+  31. partial summation for Re s > 1: ζ(s) = s∫₁^∞ ⌊t⌋t⁻ˢ⁻¹ dt = s/(s − 1)
+      − s∫₁^∞ {t}t⁻ˢ⁻¹ dt; 0 ≤ {t} < 1 makes the integral converge for
+      Re s > 0; so ζ − 1/(s − 1) = 1 − s∫... is holomorphic there;
+      residue 1
+  32. log L(s, χ) = ∑ₚ χ(p)p⁻ˢ + O(1); add for χ₀, χ₄: ∑_{p≡1(4)} p⁻ˢ =
+      ½(log ζ(s) + log L(s, χ₄)) + O(1); L(1, χ₄) = 1 − 1/3 + 1/5 − ... =
+      π/4 is finite and non-zero, while log ζ(s) → ∞ as s → 1⁺
+  33. g acts on P(z₁, z₂) of degree n by P ↦ P ∘ gᵀ (or g⁻¹); Vₙ has basis
+      z₁ᵏz₂ⁿ⁻ᵏ, dim n + 1; irreducible (the only invariant subspaces under
+      the torus and the raising operator are 0 and Vₙ); at diag(e^{iθ},
+      e^{−iθ}): χₙ = ∑ₖ e^{i(n−2k)θ} = sin((n + 1)θ)/sin θ
+  34. dim V(a, b) = (a + 1)(b + 1)(a + b + 2)/2; V(1, 0) = 3 (standard
+      C³), V(1, 1) = 8 (the adjoint representation sl(3)), V(2, 0) = 6
+      (Sym² C³)
+  35. (Hf)^(ξ) = −i sgn ξ f̂(ξ); |−i sgn ξ| = 1 a.e., so Plancherel gives
+      ‖Hf‖₂ = ‖f‖₂; (−i sgn ξ)² = −1, so H² = −I; cos has f̂ at ±1:
+      multiply by ∓i, giving H(cos) = sin
+  36. for compact K ⊂ {Mf > λ} cover by intervals I with ∫_I|f| > λ|I|;
+      Vitali: disjoint Iⱼ with K ⊂ ∪3Iⱼ, so m(K) ≤ 3∑|Iⱼ| ≤ 3‖f‖₁/λ;
+      averages converge for continuous g, and the weak (1, 1) bound for
+      f − g (with ‖f − g‖₁ small) controls limsup |Aᵣf − f|, so the
+      averages → f a.e.
+  37. f(x) = x²: d(B²) = 2B dB + dt, integrate; E(∫₀ᵗ B dB)² =
+      ∫₀ᵗ E Bₛ² ds = ∫₀ᵗ s ds = t²/2 (check: E(Bₜ² − t)²/4 = (3t² − 2t² +
+      t²)/4 = t²/2)
+  38. d(e^{θt}X) = σe^{θt} dB, so Xₜ = e^{−θt}X₀ + σ∫₀ᵗ e^{−θ(t−s)} dBₛ;
+      E Xₜ = e^{−θt}X₀, Var Xₜ = σ²(1 − e^{−2θt})/(2θ); stationary law
+      N(0, σ²/(2θ))
+  39. T measure-preserving on a probability space, μ(A) > 0 ⇒ a.e. x ∈ A
+      returns to A infinitely often; B = {x ∈ A : Tⁿx ∉ A ∀n ≥ 1}: the
+      sets T⁻ⁿB are disjoint with equal measure, so μ(B) = 0; apply to
+      Tᵏ to get infinitely many returns
+  40. f = ∑ cₙe^{2πinx} invariant ⇒ cₙe^{2πinα} = cₙ, and e^{2πinα} ≠ 1
+      for n ≠ 0, so f is constant; Weyl: (1/N)∑ e^{2πikmα} → 0 for k ≠ 0
+      (geometric sum), so averages of trigonometric polynomials, hence
+      of continuous functions and of indicators of intervals, converge to
+      the integral: {nα} is equidistributed
+  41. add constant c and sentences c > 0, c > 1, ...; every finite subset
+      holds in N, so by compactness the set has a model — non-standard,
+      c is infinite; if Σ had exactly the finite models, Σ ∪ {"≥ n
+      elements" : n} would be finitely satisfiable but has no model
+  42. if H(e, x) decided halting, D(e) := "loop if H(e, e) says halts, else
+      halt" gives D(d) halts ⇔ D(d) doesn't halt; Gödel: a consistent,
+      recursively axiomatised theory containing basic arithmetic is
+      incomplete; CH is consistent (Gödel, L) and its negation is too
+      (Cohen, forcing)
+  43. Nat(Hom(A, −), F) ≅ F(A) via η ↦ η_A(1_A), inverse x ↦ (f ↦ F(f)x);
+      naturality forces η_B(f) = F(f)(η_A(1_A)); if Hom(A, −) ≅ F ≅
+      Hom(B, −), Yoneda (full faithfulness) turns the natural iso into a
+      unique iso A ≅ B compatible with the universal elements
+  44. Hom_Grp(F(S), G) ≅ Hom_Set(S, UG) naturally (a homomorphism is
+      determined freely by the images of generators); for R right adjoint,
+      Hom(X, R lim Dᵢ) ≅ Hom(LX, lim Dᵢ) ≅ lim Hom(LX, Dᵢ) ≅ lim Hom(X, RDᵢ)
+      ≅ Hom(X, lim RDᵢ); so U preserves products: U(G × H) = UG × UH
+  45. colour edges of Kₙ randomly; E(#monochromatic Kₖ) =
+      C(n, k)2^{1−C(k,2)} < (nᵏ/k!)2^{1−k(k−1)/2}; for n = ⌊2^{k/2}⌋ this is
+      < 2^{1+k/2}/k! < 1 for k ≥ 3, so some colouring has none
+  46. for an antichain A, maximal chains through distinct A are disjoint,
+      and |A| = k lies on k!(n − k)! of the n! chains: ∑_{A} 1/C(n, |A|)
+      ≤ 1 (LYM); since C(n, k) ≤ C(n, ⌊n/2⌋), |A| ≤ C(n, ⌊n/2⌋)
+  47. hats φᵢ at xᵢ = ih; Kᵢⱼ = ∫φᵢ′φⱼ′ = (1/h)tridiag(−1, 2, −1), load
+      Fᵢ = ∫fφᵢ; Céa: ‖u − u_h‖_{H¹} ≤ (M/α) min_{v∈V_h}‖u − v‖_{H¹};
+      error O(h) in H¹ and O(h²) in L² (Aubin-Nitsche duality)
+  48. ‖e_k‖_A ≤ 2((√κ − 1)/(√κ + 1))ᵏ‖e₀‖_A, versus ((κ − 1)/(κ + 1))ᵏ for
+      steepest descent: about √κ versus κ iterations per digit; κ = 10⁴:
+      factor 99/101, 2(99/101)ᵏ ≤ 10⁻⁶ needs k ≈ ln(2×10⁶)/0.02 ≈ 726
+      (steepest descent ≈ 6.9×10⁴)
+  49. ∇f = λ∇g: 2x = λ, 2y = λ, λ ≥ 0, λ(1 − x − y) = 0: x = y = 1/2,
+      λ = 1, value 1/2; dual: max_λ≥0 (λ − λ²/2) = 1/2 at λ = 1; Slater
+      (e.g. (1, 1) strictly feasible) ⇒ zero duality gap, confirmed
+  50. f*(y) = sup_x (xy − f(x)), so f(x) + f*(y) ≥ xy for all x, y
+      (Fenchel-Young); (x²/2)* = y²/2; |x|* = 0 if |y| ≤ 1, +∞
+      otherwise (indicator of [−1, 1])
+  51. ℓ(λ) = n ln λ − λ∑xᵢ, λ̂ = 1/x̄; I(λ) = 1/λ² per observation; any
+      unbiased estimator has variance ≥ λ²/n; √n(λ̂ − λ) ⇒ N(0, λ²)
+  52. intervals shatter any 2 points but not x < y < z labelled (+, −, +);
+      half-planes shatter 3 points in general position, and no 4 points
+      (Radon: 4 points split into two parts with intersecting hulls);
+      with probability ≥ 1 − δ, sup_h |R(h) − R̂(h)| ≤ C√((d log(n/d) +
+      log(1/δ))/n)
+  53. [a, a†] = (1/(2mħω))(−imω[x, p] + imω[p, x]) = 1; H = ħω(a†a +
+      1/2), [N, a] = −a, [N, a†] = a†, so a lowers and a† raises the
+      eigenvalue of N = a†a by 1; N ≥ 0 forces a ground state a|0⟩ = 0;
+      Eₙ = ħω(n + 1/2)
+  54. the Hamiltonian vector field X_H has div X_H = H_{pq} − H_{qp} = 0,
+      so the flow preserves dq dp (in fact L_{X_H}ω = d(ι_{X_H}ω) = −d(dH)
+      = 0 by Cartan); Darboux: locally every symplectic form is ∑dqᵢ ∧ dpᵢ
+  55. long call, short put pays (S_T − K)⁺ − (K − S_T)⁺ = S_T − K, the same
+      as long stock plus a loan of Ke⁻ʳᵀ; equal payoffs, equal prices;
+      C = S₀N(d₁) − Ke⁻ʳᵀN(d₂), d₁,₂ = (ln(S₀/K) + (r ± σ²/2)T)/(σ√T),
+      solving Vₜ + ½σ²S²V_SS + rSV_S − rV = 0
+  56. if 1 + r ≤ d, borrow and buy stock; if 1 + r ≥ u, short stock and
+      lend; otherwise q = (1 + r − d)/(u − d) ∈ (0, 1) is an equivalent
+      martingale measure; q = 0.625, C = 0.625 × 20/1.05 ≈ 11.905;
+      Δ = (20 − 0)/(120 − 80) = 0.5 share, bond −40/1.05 ≈ −38.095
+  57. well-posed: existence, uniqueness and continuous dependence on data;
+      if K compact is invertible on an infinite-dimensional space then
+      I = K⁻¹K would be compact; Kx = y solvable iff ∑|⟨y, uₙ⟩|²/σₙ² < ∞
+      (Picard); x_α = ∑ σₙ²/(σₙ² + α) · ⟨y, uₙ⟩/σₙ vₙ damps small σₙ
+  58. posterior ∝ exp(−x²/(2τ²) − (y − x)²/(2σ²)): N(τ²y/(τ² + σ²),
+      τ²σ²/(τ² + σ²)); MAP = argmin (y − x)²/σ² + x²/τ², Tikhonov with
+      α = σ²/τ²
+  59. for each clause make a triangle on its three literals, and join
+      each literal to all occurrences of its negation; the formula with
+      m clauses is satisfiable iff the graph has an independent set of
+      size m; S independent ⇔ V ∖ S a vertex cover ⇔ S a clique in the
+      complement; all are in NP
+  60. T(n) = aT(n/b) + f(n): compare f with n^{log_b a}; n log n (case 2);
+      n^{log₂7} ≈ n^{2.807} (case 1); a comparison decision tree has ≥ n!
+      leaves, so depth ≥ log₂ n! = n log₂ n − O(n)
+
+  Part B
+  61. 2x ; 1/4 ; 3
+  62. 1/2 ; 1/4
+  63. [0, 1] ; none ; 0
+  64. sgn x ; 2δ₀ ; a > 1/2
+  65. 2 ; 3 ; √π
+  66. (z − i)/(z + i) ; 2xy (+ constant)
+  67. the unit bidisc {|z₁| < 1, |z₂| < 1} ; {|z₁z₂| < 1}
+  68. |w₁|² + |w₂|² (identity matrix: strongly pseudoconvex) ; 1
+  69. A₄ ; V₄ (Klein four-group) ; A₃
+  70. Z/6 ; 0 ; 6
+  71. Z/6 ; Z/4 ; Z/2
+  72. 0 ; k, k, 0
+  73. C{z} (convergent power series) ; Z³ ; Z, Z, 0
+  74. A ; 0 ; 1
+  75. 2 ; 2 ; 1
+  76. {(x), (x, y)} ; (x, y) ; 6
+  77. Z, Z/2, 0 ; 1 ; Z/2
+  78. Z ; 1, 6, 1 ; Z[x]/(x³), deg x = 2
+  79. 2π ; 1, 2, 1 ; dx ∧ dy ∧ dz
+  80. −1 ; −sin θ cos θ ; −4π
+  81. 6, 8, 12, 240 ; 248
+  82. V₅ ⊕ V₃ ⊕ V₁ ; 24 ; 8 ; 12
+  83. e^{−t²/2} ; 3 ; min(s, t) ; B₁² + 1
+  84. 3/8 ; 15 ; exp(λ(e^{it} − 1))
+  85. 6 ; s > 3/2
+  86. (4πt)^{−1/2}e^{−x²/(4t)} ; 1 ; 2 ; 1/π
+  87. 6 ; 2 ; 10
+  88. 4 ; 5 ; 27 ; 6
+  89. −108 ; (2/π)√20 ≈ 2.847 ; 1 + √2 and 2 + √3
+  90. 1/4 ; 1/3 ; ±10, i.e. 10 and 39
+  91. −1/2 ; −1/12 ; 1 ; π/4
+  92. ln 2520 ≈ 7.832 ; ln 210 ≈ 5.347 ; −1
+  93. n + 1 ; −1 ; 8 ; 6 ; 15
+  94. q² + 1 + q⁻² ; 4 ; spin 0 ⊕ spin 1 ⊕ spin 2 (1 + 3 + 5 = 9)
+  95. e^{−πξ²} ; sin(πξ)/(πξ) ; sin
+  96. (4, 0, 0, 0) ; T = R/Z, Z/n, R
+  97. T²/2 ; 2Bₜ dBₜ + dt ; e^{t/2} ; t
+  98. 1/4 ; S₀exp((μ − σ²/2)t + σBₜ) ; S₀e^{μt}
+  99. ln 2 ; ln 3 ; 1/2
+ 100. 5 ; 1/3 ; no (∪ⱼ [j/4, j/4 + 1/8) is invariant, measure 1/2)
+ 101. 2^ℵ₀ ; ℵ₁ ; ℵ₀ ; ω ; no (ω ≠ ω + 1)
+ 102. ω ; ω + ω ; 1 (Cantor: ≅ Q)
+ 103. direct sum A ⊕ B ; free product A ∗ B ; Z ; the trivial group
+ 104. the free group functor ; 9 ; 6
+ 105. 6 ; 9 ; 2⁵ = 32
+ 106. C(6, 3) = 20 ; ⌊121/4⌋ = 30 ; 12
+ 107. 2 − 2cos(kπ/(N + 1)), k = 1, ..., N ; 3 + 2√2 ≈ 5.828
+ 108. 9/11 ≈ 0.818 ; ±1/√3 ; 3
+ 109. 2 ; 2 ; y ln y − y (y > 0), y²/2
+ 110. 14/5 at (8/5, 6/5) ; 1 ; −x
+ 111. 0.3 ; 1/λ² ; 4
+ 112. 2, 3, 4 ; 2e⁻¹⁰ ≈ 9.08 × 10⁻⁵
+ 113. ħω/2 ; 7ħω/2 ; iσ_z ; ±1
+ 114. ≈ 2.95 km ; 1 ; L_z
+ 115. 0.625 ; ≈ 11.905 ; 0.5
+ 116. 0.35 ; 0.15 ; ≈ 10.4506 ; ≈ 5.5735
+ 117. 100 ; 1/2 ; ≈ 0.9999
+ 118. 4 ; 0.8 ; a > 3/2
+ 119. Θ(n log n) ; Θ(n^{log₂7}) ≈ Θ(n^{2.807}) ; Θ(n² log n)
+ 120. ⌈log₂ 120⌉ = 7 ; log₂ 3 ≈ 1.585 ; in P ; NP-complete
+
+Scoring guide (out of 120):
+  104-120 Ready for Stage 13 (PhD research years).
+  77-103  Nearly there — revise the topics of the missed questions for
+          three or four weeks, then try those questions again.
+  0-76    Keep working through Stage 12 (revise Stage 11 if needed); test
+          again in a month.
+  Compare the two parts: strong in B but weak in A means the student needs
+  more practice writing complete proofs, as in a qualifying exam; strong
+  in A but weak in B means more drill practice for speed and accuracy.
+
+
+================================================================================
+END OF STAGE 12 — READINESS CHECKLIST FOR STAGE 13
+================================================================================
+The student is ready for Stage 13 (PhD research years) when they can
+usually:
+  Core analysis
+  [ ] Use abstract measures, signed measures, Radon-Nikodym derivatives,
+      differentiation of measures and the Riesz representation theorem
+  [ ] Work with weak and weak* topologies, compact operators and their
+      spectra, Banach algebras, distributions and Sobolev spaces
+  [ ] Apply the Riemann mapping theorem, harmonic functions, Weierstrass
+      and Mittag-Leffler, analytic continuation, Riemann surfaces and
+      elliptic functions
+  [ ] Explain what is new in several complex variables: Hartogs
+      phenomena, Reinhardt domains, pseudoconvexity
+  [ ] Use Fourier analysis on groups, maximal functions, singular
+      integrals and Calderón-Zygmund theory
+  Algebra and geometry
+  [ ] Use solvable and nilpotent groups, modules, tensor products, exact
+      sequences and the language of categories
+  [ ] Compute Ext and Tor, use long exact sequences and derived functors,
+      and explain the idea of the derived category
+  [ ] Work with sheaves, stalks, sheafification and sheaf cohomology
+  [ ] Use Noetherian and Artinian rings, primary decomposition, integral
+      extensions, the Nullstellensatz, dimension theory and completions
+  [ ] Compute singular and cellular homology and cohomology, cup
+      products and homotopy groups, and apply Poincaré duality
+  [ ] Work with manifolds, vector bundles, differential forms, de Rham
+      cohomology, connections, curvature and geodesics
+  [ ] Handle root systems, the classification of semisimple Lie algebras
+      and highest-weight representations, including the Weyl formulas
+  [ ] Use functors, natural transformations, the Yoneda lemma,
+      adjunctions, limits and abelian categories fluently
+  Probability and PDE
+  [ ] Use conditional expectation, martingales and optional stopping,
+      Brownian motion, weak convergence and characteristic functions
+  [ ] Find weak solutions of elliptic, parabolic and hyperbolic PDEs with
+      Sobolev spaces, Lax-Milgram, regularity and variational methods
+  [ ] Use the Itô integral and Itô's formula, and solve linear SDEs
+  [ ] Apply the ergodic theorems, recurrence, mixing and entropy
+  Specialisations
+  [ ] Work with varieties and schemes, sheaf cohomology on projective
+      space, curves and surfaces, and Riemann-Roch
+  [ ] Handle Dedekind domains, ramification, class groups, units, p-adic
+      and local fields, adeles and ideles
+  [ ] Use ζ(s) and L-functions, the prime number theorem, and the ideas
+      of sieve methods and the circle method
+  [ ] Work with representations of compact Lie groups and algebraic
+      groups, and know what a quantum group is
+  [ ] Use model theory, ZFC and ordinals, forcing and independence,
+      computability and the incompleteness theorems
+  [ ] Apply the probabilistic method, extremal and algebraic
+      combinatorics
+  [ ] Analyse finite element, spectral and iterative methods for PDEs and
+      linear systems, with error and convergence estimates
+  [ ] Use convex analysis, duality, KKT conditions and optimal control
+  [ ] Use estimation theory, hypothesis testing, VC dimension and
+      generalisation bounds
+  [ ] Explain the mathematical frameworks of quantum mechanics, general
+      relativity, gauge theory and symplectic geometry
+  [ ] Price derivatives by no-arbitrage, Black-Scholes and stochastic
+      control
+  [ ] Regularise ill-posed inverse problems and quantify uncertainty
+      with Bayesian methods
+  [ ] Design and analyse algorithms, prove NP-completeness and reason
+      about complexity classes
+  Research skills
+  [ ] Pass written and oral qualifying exams in the core sequence, read
+      graduate monographs and recent papers in one specialisation, and
+      present a seminar talk on a research paper
+
+Stage 13 turns from coursework to research: depth in one or two frontier
+areas (arithmetic and algebraic geometry, advanced topology, geometric
+analysis, operator algebras, advanced probability, and more), awareness
+of the great open problems, and the skills of the working mathematician
+— reading papers critically, choosing a problem with an advisor, writing,
+presenting, collaborating, teaching, and writing and defending an
+original doctoral thesis.
+================================================================================
