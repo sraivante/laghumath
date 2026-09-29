@@ -35,7 +35,9 @@ How to use this file (note for the parent / teacher)
                                   example of each idea.
     * TEACHING TIPS               what to do if the student struggles, and
                                   how to make it harder
-- In total: 360 descriptive + 360 mathematical questions.
+- In total: 360 descriptive + 360 mathematical questions, then a mixed
+  revision test (equal descriptive and mathematical parts, two questions
+  from every topic in each part) and a readiness checklist for Stage 13.
 - Level: first-year graduate / qualifying-exam mathematics. The core
   sequence (12.1-12.13) is what a typical PhD qualifying exam covers; the
   specialisation foundations are chosen by research area.
